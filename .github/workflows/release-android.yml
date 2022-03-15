@@ -20,12 +20,13 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: "2.8.0"
-      - run:  |
-        flutter pub get
-        flutter format --set-exit-if-changed .
-        flutter analyze
-        flutter test
-        flutter build apk
+      - name: 🛠 Testing & building Android App
+        run: |
+          flutter pub get
+          flutter format --set-exit-if-changed .
+          flutter analyze
+          flutter test
+          flutter build apk
       - name: ⚙️ Retrieve Release Version
         id: versionstep
         run: |
