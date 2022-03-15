@@ -1,15 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
-class HomeSreen extends StatefulWidget {
-  const HomeSreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeSreen> createState() => _HomeSreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeSreenState extends State<HomeSreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return FlutterMap(
+      options: MapOptions(
+        center: LatLng(51.5, -0.09),
+        zoom: 13.0,
+      ),
+      layers: [
+        TileLayerOptions(
+          urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          subdomains: ['a', 'b', 'c'],
+          attributionBuilder: (_) {
+            return Container();
+          },
+        ),
+        MarkerLayerOptions(
+          markers: [
+            Marker(
+              width: 10.0,
+              height: 10.0,
+              point: LatLng(51.5, -0.09),
+              builder: (ctx) => Container(width: 10, height: 10, color: const Color(0xFF000000)),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:smartflore/screens/home.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 
 void main() {
-  runApp(App());
+  runApp(const App());
 }
 
 ThemeManager _themeManager = ThemeManager();
 
 class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
   @override
   State<App> createState() => _AppState();
 }
@@ -39,7 +42,7 @@ class _AppState extends State<App> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomeSreen(),
     );
   }
 }
