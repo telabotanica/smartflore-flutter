@@ -20,4 +20,4 @@ Test in local on android (with release package)
 `bundletool install-apks --apks=./build/app/outputs/bundle/release/app-release.apks`
 
 ## Publish on stores
-See the following [doc](doc/stores.md)
+See the following [doc](doc/store.md)
