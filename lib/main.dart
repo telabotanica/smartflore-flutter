@@ -42,7 +42,7 @@ class _AppState extends State<App> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,
-      home: const HomeSreen(),
+      home: const HomeScreen(),
     );
   }
 }
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Switch(
               value: _themeManager.themeMode == ThemeMode.dark,
               onChanged: (value) {
-                _themeManager.toggoleTheme(value);
+                _themeManager.toggleTheme(value);
               })
         ],
       ),
