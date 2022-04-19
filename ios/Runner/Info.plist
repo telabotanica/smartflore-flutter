@@ -4,6 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>fr</string>
+		<string>en</string>		
+		<string>es</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Smartflore</string>
 	<key>CFBundleExecutable</key>
