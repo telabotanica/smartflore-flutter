@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: FlutterMap(
         options: MapOptions(
-          center: LatLng(51.5, -0.09),
+          center: LatLng(43.610769, 3.876716),
           zoom: 13.0,
         ),
         layers: [
@@ -35,9 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Marker(
                 width: 10.0,
                 height: 10.0,
-                point: LatLng(51.5, -0.09),
-                builder: (ctx) => Container(
-                    width: 10, height: 10, color: const Color(0xFF000000)),
+                point: LatLng(43.610769, 3.876716),
+                builder: (ctx) => Container(width: 10, height: 10, color: const Color(0xFF000000)),
               ),
             ],
           ),
