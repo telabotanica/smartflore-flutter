@@ -31,7 +31,8 @@ class _MapWidgetState extends State<MapWidget> {
               width: 10.0,
               height: 10.0,
               point: LatLng(43.610769, 3.876716),
-              builder: (ctx) => Container(width: 10, height: 10, color: const Color(0xFF000000)),
+              builder: (ctx) => Container(
+                  width: 10, height: 10, color: const Color(0xFF000000)),
             ),
           ],
         ),
