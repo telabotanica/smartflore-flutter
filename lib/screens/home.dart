@@ -16,8 +16,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    Color primary = Theme.of(context).colorScheme.primary;
     return Scaffold(
-      body: SlidingUpPanel(
+        body: DefaultTabController(
+      length: 2,
+      child: SlidingUpPanel(
           parallaxEnabled: true,
           parallaxOffset: .5,
           maxHeight: MediaQuery.of(context).size.height * 0.9,
@@ -36,69 +39,36 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 4,
                     ),
                     const SizedBox(height: 16),
-                    Column(
-                      children: [
-                        Container(
-                          height: 46,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1),
-                              borderRadius: const BorderRadius.all(Radius.circular(6))),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: 46,
-                                  child: TextButton(
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
-                                          overlayColor: MaterialStateProperty.all(const Color(0x33FFFFFF))),
-                                      onPressed: () {},
-                                      child: const Text(
-                                        "Tous les sentiers",
-                                        style: TextStyle(color: Colors.white),
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: SizedBox(
-                                  height: 46,
-                                  child: TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        "Mes sentiers",
-                                        style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                                      )),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        OutlinedButton.icon(
-                          onPressed: () {
-                            // Respond to button press
-                          },
-                          icon: Icon(Icons.add, size: 18),
-                          label: Text("Scanner un sentier"),
-                        )
-                      ],
-                    )
+                    Container(
+                      height: 46,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1),
+                          borderRadius: const BorderRadius.all(Radius.circular(6))),
+                      child: TabBar(
+                          unselectedLabelColor: primary,
+                          indicator:
+                              BoxDecoration(color: primary, borderRadius: const BorderRadius.all(Radius.circular(6))),
+                          tabs: const [Tab(text: "Tous les sentiers"), Tab(text: "Mes sentiers")]),
+                    ),
                   ],
                 ),
               ),
             ),
           ),
           panelBuilder: (controller) => Padding(
-                padding: const EdgeInsets.fromLTRB(20, 160, 20, 20),
-                child: PanelWidget(
-                  controller: controller,
-                ),
-              ),
+              padding: const EdgeInsets.fromLTRB(20, 100, 20, 20),
+              child: TabBarView(
+                children: [
+                  PanelWidget(
+                    controller: controller,
+                  ),
+                  PanelWidget(
+                    controller: controller,
+                  ),
+                ],
+              )),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           body: const MapWidget()),
-    );
+    ));
   }
 }
