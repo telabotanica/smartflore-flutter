@@ -27,11 +27,12 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
   cupertino_icons: ^1.0.2
-  flutter_map: any
+  flutter_map: ^0.14.0
   flutter_bloc: ^8.0.1
   sliding_up_panel: ^2.0.0+1
   flutter_svg: ^1.0.3
   flutter_image: ^4.1.0
+  latlong2: ^0.8.1
   
 dev_dependencies:
   flutter_test:

@@ -33,7 +33,8 @@ class TrailListItemWidget extends StatelessWidget {
                   children: [
                     const Text(
                       "Le square Blaise Pascal",
-                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                     ),
                     const SizedBox(height: 6),
                     Row(
@@ -44,7 +45,8 @@ class TrailListItemWidget extends StatelessWidget {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(width: 5),
-                        Text("357 m", style: Theme.of(context).textTheme.caption),
+                        Text("357 m",
+                            style: Theme.of(context).textTheme.caption),
                       ],
                     ),
                     const SizedBox(height: 4),
@@ -56,7 +58,8 @@ class TrailListItemWidget extends StatelessWidget {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(width: 5),
-                        Text("8 espèces", style: Theme.of(context).textTheme.caption),
+                        Text("8 espèces",
+                            style: Theme.of(context).textTheme.caption),
                       ],
                     )
                   ],
@@ -83,7 +86,8 @@ class TrailListItemWidget extends StatelessWidget {
                     const SizedBox(width: 2),
                     Text(
                       "À 250m",
-                      style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary),
                     )
                   ],
                 )
