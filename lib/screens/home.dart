@@ -45,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1),
                           borderRadius: const BorderRadius.all(Radius.circular(6))),
                       child: TabBar(
+                          isScrollable: false,
                           unselectedLabelColor: primary,
                           indicator:
                               BoxDecoration(color: primary, borderRadius: const BorderRadius.all(Radius.circular(6))),
@@ -55,20 +56,35 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          panelBuilder: (controller) => Padding(
-              padding: const EdgeInsets.fromLTRB(20, 100, 20, 20),
-              child: TabBarView(
-                children: [
-                  PanelWidget(
-                    controller: controller,
-                  ),
-                  PanelWidget(
-                    controller: controller,
-                  ),
-                ],
-              )),
+          panelBuilder: (scrollController) => _buildSlidingPanel(scrollController: scrollController),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           body: const MapWidget()),
     ));
   }
+
+  Widget _buildSlidingPanel({
+    required ScrollController scrollController,
+  }) {
+    return Padding(
+        padding: const EdgeInsets.fromLTRB(20, 100, 20, 20),
+        child: TabBarView(
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            PanelWidget(
+              controller: scrollController,
+            ),
+            PanelWidget(
+              controller: scrollController,
+            ),
+          ],
+        ));
+  }
 }
+
+
+
+
+//1 - cleaning panelWidget component
+//2 - creating trail list item widget
+//3 - create mooc file and adding business logic
+//4 - find a way to update map depending of the selected tab
