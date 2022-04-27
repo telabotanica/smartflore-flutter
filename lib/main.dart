@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:smartflore/bloc/trails/trails_bloc.dart';
+import 'package:smartflore/repo/trails/trails-api-client.dart';
+import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/screens/home.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(const App());
+  final TrailsRepo trailsRepo = TrailsRepo(
+      trailsApiClient: TrailsApiClient(
+          httpClient: http.Client(), baseUrl: 'https://taxamart.floristic.org/referential?language=fr&type=trail'));
+
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
+  ], child: const App()));
 }
 
 ThemeManager _themeManager = ThemeManager();
@@ -41,7 +52,8 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Smart'Flore",
+      debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,

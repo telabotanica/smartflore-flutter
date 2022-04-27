@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/trail_list_item.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
+enum TrailsListType { allTrails, myTrails }
+
 class PanelWidget extends StatelessWidget {
   final ScrollController controller;
+  final TrailsListType trailsListType;
 
-  const PanelWidget({Key? key, required this.controller}) : super(key: key);
+  const PanelWidget({Key? key, required this.controller, this.trailsListType = TrailsListType.allTrails})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,31 +26,29 @@ class PanelWidget extends StatelessWidget {
             size: 18,
             color: Theme.of(context).textTheme.bodyText1?.color,
           ),
-          label: Text("Scanner un sentier",
-              style: Theme.of(context).textTheme.bodyText1),
+          label: Text('Scanner un sentier', style: Theme.of(context).textTheme.bodyText1),
         ),
         const SizedBox(height: 16),
-        Expanded(
-          child: ListView(
-              controller: controller,
-              padding: EdgeInsets.zero,
-              children: const [
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-                TrailListItemWidget(),
-              ]),
+        BlocBuilder<TrailsBloc, TrailsDataState>(
+          builder: (context, state) {
+            if (state is TrailsDataInitialState) {
+              return const CircularProgressIndicator();
+            } else if (state is TrailsDataErrorState) {
+              return const Text('Something is wrong ', style: TextStyle(color: Colors.red));
+            } else if (state is TrailsDataLoadedState) {
+              return Expanded(
+                child: ListView.builder(
+                  controller: controller,
+                  itemCount: state.trails.referentials.length,
+                  itemBuilder: (context, index) {
+                    final trail = state.trails.referentials[index];
+                    return TrailListItemWidget(title: trail.name, image: 'trail.image');
+                  },
+                ),
+              );
+            }
+            return Container();
+          },
         )
       ],
     );
