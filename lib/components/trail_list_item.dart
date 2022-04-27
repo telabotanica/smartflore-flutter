@@ -96,7 +96,7 @@ class TrailListItemWidget extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             'À 250m',
-                            style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                            style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.primary),
                           )
                         ],
                       )

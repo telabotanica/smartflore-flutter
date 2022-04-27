@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/map/panel_widget.dart';
+import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 import '../components/map/map_widget.dart';
 
@@ -42,8 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Container(
                       decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(4)),
-                          color: Color(0xFFD8DCD8)),
+                          borderRadius: BorderRadius.all(Radius.circular(4)), color: Color(0xFFD8DCD8)),
                       width: 45,
                       height: 4,
                     ),
@@ -51,32 +51,79 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: 46,
                       decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 1),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(6))),
+                          border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1),
+                          borderRadius: const BorderRadius.all(Radius.circular(6))),
                       child: TabBar(
                           isScrollable: false,
                           unselectedLabelColor: primary,
-                          indicator: BoxDecoration(
-                              color: primary,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(6))),
-                          tabs: const [
-                            Tab(text: 'Tous les sentiers'),
-                            Tab(text: 'Mes sentiers')
-                          ]),
+                          indicator:
+                              BoxDecoration(color: primary, borderRadius: const BorderRadius.all(Radius.circular(6))),
+                          tabs: const [Tab(text: 'Tous les sentiers'), Tab(text: 'Mes sentiers')]),
                     ),
                   ],
                 ),
               ),
             ),
           ),
-          panelBuilder: (scrollController) =>
-              _buildSlidingPanel(scrollController: scrollController),
+          panelBuilder: (scrollController) => _buildSlidingPanel(scrollController: scrollController),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          body: const MapWidget()),
+          body: Stack(
+            children: [
+              const MapWidget(),
+              Positioned(
+                  top: 10,
+                  right: 10,
+                  child: SafeArea(
+                    child: IconButton(
+                      icon: Container(
+                          width: 46,
+                          height: 46,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.background,
+                              borderRadius: const BorderRadius.all(Radius.circular(10))),
+                          child: const Icon(
+                            SmartFloreIcons.setting,
+                            size: 20,
+                          )),
+                      onPressed: () {},
+                    ),
+                  )),
+              Positioned(
+                  bottom: 100,
+                  left: 20,
+                  child: SafeArea(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: 46,
+                          height: 46,
+                          child: FloatingActionButton(
+                              backgroundColor: Colors.white,
+                              child: const Icon(
+                                SmartFloreIcons.qrcode,
+                                color: Color(0xFF12161E),
+                                size: 20,
+                              ),
+                              onPressed: () {}),
+                        ),
+                        const SizedBox(height: 12),
+                        SizedBox(
+                          width: 46,
+                          height: 46,
+                          child: FloatingActionButton(
+                              backgroundColor: Colors.white,
+                              child: const Icon(
+                                SmartFloreIcons.target_2,
+                                color: Color(0xFF12161E),
+                                size: 20,
+                              ),
+                              onPressed: () {}),
+                        ),
+                      ],
+                    ),
+                  ))
+            ],
+          )),
     ));
   }
 
@@ -93,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             PanelWidget(
               controller: scrollController,
+              trailsListType: TrailsListType.myTrails,
             ),
           ],
         ));

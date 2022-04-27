@@ -28,7 +28,7 @@ class PanelWidget extends StatelessWidget {
           ),
           label: Text('Scanner un sentier', style: Theme.of(context).textTheme.bodyText1),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 6),
         BlocBuilder<TrailsBloc, TrailsDataState>(
           builder: (context, state) {
             if (state is TrailsDataInitialState) {

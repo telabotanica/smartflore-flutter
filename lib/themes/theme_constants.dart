@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
   textTheme: const TextTheme(
-    bodyText1: TextStyle(color: Color(0xFF12161E)),
-    caption: TextStyle(color: Color(0xFF647883)),
+    bodyText1: TextStyle(color: Color(0xFF12161E), fontSize: 14),
+    caption: TextStyle(color: Color(0xFF647883), fontSize: 14),
   ),
   colorScheme: const ColorScheme.light(
     primary: Color(0xffff7469),
