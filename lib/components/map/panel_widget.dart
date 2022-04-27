@@ -41,8 +41,9 @@ class PanelWidget extends StatelessWidget {
                   controller: controller,
                   itemCount: state.trails.referentials.length,
                   itemBuilder: (context, index) {
-                    final trail = state.trails.referentials[index];
-                    return TrailListItemWidget(title: trail.name, image: 'trail.image');
+                    final referential = state.trails.referentials[index];
+                    return TrailListItemWidget(
+                        title: referential.name, length: referential.trail.length, image: 'trail.image');
                   },
                 ),
               );

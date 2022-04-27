@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image/flutter_image.dart';
+import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class TrailListItemWidget extends StatelessWidget {
   final String title;
   final String image;
+  final int length;
 
-  const TrailListItemWidget({Key? key, required this.title, required this.image}) : super(key: key);
+  const TrailListItemWidget({Key? key, required this.title, required this.length, required this.image})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    String distance = (length >= 1000) ? (length / 1000).toStringAsFixed(2) + ' km' : length.toString() + ' m';
+
+    return Column(mainAxisSize: MainAxisSize.min, children: [
       Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -41,8 +46,8 @@ class TrailListItemWidget extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodyText1)),
                     const SizedBox(width: 8),
                     Icon(
-                      Icons.arrow_right_alt,
-                      size: 25,
+                      SmartFloreIcons.arrow_right,
+                      size: 20,
                       color: Theme.of(context).colorScheme.primary,
                     ),
                   ],
@@ -59,19 +64,19 @@ class TrailListItemWidget extends StatelessWidget {
                           Row(
                             children: [
                               Icon(
-                                Icons.map,
+                                SmartFloreIcons.path,
                                 size: 12,
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                               const SizedBox(width: 5),
-                              Text('357 m', style: Theme.of(context).textTheme.caption),
+                              Text(distance, style: Theme.of(context).textTheme.caption),
                             ],
                           ),
                           const SizedBox(height: 4),
                           Row(
                             children: [
                               Icon(
-                                Icons.spa,
+                                SmartFloreIcons.plant,
                                 size: 12,
                                 color: Theme.of(context).colorScheme.primary,
                               ),
@@ -84,11 +89,11 @@ class TrailListItemWidget extends StatelessWidget {
                       Row(
                         children: [
                           Icon(
-                            Icons.pin_drop,
-                            size: 10,
+                            SmartFloreIcons.pin,
+                            size: 15,
                             color: Theme.of(context).colorScheme.primary,
                           ),
-                          const SizedBox(width: 2),
+                          const SizedBox(width: 4),
                           Text(
                             'À 250m',
                             style: TextStyle(color: Theme.of(context).colorScheme.primary),
@@ -103,104 +108,5 @@ class TrailListItemWidget extends StatelessWidget {
       ),
       const Divider(height: 40, thickness: 1, color: Color(0xFFD8DCD8))
     ]);
-    /*
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(mainAxisSize: MainAxisSize.min, children: [
-              Container(
-                width: 68,
-                height: 68,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(6)),
-                  image: DecorationImage(
-                    image: NetworkImageWithRetry(
-                      'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-                    ),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.all(14.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Flexible(
-                        fit: FlexFit.loose,
-                        child: Text(
-                          title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.map,
-                            size: 12,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                          const SizedBox(width: 5),
-                          Text('357 m', style: Theme.of(context).textTheme.caption),
-                        ],
-                      ),
-                      const SizedBox(height: 4),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.spa,
-                            size: 12,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                          const SizedBox(width: 5),
-                          Text('8 espèces', style: Theme.of(context).textTheme.caption),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ]),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Icon(
-                  Icons.arrow_right_alt,
-                  size: 25,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.pin_drop,
-                      size: 10,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    const SizedBox(width: 2),
-                    Text(
-                      'À 250m',
-                      style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                    )
-                  ],
-                )
-              ],
-            )
-          ],
-        ),
-        const Divider(height: 40, thickness: 1, color: Color(0xFFD8DCD8))
-      ],
-    );*/
   }
 }

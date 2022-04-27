@@ -23,7 +23,8 @@ abstract class Referential with _$Referential {
     required Trail trail,
   }) = _Referential;
 
-  factory Referential.fromJson(Map<String, dynamic> json) => _$ReferentialFromJson(json);
+  factory Referential.fromJson(Map<String, dynamic> json) =>
+      _$ReferentialFromJson(json);
 }
 
 @freezed

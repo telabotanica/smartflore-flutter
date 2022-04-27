@@ -14,7 +14,9 @@ import 'package:http/http.dart' as http;
 void main() {
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
-          httpClient: http.Client(), baseUrl: 'https://taxamart.floristic.org/referential?language=fr&type=trail'));
+          httpClient: http.Client(),
+          baseUrl:
+              'https://taxamart.floristic.org/referential?language=fr&type=trail'));
 
   runApp(MultiBlocProvider(providers: [
     BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
