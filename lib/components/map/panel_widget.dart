@@ -28,7 +28,7 @@ class PanelWidget extends StatelessWidget {
           ),
           label: Text('Scanner un sentier', style: Theme.of(context).textTheme.bodyText1),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 16),
         BlocBuilder<TrailsBloc, TrailsDataState>(
           builder: (context, state) {
             if (state is TrailsDataInitialState) {
@@ -38,6 +38,7 @@ class PanelWidget extends StatelessWidget {
             } else if (state is TrailsDataLoadedState) {
               return Expanded(
                 child: ListView.builder(
+                  padding: EdgeInsets.zero,
                   controller: controller,
                   itemCount: state.trails.referentials.length,
                   itemBuilder: (context, index) {
@@ -47,8 +48,9 @@ class PanelWidget extends StatelessWidget {
                   },
                 ),
               );
+            } else {
+              return Container();
             }
-            return Container();
           },
         )
       ],
