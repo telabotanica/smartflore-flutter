@@ -7,12 +7,18 @@ class TrailListItemWidget extends StatelessWidget {
   final String image;
   final int length;
 
-  const TrailListItemWidget({Key? key, required this.title, required this.length, required this.image})
+  const TrailListItemWidget(
+      {Key? key,
+      required this.title,
+      required this.length,
+      required this.image})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String distance = (length >= 1000) ? (length / 1000).toStringAsFixed(2) + ' km' : length.toString() + ' m';
+    String distance = (length >= 1000)
+        ? (length / 1000).toStringAsFixed(2) + ' km'
+        : length.toString() + ' m';
 
     return Column(mainAxisSize: MainAxisSize.min, children: [
       Row(
@@ -69,7 +75,8 @@ class TrailListItemWidget extends StatelessWidget {
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                               const SizedBox(width: 5),
-                              Text(distance, style: Theme.of(context).textTheme.caption),
+                              Text(distance,
+                                  style: Theme.of(context).textTheme.caption),
                             ],
                           ),
                           const SizedBox(height: 4),
@@ -81,7 +88,8 @@ class TrailListItemWidget extends StatelessWidget {
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                               const SizedBox(width: 5),
-                              Text('8 espèces', style: Theme.of(context).textTheme.caption),
+                              Text('8 espèces',
+                                  style: Theme.of(context).textTheme.caption),
                             ],
                           ),
                         ],
@@ -96,7 +104,9 @@ class TrailListItemWidget extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             'À 250m',
-                            style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.primary),
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Theme.of(context).colorScheme.primary),
                           )
                         ],
                       )

@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SlidingUpPanel(
               parallaxEnabled: true,
               parallaxOffset: .5,
-              maxHeight: MediaQuery.of(context).size.height * 0.85,
+              maxHeight: MediaQuery.of(context).size.height - 110,
               minHeight: 110,
               header: SizedBox(
                 width: MediaQuery.of(context).size.width,
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               )),
           Positioned(
-              top: 10,
+              top: 0,
               right: 20,
               child: SafeArea(
                 child: SizedBox(
