@@ -38,7 +38,9 @@ dependencies:
   http: ^0.13.4
   json_annotation: ^4.4.0
   package_info_plus: ^1.4.2
-
+  geolocator: ^8.2.0
+  cached_network_image: ^3.2.0
+  pretty_logger: any
 
 dev_dependencies:
   flutter_test:

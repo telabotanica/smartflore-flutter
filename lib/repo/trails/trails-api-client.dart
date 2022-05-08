@@ -11,7 +11,12 @@ class TrailsApiClient extends APIClient {
   Future<Trails?> getTrailList() async {
     final response = await httpClient.get(Uri.parse(baseUrl));
     if (response.statusCode == 200) {
-      Map<String, dynamic> json = jsonDecode(response.body);
+      String data = response.body;
+      data = data.replaceAll(r'\"', r'"');
+      data = data.replaceAll(r'"{', r'{');
+      data = data.replaceAll(r'}"', r'}');
+
+      Map<String, dynamic> json = jsonDecode(data);
       // return trailList;
       Trails trailsData = Trails.fromJson(json);
       return trailsData;

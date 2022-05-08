@@ -23,18 +23,27 @@ abstract class Referential with _$Referential {
     required Trail trail,
   }) = _Referential;
 
-  factory Referential.fromJson(Map<String, dynamic> json) =>
-      _$ReferentialFromJson(json);
+  factory Referential.fromJson(Map<String, dynamic> json) => _$ReferentialFromJson(json);
 }
 
 @freezed
 abstract class Trail with _$Trail {
   const factory Trail({
-    required String centroid,
+    required Centroid centroid,
     required int length,
     required String author,
     required String? image,
   }) = _Trail;
 
   factory Trail.fromJson(Map<String, dynamic> json) => _$TrailFromJson(json);
+}
+
+@freezed
+abstract class Centroid with _$Centroid {
+  const factory Centroid({
+    required String type,
+    required List<double> coordinates,
+  }) = _Centroid;
+
+  factory Centroid.fromJson(Map<String, dynamic> json) => _$CentroidFromJson(json);
 }

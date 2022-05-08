@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 
 import 'package:latlong2/latlong.dart';
+import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 
 class MapWidget extends StatefulWidget {
   const MapWidget({Key? key}) : super(key: key);
@@ -11,32 +14,63 @@ class MapWidget extends StatefulWidget {
 }
 
 class _MapWidgetState extends State<MapWidget> {
+  LatLng currentLocation = LatLng(43.610769, 3.876716);
+  late final MapController _mapController;
+
+  @override
+  void initState() {
+    super.initState();
+    _mapController = MapController();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FlutterMap(
-      options: MapOptions(
-        rotationWinGestures: MultiFingerGesture.none,
-        center: LatLng(43.610769, 3.876716),
-        zoom: 16.0,
+    return BlocListener<GeolocationBloc, GeolocationState>(
+      listener: (context, state) {
+        if (state is LocationUpdatedState) {
+          setState(() {
+            currentLocation = LatLng(state.position.latitude, state.position.longitude);
+            _mapController.move(LatLng(currentLocation.latitude, currentLocation.longitude), _mapController.zoom);
+          });
+        }
+      },
+      child: FlutterMap(
+        mapController: _mapController,
+        options: MapOptions(
+          rotationWinGestures: MultiFingerGesture.none,
+          center: currentLocation,
+          interactiveFlags: InteractiveFlag.pinchZoom | InteractiveFlag.drag,
+          zoom: 16.0,
+        ),
+        layers: [
+          TileLayerOptions(
+              urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+              subdomains: ['a', 'b', 'c'],
+              retinaMode: true,
+              tileProvider: const CachedTileProvider()),
+          MarkerLayerOptions(
+            markers: [
+              Marker(
+                width: 10.0,
+                height: 10.0,
+                point: currentLocation,
+                builder: (ctx) => Container(width: 10, height: 10, color: const Color(0xFF000000)),
+              ),
+            ],
+          ),
+        ],
       ),
-      layers: [
-        TileLayerOptions(
-          urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-          subdomains: ['a', 'b', 'c'],
-          retinaMode: true,
-        ),
-        MarkerLayerOptions(
-          markers: [
-            Marker(
-              width: 10.0,
-              height: 10.0,
-              point: LatLng(43.610769, 3.876716),
-              builder: (ctx) => Container(
-                  width: 10, height: 10, color: const Color(0xFF000000)),
-            ),
-          ],
-        ),
-      ],
+    );
+  }
+}
+
+class CachedTileProvider extends TileProvider {
+  const CachedTileProvider();
+  @override
+  ImageProvider getImage(Coords<num> coords, TileLayerOptions options) {
+    return CachedNetworkImageProvider(
+      getTileUrl(coords, options),
+      //Now you can set options that determine how the image gets cached via whichever plugin you use.
     );
   }
 }

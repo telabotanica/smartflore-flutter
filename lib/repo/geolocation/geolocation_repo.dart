@@ -1,0 +1,59 @@
+import 'dart:async';
+
+import 'package:geolocator/geolocator.dart';
+
+enum PermissionStatus { loading, granted, disabled, denied, permanentlyDenied }
+
+class GeolocationRepo {
+  late bool isPermissionRequested = false;
+  GeolocationRepo();
+
+  Future<Position> getCurrentLocation() async {
+    await getPermissions();
+    return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  }
+
+  Future<Stream<Position>?> getLocationStream() async {
+    PermissionStatus permissionStatus = await getPermissions();
+    if (permissionStatus == PermissionStatus.granted) {
+      const LocationSettings locationSettings = LocationSettings(
+        accuracy: LocationAccuracy.high,
+        distanceFilter: 0,
+      );
+
+      Stream<Position> positionStream = Geolocator.getPositionStream(locationSettings: locationSettings);
+
+      return positionStream;
+    } else {
+      return null;
+    }
+  }
+
+  Future<PermissionStatus> getPermissions() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return PermissionStatus.disabled;
+    }
+
+    permission = await Geolocator.checkPermission();
+    print('permission ==> $permission');
+    if (permission == LocationPermission.denied) {
+      if (!isPermissionRequested) {
+        isPermissionRequested = true;
+        permission = await Geolocator.requestPermission();
+      }
+      if (permission == LocationPermission.denied) {
+        return PermissionStatus.denied;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return PermissionStatus.permanentlyDenied;
+    }
+
+    return PermissionStatus.granted;
+  }
+}

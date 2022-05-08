@@ -37,7 +37,7 @@ Map<String, dynamic> _$$_ReferentialToJson(_$_Referential instance) =>
     };
 
 _$_Trail _$$_TrailFromJson(Map<String, dynamic> json) => _$_Trail(
-      centroid: json['centroid'] as String,
+      centroid: Centroid.fromJson(json['centroid'] as Map<String, dynamic>),
       length: json['length'] as int,
       author: json['author'] as String,
       image: json['image'] as String?,
@@ -48,4 +48,17 @@ Map<String, dynamic> _$$_TrailToJson(_$_Trail instance) => <String, dynamic>{
       'length': instance.length,
       'author': instance.author,
       'image': instance.image,
+    };
+
+_$_Centroid _$$_CentroidFromJson(Map<String, dynamic> json) => _$_Centroid(
+      type: json['type'] as String,
+      coordinates: (json['coordinates'] as List<dynamic>)
+          .map((e) => (e as num).toDouble())
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_CentroidToJson(_$_Centroid instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'coordinates': instance.coordinates,
     };
