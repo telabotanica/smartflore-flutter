@@ -23,7 +23,8 @@ abstract class Referential with _$Referential {
     required Trail trail,
   }) = _Referential;
 
-  factory Referential.fromJson(Map<String, dynamic> json) => _$ReferentialFromJson(json);
+  factory Referential.fromJson(Map<String, dynamic> json) =>
+      _$ReferentialFromJson(json);
 }
 
 @freezed
@@ -45,5 +46,6 @@ abstract class Centroid with _$Centroid {
     required List<double> coordinates,
   }) = _Centroid;
 
-  factory Centroid.fromJson(Map<String, dynamic> json) => _$CentroidFromJson(json);
+  factory Centroid.fromJson(Map<String, dynamic> json) =>
+      _$CentroidFromJson(json);
 }

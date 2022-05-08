@@ -30,11 +30,13 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
     // STREAM CURRENT LOCATION
     on<RequestCurrentLocationStreamEvent>((event, emit) async {
       emit(LocationLoadingState());
-      final Stream<Position>? locationStream = await _geolocationRepo.getLocationStream();
+      final Stream<Position>? locationStream =
+          await _geolocationRepo.getLocationStream();
       if (locationStream != null) {
         locationStream.listen((Position position) {
           print('position changed');
-          print('${position.latitude.toString()}, ${position.longitude.toString()}');
+          print(
+              '${position.latitude.toString()}, ${position.longitude.toString()}');
           add(UpdateLocationEvent(position: position));
         });
       } else {
