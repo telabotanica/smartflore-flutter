@@ -97,7 +97,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         ),
         layers: [
           TileLayerOptions(
-              urlTemplate: 'https://{s}.git /{z}/{x}/{y}.png',
+              urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
               subdomains: ['a', 'b', 'c'],
               retinaMode: true,
               tileProvider: const CachedTileProvider()),
