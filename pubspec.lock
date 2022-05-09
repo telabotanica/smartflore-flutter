@@ -273,9 +273,11 @@ packages:
   flutter_map:
     dependency: "direct main"
     description:
-      path: "../flutter_map"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: bf782ba34d6a84ff6be338d6d9b5b9ab7259f3f2
+      url: "https://github.com/fleaflet/flutter_map.git"
+    source: git
     version: "0.14.0"
   flutter_svg:
     dependency: "direct main"
