@@ -27,15 +27,30 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
   cupertino_icons: ^1.0.2
-  flutter_map: any
+  flutter_map: ^0.14.0
   flutter_bloc: ^8.0.1
-  
+  sliding_up_panel: ^2.0.0+1
+  flutter_svg: ^1.0.3
+  flutter_image: ^4.1.0
+  latlong2: ^0.8.1
+  shared_preferences: ^2.0.13
+  equatable: ^2.0.3
+  http: ^0.13.4
+  json_annotation: ^4.4.0
+  package_info_plus: ^1.4.2
+  geolocator: ^8.2.0
+  cached_network_image: ^3.2.0
+  pretty_logger: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^1.0.0
+  build_runner: ^2.1.10
+  freezed: ^2.0.2
+  freezed_annotation: ^2.0.1
+  json_serializable: ^6.1.6
 
 flutter:
   uses-material-design: true
@@ -44,6 +59,9 @@ flutter:
     - assets/images/
  
   fonts:
+    - family: SmartFloreIcons
+      fonts:
+        - asset: assets/fonts/SmartFloreIcons.ttf
     - family: SourceSansPro
       fonts:
         - asset: assets/fonts/SourceSansPro-Regular.ttf
