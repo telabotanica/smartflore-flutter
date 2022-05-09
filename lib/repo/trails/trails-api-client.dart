@@ -21,7 +21,6 @@ class TrailsApiClient extends APIClient {
       Trails trailsData = Trails.fromJson(json);
       return trailsData;
     } else {
-      print('ERROR STATUS CODE : ${response.statusCode}');
       // throw Exception('Failed to load trail list');
       return null;
     }

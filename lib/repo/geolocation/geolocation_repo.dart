@@ -10,8 +10,7 @@ class GeolocationRepo {
 
   Future<Position> getCurrentLocation() async {
     await getPermissions();
-    return await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
+    return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
   }
 
   Future<Stream<Position>?> getLocationStream() async {
@@ -22,8 +21,7 @@ class GeolocationRepo {
         distanceFilter: 0,
       );
 
-      Stream<Position> positionStream =
-          Geolocator.getPositionStream(locationSettings: locationSettings);
+      Stream<Position> positionStream = Geolocator.getPositionStream(locationSettings: locationSettings);
 
       return positionStream;
     } else {
@@ -41,7 +39,6 @@ class GeolocationRepo {
     }
 
     permission = await Geolocator.checkPermission();
-    print('permission ==> $permission');
     if (permission == LocationPermission.denied) {
       if (!isPermissionRequested) {
         isPermissionRequested = true;

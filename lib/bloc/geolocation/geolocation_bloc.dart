@@ -13,7 +13,6 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
         super(LocationInitialState()) {
     // PERMISSION
     on<RequestLocationPermissionEvent>(((event, emit) async {
-      print('REQUEST PERMISSION');
       emit(LocationPermissionLoadingState());
       PermissionStatus status = await _geolocationRepo.getPermissions();
       emit(LocationPermissionLoadedState(status: status));
@@ -30,18 +29,12 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
     // STREAM CURRENT LOCATION
     on<RequestCurrentLocationStreamEvent>((event, emit) async {
       emit(LocationLoadingState());
-      final Stream<Position>? locationStream =
-          await _geolocationRepo.getLocationStream();
+      final Stream<Position>? locationStream = await _geolocationRepo.getLocationStream();
       if (locationStream != null) {
         locationStream.listen((Position position) {
-          print('position changed');
-          print(
-              '${position.latitude.toString()}, ${position.longitude.toString()}');
           add(UpdateLocationEvent(position: position));
         });
-      } else {
-        print('location stream not available');
-      }
+      } else {}
     });
 
     on<UpdateLocationEvent>((event, emit) async {
