@@ -46,9 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Container(
                           decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
-                              color: Color(0xFFD8DCD8)),
+                              borderRadius: BorderRadius.all(Radius.circular(4)), color: Color(0xFFD8DCD8)),
                           width: 45,
                           height: 4,
                         ),
@@ -56,32 +54,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         Container(
                           height: 46,
                           decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  width: 1),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(6))),
+                              border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1),
+                              borderRadius: const BorderRadius.all(Radius.circular(6))),
                           child: TabBar(
                               isScrollable: false,
                               unselectedLabelColor: primary,
                               indicator: BoxDecoration(
-                                  color: primary,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(6))),
-                              tabs: const [
-                                Tab(text: 'Tous les sentiers'),
-                                Tab(text: 'Mes sentiers')
-                              ]),
+                                  color: primary, borderRadius: const BorderRadius.all(Radius.circular(6))),
+                              tabs: const [Tab(text: 'Tous les sentiers'), Tab(text: 'Mes sentiers')]),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              panelBuilder: (scrollController) =>
-                  _buildSlidingPanel(scrollController: scrollController),
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(24)),
+              panelBuilder: (scrollController) => _buildSlidingPanel(scrollController: scrollController),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
               body: Stack(
                 children: [
                   const MapWidget(),
@@ -110,13 +98,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: FloatingActionButton(
                                   backgroundColor: Colors.white,
                                   child: const Icon(
-                                    SmartFloreIcons.target_2,
+                                    SmartFloreIcons.target,
                                     color: Color(0xFF12161E),
                                     size: 20,
                                   ),
                                   onPressed: () {
-                                    BlocProvider.of<MapBloc>(context)
-                                        .add(RequestCenterMapEvent());
+                                    BlocProvider.of<MapBloc>(context).add(RequestCenterMapEvent());
                                   }),
                             ),
                           ],
@@ -133,8 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 46,
                   child: FloatingActionButton(
                     backgroundColor: Colors.white,
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: const Icon(
                       SmartFloreIcons.setting,
                       size: 20,

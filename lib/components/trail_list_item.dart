@@ -15,11 +15,7 @@ class TrailListItemWidget extends StatelessWidget {
   final LatLng position;
 
   const TrailListItemWidget(
-      {Key? key,
-      required this.title,
-      required this.length,
-      required this.image,
-      required this.position})
+      {Key? key, required this.title, required this.length, required this.image, required this.position})
       : super(key: key);
 
   @override
@@ -58,7 +54,7 @@ class TrailListItemWidget extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodyText1)),
                     const SizedBox(width: 8),
                     Icon(
-                      SmartFloreIcons.arrow_right,
+                      SmartFloreIcons.arrowRight,
                       size: 20,
                       color: Theme.of(context).colorScheme.primary,
                     ),
@@ -81,8 +77,7 @@ class TrailListItemWidget extends StatelessWidget {
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                               const SizedBox(width: 5),
-                              Text(distance,
-                                  style: Theme.of(context).textTheme.caption),
+                              Text(distance, style: Theme.of(context).textTheme.caption),
                             ],
                           ),
                           const SizedBox(height: 4),
@@ -94,8 +89,7 @@ class TrailListItemWidget extends StatelessWidget {
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                               const SizedBox(width: 5),
-                              Text('8 espèces',
-                                  style: Theme.of(context).textTheme.caption),
+                              Text('8 espèces', style: Theme.of(context).textTheme.caption),
                             ],
                           ),
                         ],
@@ -111,19 +105,12 @@ class TrailListItemWidget extends StatelessWidget {
                           BlocBuilder<GeolocationBloc, GeolocationState>(
                             builder: (context, state) {
                               if (state is LocationUpdatedState) {
-                                double distance = Geolocator.distanceBetween(
-                                    position.latitude,
-                                    position.longitude,
-                                    state.position.latitude,
-                                    state.position.longitude);
+                                double distance = Geolocator.distanceBetween(position.latitude, position.longitude,
+                                    state.position.latitude, state.position.longitude);
 
                                 return Text(
                                   'À ${Numbers.mToKM(distance)}',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
+                                  style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.primary),
                                 );
                               } else {
                                 return Container();

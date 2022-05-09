@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
-import 'package:smartflore/repo/api-client.dart';
+import 'package:smartflore/repo/api_client.dart';
 
 class TrailsApiClient extends APIClient {
   final Client httpClient;
@@ -24,6 +24,5 @@ class TrailsApiClient extends APIClient {
       // throw Exception('Failed to load trail list');
       return null;
     }
-    return null;
   }
 }

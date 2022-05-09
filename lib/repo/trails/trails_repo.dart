@@ -1,5 +1,5 @@
 import 'package:smartflore/models/trails/trails_model.dart';
-import 'package:smartflore/repo/trails/trails-api-client.dart';
+import 'package:smartflore/repo/trails/trails_api_client.dart';
 
 class TrailsRepo {
   final TrailsApiClient trailsApiClient;
