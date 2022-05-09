@@ -28,7 +28,8 @@ dependencies:
   intl: ^0.17.0
   cupertino_icons: ^1.0.2
   flutter_map: 
-    path: ../flutter_map/
+    git:
+      url: https://github.com/fleaflet/flutter_map.git
   flutter_bloc: ^8.0.1
   sliding_up_panel: ^2.0.0+1
   flutter_svg: ^1.0.3
