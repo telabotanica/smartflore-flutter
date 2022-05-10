@@ -34,19 +34,24 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   void _animatedMapMove(LatLng destLocation, double destZoom) {
     // Create some tweens. These serve to split up the transition from one location to another.
     // In our case, we want to split the transition be<tween> our current map center and the destination.
-    final _latTween = Tween<double>(begin: _mapController.center.latitude, end: destLocation.latitude);
-    final _lngTween = Tween<double>(begin: _mapController.center.longitude, end: destLocation.longitude);
+    final _latTween = Tween<double>(
+        begin: _mapController.center.latitude, end: destLocation.latitude);
+    final _lngTween = Tween<double>(
+        begin: _mapController.center.longitude, end: destLocation.longitude);
     final _zoomTween = Tween<double>(begin: _mapController.zoom, end: destZoom);
 
     // Create a animation controller that has a duration and a TickerProvider.
-    var controller = AnimationController(duration: const Duration(milliseconds: 500), vsync: this);
+    var controller = AnimationController(
+        duration: const Duration(milliseconds: 500), vsync: this);
     // The animation determines what path the animation will take. You can try different Curves values, although I found
     // fastOutSlowIn to be my favorite.
-    Animation<double> animation = CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
+    Animation<double> animation =
+        CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
 
     controller.addListener(() {
       _mapController.move(
-          LatLng(_latTween.evaluate(animation), _lngTween.evaluate(animation)), _zoomTween.evaluate(animation));
+          LatLng(_latTween.evaluate(animation), _lngTween.evaluate(animation)),
+          _zoomTween.evaluate(animation));
     });
 
     animation.addStatusListener((status) {
@@ -68,8 +73,11 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           listener: (context, state) {
             if (state is LocationUpdatedState) {
               setState(() {
-                currentLocation = LatLng(state.position.latitude, state.position.longitude);
-                _mapController.move(LatLng(currentLocation.latitude, currentLocation.longitude), _mapController.zoom);
+                currentLocation =
+                    LatLng(state.position.latitude, state.position.longitude);
+                _mapController.move(
+                    LatLng(currentLocation.latitude, currentLocation.longitude),
+                    _mapController.zoom);
               });
             }
           },
@@ -103,7 +111,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 width: 38.0,
                 height: 38.0,
                 point: currentLocation,
-                builder: (ctx) => const Image(image: AssetImage('assets/graphics/marker_me.png')),
+                builder: (ctx) => const Image(
+                    image: AssetImage('assets/graphics/marker_me.png')),
               ),
               Marker(
                   anchorPos: AnchorPos.align(AnchorAlign.center),
