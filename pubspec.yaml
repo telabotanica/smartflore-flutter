@@ -59,6 +59,7 @@ flutter:
   generate: true
   assets:
     - assets/images/
+    - assets/graphics/
  
   fonts:
     - family: SmartFloreIcons
