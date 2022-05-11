@@ -21,9 +21,13 @@ import 'package:http/http.dart' as http;
 void main() {
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
-          httpClient: http.Client(), baseUrl: 'https://taxamart.floristic.org/referential?language=fr&type=trail'));
+          httpClient: http.Client(),
+          baseUrl:
+              'https://taxamart.floristic.org/referential?language=fr&type=trail'));
   final TrailRepo trailRepo = TrailRepo(
-      trailApiClient: TrailApiClient(httpClient: http.Client(), baseUrl: 'https://taxamart.floristic.org/trail/'));
+      trailApiClient: TrailApiClient(
+          httpClient: http.Client(),
+          baseUrl: 'https://taxamart.floristic.org/trail/'));
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
   BlocOverrides.runZoned(
@@ -33,7 +37,8 @@ void main() {
         BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
         BlocProvider<GeolocationBloc>(
             create: (context) =>
-                GeolocationBloc(geolocationRepo: geolocationRepo)..add(RequestLocationPermissionEvent())),
+                GeolocationBloc(geolocationRepo: geolocationRepo)
+                  ..add(RequestLocationPermissionEvent())),
         BlocProvider<MapBloc>(create: (context) => MapBloc()),
       ], child: const App()));
     },
