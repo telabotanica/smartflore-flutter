@@ -14,7 +14,7 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
     on<TrailEvent>((event, emit) async {
       if (event is LoadTrailDataEvent) {
         emit(TrailLoadingState());
-        Trail? trail = await trailsRepo.getTrailData();
+        Trail? trail = await trailsRepo.getTrailData(event.id);
         if (trail != null) {
           emit(TrailLoadedState(trail: trail));
         } else {

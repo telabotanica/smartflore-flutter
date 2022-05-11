@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
+import 'package:smartflore/repo/trail/trail_api_client.dart';
+import 'package:smartflore/repo/trail/trail_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/screens/home.dart';
@@ -18,18 +21,19 @@ import 'package:http/http.dart' as http;
 void main() {
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
-          httpClient: http.Client(),
-          baseUrl:
-              'https://taxamart.floristic.org/referential?language=fr&type=trail'));
+          httpClient: http.Client(), baseUrl: 'https://taxamart.floristic.org/referential?language=fr&type=trail'));
+  final TrailRepo trailRepo = TrailRepo(
+      trailApiClient: TrailApiClient(httpClient: http.Client(), baseUrl: 'https://taxamart.floristic.org/trail/'));
+
   final GeolocationRepo geolocationRepo = GeolocationRepo();
   BlocOverrides.runZoned(
     () {
       runApp(MultiBlocProvider(providers: [
+        BlocProvider<TrailBloc>(create: (context) => TrailBloc(trailRepo)),
         BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
         BlocProvider<GeolocationBloc>(
             create: (context) =>
-                GeolocationBloc(geolocationRepo: geolocationRepo)
-                  ..add(RequestLocationPermissionEvent())),
+                GeolocationBloc(geolocationRepo: geolocationRepo)..add(RequestLocationPermissionEvent())),
         BlocProvider<MapBloc>(create: (context) => MapBloc()),
       ], child: const App()));
     },

@@ -21,8 +21,7 @@ abstract class Occurrence with _$Occurrence {
     required OccurrenceProperties properties,
   }) = _Occurrence;
 
-  factory Occurrence.fromJson(Map<String, dynamic> json) =>
-      _$OccurrenceFromJson(json);
+  factory Occurrence.fromJson(Map<String, dynamic> json) => _$OccurrenceFromJson(json);
 }
 
 @freezed
@@ -32,13 +31,12 @@ abstract class OccurrenceGeometry with _$OccurrenceGeometry {
     required List<double> coordinates,
   }) = _OccurrenceGeometry;
 
-  factory OccurrenceGeometry.fromJson(Map<String, dynamic> json) =>
-      _$OccurrenceGeometryFromJson(json);
+  factory OccurrenceGeometry.fromJson(Map<String, dynamic> json) => _$OccurrenceGeometryFromJson(json);
 }
 
-enum GeometryType { point }
+enum GeometryType { Point }
 
-final geometryTypeValues = EnumValues({'Point': GeometryType.point});
+final geometryTypeValues = EnumValues({'Point': GeometryType.Point});
 
 @freezed
 abstract class OccurrenceProperties with _$OccurrenceProperties {
@@ -48,17 +46,16 @@ abstract class OccurrenceProperties with _$OccurrenceProperties {
     required String name,
     @JsonKey(name: 'common_name') required String commonName,
     required String image,
-    @JsonKey(name: 'prefered_image') required String preferedImage,
+    @JsonKey(name: 'prefered_image') required String? preferredImage,
     required String link,
   }) = _OccurrenceProperties;
 
-  factory OccurrenceProperties.fromJson(Map<String, dynamic> json) =>
-      _$OccurrencePropertiesFromJson(json);
+  factory OccurrenceProperties.fromJson(Map<String, dynamic> json) => _$OccurrencePropertiesFromJson(json);
 }
 
-enum OccurrenceType { feature }
+enum OccurrenceType { Feature }
 
-final occurrenceTypeValues = EnumValues({'Feature': OccurrenceType.feature});
+final occurrenceTypeValues = EnumValues({'Feature': OccurrenceType.Feature});
 
 @freezed
 abstract class TrailData with _$TrailData {
@@ -68,8 +65,7 @@ abstract class TrailData with _$TrailData {
     required TrailProperties properties,
   }) = _TrailData;
 
-  factory TrailData.fromJson(Map<String, dynamic> json) =>
-      _$TrailDataFromJson(json);
+  factory TrailData.fromJson(Map<String, dynamic> json) => _$TrailDataFromJson(json);
 }
 
 @freezed
@@ -79,8 +75,7 @@ abstract class TrailGeometry with _$TrailGeometry {
     required List<List<double>> coordinates,
   }) = _TrailGeometry;
 
-  factory TrailGeometry.fromJson(Map<String, dynamic> json) =>
-      _$TrailGeometryFromJson(json);
+  factory TrailGeometry.fromJson(Map<String, dynamic> json) => _$TrailGeometryFromJson(json);
 }
 
 @freezed
@@ -91,11 +86,10 @@ abstract class TrailProperties with _$TrailProperties {
     required String centroid,
     required int length,
     required String author,
-    required dynamic image,
+    required String? image,
   }) = _TrailProperties;
 
-  factory TrailProperties.fromJson(Map<String, dynamic> json) =>
-      _$TrailPropertiesFromJson(json);
+  factory TrailProperties.fromJson(Map<String, dynamic> json) => _$TrailPropertiesFromJson(json);
 }
 
 class EnumValues<T> {

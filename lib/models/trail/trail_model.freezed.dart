@@ -547,7 +547,7 @@ mixin _$OccurrenceProperties {
   String get commonName => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'prefered_image')
-  String get preferedImage => throw _privateConstructorUsedError;
+  String? get preferredImage => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -567,7 +567,7 @@ abstract class $OccurrencePropertiesCopyWith<$Res> {
       String name,
       @JsonKey(name: 'common_name') String commonName,
       String image,
-      @JsonKey(name: 'prefered_image') String preferedImage,
+      @JsonKey(name: 'prefered_image') String? preferredImage,
       String link});
 }
 
@@ -587,7 +587,7 @@ class _$OccurrencePropertiesCopyWithImpl<$Res>
     Object? name = freezed,
     Object? commonName = freezed,
     Object? image = freezed,
-    Object? preferedImage = freezed,
+    Object? preferredImage = freezed,
     Object? link = freezed,
   }) {
     return _then(_value.copyWith(
@@ -611,10 +611,10 @@ class _$OccurrencePropertiesCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      preferedImage: preferedImage == freezed
-          ? _value.preferedImage
-          : preferedImage // ignore: cast_nullable_to_non_nullable
-              as String,
+      preferredImage: preferredImage == freezed
+          ? _value.preferredImage
+          : preferredImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       link: link == freezed
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
@@ -636,7 +636,7 @@ abstract class _$OccurrencePropertiesCopyWith<$Res>
       String name,
       @JsonKey(name: 'common_name') String commonName,
       String image,
-      @JsonKey(name: 'prefered_image') String preferedImage,
+      @JsonKey(name: 'prefered_image') String? preferredImage,
       String link});
 }
 
@@ -658,7 +658,7 @@ class __$OccurrencePropertiesCopyWithImpl<$Res>
     Object? name = freezed,
     Object? commonName = freezed,
     Object? image = freezed,
-    Object? preferedImage = freezed,
+    Object? preferredImage = freezed,
     Object? link = freezed,
   }) {
     return _then(_OccurrenceProperties(
@@ -682,10 +682,10 @@ class __$OccurrencePropertiesCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      preferedImage: preferedImage == freezed
-          ? _value.preferedImage
-          : preferedImage // ignore: cast_nullable_to_non_nullable
-              as String,
+      preferredImage: preferredImage == freezed
+          ? _value.preferredImage
+          : preferredImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       link: link == freezed
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
@@ -703,7 +703,7 @@ class _$_OccurrenceProperties implements _OccurrenceProperties {
       required this.name,
       @JsonKey(name: 'common_name') required this.commonName,
       required this.image,
-      @JsonKey(name: 'prefered_image') required this.preferedImage,
+      @JsonKey(name: 'prefered_image') required this.preferredImage,
       required this.link});
 
   factory _$_OccurrenceProperties.fromJson(Map<String, dynamic> json) =>
@@ -724,13 +724,13 @@ class _$_OccurrenceProperties implements _OccurrenceProperties {
   final String image;
   @override
   @JsonKey(name: 'prefered_image')
-  final String preferedImage;
+  final String? preferredImage;
   @override
   final String link;
 
   @override
   String toString() {
-    return 'OccurrenceProperties(idOcc: $idOcc, idSp: $idSp, name: $name, commonName: $commonName, image: $image, preferedImage: $preferedImage, link: $link)';
+    return 'OccurrenceProperties(idOcc: $idOcc, idSp: $idSp, name: $name, commonName: $commonName, image: $image, preferredImage: $preferredImage, link: $link)';
   }
 
   @override
@@ -745,7 +745,7 @@ class _$_OccurrenceProperties implements _OccurrenceProperties {
                 .equals(other.commonName, commonName) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality()
-                .equals(other.preferedImage, preferedImage) &&
+                .equals(other.preferredImage, preferredImage) &&
             const DeepCollectionEquality().equals(other.link, link));
   }
 
@@ -758,7 +758,7 @@ class _$_OccurrenceProperties implements _OccurrenceProperties {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(commonName),
       const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(preferedImage),
+      const DeepCollectionEquality().hash(preferredImage),
       const DeepCollectionEquality().hash(link));
 
   @JsonKey(ignore: true)
@@ -780,7 +780,7 @@ abstract class _OccurrenceProperties implements OccurrenceProperties {
       required final String name,
       @JsonKey(name: 'common_name') required final String commonName,
       required final String image,
-      @JsonKey(name: 'prefered_image') required final String preferedImage,
+      @JsonKey(name: 'prefered_image') required final String? preferredImage,
       required final String link}) = _$_OccurrenceProperties;
 
   factory _OccurrenceProperties.fromJson(Map<String, dynamic> json) =
@@ -801,7 +801,7 @@ abstract class _OccurrenceProperties implements OccurrenceProperties {
   String get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'prefered_image')
-  String get preferedImage => throw _privateConstructorUsedError;
+  String? get preferredImage => throw _privateConstructorUsedError;
   @override
   String get link => throw _privateConstructorUsedError;
   @override
@@ -1175,7 +1175,7 @@ mixin _$TrailProperties {
   String get centroid => throw _privateConstructorUsedError;
   int get length => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
-  dynamic get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1194,7 +1194,7 @@ abstract class $TrailPropertiesCopyWith<$Res> {
       String centroid,
       int length,
       String author,
-      dynamic image});
+      String? image});
 }
 
 /// @nodoc
@@ -1239,7 +1239,7 @@ class _$TrailPropertiesCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
     ));
   }
 }
@@ -1257,7 +1257,7 @@ abstract class _$TrailPropertiesCopyWith<$Res>
       String centroid,
       int length,
       String author,
-      dynamic image});
+      String? image});
 }
 
 /// @nodoc
@@ -1304,7 +1304,7 @@ class __$TrailPropertiesCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
     ));
   }
 }
@@ -1334,7 +1334,7 @@ class _$_TrailProperties implements _TrailProperties {
   @override
   final String author;
   @override
-  final dynamic image;
+  final String? image;
 
   @override
   String toString() {
@@ -1383,7 +1383,7 @@ abstract class _TrailProperties implements TrailProperties {
       required final String centroid,
       required final int length,
       required final String author,
-      required final dynamic image}) = _$_TrailProperties;
+      required final String? image}) = _$_TrailProperties;
 
   factory _TrailProperties.fromJson(Map<String, dynamic> json) =
       _$_TrailProperties.fromJson;
@@ -1399,7 +1399,7 @@ abstract class _TrailProperties implements TrailProperties {
   @override
   String get author => throw _privateConstructorUsedError;
   @override
-  dynamic get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$TrailPropertiesCopyWith<_TrailProperties> get copyWith =>

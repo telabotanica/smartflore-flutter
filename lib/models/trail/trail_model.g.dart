@@ -35,7 +35,7 @@ Map<String, dynamic> _$$_OccurrenceToJson(_$_Occurrence instance) =>
     };
 
 const _$OccurrenceTypeEnumMap = {
-  OccurrenceType.feature: 'feature',
+  OccurrenceType.Feature: 'Feature',
 };
 
 _$_OccurrenceGeometry _$$_OccurrenceGeometryFromJson(
@@ -55,7 +55,7 @@ Map<String, dynamic> _$$_OccurrenceGeometryToJson(
     };
 
 const _$GeometryTypeEnumMap = {
-  GeometryType.point: 'point',
+  GeometryType.Point: 'Point',
 };
 
 _$_OccurrenceProperties _$$_OccurrencePropertiesFromJson(
@@ -66,7 +66,7 @@ _$_OccurrenceProperties _$$_OccurrencePropertiesFromJson(
       name: json['name'] as String,
       commonName: json['common_name'] as String,
       image: json['image'] as String,
-      preferedImage: json['prefered_image'] as String,
+      preferredImage: json['prefered_image'] as String?,
       link: json['link'] as String,
     );
 
@@ -78,7 +78,7 @@ Map<String, dynamic> _$$_OccurrencePropertiesToJson(
       'name': instance.name,
       'common_name': instance.commonName,
       'image': instance.image,
-      'prefered_image': instance.preferedImage,
+      'prefered_image': instance.preferredImage,
       'link': instance.link,
     };
 
@@ -119,7 +119,7 @@ _$_TrailProperties _$$_TrailPropertiesFromJson(Map<String, dynamic> json) =>
       centroid: json['centroid'] as String,
       length: json['length'] as int,
       author: json['author'] as String,
-      image: json['image'],
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$_TrailPropertiesToJson(_$_TrailProperties instance) =>

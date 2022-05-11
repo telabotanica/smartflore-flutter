@@ -6,8 +6,8 @@ class TrailRepo {
 
   TrailRepo({required this.trailApiClient});
 
-  Future<Trail?> getTrailData() async {
-    final Trail? trail = await trailApiClient.getTrailData();
+  Future<Trail?> getTrailData(String id) async {
+    final Trail? trail = await trailApiClient.getTrailData(id);
     return trail;
   }
 }
