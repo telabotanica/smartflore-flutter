@@ -7,7 +7,6 @@ import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/screens/home.dart';
-import 'package:smartflore/screens/test.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
