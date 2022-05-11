@@ -6,7 +6,7 @@ import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
-import 'package:smartflore/screens/home.dart';
+import 'package:smartflore/screens/test.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,9 +18,7 @@ import 'package:http/http.dart' as http;
 void main() {
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
-          httpClient: http.Client(),
-          baseUrl:
-              'https://taxamart.floristic.org/referential?language=fr&type=trail'));
+          httpClient: http.Client(), baseUrl: 'https://taxamart.floristic.org/referential?language=fr&type=trail'));
   final GeolocationRepo geolocationRepo = GeolocationRepo();
   BlocOverrides.runZoned(
     () {
@@ -28,8 +26,7 @@ void main() {
         BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
         BlocProvider<GeolocationBloc>(
             create: (context) =>
-                GeolocationBloc(geolocationRepo: geolocationRepo)
-                  ..add(RequestLocationPermissionEvent())),
+                GeolocationBloc(geolocationRepo: geolocationRepo)..add(RequestLocationPermissionEvent())),
         BlocProvider<MapBloc>(create: (context) => MapBloc()),
       ], child: const App()));
     },
@@ -73,7 +70,7 @@ class _AppState extends State<App> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,
-      home: const HomeScreen(),
+      home: const PolylinePage(),
       supportedLocales: L10n.all,
       localizationsDelegates: const {
         AppLocalizations.delegate,

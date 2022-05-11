@@ -54,8 +54,8 @@ class PanelWidget extends StatelessWidget {
                       length: referential.trail.length,
                       image: 'trail.image',
                       position: LatLng(
-                          referential.trail.centroid.coordinates[0],
-                          referential.trail.centroid.coordinates[1]),
+                          referential.trail.centroid.coordinates[1],
+                          referential.trail.centroid.coordinates[0]),
                     );
                   },
                 ),
