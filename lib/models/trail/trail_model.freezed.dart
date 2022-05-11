@@ -545,7 +545,7 @@ mixin _$OccurrenceProperties {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'common_name')
   String get commonName => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'prefered_image')
   String? get preferredImage => throw _privateConstructorUsedError;
   String get link => throw _privateConstructorUsedError;
@@ -566,7 +566,7 @@ abstract class $OccurrencePropertiesCopyWith<$Res> {
       @JsonKey(name: 'id_sp') String idSp,
       String name,
       @JsonKey(name: 'common_name') String commonName,
-      String image,
+      String? image,
       @JsonKey(name: 'prefered_image') String? preferredImage,
       String link});
 }
@@ -610,7 +610,7 @@ class _$OccurrencePropertiesCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       preferredImage: preferredImage == freezed
           ? _value.preferredImage
           : preferredImage // ignore: cast_nullable_to_non_nullable
@@ -635,7 +635,7 @@ abstract class _$OccurrencePropertiesCopyWith<$Res>
       @JsonKey(name: 'id_sp') String idSp,
       String name,
       @JsonKey(name: 'common_name') String commonName,
-      String image,
+      String? image,
       @JsonKey(name: 'prefered_image') String? preferredImage,
       String link});
 }
@@ -681,7 +681,7 @@ class __$OccurrencePropertiesCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       preferredImage: preferredImage == freezed
           ? _value.preferredImage
           : preferredImage // ignore: cast_nullable_to_non_nullable
@@ -721,7 +721,7 @@ class _$_OccurrenceProperties implements _OccurrenceProperties {
   @JsonKey(name: 'common_name')
   final String commonName;
   @override
-  final String image;
+  final String? image;
   @override
   @JsonKey(name: 'prefered_image')
   final String? preferredImage;
@@ -779,7 +779,7 @@ abstract class _OccurrenceProperties implements OccurrenceProperties {
       @JsonKey(name: 'id_sp') required final String idSp,
       required final String name,
       @JsonKey(name: 'common_name') required final String commonName,
-      required final String image,
+      required final String? image,
       @JsonKey(name: 'prefered_image') required final String? preferredImage,
       required final String link}) = _$_OccurrenceProperties;
 
@@ -798,7 +798,7 @@ abstract class _OccurrenceProperties implements OccurrenceProperties {
   @JsonKey(name: 'common_name')
   String get commonName => throw _privateConstructorUsedError;
   @override
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'prefered_image')
   String? get preferredImage => throw _privateConstructorUsedError;

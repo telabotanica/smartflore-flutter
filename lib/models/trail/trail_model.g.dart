@@ -65,7 +65,7 @@ _$_OccurrenceProperties _$$_OccurrencePropertiesFromJson(
       idSp: json['id_sp'] as String,
       name: json['name'] as String,
       commonName: json['common_name'] as String,
-      image: json['image'] as String,
+      image: json['image'] as String?,
       preferredImage: json['prefered_image'] as String?,
       link: json['link'] as String,
     );
