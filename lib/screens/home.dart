@@ -5,10 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
+import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/panel/panel_widget.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
-
-import '../components/map/map_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,41 +17,90 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final PanelController _panelController = PanelController();
+  bool isPanelOpened = false;
+  bool isPanelMoving = false;
+
   @override
   void initState() {
     super.initState();
     BlocProvider.of<TrailsBloc>(context).add(LoadTrailsDataEvent());
   }
 
+  void onPanUpdate(details) {
+    // Swiping down
+    if (details.delta.dy > 8 && isPanelOpened && !isPanelMoving) {
+      setState(() {
+        isPanelMoving = true;
+      });
+      _panelController.close();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Color primary = Theme.of(context).colorScheme.primary;
+
     return Scaffold(
         body: DefaultTabController(
       length: 2,
       child: Stack(
         children: [
           SlidingUpPanel(
+              backdropEnabled: true,
+              backdropOpacity: 0,
+              backdropTapClosesPanel: true,
               parallaxEnabled: true,
               parallaxOffset: .5,
               maxHeight: MediaQuery.of(context).size.height - 110,
               minHeight: 110,
+              onPanelOpened: () {
+                setState(() {
+                  isPanelMoving = false;
+                  isPanelOpened = true;
+                });
+              },
+              onPanelClosed: () {
+                setState(() {
+                  isPanelMoving = false;
+                  isPanelOpened = false;
+                });
+              },
+              controller: _panelController,
               header: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Center(
+                  padding: const EdgeInsets.all(7.0),
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onPanUpdate: (details) => onPanUpdate(details),
                     child: Column(
                       children: [
                         Container(
-                          decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
-                              color: Color(0xFFD8DCD8)),
-                          width: 45,
-                          height: 4,
+                          width: MediaQuery.of(context).size.width,
+                          height: 20,
+                          color: Colors.transparent,
+                          child: TextButton(
+                            style: ButtonStyle(
+                              overlayColor:
+                                  MaterialStateProperty.all(Colors.white),
+                            ),
+                            onPressed: () =>
+                                // Needed because the builtin panelController.isPanelOpen is not working
+                                (isPanelOpened)
+                                    ? _panelController.close()
+                                    : _panelController.open(),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(4)),
+                                  color: Color(0xFFD8DCD8)),
+                              width: 45,
+                              height: 4,
+                            ),
+                          ),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 8),
                         Container(
                           height: 46,
                           decoration: BoxDecoration(
@@ -67,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               indicator: BoxDecoration(
                                   color: primary,
                                   borderRadius: const BorderRadius.all(
-                                      Radius.circular(6))),
+                                      Radius.circular(4))),
                               tabs: const [
                                 Tab(text: 'Tous les sentiers'),
                                 Tab(text: 'Mes sentiers')
@@ -159,17 +207,14 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             PanelWidget(
               controller: scrollController,
+              onPanUpdate: onPanUpdate,
             ),
             PanelWidget(
               controller: scrollController,
+              onPanUpdate: onPanUpdate,
               trailsListType: TrailsListType.myTrails,
             ),
           ],
         ));
   }
 }
-
-//1 - cleaning panelWidget component
-//2 - creating trail list item widget
-//3 - create mooc file and adding business logic
-//4 - find a way to update map depending of the selected tab
