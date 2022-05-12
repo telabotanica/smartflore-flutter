@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onPanUpdate(details) {
     // Swiping down
-    if (details.delta.dy > 8 && isPanelOpened && !isPanelMoving) {
+    if (details.delta.dy > 4 && isPanelOpened && !isPanelMoving) {
       setState(() {
         isPanelMoving = true;
       });
