@@ -27,6 +27,16 @@ class _HomeScreenState extends State<HomeScreen> {
     BlocProvider.of<TrailsBloc>(context).add(LoadTrailsDataEvent());
   }
 
+  void onPanUpdate(details) {
+    // Swiping down
+    if (details.delta.dy > 8 && isPanelOpened && !isPanelMoving) {
+      setState(() {
+        isPanelMoving = true;
+      });
+      _panelController.close();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Color primary = Theme.of(context).colorScheme.primary;
@@ -62,17 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(7.0),
                   child: GestureDetector(
-                    onPanUpdate: (details) {
-                      // Swiping down
-                      if (details.delta.dy > 2 &&
-                          isPanelOpened &&
-                          !isPanelMoving) {
-                        setState(() {
-                          isPanelMoving = true;
-                        });
-                        _panelController.close();
-                      }
-                    },
+                    behavior: HitTestBehavior.opaque,
+                    onPanUpdate: (details) => onPanUpdate(details),
                     child: Column(
                       children: [
                         Container(
@@ -84,12 +85,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               overlayColor:
                                   MaterialStateProperty.all(Colors.white),
                             ),
-                            onPressed: () {
-                              // Needed because the builtin panelController.isPanelOpen is not working
-                              (isPanelOpened)
-                                  ? _panelController.close()
-                                  : _panelController.open();
-                            },
+                            onPressed: () =>
+                                // Needed because the builtin panelController.isPanelOpen is not working
+                                (isPanelOpened)
+                                    ? _panelController.close()
+                                    : _panelController.open(),
                             child: Container(
                               decoration: const BoxDecoration(
                                   borderRadius:
@@ -207,17 +207,14 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             PanelWidget(
               controller: scrollController,
+              onPanUpdate: onPanUpdate,
             ),
             PanelWidget(
               controller: scrollController,
+              onPanUpdate: onPanUpdate,
               trailsListType: TrailsListType.myTrails,
             ),
           ],
         ));
   }
 }
-
-//1 - cleaning panelWidget component
-//2 - creating trail list item widget
-//3 - create mooc file and adding business logic
-//4 - find a way to update map depending of the selected tab

@@ -11,10 +11,12 @@ enum TrailsListType { allTrails, myTrails }
 class PanelWidget extends StatelessWidget {
   final ScrollController controller;
   final TrailsListType trailsListType;
+  final Function onPanUpdate;
 
   const PanelWidget(
       {Key? key,
       required this.controller,
+      required this.onPanUpdate,
       this.trailsListType = TrailsListType.allTrails})
       : super(key: key);
 
@@ -22,17 +24,26 @@ class PanelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        OutlinedButton.icon(
-          onPressed: () {
-            // Respond to button press
-          },
-          icon: Icon(
-            SmartFloreIcons.qrcode,
-            size: 18,
-            color: Theme.of(context).textTheme.bodyText1?.color,
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onPanUpdate: (details) => onPanUpdate(details),
+            child: Center(
+              child: OutlinedButton.icon(
+                onPressed: () {
+                  // Respond to button press
+                },
+                icon: Icon(
+                  SmartFloreIcons.qrcode,
+                  size: 18,
+                  color: Theme.of(context).textTheme.bodyText1?.color,
+                ),
+                label: Text('Scanner un sentier',
+                    style: Theme.of(context).textTheme.bodyText1),
+              ),
+            ),
           ),
-          label: Text('Scanner un sentier',
-              style: Theme.of(context).textTheme.bodyText1),
         ),
         const SizedBox(height: 16),
         BlocBuilder<TrailsBloc, TrailsDataState>(
