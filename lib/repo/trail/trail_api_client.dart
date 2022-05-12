@@ -11,9 +11,8 @@ class TrailApiClient extends APIClient {
   Future<Trail?> getTrailData(String id) async {
     final response = await httpClient.get(Uri.parse(baseUrl + id));
     if (response.statusCode == 200) {
-      print('response.body ${response.body}');
+      // print('response.body ${response.body}');
       Map<String, dynamic> json = jsonDecode(response.body);
-      // return trailList;
       Trail trailData = Trail.fromJson(json);
       return trailData;
     } else {

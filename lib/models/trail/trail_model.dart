@@ -36,6 +36,7 @@ abstract class OccurrenceGeometry with _$OccurrenceGeometry {
       _$OccurrenceGeometryFromJson(json);
 }
 
+// ignore: constant_identifier_names
 enum GeometryType { Point }
 
 final geometryTypeValues = EnumValues({'Point': GeometryType.Point});
@@ -56,6 +57,7 @@ abstract class OccurrenceProperties with _$OccurrenceProperties {
       _$OccurrencePropertiesFromJson(json);
 }
 
+// ignore: constant_identifier_names
 enum OccurrenceType { Feature }
 
 final occurrenceTypeValues = EnumValues({'Feature': OccurrenceType.Feature});

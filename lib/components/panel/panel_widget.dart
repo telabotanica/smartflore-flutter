@@ -52,7 +52,6 @@ class PanelWidget extends StatelessWidget {
                     final referential = state.trails.referentials[index];
                     return TextButton(
                       onPressed: () {
-                        print('Pressed ${referential.key}');
                         BlocProvider.of<TrailBloc>(context)
                             .add(LoadTrailDataEvent(id: referential.key));
                       },
