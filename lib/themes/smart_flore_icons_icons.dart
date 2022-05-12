@@ -23,10 +23,10 @@ class SmartFloreIcons {
 
   static const IconData qrcode =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData marker =
+      IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData path =
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData pin =
-      IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData plant =
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData setting =

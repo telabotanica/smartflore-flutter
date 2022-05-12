@@ -6,7 +6,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
-import '../bloc/geolocation/geolocation_bloc.dart';
+import '../../bloc/geolocation/geolocation_bloc.dart';
 
 class TrailListItemWidget extends StatelessWidget {
   final String title;
@@ -103,7 +103,7 @@ class TrailListItemWidget extends StatelessWidget {
                       Row(
                         children: [
                           Icon(
-                            SmartFloreIcons.pin,
+                            SmartFloreIcons.marker,
                             size: 15,
                             color: Theme.of(context).colorScheme.primary,
                           ),

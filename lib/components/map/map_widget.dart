@@ -6,6 +6,12 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/trail/trail_bloc.dart';
+import 'package:smartflore/components/map/marker_condensed.dart';
+import 'package:smartflore/components/map/marker_me.dart';
+import 'package:smartflore/models/trail/trail_model.dart';
+import 'package:smartflore/themes/smart_flore_icons_icons.dart';
+import 'package:smartflore/utils/convert.dart';
 
 class MapWidget extends StatefulWidget {
   const MapWidget({Key? key}) : super(key: key);
@@ -16,6 +22,7 @@ class MapWidget extends StatefulWidget {
 
 class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   LatLng currentLocation = LatLng(43.610769, 3.876716);
+  Trail? trailData;
   late final MapController _mapController;
 
   @override
@@ -72,8 +79,19 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
               setState(() {
                 currentLocation =
                     LatLng(state.position.latitude, state.position.longitude);
+                //_mapController.move(LatLng(currentLocation.latitude, currentLocation.longitude), _mapController.zoom);
+              });
+            }
+          },
+        ),
+        BlocListener<TrailBloc, TrailState>(
+          listener: (context, state) {
+            if (state is TrailLoadedState) {
+              setState(() {
+                trailData = state.trail;
                 _mapController.move(
-                    LatLng(currentLocation.latitude, currentLocation.longitude),
+                    LatLng(trailData!.trail.geometry.coordinates[0][1],
+                        trailData!.trail.geometry.coordinates[0][0]),
                     _mapController.zoom);
               });
             }
@@ -104,14 +122,59 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           MarkerLayerOptions(
             markers: [
               Marker(
-                width: 10.0,
-                height: 10.0,
-                point: currentLocation,
-                builder: (ctx) => Container(
-                    width: 10, height: 10, color: const Color(0xFF000000)),
-              ),
+                  anchorPos: AnchorPos.align(AnchorAlign.center),
+                  width: 38.0,
+                  height: 38.0,
+                  point: currentLocation,
+                  builder: (ctx) => const MarkerMe()),
             ],
           ),
+          MarkerLayerOptions(
+            markers: [
+              Marker(
+                anchorPos: AnchorPos.align(AnchorAlign.top),
+                width: 38.0,
+                height: 38.0,
+                point: currentLocation,
+                builder: (ctx) => Icon(
+                  SmartFloreIcons.marker,
+                  size: 38,
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+              ),
+              Marker(
+                  anchorPos: AnchorPos.align(AnchorAlign.center),
+                  width: 18.0,
+                  height: 18.0,
+                  point: currentLocation,
+                  builder: (ctx) => const MarkerCondensed()),
+            ],
+          ),
+          PolylineLayerOptions(
+              polylineCulling: true,
+              polylines: (trailData != null)
+                  ? [
+                      Polyline(
+                          strokeWidth: 4,
+                          isDotted: true,
+                          color: Theme.of(context).colorScheme.primary,
+                          points: LatLngUtils.listListToListLatLng(
+                              trailData!.trail.geometry.coordinates))
+                    ]
+                  : []),
+          MarkerLayerOptions(
+              markers: trailData != null
+                  ? trailData!.occurrences.map((occurrence) {
+                      return Marker(
+                        anchorPos: AnchorPos.align(AnchorAlign.center),
+                        width: 18.0,
+                        height: 18.0,
+                        point: LatLngUtils.listToLatLng(
+                            occurrence.geometry.coordinates),
+                        builder: (ctx) => const MarkerCondensed(),
+                      );
+                    }).toList()
+                  : []),
         ],
       ),
     );
