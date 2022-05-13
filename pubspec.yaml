@@ -60,6 +60,9 @@ flutter_icons:
   ios: true
   android: true
   image_path: "assets/icons/icon.png"
+  adaptive_icon_background: 'assets/icons/icon_bg.png'
+  adaptive_icon_foreground: 'assets/icons/icon_fg.png'
+  adaptive_icon_round: 'assets/icons/icon_round.png'
 
 flutter:
   uses-material-design: true
