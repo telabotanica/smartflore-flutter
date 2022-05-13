@@ -112,10 +112,14 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           center: currentLocation,
           interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
           zoom: 16.0,
+          maxZoom: 19,
         ),
         layers: [
           TileLayerOptions(
-              urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+              maxZoom: 20,
+              maxNativeZoom: 20,
+              urlTemplate:
+                  'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
               subdomains: ['a', 'b', 'c'],
               retinaMode: true,
               tileProvider: const CachedTileProvider()),
