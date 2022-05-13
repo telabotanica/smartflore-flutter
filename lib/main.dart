@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
@@ -19,6 +20,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
           httpClient: http.Client(),
@@ -76,6 +80,8 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
+
     return MaterialApp(
       title: "Smart'Flore",
       debugShowCheckedModeBanner: false,
