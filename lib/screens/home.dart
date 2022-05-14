@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Color primary = Theme.of(context).colorScheme.primary;
     double screenH = MediaQuery.of(context).size.height;
     double screenW = MediaQuery.of(context).size.width;
-    double bottomPadding = MediaQuery.of(context).padding.bottom;
+    double bottomPadding = MediaQuery.of(context).padding.bottom / 4;
     return Scaffold(
         body: DefaultTabController(
       length: 2,
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
               parallaxEnabled: true,
               parallaxOffset: .5,
               maxHeight: screenH * 0.8,
-              minHeight: 110,
+              minHeight: 100 + bottomPadding,
               onPanelOpened: () {
                 setState(() {
                   isPanelMoving = false;
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   const MapWidget(),
                   Positioned(
-                      bottom: 100 + bottomPadding,
+                      bottom: 120 + bottomPadding,
                       left: 20,
                       child: Column(
                         children: [
