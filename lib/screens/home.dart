@@ -38,6 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Color primary = Theme.of(context).colorScheme.primary;
+    double screenH = MediaQuery.of(context).size.height;
+    double screenW = MediaQuery.of(context).size.width;
+    double bottomPadding = MediaQuery.of(context).padding.bottom / 4;
     return Scaffold(
         body: DefaultTabController(
       length: 2,
@@ -49,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
               backdropTapClosesPanel: true,
               parallaxEnabled: true,
               parallaxOffset: .5,
-              maxHeight: MediaQuery.of(context).size.height - 110,
-              minHeight: 110,
+              maxHeight: screenH * 0.8,
+              minHeight: 100 + bottomPadding,
               onPanelOpened: () {
                 setState(() {
                   isPanelMoving = false;
@@ -65,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               controller: _panelController,
               header: SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: screenW,
                 child: Padding(
                   padding: const EdgeInsets.all(7.0),
                   child: GestureDetector(
@@ -74,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: screenW,
                           height: 20,
                           color: Colors.transparent,
                           child: TextButton(
@@ -123,54 +126,53 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              panelBuilder: (scrollController) =>
-                  _buildSlidingPanel(scrollController: scrollController),
+              panelBuilder: (scrollController) => _buildSlidingPanel(
+                  scrollController: scrollController,
+                  bottomPadding: bottomPadding),
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(24)),
               body: Stack(
                 children: [
                   const MapWidget(),
                   Positioned(
-                      bottom: 100,
+                      bottom: 120 + bottomPadding,
                       left: 20,
-                      child: SafeArea(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: 46,
-                              height: 46,
-                              child: FloatingActionButton(
-                                  backgroundColor: Colors.white,
-                                  child: const Icon(
-                                    SmartFloreIcons.qrcode,
-                                    color: Color(0xFF12161E),
-                                    size: 20,
-                                  ),
-                                  onPressed: () {}),
-                            ),
-                            const SizedBox(height: 12),
-                            SizedBox(
-                              width: 46,
-                              height: 46,
-                              child: FloatingActionButton(
-                                  backgroundColor: Colors.white,
-                                  child: const Icon(
-                                    SmartFloreIcons.target,
-                                    color: Color(0xFF12161E),
-                                    size: 20,
-                                  ),
-                                  onPressed: () {
-                                    BlocProvider.of<MapBloc>(context)
-                                        .add(RequestCenterMapEvent());
-                                  }),
-                            ),
-                          ],
-                        ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            width: 46,
+                            height: 46,
+                            child: FloatingActionButton(
+                                backgroundColor: Colors.white,
+                                child: const Icon(
+                                  SmartFloreIcons.qrcode,
+                                  color: Color(0xFF12161E),
+                                  size: 20,
+                                ),
+                                onPressed: () {}),
+                          ),
+                          const SizedBox(height: 12),
+                          SizedBox(
+                            width: 46,
+                            height: 46,
+                            child: FloatingActionButton(
+                                backgroundColor: Colors.white,
+                                child: const Icon(
+                                  SmartFloreIcons.target,
+                                  color: Color(0xFF12161E),
+                                  size: 20,
+                                ),
+                                onPressed: () {
+                                  BlocProvider.of<MapBloc>(context)
+                                      .add(RequestCenterMapEvent());
+                                }),
+                          ),
+                        ],
                       ))
                 ],
               )),
           Positioned(
-              top: 0,
+              top: 20,
               right: 20,
               child: SafeArea(
                 child: SizedBox(
@@ -196,9 +198,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildSlidingPanel({
     required ScrollController scrollController,
+    double bottomPadding = 0,
   }) {
     return Padding(
-        padding: const EdgeInsets.fromLTRB(20, 100, 20, 20),
+        padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
         child: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
