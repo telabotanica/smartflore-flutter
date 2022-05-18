@@ -1012,7 +1012,8 @@ TrailGeometry _$TrailGeometryFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TrailGeometry {
   String get type => throw _privateConstructorUsedError;
-  List<List<double>> get coordinates => throw _privateConstructorUsedError;
+  @CoordinatesConverter()
+  List<LatLng> get coordinates => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1025,7 +1026,7 @@ abstract class $TrailGeometryCopyWith<$Res> {
   factory $TrailGeometryCopyWith(
           TrailGeometry value, $Res Function(TrailGeometry) then) =
       _$TrailGeometryCopyWithImpl<$Res>;
-  $Res call({String type, List<List<double>> coordinates});
+  $Res call({String type, @CoordinatesConverter() List<LatLng> coordinates});
 }
 
 /// @nodoc
@@ -1050,7 +1051,7 @@ class _$TrailGeometryCopyWithImpl<$Res>
       coordinates: coordinates == freezed
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<List<double>>,
+              as List<LatLng>,
     ));
   }
 }
@@ -1062,7 +1063,7 @@ abstract class _$TrailGeometryCopyWith<$Res>
           _TrailGeometry value, $Res Function(_TrailGeometry) then) =
       __$TrailGeometryCopyWithImpl<$Res>;
   @override
-  $Res call({String type, List<List<double>> coordinates});
+  $Res call({String type, @CoordinatesConverter() List<LatLng> coordinates});
 }
 
 /// @nodoc
@@ -1089,7 +1090,7 @@ class __$TrailGeometryCopyWithImpl<$Res>
       coordinates: coordinates == freezed
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<List<double>>,
+              as List<LatLng>,
     ));
   }
 }
@@ -1098,7 +1099,8 @@ class __$TrailGeometryCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TrailGeometry implements _TrailGeometry {
   const _$_TrailGeometry(
-      {required this.type, required final List<List<double>> coordinates})
+      {required this.type,
+      @CoordinatesConverter() required final List<LatLng> coordinates})
       : _coordinates = coordinates;
 
   factory _$_TrailGeometry.fromJson(Map<String, dynamic> json) =>
@@ -1106,9 +1108,11 @@ class _$_TrailGeometry implements _TrailGeometry {
 
   @override
   final String type;
-  final List<List<double>> _coordinates;
+  @CoordinatesConverter()
+  final List<LatLng> _coordinates;
   @override
-  List<List<double>> get coordinates {
+  @CoordinatesConverter()
+  List<LatLng> get coordinates {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_coordinates);
   }
@@ -1148,8 +1152,9 @@ class _$_TrailGeometry implements _TrailGeometry {
 
 abstract class _TrailGeometry implements TrailGeometry {
   const factory _TrailGeometry(
-      {required final String type,
-      required final List<List<double>> coordinates}) = _$_TrailGeometry;
+          {required final String type,
+          @CoordinatesConverter() required final List<LatLng> coordinates}) =
+      _$_TrailGeometry;
 
   factory _TrailGeometry.fromJson(Map<String, dynamic> json) =
       _$_TrailGeometry.fromJson;
@@ -1157,7 +1162,8 @@ abstract class _TrailGeometry implements TrailGeometry {
   @override
   String get type => throw _privateConstructorUsedError;
   @override
-  List<List<double>> get coordinates => throw _privateConstructorUsedError;
+  @CoordinatesConverter()
+  List<LatLng> get coordinates => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$TrailGeometryCopyWith<_TrailGeometry> get copyWith =>

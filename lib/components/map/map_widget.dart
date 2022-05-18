@@ -89,10 +89,11 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             if (state is TrailLoadedState) {
               setState(() {
                 trailData = state.trail;
-                _mapController.move(
-                    LatLng(trailData!.trail.geometry.coordinates[0][1],
-                        trailData!.trail.geometry.coordinates[0][0]),
-                    _mapController.zoom);
+
+                CenterZoom centerZoom = _mapController.centerZoomFitBounds(
+                    LatLngBounds.fromPoints(
+                        trailData!.trail.geometry.coordinates));
+                _mapController.move(centerZoom.center, centerZoom.zoom);
               });
             }
           },
@@ -162,8 +163,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                           strokeWidth: 4,
                           isDotted: true,
                           color: Theme.of(context).colorScheme.primary,
-                          points: LatLngUtils.listListToListLatLng(
-                              trailData!.trail.geometry.coordinates))
+                          points: trailData!.trail.geometry.coordinates)
                     ]
                   : []),
           MarkerLayerOptions(
