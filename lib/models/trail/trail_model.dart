@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:latlong2/latlong.dart';
 
 part 'trail_model.freezed.dart';
 part 'trail_model.g.dart';
@@ -78,7 +79,7 @@ abstract class TrailData with _$TrailData {
 abstract class TrailGeometry with _$TrailGeometry {
   const factory TrailGeometry({
     required String type,
-    required List<List<double>> coordinates,
+    @CoordinatesConverter() required List<LatLng> coordinates,
   }) = _TrailGeometry;
 
   factory TrailGeometry.fromJson(Map<String, dynamic> json) =>
@@ -109,5 +110,28 @@ class EnumValues<T> {
   Map<T, String> get reverse {
     reverseMap;
     return reverseMap;
+  }
+}
+
+class CoordinatesConverter
+    implements JsonConverter<List<LatLng>, List<dynamic>> {
+  const CoordinatesConverter();
+
+  @override
+  List<LatLng> fromJson(coordinates) {
+    List<LatLng> latLngList = [];
+    for (var coordinate in coordinates) {
+      latLngList.add(LatLng(coordinate[1], coordinate[0]));
+    }
+    return latLngList;
+  }
+
+  @override
+  List<List<double>> toJson(coordinates) {
+    List<List<double>> latLngList = [];
+    for (var coordinate in coordinates) {
+      latLngList.add([coordinate.longitude, coordinate.latitude]);
+    }
+    return latLngList;
   }
 }

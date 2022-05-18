@@ -100,16 +100,14 @@ Map<String, dynamic> _$$_TrailDataToJson(_$_TrailData instance) =>
 _$_TrailGeometry _$$_TrailGeometryFromJson(Map<String, dynamic> json) =>
     _$_TrailGeometry(
       type: json['type'] as String,
-      coordinates: (json['coordinates'] as List<dynamic>)
-          .map((e) =>
-              (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
-          .toList(),
+      coordinates:
+          const CoordinatesConverter().fromJson(json['coordinates'] as List),
     );
 
 Map<String, dynamic> _$$_TrailGeometryToJson(_$_TrailGeometry instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'coordinates': instance.coordinates,
+      'coordinates': const CoordinatesConverter().toJson(instance.coordinates),
     };
 
 _$_TrailProperties _$$_TrailPropertiesFromJson(Map<String, dynamic> json) =>
