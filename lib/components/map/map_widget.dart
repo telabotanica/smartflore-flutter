@@ -9,6 +9,7 @@ import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/components/map/marker_condensed.dart';
 import 'package:smartflore/components/map/marker_me.dart';
+import 'package:smartflore/components/map/marker_with_bg.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
@@ -164,6 +165,34 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                           isDotted: true,
                           color: Theme.of(context).colorScheme.primary,
                           points: trailData!.trail.geometry.coordinates)
+                    ]
+                  : []),
+          MarkerLayerOptions(
+              markers: trailData != null
+                  ? [
+                      Marker(
+                        anchorPos: AnchorPos.exactly(Anchor(0, -20)),
+                        width: 18.0,
+                        height: 18.0,
+                        point: trailData!.trail.geometry.coordinates[
+                            trailData!.trail.geometry.coordinates.length - 1],
+                        builder: (ctx) => const MarkerWithBG(
+                          icon: SmartFloreIcons.markerEnd,
+                          size: 39,
+                          color: Color(0xFFF47070),
+                        ),
+                      ),
+                      Marker(
+                        anchorPos: AnchorPos.exactly(Anchor(0, -20)),
+                        width: 18.0,
+                        height: 18.0,
+                        point: trailData!.trail.geometry.coordinates[0],
+                        builder: (ctx) => const MarkerWithBG(
+                          icon: SmartFloreIcons.markerStart,
+                          size: 39,
+                          color: Color(0xFF3EB17B),
+                        ),
+                      ),
                     ]
                   : []),
           MarkerLayerOptions(
