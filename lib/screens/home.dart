@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/map/map_widget.dart';
+import 'package:smartflore/components/map/trail_preview.dart';
 import 'package:smartflore/components/panel/panel_widget.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
@@ -18,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
+  bool test = false;
 
   @override
   void initState() {
@@ -134,10 +137,14 @@ class _HomeScreenState extends State<HomeScreen> {
               body: Stack(
                 children: [
                   const MapWidget(),
-                  Positioned(
-                      bottom: 120 + bottomPadding,
+                  AnimatedPositioned(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOutCubic,
+                      bottom:
+                          (test) ? 120 + bottomPadding : -60 + bottomPadding,
                       left: 20,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
                             width: 46,
@@ -149,7 +156,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: Color(0xFF12161E),
                                   size: 20,
                                 ),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  setState(() {
+                                    test = (test) ? false : true;
+                                  });
+                                }),
                           ),
                           const SizedBox(height: 12),
                           SizedBox(
@@ -167,6 +178,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                       .add(RequestCenterMapEvent());
                                 }),
                           ),
+                          const SizedBox(height: 20),
+                          Center(
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width - 40,
+                              child: TrailPreview(
+                                  index: 1,
+                                  title: 'test',
+                                  length: 150,
+                                  image:
+                                      'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+                                  position: LatLng(0, 0)),
+                            ),
+                          )
                         ],
                       ))
                 ],

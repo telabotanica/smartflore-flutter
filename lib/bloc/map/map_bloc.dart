@@ -10,5 +10,9 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       emit(MapInitial());
       emit(OnRecenterMapState());
     });
+    on<RequestTouchMarker>((event, emit) {
+      emit(MapInitial());
+      emit(OnTouchMarkerState(id: event.id));
+    });
   }
 }
