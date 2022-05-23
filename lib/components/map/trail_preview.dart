@@ -3,7 +3,9 @@ import 'package:latlong2/latlong.dart';
 import 'package:smartflore/components/list/trail_item.dart';
 
 class TrailPreview extends StatelessWidget {
+  final bool isLoading;
   final int index;
+  final String id;
   final String title;
   final String image;
   final int length;
@@ -12,10 +14,12 @@ class TrailPreview extends StatelessWidget {
   const TrailPreview({
     Key? key,
     required this.index,
+    required this.id,
     required this.title,
     required this.length,
     required this.image,
     required this.position,
+    this.isLoading = false,
   }) : super(key: key);
 
   @override
@@ -32,31 +36,60 @@ class TrailPreview extends StatelessWidget {
                 )
               ]),
           child: Column(
+            mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 16.0, right: 16),
-                child: TrailItem(
-                    isInteractive: false,
-                    index: index,
-                    title: title,
-                    length: length,
-                    position: position,
-                    image: image),
+                child: Stack(
+                  children: [
+                    isLoading
+                        ? const SizedBox(
+                            height: 110,
+                            child: Center(
+                                child: SizedBox(
+                                    height: 30,
+                                    width: 30,
+                                    child: CircularProgressIndicator())))
+                        : Container(),
+                    Opacity(
+                        opacity: isLoading ? 0 : 1,
+                        child: TrailItem(
+                            isInteractive: false,
+                            index: index,
+                            title: title,
+                            length: length,
+                            position: position,
+                            image: image)),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 46,
                 child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(6),
-                            bottomRight: Radius.circular(6)),
-                      ),
-                      padding: EdgeInsets.zero,
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      primary: Colors.white,
-                    ),
+                    onPressed: isLoading ? null : () {},
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.disabled)) {
+                            return Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.5);
+                          }
+                          return Theme.of(context).colorScheme.primary;
+                        }),
+                        overlayColor: MaterialStateProperty.all<Color>(
+                            Colors.white.withOpacity(0.12)),
+                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.zero),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(6),
+                              bottomRight: Radius.circular(6)),
+                        ))),
                     child: Center(
                       child: Text(
                         'Démarrer',

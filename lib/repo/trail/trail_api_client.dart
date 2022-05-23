@@ -12,7 +12,12 @@ class TrailApiClient extends APIClient {
     final response = await httpClient.get(Uri.parse(baseUrl + id));
     if (response.statusCode == 200) {
       // print('response.body ${response.body}');
-      Map<String, dynamic> json = jsonDecode(response.body);
+      String data = response.body;
+      data = data.replaceAll(r'\"', r'"');
+      data = data.replaceAll(r'"{', r'{');
+      data = data.replaceAll(r'}"', r'}');
+      Map<String, dynamic> json = jsonDecode(data);
+
       Trail trailData = Trail.fromJson(json);
       return trailData;
     } else {

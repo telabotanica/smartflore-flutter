@@ -114,7 +114,7 @@ _$_TrailProperties _$$_TrailPropertiesFromJson(Map<String, dynamic> json) =>
     _$_TrailProperties(
       id: json['id'] as String,
       name: json['name'] as String,
-      centroid: json['centroid'] as String,
+      centroid: Centroid.fromJson(json['centroid'] as Map<String, dynamic>),
       length: json['length'] as int,
       author: json['author'] as String,
       image: json['image'] as String?,
@@ -128,4 +128,17 @@ Map<String, dynamic> _$$_TrailPropertiesToJson(_$_TrailProperties instance) =>
       'length': instance.length,
       'author': instance.author,
       'image': instance.image,
+    };
+
+_$_Centroid _$$_CentroidFromJson(Map<String, dynamic> json) => _$_Centroid(
+      type: json['type'] as String,
+      coordinates: (json['coordinates'] as List<dynamic>)
+          .map((e) => (e as num).toDouble())
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_CentroidToJson(_$_Centroid instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'coordinates': instance.coordinates,
     };

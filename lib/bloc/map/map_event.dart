@@ -9,10 +9,18 @@ abstract class MapEvent extends Equatable {
 
 class RequestCenterMapEvent extends MapEvent {}
 
-class RequestTouchMarker extends MapEvent {
-  final String id;
-  const RequestTouchMarker({required this.id});
+class ChangeMapMode extends MapEvent {
+  final MapMode mapMode;
+  const ChangeMapMode({required this.mapMode});
 
   @override
-  List<Object> get props => [id];
+  List<Object> get props => [mapMode];
+}
+
+class RequestTrailPreview extends MapEvent {
+  final String trailID;
+  const RequestTrailPreview({required this.trailID});
+
+  @override
+  List<Object> get props => [trailID];
 }

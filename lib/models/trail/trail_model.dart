@@ -91,7 +91,7 @@ abstract class TrailProperties with _$TrailProperties {
   const factory TrailProperties({
     required String id,
     required String name,
-    required String centroid,
+    required Centroid centroid,
     required int length,
     required String author,
     required String? image,
@@ -134,4 +134,15 @@ class CoordinatesConverter
     }
     return latLngList;
   }
+}
+
+@freezed
+abstract class Centroid with _$Centroid {
+  const factory Centroid({
+    required String type,
+    required List<double> coordinates,
+  }) = _Centroid;
+
+  factory Centroid.fromJson(Map<String, dynamic> json) =>
+      _$CentroidFromJson(json);
 }

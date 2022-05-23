@@ -102,7 +102,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         BlocListener<TrailBloc, TrailState>(
           listener: (context, state) {
             if (state is TrailLoadedState) {
-              setMapMode(MapMode.focus);
+              BlocProvider.of<MapBloc>(context)
+                  .add(const ChangeMapMode(mapMode: MapMode.preview));
+
               setState(() {
                 trailData = state.trail;
 
@@ -126,8 +128,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         ),
         BlocListener<MapBloc, MapState>(
           listener: (context, state) {
-            if (state is OnRecenterMapState) {
+            if (state is OnRecenterMap) {
               recenter();
+            } else if (state is OnMapModeChanged) {
+              setMapMode(state.mapMode);
             }
           },
         ),
@@ -161,6 +165,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             ],
           ),
           if (mapMode == MapMode.overview) ...setupOverviewMode(),
+          if (mapMode == MapMode.preview) ...setupPreviewMode(),
           if (mapMode == MapMode.focus) ...setupFocusMode(),
         ],
       ),
@@ -178,10 +183,62 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                     height: 38.0,
                     point: LatLngUtils.listToLatLng(
                         referential.trail.centroid.coordinates),
-                    builder: (ctx) => Icon(SmartFloreIcons.marker,
-                        size: 38, color: Theme.of(context).colorScheme.surface),
+                    builder: (ctx) => IconButton(
+                        onPressed: () {
+                          BlocProvider.of<MapBloc>(context).add(
+                              RequestTrailPreview(trailID: referential.key));
+                        },
+                        icon: Icon(SmartFloreIcons.marker,
+                            size: 38,
+                            color: Theme.of(context).colorScheme.surface)),
                   );
                 }).toList()
+              : []),
+    ];
+  }
+
+  List<LayerOptions> setupPreviewMode() {
+    return [
+      //PATH
+      PolylineLayerOptions(
+          polylineCulling: true,
+          polylines: (trailData != null)
+              ? [
+                  Polyline(
+                      strokeWidth: 4,
+                      isDotted: true,
+                      color: Theme.of(context).colorScheme.primary,
+                      points: trailData!.trail.geometry.coordinates)
+                ]
+              : []),
+      //STARTING AND END POINTS
+      MarkerLayerOptions(
+          markers: trailData != null
+              ? [
+                  Marker(
+                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
+                    width: 18.0,
+                    height: 18.0,
+                    point: trailData!.trail.geometry.coordinates[
+                        trailData!.trail.geometry.coordinates.length - 1],
+                    builder: (ctx) => const MarkerWithBG(
+                      icon: SmartFloreIcons.markerEnd,
+                      size: 39,
+                      color: Color(0xFFF47070),
+                    ),
+                  ),
+                  Marker(
+                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
+                    width: 18.0,
+                    height: 18.0,
+                    point: trailData!.trail.geometry.coordinates[0],
+                    builder: (ctx) => const MarkerWithBG(
+                      icon: SmartFloreIcons.markerStart,
+                      size: 39,
+                      color: Color(0xFF3EB17B),
+                    ),
+                  ),
+                ]
               : []),
     ];
   }
@@ -256,3 +313,14 @@ class CachedTileProvider extends TileProvider {
     );
   }
 }
+
+/*
+// PREVIEW MODE
+- Display preview card on top of the map
+- Display preview path on map
+- make other trails markers opacity 0.3
+- eventually (depending how it renders) hide selected trail marker 
+=> TODO
+- user bloc to update map mode this way we can display the card on top of the map AND update the map content
+- trigger event ChangeMapMode when trail data received
+*/

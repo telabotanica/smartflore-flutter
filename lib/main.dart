@@ -37,13 +37,15 @@ void main() {
   BlocOverrides.runZoned(
     () {
       runApp(MultiBlocProvider(providers: [
-        BlocProvider<TrailBloc>(create: (context) => TrailBloc(trailRepo)),
+        BlocProvider<MapBloc>(create: (context) => MapBloc()),
+        BlocProvider<TrailBloc>(
+            create: (context) =>
+                TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
         BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
         BlocProvider<GeolocationBloc>(
             create: (context) =>
                 GeolocationBloc(geolocationRepo: geolocationRepo)
                   ..add(RequestLocationPermissionEvent())),
-        BlocProvider<MapBloc>(create: (context) => MapBloc()),
       ], child: const App()));
     },
     blocObserver: SimpleBlocObserver(),

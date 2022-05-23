@@ -9,9 +9,14 @@ abstract class MapState extends Equatable {
 
 class MapInitial extends MapState {}
 
-class OnRecenterMapState extends MapState {}
+class OnRecenterMap extends MapState {}
 
-class OnTouchMarkerState extends MapState {
-  final String id;
-  const OnTouchMarkerState({required this.id});
+class OnMapModeChanged extends MapState {
+  final MapMode mapMode;
+  const OnMapModeChanged({required this.mapMode});
+}
+
+class OnRequestTrailPreview extends MapState {
+  final String trailID;
+  const OnRequestTrailPreview({required this.trailID});
 }

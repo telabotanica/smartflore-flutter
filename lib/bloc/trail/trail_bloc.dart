@@ -1,16 +1,27 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
-
-import '../../models/trail/trail_model.dart';
 
 part 'trail_event.dart';
 part 'trail_state.dart';
 
 class TrailBloc extends Bloc<TrailEvent, TrailState> {
   final TrailRepo trailsRepo;
+  final MapBloc mapBloc;
+  StreamSubscription? mapSubscription;
 
-  TrailBloc(this.trailsRepo) : super(TrailInitialState()) {
+  TrailBloc(this.trailsRepo, this.mapBloc) : super(TrailInitialState()) {
+    // When asking for trail preview we need to both change mapMode and load trail data.
+    mapSubscription = mapBloc.stream.listen((state) {
+      if (state is OnRequestTrailPreview) {
+        add(LoadTrailDataEvent(id: state.trailID));
+      }
+    });
+
     on<TrailEvent>((event, emit) async {
       if (event is LoadTrailDataEvent) {
         emit(TrailLoadingState());
@@ -22,5 +33,11 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
         }
       }
     });
+  }
+
+  @override
+  Future<void> close() {
+    mapSubscription?.cancel();
+    return super.close();
   }
 }
