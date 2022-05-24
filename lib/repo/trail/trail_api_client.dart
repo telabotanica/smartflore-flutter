@@ -11,7 +11,7 @@ class TrailApiClient extends APIClient {
   Future<Trail?> getTrailData(String id) async {
     final response = await httpClient.get(Uri.parse(baseUrl + id));
     if (response.statusCode == 200) {
-      // print('response.body ${response.body}');
+      // Needed to simplify the reading of centroid
       String data = response.body;
       data = data.replaceAll(r'\"', r'"');
       data = data.replaceAll(r'"{', r'{');
