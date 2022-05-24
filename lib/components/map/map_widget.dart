@@ -113,7 +113,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                         trailData!.trail.geometry.coordinates));
                 //workaround to make sure the center of the map is slightly higher.
                 centerZoom.center.latitude -= 0.0008;
-                _mapController.move(centerZoom.center, centerZoom.zoom);
+                _animatedMapMove(centerZoom.center, centerZoom.zoom);
               });
             }
           },
