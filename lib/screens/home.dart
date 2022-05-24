@@ -41,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void trailPreviewPanel(bool show) {
+    if (show) _panelController.close();
     setState(() {
       showTrailPreview = show;
     });
@@ -57,6 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
         if (state is OnMapModeChanged) {
           if (state.mapMode == MapMode.preview) {
             trailPreviewPanel(true);
+          } else if (state.mapMode == MapMode.overview) {
+            trailPreviewPanel(false);
           }
         }
       },
@@ -159,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         curve: Curves.easeInOutCubic,
                         bottom: (showTrailPreview)
                             ? 120 + bottomPadding
-                            : -60 + bottomPadding,
+                            : -65 + bottomPadding,
                         left: 20,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .add(RequestCenterMapEvent());
                                   }),
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 25),
                             Center(
                               child: SizedBox(
                                 width: MediaQuery.of(context).size.width - 40,
@@ -216,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         isLoading: true,
                                         index: 1,
                                         id: '',
-                                        title: 'test',
+                                        title: '',
                                         length: 150,
                                         image:
                                             'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:smartflore/bloc/trail/trail_bloc.dart';
+import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/list/item_interactive.dart';
 import 'package:smartflore/components/list/item_separator.dart';
 import 'package:smartflore/components/list/trail_item.dart';
@@ -27,7 +27,7 @@ class TrailListItemWidget extends StatelessWidget {
       : super(key: key);
 
   onPressed(BuildContext context, String id) {
-    BlocProvider.of<TrailBloc>(context).add(LoadTrailDataEvent(id: id));
+    BlocProvider.of<MapBloc>(context).add(RequestTrailPreview(trailID: id));
   }
 
   @override

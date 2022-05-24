@@ -44,7 +44,7 @@ class TrailPreview extends StatelessWidget {
                   children: [
                     isLoading
                         ? const SizedBox(
-                            height: 110,
+                            height: 100,
                             child: Center(
                                 child: SizedBox(
                                     height: 30,

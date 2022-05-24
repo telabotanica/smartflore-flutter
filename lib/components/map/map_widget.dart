@@ -111,6 +111,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 CenterZoom centerZoom = _mapController.centerZoomFitBounds(
                     LatLngBounds.fromPoints(
                         trailData!.trail.geometry.coordinates));
+                //workaround to make sure the center of the map is slightly higher.
+                centerZoom.center.latitude -= 0.0008;
                 _mapController.move(centerZoom.center, centerZoom.zoom);
               });
             }
@@ -144,6 +146,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
           zoom: 16.0,
           maxZoom: 19,
+          onTap: (tapPos, LatLng latLng) {
+            BlocProvider.of<MapBloc>(context)
+                .add(const ChangeMapMode(mapMode: MapMode.overview));
+          },
         ),
         layers: [
           TileLayerOptions(
@@ -166,13 +172,14 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           ),
           if (mapMode == MapMode.overview) ...setupOverviewMode(),
           if (mapMode == MapMode.preview) ...setupPreviewMode(),
+          ...setupOverviewMode(fade: true),
           if (mapMode == MapMode.focus) ...setupFocusMode(),
         ],
       ),
     );
   }
 
-  List<LayerOptions> setupOverviewMode() {
+  List<LayerOptions> setupOverviewMode({bool fade = false}) {
     return [
       MarkerLayerOptions(
           markers: trailsData != null
@@ -188,9 +195,23 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                           BlocProvider.of<MapBloc>(context).add(
                               RequestTrailPreview(trailID: referential.key));
                         },
-                        icon: Icon(SmartFloreIcons.marker,
-                            size: 38,
-                            color: Theme.of(context).colorScheme.surface)),
+                        icon: AnimatedOpacity(
+                            opacity: fade
+                                ? (trailData != null &&
+                                        trailData!.trail.properties.id ==
+                                            referential.key)
+                                    ? 0
+                                    : 0.5
+                                : 1,
+                            duration: Duration(
+                                milliseconds: (trailData != null &&
+                                        trailData!.trail.properties.id ==
+                                            referential.key)
+                                    ? 0
+                                    : 500),
+                            child: Icon(SmartFloreIcons.marker,
+                                size: 38,
+                                color: Theme.of(context).colorScheme.surface))),
                   );
                 }).toList()
               : []),
