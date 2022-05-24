@@ -11,14 +11,14 @@ import 'package:smartflore/components/panel/panel_widget.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class MapScreen extends StatefulWidget {
+  const MapScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MapScreen> createState() => _MapScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MapScreenState extends State<MapScreen> {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
@@ -58,7 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
         if (state is OnMapModeChanged) {
           if (state.mapMode == MapMode.preview) {
             trailPreviewPanel(true);
-          } else if (state.mapMode == MapMode.overview) {
+          } else if (state.mapMode == MapMode.overview ||
+              state.mapMode == MapMode.focus) {
             trailPreviewPanel(false);
           }
         }
@@ -203,6 +204,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context, state) {
                                     if (state is TrailLoadedState) {
                                       return TrailPreview(
+                                          onPressCB: () {
+                                            BlocProvider.of<MapBloc>(context)
+                                                .add(const ChangeMapMode(
+                                                    mapMode: MapMode.focus));
+                                          },
                                           index: 1,
                                           id: state.trail.trail.properties.id,
                                           title:
@@ -216,6 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   .centroid.coordinates));
                                     }
                                     return TrailPreview(
+                                        onPressCB: null,
                                         isLoading: true,
                                         index: 1,
                                         id: '',

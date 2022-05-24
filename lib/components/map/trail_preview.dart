@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/components/list/trail_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TrailPreview extends StatelessWidget {
   final bool isLoading;
@@ -10,6 +11,7 @@ class TrailPreview extends StatelessWidget {
   final String image;
   final int length;
   final LatLng position;
+  final Function? onPressCB;
 
   const TrailPreview({
     Key? key,
@@ -19,6 +21,7 @@ class TrailPreview extends StatelessWidget {
     required this.length,
     required this.image,
     required this.position,
+    this.onPressCB,
     this.isLoading = false,
   }) : super(key: key);
 
@@ -66,7 +69,7 @@ class TrailPreview extends StatelessWidget {
               SizedBox(
                 height: 46,
                 child: TextButton(
-                    onPressed: isLoading ? null : () {},
+                    onPressed: isLoading ? null : () => onPressCB!(),
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.resolveWith<Color>(
@@ -92,7 +95,7 @@ class TrailPreview extends StatelessWidget {
                         ))),
                     child: Center(
                       child: Text(
-                        'Démarrer',
+                        AppLocalizations.of(context)!.btn_start,
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.background),
                       ),

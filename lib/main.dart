@@ -10,7 +10,7 @@ import 'package:smartflore/repo/trail/trail_api_client.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
-import 'package:smartflore/screens/home.dart';
+import 'package:smartflore/screens/map_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -90,7 +90,7 @@ class _AppState extends State<App> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,
-      home: const HomeScreen(),
+      home: const MapScreen(),
       supportedLocales: L10n.all,
       localizationsDelegates: const {
         AppLocalizations.delegate,

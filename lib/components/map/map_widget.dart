@@ -172,7 +172,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           ),
           if (mapMode == MapMode.overview) ...setupOverviewMode(),
           if (mapMode == MapMode.preview) ...setupPreviewMode(),
-          ...setupOverviewMode(fade: true),
           if (mapMode == MapMode.focus) ...setupFocusMode(),
         ],
       ),
@@ -261,6 +260,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                   ),
                 ]
               : []),
+      ...setupOverviewMode(fade: true)
     ];
   }
 
