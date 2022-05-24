@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
-import 'package:smartflore/components/panel/trail_list_item.dart';
+import 'package:smartflore/components/list/trail_list_item.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
@@ -65,7 +65,8 @@ class PanelWidget extends StatelessWidget {
                         id: referential.key,
                         title: referential.name,
                         length: referential.trail.length,
-                        image: 'trail.image',
+                        image:
+                            'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
                         position: LatLngUtils.listToLatLng(
                             referential.trail.centroid.coordinates));
                   },

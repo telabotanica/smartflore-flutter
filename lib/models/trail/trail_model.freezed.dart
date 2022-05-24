@@ -1178,7 +1178,7 @@ TrailProperties _$TrailPropertiesFromJson(Map<String, dynamic> json) {
 mixin _$TrailProperties {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get centroid => throw _privateConstructorUsedError;
+  Centroid get centroid => throw _privateConstructorUsedError;
   int get length => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
@@ -1197,10 +1197,12 @@ abstract class $TrailPropertiesCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      String centroid,
+      Centroid centroid,
       int length,
       String author,
       String? image});
+
+  $CentroidCopyWith<$Res> get centroid;
 }
 
 /// @nodoc
@@ -1233,7 +1235,7 @@ class _$TrailPropertiesCopyWithImpl<$Res>
       centroid: centroid == freezed
           ? _value.centroid
           : centroid // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Centroid,
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
@@ -1248,6 +1250,13 @@ class _$TrailPropertiesCopyWithImpl<$Res>
               as String?,
     ));
   }
+
+  @override
+  $CentroidCopyWith<$Res> get centroid {
+    return $CentroidCopyWith<$Res>(_value.centroid, (value) {
+      return _then(_value.copyWith(centroid: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -1260,10 +1269,13 @@ abstract class _$TrailPropertiesCopyWith<$Res>
   $Res call(
       {String id,
       String name,
-      String centroid,
+      Centroid centroid,
       int length,
       String author,
       String? image});
+
+  @override
+  $CentroidCopyWith<$Res> get centroid;
 }
 
 /// @nodoc
@@ -1298,7 +1310,7 @@ class __$TrailPropertiesCopyWithImpl<$Res>
       centroid: centroid == freezed
           ? _value.centroid
           : centroid // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Centroid,
       length: length == freezed
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
@@ -1334,7 +1346,7 @@ class _$_TrailProperties implements _TrailProperties {
   @override
   final String name;
   @override
-  final String centroid;
+  final Centroid centroid;
   @override
   final int length;
   @override
@@ -1386,7 +1398,7 @@ abstract class _TrailProperties implements TrailProperties {
   const factory _TrailProperties(
       {required final String id,
       required final String name,
-      required final String centroid,
+      required final Centroid centroid,
       required final int length,
       required final String author,
       required final String? image}) = _$_TrailProperties;
@@ -1399,7 +1411,7 @@ abstract class _TrailProperties implements TrailProperties {
   @override
   String get name => throw _privateConstructorUsedError;
   @override
-  String get centroid => throw _privateConstructorUsedError;
+  Centroid get centroid => throw _privateConstructorUsedError;
   @override
   int get length => throw _privateConstructorUsedError;
   @override
@@ -1409,5 +1421,157 @@ abstract class _TrailProperties implements TrailProperties {
   @override
   @JsonKey(ignore: true)
   _$TrailPropertiesCopyWith<_TrailProperties> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Centroid _$CentroidFromJson(Map<String, dynamic> json) {
+  return _Centroid.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Centroid {
+  String get type => throw _privateConstructorUsedError;
+  List<double> get coordinates => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CentroidCopyWith<Centroid> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CentroidCopyWith<$Res> {
+  factory $CentroidCopyWith(Centroid value, $Res Function(Centroid) then) =
+      _$CentroidCopyWithImpl<$Res>;
+  $Res call({String type, List<double> coordinates});
+}
+
+/// @nodoc
+class _$CentroidCopyWithImpl<$Res> implements $CentroidCopyWith<$Res> {
+  _$CentroidCopyWithImpl(this._value, this._then);
+
+  final Centroid _value;
+  // ignore: unused_field
+  final $Res Function(Centroid) _then;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? coordinates = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      coordinates: coordinates == freezed
+          ? _value.coordinates
+          : coordinates // ignore: cast_nullable_to_non_nullable
+              as List<double>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$CentroidCopyWith<$Res> implements $CentroidCopyWith<$Res> {
+  factory _$CentroidCopyWith(_Centroid value, $Res Function(_Centroid) then) =
+      __$CentroidCopyWithImpl<$Res>;
+  @override
+  $Res call({String type, List<double> coordinates});
+}
+
+/// @nodoc
+class __$CentroidCopyWithImpl<$Res> extends _$CentroidCopyWithImpl<$Res>
+    implements _$CentroidCopyWith<$Res> {
+  __$CentroidCopyWithImpl(_Centroid _value, $Res Function(_Centroid) _then)
+      : super(_value, (v) => _then(v as _Centroid));
+
+  @override
+  _Centroid get _value => super._value as _Centroid;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? coordinates = freezed,
+  }) {
+    return _then(_Centroid(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      coordinates: coordinates == freezed
+          ? _value.coordinates
+          : coordinates // ignore: cast_nullable_to_non_nullable
+              as List<double>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Centroid implements _Centroid {
+  const _$_Centroid(
+      {required this.type, required final List<double> coordinates})
+      : _coordinates = coordinates;
+
+  factory _$_Centroid.fromJson(Map<String, dynamic> json) =>
+      _$$_CentroidFromJson(json);
+
+  @override
+  final String type;
+  final List<double> _coordinates;
+  @override
+  List<double> get coordinates {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_coordinates);
+  }
+
+  @override
+  String toString() {
+    return 'Centroid(type: $type, coordinates: $coordinates)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Centroid &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.coordinates, coordinates));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(coordinates));
+
+  @JsonKey(ignore: true)
+  @override
+  _$CentroidCopyWith<_Centroid> get copyWith =>
+      __$CentroidCopyWithImpl<_Centroid>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CentroidToJson(this);
+  }
+}
+
+abstract class _Centroid implements Centroid {
+  const factory _Centroid(
+      {required final String type,
+      required final List<double> coordinates}) = _$_Centroid;
+
+  factory _Centroid.fromJson(Map<String, dynamic> json) = _$_Centroid.fromJson;
+
+  @override
+  String get type => throw _privateConstructorUsedError;
+  @override
+  List<double> get coordinates => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$CentroidCopyWith<_Centroid> get copyWith =>
       throw _privateConstructorUsedError;
 }
