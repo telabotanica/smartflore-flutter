@@ -334,14 +334,3 @@ class CachedTileProvider extends TileProvider {
     );
   }
 }
-
-/*
-// PREVIEW MODE
-- Display preview card on top of the map
-- Display preview path on map
-- make other trails markers opacity 0.3
-- eventually (depending how it renders) hide selected trail marker 
-=> TODO
-- user bloc to update map mode this way we can display the card on top of the map AND update the map content
-- trigger event ChangeMapMode when trail data received
-*/
