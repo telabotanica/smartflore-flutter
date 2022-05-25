@@ -17,7 +17,6 @@ class MapUIWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('showTrailPreview: $showTrailPreview');
     return Stack(
       children: [
         const MapWidget(),

@@ -2,42 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/components/map/map_ui_widget.dart';
 import 'package:smartflore/components/map/map_widget.dart';
-import 'package:smartflore/components/panel/trail-list-panel.dart';
+import 'package:smartflore/components/panel/trail_list_panel.dart';
 
-class SpeciesPanelWidget extends StatefulWidget {
+class TrailsPanelWidget extends StatefulWidget {
   final bool isDraggable;
-  final Widget body;
-
-  const SpeciesPanelWidget(
-      {Key? key, this.isDraggable = true, required this.body})
+  const TrailsPanelWidget({Key? key, this.isDraggable = true})
       : super(key: key);
 
   @override
-  State<SpeciesPanelWidget> createState() => _SpeciesPanelWidgetState();
+  State<TrailsPanelWidget> createState() => _TrailsPanelWidgetState();
 }
 
-class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
-    with SingleTickerProviderStateMixin {
+class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
-  bool showMe = false;
-
-  late Animation<double> animation;
-  late AnimationController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 300));
-    animation = Tween<double>(begin: 0, end: 300).animate(
-        CurvedAnimation(parent: controller, curve: Curves.easeInOutCubic))
-      ..addListener(() {
-        setState(() {});
-      });
-  }
+  bool showTrailPreview = false;
 
   void onPanUpdate(details) {
     // Swiping down
@@ -49,26 +31,28 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
     }
   }
 
-  void setShowMe(bool show) {
-    (show) ? controller.forward() : controller.reverse();
-    setState(() {
-      showMe = show;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    Color primary = Theme.of(context).colorScheme.primary;
     double screenH = MediaQuery.of(context).size.height;
     double screenW = MediaQuery.of(context).size.width;
     double bottomPadding = MediaQuery.of(context).padding.bottom / 4;
 
+    void trailPreviewPanel(bool show) {
+      if (show) _panelController.close();
+      setState(() {
+        showTrailPreview = show;
+      });
+    }
+
     return BlocListener<MapBloc, MapState>(
       listener: (context, state) {
         if (state is OnMapModeChanged) {
-          if (state.mapMode == MapMode.trail) {
-            setShowMe(true);
-          } else {
-            setShowMe(false);
+          if (state.mapMode == MapMode.preview) {
+            trailPreviewPanel(true);
+          } else if (state.mapMode == MapMode.overview ||
+              state.mapMode == MapMode.trail) {
+            trailPreviewPanel(false);
           }
         }
       },
@@ -76,8 +60,23 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
           backdropEnabled: true,
           backdropOpacity: 0,
           backdropTapClosesPanel: true,
+          parallaxEnabled: true,
+          parallaxOffset: .5,
           maxHeight: screenH * 0.8,
-          minHeight: animation.value,
+          minHeight: 100 + bottomPadding,
+          isDraggable: widget.isDraggable,
+          onPanelOpened: () {
+            setState(() {
+              isPanelMoving = false;
+              isPanelOpened = true;
+            });
+          },
+          onPanelClosed: () {
+            setState(() {
+              isPanelMoving = false;
+              isPanelOpened = false;
+            });
+          },
           controller: _panelController,
           header: SizedBox(
             width: screenW,
@@ -112,7 +111,26 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Container(height: 46, color: Colors.red),
+                    Container(
+                      height: 46,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Theme.of(context).colorScheme.primary,
+                              width: 1),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(6))),
+                      child: TabBar(
+                          isScrollable: false,
+                          unselectedLabelColor: primary,
+                          indicator: BoxDecoration(
+                              color: primary,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(4))),
+                          tabs: const [
+                            Tab(text: 'Tous les sentiers'),
+                            Tab(text: 'Mes sentiers')
+                          ]),
+                    ),
                   ],
                 ),
               ),
@@ -121,7 +139,10 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
           panelBuilder: (scrollController) => _buildSlidingPanel(
               scrollController: scrollController, bottomPadding: bottomPadding),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          body: widget.body),
+          body: MapUIWidget(
+            bottomPadding: bottomPadding,
+            showTrailPreview: showTrailPreview,
+          )),
     );
   }
 

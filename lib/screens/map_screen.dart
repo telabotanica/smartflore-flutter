@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
-import 'package:smartflore/components/panel/species-panel.dart';
-import 'package:smartflore/components/panel/trails-panel.dart';
+import 'package:smartflore/components/panel/species_panel.dart';
+import 'package:smartflore/components/panel/trails_panel.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class MapScreen extends StatefulWidget {
