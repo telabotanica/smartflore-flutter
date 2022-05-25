@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/components/list/trail/trail_list.dart';
 import 'package:smartflore/components/map/map_ui_widget.dart';
 import 'package:smartflore/components/map/map_widget.dart';
-import 'package:smartflore/components/list/trail_list.dart';
 
 class TrailsPanelWidget extends StatefulWidget {
   final bool isDraggable;

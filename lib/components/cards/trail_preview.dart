@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:smartflore/components/list/trail_item.dart';
+import 'package:smartflore/components/list/trail/trail_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TrailPreview extends StatelessWidget {

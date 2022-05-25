@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
-import 'package:smartflore/components/list/trail_interactive_item.dart';
+import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 

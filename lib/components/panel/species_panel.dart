@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/components/cards/species_cover.dart';
+import 'package:smartflore/components/list/trail/trail_list.dart';
 import 'package:smartflore/components/map/map_widget.dart';
-import 'package:smartflore/components/list/trail_list.dart';
 
 class SpeciesPanelWidget extends StatefulWidget {
   final bool isDraggable;
@@ -112,7 +114,18 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Container(height: 46, color: Colors.red),
+                    Center(
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width - 40,
+                        height: 200,
+                        child: SpeciesCoverWidget(
+                          image:
+                              'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Papaver_rhoeas_LC0050.jpg/675px-Papaver_rhoeas_LC0050.jpg',
+                          title: 'Papaver Rhoeas',
+                          position: LatLng(45.776896, 3.0900224),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
