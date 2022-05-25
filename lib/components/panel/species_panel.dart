@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/map/map_widget.dart';
-import 'package:smartflore/components/panel/trail_list_panel.dart';
+import 'package:smartflore/components/list/trail_list.dart';
 
 class SpeciesPanelWidget extends StatefulWidget {
   final bool isDraggable;

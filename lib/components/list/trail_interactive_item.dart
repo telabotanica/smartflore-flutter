@@ -6,7 +6,7 @@ import 'package:smartflore/components/list/item_interactive.dart';
 import 'package:smartflore/components/list/item_separator.dart';
 import 'package:smartflore/components/list/trail_item.dart';
 
-class TrailListItemWidget extends StatelessWidget {
+class TrailInteractiveItemWidget extends StatelessWidget {
   final bool isInteractive;
   final String id;
   final int index;
@@ -15,7 +15,7 @@ class TrailListItemWidget extends StatelessWidget {
   final int length;
   final LatLng position;
 
-  const TrailListItemWidget(
+  const TrailInteractiveItemWidget(
       {Key? key,
       this.isInteractive = true,
       required this.index,
