@@ -15,7 +15,7 @@ import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
-enum MapMode { overview, preview, focus }
+enum MapMode { overview, preview, trail }
 
 class MapWidget extends StatefulWidget {
   const MapWidget({Key? key}) : super(key: key);
@@ -172,7 +172,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           ),
           if (mapMode == MapMode.overview) ...setupOverviewMode(),
           if (mapMode == MapMode.preview) ...setupPreviewMode(),
-          if (mapMode == MapMode.focus) ...setupFocusMode(),
+          if (mapMode == MapMode.trail) ...setupFocusMode(),
         ],
       ),
     );
