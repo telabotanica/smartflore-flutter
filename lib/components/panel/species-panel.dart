@@ -17,14 +17,29 @@ class SpeciesPanelWidget extends StatefulWidget {
   State<SpeciesPanelWidget> createState() => _SpeciesPanelWidgetState();
 }
 
-class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget> {
+class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
+    with SingleTickerProviderStateMixin {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
   bool showMe = false;
 
+  late Animation<double> animation;
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 300));
+    animation = Tween<double>(begin: 0, end: 300).animate(
+        CurvedAnimation(parent: controller, curve: Curves.easeInOutCubic))
+      ..addListener(() {
+        setState(() {});
+      });
+  }
+
   void onPanUpdate(details) {
-    print('test');
     // Swiping down
     if (details.delta.dy > 4 && isPanelOpened && !isPanelMoving) {
       setState(() {
@@ -35,6 +50,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget> {
   }
 
   void setShowMe(bool show) {
+    (show) ? controller.forward() : controller.reverse();
     setState(() {
       showMe = show;
     });
@@ -61,7 +77,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget> {
           backdropOpacity: 0,
           backdropTapClosesPanel: true,
           maxHeight: screenH * 0.8,
-          minHeight: showMe ? 300 : 0,
+          minHeight: animation.value,
           controller: _panelController,
           header: SizedBox(
             width: screenW,
