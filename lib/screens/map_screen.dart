@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/panel/species_panel.dart';
 import 'package:smartflore/components/panel/trails_panel.dart';
+import 'package:smartflore/components/top_bar.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class MapScreen extends StatefulWidget {
@@ -27,6 +28,15 @@ class _MapScreenState extends State<MapScreen> {
       child: Stack(
         children: [
           const SpeciesPanelWidget(body: TrailsPanelWidget()),
+          SafeArea(
+              child: Center(
+                  child: SizedBox(
+                      width: MediaQuery.of(context).size.width - 40,
+                      child: const Center(
+                          child: TopBar(
+                        title: 'Le Square Blaise Pascal',
+                        author: 'Blaise Pascal',
+                      ))))),
           Positioned(
               top: 20,
               right: 20,

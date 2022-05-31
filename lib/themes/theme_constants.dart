@@ -20,7 +20,7 @@ ThemeData lightTheme = ThemeData(
   ),
   colorScheme: const ColorScheme.light(
     primary: Color(0xffff7469),
-    secondary: Color(0xffff7469),
+    secondary: Color(0xFFffe4e8),
     surface: Color(0xFF055063),
     background: Color(0xffffffff),
     error: Color(0xffb00020),
