@@ -4,7 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/cards/species_cover.dart';
-import 'package:smartflore/components/list/trail/trail_list.dart';
+import 'package:smartflore/components/list/species/species_list.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 
 class SpeciesPanelWidget extends StatefulWidget {
@@ -81,6 +81,18 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
           maxHeight: screenH * 0.8,
           minHeight: animation.value,
           controller: _panelController,
+          onPanelOpened: () {
+            setState(() {
+              isPanelMoving = false;
+              isPanelOpened = true;
+            });
+          },
+          onPanelClosed: () {
+            setState(() {
+              isPanelMoving = false;
+              isPanelOpened = false;
+            });
+          },
           header: SizedBox(
             width: screenW,
             child: Padding(
@@ -143,20 +155,10 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
     double bottomPadding = 0,
   }) {
     return Padding(
-        padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
-        child: TabBarView(
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
-            TrailListPanelWidget(
-              controller: scrollController,
-              onPanUpdate: onPanUpdate,
-            ),
-            TrailListPanelWidget(
-              controller: scrollController,
-              onPanUpdate: onPanUpdate,
-              trailsListType: TrailsListType.myTrails,
-            ),
-          ],
-        ));
+      padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
+      child: SpeciesList(
+        controller: scrollController,
+      ),
+    );
   }
 }

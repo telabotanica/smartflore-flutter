@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
-import 'package:smartflore/components/list/trail/trail_list.dart';
+import 'package:smartflore/components/list/trail/trails_list.dart';
 import 'package:smartflore/components/map/map_ui_widget.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 
@@ -155,11 +155,11 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
         child: TabBarView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            TrailListPanelWidget(
+            TrailsList(
               controller: scrollController,
               onPanUpdate: onPanUpdate,
             ),
-            TrailListPanelWidget(
+            TrailsList(
               controller: scrollController,
               onPanUpdate: onPanUpdate,
               trailsListType: TrailsListType.myTrails,

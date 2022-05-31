@@ -7,12 +7,12 @@ import 'package:smartflore/utils/convert.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
-class TrailListPanelWidget extends StatelessWidget {
+class TrailsList extends StatelessWidget {
   final ScrollController controller;
   final TrailsListType trailsListType;
   final Function onPanUpdate;
 
-  const TrailListPanelWidget(
+  const TrailsList(
       {Key? key,
       required this.controller,
       required this.onPanUpdate,
