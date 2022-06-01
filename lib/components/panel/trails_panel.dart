@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/list/trail/trails_list.dart';
-import 'package:smartflore/components/map/map_ui_widget.dart';
+import 'package:smartflore/components/map/map_ui.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 
 class TrailsPanelWidget extends StatefulWidget {
@@ -19,7 +19,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
-  bool showTrailPreview = false;
+  MapMode _mapMode = MapMode.overview;
 
   void onPanUpdate(details) {
     // Swiping down
@@ -31,6 +31,13 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
     }
   }
 
+  void setMapMode(MapMode mapMode) {
+    if (mapMode != MapMode.overview) _panelController.close();
+    setState(() {
+      _mapMode = mapMode;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Color primary = Theme.of(context).colorScheme.primary;
@@ -38,22 +45,11 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
     double screenW = MediaQuery.of(context).size.width;
     double bottomPadding = MediaQuery.of(context).padding.bottom / 4;
 
-    void trailPreviewPanel(bool show) {
-      if (show) _panelController.close();
-      setState(() {
-        showTrailPreview = show;
-      });
-    }
-
     return BlocListener<MapBloc, MapState>(
       listener: (context, state) {
         if (state is OnMapModeChanged) {
-          if (state.mapMode == MapMode.preview) {
-            trailPreviewPanel(true);
-          } else if (state.mapMode == MapMode.overview ||
-              state.mapMode == MapMode.trail) {
-            trailPreviewPanel(false);
-          }
+          print('state.mapMode ${state.mapMode}');
+          setMapMode(state.mapMode);
         }
       },
       child: SlidingUpPanel(
@@ -139,9 +135,9 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
           panelBuilder: (scrollController) => _buildSlidingPanel(
               scrollController: scrollController, bottomPadding: bottomPadding),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          body: MapUIWidget(
+          body: MapUI(
             bottomPadding: bottomPadding,
-            showTrailPreview: showTrailPreview,
+            mapMode: _mapMode,
           )),
     );
   }

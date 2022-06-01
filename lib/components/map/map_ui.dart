@@ -5,15 +5,18 @@ import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
+import 'package:smartflore/components/top_bar.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
-class MapUIWidget extends StatelessWidget {
-  final bool showTrailPreview;
+class MapUI extends StatelessWidget {
+  final MapMode mapMode;
   final double bottomPadding;
-  const MapUIWidget(
-      {Key? key, required this.bottomPadding, this.showTrailPreview = false})
-      : super(key: key);
+  const MapUI({
+    Key? key,
+    required this.bottomPadding,
+    this.mapMode = MapMode.overview,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +24,54 @@ class MapUIWidget extends StatelessWidget {
       children: [
         const MapWidget(),
         AnimatedPositioned(
+            top: 20,
+            right: (mapMode == MapMode.trail) ? -60 : 20,
+            child: SafeArea(
+              child: SizedBox(
+                width: 46,
+                height: 46,
+                child: FloatingActionButton(
+                  backgroundColor: Colors.white,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: const Icon(
+                    SmartFloreIcons.setting,
+                    size: 20,
+                    color: Color(0xFF12161E),
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+            ),
+            curve: Curves.easeInOutCubic,
+            duration: const Duration(milliseconds: 300)),
+        AnimatedPositioned(
+            top: (mapMode == MapMode.trail) ? 20 : -100,
+            child: SafeArea(
+                child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: SizedBox(
+                  width: MediaQuery.of(context).size.width - 40,
+                  child: Center(child: BlocBuilder<TrailBloc, TrailState>(
+                    builder: (context, state) {
+                      if (state is TrailLoadedState) {
+                        return TopBar(
+                          title: state.trail.trail.properties.name,
+                          author: state.trail.trail.properties.author,
+                        );
+                      }
+                      return Container();
+                    },
+                  ))),
+            )),
+            curve: Curves.easeInOutCubic,
+            duration: const Duration(milliseconds: 300)),
+        AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,
-            bottom:
-                (showTrailPreview) ? 120 + bottomPadding : -65 + bottomPadding,
+            bottom: (mapMode == MapMode.preview)
+                ? 120 + bottomPadding
+                : -65 + bottomPadding,
             left: 20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
