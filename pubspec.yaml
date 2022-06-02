@@ -44,6 +44,7 @@ dependencies:
   cached_network_image: ^3.2.0
   pretty_logger: any
   flutter_native_splash: ^2.1.6
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:
