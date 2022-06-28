@@ -10,7 +10,7 @@ import 'package:smartflore/repo/trail/trail_api_client.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
-import 'package:smartflore/screens/species_screen.dart';
+import 'package:smartflore/screens/species/species_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
