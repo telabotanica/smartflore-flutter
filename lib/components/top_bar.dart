@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/cards/card_bg.dart';
+import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class TopBar extends StatelessWidget {
@@ -65,9 +68,15 @@ class TopBar extends StatelessWidget {
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Icon(Icons.close, size: 14, color: Colors.black),
+              TextButton(
+                onPressed: () => {
+                  BlocProvider.of<MapBloc>(context)
+                      .add(const ChangeMapMode(mapMode: MapMode.preview))
+                },
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Icon(Icons.close, size: 14, color: Colors.black),
+                ),
               ),
             ],
           ),
