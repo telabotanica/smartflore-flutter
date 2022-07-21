@@ -8,17 +8,18 @@ class TrailApiClient extends APIClient {
   final Client httpClient;
   final String baseUrl;
   TrailApiClient({required this.httpClient, required this.baseUrl});
-  Future<Trail?> getTrailData(String id) async {
-    final response = await httpClient.get(Uri.parse(baseUrl + id));
+  Future<TrailDetails?> getTrailData(int id) async {
+    final response =
+        await httpClient.get(Uri.parse(baseUrl + '/' + id.toString()));
+
+    print('response.statusCode ${response.statusCode}');
     if (response.statusCode == 200) {
       // Needed to simplify the reading of centroid
       String data = response.body;
-      data = data.replaceAll(r'\"', r'"');
-      data = data.replaceAll(r'"{', r'{');
-      data = data.replaceAll(r'}"', r'}');
+
       Map<String, dynamic> json = jsonDecode(data);
 
-      Trail trailData = Trail.fromJson(json);
+      TrailDetails trailData = TrailDetails.fromJson(json);
       return trailData;
     } else {
       // throw Exception('Failed to load trail list');

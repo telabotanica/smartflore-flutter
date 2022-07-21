@@ -7,7 +7,6 @@ import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
 import 'package:smartflore/components/top_bar.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
-import 'package:smartflore/utils/convert.dart';
 
 class MapUI extends StatelessWidget {
   final MapMode mapMode;
@@ -56,8 +55,8 @@ class MapUI extends StatelessWidget {
                     builder: (context, state) {
                       if (state is TrailLoadedState) {
                         return TopBar(
-                          title: state.trail.trail.properties.name,
-                          author: state.trail.trail.properties.author,
+                          title: state.trail.displayName,
+                          author: state.trail.author,
                         );
                       }
                       return Container();
@@ -112,30 +111,31 @@ class MapUI extends StatelessWidget {
                       builder: (context, state) {
                         if (state is TrailLoadedState) {
                           return TrailPreview(
-                              onPressCB: () {
-                                BlocProvider.of<MapBloc>(context).add(
-                                    const ChangeMapMode(
-                                        mapMode: MapMode.trail));
-                              },
-                              index: 1,
-                              id: state.trail.trail.properties.id,
-                              title: state.trail.trail.properties.name,
-                              length: state.trail.trail.properties.length,
-                              image:
-                                  'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-                              position: LatLngUtils.listToLatLng(state.trail
-                                  .trail.properties.centroid.coordinates));
+                            onPressCB: () {
+                              BlocProvider.of<MapBloc>(context).add(
+                                  const ChangeMapMode(mapMode: MapMode.trail));
+                            },
+                            index: 1,
+                            id: state.trail.id,
+                            title: state.trail.displayName,
+                            length: state.trail.pathLength,
+                            image: state.trail.image.url,
+                            position: state.trail.position.start,
+                            nbOccurence: state.trail.occurrencesCount,
+                          );
                         }
                         return TrailPreview(
-                            onPressCB: null,
-                            isLoading: true,
-                            index: 1,
-                            id: '',
-                            title: '',
-                            length: 150,
-                            image:
-                                'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-                            position: LatLng(0, 0));
+                          onPressCB: null,
+                          isLoading: true,
+                          index: 1,
+                          id: 1,
+                          title: '',
+                          length: 150,
+                          image:
+                              'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+                          position: LatLng(0, 0),
+                          nbOccurence: 0,
+                        );
                       },
                     ),
                   ),

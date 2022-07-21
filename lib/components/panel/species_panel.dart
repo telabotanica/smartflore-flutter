@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/trail/trail_bloc.dart';
+import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/components/cards/species_cover.dart';
 import 'package:smartflore/components/list/species/species_list.dart';
 import 'package:smartflore/components/map/map_widget.dart';
@@ -24,7 +25,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
-  bool showMe = false;
+  int currentOccurence = 0;
 
   late Animation<double> animation;
   late AnimationController controller;
@@ -53,9 +54,6 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
 
   void setShowMe(bool show) {
     (show) ? controller.forward() : controller.reverse();
-    setState(() {
-      showMe = show;
-    });
   }
 
   @override
@@ -64,16 +62,29 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
     double screenW = MediaQuery.of(context).size.width;
     double bottomPadding = MediaQuery.of(context).padding.bottom / 4;
 
-    return BlocListener<MapBloc, MapState>(
-      listener: (context, state) {
-        if (state is OnMapModeChanged) {
-          if (state.mapMode == MapMode.trail) {
-            setShowMe(true);
-          } else {
-            setShowMe(false);
-          }
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<MapBloc, MapState>(
+          listener: (context, state) {
+            if (state is OnMapModeChanged) {
+              if (state.mapMode == MapMode.trail) {
+                setShowMe(true);
+              } else {
+                setShowMe(false);
+              }
+            }
+          },
+        ),
+        BlocListener<WalkBloc, WalkState>(
+          listener: (context, state) {
+            if (state is OnOccurenceSelected) {
+              setState(() {
+                currentOccurence = state.occurenceID;
+              });
+            }
+          },
+        ),
+      ],
       child: SlidingUpPanel(
           backdropEnabled: true,
           backdropOpacity: 0,
@@ -126,17 +137,26 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Center(
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width - 40,
-                        height: 200,
-                        child: SpeciesCoverWidget(
-                          image:
-                              'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Papaver_rhoeas_LC0050.jpg/675px-Papaver_rhoeas_LC0050.jpg',
-                          title: 'Papaver Rhoeas',
-                          position: LatLng(45.776896, 3.0900224),
-                        ),
-                      ),
+                    BlocBuilder<TrailBloc, TrailState>(
+                      builder: (context, state) {
+                        if (state is TrailLoadedState) {
+                          final species =
+                              state.trail.occurrences[currentOccurence];
+                          return Center(
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width - 40,
+                              height: 200,
+                              child: SpeciesCover(
+                                image: species.images[0].url,
+                                title: species.taxon.genus,
+                                position: species.position,
+                              ),
+                            ),
+                          );
+                        } else {
+                          return Container();
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -155,7 +175,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
     double bottomPadding = 0,
   }) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
+      padding: const EdgeInsets.fromLTRB(20, 225, 20, 0),
       child: SpeciesList(
         controller: scrollController,
       ),

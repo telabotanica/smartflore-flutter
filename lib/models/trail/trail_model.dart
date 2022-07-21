@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final trail = trailFromJson(jsonString);
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -5,21 +9,44 @@ part 'trail_model.freezed.dart';
 part 'trail_model.g.dart';
 
 @freezed
-abstract class Trail with _$Trail {
-  const factory Trail({
-    required TrailData trail,
+abstract class TrailDetails with _$TrailDetails {
+  const factory TrailDetails({
+    required int id,
+    required String name,
+    @JsonKey(name: 'display_name') required String displayName,
+    required String author,
+    required StartEndPosition position,
+    @JsonKey(name: 'start_position')
+    @LatLngConverter()
+        required LatLng startPosition,
     required List<Occurrence> occurrences,
-  }) = _Trail;
+    @JsonKey(name: 'occurrences_count') required int occurrencesCount,
+    required String details,
+    required Image image,
+    required Path path,
+    @JsonKey(name: 'path_length') required int pathLength,
+  }) = _TrailDetails;
 
-  factory Trail.fromJson(Map<String, dynamic> json) => _$TrailFromJson(json);
+  factory TrailDetails.fromJson(Map<String, dynamic> json) =>
+      _$TrailDetailsFromJson(json);
+}
+
+@freezed
+abstract class Image with _$Image {
+  const factory Image({
+    required int id,
+    required String url,
+  }) = _Image;
+
+  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
 }
 
 @freezed
 abstract class Occurrence with _$Occurrence {
   const factory Occurrence({
-    required OccurrenceType type,
-    required OccurrenceGeometry geometry,
-    required OccurrenceProperties properties,
+    @LatLngConverter() required LatLng position,
+    required Taxon taxon,
+    required List<Image> images,
   }) = _Occurrence;
 
   factory Occurrence.fromJson(Map<String, dynamic> json) =>
@@ -27,122 +54,76 @@ abstract class Occurrence with _$Occurrence {
 }
 
 @freezed
-abstract class OccurrenceGeometry with _$OccurrenceGeometry {
-  const factory OccurrenceGeometry({
-    required GeometryType type,
-    required List<double> coordinates,
-  }) = _OccurrenceGeometry;
-
-  factory OccurrenceGeometry.fromJson(Map<String, dynamic> json) =>
-      _$OccurrenceGeometryFromJson(json);
-}
-
-// ignore: constant_identifier_names
-enum GeometryType { Point }
-
-final geometryTypeValues = EnumValues({'Point': GeometryType.Point});
-
-@freezed
-abstract class OccurrenceProperties with _$OccurrenceProperties {
-  const factory OccurrenceProperties({
-    @JsonKey(name: 'id_occ') required int idOcc,
-    @JsonKey(name: 'id_sp') required String idSp,
-    required String name,
-    @JsonKey(name: 'common_name') required String commonName,
-    required String? image,
-    @JsonKey(name: 'prefered_image') required String? preferredImage,
-    required String link,
-  }) = _OccurrenceProperties;
-
-  factory OccurrenceProperties.fromJson(Map<String, dynamic> json) =>
-      _$OccurrencePropertiesFromJson(json);
-}
-
-// ignore: constant_identifier_names
-enum OccurrenceType { Feature }
-
-final occurrenceTypeValues = EnumValues({'Feature': OccurrenceType.Feature});
-
-@freezed
-abstract class TrailData with _$TrailData {
-  const factory TrailData({
-    required OccurrenceType type,
-    required TrailGeometry geometry,
-    required TrailProperties properties,
-  }) = _TrailData;
-
-  factory TrailData.fromJson(Map<String, dynamic> json) =>
-      _$TrailDataFromJson(json);
-}
-
-@freezed
-abstract class TrailGeometry with _$TrailGeometry {
-  const factory TrailGeometry({
-    required String type,
-    @CoordinatesConverter() required List<LatLng> coordinates,
-  }) = _TrailGeometry;
-
-  factory TrailGeometry.fromJson(Map<String, dynamic> json) =>
-      _$TrailGeometryFromJson(json);
-}
-
-@freezed
-abstract class TrailProperties with _$TrailProperties {
-  const factory TrailProperties({
-    required String id,
-    required String name,
-    required Centroid centroid,
-    required int length,
+abstract class Taxon with _$Taxon {
+  const factory Taxon({
+    required String species,
     required String author,
-    required String? image,
-  }) = _TrailProperties;
+    required String genus,
+    required String family,
+    required String referential,
+    @JsonKey(name: 'name_id') required int nameId,
+  }) = _Taxon;
 
-  factory TrailProperties.fromJson(Map<String, dynamic> json) =>
-      _$TrailPropertiesFromJson(json);
+  factory Taxon.fromJson(Map<String, dynamic> json) => _$TaxonFromJson(json);
 }
 
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
+@freezed
+abstract class Path with _$Path {
+  const factory Path({
+    required String type,
+    @LatLngListConverter() required List<LatLng> coordinates,
+  }) = _Path;
 
-  EnumValues(this.map);
+  factory Path.fromJson(Map<String, dynamic> json) => _$PathFromJson(json);
+}
 
-  Map<T, String> get reverse {
-    reverseMap;
-    return reverseMap;
+@freezed
+abstract class StartEndPosition with _$StartEndPosition {
+  const factory StartEndPosition({
+    @LatLngConverter() required LatLng start,
+    @LatLngConverter() required LatLng end,
+  }) = _StartEndPosition;
+
+  factory StartEndPosition.fromJson(Map<String, dynamic> json) =>
+      _$StartEndPositionFromJson(json);
+}
+
+class LatLngConverter implements JsonConverter<LatLng, dynamic> {
+  const LatLngConverter();
+
+  @override
+  LatLng fromJson(coordinates) {
+    LatLng latLng = LatLng(coordinates['lat'], coordinates['lng']);
+    return latLng;
+  }
+
+  @override
+  String toJson(LatLng latlng) {
+    String latLngJson = '{lat: ${latlng.latitude}, lng: ${latlng.longitude}}';
+    return latLngJson;
   }
 }
 
-class CoordinatesConverter
+class LatLngListConverter
     implements JsonConverter<List<LatLng>, List<dynamic>> {
-  const CoordinatesConverter();
+  const LatLngListConverter();
+  final LatLngConverter latLng = const LatLngConverter();
 
   @override
   List<LatLng> fromJson(coordinates) {
     List<LatLng> latLngList = [];
     for (var coordinate in coordinates) {
-      latLngList.add(LatLng(coordinate[1], coordinate[0]));
+      latLngList.add(latLng.fromJson(coordinate));
     }
     return latLngList;
   }
 
   @override
-  List<List<double>> toJson(coordinates) {
-    List<List<double>> latLngList = [];
+  List<dynamic> toJson(coordinates) {
+    List<dynamic> latLngList = [];
     for (var coordinate in coordinates) {
-      latLngList.add([coordinate.longitude, coordinate.latitude]);
+      latLngList.add({'lat': coordinate.longitude, 'lng': coordinate.latitude});
     }
     return latLngList;
   }
-}
-
-@freezed
-abstract class Centroid with _$Centroid {
-  const factory Centroid({
-    required String type,
-    required List<double> coordinates,
-  }) = _Centroid;
-
-  factory Centroid.fromJson(Map<String, dynamic> json) =>
-      _$CentroidFromJson(json);
 }

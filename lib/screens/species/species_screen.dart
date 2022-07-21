@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smartflore/screens/species/species_description_screen.dart';
+import 'package:smartflore/screens/species/species_webview_screen.dart';
+
+import '../../components/gallery/gallery.dart';
 
 class SpeciesScreen extends StatefulWidget {
   const SpeciesScreen({Key? key}) : super(key: key);
@@ -33,8 +36,8 @@ class _SpeciesScreenState extends State<SpeciesScreen> {
                     physics: NeverScrollableScrollPhysics(),
                     children: [
                       SpeciesDescription(),
-                      SpeciesDescription(),
-                      SpeciesDescription(),
+                      Gallery(),
+                      WebViewScreen(),
                       SpeciesDescription(),
                     ],
                   ),

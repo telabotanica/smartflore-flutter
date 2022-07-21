@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InteractiveItem extends StatelessWidget {
-  final String id;
+  final int id;
   final Widget child;
   final Function onPressed;
   const InteractiveItem(

@@ -6,59 +6,48 @@ part of 'trails_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Trails _$$_TrailsFromJson(Map<String, dynamic> json) => _$_Trails(
-      took: json['took'] as int,
-      timedOut: json['timed_out'] as bool,
-      referentials: (json['referentials'] as List<dynamic>)
-          .map((e) => Referential.fromJson(e as Map<String, dynamic>))
+_$_TrailList _$$_TrailListFromJson(Map<String, dynamic> json) => _$_TrailList(
+      trailList: (json['trailList'] as List<dynamic>?)
+          ?.map((e) => Trail.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_TrailsToJson(_$_Trails instance) => <String, dynamic>{
-      'took': instance.took,
-      'timed_out': instance.timedOut,
-      'referentials': instance.referentials,
-    };
-
-_$_Referential _$$_ReferentialFromJson(Map<String, dynamic> json) =>
-    _$_Referential(
-      key: json['key'] as String,
-      docCount: json['doc_count'] as int,
-      name: json['name'] as String,
-      trail: Trail.fromJson(json['trail'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_ReferentialToJson(_$_Referential instance) =>
+Map<String, dynamic> _$$_TrailListToJson(_$_TrailList instance) =>
     <String, dynamic>{
-      'key': instance.key,
-      'doc_count': instance.docCount,
-      'name': instance.name,
-      'trail': instance.trail,
+      'trailList': instance.trailList,
     };
 
 _$_Trail _$$_TrailFromJson(Map<String, dynamic> json) => _$_Trail(
-      centroid: Centroid.fromJson(json['centroid'] as Map<String, dynamic>),
-      length: json['length'] as int,
+      id: json['id'] as int,
+      name: json['name'] as String,
+      displayName: json['display_name'] as String,
       author: json['author'] as String,
-      image: json['image'] as String?,
+      position:
+          StartEndPosition.fromJson(json['position'] as Map<String, dynamic>),
+      occurrencesCount: json['occurrences_count'] as int,
+      details: json['details'] as String,
+      image: Image.fromJson(json['image'] as Map<String, dynamic>),
+      pathLength: json['path_length'] as int,
     );
 
 Map<String, dynamic> _$$_TrailToJson(_$_Trail instance) => <String, dynamic>{
-      'centroid': instance.centroid,
-      'length': instance.length,
+      'id': instance.id,
+      'name': instance.name,
+      'display_name': instance.displayName,
       'author': instance.author,
+      'position': instance.position,
+      'occurrences_count': instance.occurrencesCount,
+      'details': instance.details,
       'image': instance.image,
+      'path_length': instance.pathLength,
     };
 
-_$_Centroid _$$_CentroidFromJson(Map<String, dynamic> json) => _$_Centroid(
-      type: json['type'] as String,
-      coordinates: (json['coordinates'] as List<dynamic>)
-          .map((e) => (e as num).toDouble())
-          .toList(),
+_$_Image _$$_ImageFromJson(Map<String, dynamic> json) => _$_Image(
+      id: json['id'] as int,
+      url: json['url'] as String,
     );
 
-Map<String, dynamic> _$$_CentroidToJson(_$_Centroid instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'coordinates': instance.coordinates,
+Map<String, dynamic> _$$_ImageToJson(_$_Image instance) => <String, dynamic>{
+      'id': instance.id,
+      'url': instance.url,
     };

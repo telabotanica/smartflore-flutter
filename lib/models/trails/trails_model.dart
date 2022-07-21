@@ -1,51 +1,41 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:smartflore/models/trail/trail_model.dart';
 
 part 'trails_model.freezed.dart';
 part 'trails_model.g.dart';
 
 @freezed
-abstract class Trails with _$Trails {
-  const factory Trails({
-    required int took,
-    @JsonKey(name: 'timed_out') required bool timedOut,
-    required List<Referential> referentials,
-  }) = _Trails;
-
-  factory Trails.fromJson(Map<String, dynamic> json) => _$TrailsFromJson(json);
-}
-
-@freezed
-abstract class Referential with _$Referential {
-  const factory Referential({
-    required String key,
-    @JsonKey(name: 'doc_count') required int docCount,
-    required String name,
-    required Trail trail,
-  }) = _Referential;
-
-  factory Referential.fromJson(Map<String, dynamic> json) =>
-      _$ReferentialFromJson(json);
+abstract class TrailList with _$TrailList {
+  const factory TrailList({
+    List<Trail>? trailList,
+  }) = _TrailList;
+  factory TrailList.fromJson(Map<String, dynamic> json) =>
+      _$TrailListFromJson(json);
 }
 
 @freezed
 abstract class Trail with _$Trail {
   const factory Trail({
-    required Centroid centroid,
-    required int length,
+    required int id,
+    required String name,
+    @JsonKey(name: 'display_name') required String displayName,
     required String author,
-    required String? image,
+    required StartEndPosition position,
+    @JsonKey(name: 'occurrences_count') required int occurrencesCount,
+    required String details,
+    required Image image,
+    @JsonKey(name: 'path_length') required int pathLength,
   }) = _Trail;
 
   factory Trail.fromJson(Map<String, dynamic> json) => _$TrailFromJson(json);
 }
 
 @freezed
-abstract class Centroid with _$Centroid {
-  const factory Centroid({
-    required String type,
-    required List<double> coordinates,
-  }) = _Centroid;
+abstract class Image with _$Image {
+  const factory Image({
+    required int id,
+    required String url,
+  }) = _Image;
 
-  factory Centroid.fromJson(Map<String, dynamic> json) =>
-      _$CentroidFromJson(json);
+  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
 }

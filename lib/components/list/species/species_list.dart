@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smartflore/bloc/trails/trails_bloc.dart';
+import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/components/list/species/species_interactive_item.dart';
 
 class SpeciesList extends StatelessWidget {
@@ -10,28 +10,35 @@ class SpeciesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TrailsBloc, TrailsDataState>(
+    return BlocBuilder<TrailBloc, TrailState>(
       builder: (context, state) {
-        if (state is TrailsDataInitialState) {
+        if (state is TrailInitialState) {
           return const CircularProgressIndicator();
-        } else if (state is TrailsDataErrorState) {
+        } else if (state is TrailErrorState) {
           return const Text('Something is wrong ',
               style: TextStyle(color: Colors.red));
-        } else if (state is TrailsDataLoadedState) {
+        } else if (state is TrailLoadedState) {
           return ListView.builder(
-            padding: EdgeInsets.zero,
+            padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
             controller: controller,
-            itemCount: state.trails.referentials.length,
+            itemCount: state.trail.occurrencesCount,
             itemBuilder: (context, index) {
-              final referential = state.trails.referentials[index];
-              return SpeciesInteractiveItem(
-                  index: index,
-                  id: referential.key,
-                  title: referential.name,
-                  titleLatin: 'todo',
-                  image:
-                      'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-                  tags: const []);
+              if (state.trail.occurrences.isNotEmpty) {
+                final species = state.trail.occurrences[index];
+                if (species.images.isNotEmpty) {
+                  return SpeciesInteractiveItem(
+                      index: index,
+                      id: 0,
+                      title: species.taxon.genus,
+                      titleLatin: species.taxon.genus,
+                      image: species.images[0].url,
+                      tags: const []);
+                } else {
+                  return Container();
+                }
+              } else {
+                return Container();
+              }
             },
           );
         } else {

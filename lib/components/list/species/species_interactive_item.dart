@@ -8,7 +8,7 @@ import 'package:smartflore/components/list/species/species_item.dart';
 class SpeciesInteractiveItem extends StatelessWidget {
   final bool isInteractive;
   final int index;
-  final String id;
+  final int id;
   final String titleLatin;
   final String title;
   final String image;
@@ -25,7 +25,7 @@ class SpeciesInteractiveItem extends StatelessWidget {
       required this.tags})
       : super(key: key);
 
-  onPressed(BuildContext context, String id) {
+  onPressed(BuildContext context, int id) {
     BlocProvider.of<MapBloc>(context).add(RequestTrailPreview(trailID: id));
   }
 

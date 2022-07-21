@@ -7,10 +7,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class TrailPreview extends StatelessWidget {
   final bool isLoading;
   final int index;
-  final String id;
+  final int id;
   final String title;
   final String image;
   final int length;
+  final int nbOccurence;
   final LatLng position;
   final Function? onPressCB;
 
@@ -22,6 +23,7 @@ class TrailPreview extends StatelessWidget {
     required this.length,
     required this.image,
     required this.position,
+    required this.nbOccurence,
     this.onPressCB,
     this.isLoading = false,
   }) : super(key: key);
@@ -49,12 +51,14 @@ class TrailPreview extends StatelessWidget {
                 Opacity(
                     opacity: isLoading ? 0 : 1,
                     child: TrailItem(
-                        isInteractive: false,
-                        index: index,
-                        title: title,
-                        length: length,
-                        position: position,
-                        image: image)),
+                      isInteractive: false,
+                      index: index,
+                      title: title,
+                      length: length,
+                      position: position,
+                      image: image,
+                      nbOccurence: nbOccurence,
+                    )),
               ],
             ),
           ),

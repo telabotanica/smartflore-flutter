@@ -8,7 +8,7 @@ class TrailsDataInitialState extends TrailsDataState {}
 class TrailsDataLoadingState extends TrailsDataState {}
 
 class TrailsDataLoadedState extends TrailsDataState {
-  final Trails trails;
+  final List<Trail> trails;
   TrailsDataLoadedState({required this.trails});
 }
 

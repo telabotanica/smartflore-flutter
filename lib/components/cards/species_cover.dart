@@ -7,12 +7,12 @@ import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
-class SpeciesCoverWidget extends StatelessWidget {
+class SpeciesCover extends StatelessWidget {
   final String image;
   final String title;
   final LatLng position;
 
-  const SpeciesCoverWidget(
+  const SpeciesCover(
       {Key? key,
       required this.image,
       required this.title,

@@ -13,7 +13,7 @@ class TrailsBloc extends Bloc<TrailsEvent, TrailsDataState> {
     on<TrailsEvent>((event, emit) async {
       if (event is LoadTrailsDataEvent) {
         emit(TrailsDataLoadingState());
-        Trails? trails = await trailsRepo.getTrailList();
+        List<Trail>? trails = await trailsRepo.getTrailList();
         if (trails != null) {
           emit(TrailsDataLoadedState(trails: trails));
         } else {

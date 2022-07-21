@@ -12,7 +12,7 @@ class TrailInitialState extends TrailState {}
 class TrailLoadingState extends TrailState {}
 
 class TrailLoadedState extends TrailState {
-  final Trail trail;
+  final TrailDetails trail;
   const TrailLoadedState({required this.trail});
 }
 

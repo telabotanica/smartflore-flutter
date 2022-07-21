@@ -6,139 +6,104 @@ part of 'trail_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Trail _$$_TrailFromJson(Map<String, dynamic> json) => _$_Trail(
-      trail: TrailData.fromJson(json['trail'] as Map<String, dynamic>),
+_$_TrailDetails _$$_TrailDetailsFromJson(Map<String, dynamic> json) =>
+    _$_TrailDetails(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      displayName: json['display_name'] as String,
+      author: json['author'] as String,
+      position:
+          StartEndPosition.fromJson(json['position'] as Map<String, dynamic>),
+      startPosition: const LatLngConverter().fromJson(json['start_position']),
       occurrences: (json['occurrences'] as List<dynamic>)
           .map((e) => Occurrence.fromJson(e as Map<String, dynamic>))
           .toList(),
+      occurrencesCount: json['occurrences_count'] as int,
+      details: json['details'] as String,
+      image: Image.fromJson(json['image'] as Map<String, dynamic>),
+      path: Path.fromJson(json['path'] as Map<String, dynamic>),
+      pathLength: json['path_length'] as int,
     );
 
-Map<String, dynamic> _$$_TrailToJson(_$_Trail instance) => <String, dynamic>{
-      'trail': instance.trail,
+Map<String, dynamic> _$$_TrailDetailsToJson(_$_TrailDetails instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'display_name': instance.displayName,
+      'author': instance.author,
+      'position': instance.position,
+      'start_position': const LatLngConverter().toJson(instance.startPosition),
       'occurrences': instance.occurrences,
+      'occurrences_count': instance.occurrencesCount,
+      'details': instance.details,
+      'image': instance.image,
+      'path': instance.path,
+      'path_length': instance.pathLength,
+    };
+
+_$_Image _$$_ImageFromJson(Map<String, dynamic> json) => _$_Image(
+      id: json['id'] as int,
+      url: json['url'] as String,
+    );
+
+Map<String, dynamic> _$$_ImageToJson(_$_Image instance) => <String, dynamic>{
+      'id': instance.id,
+      'url': instance.url,
     };
 
 _$_Occurrence _$$_OccurrenceFromJson(Map<String, dynamic> json) =>
     _$_Occurrence(
-      type: $enumDecode(_$OccurrenceTypeEnumMap, json['type']),
-      geometry:
-          OccurrenceGeometry.fromJson(json['geometry'] as Map<String, dynamic>),
-      properties: OccurrenceProperties.fromJson(
-          json['properties'] as Map<String, dynamic>),
+      position: const LatLngConverter().fromJson(json['position']),
+      taxon: Taxon.fromJson(json['taxon'] as Map<String, dynamic>),
+      images: (json['images'] as List<dynamic>)
+          .map((e) => Image.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_OccurrenceToJson(_$_Occurrence instance) =>
     <String, dynamic>{
-      'type': _$OccurrenceTypeEnumMap[instance.type],
-      'geometry': instance.geometry,
-      'properties': instance.properties,
+      'position': const LatLngConverter().toJson(instance.position),
+      'taxon': instance.taxon,
+      'images': instance.images,
     };
 
-const _$OccurrenceTypeEnumMap = {
-  OccurrenceType.Feature: 'Feature',
-};
-
-_$_OccurrenceGeometry _$$_OccurrenceGeometryFromJson(
-        Map<String, dynamic> json) =>
-    _$_OccurrenceGeometry(
-      type: $enumDecode(_$GeometryTypeEnumMap, json['type']),
-      coordinates: (json['coordinates'] as List<dynamic>)
-          .map((e) => (e as num).toDouble())
-          .toList(),
+_$_Taxon _$$_TaxonFromJson(Map<String, dynamic> json) => _$_Taxon(
+      species: json['species'] as String,
+      author: json['author'] as String,
+      genus: json['genus'] as String,
+      family: json['family'] as String,
+      referential: json['referential'] as String,
+      nameId: json['name_id'] as int,
     );
 
-Map<String, dynamic> _$$_OccurrenceGeometryToJson(
-        _$_OccurrenceGeometry instance) =>
-    <String, dynamic>{
-      'type': _$GeometryTypeEnumMap[instance.type],
-      'coordinates': instance.coordinates,
+Map<String, dynamic> _$$_TaxonToJson(_$_Taxon instance) => <String, dynamic>{
+      'species': instance.species,
+      'author': instance.author,
+      'genus': instance.genus,
+      'family': instance.family,
+      'referential': instance.referential,
+      'name_id': instance.nameId,
     };
 
-const _$GeometryTypeEnumMap = {
-  GeometryType.Point: 'Point',
-};
-
-_$_OccurrenceProperties _$$_OccurrencePropertiesFromJson(
-        Map<String, dynamic> json) =>
-    _$_OccurrenceProperties(
-      idOcc: json['id_occ'] as int,
-      idSp: json['id_sp'] as String,
-      name: json['name'] as String,
-      commonName: json['common_name'] as String,
-      image: json['image'] as String?,
-      preferredImage: json['prefered_image'] as String?,
-      link: json['link'] as String,
-    );
-
-Map<String, dynamic> _$$_OccurrencePropertiesToJson(
-        _$_OccurrenceProperties instance) =>
-    <String, dynamic>{
-      'id_occ': instance.idOcc,
-      'id_sp': instance.idSp,
-      'name': instance.name,
-      'common_name': instance.commonName,
-      'image': instance.image,
-      'prefered_image': instance.preferredImage,
-      'link': instance.link,
-    };
-
-_$_TrailData _$$_TrailDataFromJson(Map<String, dynamic> json) => _$_TrailData(
-      type: $enumDecode(_$OccurrenceTypeEnumMap, json['type']),
-      geometry:
-          TrailGeometry.fromJson(json['geometry'] as Map<String, dynamic>),
-      properties:
-          TrailProperties.fromJson(json['properties'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_TrailDataToJson(_$_TrailData instance) =>
-    <String, dynamic>{
-      'type': _$OccurrenceTypeEnumMap[instance.type],
-      'geometry': instance.geometry,
-      'properties': instance.properties,
-    };
-
-_$_TrailGeometry _$$_TrailGeometryFromJson(Map<String, dynamic> json) =>
-    _$_TrailGeometry(
+_$_Path _$$_PathFromJson(Map<String, dynamic> json) => _$_Path(
       type: json['type'] as String,
       coordinates:
-          const CoordinatesConverter().fromJson(json['coordinates'] as List),
+          const LatLngListConverter().fromJson(json['coordinates'] as List),
     );
 
-Map<String, dynamic> _$$_TrailGeometryToJson(_$_TrailGeometry instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_PathToJson(_$_Path instance) => <String, dynamic>{
       'type': instance.type,
-      'coordinates': const CoordinatesConverter().toJson(instance.coordinates),
+      'coordinates': const LatLngListConverter().toJson(instance.coordinates),
     };
 
-_$_TrailProperties _$$_TrailPropertiesFromJson(Map<String, dynamic> json) =>
-    _$_TrailProperties(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      centroid: Centroid.fromJson(json['centroid'] as Map<String, dynamic>),
-      length: json['length'] as int,
-      author: json['author'] as String,
-      image: json['image'] as String?,
+_$_StartEndPosition _$$_StartEndPositionFromJson(Map<String, dynamic> json) =>
+    _$_StartEndPosition(
+      start: const LatLngConverter().fromJson(json['start']),
+      end: const LatLngConverter().fromJson(json['end']),
     );
 
-Map<String, dynamic> _$$_TrailPropertiesToJson(_$_TrailProperties instance) =>
+Map<String, dynamic> _$$_StartEndPositionToJson(_$_StartEndPosition instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'centroid': instance.centroid,
-      'length': instance.length,
-      'author': instance.author,
-      'image': instance.image,
-    };
-
-_$_Centroid _$$_CentroidFromJson(Map<String, dynamic> json) => _$_Centroid(
-      type: json['type'] as String,
-      coordinates: (json['coordinates'] as List<dynamic>)
-          .map((e) => (e as num).toDouble())
-          .toList(),
-    );
-
-Map<String, dynamic> _$$_CentroidToJson(_$_Centroid instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'coordinates': instance.coordinates,
+      'start': const LatLngConverter().toJson(instance.start),
+      'end': const LatLngConverter().toJson(instance.end),
     };
