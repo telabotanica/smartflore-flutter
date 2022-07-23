@@ -9,7 +9,7 @@ abstract class WalkState extends Equatable {
 
 class WalkInitial extends WalkState {}
 
-class OnOccurenceSelected extends WalkState {
+class OnOccurrenceSelected extends WalkState {
   final int occurenceID;
-  const OnOccurenceSelected({required this.occurenceID});
+  const OnOccurrenceSelected({required this.occurenceID});
 }

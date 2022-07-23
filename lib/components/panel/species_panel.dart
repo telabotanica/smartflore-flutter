@@ -7,6 +7,7 @@ import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/components/cards/species_cover.dart';
 import 'package:smartflore/components/list/species/species_list.dart';
 import 'package:smartflore/components/map/map_widget.dart';
+import 'package:smartflore/models/trail/trail_model.dart';
 
 class SpeciesPanelWidget extends StatefulWidget {
   final bool isDraggable;
@@ -26,6 +27,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
   bool isPanelOpened = false;
   bool isPanelMoving = false;
   int currentOccurence = 0;
+  TrailDetails? currentTrail;
 
   late Animation<double> animation;
   late AnimationController controller;
@@ -75,9 +77,19 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
             }
           },
         ),
+        BlocListener<TrailBloc, TrailState>(
+          listener: (context, state) {
+            if (state is TrailLoadedState) {
+              setState(() {
+                currentOccurence = 0;
+                currentTrail = state.trail;
+              });
+            }
+          },
+        ),
         BlocListener<WalkBloc, WalkState>(
           listener: (context, state) {
-            if (state is OnOccurenceSelected) {
+            if (state is OnOccurrenceSelected) {
               setState(() {
                 currentOccurence = state.occurenceID;
               });
@@ -137,27 +149,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                       ),
                     ),
                     const SizedBox(height: 8),
-                    BlocBuilder<TrailBloc, TrailState>(
-                      builder: (context, state) {
-                        if (state is TrailLoadedState) {
-                          final species =
-                              state.trail.occurrences[currentOccurence];
-                          return Center(
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width - 40,
-                              height: 200,
-                              child: SpeciesCover(
-                                image: species.images[0].url,
-                                title: species.taxon.genus,
-                                position: species.position,
-                              ),
-                            ),
-                          );
-                        } else {
-                          return Container();
-                        }
-                      },
-                    ),
+                    _addCover()
                   ],
                 ),
               ),
@@ -170,6 +162,36 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
     );
   }
 
+  Widget _addCover() {
+    final species = currentTrail?.occurrences[currentOccurence];
+    if (species == null) return Container();
+    return Column(
+      children: [
+        Center(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width - 40,
+            height: 200,
+            child: SpeciesCover(
+              image: species.images[0].url,
+              title: species.taxon.genus,
+              position: species.position,
+            ),
+          ),
+        ),
+        Container(
+            height: 25,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                  Colors.white.withOpacity(1),
+                  Colors.white.withOpacity(0)
+                ])))
+      ],
+    );
+  }
+
   Widget _buildSlidingPanel({
     required ScrollController scrollController,
     double bottomPadding = 0,
@@ -178,6 +200,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
       padding: const EdgeInsets.fromLTRB(20, 225, 20, 0),
       child: SpeciesList(
         controller: scrollController,
+        selectedID: currentOccurence,
       ),
     );
   }

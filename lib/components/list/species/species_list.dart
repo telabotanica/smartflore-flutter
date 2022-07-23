@@ -5,8 +5,11 @@ import 'package:smartflore/components/list/species/species_interactive_item.dart
 
 class SpeciesList extends StatelessWidget {
   final ScrollController controller;
+  final int selectedID;
 
-  const SpeciesList({Key? key, required this.controller}) : super(key: key);
+  const SpeciesList(
+      {Key? key, required this.controller, required this.selectedID})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,7 @@ class SpeciesList extends StatelessWidget {
                 final species = state.trail.occurrences[index];
                 if (species.images.isNotEmpty) {
                   return SpeciesInteractiveItem(
+                      isSelected: (selectedID == index),
                       index: index,
                       id: 0,
                       title: species.taxon.genus,

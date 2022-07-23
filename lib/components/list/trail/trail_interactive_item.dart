@@ -36,6 +36,7 @@ class TrailInteractiveItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ItemSeparator(
         child: InteractiveItem(
+      isSelected: false,
       id: id,
       onPressed: onPressed,
       child: TrailItem(

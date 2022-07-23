@@ -7,10 +7,10 @@ abstract class WalkEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SelectOccurence extends WalkEvent {
-  final int occurenceID;
-  const SelectOccurence({required this.occurenceID});
+class SelectOccurrence extends WalkEvent {
+  final int occurrenceID;
+  const SelectOccurrence({required this.occurrenceID});
 
   @override
-  List<Object> get props => [occurenceID];
+  List<Object> get props => [occurrenceID];
 }

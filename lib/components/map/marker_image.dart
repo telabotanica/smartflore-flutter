@@ -11,8 +11,8 @@ class MarkerImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 42,
-      height: 42,
+      width: 82,
+      height: 82,
       decoration: BoxDecoration(
         border: Border.all(width: 2.5, color: Colors.white),
         borderRadius: const BorderRadius.all(Radius.circular(100)),

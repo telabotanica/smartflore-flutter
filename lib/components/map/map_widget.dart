@@ -8,8 +8,8 @@ import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
-import 'package:smartflore/components/map/marker_condensed.dart';
 import 'package:smartflore/components/map/marker_me.dart';
+import 'package:smartflore/components/map/marker_occurrence.dart';
 import 'package:smartflore/components/map/marker_with_bg.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
@@ -30,6 +30,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   TrailDetails? trailData;
   List<Trail>? trailsData;
   MapMode mapMode = MapMode.overview;
+  int? selectedOccurence;
+  bool forceOccurenceUpdate = false;
 
   late final MapController _mapController;
 
@@ -37,12 +39,22 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _mapController = MapController();
+    selectedOccurence = 0;
   }
 
   void setMapMode(MapMode mapMode) {
     if (this.mapMode != mapMode) {
       setState(() {
         this.mapMode = mapMode;
+      });
+    }
+  }
+
+  void setSelectedOccurrence(int occurrenceID) {
+    if (selectedOccurence != occurrenceID) {
+      setState(() {
+        selectedOccurence = occurrenceID;
+        forceOccurenceUpdate = true;
       });
     }
   }
@@ -54,11 +66,11 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   void _animatedMapMove(LatLng destLocation, double destZoom) {
     // Create some tweens. These serve to split up the transition from one location to another.
     // In our case, we want to split the transition be<tween> our current map center and the destination.
-    final _latTween = Tween<double>(
+    final latTween = Tween<double>(
         begin: _mapController.center.latitude, end: destLocation.latitude);
-    final _lngTween = Tween<double>(
+    final lngTween = Tween<double>(
         begin: _mapController.center.longitude, end: destLocation.longitude);
-    final _zoomTween = Tween<double>(begin: _mapController.zoom, end: destZoom);
+    final zoomTween = Tween<double>(begin: _mapController.zoom, end: destZoom);
 
     // Create a animation controller that has a duration and a TickerProvider.
     var controller = AnimationController(
@@ -70,8 +82,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 
     controller.addListener(() {
       _mapController.move(
-          LatLng(_latTween.evaluate(animation), _lngTween.evaluate(animation)),
-          _zoomTween.evaluate(animation));
+          LatLng(latTween.evaluate(animation), lngTween.evaluate(animation)),
+          zoomTween.evaluate(animation));
     });
 
     animation.addStatusListener((status) {
@@ -137,6 +149,13 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             }
           },
         ),
+        BlocListener<WalkBloc, WalkState>(
+          listener: (context, state) {
+            if (state is OnOccurrenceSelected) {
+              setSelectedOccurrence(state.occurenceID);
+            }
+          },
+        ),
       ],
       child: FlutterMap(
         mapController: _mapController,
@@ -161,7 +180,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                   'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
               subdomains: ['a', 'b', 'c'],
               retinaMode: true,
-              tileProvider: const CachedTileProvider()),
+              tileProvider: CachedTileProvider()),
           MarkerLayerOptions(
             markers: [
               Marker(
@@ -310,15 +329,26 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           markers: trailData != null
               ? trailData!.occurrences.mapIndexed((index, occurrence) {
                   return Marker(
+                    width: index == selectedOccurence && forceOccurenceUpdate
+                        ? 60
+                        : 35,
+                    height: index == selectedOccurence && forceOccurenceUpdate
+                        ? 60
+                        : 35,
                     anchorPos: AnchorPos.align(AnchorAlign.center),
                     point: occurrence.position,
                     builder: (ctx) => SizedBox.expand(
                       child: IconButton(
                           onPressed: () {
                             BlocProvider.of<WalkBloc>(context)
-                                .add(SelectOccurence(occurenceID: index));
+                                .add(SelectOccurrence(occurrenceID: index));
                           },
-                          icon: const MarkerCondensed()),
+                          icon: MarkerOccurrence(
+                            imageUrl: occurrence.images.first.url,
+                            id: index,
+                            isSelected: index == selectedOccurence &&
+                                forceOccurenceUpdate,
+                          )),
                     ),
                   );
                 }).toList()
@@ -328,7 +358,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 }
 
 class CachedTileProvider extends TileProvider {
-  const CachedTileProvider();
+  CachedTileProvider();
   @override
   ImageProvider getImage(Coords<num> coords, TileLayerOptions options) {
     return CachedNetworkImageProvider(
