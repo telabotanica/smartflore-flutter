@@ -173,7 +173,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
             height: 200,
             child: SpeciesCover(
               image: species.images[0].url,
-              title: species.taxon.genus,
+              title: '${species.taxon.species} - ${species.taxon.genus}',
               position: species.position,
             ),
           ),

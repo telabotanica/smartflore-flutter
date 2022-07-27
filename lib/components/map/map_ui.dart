@@ -25,6 +25,8 @@ class MapUI extends StatelessWidget {
         AnimatedPositioned(
             top: 20,
             right: (mapMode == MapMode.trail) ? -60 : 20,
+            curve: Curves.easeInOutCubic,
+            duration: const Duration(milliseconds: 300),
             child: SafeArea(
               child: SizedBox(
                 width: 46,
@@ -41,11 +43,11 @@ class MapUI extends StatelessWidget {
                   onPressed: () {},
                 ),
               ),
-            ),
-            curve: Curves.easeInOutCubic,
-            duration: const Duration(milliseconds: 300)),
+            )),
         AnimatedPositioned(
             top: (mapMode == MapMode.trail) ? 20 : -100,
+            curve: Curves.easeInOutCubic,
+            duration: const Duration(milliseconds: 300),
             child: SafeArea(
                 child: Padding(
               padding: const EdgeInsets.only(left: 20),
@@ -62,9 +64,7 @@ class MapUI extends StatelessWidget {
                       return Container();
                     },
                   ))),
-            )),
-            curve: Curves.easeInOutCubic,
-            duration: const Duration(milliseconds: 300)),
+            ))),
         AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,

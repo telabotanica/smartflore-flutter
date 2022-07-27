@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
 
 part 'walk_event.dart';

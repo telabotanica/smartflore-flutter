@@ -33,7 +33,7 @@ class SpeciesList extends StatelessWidget {
                       isSelected: (selectedID == index),
                       index: index,
                       id: 0,
-                      title: species.taxon.genus,
+                      title: species.taxon.species,
                       titleLatin: species.taxon.genus,
                       image: species.images[0].url,
                       tags: const []);

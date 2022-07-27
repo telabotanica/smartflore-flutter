@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "41.0.0"
+    version: "42.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.2.0"
+    version: "4.3.0"
   archive:
     dependency: transitive
     description:
@@ -289,10 +289,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "8a4bca76496ac7debf30ee677011f1574a12b1de"
+      resolved-ref: e6a77940009bc8b646f8f1bf2b05bd24ab754f08
       url: "https://github.com/fleaflet/flutter_map.git"
     source: git
-    version: "2.0.0"
+    version: "2.1.0"
   flutter_native_splash:
     dependency: "direct main"
     description:
@@ -429,6 +429,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.0"
+  image_fade:
+    dependency: "direct main"
+    description:
+      name: image_fade
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.1"
   intl:
     dependency: "direct main"
     description:
@@ -1014,7 +1021,7 @@ packages:
       name: webview_flutter_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.9.0"
+    version: "2.9.2"
   webview_flutter_platform_interface:
     dependency: transitive
     description:

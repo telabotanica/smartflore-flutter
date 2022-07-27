@@ -48,7 +48,6 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
     return BlocListener<MapBloc, MapState>(
       listener: (context, state) {
         if (state is OnMapModeChanged) {
-          print('state.mapMode ${state.mapMode}');
           setMapMode(state.mapMode);
         }
       },

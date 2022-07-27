@@ -7,7 +7,6 @@ class TrailsRepo {
   TrailsRepo({required this.trailsApiClient});
 
   Future<List<Trail>?> getTrailList() async {
-    print('>>>>> GET TRAILS');
     final List<Trail>? trails = await trailsApiClient.getTrailList();
     return trails;
   }

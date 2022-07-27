@@ -35,7 +35,6 @@ class _MarkerOccurrenceState extends State<MarkerOccurrence> {
 
   @override
   Widget build(BuildContext context) {
-    print('rebuild');
     return AnimatedSwitcher(
       duration: Duration(milliseconds: forceUpdate ? 300 : 0),
       transitionBuilder: (Widget child, Animation<double> animation) {
