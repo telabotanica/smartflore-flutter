@@ -328,8 +328,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       MarkerLayerOptions(
           markers: trailData != null
               ? trailData!.occurrences.mapIndexed((index, occurrence) {
-                  if (occurrence.images.isEmpty)
-                    print('Occurence : ${occurrence.taxon.genus} - $index');
                   return Marker(
                     width: index == selectedOccurence && forceOccurenceUpdate
                         ? 60

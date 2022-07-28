@@ -48,6 +48,8 @@ dependencies:
   webview_flutter: ^3.0.4
   collection: ^1.16.0
   image_fade: ^0.6.1
+  bloc: ^8.0.3
+  freezed_annotation: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -56,7 +58,6 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   build_runner: ^2.1.10
   freezed: ^2.0.2
-  freezed_annotation: ^2.0.1
   json_serializable: ^6.1.6
   icons_launcher: ^1.1.7
 
