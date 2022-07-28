@@ -328,6 +328,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       MarkerLayerOptions(
           markers: trailData != null
               ? trailData!.occurrences.mapIndexed((index, occurrence) {
+                  if (occurrence.images.isEmpty)
+                    print('Occurence : ${occurrence.taxon.genus} - $index');
                   return Marker(
                     width: index == selectedOccurence && forceOccurenceUpdate
                         ? 60
@@ -344,7 +346,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                                 .add(SelectOccurrence(occurrenceID: index));
                           },
                           icon: MarkerOccurrence(
-                            imageUrl: occurrence.images.first.url,
+                            imageUrl: (occurrence.images.isNotEmpty)
+                                ? occurrence.images.first.url
+                                : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
                             id: index,
                             isSelected: index == selectedOccurence &&
                                 forceOccurenceUpdate,

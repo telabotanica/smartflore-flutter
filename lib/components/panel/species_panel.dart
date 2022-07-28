@@ -172,7 +172,9 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
             width: MediaQuery.of(context).size.width - 40,
             height: 200,
             child: SpeciesCover(
-              image: species.images[0].url,
+              image: (species.images.isNotEmpty)
+                  ? species.images[0].url
+                  : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
               title: '${species.taxon.species} - ${species.taxon.genus}',
               position: species.position,
             ),

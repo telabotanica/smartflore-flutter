@@ -28,18 +28,16 @@ class SpeciesList extends StatelessWidget {
             itemBuilder: (context, index) {
               if (state.trail.occurrences.isNotEmpty) {
                 final species = state.trail.occurrences[index];
-                if (species.images.isNotEmpty) {
-                  return SpeciesInteractiveItem(
-                      isSelected: (selectedID == index),
-                      index: index,
-                      id: 0,
-                      title: species.taxon.species,
-                      titleLatin: species.taxon.genus,
-                      image: species.images[0].url,
-                      tags: const []);
-                } else {
-                  return Container();
-                }
+                return SpeciesInteractiveItem(
+                    isSelected: (selectedID == index),
+                    index: index,
+                    id: 0,
+                    title: species.taxon.species,
+                    titleLatin: species.taxon.genus,
+                    image: (species.images.isNotEmpty)
+                        ? species.images[0].url
+                        : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
+                    tags: const []);
               } else {
                 return Container();
               }
