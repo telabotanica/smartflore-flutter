@@ -9,4 +9,4 @@ It has different possible states:
 - `MapMode.trail` : when want to discover / follow a specific trail. 
 
 #### Map Widget tree
-```Insert PICTURE here```
+<img width="906" alt="image" src="https://user-images.githubusercontent.com/712986/181562019-c8140260-eebd-4932-a084-ac02194c5bd7.png">
