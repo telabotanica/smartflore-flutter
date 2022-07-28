@@ -14,6 +14,7 @@ class TrailItem extends StatelessWidget {
   final String image;
   final int length;
   final LatLng position;
+  final int nbOccurence;
 
   const TrailItem({
     Key? key,
@@ -23,6 +24,7 @@ class TrailItem extends StatelessWidget {
     required this.length,
     required this.image,
     required this.position,
+    required this.nbOccurence,
   }) : super(key: key);
 
   @override
@@ -99,7 +101,7 @@ class TrailItem extends StatelessWidget {
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                               const SizedBox(width: 5),
-                              Text('8 espèces',
+                              Text('$nbOccurence observations',
                                   style: Theme.of(context).textTheme.caption),
                             ],
                           ),

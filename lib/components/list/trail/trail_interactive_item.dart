@@ -8,12 +8,13 @@ import 'package:smartflore/components/list/trail/trail_item.dart';
 
 class TrailInteractiveItemWidget extends StatelessWidget {
   final bool isInteractive;
-  final String id;
+  final int id;
   final int index;
   final String title;
   final String image;
   final int length;
   final LatLng position;
+  final int nbOccurence;
 
   const TrailInteractiveItemWidget(
       {Key? key,
@@ -23,10 +24,11 @@ class TrailInteractiveItemWidget extends StatelessWidget {
       required this.title,
       required this.length,
       required this.image,
-      required this.position})
+      required this.position,
+      required this.nbOccurence})
       : super(key: key);
 
-  onPressed(BuildContext context, String id) {
+  onPressed(BuildContext context, int id) {
     BlocProvider.of<MapBloc>(context).add(RequestTrailPreview(trailID: id));
   }
 
@@ -34,6 +36,7 @@ class TrailInteractiveItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ItemSeparator(
         child: InteractiveItem(
+      isSelected: false,
       id: id,
       onPressed: onPressed,
       child: TrailItem(
@@ -42,6 +45,7 @@ class TrailInteractiveItemWidget extends StatelessWidget {
         length: length,
         position: position,
         image: image,
+        nbOccurence: nbOccurence,
       ),
     ));
   }

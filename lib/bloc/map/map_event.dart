@@ -18,7 +18,7 @@ class ChangeMapMode extends MapEvent {
 }
 
 class RequestTrailPreview extends MapEvent {
-  final String trailID;
+  final int trailID;
   const RequestTrailPreview({required this.trailID});
 
   @override

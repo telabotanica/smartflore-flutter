@@ -5,11 +5,13 @@ import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
+import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 import 'package:smartflore/repo/trail/trail_api_client.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
+import 'package:smartflore/repo/walk/walk_repo.dart';
 import 'package:smartflore/screens/map_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
@@ -27,11 +29,13 @@ void main() {
       trailsApiClient: TrailsApiClient(
           httpClient: http.Client(),
           baseUrl:
-              'https://taxamart.floristic.org/referential?language=fr&type=trail'));
+              'https://beta.tela-botanica.org/smartflore-services/trails'));
   final TrailRepo trailRepo = TrailRepo(
       trailApiClient: TrailApiClient(
           httpClient: http.Client(),
-          baseUrl: 'https://taxamart.floristic.org/trail/'));
+          baseUrl: 'https://beta.tela-botanica.org/smartflore-services/trail'));
+
+  final WalkRepo walkRepo = WalkRepo();
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
   BlocOverrides.runZoned(
@@ -42,6 +46,7 @@ void main() {
             create: (context) =>
                 TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
         BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
+        BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
         BlocProvider<GeolocationBloc>(
             create: (context) =>
                 GeolocationBloc(geolocationRepo: geolocationRepo)

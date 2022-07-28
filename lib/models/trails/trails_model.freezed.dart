@@ -14,395 +14,136 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Trails _$TrailsFromJson(Map<String, dynamic> json) {
-  return _Trails.fromJson(json);
+TrailList _$TrailListFromJson(Map<String, dynamic> json) {
+  return _TrailList.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Trails {
-  int get took => throw _privateConstructorUsedError;
-  @JsonKey(name: 'timed_out')
-  bool get timedOut => throw _privateConstructorUsedError;
-  List<Referential> get referentials => throw _privateConstructorUsedError;
+mixin _$TrailList {
+  List<Trail>? get trailList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TrailsCopyWith<Trails> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TrailsCopyWith<$Res> {
-  factory $TrailsCopyWith(Trails value, $Res Function(Trails) then) =
-      _$TrailsCopyWithImpl<$Res>;
-  $Res call(
-      {int took,
-      @JsonKey(name: 'timed_out') bool timedOut,
-      List<Referential> referentials});
-}
-
-/// @nodoc
-class _$TrailsCopyWithImpl<$Res> implements $TrailsCopyWith<$Res> {
-  _$TrailsCopyWithImpl(this._value, this._then);
-
-  final Trails _value;
-  // ignore: unused_field
-  final $Res Function(Trails) _then;
-
-  @override
-  $Res call({
-    Object? took = freezed,
-    Object? timedOut = freezed,
-    Object? referentials = freezed,
-  }) {
-    return _then(_value.copyWith(
-      took: took == freezed
-          ? _value.took
-          : took // ignore: cast_nullable_to_non_nullable
-              as int,
-      timedOut: timedOut == freezed
-          ? _value.timedOut
-          : timedOut // ignore: cast_nullable_to_non_nullable
-              as bool,
-      referentials: referentials == freezed
-          ? _value.referentials
-          : referentials // ignore: cast_nullable_to_non_nullable
-              as List<Referential>,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$TrailsCopyWith<$Res> implements $TrailsCopyWith<$Res> {
-  factory _$TrailsCopyWith(_Trails value, $Res Function(_Trails) then) =
-      __$TrailsCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {int took,
-      @JsonKey(name: 'timed_out') bool timedOut,
-      List<Referential> referentials});
-}
-
-/// @nodoc
-class __$TrailsCopyWithImpl<$Res> extends _$TrailsCopyWithImpl<$Res>
-    implements _$TrailsCopyWith<$Res> {
-  __$TrailsCopyWithImpl(_Trails _value, $Res Function(_Trails) _then)
-      : super(_value, (v) => _then(v as _Trails));
-
-  @override
-  _Trails get _value => super._value as _Trails;
-
-  @override
-  $Res call({
-    Object? took = freezed,
-    Object? timedOut = freezed,
-    Object? referentials = freezed,
-  }) {
-    return _then(_Trails(
-      took: took == freezed
-          ? _value.took
-          : took // ignore: cast_nullable_to_non_nullable
-              as int,
-      timedOut: timedOut == freezed
-          ? _value.timedOut
-          : timedOut // ignore: cast_nullable_to_non_nullable
-              as bool,
-      referentials: referentials == freezed
-          ? _value.referentials
-          : referentials // ignore: cast_nullable_to_non_nullable
-              as List<Referential>,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Trails implements _Trails {
-  const _$_Trails(
-      {required this.took,
-      @JsonKey(name: 'timed_out') required this.timedOut,
-      required final List<Referential> referentials})
-      : _referentials = referentials;
-
-  factory _$_Trails.fromJson(Map<String, dynamic> json) =>
-      _$$_TrailsFromJson(json);
-
-  @override
-  final int took;
-  @override
-  @JsonKey(name: 'timed_out')
-  final bool timedOut;
-  final List<Referential> _referentials;
-  @override
-  List<Referential> get referentials {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_referentials);
-  }
-
-  @override
-  String toString() {
-    return 'Trails(took: $took, timedOut: $timedOut, referentials: $referentials)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Trails &&
-            const DeepCollectionEquality().equals(other.took, took) &&
-            const DeepCollectionEquality().equals(other.timedOut, timedOut) &&
-            const DeepCollectionEquality()
-                .equals(other.referentials, referentials));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(took),
-      const DeepCollectionEquality().hash(timedOut),
-      const DeepCollectionEquality().hash(referentials));
-
-  @JsonKey(ignore: true)
-  @override
-  _$TrailsCopyWith<_Trails> get copyWith =>
-      __$TrailsCopyWithImpl<_Trails>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_TrailsToJson(this);
-  }
-}
-
-abstract class _Trails implements Trails {
-  const factory _Trails(
-      {required final int took,
-      @JsonKey(name: 'timed_out') required final bool timedOut,
-      required final List<Referential> referentials}) = _$_Trails;
-
-  factory _Trails.fromJson(Map<String, dynamic> json) = _$_Trails.fromJson;
-
-  @override
-  int get took => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(name: 'timed_out')
-  bool get timedOut => throw _privateConstructorUsedError;
-  @override
-  List<Referential> get referentials => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$TrailsCopyWith<_Trails> get copyWith => throw _privateConstructorUsedError;
-}
-
-Referential _$ReferentialFromJson(Map<String, dynamic> json) {
-  return _Referential.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Referential {
-  String get key => throw _privateConstructorUsedError;
-  @JsonKey(name: 'doc_count')
-  int get docCount => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  Trail get trail => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ReferentialCopyWith<Referential> get copyWith =>
+  $TrailListCopyWith<TrailList> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ReferentialCopyWith<$Res> {
-  factory $ReferentialCopyWith(
-          Referential value, $Res Function(Referential) then) =
-      _$ReferentialCopyWithImpl<$Res>;
-  $Res call(
-      {String key,
-      @JsonKey(name: 'doc_count') int docCount,
-      String name,
-      Trail trail});
-
-  $TrailCopyWith<$Res> get trail;
+abstract class $TrailListCopyWith<$Res> {
+  factory $TrailListCopyWith(TrailList value, $Res Function(TrailList) then) =
+      _$TrailListCopyWithImpl<$Res>;
+  $Res call({List<Trail>? trailList});
 }
 
 /// @nodoc
-class _$ReferentialCopyWithImpl<$Res> implements $ReferentialCopyWith<$Res> {
-  _$ReferentialCopyWithImpl(this._value, this._then);
+class _$TrailListCopyWithImpl<$Res> implements $TrailListCopyWith<$Res> {
+  _$TrailListCopyWithImpl(this._value, this._then);
 
-  final Referential _value;
+  final TrailList _value;
   // ignore: unused_field
-  final $Res Function(Referential) _then;
+  final $Res Function(TrailList) _then;
 
   @override
   $Res call({
-    Object? key = freezed,
-    Object? docCount = freezed,
-    Object? name = freezed,
-    Object? trail = freezed,
+    Object? trailList = freezed,
   }) {
     return _then(_value.copyWith(
-      key: key == freezed
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      docCount: docCount == freezed
-          ? _value.docCount
-          : docCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      trail: trail == freezed
-          ? _value.trail
-          : trail // ignore: cast_nullable_to_non_nullable
-              as Trail,
+      trailList: trailList == freezed
+          ? _value.trailList
+          : trailList // ignore: cast_nullable_to_non_nullable
+              as List<Trail>?,
     ));
   }
-
-  @override
-  $TrailCopyWith<$Res> get trail {
-    return $TrailCopyWith<$Res>(_value.trail, (value) {
-      return _then(_value.copyWith(trail: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$ReferentialCopyWith<$Res>
-    implements $ReferentialCopyWith<$Res> {
-  factory _$ReferentialCopyWith(
-          _Referential value, $Res Function(_Referential) then) =
-      __$ReferentialCopyWithImpl<$Res>;
+abstract class _$TrailListCopyWith<$Res> implements $TrailListCopyWith<$Res> {
+  factory _$TrailListCopyWith(
+          _TrailList value, $Res Function(_TrailList) then) =
+      __$TrailListCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String key,
-      @JsonKey(name: 'doc_count') int docCount,
-      String name,
-      Trail trail});
-
-  @override
-  $TrailCopyWith<$Res> get trail;
+  $Res call({List<Trail>? trailList});
 }
 
 /// @nodoc
-class __$ReferentialCopyWithImpl<$Res> extends _$ReferentialCopyWithImpl<$Res>
-    implements _$ReferentialCopyWith<$Res> {
-  __$ReferentialCopyWithImpl(
-      _Referential _value, $Res Function(_Referential) _then)
-      : super(_value, (v) => _then(v as _Referential));
+class __$TrailListCopyWithImpl<$Res> extends _$TrailListCopyWithImpl<$Res>
+    implements _$TrailListCopyWith<$Res> {
+  __$TrailListCopyWithImpl(_TrailList _value, $Res Function(_TrailList) _then)
+      : super(_value, (v) => _then(v as _TrailList));
 
   @override
-  _Referential get _value => super._value as _Referential;
+  _TrailList get _value => super._value as _TrailList;
 
   @override
   $Res call({
-    Object? key = freezed,
-    Object? docCount = freezed,
-    Object? name = freezed,
-    Object? trail = freezed,
+    Object? trailList = freezed,
   }) {
-    return _then(_Referential(
-      key: key == freezed
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      docCount: docCount == freezed
-          ? _value.docCount
-          : docCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      trail: trail == freezed
-          ? _value.trail
-          : trail // ignore: cast_nullable_to_non_nullable
-              as Trail,
+    return _then(_TrailList(
+      trailList: trailList == freezed
+          ? _value.trailList
+          : trailList // ignore: cast_nullable_to_non_nullable
+              as List<Trail>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Referential implements _Referential {
-  const _$_Referential(
-      {required this.key,
-      @JsonKey(name: 'doc_count') required this.docCount,
-      required this.name,
-      required this.trail});
+class _$_TrailList implements _TrailList {
+  const _$_TrailList({final List<Trail>? trailList}) : _trailList = trailList;
 
-  factory _$_Referential.fromJson(Map<String, dynamic> json) =>
-      _$$_ReferentialFromJson(json);
+  factory _$_TrailList.fromJson(Map<String, dynamic> json) =>
+      _$$_TrailListFromJson(json);
 
+  final List<Trail>? _trailList;
   @override
-  final String key;
-  @override
-  @JsonKey(name: 'doc_count')
-  final int docCount;
-  @override
-  final String name;
-  @override
-  final Trail trail;
+  List<Trail>? get trailList {
+    final value = _trailList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Referential(key: $key, docCount: $docCount, name: $name, trail: $trail)';
+    return 'TrailList(trailList: $trailList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Referential &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.docCount, docCount) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.trail, trail));
+            other is _TrailList &&
+            const DeepCollectionEquality().equals(other.trailList, trailList));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(docCount),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(trail));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(trailList));
 
   @JsonKey(ignore: true)
   @override
-  _$ReferentialCopyWith<_Referential> get copyWith =>
-      __$ReferentialCopyWithImpl<_Referential>(this, _$identity);
+  _$TrailListCopyWith<_TrailList> get copyWith =>
+      __$TrailListCopyWithImpl<_TrailList>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReferentialToJson(this);
+    return _$$_TrailListToJson(this);
   }
 }
 
-abstract class _Referential implements Referential {
-  const factory _Referential(
-      {required final String key,
-      @JsonKey(name: 'doc_count') required final int docCount,
-      required final String name,
-      required final Trail trail}) = _$_Referential;
+abstract class _TrailList implements TrailList {
+  const factory _TrailList({final List<Trail>? trailList}) = _$_TrailList;
 
-  factory _Referential.fromJson(Map<String, dynamic> json) =
-      _$_Referential.fromJson;
+  factory _TrailList.fromJson(Map<String, dynamic> json) =
+      _$_TrailList.fromJson;
 
   @override
-  String get key => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(name: 'doc_count')
-  int get docCount => throw _privateConstructorUsedError;
-  @override
-  String get name => throw _privateConstructorUsedError;
-  @override
-  Trail get trail => throw _privateConstructorUsedError;
+  List<Trail>? get trailList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ReferentialCopyWith<_Referential> get copyWith =>
+  _$TrailListCopyWith<_TrailList> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -412,10 +153,18 @@ Trail _$TrailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Trail {
-  Centroid get centroid => throw _privateConstructorUsedError;
-  int get length => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'display_name')
+  String get displayName => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  StartEndPosition get position => throw _privateConstructorUsedError;
+  @JsonKey(name: 'occurrences_count')
+  int get occurrencesCount => throw _privateConstructorUsedError;
+  String get details => throw _privateConstructorUsedError;
+  Image get image => throw _privateConstructorUsedError;
+  @JsonKey(name: 'path_length')
+  int get pathLength => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -426,9 +175,19 @@ mixin _$Trail {
 abstract class $TrailCopyWith<$Res> {
   factory $TrailCopyWith(Trail value, $Res Function(Trail) then) =
       _$TrailCopyWithImpl<$Res>;
-  $Res call({Centroid centroid, int length, String author, String? image});
+  $Res call(
+      {int id,
+      String name,
+      @JsonKey(name: 'display_name') String displayName,
+      String author,
+      StartEndPosition position,
+      @JsonKey(name: 'occurrences_count') int occurrencesCount,
+      String details,
+      Image image,
+      @JsonKey(name: 'path_length') int pathLength});
 
-  $CentroidCopyWith<$Res> get centroid;
+  $StartEndPositionCopyWith<$Res> get position;
+  $ImageCopyWith<$Res> get image;
 }
 
 /// @nodoc
@@ -441,35 +200,67 @@ class _$TrailCopyWithImpl<$Res> implements $TrailCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? centroid = freezed,
-    Object? length = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? displayName = freezed,
     Object? author = freezed,
+    Object? position = freezed,
+    Object? occurrencesCount = freezed,
+    Object? details = freezed,
     Object? image = freezed,
+    Object? pathLength = freezed,
   }) {
     return _then(_value.copyWith(
-      centroid: centroid == freezed
-          ? _value.centroid
-          : centroid // ignore: cast_nullable_to_non_nullable
-              as Centroid,
-      length: length == freezed
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      displayName: displayName == freezed
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as StartEndPosition,
+      occurrencesCount: occurrencesCount == freezed
+          ? _value.occurrencesCount
+          : occurrencesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      details: details == freezed
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Image,
+      pathLength: pathLength == freezed
+          ? _value.pathLength
+          : pathLength // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
   @override
-  $CentroidCopyWith<$Res> get centroid {
-    return $CentroidCopyWith<$Res>(_value.centroid, (value) {
-      return _then(_value.copyWith(centroid: value));
+  $StartEndPositionCopyWith<$Res> get position {
+    return $StartEndPositionCopyWith<$Res>(_value.position, (value) {
+      return _then(_value.copyWith(position: value));
+    });
+  }
+
+  @override
+  $ImageCopyWith<$Res> get image {
+    return $ImageCopyWith<$Res>(_value.image, (value) {
+      return _then(_value.copyWith(image: value));
     });
   }
 }
@@ -479,10 +270,21 @@ abstract class _$TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
   factory _$TrailCopyWith(_Trail value, $Res Function(_Trail) then) =
       __$TrailCopyWithImpl<$Res>;
   @override
-  $Res call({Centroid centroid, int length, String author, String? image});
+  $Res call(
+      {int id,
+      String name,
+      @JsonKey(name: 'display_name') String displayName,
+      String author,
+      StartEndPosition position,
+      @JsonKey(name: 'occurrences_count') int occurrencesCount,
+      String details,
+      Image image,
+      @JsonKey(name: 'path_length') int pathLength});
 
   @override
-  $CentroidCopyWith<$Res> get centroid;
+  $StartEndPositionCopyWith<$Res> get position;
+  @override
+  $ImageCopyWith<$Res> get image;
 }
 
 /// @nodoc
@@ -496,28 +298,53 @@ class __$TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? centroid = freezed,
-    Object? length = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? displayName = freezed,
     Object? author = freezed,
+    Object? position = freezed,
+    Object? occurrencesCount = freezed,
+    Object? details = freezed,
     Object? image = freezed,
+    Object? pathLength = freezed,
   }) {
     return _then(_Trail(
-      centroid: centroid == freezed
-          ? _value.centroid
-          : centroid // ignore: cast_nullable_to_non_nullable
-              as Centroid,
-      length: length == freezed
-          ? _value.length
-          : length // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      displayName: displayName == freezed
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String,
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as StartEndPosition,
+      occurrencesCount: occurrencesCount == freezed
+          ? _value.occurrencesCount
+          : occurrencesCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      details: details == freezed
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Image,
+      pathLength: pathLength == freezed
+          ? _value.pathLength
+          : pathLength // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -526,26 +353,44 @@ class __$TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Trail implements _Trail {
   const _$_Trail(
-      {required this.centroid,
-      required this.length,
+      {required this.id,
+      required this.name,
+      @JsonKey(name: 'display_name') required this.displayName,
       required this.author,
-      required this.image});
+      required this.position,
+      @JsonKey(name: 'occurrences_count') required this.occurrencesCount,
+      required this.details,
+      required this.image,
+      @JsonKey(name: 'path_length') required this.pathLength});
 
   factory _$_Trail.fromJson(Map<String, dynamic> json) =>
       _$$_TrailFromJson(json);
 
   @override
-  final Centroid centroid;
+  final int id;
   @override
-  final int length;
+  final String name;
+  @override
+  @JsonKey(name: 'display_name')
+  final String displayName;
   @override
   final String author;
   @override
-  final String? image;
+  final StartEndPosition position;
+  @override
+  @JsonKey(name: 'occurrences_count')
+  final int occurrencesCount;
+  @override
+  final String details;
+  @override
+  final Image image;
+  @override
+  @JsonKey(name: 'path_length')
+  final int pathLength;
 
   @override
   String toString() {
-    return 'Trail(centroid: $centroid, length: $length, author: $author, image: $image)';
+    return 'Trail(id: $id, name: $name, displayName: $displayName, author: $author, position: $position, occurrencesCount: $occurrencesCount, details: $details, image: $image, pathLength: $pathLength)';
   }
 
   @override
@@ -553,20 +398,33 @@ class _$_Trail implements _Trail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Trail &&
-            const DeepCollectionEquality().equals(other.centroid, centroid) &&
-            const DeepCollectionEquality().equals(other.length, length) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.displayName, displayName) &&
             const DeepCollectionEquality().equals(other.author, author) &&
-            const DeepCollectionEquality().equals(other.image, image));
+            const DeepCollectionEquality().equals(other.position, position) &&
+            const DeepCollectionEquality()
+                .equals(other.occurrencesCount, occurrencesCount) &&
+            const DeepCollectionEquality().equals(other.details, details) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality()
+                .equals(other.pathLength, pathLength));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(centroid),
-      const DeepCollectionEquality().hash(length),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(image));
+      const DeepCollectionEquality().hash(position),
+      const DeepCollectionEquality().hash(occurrencesCount),
+      const DeepCollectionEquality().hash(details),
+      const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(pathLength));
 
   @JsonKey(ignore: true)
   @override
@@ -581,174 +439,182 @@ class _$_Trail implements _Trail {
 
 abstract class _Trail implements Trail {
   const factory _Trail(
-      {required final Centroid centroid,
-      required final int length,
+      {required final int id,
+      required final String name,
+      @JsonKey(name: 'display_name') required final String displayName,
       required final String author,
-      required final String? image}) = _$_Trail;
+      required final StartEndPosition position,
+      @JsonKey(name: 'occurrences_count') required final int occurrencesCount,
+      required final String details,
+      required final Image image,
+      @JsonKey(name: 'path_length') required final int pathLength}) = _$_Trail;
 
   factory _Trail.fromJson(Map<String, dynamic> json) = _$_Trail.fromJson;
 
   @override
-  Centroid get centroid => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @override
-  int get length => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'display_name')
+  String get displayName => throw _privateConstructorUsedError;
   @override
   String get author => throw _privateConstructorUsedError;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  StartEndPosition get position => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'occurrences_count')
+  int get occurrencesCount => throw _privateConstructorUsedError;
+  @override
+  String get details => throw _privateConstructorUsedError;
+  @override
+  Image get image => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'path_length')
+  int get pathLength => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$TrailCopyWith<_Trail> get copyWith => throw _privateConstructorUsedError;
 }
 
-Centroid _$CentroidFromJson(Map<String, dynamic> json) {
-  return _Centroid.fromJson(json);
+Image _$ImageFromJson(Map<String, dynamic> json) {
+  return _Image.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Centroid {
-  String get type => throw _privateConstructorUsedError;
-  List<double> get coordinates => throw _privateConstructorUsedError;
+mixin _$Image {
+  int get id => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CentroidCopyWith<Centroid> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ImageCopyWith<Image> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CentroidCopyWith<$Res> {
-  factory $CentroidCopyWith(Centroid value, $Res Function(Centroid) then) =
-      _$CentroidCopyWithImpl<$Res>;
-  $Res call({String type, List<double> coordinates});
+abstract class $ImageCopyWith<$Res> {
+  factory $ImageCopyWith(Image value, $Res Function(Image) then) =
+      _$ImageCopyWithImpl<$Res>;
+  $Res call({int id, String url});
 }
 
 /// @nodoc
-class _$CentroidCopyWithImpl<$Res> implements $CentroidCopyWith<$Res> {
-  _$CentroidCopyWithImpl(this._value, this._then);
+class _$ImageCopyWithImpl<$Res> implements $ImageCopyWith<$Res> {
+  _$ImageCopyWithImpl(this._value, this._then);
 
-  final Centroid _value;
+  final Image _value;
   // ignore: unused_field
-  final $Res Function(Centroid) _then;
+  final $Res Function(Image) _then;
 
   @override
   $Res call({
-    Object? type = freezed,
-    Object? coordinates = freezed,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_value.copyWith(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
-      coordinates: coordinates == freezed
-          ? _value.coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<double>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$CentroidCopyWith<$Res> implements $CentroidCopyWith<$Res> {
-  factory _$CentroidCopyWith(_Centroid value, $Res Function(_Centroid) then) =
-      __$CentroidCopyWithImpl<$Res>;
+abstract class _$ImageCopyWith<$Res> implements $ImageCopyWith<$Res> {
+  factory _$ImageCopyWith(_Image value, $Res Function(_Image) then) =
+      __$ImageCopyWithImpl<$Res>;
   @override
-  $Res call({String type, List<double> coordinates});
+  $Res call({int id, String url});
 }
 
 /// @nodoc
-class __$CentroidCopyWithImpl<$Res> extends _$CentroidCopyWithImpl<$Res>
-    implements _$CentroidCopyWith<$Res> {
-  __$CentroidCopyWithImpl(_Centroid _value, $Res Function(_Centroid) _then)
-      : super(_value, (v) => _then(v as _Centroid));
+class __$ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res>
+    implements _$ImageCopyWith<$Res> {
+  __$ImageCopyWithImpl(_Image _value, $Res Function(_Image) _then)
+      : super(_value, (v) => _then(v as _Image));
 
   @override
-  _Centroid get _value => super._value as _Centroid;
+  _Image get _value => super._value as _Image;
 
   @override
   $Res call({
-    Object? type = freezed,
-    Object? coordinates = freezed,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
-    return _then(_Centroid(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+    return _then(_Image(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
-      coordinates: coordinates == freezed
-          ? _value.coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<double>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Centroid implements _Centroid {
-  const _$_Centroid(
-      {required this.type, required final List<double> coordinates})
-      : _coordinates = coordinates;
+class _$_Image implements _Image {
+  const _$_Image({required this.id, required this.url});
 
-  factory _$_Centroid.fromJson(Map<String, dynamic> json) =>
-      _$$_CentroidFromJson(json);
+  factory _$_Image.fromJson(Map<String, dynamic> json) =>
+      _$$_ImageFromJson(json);
 
   @override
-  final String type;
-  final List<double> _coordinates;
+  final int id;
   @override
-  List<double> get coordinates {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_coordinates);
-  }
+  final String url;
 
   @override
   String toString() {
-    return 'Centroid(type: $type, coordinates: $coordinates)';
+    return 'Image(id: $id, url: $url)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Centroid &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.coordinates, coordinates));
+            other is _Image &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.url, url));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(coordinates));
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
-  _$CentroidCopyWith<_Centroid> get copyWith =>
-      __$CentroidCopyWithImpl<_Centroid>(this, _$identity);
+  _$ImageCopyWith<_Image> get copyWith =>
+      __$ImageCopyWithImpl<_Image>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CentroidToJson(this);
+    return _$$_ImageToJson(this);
   }
 }
 
-abstract class _Centroid implements Centroid {
-  const factory _Centroid(
-      {required final String type,
-      required final List<double> coordinates}) = _$_Centroid;
+abstract class _Image implements Image {
+  const factory _Image({required final int id, required final String url}) =
+      _$_Image;
 
-  factory _Centroid.fromJson(Map<String, dynamic> json) = _$_Centroid.fromJson;
+  factory _Image.fromJson(Map<String, dynamic> json) = _$_Image.fromJson;
 
   @override
-  String get type => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @override
-  List<double> get coordinates => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CentroidCopyWith<_Centroid> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$ImageCopyWith<_Image> get copyWith => throw _privateConstructorUsedError;
 }

@@ -8,7 +8,7 @@ abstract class TrailEvent extends Equatable {
 }
 
 class LoadTrailDataEvent extends TrailEvent {
-  final String id;
+  final int id;
   const LoadTrailDataEvent({required this.id});
 
   @override

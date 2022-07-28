@@ -46,7 +46,7 @@ class SpeciesItem extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyText1),
                 const SizedBox(height: 2),
-                Text(title,
+                Text(titleLatin,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyText2),

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
-import 'package:smartflore/utils/convert.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
@@ -57,18 +56,18 @@ class TrailsList extends StatelessWidget {
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   controller: controller,
-                  itemCount: state.trails.referentials.length,
+                  itemCount: state.trails.length,
                   itemBuilder: (context, index) {
-                    final referential = state.trails.referentials[index];
+                    final trail = state.trails[index];
                     return TrailInteractiveItemWidget(
-                        index: index,
-                        id: referential.key,
-                        title: referential.name,
-                        length: referential.trail.length,
-                        image:
-                            'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-                        position: LatLngUtils.listToLatLng(
-                            referential.trail.centroid.coordinates));
+                      index: index,
+                      id: trail.id,
+                      title: trail.name,
+                      length: trail.pathLength,
+                      image: trail.image.url,
+                      position: trail.position.start,
+                      nbOccurence: trail.occurrencesCount,
+                    );
                   },
                 ),
               );

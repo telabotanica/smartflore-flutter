@@ -17,6 +17,6 @@ class OnMapModeChanged extends MapState {
 }
 
 class OnRequestTrailPreview extends MapState {
-  final String trailID;
+  final int trailID;
   const OnRequestTrailPreview({required this.trailID});
 }

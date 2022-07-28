@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_image/flutter_image.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:image_fade/image_fade.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
-class SpeciesCoverWidget extends StatelessWidget {
+class SpeciesCover extends StatelessWidget {
   final String image;
   final String title;
   final LatLng position;
 
-  const SpeciesCoverWidget(
+  const SpeciesCover(
       {Key? key,
       required this.image,
       required this.title,
@@ -23,17 +23,60 @@ class SpeciesCoverWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(6)),
-            image: DecorationImage(
-              image: NetworkImageWithRetry(
-                image,
-              ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+            child: ImageFade(
+              image: NetworkImage(image),
+              duration: const Duration(milliseconds: 300),
+              syncDuration: const Duration(milliseconds: 150),
+              alignment: Alignment.center,
               fit: BoxFit.cover,
+
+              // shown behind everything:
+              placeholder: Container(
+                color: const Color(0x00ffffff),
+                alignment: Alignment.center,
+                child:
+                    const Icon(Icons.photo, color: Colors.white30, size: 128.0),
+              ),
+
+              loadingBuilder: (context, progress, chunkEvent) => Center(
+                  child: SizedBox(
+                      width: 30,
+                      child: LinearProgressIndicator(
+                        value: progress,
+                        backgroundColor: Colors.white,
+                      ))),
+
+              errorBuilder: (context, error) => Container(
+                color: const Color(0xFF6F6D6A),
+                alignment: Alignment.center,
+                child: const Icon(Icons.warning,
+                    color: Colors.black26, size: 128.0),
+              ),
             ),
           ),
         ),
+        Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+              child: SizedBox(
+                height: 25,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.black.withOpacity(0.3),
+                    side: const BorderSide(
+                        color: Colors.white, width: 1), //<-- SEE HERE
+                  ),
+                  onPressed: () {},
+                  child: const Text('Voir la fiche',
+                      style: TextStyle(color: Colors.white, fontSize: 12)),
+                ),
+              ),
+            )),
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
