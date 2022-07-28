@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/list/item_interactive.dart';
 import 'package:smartflore/components/list/item_separator.dart';
-import 'package:smartflore/components/list/trail_item.dart';
+import 'package:smartflore/components/list/species/species_item.dart';
 
-class TrailListItemWidget extends StatelessWidget {
+class SpeciesInteractiveItem extends StatelessWidget {
   final bool isInteractive;
-  final String id;
   final int index;
+  final String id;
+  final String titleLatin;
   final String title;
   final String image;
-  final int length;
-  final LatLng position;
+  final List<String> tags;
 
-  const TrailListItemWidget(
+  const SpeciesInteractiveItem(
       {Key? key,
       this.isInteractive = true,
       required this.index,
       required this.id,
+      required this.titleLatin,
       required this.title,
-      required this.length,
       required this.image,
-      required this.position})
+      required this.tags})
       : super(key: key);
 
   onPressed(BuildContext context, String id) {
@@ -36,12 +35,12 @@ class TrailListItemWidget extends StatelessWidget {
         child: InteractiveItem(
       id: id,
       onPressed: onPressed,
-      child: TrailItem(
+      child: SpeciesItem(
         index: index,
         title: title,
-        length: length,
-        position: position,
+        titleLatin: titleLatin,
         image: image,
+        tags: tags,
       ),
     ));
   }

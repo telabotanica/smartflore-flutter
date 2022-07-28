@@ -79,7 +79,7 @@ flutter:
       fonts:
         - asset: assets/fonts/SourceSansPro-Regular.ttf
         - asset: assets/fonts/SourceSansPro-SemiBold.ttf
-          weight: 500
+          weight: 600
 
 flutter_native_splash:
   #color: "#FF7469"

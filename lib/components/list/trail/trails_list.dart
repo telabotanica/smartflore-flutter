@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
-import 'package:smartflore/components/list/trail_list_item.dart';
+import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
-class PanelWidget extends StatelessWidget {
+class TrailsList extends StatelessWidget {
   final ScrollController controller;
   final TrailsListType trailsListType;
   final Function onPanUpdate;
 
-  const PanelWidget(
+  const TrailsList(
       {Key? key,
       required this.controller,
       required this.onPanUpdate,
@@ -60,7 +60,7 @@ class PanelWidget extends StatelessWidget {
                   itemCount: state.trails.referentials.length,
                   itemBuilder: (context, index) {
                     final referential = state.trails.referentials[index];
-                    return TrailListItemWidget(
+                    return TrailInteractiveItemWidget(
                         index: index,
                         id: referential.key,
                         title: referential.name,
