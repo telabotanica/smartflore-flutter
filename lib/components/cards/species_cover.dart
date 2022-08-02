@@ -8,12 +8,14 @@ import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
 class SpeciesCover extends StatelessWidget {
+  final int taxonId;
   final String image;
   final String title;
   final LatLng position;
 
   const SpeciesCover(
       {Key? key,
+      required this.taxonId,
       required this.image,
       required this.title,
       required this.position})
@@ -71,7 +73,10 @@ class SpeciesCover extends StatelessWidget {
                     side: const BorderSide(
                         color: Colors.white, width: 1), //<-- SEE HERE
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed('/species', arguments: taxonId);
+                  },
                   child: const Text('Voir la fiche',
                       style: TextStyle(color: Colors.white, fontSize: 12)),
                 ),

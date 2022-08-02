@@ -13,9 +13,11 @@ import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
 import 'package:smartflore/screens/map_screen.dart';
+import 'package:smartflore/screens/species/species_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:smartflore/utils/transitions.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -90,19 +92,38 @@ class _AppState extends State<App> {
     FlutterNativeSplash.remove();
 
     return MaterialApp(
-      title: "Smart'Flore",
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: _themeManager.themeMode,
-      home: const MapScreen(),
-      supportedLocales: L10n.all,
-      localizationsDelegates: const {
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
-      },
-    );
+        title: "Smart'Flore",
+        debugShowCheckedModeBanner: false,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: _themeManager.themeMode,
+        home: const MapScreen(),
+        supportedLocales: L10n.all,
+        localizationsDelegates: const {
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
+        },
+        initialRoute: '/',
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/':
+              return Transitions(
+                  transitionType: TransitionType.slideRight,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: const MapScreen());
+            case '/species':
+              return Transitions(
+                  transitionType: TransitionType.slideLeft,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: const SpeciesScreen());
+          }
+          return null;
+        });
   }
 }
