@@ -1,9 +1,15 @@
-/*class SpeciesRepo {
-  final SpeciesApiClient speciesApiClient;
+import 'package:smartflore/models/taxon/taxon-app-model.dart';
+import 'package:smartflore/repo/taxon/taxon_api_client.dart';
 
-  SpeciesRepo({required this.speciesApiClient});
+class TaxonRepo {
+  final TaxonApiClient taxonApiClient;
 
-  // get species description
-  // get species images
-  // get species images coste
-}*/
+  TaxonRepo({required this.taxonApiClient});
+
+  Future<Taxon?> getTaxon(String taxonRepo, int taxonID) async {
+    print('taxonID $taxonID');
+    print('taxonRepo $taxonRepo');
+    final Taxon? taxon = await taxonApiClient.getTaxon(taxonID, taxonRepo);
+    return taxon;
+  }
+}

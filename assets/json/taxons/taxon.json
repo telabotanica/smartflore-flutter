@@ -1,0 +1,77 @@
+{
+    "scientific_name": "Acer campestre",
+    "full_scientific_name": "Acer campestre L.",
+    "html_full_scientific_name": "<span class=\"sci\"><span class=\"gen\">Acer</span> <span class=\"sp\">campestre</span></span> <span class=\"auteur\">L.</span> [<span class=\"annee\">1753</span>, <span class=\"biblio\">Sp. Pl., 2 : 1055</span>]",
+    "genus": "Acer",
+    "family": "Sapindaceae",
+    "taxon_repository": "bdtfx",
+    "name_id": 141,
+    "taxonomic_id": 8522,
+    "vernacular_names": [
+      "Érable champêtre",
+      "Petit Érable",
+      "Acéraille",
+      "Auzerole",
+      "Azeraille",
+      "Bois de poule",
+      "Bois-chaud"
+    ],
+    "wikipedia_url": "https://fr.wikipedia.org/wiki/Acer_campestre",
+    "map_url": "https://www.tela-botanica.org/widget:cel:cartoPoint?referentiel=bdtfx&num_nom_ret=141",
+    "card": {
+      "sections": [
+        {
+          "title": "Description",
+          "text": "<br />\nCet arbre pouvant dépasser 10 m, appartient depuis peu à la famille des Sapindaceae.<br />\nLes feuilles : sont formées de 5 lobes  avec 3/5 dents arrondis avec des sinus aigus et profonds.  Elles sont vertes sur les 2 faces .<br />\nLes fleurs :  sont des corymbes dressés<br />\nLes fruits : sont des samares à graines plates , avec des ailes opposées<br />\n<br />\nLe nom &quot;érable&quot; apparaît au milieu du XIIIe siècle. Il vient du vieux latin &quot;acerarbot&quot;, où &quot;acer&quot; est d'origine indo-européenne et signifie &quot;pointu, dur&quot;. <br />\nLes érables d'origine européenne proviennent soit des montagnes d'Europe, soit du pourtour méditerranéen, dès le Tertiaire. <br />\nDans la mythologie grecque, l'érable est dédié à Phobos, dieu de l'Épouvante, fils d'Arès, dieu de la guerre et frère de Deimos, dieu de la frayeur."
+        },
+        {
+          "title": "Usages",
+          "text": "<br />\nArbre multi-usages car c'est le bois le plus lourd et le plus dur des bois d'érable.<br />\nBois blanc crème à grain fin homogène et esthétique parfois utilisé en ébénisterie, marqueterie et menuiserie pour la fabrication de petits objets.<br />\nBois de chauffage à haute densité.  <br />\nUtilisé en pharmacopée pour ses propriétés astringentes.<br />\nC'est une des meilleures espèces mellifères.<br />\nCette essence est souvent employée dans les haies vives du bocage, incontestablement l'arbre de toutes les haies en région calcaire, surtout depuis la quasi disparition des ormes champêtres.<br />\nAlimentaire :eau d'érable, sirop d'érable feuille en salade"
+        },
+        {
+          "title": "Écologie & habitat",
+          "text": "<br />\nEspèce héliophile ou de demi-ombre retrouvée dans les bois, lisières forestières et forêts ouvertes.<br />\nEspèce que l'on retrouve en haut des berges dans la ripisylve.<br />\nEspèce commune en France. Dans le Sud, elle n'abonde que dans l'arrière-pays supraméditerranéen."
+        },
+        {
+          "title": "Sources",
+          "text": "<br />\n\n<ul>\n<li> J.C. Rameau, D. Mansion, G. Dumé (1989). Flore forestière française, guide écologique illustré. Tome 1 : Plaines et collines. Institut pour le  développement forestier. </li>\n<li> <a href=\"http://fr.wikipedia.org/wiki/Acer_campestre\">http://fr.wikipedia.org/wiki/Acer_campestre</a></li>\n<li> <a href=\"http://www.tela-botanica.org/bdtfx-nn-14\">http://www.tela-botanica.org/bdtfx-nn-14</a></li>\n<li> <a href=\"http://www.lesarbres.fr\">http://www.lesarbres.fr</a></li>\n</ul>"
+        }
+      ],
+      "tabs": [
+        {
+          "title": "Card",
+          "type": "card"
+        },
+        {
+          "title": "Gallery",
+          "type": "gallery"
+        },
+        {
+          "title": "Map",
+          "type": "webview"
+        },
+        {
+          "title": "Wikipedia",
+          "type": "webview"
+        }
+      ]
+    },
+    "images": [
+      {
+        "id": 2523202,
+        "url": "https://api.tela-botanica.org/img:002523202M.jpg"
+      },
+      {
+        "id": 2516523,
+        "url": "https://api.tela-botanica.org/img:002516523M.jpg"
+      },
+      {
+        "id": 2516521,
+        "url": "https://api.tela-botanica.org/img:002516521M.jpg"
+      },
+      {
+        "id": 2515754,
+        "url": "https://api.tela-botanica.org/img:002515754M.jpg"
+      }
+    ]
+  }

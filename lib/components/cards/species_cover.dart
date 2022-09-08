@@ -4,11 +4,13 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_fade/image_fade.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
+import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
 class SpeciesCover extends StatelessWidget {
   final int taxonId;
+  final String taxonRepo;
   final String image;
   final String title;
   final LatLng position;
@@ -16,6 +18,7 @@ class SpeciesCover extends StatelessWidget {
   const SpeciesCover(
       {Key? key,
       required this.taxonId,
+      required this.taxonRepo,
       required this.image,
       required this.title,
       required this.position})
@@ -70,12 +73,13 @@ class SpeciesCover extends StatelessWidget {
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.black.withOpacity(0.3),
-                    side: const BorderSide(
-                        color: Colors.white, width: 1), //<-- SEE HERE
+                    side: const BorderSide(color: Colors.white, width: 1),
                   ),
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed('/species', arguments: taxonId);
+                    Navigator.of(context).pushNamed(
+                      '/taxon',
+                      arguments: TaxonScreenArguments(taxonId, taxonRepo),
+                    );
                   },
                   child: const Text('Voir la fiche',
                       style: TextStyle(color: Colors.white, fontSize: 12)),

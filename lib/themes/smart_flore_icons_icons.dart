@@ -43,4 +43,12 @@ class SmartFloreIcons {
       IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData marker =
       IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData iconMap =
+      IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData iconWiki =
+      IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData iconGallery =
+      IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData iconDetails =
+      IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

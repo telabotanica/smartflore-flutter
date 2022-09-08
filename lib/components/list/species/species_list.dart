@@ -28,12 +28,16 @@ class SpeciesList extends StatelessWidget {
             itemBuilder: (context, index) {
               if (state.trail.occurrences.isNotEmpty) {
                 final species = state.trail.occurrences[index];
+                final String vernacularName =
+                    species.taxon.vernacularNames.isNotEmpty
+                        ? species.taxon.vernacularNames[0]
+                        : '';
                 return SpeciesInteractiveItem(
                     isSelected: (selectedID == index),
                     index: index,
                     id: 0,
-                    title: species.taxon.species,
-                    titleLatin: species.taxon.genus,
+                    title: vernacularName,
+                    titleLatin: species.taxon.scientificName,
                     image: (species.images.isNotEmpty)
                         ? species.images[0].url
                         : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',

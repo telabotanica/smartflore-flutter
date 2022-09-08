@@ -3,17 +3,21 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
+import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
+import 'package:smartflore/repo/taxon/taxon_api_client.dart';
+import 'package:smartflore/repo/taxon/taxon_repo.dart';
 import 'package:smartflore/repo/trail/trail_api_client.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
 import 'package:smartflore/screens/map_screen.dart';
-import 'package:smartflore/screens/species/species_screen.dart';
+import 'package:smartflore/screens/taxon/taxon_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -39,6 +43,11 @@ void main() {
 
   final WalkRepo walkRepo = WalkRepo();
 
+  final TaxonRepo taxonRepo = TaxonRepo(
+      taxonApiClient: TaxonApiClient(
+          httpClient: http.Client(),
+          baseUrl: 'https://beta.tela-botanica.org/smartflore-services/taxon'));
+
   final GeolocationRepo geolocationRepo = GeolocationRepo();
   BlocOverrides.runZoned(
     () {
@@ -49,6 +58,7 @@ void main() {
                 TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
         BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
         BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
+        BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
         BlocProvider<GeolocationBloc>(
             create: (context) =>
                 GeolocationBloc(geolocationRepo: geolocationRepo)
@@ -115,13 +125,17 @@ class _AppState extends State<App> {
                   curve: Curves.easeIn,
                   reverseCurve: Curves.easeOut,
                   newScreen: const MapScreen());
-            case '/species':
+            case '/taxon':
+              TaxonScreenArguments taxonScreenArgs =
+                  settings.arguments as TaxonScreenArguments;
               return Transitions(
                   transitionType: TransitionType.slideLeft,
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeOutQuad,
                   reverseCurve: Curves.easeOut,
-                  newScreen: const SpeciesScreen());
+                  newScreen: TaxonScreen(
+                      taxonID: taxonScreenArgs.taxonID,
+                      taxonRepo: taxonScreenArgs.taxonRepo));
           }
           return null;
         });
