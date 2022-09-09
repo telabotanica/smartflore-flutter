@@ -1,4 +1,4 @@
-import 'package:smartflore/models/taxon/taxon-enum.dart';
+import 'package:smartflore/models/taxon/taxon_enum.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 
 class Taxon {

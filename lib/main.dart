@@ -49,24 +49,21 @@ void main() {
           baseUrl: 'https://beta.tela-botanica.org/smartflore-services/taxon'));
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
-  BlocOverrides.runZoned(
-    () {
-      runApp(MultiBlocProvider(providers: [
-        BlocProvider<MapBloc>(create: (context) => MapBloc()),
-        BlocProvider<TrailBloc>(
-            create: (context) =>
-                TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
-        BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
-        BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
-        BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
-        BlocProvider<GeolocationBloc>(
-            create: (context) =>
-                GeolocationBloc(geolocationRepo: geolocationRepo)
-                  ..add(RequestLocationPermissionEvent())),
-      ], child: const App()));
-    },
-    blocObserver: SimpleBlocObserver(),
-  );
+
+  Bloc.observer = SimpleBlocObserver();
+
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider<MapBloc>(create: (context) => MapBloc()),
+    BlocProvider<TrailBloc>(
+        create: (context) =>
+            TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
+    BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
+    BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
+    BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
+    BlocProvider<GeolocationBloc>(
+        create: (context) => GeolocationBloc(geolocationRepo: geolocationRepo)
+          ..add(RequestLocationPermissionEvent())),
+  ], child: const App()));
 }
 
 ThemeManager _themeManager = ThemeManager();

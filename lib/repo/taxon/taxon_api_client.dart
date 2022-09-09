@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
-import 'package:smartflore/models/taxon/taxon-app-model.dart';
+import 'package:smartflore/models/taxon/taxon_app_model.dart';
 import 'package:smartflore/repo/api_client.dart';
 
 class TaxonApiClient extends APIClient {
@@ -16,7 +16,6 @@ class TaxonApiClient extends APIClient {
   ) async {
     final response =
         await httpClient.get(Uri.parse('$baseUrl/$taxonRepo/$taxonID'));
-    print('response ${response.statusCode}');
 
     if (response.statusCode == 200) {
       String data = response.body;
