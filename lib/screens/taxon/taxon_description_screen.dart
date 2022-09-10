@@ -1,7 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image/flutter_image.dart';
-import 'package:image_fade/image_fade.dart';
 import 'package:smartflore/components/cards/section.dart';
 import 'package:smartflore/components/gallery/image_with_loader.dart';
 import 'package:smartflore/models/taxon/taxon_app_model.dart';
