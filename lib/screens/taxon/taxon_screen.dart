@@ -108,7 +108,7 @@ class _TaxonScreenState extends State<TaxonScreen>
   Widget buildTabView() {
     return BlocBuilder<TaxonBloc, TaxonState>(builder: (context, state) {
       if (state is TaxonInitialState) {
-        return Expanded(
+        return Center(
             child: Container(
                 color: Colors.white, child: const CircularProgressIndicator()));
       } else if (state is TaxonLoadedState) {
