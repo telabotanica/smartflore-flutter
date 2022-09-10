@@ -178,7 +178,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                   ? species.images[0].url
                   : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
               title:
-                  '${species.taxon.vernacularNames.isNotEmpty ? '${species.taxon.vernacularNames[0]} - ' : ''} - ${species.taxon.scientificName}',
+                  '${species.taxon.vernacularNames.isNotEmpty ? '${species.taxon.vernacularNames[0]} -' : ''} ${species.taxon.scientificName}',
               position: species.position,
             ),
           ),

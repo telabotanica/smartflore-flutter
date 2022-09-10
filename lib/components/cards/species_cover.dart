@@ -113,11 +113,14 @@ class SpeciesCover extends StatelessWidget {
                 Icon(SmartFloreIcons.plant,
                     size: 14, color: Theme.of(context).colorScheme.primary),
                 const SizedBox(width: 4),
-                Text(title,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold)),
+                Flexible(
+                    child: Text(title,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold))),
               ]),
               const SizedBox(height: 6),
               BlocBuilder<GeolocationBloc, GeolocationState>(
