@@ -78,7 +78,8 @@ class SpeciesCover extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pushNamed(
                       '/taxon',
-                      arguments: TaxonScreenArguments(taxonId, taxonRepo),
+                      arguments:
+                          TaxonScreenArguments(taxonId, taxonRepo, title),
                     );
                   },
                   child: const Text('Voir la fiche',

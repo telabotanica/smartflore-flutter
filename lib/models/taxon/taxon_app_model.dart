@@ -11,7 +11,7 @@ class Taxon {
   int nameId;
   int taxonomicId;
   List<String> vernacularNames;
-  List<Tab> tabs;
+  List<TabData> tabs;
 
   Taxon(
       this.scientificName,
@@ -26,19 +26,20 @@ class Taxon {
       this.tabs);
 
   static Taxon fromTaxonAPI(TaxonAPI taxonAPI) {
-    List<Tab> tabs = [];
+    List<TabData> tabs = [];
     for (TabAPI tab in taxonAPI.card.tabs) {
-      tabs.add(Tab(tab.title, tab.type,
+      tabs.add(TabData(tab.title, tab.type,
           sections: (tab.type == TabTypeEnum.card.name)
               ? taxonAPI.card.sections
               : null,
-          images:
-              (tab.type == TabTypeEnum.gallery.name) ? taxonAPI.images : null,
-          mapUrl: (tab.type == TabTypeEnum.webview.name && tab.title == 'Map')
-              ? taxonAPI.mapUrl
+          images: (tab.type == TabTypeEnum.gallery.name ||
+                  tab.type == TabTypeEnum.card.name)
+              ? taxonAPI.images
               : null,
-          wikipediaUrl:
-              (tab.type == TabTypeEnum.webview.name && tab.title == 'Wikipedia')
+          url: (tab.type == TabTypeEnum.webview.name && tab.title == 'Map')
+              ? taxonAPI.mapUrl
+              : (tab.type == TabTypeEnum.webview.name &&
+                      tab.title == 'Wikipedia')
                   ? taxonAPI.wikipediaUrl
                   : null));
     }
@@ -57,13 +58,11 @@ class Taxon {
   }
 }
 
-class Tab {
+class TabData {
   String title;
   String type;
   List<SectionAPI>? sections;
   List<ImageAPI>? images;
-  String? mapUrl;
-  String? wikipediaUrl;
-  Tab(this.title, this.type,
-      {this.sections, this.images, this.mapUrl, this.wikipediaUrl});
+  String? url;
+  TabData(this.title, this.type, {this.sections, this.images, this.url});
 }

@@ -132,7 +132,8 @@ class _AppState extends State<App> {
                   reverseCurve: Curves.easeOut,
                   newScreen: TaxonScreen(
                       taxonID: taxonScreenArgs.taxonID,
-                      taxonRepo: taxonScreenArgs.taxonRepo));
+                      taxonRepo: taxonScreenArgs.taxonRepo,
+                      taxonName: taxonScreenArgs.taxonName));
           }
           return null;
         });

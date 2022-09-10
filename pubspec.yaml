@@ -49,6 +49,9 @@ dependencies:
   bloc: ^8.0.3
   freezed_annotation: ^2.1.0
   flutter_animate: ^1.0.0
+  flutter_html: ^3.0.0-alpha.5
+  html: ^0.15.0
+
 
 dev_dependencies:
   flutter_test:
