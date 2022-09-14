@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smartflore/components/grid/grid_image.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
+import 'package:smartflore/navigation/gallery_screen_args.dart';
 
 class Gallery extends StatefulWidget {
   final List<ImageAPI> images;
@@ -21,7 +22,19 @@ class _GalleryState extends State<Gallery> {
         ),
         itemCount: widget.images.length,
         itemBuilder: (BuildContext context, int index) {
-          return GridImage(image: widget.images[index].url);
+          return ImageWithLoader(
+            url: widget.images[index].url,
+            id: widget.images[index].url,
+            onTap: () {
+              _openGallery(context, index);
+            },
+          );
         });
+  }
+
+  _openGallery(BuildContext context, final int index) {
+    Navigator.of(context).pushNamed('/gallery-fullScreen',
+        arguments: GalleryScreenArguments(widget.images,
+            const BoxDecoration(color: Colors.black), index, Axis.horizontal));
   }
 }

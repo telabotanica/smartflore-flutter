@@ -43,7 +43,6 @@ class Section extends StatelessWidget {
           data: sectionData.text,
           onLinkTap: (String? url, RenderContext renderContext,
               Map<String, String> attributes, dom.Element? element) {
-            //open URL in webview, or launch URL in browser, or any other logic here
             Navigator.push(
               context,
               MaterialPageRoute(

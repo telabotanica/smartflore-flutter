@@ -53,22 +53,13 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
     return sectionList;
   }
 
-  _openFullScreen(BuildContext context, final int index) {
+  _openGallery(BuildContext context, final int index) {
     Navigator.of(context).pushNamed('/gallery-fullScreen',
         arguments: GalleryScreenArguments(
             getCarouselImages(widget.tabData.images),
             const BoxDecoration(color: Colors.black),
             index,
             Axis.horizontal));
-
-    /* Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => GalleryWrapper(
-                images: getCarouselImages(widget.tabData.images),
-                backgroundDecoration: const BoxDecoration(color: Colors.black),
-                initialIndex: index,
-                scrollDirection: Axis.horizontal)));*/
   }
 
   @override
@@ -100,7 +91,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
                             id: image.id.toString(),
                             url: image.url,
                             onTap: () {
-                              _openFullScreen(context, entry.key);
+                              _openGallery(context, entry.key);
                             },
                           ));
                     },
