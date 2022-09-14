@@ -92,7 +92,6 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
 
   PhotoViewGalleryPageOptions _buildItem(BuildContext context, int index) {
     ImageAPI image = widget.images[index];
-    print('hero ${image.id}');
 
     return PhotoViewGalleryPageOptions(
         imageProvider: NetworkImage(image.url),
