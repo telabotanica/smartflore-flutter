@@ -7,6 +7,8 @@ import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
+import 'package:smartflore/components/gallery/gallery_wrapper.dart';
+import 'package:smartflore/navigation/gallery_screen_args.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 import 'package:smartflore/repo/taxon/taxon_api_client.dart';
@@ -85,6 +87,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     _themeManager.addListener(themeListener);
+
     super.initState();
   }
 
@@ -134,6 +137,22 @@ class _AppState extends State<App> {
                       taxonID: taxonScreenArgs.taxonID,
                       taxonRepo: taxonScreenArgs.taxonRepo,
                       taxonName: taxonScreenArgs.taxonName));
+            case '/gallery-fullScreen':
+              GalleryScreenArguments data =
+                  settings.arguments as GalleryScreenArguments;
+              return Transitions(
+                  transitionType: TransitionType.fade,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: GalleryWrapper(
+                      images: data.images,
+                      backgroundDecoration: data.backgroundDecoration,
+                      initialIndex: data.initialIndex,
+                      scrollDirection: data.scrollDirection,
+                      minScale: data.minScale,
+                      maxScale: data.maxScale,
+                      loadingBuilder: data.loadingBuilder));
           }
           return null;
         });

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image/flutter_image.dart';
-import 'package:smartflore/components/tag.dart';
 
 class SpeciesItem extends StatelessWidget {
   final int index;
@@ -55,11 +54,11 @@ class SpeciesItem extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: const [
-                      TagUI(label: 'test'),
-                      SizedBox(width: 4),
-                      TagUI(label: 'test 2'),
-                      SizedBox(width: 4),
-                      TagUI(label: 'test 3')
+                      /*TagUI(label: 'test'),
+                  SizedBox(width: 4),
+                  TagUI(label: 'test 2'),
+                  SizedBox(width: 4),
+                  TagUI(label: 'test 3')*/
                     ]),
               ],
             ),

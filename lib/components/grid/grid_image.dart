@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smartflore/components/gallery/image_with_loader.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
 
 class GridImage extends StatelessWidget {
   final String image;

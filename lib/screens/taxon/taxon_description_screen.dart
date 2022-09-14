@@ -1,9 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smartflore/components/cards/section.dart';
-import 'package:smartflore/components/gallery/image_with_loader.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/models/taxon/taxon_app_model.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
+import 'package:smartflore/navigation/gallery_screen_args.dart';
 
 class SpeciesDescription extends StatefulWidget {
   final TabData tabData;
@@ -14,13 +15,13 @@ class SpeciesDescription extends StatefulWidget {
 }
 
 class _SpeciesDescriptionState extends State<SpeciesDescription> {
-  List<String> getCarouselImages(List<ImageAPI>? images, {int max = 4}) {
-    List<String> galleryItems = [];
+  List<ImageAPI> getCarouselImages(List<ImageAPI>? images, {int max = 4}) {
+    List<ImageAPI> galleryItems = [];
     int index = 0;
     if (images == null) return galleryItems;
     for (var image in images) {
       if (index < max) {
-        galleryItems.add(image.url);
+        galleryItems.add(image);
         index++;
       } else {
         break;
@@ -30,7 +31,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
   }
 
   int _current = 0;
-  List<String> galleryItems = [];
+  List<ImageAPI> galleryItems = [];
   final CarouselController _controller = CarouselController();
   @override
   void initState() {
@@ -52,6 +53,24 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
     return sectionList;
   }
 
+  _openFullScreen(BuildContext context, final int index) {
+    Navigator.of(context).pushNamed('/gallery-fullScreen',
+        arguments: GalleryScreenArguments(
+            getCarouselImages(widget.tabData.images),
+            const BoxDecoration(color: Colors.black),
+            index,
+            Axis.horizontal));
+
+    /* Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => GalleryWrapper(
+                images: getCarouselImages(widget.tabData.images),
+                backgroundDecoration: const BoxDecoration(color: Colors.black),
+                initialIndex: index,
+                scrollDirection: Axis.horizontal)));*/
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -71,12 +90,19 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
                     });
                   },
                 ),
-                items: galleryItems.map((url) {
+                items: galleryItems.asMap().entries.map((entry) {
+                  ImageAPI image = entry.value;
                   return Builder(
                     builder: (BuildContext context) {
                       return SizedBox(
                           width: MediaQuery.of(context).size.width,
-                          child: ImageWithLoader(url: url));
+                          child: ImageWithLoader(
+                            id: image.id.toString(),
+                            url: image.url,
+                            onTap: () {
+                              _openFullScreen(context, entry.key);
+                            },
+                          ));
                     },
                   );
                 }).toList(),

@@ -43,6 +43,7 @@ dependencies:
   pretty_logger: any
   flutter_native_splash: ^2.1.6
   carousel_slider: ^4.1.1
+  photo_view: ^0.14.0
   webview_flutter: ^3.0.4
   collection: ^1.16.0
   image_fade: ^0.6.1

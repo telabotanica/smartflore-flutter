@@ -3,17 +3,19 @@ import 'package:image_fade/image_fade.dart';
 
 class ImageWithLoader extends StatelessWidget {
   final String url;
-  const ImageWithLoader({Key? key, required this.url}) : super(key: key);
+  final String? id;
+  final GestureTapCallback? onTap;
 
-  @override
-  Widget build(BuildContext context) {
+  const ImageWithLoader({Key? key, required this.url, this.id, this.onTap})
+      : super(key: key);
+
+  Widget buildImage(BuildContext context) {
     return ImageFade(
       image: NetworkImage(url),
       duration: const Duration(milliseconds: 300),
       syncDuration: const Duration(milliseconds: 0),
       alignment: Alignment.center,
       fit: BoxFit.cover,
-
       // shown behind everything:
       placeholder: Container(
         color: const Color(0x00ffffff),
@@ -35,5 +37,25 @@ class ImageWithLoader extends StatelessWidget {
         child: const Icon(Icons.warning, color: Colors.black26, size: 128.0),
       ),
     );
+  }
+
+  Widget withHero(Widget child) {
+    return Hero(tag: id!, child: child);
+  }
+
+  Widget withOnTap(Widget child) {
+    return GestureDetector(
+        onTap: () {
+          onTap!();
+        },
+        child: child);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget image = buildImage(context);
+    if (id != null) image = withHero(image);
+    if (onTap != null) image = withOnTap(image);
+    return image;
   }
 }
