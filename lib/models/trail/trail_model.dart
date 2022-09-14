@@ -16,12 +16,8 @@ abstract class TrailDetails with _$TrailDetails {
     @JsonKey(name: 'display_name') required String displayName,
     required String author,
     required StartEndPosition position,
-    @JsonKey(name: 'start_position')
-    @LatLngConverter()
-        required LatLng startPosition,
     required List<Occurrence> occurrences,
     @JsonKey(name: 'occurrences_count') required int occurrencesCount,
-    required String details,
     required Image image,
     required Path path,
     @JsonKey(name: 'path_length') required int pathLength,
@@ -56,12 +52,11 @@ abstract class Occurrence with _$Occurrence {
 @freezed
 abstract class Taxon with _$Taxon {
   const factory Taxon({
-    required String species,
-    required String author,
-    required String genus,
-    required String family,
-    required String referential,
+    @JsonKey(name: 'scientific_name') required String scientificName,
+    @JsonKey(name: 'full_scientific_name') required String fullScientificName,
+    @JsonKey(name: 'taxon_repository') required String taxonRepository,
     @JsonKey(name: 'name_id') required int nameId,
+    @JsonKey(name: 'vernacular_names') required List<String> vernacularNames,
   }) = _Taxon;
 
   factory Taxon.fromJson(Map<String, dynamic> json) => _$TaxonFromJson(json);

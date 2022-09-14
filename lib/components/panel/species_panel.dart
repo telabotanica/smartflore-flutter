@@ -172,10 +172,13 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
             width: MediaQuery.of(context).size.width - 40,
             height: 200,
             child: SpeciesCover(
+              taxonId: species.taxon.nameId,
+              taxonRepo: species.taxon.taxonRepository,
               image: (species.images.isNotEmpty)
                   ? species.images[0].url
                   : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
-              title: '${species.taxon.species} - ${species.taxon.genus}',
+              title:
+                  '${species.taxon.vernacularNames.isNotEmpty ? '${species.taxon.vernacularNames[0]} -' : ''} ${species.taxon.scientificName}',
               position: species.position,
             ),
           ),

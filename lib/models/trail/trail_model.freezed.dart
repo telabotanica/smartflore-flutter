@@ -26,13 +26,9 @@ mixin _$TrailDetails {
   String get displayName => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
   StartEndPosition get position => throw _privateConstructorUsedError;
-  @JsonKey(name: 'start_position')
-  @LatLngConverter()
-  LatLng get startPosition => throw _privateConstructorUsedError;
   List<Occurrence> get occurrences => throw _privateConstructorUsedError;
   @JsonKey(name: 'occurrences_count')
   int get occurrencesCount => throw _privateConstructorUsedError;
-  String get details => throw _privateConstructorUsedError;
   Image get image => throw _privateConstructorUsedError;
   Path get path => throw _privateConstructorUsedError;
   @JsonKey(name: 'path_length')
@@ -55,10 +51,8 @@ abstract class $TrailDetailsCopyWith<$Res> {
       @JsonKey(name: 'display_name') String displayName,
       String author,
       StartEndPosition position,
-      @JsonKey(name: 'start_position') @LatLngConverter() LatLng startPosition,
       List<Occurrence> occurrences,
       @JsonKey(name: 'occurrences_count') int occurrencesCount,
-      String details,
       Image image,
       Path path,
       @JsonKey(name: 'path_length') int pathLength});
@@ -83,10 +77,8 @@ class _$TrailDetailsCopyWithImpl<$Res> implements $TrailDetailsCopyWith<$Res> {
     Object? displayName = freezed,
     Object? author = freezed,
     Object? position = freezed,
-    Object? startPosition = freezed,
     Object? occurrences = freezed,
     Object? occurrencesCount = freezed,
-    Object? details = freezed,
     Object? image = freezed,
     Object? path = freezed,
     Object? pathLength = freezed,
@@ -112,10 +104,6 @@ class _$TrailDetailsCopyWithImpl<$Res> implements $TrailDetailsCopyWith<$Res> {
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as StartEndPosition,
-      startPosition: startPosition == freezed
-          ? _value.startPosition
-          : startPosition // ignore: cast_nullable_to_non_nullable
-              as LatLng,
       occurrences: occurrences == freezed
           ? _value.occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
@@ -124,10 +112,6 @@ class _$TrailDetailsCopyWithImpl<$Res> implements $TrailDetailsCopyWith<$Res> {
           ? _value.occurrencesCount
           : occurrencesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      details: details == freezed
-          ? _value.details
-          : details // ignore: cast_nullable_to_non_nullable
-              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -166,11 +150,11 @@ class _$TrailDetailsCopyWithImpl<$Res> implements $TrailDetailsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TrailDetailsCopyWith<$Res>
+abstract class _$$_TrailDetailsCopyWith<$Res>
     implements $TrailDetailsCopyWith<$Res> {
-  factory _$TrailDetailsCopyWith(
-          _TrailDetails value, $Res Function(_TrailDetails) then) =
-      __$TrailDetailsCopyWithImpl<$Res>;
+  factory _$$_TrailDetailsCopyWith(
+          _$_TrailDetails value, $Res Function(_$_TrailDetails) then) =
+      __$$_TrailDetailsCopyWithImpl<$Res>;
   @override
   $Res call(
       {int id,
@@ -178,10 +162,8 @@ abstract class _$TrailDetailsCopyWith<$Res>
       @JsonKey(name: 'display_name') String displayName,
       String author,
       StartEndPosition position,
-      @JsonKey(name: 'start_position') @LatLngConverter() LatLng startPosition,
       List<Occurrence> occurrences,
       @JsonKey(name: 'occurrences_count') int occurrencesCount,
-      String details,
       Image image,
       Path path,
       @JsonKey(name: 'path_length') int pathLength});
@@ -195,14 +177,15 @@ abstract class _$TrailDetailsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$TrailDetailsCopyWithImpl<$Res> extends _$TrailDetailsCopyWithImpl<$Res>
-    implements _$TrailDetailsCopyWith<$Res> {
-  __$TrailDetailsCopyWithImpl(
-      _TrailDetails _value, $Res Function(_TrailDetails) _then)
-      : super(_value, (v) => _then(v as _TrailDetails));
+class __$$_TrailDetailsCopyWithImpl<$Res>
+    extends _$TrailDetailsCopyWithImpl<$Res>
+    implements _$$_TrailDetailsCopyWith<$Res> {
+  __$$_TrailDetailsCopyWithImpl(
+      _$_TrailDetails _value, $Res Function(_$_TrailDetails) _then)
+      : super(_value, (v) => _then(v as _$_TrailDetails));
 
   @override
-  _TrailDetails get _value => super._value as _TrailDetails;
+  _$_TrailDetails get _value => super._value as _$_TrailDetails;
 
   @override
   $Res call({
@@ -211,15 +194,13 @@ class __$TrailDetailsCopyWithImpl<$Res> extends _$TrailDetailsCopyWithImpl<$Res>
     Object? displayName = freezed,
     Object? author = freezed,
     Object? position = freezed,
-    Object? startPosition = freezed,
     Object? occurrences = freezed,
     Object? occurrencesCount = freezed,
-    Object? details = freezed,
     Object? image = freezed,
     Object? path = freezed,
     Object? pathLength = freezed,
   }) {
-    return _then(_TrailDetails(
+    return _then(_$_TrailDetails(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -240,22 +221,14 @@ class __$TrailDetailsCopyWithImpl<$Res> extends _$TrailDetailsCopyWithImpl<$Res>
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as StartEndPosition,
-      startPosition: startPosition == freezed
-          ? _value.startPosition
-          : startPosition // ignore: cast_nullable_to_non_nullable
-              as LatLng,
       occurrences: occurrences == freezed
-          ? _value.occurrences
+          ? _value._occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
               as List<Occurrence>,
       occurrencesCount: occurrencesCount == freezed
           ? _value.occurrencesCount
           : occurrencesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      details: details == freezed
-          ? _value.details
-          : details // ignore: cast_nullable_to_non_nullable
-              as String,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -278,21 +251,14 @@ class _$_TrailDetails implements _TrailDetails {
   const _$_TrailDetails(
       {required this.id,
       required this.name,
-      @JsonKey(name: 'display_name')
-          required this.displayName,
+      @JsonKey(name: 'display_name') required this.displayName,
       required this.author,
       required this.position,
-      @JsonKey(name: 'start_position')
-      @LatLngConverter()
-          required this.startPosition,
       required final List<Occurrence> occurrences,
-      @JsonKey(name: 'occurrences_count')
-          required this.occurrencesCount,
-      required this.details,
+      @JsonKey(name: 'occurrences_count') required this.occurrencesCount,
       required this.image,
       required this.path,
-      @JsonKey(name: 'path_length')
-          required this.pathLength})
+      @JsonKey(name: 'path_length') required this.pathLength})
       : _occurrences = occurrences;
 
   factory _$_TrailDetails.fromJson(Map<String, dynamic> json) =>
@@ -309,10 +275,6 @@ class _$_TrailDetails implements _TrailDetails {
   final String author;
   @override
   final StartEndPosition position;
-  @override
-  @JsonKey(name: 'start_position')
-  @LatLngConverter()
-  final LatLng startPosition;
   final List<Occurrence> _occurrences;
   @override
   List<Occurrence> get occurrences {
@@ -324,8 +286,6 @@ class _$_TrailDetails implements _TrailDetails {
   @JsonKey(name: 'occurrences_count')
   final int occurrencesCount;
   @override
-  final String details;
-  @override
   final Image image;
   @override
   final Path path;
@@ -335,14 +295,14 @@ class _$_TrailDetails implements _TrailDetails {
 
   @override
   String toString() {
-    return 'TrailDetails(id: $id, name: $name, displayName: $displayName, author: $author, position: $position, startPosition: $startPosition, occurrences: $occurrences, occurrencesCount: $occurrencesCount, details: $details, image: $image, path: $path, pathLength: $pathLength)';
+    return 'TrailDetails(id: $id, name: $name, displayName: $displayName, author: $author, position: $position, occurrences: $occurrences, occurrencesCount: $occurrencesCount, image: $image, path: $path, pathLength: $pathLength)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TrailDetails &&
+            other is _$_TrailDetails &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
@@ -350,12 +310,9 @@ class _$_TrailDetails implements _TrailDetails {
             const DeepCollectionEquality().equals(other.author, author) &&
             const DeepCollectionEquality().equals(other.position, position) &&
             const DeepCollectionEquality()
-                .equals(other.startPosition, startPosition) &&
-            const DeepCollectionEquality()
-                .equals(other.occurrences, occurrences) &&
+                .equals(other._occurrences, _occurrences) &&
             const DeepCollectionEquality()
                 .equals(other.occurrencesCount, occurrencesCount) &&
-            const DeepCollectionEquality().equals(other.details, details) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.path, path) &&
             const DeepCollectionEquality()
@@ -371,22 +328,22 @@ class _$_TrailDetails implements _TrailDetails {
       const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(author),
       const DeepCollectionEquality().hash(position),
-      const DeepCollectionEquality().hash(startPosition),
-      const DeepCollectionEquality().hash(occurrences),
+      const DeepCollectionEquality().hash(_occurrences),
       const DeepCollectionEquality().hash(occurrencesCount),
-      const DeepCollectionEquality().hash(details),
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(path),
       const DeepCollectionEquality().hash(pathLength));
 
   @JsonKey(ignore: true)
   @override
-  _$TrailDetailsCopyWith<_TrailDetails> get copyWith =>
-      __$TrailDetailsCopyWithImpl<_TrailDetails>(this, _$identity);
+  _$$_TrailDetailsCopyWith<_$_TrailDetails> get copyWith =>
+      __$$_TrailDetailsCopyWithImpl<_$_TrailDetails>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrailDetailsToJson(this);
+    return _$$_TrailDetailsToJson(
+      this,
+    );
   }
 }
 
@@ -398,13 +355,9 @@ abstract class _TrailDetails implements TrailDetails {
           required final String displayName,
       required final String author,
       required final StartEndPosition position,
-      @JsonKey(name: 'start_position')
-      @LatLngConverter()
-          required final LatLng startPosition,
       required final List<Occurrence> occurrences,
       @JsonKey(name: 'occurrences_count')
           required final int occurrencesCount,
-      required final String details,
       required final Image image,
       required final Path path,
       @JsonKey(name: 'path_length')
@@ -414,37 +367,31 @@ abstract class _TrailDetails implements TrailDetails {
       _$_TrailDetails.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(name: 'display_name')
-  String get displayName => throw _privateConstructorUsedError;
+  String get displayName;
   @override
-  String get author => throw _privateConstructorUsedError;
+  String get author;
   @override
-  StartEndPosition get position => throw _privateConstructorUsedError;
+  StartEndPosition get position;
   @override
-  @JsonKey(name: 'start_position')
-  @LatLngConverter()
-  LatLng get startPosition => throw _privateConstructorUsedError;
-  @override
-  List<Occurrence> get occurrences => throw _privateConstructorUsedError;
+  List<Occurrence> get occurrences;
   @override
   @JsonKey(name: 'occurrences_count')
-  int get occurrencesCount => throw _privateConstructorUsedError;
+  int get occurrencesCount;
   @override
-  String get details => throw _privateConstructorUsedError;
+  Image get image;
   @override
-  Image get image => throw _privateConstructorUsedError;
-  @override
-  Path get path => throw _privateConstructorUsedError;
+  Path get path;
   @override
   @JsonKey(name: 'path_length')
-  int get pathLength => throw _privateConstructorUsedError;
+  int get pathLength;
   @override
   @JsonKey(ignore: true)
-  _$TrailDetailsCopyWith<_TrailDetails> get copyWith =>
+  _$$_TrailDetailsCopyWith<_$_TrailDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -496,28 +443,28 @@ class _$ImageCopyWithImpl<$Res> implements $ImageCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ImageCopyWith<$Res> implements $ImageCopyWith<$Res> {
-  factory _$ImageCopyWith(_Image value, $Res Function(_Image) then) =
-      __$ImageCopyWithImpl<$Res>;
+abstract class _$$_ImageCopyWith<$Res> implements $ImageCopyWith<$Res> {
+  factory _$$_ImageCopyWith(_$_Image value, $Res Function(_$_Image) then) =
+      __$$_ImageCopyWithImpl<$Res>;
   @override
   $Res call({int id, String url});
 }
 
 /// @nodoc
-class __$ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res>
-    implements _$ImageCopyWith<$Res> {
-  __$ImageCopyWithImpl(_Image _value, $Res Function(_Image) _then)
-      : super(_value, (v) => _then(v as _Image));
+class __$$_ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res>
+    implements _$$_ImageCopyWith<$Res> {
+  __$$_ImageCopyWithImpl(_$_Image _value, $Res Function(_$_Image) _then)
+      : super(_value, (v) => _then(v as _$_Image));
 
   @override
-  _Image get _value => super._value as _Image;
+  _$_Image get _value => super._value as _$_Image;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? url = freezed,
   }) {
-    return _then(_Image(
+    return _then(_$_Image(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -552,7 +499,7 @@ class _$_Image implements _Image {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Image &&
+            other is _$_Image &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.url, url));
   }
@@ -566,12 +513,14 @@ class _$_Image implements _Image {
 
   @JsonKey(ignore: true)
   @override
-  _$ImageCopyWith<_Image> get copyWith =>
-      __$ImageCopyWithImpl<_Image>(this, _$identity);
+  _$$_ImageCopyWith<_$_Image> get copyWith =>
+      __$$_ImageCopyWithImpl<_$_Image>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImageToJson(this);
+    return _$$_ImageToJson(
+      this,
+    );
   }
 }
 
@@ -582,12 +531,13 @@ abstract class _Image implements Image {
   factory _Image.fromJson(Map<String, dynamic> json) = _$_Image.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
   @JsonKey(ignore: true)
-  _$ImageCopyWith<_Image> get copyWith => throw _privateConstructorUsedError;
+  _$$_ImageCopyWith<_$_Image> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Occurrence _$OccurrenceFromJson(Map<String, dynamic> json) {
@@ -657,10 +607,11 @@ class _$OccurrenceCopyWithImpl<$Res> implements $OccurrenceCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$OccurrenceCopyWith<$Res> implements $OccurrenceCopyWith<$Res> {
-  factory _$OccurrenceCopyWith(
-          _Occurrence value, $Res Function(_Occurrence) then) =
-      __$OccurrenceCopyWithImpl<$Res>;
+abstract class _$$_OccurrenceCopyWith<$Res>
+    implements $OccurrenceCopyWith<$Res> {
+  factory _$$_OccurrenceCopyWith(
+          _$_Occurrence value, $Res Function(_$_Occurrence) then) =
+      __$$_OccurrenceCopyWithImpl<$Res>;
   @override
   $Res call(
       {@LatLngConverter() LatLng position, Taxon taxon, List<Image> images});
@@ -670,14 +621,14 @@ abstract class _$OccurrenceCopyWith<$Res> implements $OccurrenceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$OccurrenceCopyWithImpl<$Res> extends _$OccurrenceCopyWithImpl<$Res>
-    implements _$OccurrenceCopyWith<$Res> {
-  __$OccurrenceCopyWithImpl(
-      _Occurrence _value, $Res Function(_Occurrence) _then)
-      : super(_value, (v) => _then(v as _Occurrence));
+class __$$_OccurrenceCopyWithImpl<$Res> extends _$OccurrenceCopyWithImpl<$Res>
+    implements _$$_OccurrenceCopyWith<$Res> {
+  __$$_OccurrenceCopyWithImpl(
+      _$_Occurrence _value, $Res Function(_$_Occurrence) _then)
+      : super(_value, (v) => _then(v as _$_Occurrence));
 
   @override
-  _Occurrence get _value => super._value as _Occurrence;
+  _$_Occurrence get _value => super._value as _$_Occurrence;
 
   @override
   $Res call({
@@ -685,7 +636,7 @@ class __$OccurrenceCopyWithImpl<$Res> extends _$OccurrenceCopyWithImpl<$Res>
     Object? taxon = freezed,
     Object? images = freezed,
   }) {
-    return _then(_Occurrence(
+    return _then(_$_Occurrence(
       position: position == freezed
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -695,7 +646,7 @@ class __$OccurrenceCopyWithImpl<$Res> extends _$OccurrenceCopyWithImpl<$Res>
           : taxon // ignore: cast_nullable_to_non_nullable
               as Taxon,
       images: images == freezed
-          ? _value.images
+          ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<Image>,
     ));
@@ -735,10 +686,10 @@ class _$_Occurrence implements _Occurrence {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Occurrence &&
+            other is _$_Occurrence &&
             const DeepCollectionEquality().equals(other.position, position) &&
             const DeepCollectionEquality().equals(other.taxon, taxon) &&
-            const DeepCollectionEquality().equals(other.images, images));
+            const DeepCollectionEquality().equals(other._images, _images));
   }
 
   @JsonKey(ignore: true)
@@ -747,16 +698,18 @@ class _$_Occurrence implements _Occurrence {
       runtimeType,
       const DeepCollectionEquality().hash(position),
       const DeepCollectionEquality().hash(taxon),
-      const DeepCollectionEquality().hash(images));
+      const DeepCollectionEquality().hash(_images));
 
   @JsonKey(ignore: true)
   @override
-  _$OccurrenceCopyWith<_Occurrence> get copyWith =>
-      __$OccurrenceCopyWithImpl<_Occurrence>(this, _$identity);
+  _$$_OccurrenceCopyWith<_$_Occurrence> get copyWith =>
+      __$$_OccurrenceCopyWithImpl<_$_Occurrence>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OccurrenceToJson(this);
+    return _$$_OccurrenceToJson(
+      this,
+    );
   }
 }
 
@@ -771,14 +724,14 @@ abstract class _Occurrence implements Occurrence {
 
   @override
   @LatLngConverter()
-  LatLng get position => throw _privateConstructorUsedError;
+  LatLng get position;
   @override
-  Taxon get taxon => throw _privateConstructorUsedError;
+  Taxon get taxon;
   @override
-  List<Image> get images => throw _privateConstructorUsedError;
+  List<Image> get images;
   @override
   @JsonKey(ignore: true)
-  _$OccurrenceCopyWith<_Occurrence> get copyWith =>
+  _$$_OccurrenceCopyWith<_$_Occurrence> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -788,13 +741,16 @@ Taxon _$TaxonFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Taxon {
-  String get species => throw _privateConstructorUsedError;
-  String get author => throw _privateConstructorUsedError;
-  String get genus => throw _privateConstructorUsedError;
-  String get family => throw _privateConstructorUsedError;
-  String get referential => throw _privateConstructorUsedError;
+  @JsonKey(name: 'scientific_name')
+  String get scientificName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'full_scientific_name')
+  String get fullScientificName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'taxon_repository')
+  String get taxonRepository => throw _privateConstructorUsedError;
   @JsonKey(name: 'name_id')
   int get nameId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'vernacular_names')
+  List<String> get vernacularNames => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -806,12 +762,11 @@ abstract class $TaxonCopyWith<$Res> {
   factory $TaxonCopyWith(Taxon value, $Res Function(Taxon) then) =
       _$TaxonCopyWithImpl<$Res>;
   $Res call(
-      {String species,
-      String author,
-      String genus,
-      String family,
-      String referential,
-      @JsonKey(name: 'name_id') int nameId});
+      {@JsonKey(name: 'scientific_name') String scientificName,
+      @JsonKey(name: 'full_scientific_name') String fullScientificName,
+      @JsonKey(name: 'taxon_repository') String taxonRepository,
+      @JsonKey(name: 'name_id') int nameId,
+      @JsonKey(name: 'vernacular_names') List<String> vernacularNames});
 }
 
 /// @nodoc
@@ -824,99 +779,88 @@ class _$TaxonCopyWithImpl<$Res> implements $TaxonCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? species = freezed,
-    Object? author = freezed,
-    Object? genus = freezed,
-    Object? family = freezed,
-    Object? referential = freezed,
+    Object? scientificName = freezed,
+    Object? fullScientificName = freezed,
+    Object? taxonRepository = freezed,
     Object? nameId = freezed,
+    Object? vernacularNames = freezed,
   }) {
     return _then(_value.copyWith(
-      species: species == freezed
-          ? _value.species
-          : species // ignore: cast_nullable_to_non_nullable
+      scientificName: scientificName == freezed
+          ? _value.scientificName
+          : scientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
+      fullScientificName: fullScientificName == freezed
+          ? _value.fullScientificName
+          : fullScientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      genus: genus == freezed
-          ? _value.genus
-          : genus // ignore: cast_nullable_to_non_nullable
-              as String,
-      family: family == freezed
-          ? _value.family
-          : family // ignore: cast_nullable_to_non_nullable
-              as String,
-      referential: referential == freezed
-          ? _value.referential
-          : referential // ignore: cast_nullable_to_non_nullable
+      taxonRepository: taxonRepository == freezed
+          ? _value.taxonRepository
+          : taxonRepository // ignore: cast_nullable_to_non_nullable
               as String,
       nameId: nameId == freezed
           ? _value.nameId
           : nameId // ignore: cast_nullable_to_non_nullable
               as int,
+      vernacularNames: vernacularNames == freezed
+          ? _value.vernacularNames
+          : vernacularNames // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
-  factory _$TaxonCopyWith(_Taxon value, $Res Function(_Taxon) then) =
-      __$TaxonCopyWithImpl<$Res>;
+abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
+  factory _$$_TaxonCopyWith(_$_Taxon value, $Res Function(_$_Taxon) then) =
+      __$$_TaxonCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String species,
-      String author,
-      String genus,
-      String family,
-      String referential,
-      @JsonKey(name: 'name_id') int nameId});
+      {@JsonKey(name: 'scientific_name') String scientificName,
+      @JsonKey(name: 'full_scientific_name') String fullScientificName,
+      @JsonKey(name: 'taxon_repository') String taxonRepository,
+      @JsonKey(name: 'name_id') int nameId,
+      @JsonKey(name: 'vernacular_names') List<String> vernacularNames});
 }
 
 /// @nodoc
-class __$TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
-    implements _$TaxonCopyWith<$Res> {
-  __$TaxonCopyWithImpl(_Taxon _value, $Res Function(_Taxon) _then)
-      : super(_value, (v) => _then(v as _Taxon));
+class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
+    implements _$$_TaxonCopyWith<$Res> {
+  __$$_TaxonCopyWithImpl(_$_Taxon _value, $Res Function(_$_Taxon) _then)
+      : super(_value, (v) => _then(v as _$_Taxon));
 
   @override
-  _Taxon get _value => super._value as _Taxon;
+  _$_Taxon get _value => super._value as _$_Taxon;
 
   @override
   $Res call({
-    Object? species = freezed,
-    Object? author = freezed,
-    Object? genus = freezed,
-    Object? family = freezed,
-    Object? referential = freezed,
+    Object? scientificName = freezed,
+    Object? fullScientificName = freezed,
+    Object? taxonRepository = freezed,
     Object? nameId = freezed,
+    Object? vernacularNames = freezed,
   }) {
-    return _then(_Taxon(
-      species: species == freezed
-          ? _value.species
-          : species // ignore: cast_nullable_to_non_nullable
+    return _then(_$_Taxon(
+      scientificName: scientificName == freezed
+          ? _value.scientificName
+          : scientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
+      fullScientificName: fullScientificName == freezed
+          ? _value.fullScientificName
+          : fullScientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      genus: genus == freezed
-          ? _value.genus
-          : genus // ignore: cast_nullable_to_non_nullable
-              as String,
-      family: family == freezed
-          ? _value.family
-          : family // ignore: cast_nullable_to_non_nullable
-              as String,
-      referential: referential == freezed
-          ? _value.referential
-          : referential // ignore: cast_nullable_to_non_nullable
+      taxonRepository: taxonRepository == freezed
+          ? _value.taxonRepository
+          : taxonRepository // ignore: cast_nullable_to_non_nullable
               as String,
       nameId: nameId == freezed
           ? _value.nameId
           : nameId // ignore: cast_nullable_to_non_nullable
               as int,
+      vernacularNames: vernacularNames == freezed
+          ? _value._vernacularNames
+          : vernacularNames // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -925,98 +869,119 @@ class __$TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Taxon implements _Taxon {
   const _$_Taxon(
-      {required this.species,
-      required this.author,
-      required this.genus,
-      required this.family,
-      required this.referential,
-      @JsonKey(name: 'name_id') required this.nameId});
+      {@JsonKey(name: 'scientific_name')
+          required this.scientificName,
+      @JsonKey(name: 'full_scientific_name')
+          required this.fullScientificName,
+      @JsonKey(name: 'taxon_repository')
+          required this.taxonRepository,
+      @JsonKey(name: 'name_id')
+          required this.nameId,
+      @JsonKey(name: 'vernacular_names')
+          required final List<String> vernacularNames})
+      : _vernacularNames = vernacularNames;
 
   factory _$_Taxon.fromJson(Map<String, dynamic> json) =>
       _$$_TaxonFromJson(json);
 
   @override
-  final String species;
+  @JsonKey(name: 'scientific_name')
+  final String scientificName;
   @override
-  final String author;
+  @JsonKey(name: 'full_scientific_name')
+  final String fullScientificName;
   @override
-  final String genus;
-  @override
-  final String family;
-  @override
-  final String referential;
+  @JsonKey(name: 'taxon_repository')
+  final String taxonRepository;
   @override
   @JsonKey(name: 'name_id')
   final int nameId;
+  final List<String> _vernacularNames;
+  @override
+  @JsonKey(name: 'vernacular_names')
+  List<String> get vernacularNames {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_vernacularNames);
+  }
 
   @override
   String toString() {
-    return 'Taxon(species: $species, author: $author, genus: $genus, family: $family, referential: $referential, nameId: $nameId)';
+    return 'Taxon(scientificName: $scientificName, fullScientificName: $fullScientificName, taxonRepository: $taxonRepository, nameId: $nameId, vernacularNames: $vernacularNames)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Taxon &&
-            const DeepCollectionEquality().equals(other.species, species) &&
-            const DeepCollectionEquality().equals(other.author, author) &&
-            const DeepCollectionEquality().equals(other.genus, genus) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
+            other is _$_Taxon &&
             const DeepCollectionEquality()
-                .equals(other.referential, referential) &&
-            const DeepCollectionEquality().equals(other.nameId, nameId));
+                .equals(other.scientificName, scientificName) &&
+            const DeepCollectionEquality()
+                .equals(other.fullScientificName, fullScientificName) &&
+            const DeepCollectionEquality()
+                .equals(other.taxonRepository, taxonRepository) &&
+            const DeepCollectionEquality().equals(other.nameId, nameId) &&
+            const DeepCollectionEquality()
+                .equals(other._vernacularNames, _vernacularNames));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(species),
-      const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(genus),
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(referential),
-      const DeepCollectionEquality().hash(nameId));
+      const DeepCollectionEquality().hash(scientificName),
+      const DeepCollectionEquality().hash(fullScientificName),
+      const DeepCollectionEquality().hash(taxonRepository),
+      const DeepCollectionEquality().hash(nameId),
+      const DeepCollectionEquality().hash(_vernacularNames));
 
   @JsonKey(ignore: true)
   @override
-  _$TaxonCopyWith<_Taxon> get copyWith =>
-      __$TaxonCopyWithImpl<_Taxon>(this, _$identity);
+  _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
+      __$$_TaxonCopyWithImpl<_$_Taxon>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TaxonToJson(this);
+    return _$$_TaxonToJson(
+      this,
+    );
   }
 }
 
 abstract class _Taxon implements Taxon {
   const factory _Taxon(
-      {required final String species,
-      required final String author,
-      required final String genus,
-      required final String family,
-      required final String referential,
-      @JsonKey(name: 'name_id') required final int nameId}) = _$_Taxon;
+      {@JsonKey(name: 'scientific_name')
+          required final String scientificName,
+      @JsonKey(name: 'full_scientific_name')
+          required final String fullScientificName,
+      @JsonKey(name: 'taxon_repository')
+          required final String taxonRepository,
+      @JsonKey(name: 'name_id')
+          required final int nameId,
+      @JsonKey(name: 'vernacular_names')
+          required final List<String> vernacularNames}) = _$_Taxon;
 
   factory _Taxon.fromJson(Map<String, dynamic> json) = _$_Taxon.fromJson;
 
   @override
-  String get species => throw _privateConstructorUsedError;
+  @JsonKey(name: 'scientific_name')
+  String get scientificName;
   @override
-  String get author => throw _privateConstructorUsedError;
+  @JsonKey(name: 'full_scientific_name')
+  String get fullScientificName;
   @override
-  String get genus => throw _privateConstructorUsedError;
-  @override
-  String get family => throw _privateConstructorUsedError;
-  @override
-  String get referential => throw _privateConstructorUsedError;
+  @JsonKey(name: 'taxon_repository')
+  String get taxonRepository;
   @override
   @JsonKey(name: 'name_id')
-  int get nameId => throw _privateConstructorUsedError;
+  int get nameId;
+  @override
+  @JsonKey(name: 'vernacular_names')
+  List<String> get vernacularNames;
   @override
   @JsonKey(ignore: true)
-  _$TaxonCopyWith<_Taxon> get copyWith => throw _privateConstructorUsedError;
+  _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Path _$PathFromJson(Map<String, dynamic> json) {
@@ -1068,34 +1033,34 @@ class _$PathCopyWithImpl<$Res> implements $PathCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PathCopyWith<$Res> implements $PathCopyWith<$Res> {
-  factory _$PathCopyWith(_Path value, $Res Function(_Path) then) =
-      __$PathCopyWithImpl<$Res>;
+abstract class _$$_PathCopyWith<$Res> implements $PathCopyWith<$Res> {
+  factory _$$_PathCopyWith(_$_Path value, $Res Function(_$_Path) then) =
+      __$$_PathCopyWithImpl<$Res>;
   @override
   $Res call({String type, @LatLngListConverter() List<LatLng> coordinates});
 }
 
 /// @nodoc
-class __$PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res>
-    implements _$PathCopyWith<$Res> {
-  __$PathCopyWithImpl(_Path _value, $Res Function(_Path) _then)
-      : super(_value, (v) => _then(v as _Path));
+class __$$_PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res>
+    implements _$$_PathCopyWith<$Res> {
+  __$$_PathCopyWithImpl(_$_Path _value, $Res Function(_$_Path) _then)
+      : super(_value, (v) => _then(v as _$_Path));
 
   @override
-  _Path get _value => super._value as _Path;
+  _$_Path get _value => super._value as _$_Path;
 
   @override
   $Res call({
     Object? type = freezed,
     Object? coordinates = freezed,
   }) {
-    return _then(_Path(
+    return _then(_$_Path(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       coordinates: coordinates == freezed
-          ? _value.coordinates
+          ? _value._coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as List<LatLng>,
     ));
@@ -1114,7 +1079,6 @@ class _$_Path implements _Path {
 
   @override
   final String type;
-  @LatLngListConverter()
   final List<LatLng> _coordinates;
   @override
   @LatLngListConverter()
@@ -1132,10 +1096,10 @@ class _$_Path implements _Path {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Path &&
+            other is _$_Path &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality()
-                .equals(other.coordinates, coordinates));
+                .equals(other._coordinates, _coordinates));
   }
 
   @JsonKey(ignore: true)
@@ -1143,16 +1107,18 @@ class _$_Path implements _Path {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(coordinates));
+      const DeepCollectionEquality().hash(_coordinates));
 
   @JsonKey(ignore: true)
   @override
-  _$PathCopyWith<_Path> get copyWith =>
-      __$PathCopyWithImpl<_Path>(this, _$identity);
+  _$$_PathCopyWith<_$_Path> get copyWith =>
+      __$$_PathCopyWithImpl<_$_Path>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PathToJson(this);
+    return _$$_PathToJson(
+      this,
+    );
   }
 }
 
@@ -1165,13 +1131,13 @@ abstract class _Path implements Path {
   factory _Path.fromJson(Map<String, dynamic> json) = _$_Path.fromJson;
 
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
   @LatLngListConverter()
-  List<LatLng> get coordinates => throw _privateConstructorUsedError;
+  List<LatLng> get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$PathCopyWith<_Path> get copyWith => throw _privateConstructorUsedError;
+  _$$_PathCopyWith<_$_Path> get copyWith => throw _privateConstructorUsedError;
 }
 
 StartEndPosition _$StartEndPositionFromJson(Map<String, dynamic> json) {
@@ -1227,32 +1193,32 @@ class _$StartEndPositionCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StartEndPositionCopyWith<$Res>
+abstract class _$$_StartEndPositionCopyWith<$Res>
     implements $StartEndPositionCopyWith<$Res> {
-  factory _$StartEndPositionCopyWith(
-          _StartEndPosition value, $Res Function(_StartEndPosition) then) =
-      __$StartEndPositionCopyWithImpl<$Res>;
+  factory _$$_StartEndPositionCopyWith(
+          _$_StartEndPosition value, $Res Function(_$_StartEndPosition) then) =
+      __$$_StartEndPositionCopyWithImpl<$Res>;
   @override
   $Res call({@LatLngConverter() LatLng start, @LatLngConverter() LatLng end});
 }
 
 /// @nodoc
-class __$StartEndPositionCopyWithImpl<$Res>
+class __$$_StartEndPositionCopyWithImpl<$Res>
     extends _$StartEndPositionCopyWithImpl<$Res>
-    implements _$StartEndPositionCopyWith<$Res> {
-  __$StartEndPositionCopyWithImpl(
-      _StartEndPosition _value, $Res Function(_StartEndPosition) _then)
-      : super(_value, (v) => _then(v as _StartEndPosition));
+    implements _$$_StartEndPositionCopyWith<$Res> {
+  __$$_StartEndPositionCopyWithImpl(
+      _$_StartEndPosition _value, $Res Function(_$_StartEndPosition) _then)
+      : super(_value, (v) => _then(v as _$_StartEndPosition));
 
   @override
-  _StartEndPosition get _value => super._value as _StartEndPosition;
+  _$_StartEndPosition get _value => super._value as _$_StartEndPosition;
 
   @override
   $Res call({
     Object? start = freezed,
     Object? end = freezed,
   }) {
-    return _then(_StartEndPosition(
+    return _then(_$_StartEndPosition(
       start: start == freezed
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -1291,7 +1257,7 @@ class _$_StartEndPosition implements _StartEndPosition {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _StartEndPosition &&
+            other is _$_StartEndPosition &&
             const DeepCollectionEquality().equals(other.start, start) &&
             const DeepCollectionEquality().equals(other.end, end));
   }
@@ -1305,12 +1271,14 @@ class _$_StartEndPosition implements _StartEndPosition {
 
   @JsonKey(ignore: true)
   @override
-  _$StartEndPositionCopyWith<_StartEndPosition> get copyWith =>
-      __$StartEndPositionCopyWithImpl<_StartEndPosition>(this, _$identity);
+  _$$_StartEndPositionCopyWith<_$_StartEndPosition> get copyWith =>
+      __$$_StartEndPositionCopyWithImpl<_$_StartEndPosition>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StartEndPositionToJson(this);
+    return _$$_StartEndPositionToJson(
+      this,
+    );
   }
 }
 
@@ -1324,12 +1292,12 @@ abstract class _StartEndPosition implements StartEndPosition {
 
   @override
   @LatLngConverter()
-  LatLng get start => throw _privateConstructorUsedError;
+  LatLng get start;
   @override
   @LatLngConverter()
-  LatLng get end => throw _privateConstructorUsedError;
+  LatLng get end;
   @override
   @JsonKey(ignore: true)
-  _$StartEndPositionCopyWith<_StartEndPosition> get copyWith =>
+  _$$_StartEndPositionCopyWith<_$_StartEndPosition> get copyWith =>
       throw _privateConstructorUsedError;
 }

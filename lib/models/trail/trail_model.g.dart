@@ -14,12 +14,10 @@ _$_TrailDetails _$$_TrailDetailsFromJson(Map<String, dynamic> json) =>
       author: json['author'] as String,
       position:
           StartEndPosition.fromJson(json['position'] as Map<String, dynamic>),
-      startPosition: const LatLngConverter().fromJson(json['start_position']),
       occurrences: (json['occurrences'] as List<dynamic>)
           .map((e) => Occurrence.fromJson(e as Map<String, dynamic>))
           .toList(),
       occurrencesCount: json['occurrences_count'] as int,
-      details: json['details'] as String,
       image: Image.fromJson(json['image'] as Map<String, dynamic>),
       path: Path.fromJson(json['path'] as Map<String, dynamic>),
       pathLength: json['path_length'] as int,
@@ -32,10 +30,8 @@ Map<String, dynamic> _$$_TrailDetailsToJson(_$_TrailDetails instance) =>
       'display_name': instance.displayName,
       'author': instance.author,
       'position': instance.position,
-      'start_position': const LatLngConverter().toJson(instance.startPosition),
       'occurrences': instance.occurrences,
       'occurrences_count': instance.occurrencesCount,
-      'details': instance.details,
       'image': instance.image,
       'path': instance.path,
       'path_length': instance.pathLength,
@@ -68,21 +64,21 @@ Map<String, dynamic> _$$_OccurrenceToJson(_$_Occurrence instance) =>
     };
 
 _$_Taxon _$$_TaxonFromJson(Map<String, dynamic> json) => _$_Taxon(
-      species: json['species'] as String,
-      author: json['author'] as String,
-      genus: json['genus'] as String,
-      family: json['family'] as String,
-      referential: json['referential'] as String,
+      scientificName: json['scientific_name'] as String,
+      fullScientificName: json['full_scientific_name'] as String,
+      taxonRepository: json['taxon_repository'] as String,
       nameId: json['name_id'] as int,
+      vernacularNames: (json['vernacular_names'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_TaxonToJson(_$_Taxon instance) => <String, dynamic>{
-      'species': instance.species,
-      'author': instance.author,
-      'genus': instance.genus,
-      'family': instance.family,
-      'referential': instance.referential,
+      'scientific_name': instance.scientificName,
+      'full_scientific_name': instance.fullScientificName,
+      'taxon_repository': instance.taxonRepository,
       'name_id': instance.nameId,
+      'vernacular_names': instance.vernacularNames,
     };
 
 _$_Path _$$_PathFromJson(Map<String, dynamic> json) => _$_Path(

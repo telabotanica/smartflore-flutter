@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -14,7 +15,6 @@ import 'package:smartflore/components/map/marker_with_bg.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
-import 'package:collection/collection.dart';
 
 enum MapMode { overview, preview, trail }
 
@@ -52,6 +52,13 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 
   void setSelectedOccurrence(int occurrenceID) {
     if (selectedOccurence != occurrenceID) {
+      if (trailData != null) {
+        Occurrence occurrence = trailData!.occurrences[occurrenceID];
+        _animatedMapMove(
+            LatLng(occurrence.position.latitude - 0.0008,
+                occurrence.position.longitude),
+            _mapController.zoom);
+      }
       setState(() {
         selectedOccurence = occurrenceID;
         forceOccurenceUpdate = true;

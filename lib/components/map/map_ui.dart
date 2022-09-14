@@ -32,6 +32,7 @@ class MapUI extends StatelessWidget {
                 width: 46,
                 height: 46,
                 child: FloatingActionButton(
+                  heroTag: 'settings',
                   backgroundColor: Colors.white,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -79,6 +80,7 @@ class MapUI extends StatelessWidget {
                   width: 46,
                   height: 46,
                   child: FloatingActionButton(
+                      heroTag: 'qrCode',
                       backgroundColor: Colors.white,
                       child: const Icon(
                         SmartFloreIcons.qrcode,
@@ -92,6 +94,7 @@ class MapUI extends StatelessWidget {
                   width: 46,
                   height: 46,
                   child: FloatingActionButton(
+                      heroTag: 'target',
                       backgroundColor: Colors.white,
                       child: const Icon(
                         SmartFloreIcons.target,

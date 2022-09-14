@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smartflore/components/grid/grid_image.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart';
+import 'package:smartflore/navigation/gallery_screen_args.dart';
 
 class Gallery extends StatefulWidget {
-  const Gallery({Key? key}) : super(key: key);
+  final List<ImageAPI> images;
+  const Gallery({Key? key, required this.images}) : super(key: key);
 
   @override
   State<Gallery> createState() => _GalleryState();
@@ -17,11 +20,21 @@ class _GalleryState extends State<Gallery> {
           crossAxisSpacing: 1,
           crossAxisCount: 3,
         ),
-        itemCount: 300,
+        itemCount: widget.images.length,
         itemBuilder: (BuildContext context, int index) {
-          return const GridImage(
-              image:
-                  'https://jardinage.lemonde.fr/images/dossiers/historique/coquelicot-fleur-184011.jpg');
+          return ImageWithLoader(
+            url: widget.images[index].url,
+            id: widget.images[index].url,
+            onTap: () {
+              _openGallery(context, index);
+            },
+          );
         });
+  }
+
+  _openGallery(BuildContext context, final int index) {
+    Navigator.of(context).pushNamed('/gallery-fullScreen',
+        arguments: GalleryScreenArguments(widget.images,
+            const BoxDecoration(color: Colors.black), index, Axis.horizontal));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
 
 class GridImage extends StatelessWidget {
   final String image;
@@ -7,13 +8,6 @@ class GridImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: NetworkImage(image),
-        ),
-      ),
-    );
+    return ImageWithLoader(url: image);
   }
 }

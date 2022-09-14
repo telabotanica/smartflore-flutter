@@ -4,16 +4,21 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_fade/image_fade.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
+import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 
 class SpeciesCover extends StatelessWidget {
+  final int taxonId;
+  final String taxonRepo;
   final String image;
   final String title;
   final LatLng position;
 
   const SpeciesCover(
       {Key? key,
+      required this.taxonId,
+      required this.taxonRepo,
       required this.image,
       required this.title,
       required this.position})
@@ -68,10 +73,15 @@ class SpeciesCover extends StatelessWidget {
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.black.withOpacity(0.3),
-                    side: const BorderSide(
-                        color: Colors.white, width: 1), //<-- SEE HERE
+                    side: const BorderSide(color: Colors.white, width: 1),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      '/taxon',
+                      arguments:
+                          TaxonScreenArguments(taxonId, taxonRepo, title),
+                    );
+                  },
                   child: const Text('Voir la fiche',
                       style: TextStyle(color: Colors.white, fontSize: 12)),
                 ),
@@ -103,11 +113,14 @@ class SpeciesCover extends StatelessWidget {
                 Icon(SmartFloreIcons.plant,
                     size: 14, color: Theme.of(context).colorScheme.primary),
                 const SizedBox(width: 4),
-                Text(title,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold)),
+                Flexible(
+                    child: Text(title,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold))),
               ]),
               const SizedBox(height: 6),
               BlocBuilder<GeolocationBloc, GeolocationState>(
