@@ -54,10 +54,11 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     if (selectedOccurence != occurrenceID) {
       if (trailData != null) {
         Occurrence occurrence = trailData!.occurrences[occurrenceID];
+        double lat = (_mapController.zoom > 16)
+            ? occurrence.position.latitude - 0.0008 / (_mapController.zoom - 16)
+            : occurrence.position.latitude - 0.0008;
         _animatedMapMove(
-            LatLng(occurrence.position.latitude - 0.0008,
-                occurrence.position.longitude),
-            _mapController.zoom);
+            LatLng(lat, occurrence.position.longitude), _mapController.zoom);
       }
       setState(() {
         selectedOccurence = occurrenceID;
@@ -334,35 +335,48 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       //OTHERS POINTS
       MarkerLayerOptions(
           markers: trailData != null
-              ? trailData!.occurrences.mapIndexed((index, occurrence) {
-                  return Marker(
-                    width: index == selectedOccurence && forceOccurenceUpdate
-                        ? 60
-                        : 35,
-                    height: index == selectedOccurence && forceOccurenceUpdate
-                        ? 60
-                        : 35,
-                    anchorPos: AnchorPos.align(AnchorAlign.center),
-                    point: occurrence.position,
-                    builder: (ctx) => SizedBox.expand(
-                      child: IconButton(
-                          onPressed: () {
-                            BlocProvider.of<WalkBloc>(context)
-                                .add(SelectOccurrence(occurrenceID: index));
-                          },
-                          icon: MarkerOccurrence(
-                            imageUrl: (occurrence.images.isNotEmpty)
-                                ? occurrence.images.first.url
-                                : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
-                            id: index,
-                            isSelected: index == selectedOccurence &&
-                                forceOccurenceUpdate,
-                          )),
-                    ),
-                  );
-                }).toList()
+              ? getOrderedMarkerList(trailData!.occurrences)
               : []),
     ];
+  }
+
+  List<Marker> getOrderedMarkerList(List<Occurrence> occurrences) {
+    List<Marker> markerList = [];
+    Marker marker;
+    Marker? selectedMarker;
+
+    occurrences.mapIndexed((index, occurrence) {
+      marker = Marker(
+        key: Key(index.toString()),
+        width: index == selectedOccurence && forceOccurenceUpdate ? 60 : 35,
+        height: index == selectedOccurence && forceOccurenceUpdate ? 60 : 35,
+        anchorPos: AnchorPos.align(AnchorAlign.center),
+        point: occurrence.position,
+        builder: (ctx) => SizedBox.expand(
+          child: IconButton(
+              onPressed: () {
+                BlocProvider.of<WalkBloc>(context)
+                    .add(SelectOccurrence(occurrenceID: index));
+              },
+              icon: MarkerOccurrence(
+                imageUrl: (occurrence.images.isNotEmpty)
+                    ? occurrence.images.first.url
+                    : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
+                id: index,
+                isSelected: index == selectedOccurence && forceOccurenceUpdate,
+              )),
+        ),
+      );
+
+      if (index == selectedOccurence && forceOccurenceUpdate) {
+        selectedMarker = marker;
+      } else {
+        markerList.add(marker);
+      }
+    }).toList();
+
+    if (selectedMarker != null) markerList.add(selectedMarker!);
+    return markerList;
   }
 }
 
