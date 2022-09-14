@@ -114,18 +114,18 @@ class MapUI extends StatelessWidget {
                       builder: (context, state) {
                         if (state is TrailLoadedState) {
                           return TrailPreview(
-                            onPressCB: () {
-                              BlocProvider.of<MapBloc>(context).add(
-                                  const ChangeMapMode(mapMode: MapMode.trail));
-                            },
-                            index: 1,
-                            id: state.trail.id,
-                            title: state.trail.displayName,
-                            length: state.trail.pathLength,
-                            image: state.trail.image.url,
-                            position: state.trail.position.start,
-                            nbOccurence: state.trail.occurrencesCount,
-                          );
+                              onPressCB: () {
+                                BlocProvider.of<MapBloc>(context).add(
+                                    const ChangeMapMode(
+                                        mapMode: MapMode.trail));
+                              },
+                              index: 1,
+                              id: state.trail.id,
+                              title: state.trail.displayName,
+                              length: state.trail.pathLength,
+                              image: state.trail.image.url,
+                              position: state.trail.position.start,
+                              nbOccurence: state.trail.occurrencesCount);
                         }
                         return TrailPreview(
                           onPressCB: null,
