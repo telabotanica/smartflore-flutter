@@ -15,7 +15,7 @@ class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CardBackground(
-        height: 50,
+        height: 55,
         child: Center(
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -27,8 +27,8 @@ class TopBar extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 8, right: 8),
                       child: Container(
-                        width: 35,
-                        height: 35,
+                        width: 40,
+                        height: 40,
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(6)),
@@ -37,7 +37,7 @@ class TopBar extends StatelessWidget {
                         child: Center(
                           child: Icon(
                             SmartFloreIcons.logoIcon,
-                            size: 20,
+                            size: 25,
                             color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
@@ -48,14 +48,14 @@ class TopBar extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.only(top: 7),
                           child: Stack(clipBehavior: Clip.none, children: [
                             Text(title,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.bodyText1),
                             Padding(
-                              padding: const EdgeInsets.only(top: 15.0),
+                              padding: const EdgeInsets.only(top: 19.0),
                               child: Text(author,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -68,14 +68,15 @@ class TopBar extends StatelessWidget {
                   ],
                 ),
               ),
-              TextButton(
-                onPressed: () => {
-                  BlocProvider.of<MapBloc>(context)
-                      .add(const ChangeMapMode(mapMode: MapMode.preview))
-                },
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Icon(Icons.close, size: 14, color: Colors.black),
+              SizedBox(
+                height: 55,
+                width: 55,
+                child: TextButton(
+                  onPressed: () => {
+                    BlocProvider.of<MapBloc>(context)
+                        .add(const ChangeMapMode(mapMode: MapMode.preview))
+                  },
+                  child: const Icon(Icons.close, size: 20, color: Colors.black),
                 ),
               ),
             ],

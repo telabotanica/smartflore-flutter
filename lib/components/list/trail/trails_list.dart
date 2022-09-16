@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
@@ -48,8 +49,8 @@ class TrailsList extends StatelessWidget {
             if (state is TrailsDataInitialState) {
               return const CircularProgressIndicator();
             } else if (state is TrailsDataErrorState) {
-              return const Text('Something is wrong ',
-                  style: TextStyle(color: Colors.red));
+              return Text(AppLocalizations.of(context)!.error_API,
+                  style: const TextStyle(color: Colors.red));
             } else if (state is TrailsDataLoadedState) {
               return Expanded(
                 child: ListView.builder(

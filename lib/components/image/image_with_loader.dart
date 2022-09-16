@@ -18,9 +18,9 @@ class ImageWithLoader extends StatelessWidget {
       fit: BoxFit.cover,
       // shown behind everything:
       placeholder: Container(
-        color: const Color(0x00ffffff),
+        color: Theme.of(context).colorScheme.secondary,
         alignment: Alignment.center,
-        child: const Icon(Icons.photo, color: Colors.white30, size: 128.0),
+        child: const Icon(Icons.photo, color: Colors.white30, size: 17.0),
       ),
 
       loadingBuilder: (context, progress, chunkEvent) => Center(

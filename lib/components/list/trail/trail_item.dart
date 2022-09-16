@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_image/flutter_image.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -30,24 +30,21 @@ class TrailItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String distance = Numbers.mToKM(length.toDouble());
+    String distance = Numbers.convertToKilo(
+        length.toDouble(),
+        AppLocalizations.of(context)!.distance_m,
+        AppLocalizations.of(context)!.distance_km);
     return Padding(
       padding: EdgeInsets.fromLTRB(0, (index == 0) ? 0 : 20, 0, 20),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
+          SizedBox(
             width: 68,
             height: 68,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(6)),
-              image: DecorationImage(
-                image: NetworkImageWithRetry(
-                  image,
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
+            child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+                child: ImageWithLoader(url: image)),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -128,12 +125,14 @@ class TrailItem extends StatelessWidget {
                                     state.position.longitude);
 
                                 return Text(
-                                  'À ${Numbers.mToKM(distance)}',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
+                                  '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText2!
+                                      .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                 );
                               } else {
                                 return Container();

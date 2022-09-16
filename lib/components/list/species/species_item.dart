@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_image/flutter_image.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
 
 class SpeciesItem extends StatelessWidget {
   final int index;
@@ -22,18 +22,12 @@ class SpeciesItem extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.fromLTRB(0, (index == 0) ? 0 : 15, 0, 15),
         child: Row(mainAxisSize: MainAxisSize.max, children: [
-          Container(
+          SizedBox(
             width: 68,
             height: 68,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(6)),
-              image: DecorationImage(
-                image: NetworkImageWithRetry(
-                  image,
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
+            child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+                child: ImageWithLoader(url: image)),
           ),
           const SizedBox(width: 16),
           Expanded(

@@ -170,10 +170,7 @@ class _TaxonScreenState extends State<TaxonScreen>
           centerTitle: false,
           titleSpacing: 0.0,
           title: Text(widget.taxonName,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold)),
+              style: Theme.of(context).textTheme.bodyText1),
         ),
         body: Stack(children: [
           Center(child: buildTabView()),
