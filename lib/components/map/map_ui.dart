@@ -76,7 +76,7 @@ class MapUI extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                /*SizedBox(
                   width: 46,
                   height: 46,
                   child: FloatingActionButton(
@@ -88,7 +88,7 @@ class MapUI extends StatelessWidget {
                         size: 20,
                       ),
                       onPressed: () {}),
-                ),
+                ),*/
                 const SizedBox(height: 12),
                 SizedBox(
                   width: 46,

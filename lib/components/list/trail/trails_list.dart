@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
-import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
@@ -25,9 +24,10 @@ class TrailsList extends StatelessWidget {
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onPanUpdate: (details) => onPanUpdate(details),
-            child: Center(
+              behavior: HitTestBehavior.translucent,
+              onPanUpdate: (details) => onPanUpdate(details),
+              child: Container()
+              /*Center(
               child: OutlinedButton.icon(
                 onPressed: () {
                   // Respond to button press
@@ -37,11 +37,10 @@ class TrailsList extends StatelessWidget {
                   size: 18,
                   color: Theme.of(context).textTheme.bodyText1?.color,
                 ),
-                label: Text('Scanner un sentier',
-                    style: Theme.of(context).textTheme.bodyText1),
+                label: Text(AppLocalizations.of(context)!.btn_scan_trail, style: Theme.of(context).textTheme.bodyText1),
               ),
-            ),
-          ),
+            ),*/
+              ),
         ),
         const SizedBox(height: 16),
         BlocBuilder<TrailsBloc, TrailsDataState>(

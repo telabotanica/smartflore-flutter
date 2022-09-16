@@ -9,6 +9,15 @@
   "btn_register": "Register",
   "btn_scan_trail": "Scan trail",
   "btn_start": "Start",
+  "count_observation": "{count, plural, =0{no observation} =1{1 observation} other{{count} observations}}",
+  "@count_observation": {
+    "placeholders": {
+        "count": {
+            "type": "double",
+            "format": "decimalPattern"
+        }
+    }
+  },
   "ct_trail_name": "New trail name",
   "distance_km": "km",
   "distance_m": "m",
@@ -16,6 +25,7 @@
   "login_no_account": "No Smart'Flore account yet?",
   "near": "Near",
   "register_title": "Create Smart'Flore account",
+  "see_taxon": "See the card",
   "species": "species",
   "to": "to",
   "user_birthdate": "Birth date",

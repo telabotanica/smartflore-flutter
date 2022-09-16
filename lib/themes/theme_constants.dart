@@ -9,17 +9,17 @@ ThemeData lightTheme = ThemeData(
         fontFamily: 'SourceSansPro'),
     bodyText1: TextStyle(
         color: Color(0xFF12161E),
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: FontWeight.w600,
         fontFamily: 'SourceSansPro'),
     bodyText2: TextStyle(
         color: Color(0xFF647883),
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: FontWeight.w400,
         fontFamily: 'SourceSansPro'),
     caption: TextStyle(
         color: Color(0xFF647883),
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: FontWeight.w400,
         fontFamily: 'SourceSansPro'),
   ),

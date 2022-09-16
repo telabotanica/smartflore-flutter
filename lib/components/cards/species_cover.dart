@@ -7,6 +7,7 @@ import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SpeciesCover extends StatelessWidget {
   final int taxonId;
@@ -82,8 +83,9 @@ class SpeciesCover extends StatelessWidget {
                           TaxonScreenArguments(taxonId, taxonRepo, title),
                     );
                   },
-                  child: const Text('Voir la fiche',
-                      style: TextStyle(color: Colors.white, fontSize: 12)),
+                  child: Text(AppLocalizations.of(context)!.see_taxon,
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 14)),
                 ),
               ),
             )),

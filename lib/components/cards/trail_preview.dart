@@ -91,6 +91,7 @@ class TrailPreview extends StatelessWidget {
                   child: Text(
                     AppLocalizations.of(context)!.btn_start,
                     style: TextStyle(
+                        fontSize: 16,
                         color: Theme.of(context).colorScheme.background),
                   ),
                 )),

@@ -6,6 +6,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TrailItem extends StatelessWidget {
   final bool isInteractive;
@@ -101,7 +102,9 @@ class TrailItem extends StatelessWidget {
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                               const SizedBox(width: 5),
-                              Text('$nbOccurence observations',
+                              Text(
+                                  AppLocalizations.of(context)!
+                                      .count_observation(nbOccurence),
                                   style: Theme.of(context).textTheme.caption),
                             ],
                           ),
