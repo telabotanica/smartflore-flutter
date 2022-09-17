@@ -5,6 +5,7 @@ import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/list/trail/trails_list.dart';
 import 'package:smartflore/components/map/map_ui.dart';
 import 'package:smartflore/components/map/map_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TrailsPanelWidget extends StatefulWidget {
   final bool isDraggable;
@@ -121,9 +122,16 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
                               color: primary,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(4))),
-                          tabs: const [
-                            Tab(text: 'Tous les sentiers'),
-                            Tab(text: 'Mes sentiers')
+                          tabs: [
+                            Tab(
+                                child: Text(
+                              AppLocalizations.of(context)!.btn_all_trail,
+                              style: const TextStyle(fontSize: 16),
+                            )),
+                            Tab(
+                                child: Text(
+                                    AppLocalizations.of(context)!.btn_my_trail,
+                                    style: const TextStyle(fontSize: 16)))
                           ]),
                     ),
                   ],

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:image_fade/image_fade.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SpeciesCover extends StatelessWidget {
   final int taxonId;
@@ -31,38 +32,8 @@ class SpeciesCover extends StatelessWidget {
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(6.0)),
-            child: ImageFade(
-              image: NetworkImage(image),
-              duration: const Duration(milliseconds: 300),
-              syncDuration: const Duration(milliseconds: 150),
-              alignment: Alignment.center,
-              fit: BoxFit.cover,
-
-              // shown behind everything:
-              placeholder: Container(
-                color: const Color(0x00ffffff),
-                alignment: Alignment.center,
-                child:
-                    const Icon(Icons.photo, color: Colors.white30, size: 128.0),
-              ),
-
-              loadingBuilder: (context, progress, chunkEvent) => Center(
-                  child: SizedBox(
-                      width: 30,
-                      child: LinearProgressIndicator(
-                        value: progress,
-                        backgroundColor: Colors.white,
-                      ))),
-
-              errorBuilder: (context, error) => Container(
-                color: const Color(0xFF6F6D6A),
-                alignment: Alignment.center,
-                child: const Icon(Icons.warning,
-                    color: Colors.black26, size: 128.0),
-              ),
-            ),
-          ),
+              borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+              child: ImageWithLoader(url: image)),
         ),
         Align(
             alignment: Alignment.topRight,
@@ -82,8 +53,11 @@ class SpeciesCover extends StatelessWidget {
                           TaxonScreenArguments(taxonId, taxonRepo, title),
                     );
                   },
-                  child: const Text('Voir la fiche',
-                      style: TextStyle(color: Colors.white, fontSize: 12)),
+                  child: Text(AppLocalizations.of(context)!.see_taxon,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(color: Colors.white)),
                 ),
               ),
             )),
@@ -109,18 +83,21 @@ class SpeciesCover extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                Icon(SmartFloreIcons.plant,
-                    size: 14, color: Theme.of(context).colorScheme.primary),
-                const SizedBox(width: 4),
+              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 2.0),
+                  child: Icon(SmartFloreIcons.plant,
+                      size: 14, color: Theme.of(context).colorScheme.primary),
+                ),
+                const SizedBox(width: 6),
                 Flexible(
                     child: Text(title,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold))),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline4!
+                            .copyWith(color: Colors.white))),
               ]),
               const SizedBox(height: 6),
               BlocBuilder<GeolocationBloc, GeolocationState>(
@@ -133,8 +110,11 @@ class SpeciesCover extends StatelessWidget {
                         state.position.longitude);
 
                     return Text(
-                      'À ${Numbers.mToKM(distance)}',
-                      style: const TextStyle(fontSize: 14, color: Colors.white),
+                      '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2!
+                          .copyWith(color: Colors.white),
                     );
                   } else {
                     return Container();

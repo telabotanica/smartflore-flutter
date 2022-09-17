@@ -2,24 +2,39 @@ import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
   textTheme: const TextTheme(
+    headline1: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'SourceSansPro'),
+    headline2: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'SourceSansPro'),
     headline3: TextStyle(
         color: Color(0xFF12161E),
         fontSize: 18,
         fontWeight: FontWeight.w700,
         fontFamily: 'SourceSansPro'),
+    headline4: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 16,
+        fontWeight: FontWeight.w800,
+        fontFamily: 'SourceSansPro'),
     bodyText1: TextStyle(
         color: Color(0xFF12161E),
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: FontWeight.w600,
         fontFamily: 'SourceSansPro'),
     bodyText2: TextStyle(
         color: Color(0xFF647883),
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: FontWeight.w400,
         fontFamily: 'SourceSansPro'),
     caption: TextStyle(
         color: Color(0xFF647883),
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: FontWeight.w400,
         fontFamily: 'SourceSansPro'),
   ),

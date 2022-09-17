@@ -1,15 +1,15 @@
 import 'package:latlong2/latlong.dart';
 
 class Numbers {
-  static mToKM(double meters) {
-    if (meters > 999) {
-      if (meters > 9999) {
-        return '${(meters / 1000).toStringAsFixed(0)} km';
+  static convertToKilo(double value, String inputUnit, String outputUnit) {
+    if (value > 999) {
+      if (value > 9999) {
+        return '${(value / 1000).toStringAsFixed(0)} $outputUnit';
       }
-      return '${(meters / 1000).toStringAsFixed(2)} km';
+      return '${(value / 1000).toStringAsFixed(2)} $outputUnit';
     }
 
-    return '${meters.toStringAsFixed(0)} m';
+    return '${value.toStringAsFixed(0)} $inputUnit';
   }
 }
 
