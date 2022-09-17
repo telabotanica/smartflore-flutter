@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_image/flutter_image.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
+import 'package:smartflore/utils/convert.dart';
 
 class MarkerImage extends StatelessWidget {
   final String url;
@@ -16,13 +17,11 @@ class MarkerImage extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(width: 2.5, color: Colors.white),
         borderRadius: const BorderRadius.all(Radius.circular(100)),
-        image: DecorationImage(
-          image: NetworkImageWithRetry(
-            url,
-          ),
-          fit: BoxFit.cover,
-        ),
       ),
+      child: ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(100.0)),
+          child: ImageWithLoader(
+              url: '${StringUtils.removeExtension(url)}CRX2S.jpg')),
     );
   }
 }

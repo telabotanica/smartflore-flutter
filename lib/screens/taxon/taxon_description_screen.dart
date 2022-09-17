@@ -5,6 +5,7 @@ import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/models/taxon/taxon_app_model.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
+import 'package:smartflore/utils/convert.dart';
 
 class SpeciesDescription extends StatefulWidget {
   final TabData tabData;
@@ -89,7 +90,8 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
                           width: MediaQuery.of(context).size.width,
                           child: ImageWithLoader(
                             id: image.id.toString(),
-                            url: image.url,
+                            url:
+                                '${StringUtils.removeExtension(image.url)}X3L.jpg',
                             onTap: () {
                               _openGallery(context, entry.key);
                             },

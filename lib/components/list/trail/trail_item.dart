@@ -44,7 +44,8 @@ class TrailItem extends StatelessWidget {
             height: 68,
             child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(6.0)),
-                child: ImageWithLoader(url: image)),
+                child: ImageWithLoader(
+                    url: '${StringUtils.removeExtension(image)}XS.jpg')),
           ),
           const SizedBox(width: 16),
           Expanded(
