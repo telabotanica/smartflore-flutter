@@ -22,3 +22,15 @@ class LatLngUtils {
     return list.map((e) => LatLng(e[1], e[0])).toList();
   }
 }
+
+class StringUtils {
+  static String removeExtension(String url) {
+    final imageExtension = RegExp(r'\.(gif|jpe?g|tiff?|png|webp|bmp)$');
+    if (imageExtension.hasMatch(url)) {
+      url = url.substring(0, url.lastIndexOf('.') - 1);
+      return url;
+    } else {
+      return url.substring(0, url.length - 1);
+    }
+  }
+}
