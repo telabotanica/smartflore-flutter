@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,6 +21,25 @@ class TrailsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (trailsListType == TrailsListType.myTrails) {
+      return Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+              width: 42,
+              height: 42,
+              child: SvgPicture.asset('assets/graphics/wait.svg')),
+          const SizedBox(height: 12),
+          Text(AppLocalizations.of(context)!.wip,
+              style: Theme.of(context).textTheme.headline4!.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold)),
+          const SizedBox(height: 150),
+        ],
+      );
+    }
+
     return Column(
       children: [
         SizedBox(

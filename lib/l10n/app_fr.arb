@@ -25,5 +25,6 @@
   "user_email": "Email",
   "user_first_name": "Prénom",
   "user_name": "Nom",
-  "user_pwd": "Mot de passe"
+  "user_pwd": "Mot de passe",
+  "wip": "Fonctionnalité bientôt disponible !"
 }
