@@ -41,7 +41,9 @@ class MapUI extends StatelessWidget {
                     size: 20,
                     color: Color(0xFF12161E),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/settings');
+                  },
                 ),
               ),
             )),

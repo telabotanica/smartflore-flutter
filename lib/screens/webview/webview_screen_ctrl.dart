@@ -18,12 +18,10 @@ class WebViewPage extends StatelessWidget {
             color: Colors.black, //change your color here
           ),
           backgroundColor: Theme.of(context).colorScheme.background,
-          shadowColor: const Color(0x00000000),
-          title: Text(title ?? '',
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold)),
+          shadowColor: const Color(0x40000000),
+          elevation: 10,
+          title:
+              Text(title ?? '', style: Theme.of(context).textTheme.bodyText1),
           actions: <Widget>[
             Padding(
                 padding: const EdgeInsets.only(right: 20.0),
