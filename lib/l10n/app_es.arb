@@ -25,5 +25,6 @@
   "user_email": "Email",
   "user_first_name": "Nombre",
   "user_name": "Apellido",
-  "user_pwd": "Contraseña"
+  "user_pwd": "Contraseña",
+  "wip": "¡Característica próximamente!"
 }

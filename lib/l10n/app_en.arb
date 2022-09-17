@@ -33,5 +33,6 @@
   "user_email": "Email",
   "user_first_name": "First Name",
   "user_name": "Last Name",
-  "user_pwd": "Password"
+  "user_pwd": "Password",
+  "wip": "Feature coming soon!"
 }
