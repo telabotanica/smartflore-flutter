@@ -19,6 +19,7 @@ import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
 import 'package:smartflore/screens/map_screen.dart';
+import 'package:smartflore/screens/setting_screen.dart';
 import 'package:smartflore/screens/taxon/taxon_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
@@ -142,6 +143,13 @@ class _AppState extends State<App> {
                       taxonID: taxonScreenArgs.taxonID,
                       taxonRepo: taxonScreenArgs.taxonRepo,
                       taxonName: taxonScreenArgs.taxonName));
+            case '/settings':
+              return Transitions(
+                  transitionType: TransitionType.slideLeft,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: SettingsScreen());
             case '/gallery-fullScreen':
               GalleryScreenArguments data =
                   settings.arguments as GalleryScreenArguments;
