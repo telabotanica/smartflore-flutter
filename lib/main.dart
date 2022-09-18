@@ -1,10 +1,77 @@
 import 'package:flutter/material.dart';
-import 'package:smartflore/screens/home.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:smartflore/bloc/bloc_observer.dart';
+import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
+import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
+import 'package:smartflore/bloc/trail/trail_bloc.dart';
+import 'package:smartflore/bloc/trails/trails_bloc.dart';
+import 'package:smartflore/bloc/walk/walk_bloc.dart';
+import 'package:smartflore/components/gallery/gallery_wrapper.dart';
+import 'package:smartflore/navigation/gallery_screen_args.dart';
+import 'package:smartflore/navigation/taxon_screen_args.dart';
+import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
+import 'package:smartflore/repo/taxon/taxon_api_client.dart';
+import 'package:smartflore/repo/taxon/taxon_repo.dart';
+import 'package:smartflore/repo/trail/trail_api_client.dart';
+import 'package:smartflore/repo/trail/trail_repo.dart';
+import 'package:smartflore/repo/trails/trails_api_client.dart';
+import 'package:smartflore/repo/trails/trails_repo.dart';
+import 'package:smartflore/repo/walk/walk_repo.dart';
+import 'package:smartflore/screens/map_screen.dart';
+import 'package:smartflore/screens/setting_screen.dart';
+import 'package:smartflore/screens/taxon/taxon_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:smartflore/utils/transitions.dart';
+import 'l10n/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(const App());
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  final TrailsRepo trailsRepo = TrailsRepo(
+      trailsApiClient: TrailsApiClient(
+          httpClient: http.Client(),
+          baseUrl:
+              'https://beta.tela-botanica.org/smartflore-services/trails'));
+  final TrailRepo trailRepo = TrailRepo(
+      trailApiClient: TrailApiClient(
+          httpClient: http.Client(),
+          baseUrl: 'https://beta.tela-botanica.org/smartflore-services/trail'));
+
+  final WalkRepo walkRepo = WalkRepo();
+
+  final TaxonRepo taxonRepo = TaxonRepo(
+      taxonApiClient: TaxonApiClient(
+          httpClient: http.Client(),
+          baseUrl: 'https://beta.tela-botanica.org/smartflore-services/taxon'));
+
+  final GeolocationRepo geolocationRepo = GeolocationRepo();
+
+  //Bloc.observer = SimpleBlocObserver();
+  BlocOverrides.runZoned(
+    () {
+      runApp(MultiBlocProvider(providers: [
+        BlocProvider<MapBloc>(create: (context) => MapBloc()),
+        BlocProvider<TrailBloc>(
+            create: (context) =>
+                TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
+        BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
+        BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
+        BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
+        BlocProvider<GeolocationBloc>(
+            create: (context) =>
+                GeolocationBloc(geolocationRepo: geolocationRepo)
+                  ..add(RequestLocationPermissionEvent())),
+      ], child: const App()));
+    },
+    blocObserver: SimpleBlocObserver(),
+  );
 }
 
 ThemeManager _themeManager = ThemeManager();
@@ -26,6 +93,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     _themeManager.addListener(themeListener);
+
     super.initState();
   }
 
@@ -37,120 +105,69 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
+
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: _themeManager.themeMode,
-      home: const HomeScreen(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter--;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-        actions: [
-          Switch(
-              value: _themeManager.themeMode == ThemeMode.dark,
-              onChanged: (value) {
-                _themeManager.toggleTheme(value);
-              })
-        ],
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ),
-            FloatingActionButton(
-              onPressed: _decrementCounter,
-              tooltip: 'Decrement',
-              child: const Icon(Icons.remove),
-            ),
-          ],
-        ),
-      ),
-    );
+        title: "Smart'Flore",
+        debugShowCheckedModeBanner: false,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: _themeManager.themeMode,
+        home: const MapScreen(),
+        supportedLocales: L10n.all,
+        localizationsDelegates: const {
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
+        },
+        initialRoute: '/',
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/':
+              return Transitions(
+                  transitionType: TransitionType.slideRight,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: const MapScreen());
+            case '/taxon':
+              TaxonScreenArguments taxonScreenArgs =
+                  settings.arguments as TaxonScreenArguments;
+              return Transitions(
+                  transitionType: TransitionType.slideLeft,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: TaxonScreen(
+                      taxonID: taxonScreenArgs.taxonID,
+                      taxonRepo: taxonScreenArgs.taxonRepo,
+                      taxonName: taxonScreenArgs.taxonName));
+            case '/settings':
+              return Transitions(
+                  transitionType: TransitionType.slideLeft,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: SettingsScreen());
+            case '/gallery-fullScreen':
+              GalleryScreenArguments data =
+                  settings.arguments as GalleryScreenArguments;
+              return Transitions(
+                  transitionType: TransitionType.fade,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: GalleryWrapper(
+                      images: data.images,
+                      backgroundDecoration: data.backgroundDecoration,
+                      initialIndex: data.initialIndex,
+                      scrollDirection: data.scrollDirection,
+                      minScale: data.minScale,
+                      maxScale: data.maxScale,
+                      loadingBuilder: data.loadingBuilder));
+          }
+          return null;
+        });
   }
 }

@@ -2,4 +2,5 @@
 
 printf "\e[33;1m%s\e[0m\n" '🛠️  Running Flutter format'
 flutter format .
+git add .
 printf "\e[33;1m%s\e[0m\n" '✅ Flutter format completed'

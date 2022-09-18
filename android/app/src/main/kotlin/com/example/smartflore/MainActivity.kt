@@ -1,4 +1,4 @@
-package com.example.smartflore
+package com.telabotanica.smartflore
 
 import io.flutter.embedding.android.FlutterActivity
 
