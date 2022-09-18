@@ -20,21 +20,25 @@ class ImageWithLoader extends StatelessWidget {
       placeholder: Container(
         color: Theme.of(context).colorScheme.secondary,
         alignment: Alignment.center,
-        child: const Icon(Icons.photo, color: Colors.white30, size: 17.0),
+        child:
+            Icon(Icons.photo, color: Colors.white.withOpacity(0.8), size: 17.0),
       ),
 
       loadingBuilder: (context, progress, chunkEvent) => Center(
-          child: SizedBox(
-              width: 60,
-              child: LinearProgressIndicator(
-                value: progress,
-                backgroundColor: Colors.white,
-              ))),
+          child: Padding(
+        padding: const EdgeInsets.only(top: 40),
+        child: SizedBox(
+            width: 60,
+            child: LinearProgressIndicator(
+              value: progress,
+              backgroundColor: Colors.white,
+            )),
+      )),
 
       errorBuilder: (context, error) => Container(
         color: const Color(0xFF6F6D6A),
         alignment: Alignment.center,
-        child: const Icon(Icons.warning, color: Colors.black26, size: 128.0),
+        child: const Icon(Icons.warning, color: Colors.black26, size: 17.0),
       ),
     );
   }
