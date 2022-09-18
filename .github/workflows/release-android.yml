@@ -23,6 +23,7 @@ jobs:
           flutter analyze
           flutter test
           flutter build apk
+          flutter build appbundle
       - name: ⚙️ Retrieve Release Version
         id: versionstep
         run: |
