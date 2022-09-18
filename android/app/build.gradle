@@ -31,7 +31,7 @@ if (flutterTargetSdkVersion == null) {
     flutterTargetSdkVersion = '33'
 }
 
-def flutterCompileSdkVersion= localProperties.getProperty('flutter.compileSdkVersion')
+def flutterCompileSdkVersion = localProperties.getProperty('flutter.compileSdkVersion')
 if (flutterCompileSdkVersion == null) {
     flutterCompileSdkVersion = '33'
 }
