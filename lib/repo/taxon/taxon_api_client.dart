@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
-import 'package:smartflore/models/taxon/taxon_app_model.dart';
 import 'package:smartflore/repo/api_client.dart';
 
 class TaxonApiClient extends APIClient {
@@ -22,9 +21,7 @@ class TaxonApiClient extends APIClient {
 
       Map<String, dynamic> json = jsonDecode(data);
 
-      TaxonAPI taxonAPI = TaxonAPI.fromJson(json);
-      Taxon convertedTaxon = Taxon.fromTaxonAPI(taxonAPI);
-      return convertedTaxon;
+      return Taxon.fromJson(json);
     } else {
       // throw Exception('Failed to load trail list');
       return null;

@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TaxonAPI _$TaxonAPIFromJson(Map<String, dynamic> json) {
-  return _TaxonAPI.fromJson(json);
+Taxon _$TaxonFromJson(Map<String, dynamic> json) {
+  return _Taxon.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TaxonAPI {
+mixin _$Taxon {
   @JsonKey(name: 'scientific_name')
   String get scientificName => throw _privateConstructorUsedError;
   @JsonKey(name: 'full_scientific_name')
@@ -36,23 +36,17 @@ mixin _$TaxonAPI {
   int get taxonomicId => throw _privateConstructorUsedError;
   @JsonKey(name: 'vernacular_names')
   List<String> get vernacularNames => throw _privateConstructorUsedError;
-  @JsonKey(name: 'wikipedia_url')
-  String get wikipediaUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: 'map_url')
-  String get mapUrl => throw _privateConstructorUsedError;
-  CardAPI get card => throw _privateConstructorUsedError;
-  List<ImageAPI> get images => throw _privateConstructorUsedError;
+  List<TabAPI> get tabs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TaxonAPICopyWith<TaxonAPI> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TaxonCopyWith<Taxon> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TaxonAPICopyWith<$Res> {
-  factory $TaxonAPICopyWith(TaxonAPI value, $Res Function(TaxonAPI) then) =
-      _$TaxonAPICopyWithImpl<$Res>;
+abstract class $TaxonCopyWith<$Res> {
+  factory $TaxonCopyWith(Taxon value, $Res Function(Taxon) then) =
+      _$TaxonCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'scientific_name') String scientificName,
       @JsonKey(name: 'full_scientific_name') String fullScientificName,
@@ -63,21 +57,16 @@ abstract class $TaxonAPICopyWith<$Res> {
       @JsonKey(name: 'name_id') int nameId,
       @JsonKey(name: 'taxonomic_id') int taxonomicId,
       @JsonKey(name: 'vernacular_names') List<String> vernacularNames,
-      @JsonKey(name: 'wikipedia_url') String wikipediaUrl,
-      @JsonKey(name: 'map_url') String mapUrl,
-      CardAPI card,
-      List<ImageAPI> images});
-
-  $CardAPICopyWith<$Res> get card;
+      List<TabAPI> tabs});
 }
 
 /// @nodoc
-class _$TaxonAPICopyWithImpl<$Res> implements $TaxonAPICopyWith<$Res> {
-  _$TaxonAPICopyWithImpl(this._value, this._then);
+class _$TaxonCopyWithImpl<$Res> implements $TaxonCopyWith<$Res> {
+  _$TaxonCopyWithImpl(this._value, this._then);
 
-  final TaxonAPI _value;
+  final Taxon _value;
   // ignore: unused_field
-  final $Res Function(TaxonAPI) _then;
+  final $Res Function(Taxon) _then;
 
   @override
   $Res call({
@@ -90,10 +79,7 @@ class _$TaxonAPICopyWithImpl<$Res> implements $TaxonAPICopyWith<$Res> {
     Object? nameId = freezed,
     Object? taxonomicId = freezed,
     Object? vernacularNames = freezed,
-    Object? wikipediaUrl = freezed,
-    Object? mapUrl = freezed,
-    Object? card = freezed,
-    Object? images = freezed,
+    Object? tabs = freezed,
   }) {
     return _then(_value.copyWith(
       scientificName: scientificName == freezed
@@ -132,38 +118,18 @@ class _$TaxonAPICopyWithImpl<$Res> implements $TaxonAPICopyWith<$Res> {
           ? _value.vernacularNames
           : vernacularNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      wikipediaUrl: wikipediaUrl == freezed
-          ? _value.wikipediaUrl
-          : wikipediaUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      mapUrl: mapUrl == freezed
-          ? _value.mapUrl
-          : mapUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      card: card == freezed
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as CardAPI,
-      images: images == freezed
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<ImageAPI>,
+      tabs: tabs == freezed
+          ? _value.tabs
+          : tabs // ignore: cast_nullable_to_non_nullable
+              as List<TabAPI>,
     ));
-  }
-
-  @override
-  $CardAPICopyWith<$Res> get card {
-    return $CardAPICopyWith<$Res>(_value.card, (value) {
-      return _then(_value.copyWith(card: value));
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$_TaxonAPICopyWith<$Res> implements $TaxonAPICopyWith<$Res> {
-  factory _$$_TaxonAPICopyWith(
-          _$_TaxonAPI value, $Res Function(_$_TaxonAPI) then) =
-      __$$_TaxonAPICopyWithImpl<$Res>;
+abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
+  factory _$$_TaxonCopyWith(_$_Taxon value, $Res Function(_$_Taxon) then) =
+      __$$_TaxonCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'scientific_name') String scientificName,
@@ -175,24 +141,17 @@ abstract class _$$_TaxonAPICopyWith<$Res> implements $TaxonAPICopyWith<$Res> {
       @JsonKey(name: 'name_id') int nameId,
       @JsonKey(name: 'taxonomic_id') int taxonomicId,
       @JsonKey(name: 'vernacular_names') List<String> vernacularNames,
-      @JsonKey(name: 'wikipedia_url') String wikipediaUrl,
-      @JsonKey(name: 'map_url') String mapUrl,
-      CardAPI card,
-      List<ImageAPI> images});
-
-  @override
-  $CardAPICopyWith<$Res> get card;
+      List<TabAPI> tabs});
 }
 
 /// @nodoc
-class __$$_TaxonAPICopyWithImpl<$Res> extends _$TaxonAPICopyWithImpl<$Res>
-    implements _$$_TaxonAPICopyWith<$Res> {
-  __$$_TaxonAPICopyWithImpl(
-      _$_TaxonAPI _value, $Res Function(_$_TaxonAPI) _then)
-      : super(_value, (v) => _then(v as _$_TaxonAPI));
+class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
+    implements _$$_TaxonCopyWith<$Res> {
+  __$$_TaxonCopyWithImpl(_$_Taxon _value, $Res Function(_$_Taxon) _then)
+      : super(_value, (v) => _then(v as _$_Taxon));
 
   @override
-  _$_TaxonAPI get _value => super._value as _$_TaxonAPI;
+  _$_Taxon get _value => super._value as _$_Taxon;
 
   @override
   $Res call({
@@ -205,12 +164,9 @@ class __$$_TaxonAPICopyWithImpl<$Res> extends _$TaxonAPICopyWithImpl<$Res>
     Object? nameId = freezed,
     Object? taxonomicId = freezed,
     Object? vernacularNames = freezed,
-    Object? wikipediaUrl = freezed,
-    Object? mapUrl = freezed,
-    Object? card = freezed,
-    Object? images = freezed,
+    Object? tabs = freezed,
   }) {
-    return _then(_$_TaxonAPI(
+    return _then(_$_Taxon(
       scientificName: scientificName == freezed
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
@@ -247,30 +203,18 @@ class __$$_TaxonAPICopyWithImpl<$Res> extends _$TaxonAPICopyWithImpl<$Res>
           ? _value._vernacularNames
           : vernacularNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      wikipediaUrl: wikipediaUrl == freezed
-          ? _value.wikipediaUrl
-          : wikipediaUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      mapUrl: mapUrl == freezed
-          ? _value.mapUrl
-          : mapUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      card: card == freezed
-          ? _value.card
-          : card // ignore: cast_nullable_to_non_nullable
-              as CardAPI,
-      images: images == freezed
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<ImageAPI>,
+      tabs: tabs == freezed
+          ? _value._tabs
+          : tabs // ignore: cast_nullable_to_non_nullable
+              as List<TabAPI>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_TaxonAPI implements _TaxonAPI {
-  const _$_TaxonAPI(
+class _$_Taxon implements _Taxon {
+  const _$_Taxon(
       {@JsonKey(name: 'scientific_name')
           required this.scientificName,
       @JsonKey(name: 'full_scientific_name')
@@ -287,17 +231,12 @@ class _$_TaxonAPI implements _TaxonAPI {
           required this.taxonomicId,
       @JsonKey(name: 'vernacular_names')
           required final List<String> vernacularNames,
-      @JsonKey(name: 'wikipedia_url')
-          required this.wikipediaUrl,
-      @JsonKey(name: 'map_url')
-          required this.mapUrl,
-      required this.card,
-      required final List<ImageAPI> images})
+      required final List<TabAPI> tabs})
       : _vernacularNames = vernacularNames,
-        _images = images;
+        _tabs = tabs;
 
-  factory _$_TaxonAPI.fromJson(Map<String, dynamic> json) =>
-      _$$_TaxonAPIFromJson(json);
+  factory _$_Taxon.fromJson(Map<String, dynamic> json) =>
+      _$$_TaxonFromJson(json);
 
   @override
   @JsonKey(name: 'scientific_name')
@@ -329,31 +268,23 @@ class _$_TaxonAPI implements _TaxonAPI {
     return EqualUnmodifiableListView(_vernacularNames);
   }
 
+  final List<TabAPI> _tabs;
   @override
-  @JsonKey(name: 'wikipedia_url')
-  final String wikipediaUrl;
-  @override
-  @JsonKey(name: 'map_url')
-  final String mapUrl;
-  @override
-  final CardAPI card;
-  final List<ImageAPI> _images;
-  @override
-  List<ImageAPI> get images {
+  List<TabAPI> get tabs {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
+    return EqualUnmodifiableListView(_tabs);
   }
 
   @override
   String toString() {
-    return 'TaxonAPI(scientificName: $scientificName, fullScientificName: $fullScientificName, htmlFullScientificName: $htmlFullScientificName, genus: $genus, family: $family, taxonRepository: $taxonRepository, nameId: $nameId, taxonomicId: $taxonomicId, vernacularNames: $vernacularNames, wikipediaUrl: $wikipediaUrl, mapUrl: $mapUrl, card: $card, images: $images)';
+    return 'Taxon(scientificName: $scientificName, fullScientificName: $fullScientificName, htmlFullScientificName: $htmlFullScientificName, genus: $genus, family: $family, taxonRepository: $taxonRepository, nameId: $nameId, taxonomicId: $taxonomicId, vernacularNames: $vernacularNames, tabs: $tabs)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TaxonAPI &&
+            other is _$_Taxon &&
             const DeepCollectionEquality()
                 .equals(other.scientificName, scientificName) &&
             const DeepCollectionEquality()
@@ -369,11 +300,7 @@ class _$_TaxonAPI implements _TaxonAPI {
                 .equals(other.taxonomicId, taxonomicId) &&
             const DeepCollectionEquality()
                 .equals(other._vernacularNames, _vernacularNames) &&
-            const DeepCollectionEquality()
-                .equals(other.wikipediaUrl, wikipediaUrl) &&
-            const DeepCollectionEquality().equals(other.mapUrl, mapUrl) &&
-            const DeepCollectionEquality().equals(other.card, card) &&
-            const DeepCollectionEquality().equals(other._images, _images));
+            const DeepCollectionEquality().equals(other._tabs, _tabs));
   }
 
   @JsonKey(ignore: true)
@@ -389,26 +316,23 @@ class _$_TaxonAPI implements _TaxonAPI {
       const DeepCollectionEquality().hash(nameId),
       const DeepCollectionEquality().hash(taxonomicId),
       const DeepCollectionEquality().hash(_vernacularNames),
-      const DeepCollectionEquality().hash(wikipediaUrl),
-      const DeepCollectionEquality().hash(mapUrl),
-      const DeepCollectionEquality().hash(card),
-      const DeepCollectionEquality().hash(_images));
+      const DeepCollectionEquality().hash(_tabs));
 
   @JsonKey(ignore: true)
   @override
-  _$$_TaxonAPICopyWith<_$_TaxonAPI> get copyWith =>
-      __$$_TaxonAPICopyWithImpl<_$_TaxonAPI>(this, _$identity);
+  _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
+      __$$_TaxonCopyWithImpl<_$_Taxon>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TaxonAPIToJson(
+    return _$$_TaxonToJson(
       this,
     );
   }
 }
 
-abstract class _TaxonAPI implements TaxonAPI {
-  const factory _TaxonAPI(
+abstract class _Taxon implements Taxon {
+  const factory _Taxon(
       {@JsonKey(name: 'scientific_name')
           required final String scientificName,
       @JsonKey(name: 'full_scientific_name')
@@ -425,14 +349,9 @@ abstract class _TaxonAPI implements TaxonAPI {
           required final int taxonomicId,
       @JsonKey(name: 'vernacular_names')
           required final List<String> vernacularNames,
-      @JsonKey(name: 'wikipedia_url')
-          required final String wikipediaUrl,
-      @JsonKey(name: 'map_url')
-          required final String mapUrl,
-      required final CardAPI card,
-      required final List<ImageAPI> images}) = _$_TaxonAPI;
+      required final List<TabAPI> tabs}) = _$_Taxon;
 
-  factory _TaxonAPI.fromJson(Map<String, dynamic> json) = _$_TaxonAPI.fromJson;
+  factory _Taxon.fromJson(Map<String, dynamic> json) = _$_Taxon.fromJson;
 
   @override
   @JsonKey(name: 'scientific_name')
@@ -460,178 +379,389 @@ abstract class _TaxonAPI implements TaxonAPI {
   @JsonKey(name: 'vernacular_names')
   List<String> get vernacularNames;
   @override
-  @JsonKey(name: 'wikipedia_url')
-  String get wikipediaUrl;
-  @override
-  @JsonKey(name: 'map_url')
-  String get mapUrl;
-  @override
-  CardAPI get card;
-  @override
-  List<ImageAPI> get images;
+  List<TabAPI> get tabs;
   @override
   @JsonKey(ignore: true)
-  _$$_TaxonAPICopyWith<_$_TaxonAPI> get copyWith =>
+  _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-CardAPI _$CardAPIFromJson(Map<String, dynamic> json) {
-  return _CardAPI.fromJson(json);
+TabAPI _$TabAPIFromJson(Map<String, dynamic> json) {
+  return _TabAPI.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CardAPI {
-  List<SectionAPI> get sections => throw _privateConstructorUsedError;
-  List<TabAPI> get tabs => throw _privateConstructorUsedError;
+mixin _$TabAPI {
+  String get title => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  List<SectionAPI>? get sections => throw _privateConstructorUsedError;
+  List<ImageAPI>? get images => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CardAPICopyWith<CardAPI> get copyWith => throw _privateConstructorUsedError;
+  $TabAPICopyWith<TabAPI> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CardAPICopyWith<$Res> {
-  factory $CardAPICopyWith(CardAPI value, $Res Function(CardAPI) then) =
-      _$CardAPICopyWithImpl<$Res>;
-  $Res call({List<SectionAPI> sections, List<TabAPI> tabs});
+abstract class $TabAPICopyWith<$Res> {
+  factory $TabAPICopyWith(TabAPI value, $Res Function(TabAPI) then) =
+      _$TabAPICopyWithImpl<$Res>;
+  $Res call(
+      {String title,
+      String type,
+      List<SectionAPI>? sections,
+      List<ImageAPI>? images,
+      String? url});
 }
 
 /// @nodoc
-class _$CardAPICopyWithImpl<$Res> implements $CardAPICopyWith<$Res> {
-  _$CardAPICopyWithImpl(this._value, this._then);
+class _$TabAPICopyWithImpl<$Res> implements $TabAPICopyWith<$Res> {
+  _$TabAPICopyWithImpl(this._value, this._then);
 
-  final CardAPI _value;
+  final TabAPI _value;
   // ignore: unused_field
-  final $Res Function(CardAPI) _then;
+  final $Res Function(TabAPI) _then;
 
   @override
   $Res call({
+    Object? title = freezed,
+    Object? type = freezed,
     Object? sections = freezed,
-    Object? tabs = freezed,
+    Object? images = freezed,
+    Object? url = freezed,
   }) {
     return _then(_value.copyWith(
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
       sections: sections == freezed
           ? _value.sections
           : sections // ignore: cast_nullable_to_non_nullable
-              as List<SectionAPI>,
-      tabs: tabs == freezed
-          ? _value.tabs
-          : tabs // ignore: cast_nullable_to_non_nullable
-              as List<TabAPI>,
+              as List<SectionAPI>?,
+      images: images == freezed
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<ImageAPI>?,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$$_CardAPICopyWith<$Res> implements $CardAPICopyWith<$Res> {
-  factory _$$_CardAPICopyWith(
-          _$_CardAPI value, $Res Function(_$_CardAPI) then) =
-      __$$_CardAPICopyWithImpl<$Res>;
+abstract class _$$_TabAPICopyWith<$Res> implements $TabAPICopyWith<$Res> {
+  factory _$$_TabAPICopyWith(_$_TabAPI value, $Res Function(_$_TabAPI) then) =
+      __$$_TabAPICopyWithImpl<$Res>;
   @override
-  $Res call({List<SectionAPI> sections, List<TabAPI> tabs});
+  $Res call(
+      {String title,
+      String type,
+      List<SectionAPI>? sections,
+      List<ImageAPI>? images,
+      String? url});
 }
 
 /// @nodoc
-class __$$_CardAPICopyWithImpl<$Res> extends _$CardAPICopyWithImpl<$Res>
-    implements _$$_CardAPICopyWith<$Res> {
-  __$$_CardAPICopyWithImpl(_$_CardAPI _value, $Res Function(_$_CardAPI) _then)
-      : super(_value, (v) => _then(v as _$_CardAPI));
+class __$$_TabAPICopyWithImpl<$Res> extends _$TabAPICopyWithImpl<$Res>
+    implements _$$_TabAPICopyWith<$Res> {
+  __$$_TabAPICopyWithImpl(_$_TabAPI _value, $Res Function(_$_TabAPI) _then)
+      : super(_value, (v) => _then(v as _$_TabAPI));
 
   @override
-  _$_CardAPI get _value => super._value as _$_CardAPI;
+  _$_TabAPI get _value => super._value as _$_TabAPI;
 
   @override
   $Res call({
+    Object? title = freezed,
+    Object? type = freezed,
     Object? sections = freezed,
-    Object? tabs = freezed,
+    Object? images = freezed,
+    Object? url = freezed,
   }) {
-    return _then(_$_CardAPI(
+    return _then(_$_TabAPI(
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
       sections: sections == freezed
           ? _value._sections
           : sections // ignore: cast_nullable_to_non_nullable
-              as List<SectionAPI>,
-      tabs: tabs == freezed
-          ? _value._tabs
-          : tabs // ignore: cast_nullable_to_non_nullable
-              as List<TabAPI>,
+              as List<SectionAPI>?,
+      images: images == freezed
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<ImageAPI>?,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_CardAPI implements _CardAPI {
-  const _$_CardAPI(
-      {required final List<SectionAPI> sections,
-      required final List<TabAPI> tabs})
+class _$_TabAPI implements _TabAPI {
+  const _$_TabAPI(
+      {required this.title,
+      required this.type,
+      final List<SectionAPI>? sections,
+      final List<ImageAPI>? images,
+      this.url})
       : _sections = sections,
-        _tabs = tabs;
+        _images = images;
 
-  factory _$_CardAPI.fromJson(Map<String, dynamic> json) =>
-      _$$_CardAPIFromJson(json);
+  factory _$_TabAPI.fromJson(Map<String, dynamic> json) =>
+      _$$_TabAPIFromJson(json);
 
-  final List<SectionAPI> _sections;
   @override
-  List<SectionAPI> get sections {
+  final String title;
+  @override
+  final String type;
+  final List<SectionAPI>? _sections;
+  @override
+  List<SectionAPI>? get sections {
+    final value = _sections;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_sections);
+    return EqualUnmodifiableListView(value);
   }
 
-  final List<TabAPI> _tabs;
+  final List<ImageAPI>? _images;
   @override
-  List<TabAPI> get tabs {
+  List<ImageAPI>? get images {
+    final value = _images;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tabs);
+    return EqualUnmodifiableListView(value);
   }
+
+  @override
+  final String? url;
 
   @override
   String toString() {
-    return 'CardAPI(sections: $sections, tabs: $tabs)';
+    return 'TabAPI(title: $title, type: $type, sections: $sections, images: $images, url: $url)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CardAPI &&
+            other is _$_TabAPI &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other._sections, _sections) &&
-            const DeepCollectionEquality().equals(other._tabs, _tabs));
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other.url, url));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(_sections),
-      const DeepCollectionEquality().hash(_tabs));
+      const DeepCollectionEquality().hash(_images),
+      const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
-  _$$_CardAPICopyWith<_$_CardAPI> get copyWith =>
-      __$$_CardAPICopyWithImpl<_$_CardAPI>(this, _$identity);
+  _$$_TabAPICopyWith<_$_TabAPI> get copyWith =>
+      __$$_TabAPICopyWithImpl<_$_TabAPI>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CardAPIToJson(
+    return _$$_TabAPIToJson(
       this,
     );
   }
 }
 
-abstract class _CardAPI implements CardAPI {
-  const factory _CardAPI(
-      {required final List<SectionAPI> sections,
-      required final List<TabAPI> tabs}) = _$_CardAPI;
+abstract class _TabAPI implements TabAPI {
+  const factory _TabAPI(
+      {required final String title,
+      required final String type,
+      final List<SectionAPI>? sections,
+      final List<ImageAPI>? images,
+      final String? url}) = _$_TabAPI;
 
-  factory _CardAPI.fromJson(Map<String, dynamic> json) = _$_CardAPI.fromJson;
+  factory _TabAPI.fromJson(Map<String, dynamic> json) = _$_TabAPI.fromJson;
 
   @override
-  List<SectionAPI> get sections;
+  String get title;
   @override
-  List<TabAPI> get tabs;
+  String get type;
+  @override
+  List<SectionAPI>? get sections;
+  @override
+  List<ImageAPI>? get images;
+  @override
+  String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_CardAPICopyWith<_$_CardAPI> get copyWith =>
+  _$$_TabAPICopyWith<_$_TabAPI> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ImageAPI _$ImageAPIFromJson(Map<String, dynamic> json) {
+  return _ImageAPI.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ImageAPI {
+  int get id => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ImageAPICopyWith<ImageAPI> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ImageAPICopyWith<$Res> {
+  factory $ImageAPICopyWith(ImageAPI value, $Res Function(ImageAPI) then) =
+      _$ImageAPICopyWithImpl<$Res>;
+  $Res call({int id, String url});
+}
+
+/// @nodoc
+class _$ImageAPICopyWithImpl<$Res> implements $ImageAPICopyWith<$Res> {
+  _$ImageAPICopyWithImpl(this._value, this._then);
+
+  final ImageAPI _value;
+  // ignore: unused_field
+  final $Res Function(ImageAPI) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? url = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_ImageAPICopyWith<$Res> implements $ImageAPICopyWith<$Res> {
+  factory _$$_ImageAPICopyWith(
+          _$_ImageAPI value, $Res Function(_$_ImageAPI) then) =
+      __$$_ImageAPICopyWithImpl<$Res>;
+  @override
+  $Res call({int id, String url});
+}
+
+/// @nodoc
+class __$$_ImageAPICopyWithImpl<$Res> extends _$ImageAPICopyWithImpl<$Res>
+    implements _$$_ImageAPICopyWith<$Res> {
+  __$$_ImageAPICopyWithImpl(
+      _$_ImageAPI _value, $Res Function(_$_ImageAPI) _then)
+      : super(_value, (v) => _then(v as _$_ImageAPI));
+
+  @override
+  _$_ImageAPI get _value => super._value as _$_ImageAPI;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? url = freezed,
+  }) {
+    return _then(_$_ImageAPI(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ImageAPI implements _ImageAPI {
+  const _$_ImageAPI({required this.id, required this.url});
+
+  factory _$_ImageAPI.fromJson(Map<String, dynamic> json) =>
+      _$$_ImageAPIFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'ImageAPI(id: $id, url: $url)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ImageAPI &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.url, url));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(url));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ImageAPICopyWith<_$_ImageAPI> get copyWith =>
+      __$$_ImageAPICopyWithImpl<_$_ImageAPI>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ImageAPIToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ImageAPI implements ImageAPI {
+  const factory _ImageAPI({required final int id, required final String url}) =
+      _$_ImageAPI;
+
+  factory _ImageAPI.fromJson(Map<String, dynamic> json) = _$_ImageAPI.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get url;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ImageAPICopyWith<_$_ImageAPI> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -784,298 +914,5 @@ abstract class _SectionAPI implements SectionAPI {
   @override
   @JsonKey(ignore: true)
   _$$_SectionAPICopyWith<_$_SectionAPI> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-TabAPI _$TabAPIFromJson(Map<String, dynamic> json) {
-  return _TabAPI.fromJson(json);
-}
-
-/// @nodoc
-mixin _$TabAPI {
-  String get title => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TabAPICopyWith<TabAPI> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TabAPICopyWith<$Res> {
-  factory $TabAPICopyWith(TabAPI value, $Res Function(TabAPI) then) =
-      _$TabAPICopyWithImpl<$Res>;
-  $Res call({String title, String type});
-}
-
-/// @nodoc
-class _$TabAPICopyWithImpl<$Res> implements $TabAPICopyWith<$Res> {
-  _$TabAPICopyWithImpl(this._value, this._then);
-
-  final TabAPI _value;
-  // ignore: unused_field
-  final $Res Function(TabAPI) _then;
-
-  @override
-  $Res call({
-    Object? title = freezed,
-    Object? type = freezed,
-  }) {
-    return _then(_value.copyWith(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_TabAPICopyWith<$Res> implements $TabAPICopyWith<$Res> {
-  factory _$$_TabAPICopyWith(_$_TabAPI value, $Res Function(_$_TabAPI) then) =
-      __$$_TabAPICopyWithImpl<$Res>;
-  @override
-  $Res call({String title, String type});
-}
-
-/// @nodoc
-class __$$_TabAPICopyWithImpl<$Res> extends _$TabAPICopyWithImpl<$Res>
-    implements _$$_TabAPICopyWith<$Res> {
-  __$$_TabAPICopyWithImpl(_$_TabAPI _value, $Res Function(_$_TabAPI) _then)
-      : super(_value, (v) => _then(v as _$_TabAPI));
-
-  @override
-  _$_TabAPI get _value => super._value as _$_TabAPI;
-
-  @override
-  $Res call({
-    Object? title = freezed,
-    Object? type = freezed,
-  }) {
-    return _then(_$_TabAPI(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_TabAPI implements _TabAPI {
-  const _$_TabAPI({required this.title, required this.type});
-
-  factory _$_TabAPI.fromJson(Map<String, dynamic> json) =>
-      _$$_TabAPIFromJson(json);
-
-  @override
-  final String title;
-  @override
-  final String type;
-
-  @override
-  String toString() {
-    return 'TabAPI(title: $title, type: $type)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_TabAPI &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.type, type));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(type));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_TabAPICopyWith<_$_TabAPI> get copyWith =>
-      __$$_TabAPICopyWithImpl<_$_TabAPI>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_TabAPIToJson(
-      this,
-    );
-  }
-}
-
-abstract class _TabAPI implements TabAPI {
-  const factory _TabAPI(
-      {required final String title, required final String type}) = _$_TabAPI;
-
-  factory _TabAPI.fromJson(Map<String, dynamic> json) = _$_TabAPI.fromJson;
-
-  @override
-  String get title;
-  @override
-  String get type;
-  @override
-  @JsonKey(ignore: true)
-  _$$_TabAPICopyWith<_$_TabAPI> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-ImageAPI _$ImageAPIFromJson(Map<String, dynamic> json) {
-  return _ImageAPI.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ImageAPI {
-  int get id => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ImageAPICopyWith<ImageAPI> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ImageAPICopyWith<$Res> {
-  factory $ImageAPICopyWith(ImageAPI value, $Res Function(ImageAPI) then) =
-      _$ImageAPICopyWithImpl<$Res>;
-  $Res call({int id, String url});
-}
-
-/// @nodoc
-class _$ImageAPICopyWithImpl<$Res> implements $ImageAPICopyWith<$Res> {
-  _$ImageAPICopyWithImpl(this._value, this._then);
-
-  final ImageAPI _value;
-  // ignore: unused_field
-  final $Res Function(ImageAPI) _then;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? url = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_ImageAPICopyWith<$Res> implements $ImageAPICopyWith<$Res> {
-  factory _$$_ImageAPICopyWith(
-          _$_ImageAPI value, $Res Function(_$_ImageAPI) then) =
-      __$$_ImageAPICopyWithImpl<$Res>;
-  @override
-  $Res call({int id, String url});
-}
-
-/// @nodoc
-class __$$_ImageAPICopyWithImpl<$Res> extends _$ImageAPICopyWithImpl<$Res>
-    implements _$$_ImageAPICopyWith<$Res> {
-  __$$_ImageAPICopyWithImpl(
-      _$_ImageAPI _value, $Res Function(_$_ImageAPI) _then)
-      : super(_value, (v) => _then(v as _$_ImageAPI));
-
-  @override
-  _$_ImageAPI get _value => super._value as _$_ImageAPI;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? url = freezed,
-  }) {
-    return _then(_$_ImageAPI(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_ImageAPI implements _ImageAPI {
-  const _$_ImageAPI({required this.id, required this.url});
-
-  factory _$_ImageAPI.fromJson(Map<String, dynamic> json) =>
-      _$$_ImageAPIFromJson(json);
-
-  @override
-  final int id;
-  @override
-  final String url;
-
-  @override
-  String toString() {
-    return 'ImageAPI(id: $id, url: $url)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ImageAPI &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.url, url));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(url));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_ImageAPICopyWith<_$_ImageAPI> get copyWith =>
-      __$$_ImageAPICopyWithImpl<_$_ImageAPI>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ImageAPIToJson(
-      this,
-    );
-  }
-}
-
-abstract class _ImageAPI implements ImageAPI {
-  const factory _ImageAPI({required final int id, required final String url}) =
-      _$_ImageAPI;
-
-  factory _ImageAPI.fromJson(Map<String, dynamic> json) = _$_ImageAPI.fromJson;
-
-  @override
-  int get id;
-  @override
-  String get url;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ImageAPICopyWith<_$_ImageAPI> get copyWith =>
       throw _privateConstructorUsedError;
 }
