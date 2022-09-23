@@ -1,4 +1,4 @@
-import 'package:smartflore/models/taxon/taxon_app_model.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/repo/taxon/taxon_api_client.dart';
 
 class TaxonRepo {

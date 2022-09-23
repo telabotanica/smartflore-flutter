@@ -2,13 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smartflore/components/cards/section.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
-import 'package:smartflore/models/taxon/taxon_app_model.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
 import 'package:smartflore/utils/convert.dart';
 
 class SpeciesDescription extends StatefulWidget {
-  final TabData tabData;
+  final TabAPI tabData;
   const SpeciesDescription({Key? key, required this.tabData}) : super(key: key);
 
   @override
@@ -36,9 +35,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
   final CarouselController _controller = CarouselController();
   @override
   void initState() {
-    if (widget.tabData.images != null) {
-      galleryItems = getCarouselImages(widget.tabData.images);
-    }
+    galleryItems = getCarouselImages(widget.tabData.images);
     super.initState();
   }
 
