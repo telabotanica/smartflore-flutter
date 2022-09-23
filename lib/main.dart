@@ -37,41 +37,35 @@ void main() {
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
           httpClient: http.Client(),
-          baseUrl:
-              'https://beta.tela-botanica.org/smartflore-services/trails'));
+          baseUrl: 'https://tela-botanica.org/smartflore-services/trails'));
   final TrailRepo trailRepo = TrailRepo(
       trailApiClient: TrailApiClient(
           httpClient: http.Client(),
-          baseUrl: 'https://beta.tela-botanica.org/smartflore-services/trail'));
+          baseUrl: 'https://tela-botanica.org/smartflore-services/trail'));
 
   final WalkRepo walkRepo = WalkRepo();
 
   final TaxonRepo taxonRepo = TaxonRepo(
       taxonApiClient: TaxonApiClient(
           httpClient: http.Client(),
-          baseUrl: 'https://beta.tela-botanica.org/smartflore-services/taxon'));
+          baseUrl: 'https://tela-botanica.org/smartflore-services/taxon'));
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
 
-  //Bloc.observer = SimpleBlocObserver();
-  BlocOverrides.runZoned(
-    () {
-      runApp(MultiBlocProvider(providers: [
-        BlocProvider<MapBloc>(create: (context) => MapBloc()),
-        BlocProvider<TrailBloc>(
-            create: (context) =>
-                TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
-        BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
-        BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
-        BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
-        BlocProvider<GeolocationBloc>(
-            create: (context) =>
-                GeolocationBloc(geolocationRepo: geolocationRepo)
-                  ..add(RequestLocationPermissionEvent())),
-      ], child: const App()));
-    },
-    blocObserver: SimpleBlocObserver(),
-  );
+  Bloc.observer = SimpleBlocObserver();
+
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider<MapBloc>(create: (context) => MapBloc()),
+    BlocProvider<TrailBloc>(
+        create: (context) =>
+            TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
+    BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
+    BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
+    BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
+    BlocProvider<GeolocationBloc>(
+        create: (context) => GeolocationBloc(geolocationRepo: geolocationRepo)
+          ..add(RequestLocationPermissionEvent())),
+  ], child: const App()));
 }
 
 ThemeManager _themeManager = ThemeManager();

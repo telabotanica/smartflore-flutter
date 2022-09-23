@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
@@ -75,77 +76,92 @@ class TrailItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 6),
-                          Row(
-                            children: [
-                              Icon(
-                                SmartFloreIcons.path,
-                                size: 12,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(distance,
-                                  style: Theme.of(context).textTheme.caption),
-                            ],
-                          ),
-                          const SizedBox(height: 4),
-                          Row(
-                            children: [
-                              Icon(
-                                SmartFloreIcons.plant,
-                                size: 12,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(
-                                  AppLocalizations.of(context)!
-                                      .count_observation(nbOccurence),
-                                  style: Theme.of(context).textTheme.caption),
-                            ],
-                          ),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 6),
+                            Row(
+                              children: [
+                                Icon(
+                                  SmartFloreIcons.path,
+                                  size: 12,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                                const SizedBox(width: 5),
+                                Text(distance,
+                                    style: Theme.of(context).textTheme.caption),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                buildNbOccurence(context),
+                                const SizedBox(width: 5),
+                                buildDistanceIndicator(context)
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Icon(
-                            SmartFloreIcons.marker,
-                            size: 15,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                          const SizedBox(width: 4),
-                          BlocBuilder<GeolocationBloc, GeolocationState>(
-                            builder: (context, state) {
-                              if (state is LocationUpdatedState) {
-                                double distance = Geolocator.distanceBetween(
-                                    position.latitude,
-                                    position.longitude,
-                                    state.position.latitude,
-                                    state.position.longitude);
-
-                                return Text(
-                                  '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText2!
-                                      .copyWith(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
-                                );
-                              } else {
-                                return Container();
-                              }
-                            },
-                          )
-                        ],
-                      )
                     ]),
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildNbOccurence(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          SmartFloreIcons.plant,
+          size: 12,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        const SizedBox(width: 5),
+        Text(AppLocalizations.of(context)!.count_observation(nbOccurence),
+            style: Theme.of(context).textTheme.caption),
+      ],
+    );
+  }
+
+  Widget buildDistanceIndicator(BuildContext context) {
+    return Expanded(
+      child: Row(
+        children: [
+          Icon(
+            SmartFloreIcons.marker,
+            size: 15,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          const SizedBox(width: 4),
+          Expanded(
+            child: BlocBuilder<GeolocationBloc, GeolocationState>(
+              builder: (context, state) {
+                if (state is LocationUpdatedState) {
+                  double distance = Geolocator.distanceBetween(
+                      position.latitude,
+                      position.longitude,
+                      state.position.latitude,
+                      state.position.longitude);
+
+                  return AutoSizeText(
+                    '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: Theme.of(context).colorScheme.primary),
+                    maxLines: 1,
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            ),
+          )
         ],
       ),
     );

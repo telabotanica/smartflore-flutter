@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:smartflore/models/taxon/taxon_app_model.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/repo/taxon/taxon_repo.dart';
 
 part 'taxon_event.dart';
