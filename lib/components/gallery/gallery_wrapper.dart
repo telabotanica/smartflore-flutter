@@ -98,6 +98,9 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
         imageProvider:
             NetworkImage('${StringUtils.removeExtension(image.url)}X3L.jpg'),
         initialScale: PhotoViewComputedScale.contained,
-        heroAttributes: PhotoViewHeroAttributes(tag: image.id.toString()));
+        minScale: PhotoViewComputedScale.contained,
+        heroAttributes: PhotoViewHeroAttributes(
+          tag: image.id.toString(),
+        ));
   }
 }
