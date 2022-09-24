@@ -4,7 +4,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
-import 'package:smartflore/components/cards/species_cover.dart';
+import 'package:smartflore/components/cards/taxon_cover.dart';
 import 'package:smartflore/components/list/species/species_list.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
@@ -171,7 +171,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
           child: SizedBox(
             width: MediaQuery.of(context).size.width - 40,
             height: 200,
-            child: SpeciesCover(
+            child: TaxonCover(
               taxonId: species.taxon.nameId,
               taxonRepo: species.taxon.taxonRepository,
               image: (species.images.isNotEmpty)
