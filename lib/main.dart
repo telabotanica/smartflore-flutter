@@ -153,13 +153,15 @@ class _AppState extends State<App> {
                   curve: Curves.easeOutQuad,
                   reverseCurve: Curves.easeOut,
                   newScreen: GalleryWrapper(
-                      images: data.images,
-                      backgroundDecoration: data.backgroundDecoration,
-                      initialIndex: data.initialIndex,
-                      scrollDirection: data.scrollDirection,
-                      minScale: data.minScale,
-                      maxScale: data.maxScale,
-                      loadingBuilder: data.loadingBuilder));
+                    images: data.images,
+                    backgroundDecoration: data.backgroundDecoration,
+                    initialIndex: data.initialIndex,
+                    scrollDirection: data.scrollDirection,
+                    minScale: data.minScale,
+                    maxScale: data.maxScale,
+                    loadingBuilder: data.loadingBuilder,
+                    onCurrentIndexChanged: data.onCurrentIndexChanged,
+                  ));
           }
           return null;
         });

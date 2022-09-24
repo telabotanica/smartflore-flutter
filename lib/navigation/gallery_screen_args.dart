@@ -10,14 +10,12 @@ class GalleryScreenArguments {
   late dynamic maxScale;
   final int initialIndex;
   final Axis scrollDirection;
+  final void Function(int)? onCurrentIndexChanged;
 
-  GalleryScreenArguments(
-    this.images,
-    this.backgroundDecoration,
-    this.initialIndex,
-    this.scrollDirection, {
-    this.minScale,
-    this.maxScale,
-    this.loadingBuilder,
-  });
+  GalleryScreenArguments(this.images, this.backgroundDecoration,
+      this.initialIndex, this.scrollDirection,
+      {this.minScale,
+      this.maxScale,
+      this.loadingBuilder,
+      this.onCurrentIndexChanged});
 }

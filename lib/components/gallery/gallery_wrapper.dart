@@ -13,6 +13,7 @@ class GalleryWrapper extends StatefulWidget {
   final int initialIndex;
   final PageController pageController;
   final Axis scrollDirection;
+  final void Function(int)? onCurrentIndexChanged;
 
   GalleryWrapper({
     Key? key,
@@ -23,6 +24,7 @@ class GalleryWrapper extends StatefulWidget {
     this.minScale,
     this.maxScale,
     this.loadingBuilder,
+    this.onCurrentIndexChanged,
   })  : pageController = PageController(initialPage: initialIndex),
         super(key: key);
 
@@ -43,6 +45,8 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
     setState(() {
       currentIndex = index;
     });
+    if (widget.onCurrentIndexChanged != null)
+      widget.onCurrentIndexChanged!(currentIndex);
   }
 
   @override

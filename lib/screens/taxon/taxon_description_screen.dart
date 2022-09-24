@@ -57,7 +57,12 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
             getCarouselImages(widget.tabData.images),
             const BoxDecoration(color: Colors.black),
             index,
-            Axis.horizontal));
+            Axis.horizontal,
+            onCurrentIndexChanged: onCurrentGalleryIndexChanged));
+  }
+
+  onCurrentGalleryIndexChanged(int index) {
+    _controller.jumpToPage(index);
   }
 
   @override
