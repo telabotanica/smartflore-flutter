@@ -164,6 +164,19 @@ class _TaxonScreenState extends State<TaxonScreen>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leadingWidth: 40,
+          leading: ModalRoute.of(context)?.canPop == true
+              ? SizedBox(
+                  width: 15,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.keyboard_arrow_left,
+                      size: 24,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                )
+              : null,
           iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
           backgroundColor: Theme.of(context).colorScheme.background,
           shadowColor: const Color(0x00000000),

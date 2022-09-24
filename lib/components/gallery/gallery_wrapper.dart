@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
+import 'package:smartflore/utils/convert.dart';
 
 class GalleryWrapper extends StatefulWidget {
   final List<ImageAPI> images;
@@ -94,7 +95,8 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
     ImageAPI image = widget.images[index];
 
     return PhotoViewGalleryPageOptions(
-        imageProvider: NetworkImage(image.url),
+        imageProvider:
+            NetworkImage('${StringUtils.removeExtension(image.url)}X3L.jpg'),
         initialScale: PhotoViewComputedScale.contained,
         heroAttributes: PhotoViewHeroAttributes(tag: image.id.toString()));
   }

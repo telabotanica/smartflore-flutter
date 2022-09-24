@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
+import 'package:smartflore/utils/convert.dart';
 
 class Gallery extends StatefulWidget {
   final List<ImageAPI> images;
@@ -23,8 +24,9 @@ class _GalleryState extends State<Gallery> {
         itemCount: widget.images.length,
         itemBuilder: (BuildContext context, int index) {
           return ImageWithLoader(
-            url: widget.images[index].url,
-            id: widget.images[index].url,
+            url:
+                '${StringUtils.removeExtension(widget.images[index].url)}S.jpg',
+            id: widget.images[index].id.toString(),
             onTap: () {
               _openGallery(context, index);
             },
