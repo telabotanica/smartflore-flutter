@@ -42,6 +42,7 @@ class TaxonCover extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(6.0)),
               child: ImageWithLoader(
                 url: '${StringUtils.removeExtension(image)}X2L.jpg',
+                syncDuration: 300,
               )),
         ),
         Align(
