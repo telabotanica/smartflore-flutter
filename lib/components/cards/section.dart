@@ -28,7 +28,6 @@ class Section extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(sectionData.text);
     return Column(
       children: [
         Row(children: [

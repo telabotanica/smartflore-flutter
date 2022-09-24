@@ -45,8 +45,9 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
     setState(() {
       currentIndex = index;
     });
-    if (widget.onCurrentIndexChanged != null)
+    if (widget.onCurrentIndexChanged != null) {
       widget.onCurrentIndexChanged!(currentIndex);
+    }
   }
 
   @override
