@@ -57,7 +57,12 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
             getCarouselImages(widget.tabData.images),
             const BoxDecoration(color: Colors.black),
             index,
-            Axis.horizontal));
+            Axis.horizontal,
+            onCurrentIndexChanged: onCurrentGalleryIndexChanged));
+  }
+
+  onCurrentGalleryIndexChanged(int index) {
+    _controller.jumpToPage(index);
   }
 
   @override
@@ -88,7 +93,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
                           child: ImageWithLoader(
                             id: image.id.toString(),
                             url:
-                                '${StringUtils.removeExtension(image.url)}X3L.jpg',
+                                '${StringUtils.removeExtension(image.url)}X2L.jpg',
                             onTap: () {
                               _openGallery(context, entry.key);
                             },

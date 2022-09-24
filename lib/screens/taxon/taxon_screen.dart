@@ -90,15 +90,15 @@ class _TaxonScreenState extends State<TaxonScreen>
     return tabViews;
   }
 
-  IconData getIcon(String type) {
-    switch (type) {
-      case 'Card': //Not optimal, if title tabb change or is localized...
+  IconData getIcon(String title) {
+    switch (title) {
+      case 'Fiche Smart’Flore': //Not optimal, if title tabb change or is localized...
         return SmartFloreIcons.iconDetails;
-      case 'Gallery':
+      case 'Galerie':
         return SmartFloreIcons.iconGallery;
       case 'Wikipedia':
         return SmartFloreIcons.iconWiki;
-      case 'Map':
+      case 'Carte de répartition':
         return SmartFloreIcons.iconMap;
       default:
         return SmartFloreIcons.iconDetails;
@@ -164,6 +164,19 @@ class _TaxonScreenState extends State<TaxonScreen>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leadingWidth: 40,
+          leading: ModalRoute.of(context)?.canPop == true
+              ? SizedBox(
+                  width: 15,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.keyboard_arrow_left,
+                      size: 24,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                )
+              : null,
           iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
           backgroundColor: Theme.of(context).colorScheme.background,
           shadowColor: const Color(0x00000000),
