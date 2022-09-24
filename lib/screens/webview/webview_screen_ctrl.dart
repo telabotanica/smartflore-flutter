@@ -10,6 +10,19 @@ class WebViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leadingWidth: 40,
+          leading: ModalRoute.of(context)?.canPop == true
+              ? SizedBox(
+                  width: 15,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.keyboard_arrow_left,
+                      size: 24,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                )
+              : null,
           automaticallyImplyLeading: false,
           iconTheme: const IconThemeData(
             color: Colors.black, //change your color here

@@ -5,15 +5,23 @@ class ImageWithLoader extends StatelessWidget {
   final String url;
   final String? id;
   final GestureTapCallback? onTap;
+  final EdgeInsets progressIndicatorPadding;
+  final int syncDuration;
 
-  const ImageWithLoader({Key? key, required this.url, this.id, this.onTap})
+  const ImageWithLoader(
+      {Key? key,
+      required this.url,
+      this.id,
+      this.onTap,
+      this.progressIndicatorPadding = const EdgeInsets.all(0),
+      this.syncDuration = 0})
       : super(key: key);
 
   Widget buildImage(BuildContext context) {
     return ImageFade(
       image: NetworkImage(url),
       duration: const Duration(milliseconds: 300),
-      syncDuration: const Duration(milliseconds: 0),
+      syncDuration: Duration(milliseconds: syncDuration),
       alignment: Alignment.center,
       fit: BoxFit.cover,
       // shown behind everything:
@@ -25,14 +33,26 @@ class ImageWithLoader extends StatelessWidget {
       ),
 
       loadingBuilder: (context, progress, chunkEvent) => Center(
-          child: Padding(
-        padding: const EdgeInsets.only(top: 40),
-        child: SizedBox(
-            width: 60,
-            child: LinearProgressIndicator(
-              value: progress,
-              backgroundColor: Colors.white,
-            )),
+          child: Container(
+        color: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
+        alignment: Alignment.center,
+        child: Padding(
+          padding: progressIndicatorPadding,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.photo,
+                  color: Colors.white.withOpacity(0.8), size: 17.0),
+              const SizedBox(height: 5),
+              SizedBox(
+                  width: 60,
+                  child: LinearProgressIndicator(
+                    value: progress,
+                    backgroundColor: Colors.white,
+                  )),
+            ],
+          ),
+        ),
       )),
 
       errorBuilder: (context, error) => Container(

@@ -9,14 +9,14 @@ import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SpeciesCover extends StatelessWidget {
+class TaxonCover extends StatelessWidget {
   final int taxonId;
   final String taxonRepo;
   final String image;
   final String title;
   final LatLng position;
 
-  const SpeciesCover(
+  const TaxonCover(
       {Key? key,
       required this.taxonId,
       required this.taxonRepo,
@@ -24,6 +24,13 @@ class SpeciesCover extends StatelessWidget {
       required this.title,
       required this.position})
       : super(key: key);
+
+  void handleOnPress(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      '/taxon',
+      arguments: TaxonScreenArguments(taxonId, taxonRepo, title),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +41,9 @@ class SpeciesCover extends StatelessWidget {
           child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(6.0)),
               child: ImageWithLoader(
-                  url: '${StringUtils.removeExtension(image)}X2L.jpg')),
+                url: '${StringUtils.removeExtension(image)}X2L.jpg',
+                syncDuration: 300,
+              )),
         ),
         Align(
             alignment: Alignment.topRight,
@@ -48,11 +57,7 @@ class SpeciesCover extends StatelessWidget {
                     side: const BorderSide(color: Colors.white, width: 1),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed(
-                      '/taxon',
-                      arguments:
-                          TaxonScreenArguments(taxonId, taxonRepo, title),
-                    );
+                    handleOnPress(context);
                   },
                   child: Text(AppLocalizations.of(context)!.see_taxon,
                       style: Theme.of(context)
@@ -80,49 +85,54 @@ class SpeciesCover extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 2.0),
-                  child: Icon(SmartFloreIcons.plant,
-                      size: 14, color: Theme.of(context).colorScheme.primary),
-                ),
-                const SizedBox(width: 6),
-                Flexible(
-                    child: Text(title,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
+          child: GestureDetector(
+            onTap: () {
+              handleOnPress(context);
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2.0),
+                    child: Icon(SmartFloreIcons.plant,
+                        size: 14, color: Theme.of(context).colorScheme.primary),
+                  ),
+                  const SizedBox(width: 6),
+                  Flexible(
+                      child: Text(title,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline4!
+                              .copyWith(color: Colors.white))),
+                ]),
+                const SizedBox(height: 6),
+                BlocBuilder<GeolocationBloc, GeolocationState>(
+                  builder: (context, state) {
+                    if (state is LocationUpdatedState) {
+                      double distance = Geolocator.distanceBetween(
+                          position.latitude,
+                          position.longitude,
+                          state.position.latitude,
+                          state.position.longitude);
+
+                      return Text(
+                        '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
                         style: Theme.of(context)
                             .textTheme
-                            .headline4!
-                            .copyWith(color: Colors.white))),
-              ]),
-              const SizedBox(height: 6),
-              BlocBuilder<GeolocationBloc, GeolocationState>(
-                builder: (context, state) {
-                  if (state is LocationUpdatedState) {
-                    double distance = Geolocator.distanceBetween(
-                        position.latitude,
-                        position.longitude,
-                        state.position.latitude,
-                        state.position.longitude);
-
-                    return Text(
-                      '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2!
-                          .copyWith(color: Colors.white),
-                    );
-                  } else {
-                    return Container();
-                  }
-                },
-              )
-            ],
+                            .bodyText2!
+                            .copyWith(color: Colors.white),
+                      );
+                    } else {
+                      return Container();
+                    }
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ],
