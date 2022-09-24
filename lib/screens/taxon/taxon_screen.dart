@@ -90,15 +90,15 @@ class _TaxonScreenState extends State<TaxonScreen>
     return tabViews;
   }
 
-  IconData getIcon(String type) {
-    switch (type) {
-      case 'Card': //Not optimal, if title tabb change or is localized...
+  IconData getIcon(String title) {
+    switch (title) {
+      case 'Fiche Smart’Flore': //Not optimal, if title tabb change or is localized...
         return SmartFloreIcons.iconDetails;
-      case 'Gallery':
+      case 'Galerie':
         return SmartFloreIcons.iconGallery;
       case 'Wikipedia':
         return SmartFloreIcons.iconWiki;
-      case 'Map':
+      case 'Carte de répartition':
         return SmartFloreIcons.iconMap;
       default:
         return SmartFloreIcons.iconDetails;

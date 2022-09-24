@@ -34,7 +34,8 @@ class SpeciesCover extends StatelessWidget {
           child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(6.0)),
               child: ImageWithLoader(
-                  url: '${StringUtils.removeExtension(image)}X2L.jpg')),
+                url: '${StringUtils.removeExtension(image)}X2L.jpg',
+              )),
         ),
         Align(
             alignment: Alignment.topRight,
