@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/components/gallery/gallery.dart';
+import 'package:smartflore/models/taxon/tab_icon_hash.dart';
 import 'package:smartflore/models/taxon/taxon_enum.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/screens/taxon/taxon_description_screen.dart';
 import 'package:smartflore/screens/webview/webview_screen.dart';
-import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class TaxonScreen extends StatefulWidget {
   final int taxonID;
@@ -63,7 +63,7 @@ class _TaxonScreenState extends State<TaxonScreen>
           height: 50,
           child: Tab(
               icon: Icon(
-            getIcon(tab.title),
+            TabIconHash.getIcon(tab.icon),
             size: 24,
             color: (_tabController.index == index)
                 ? Colors.white
@@ -88,21 +88,6 @@ class _TaxonScreenState extends State<TaxonScreen>
       }
     }
     return tabViews;
-  }
-
-  IconData getIcon(String title) {
-    switch (title) {
-      case 'Fiche Smart’Flore': //Not optimal, if title tabb change or is localized...
-        return SmartFloreIcons.iconDetails;
-      case 'Galerie':
-        return SmartFloreIcons.iconGallery;
-      case 'Wikipedia':
-        return SmartFloreIcons.iconWiki;
-      case 'Carte de répartition':
-        return SmartFloreIcons.iconMap;
-      default:
-        return SmartFloreIcons.iconDetails;
-    }
   }
 
   Widget buildTabView() {

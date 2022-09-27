@@ -69,11 +69,22 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
                   onPageChanged: onPageChanged,
                   scrollDirection: widget.scrollDirection,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Align(
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
                       alignment: Alignment.bottomRight,
-                      child: Text(widget.images[currentIndex].id.toString())),
+                      child: Container(
+                        color: Colors.black.withOpacity(0.4),
+                        padding: const EdgeInsets.fromLTRB(5, 0, 5, 2),
+                        child: Text(
+                            'Crédits : ${widget.images[currentIndex].author.toString()}',
+                            style: TextStyle(
+                                color:
+                                    Theme.of(context).colorScheme.background)),
+                      ),
+                    ),
+                  ),
                 ),
                 SafeArea(
                   child: Container(

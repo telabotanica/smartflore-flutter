@@ -32,6 +32,7 @@ abstract class TabAPI with _$TabAPI {
   const factory TabAPI({
     required String title,
     required String type,
+    required String icon,
     List<SectionAPI>? sections,
     List<ImageAPI>? images,
     String? url,
@@ -42,10 +43,10 @@ abstract class TabAPI with _$TabAPI {
 
 @freezed
 abstract class ImageAPI with _$ImageAPI {
-  const factory ImageAPI({
-    required int id,
-    required String url,
-  }) = _ImageAPI;
+  const factory ImageAPI(
+      {required int id,
+      required String url,
+      required String author}) = _ImageAPI;
 
   factory ImageAPI.fromJson(Map<String, dynamic> json) =>
       _$ImageAPIFromJson(json);

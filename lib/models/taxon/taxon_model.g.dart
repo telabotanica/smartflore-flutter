@@ -39,6 +39,7 @@ Map<String, dynamic> _$$_TaxonToJson(_$_Taxon instance) => <String, dynamic>{
 _$_TabAPI _$$_TabAPIFromJson(Map<String, dynamic> json) => _$_TabAPI(
       title: json['title'] as String,
       type: json['type'] as String,
+      icon: json['icon'] as String,
       sections: (json['sections'] as List<dynamic>?)
           ?.map((e) => SectionAPI.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -51,6 +52,7 @@ _$_TabAPI _$$_TabAPIFromJson(Map<String, dynamic> json) => _$_TabAPI(
 Map<String, dynamic> _$$_TabAPIToJson(_$_TabAPI instance) => <String, dynamic>{
       'title': instance.title,
       'type': instance.type,
+      'icon': instance.icon,
       'sections': instance.sections,
       'images': instance.images,
       'url': instance.url,
@@ -59,12 +61,14 @@ Map<String, dynamic> _$$_TabAPIToJson(_$_TabAPI instance) => <String, dynamic>{
 _$_ImageAPI _$$_ImageAPIFromJson(Map<String, dynamic> json) => _$_ImageAPI(
       id: json['id'] as int,
       url: json['url'] as String,
+      author: json['author'] as String,
     );
 
 Map<String, dynamic> _$$_ImageAPIToJson(_$_ImageAPI instance) =>
     <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
+      'author': instance.author,
     };
 
 _$_SectionAPI _$$_SectionAPIFromJson(Map<String, dynamic> json) =>
