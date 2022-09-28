@@ -13,7 +13,8 @@ class TaxonCover extends StatelessWidget {
   final int taxonId;
   final String taxonRepo;
   final String image;
-  final String title;
+  final String? scientificName;
+  final String? vernacularName;
   final LatLng position;
 
   const TaxonCover(
@@ -21,14 +22,20 @@ class TaxonCover extends StatelessWidget {
       required this.taxonId,
       required this.taxonRepo,
       required this.image,
-      required this.title,
+      this.scientificName,
+      this.vernacularName,
       required this.position})
       : super(key: key);
 
   void handleOnPress(BuildContext context) {
     Navigator.of(context).pushNamed(
       '/taxon',
-      arguments: TaxonScreenArguments(taxonId, taxonRepo, title),
+      arguments: TaxonScreenArguments(
+        taxonId,
+        taxonRepo,
+        vernacularName,
+        scientificName,
+      ),
     );
   }
 
@@ -101,13 +108,25 @@ class TaxonCover extends StatelessWidget {
                   ),
                   const SizedBox(width: 6),
                   Flexible(
-                      child: Text(title,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline4!
-                              .copyWith(color: Colors.white))),
+                      child: RichText(
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    text: TextSpan(
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline4!
+                            .copyWith(color: Colors.white),
+                        children: [
+                          TextSpan(
+                              text: (vernacularName != '')
+                                  ? '$vernacularName — '
+                                  : ''),
+                          TextSpan(
+                              text: scientificName,
+                              style:
+                                  const TextStyle(fontStyle: FontStyle.italic))
+                        ]),
+                  )),
                 ]),
                 const SizedBox(height: 6),
                 BlocBuilder<GeolocationBloc, GeolocationState>(

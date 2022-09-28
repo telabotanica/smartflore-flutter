@@ -11,13 +11,15 @@ import 'package:smartflore/screens/webview/webview_screen.dart';
 class TaxonScreen extends StatefulWidget {
   final int taxonID;
   final String taxonRepo;
-  final String taxonName;
+  final String? vernacularName;
+  final String? scientificName;
 
   const TaxonScreen(
       {Key? key,
       required this.taxonID,
       required this.taxonRepo,
-      required this.taxonName})
+      this.vernacularName,
+      this.scientificName})
       : super(key: key);
 
   @override
@@ -149,27 +151,39 @@ class _TaxonScreenState extends State<TaxonScreen>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leadingWidth: 40,
-          leading: ModalRoute.of(context)?.canPop == true
-              ? SizedBox(
-                  width: 15,
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.keyboard_arrow_left,
-                      size: 24,
+            leadingWidth: 40,
+            leading: ModalRoute.of(context)?.canPop == true
+                ? SizedBox(
+                    width: 15,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.keyboard_arrow_left,
+                        size: 24,
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
                     ),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                )
-              : null,
-          iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
-          backgroundColor: Theme.of(context).colorScheme.background,
-          shadowColor: const Color(0x00000000),
-          centerTitle: false,
-          titleSpacing: 0.0,
-          title: Text(widget.taxonName,
-              style: Theme.of(context).textTheme.bodyText1),
-        ),
+                  )
+                : null,
+            iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
+            backgroundColor: Theme.of(context).colorScheme.background,
+            shadowColor: const Color(0x00000000),
+            centerTitle: false,
+            titleSpacing: 0.0,
+            title: RichText(
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              text: TextSpan(
+                  style: Theme.of(context).textTheme.bodyText1,
+                  children: [
+                    TextSpan(
+                        text: (widget.vernacularName != '')
+                            ? '${widget.vernacularName} — '
+                            : ''),
+                    TextSpan(
+                        text: widget.scientificName,
+                        style: const TextStyle(fontStyle: FontStyle.italic))
+                  ]),
+            )),
         body: Stack(children: [
           Center(child: buildTabView()),
           buildBottomBar(),

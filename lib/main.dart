@@ -139,9 +139,11 @@ class _AppState extends State<App> {
                   curve: Curves.easeOutQuad,
                   reverseCurve: Curves.easeOut,
                   newScreen: TaxonScreen(
-                      taxonID: taxonScreenArgs.taxonID,
-                      taxonRepo: taxonScreenArgs.taxonRepo,
-                      taxonName: taxonScreenArgs.taxonName));
+                    taxonID: taxonScreenArgs.taxonID,
+                    taxonRepo: taxonScreenArgs.taxonRepo,
+                    vernacularName: taxonScreenArgs.taxonVernacularName,
+                    scientificName: taxonScreenArgs.taxonScientificName,
+                  ));
             case '/settings':
               return Transitions(
                   transitionType: TransitionType.slideLeft,
