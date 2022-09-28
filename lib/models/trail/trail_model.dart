@@ -52,7 +52,7 @@ abstract class Occurrence with _$Occurrence {
 @freezed
 abstract class Taxon with _$Taxon {
   const factory Taxon({
-    @JsonKey(name: 'scientific_name') required String scientificName,
+    @JsonKey(name: 'scientific_name') String? scientificName,
     @JsonKey(name: 'full_scientific_name') required String fullScientificName,
     @JsonKey(name: 'taxon_repository') required String taxonRepository,
     @JsonKey(name: 'name_id') required int nameId,

@@ -54,18 +54,23 @@ void main() {
 
   Bloc.observer = SimpleBlocObserver();
 
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider<MapBloc>(create: (context) => MapBloc()),
-    BlocProvider<TrailBloc>(
-        create: (context) =>
-            TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
-    BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
-    BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
-    BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
-    BlocProvider<GeolocationBloc>(
-        create: (context) => GeolocationBloc(geolocationRepo: geolocationRepo)
-          ..add(RequestLocationPermissionEvent())),
-  ], child: const App()));
+  runApp(RootRestorationScope(
+    // <--fix
+    restorationId: 'root',
+
+    child: MultiBlocProvider(providers: [
+      BlocProvider<MapBloc>(create: (context) => MapBloc()),
+      BlocProvider<TrailBloc>(
+          create: (context) =>
+              TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
+      BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
+      BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
+      BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
+      BlocProvider<GeolocationBloc>(
+          create: (context) => GeolocationBloc(geolocationRepo: geolocationRepo)
+            ..add(RequestLocationPermissionEvent())),
+    ], child: const App()),
+  ));
 }
 
 ThemeManager _themeManager = ThemeManager();

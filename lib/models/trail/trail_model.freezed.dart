@@ -742,7 +742,7 @@ Taxon _$TaxonFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Taxon {
   @JsonKey(name: 'scientific_name')
-  String get scientificName => throw _privateConstructorUsedError;
+  String? get scientificName => throw _privateConstructorUsedError;
   @JsonKey(name: 'full_scientific_name')
   String get fullScientificName => throw _privateConstructorUsedError;
   @JsonKey(name: 'taxon_repository')
@@ -762,7 +762,7 @@ abstract class $TaxonCopyWith<$Res> {
   factory $TaxonCopyWith(Taxon value, $Res Function(Taxon) then) =
       _$TaxonCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'scientific_name') String scientificName,
+      {@JsonKey(name: 'scientific_name') String? scientificName,
       @JsonKey(name: 'full_scientific_name') String fullScientificName,
       @JsonKey(name: 'taxon_repository') String taxonRepository,
       @JsonKey(name: 'name_id') int nameId,
@@ -789,7 +789,7 @@ class _$TaxonCopyWithImpl<$Res> implements $TaxonCopyWith<$Res> {
       scientificName: scientificName == freezed
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       fullScientificName: fullScientificName == freezed
           ? _value.fullScientificName
           : fullScientificName // ignore: cast_nullable_to_non_nullable
@@ -816,7 +816,7 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
       __$$_TaxonCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'scientific_name') String scientificName,
+      {@JsonKey(name: 'scientific_name') String? scientificName,
       @JsonKey(name: 'full_scientific_name') String fullScientificName,
       @JsonKey(name: 'taxon_repository') String taxonRepository,
       @JsonKey(name: 'name_id') int nameId,
@@ -844,7 +844,7 @@ class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
       scientificName: scientificName == freezed
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       fullScientificName: fullScientificName == freezed
           ? _value.fullScientificName
           : fullScientificName // ignore: cast_nullable_to_non_nullable
@@ -870,7 +870,7 @@ class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
 class _$_Taxon implements _Taxon {
   const _$_Taxon(
       {@JsonKey(name: 'scientific_name')
-          required this.scientificName,
+          this.scientificName,
       @JsonKey(name: 'full_scientific_name')
           required this.fullScientificName,
       @JsonKey(name: 'taxon_repository')
@@ -886,7 +886,7 @@ class _$_Taxon implements _Taxon {
 
   @override
   @JsonKey(name: 'scientific_name')
-  final String scientificName;
+  final String? scientificName;
   @override
   @JsonKey(name: 'full_scientific_name')
   final String fullScientificName;
@@ -951,7 +951,7 @@ class _$_Taxon implements _Taxon {
 abstract class _Taxon implements Taxon {
   const factory _Taxon(
       {@JsonKey(name: 'scientific_name')
-          required final String scientificName,
+          final String? scientificName,
       @JsonKey(name: 'full_scientific_name')
           required final String fullScientificName,
       @JsonKey(name: 'taxon_repository')
@@ -965,7 +965,7 @@ abstract class _Taxon implements Taxon {
 
   @override
   @JsonKey(name: 'scientific_name')
-  String get scientificName;
+  String? get scientificName;
   @override
   @JsonKey(name: 'full_scientific_name')
   String get fullScientificName;
