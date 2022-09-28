@@ -79,7 +79,7 @@ class SpeciesItem extends StatelessWidget {
                 .textTheme
                 .bodyText2
                 ?.copyWith(fontStyle: FontStyle.italic)),
-        const SizedBox(height: 6),
+        const SizedBox(height: 5),
       ];
     }
   }
