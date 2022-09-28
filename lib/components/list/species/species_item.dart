@@ -54,16 +54,16 @@ class SpeciesItem extends StatelessWidget {
     String? title,
     String? titleLatin,
   ) {
-    if (title == null) {
+    if (title == null || title == '') {
       return [
         Text(titleLatin!,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context)
                 .textTheme
-                .bodyText1
+                .bodyText2
                 ?.copyWith(fontStyle: FontStyle.italic)),
-        const SizedBox(height: 6)
+        const SizedBox(height: 5)
       ];
     } else {
       return [
