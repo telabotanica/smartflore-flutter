@@ -115,7 +115,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
               setState(() {
                 currentLocation =
                     LatLng(state.position.latitude, state.position.longitude);
-                print('currentLocation $currentLocation');
               });
             }
           },

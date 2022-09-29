@@ -19,7 +19,6 @@ class GeolocationRepo {
 
   Future<Stream<Position>?> getLocationStream() async {
     PermissionStatus permissionStatus = await getPermissions();
-    print('===<<> $permissionStatus');
     if (permissionStatus == PermissionStatus.granted) {
       const LocationSettings locationSettings = LocationSettings(
         accuracy: LocationAccuracy.high,
