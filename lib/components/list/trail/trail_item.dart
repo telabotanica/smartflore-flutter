@@ -13,7 +13,7 @@ class TrailItem extends StatelessWidget {
   final bool isInteractive;
   final int index;
   final String title;
-  final String image;
+  final String? image;
   final int length;
   final LatLng position;
   final int nbOccurence;
@@ -24,7 +24,7 @@ class TrailItem extends StatelessWidget {
     required this.index,
     required this.title,
     required this.length,
-    required this.image,
+    this.image,
     required this.position,
     required this.nbOccurence,
   }) : super(key: key);
@@ -43,10 +43,12 @@ class TrailItem extends StatelessWidget {
           SizedBox(
             width: 68,
             height: 68,
-            child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(6.0)),
-                child: ImageWithLoader(
-                    url: '${StringUtils.removeExtension(image)}XS.jpg')),
+            child: (image != null)
+                ? ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+                    child: ImageWithLoader(
+                        url: '${StringUtils.removeExtension(image!)}XS.jpg'))
+                : Container(),
           ),
           const SizedBox(width: 16),
           Expanded(

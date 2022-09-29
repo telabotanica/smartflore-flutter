@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
-import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
+import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/top_bar.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/layout.dart';
@@ -82,9 +82,11 @@ class _MapUIState extends State<MapUI> {
             curve: Curves.easeInOutCubic,
             bottom: (widget.mapMode == MapMode.preview)
                 ? 120 + widget.bottomPadding
-                : 95 -
-                    LayoutUtils.getSizes(trailPreviewUIKey).height +
-                    widget.bottomPadding,
+                : (LayoutUtils.getSizes(trailPreviewUIKey) == null)
+                    ? widget.bottomPadding + 95 - 154
+                    : widget.bottomPadding +
+                        95 -
+                        LayoutUtils.getSizes(trailPreviewUIKey)!.height,
             left: 20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,8 +151,6 @@ class _MapUIState extends State<MapUI> {
                           id: 1,
                           title: '',
                           length: 150,
-                          image:
-                              'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
                           position: LatLng(0, 0),
                           nbOccurence: 0,
                         );
