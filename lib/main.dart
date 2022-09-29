@@ -67,7 +67,9 @@ void main() {
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
       BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
       BlocProvider<GeolocationBloc>(
-          create: (context) => GeolocationBloc(geolocationRepo: geolocationRepo)
+          create: (context) => GeolocationBloc(
+              geolocationRepo: geolocationRepo,
+              mapBloc: BlocProvider.of<MapBloc>(context))
             ..add(RequestLocationPermissionEvent())),
     ], child: const App()),
   ));

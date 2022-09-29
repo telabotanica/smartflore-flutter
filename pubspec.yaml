@@ -53,6 +53,7 @@ dependencies:
   flutter_html: ^3.0.0-alpha.5
   html: ^0.15.0
   auto_size_text: ^3.0.0
+  app_settings: ^4.1.8
 
 
 
