@@ -115,7 +115,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
               setState(() {
                 currentLocation =
                     LatLng(state.position.latitude, state.position.longitude);
-                //_mapController.move(LatLng(currentLocation.latitude, currentLocation.longitude), _mapController.zoom);
               });
             }
           },
@@ -165,44 +164,57 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           },
         ),
       ],
-      child: FlutterMap(
-        mapController: _mapController,
-        options: MapOptions(
-          rotationWinGestures: MultiFingerGesture.none,
-          center: currentLocation,
-          interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-          zoom: 16.0,
-          maxZoom: 19,
-          onTap: (tapPos, LatLng latLng) {
-            if (mapMode != MapMode.trail) {
-              BlocProvider.of<MapBloc>(context)
-                  .add(const ChangeMapMode(mapMode: MapMode.overview));
-            }
-          },
-        ),
-        layers: [
-          TileLayerOptions(
-              maxZoom: 20,
-              maxNativeZoom: 20,
-              urlTemplate:
-                  'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-              subdomains: ['a', 'b', 'c'],
-              retinaMode: true,
-              tileProvider: CachedTileProvider()),
-          MarkerLayerOptions(
-            markers: [
-              Marker(
-                  anchorPos: AnchorPos.align(AnchorAlign.center),
-                  width: 38.0,
-                  height: 38.0,
-                  point: currentLocation,
-                  builder: (ctx) => const MarkerMe()),
-            ],
+      child: WillPopScope(
+        onWillPop: () async {
+          if (mapMode != MapMode.overview) {
+            BlocProvider.of<MapBloc>(context).add(ChangeMapMode(
+                mapMode: (mapMode == MapMode.trail)
+                    ? MapMode.preview
+                    : MapMode.overview));
+            return false;
+          } else {
+            return true;
+          }
+        },
+        child: FlutterMap(
+          mapController: _mapController,
+          options: MapOptions(
+            rotationWinGestures: MultiFingerGesture.none,
+            center: currentLocation,
+            interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+            zoom: 16.0,
+            maxZoom: 19,
+            onTap: (tapPos, LatLng latLng) {
+              if (mapMode != MapMode.trail) {
+                BlocProvider.of<MapBloc>(context)
+                    .add(const ChangeMapMode(mapMode: MapMode.overview));
+              }
+            },
           ),
-          if (mapMode == MapMode.overview) ...setupOverviewMode(),
-          if (mapMode == MapMode.preview) ...setupPreviewMode(),
-          if (mapMode == MapMode.trail) ...setupFocusMode(),
-        ],
+          layers: [
+            TileLayerOptions(
+                maxZoom: 20,
+                maxNativeZoom: 20,
+                urlTemplate:
+                    'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+                subdomains: ['a', 'b', 'c'],
+                retinaMode: true,
+                tileProvider: CachedTileProvider()),
+            MarkerLayerOptions(
+              markers: [
+                Marker(
+                    anchorPos: AnchorPos.align(AnchorAlign.center),
+                    width: 38.0,
+                    height: 38.0,
+                    point: currentLocation,
+                    builder: (ctx) => const MarkerMe()),
+              ],
+            ),
+            if (mapMode == MapMode.overview) ...setupOverviewMode(),
+            if (mapMode == MapMode.preview) ...setupPreviewMode(),
+            if (mapMode == MapMode.trail) ...setupFocusMode(),
+          ],
+        ),
       ),
     );
   }

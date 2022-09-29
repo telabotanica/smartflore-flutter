@@ -394,6 +394,7 @@ TabAPI _$TabAPIFromJson(Map<String, dynamic> json) {
 mixin _$TabAPI {
   String get title => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
+  String get icon => throw _privateConstructorUsedError;
   List<SectionAPI>? get sections => throw _privateConstructorUsedError;
   List<ImageAPI>? get images => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
@@ -410,6 +411,7 @@ abstract class $TabAPICopyWith<$Res> {
   $Res call(
       {String title,
       String type,
+      String icon,
       List<SectionAPI>? sections,
       List<ImageAPI>? images,
       String? url});
@@ -427,6 +429,7 @@ class _$TabAPICopyWithImpl<$Res> implements $TabAPICopyWith<$Res> {
   $Res call({
     Object? title = freezed,
     Object? type = freezed,
+    Object? icon = freezed,
     Object? sections = freezed,
     Object? images = freezed,
     Object? url = freezed,
@@ -439,6 +442,10 @@ class _$TabAPICopyWithImpl<$Res> implements $TabAPICopyWith<$Res> {
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as String,
       sections: sections == freezed
           ? _value.sections
@@ -464,6 +471,7 @@ abstract class _$$_TabAPICopyWith<$Res> implements $TabAPICopyWith<$Res> {
   $Res call(
       {String title,
       String type,
+      String icon,
       List<SectionAPI>? sections,
       List<ImageAPI>? images,
       String? url});
@@ -482,6 +490,7 @@ class __$$_TabAPICopyWithImpl<$Res> extends _$TabAPICopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? type = freezed,
+    Object? icon = freezed,
     Object? sections = freezed,
     Object? images = freezed,
     Object? url = freezed,
@@ -494,6 +503,10 @@ class __$$_TabAPICopyWithImpl<$Res> extends _$TabAPICopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as String,
       sections: sections == freezed
           ? _value._sections
@@ -517,6 +530,7 @@ class _$_TabAPI implements _TabAPI {
   const _$_TabAPI(
       {required this.title,
       required this.type,
+      required this.icon,
       final List<SectionAPI>? sections,
       final List<ImageAPI>? images,
       this.url})
@@ -530,6 +544,8 @@ class _$_TabAPI implements _TabAPI {
   final String title;
   @override
   final String type;
+  @override
+  final String icon;
   final List<SectionAPI>? _sections;
   @override
   List<SectionAPI>? get sections {
@@ -553,7 +569,7 @@ class _$_TabAPI implements _TabAPI {
 
   @override
   String toString() {
-    return 'TabAPI(title: $title, type: $type, sections: $sections, images: $images, url: $url)';
+    return 'TabAPI(title: $title, type: $type, icon: $icon, sections: $sections, images: $images, url: $url)';
   }
 
   @override
@@ -563,6 +579,7 @@ class _$_TabAPI implements _TabAPI {
             other is _$_TabAPI &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.icon, icon) &&
             const DeepCollectionEquality().equals(other._sections, _sections) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality().equals(other.url, url));
@@ -574,6 +591,7 @@ class _$_TabAPI implements _TabAPI {
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(icon),
       const DeepCollectionEquality().hash(_sections),
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(url));
@@ -595,6 +613,7 @@ abstract class _TabAPI implements TabAPI {
   const factory _TabAPI(
       {required final String title,
       required final String type,
+      required final String icon,
       final List<SectionAPI>? sections,
       final List<ImageAPI>? images,
       final String? url}) = _$_TabAPI;
@@ -605,6 +624,8 @@ abstract class _TabAPI implements TabAPI {
   String get title;
   @override
   String get type;
+  @override
+  String get icon;
   @override
   List<SectionAPI>? get sections;
   @override
@@ -625,6 +646,7 @@ ImageAPI _$ImageAPIFromJson(Map<String, dynamic> json) {
 mixin _$ImageAPI {
   int get id => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  String get author => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -636,7 +658,7 @@ mixin _$ImageAPI {
 abstract class $ImageAPICopyWith<$Res> {
   factory $ImageAPICopyWith(ImageAPI value, $Res Function(ImageAPI) then) =
       _$ImageAPICopyWithImpl<$Res>;
-  $Res call({int id, String url});
+  $Res call({int id, String url, String author});
 }
 
 /// @nodoc
@@ -651,6 +673,7 @@ class _$ImageAPICopyWithImpl<$Res> implements $ImageAPICopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? url = freezed,
+    Object? author = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -660,6 +683,10 @@ class _$ImageAPICopyWithImpl<$Res> implements $ImageAPICopyWith<$Res> {
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      author: author == freezed
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -671,7 +698,7 @@ abstract class _$$_ImageAPICopyWith<$Res> implements $ImageAPICopyWith<$Res> {
           _$_ImageAPI value, $Res Function(_$_ImageAPI) then) =
       __$$_ImageAPICopyWithImpl<$Res>;
   @override
-  $Res call({int id, String url});
+  $Res call({int id, String url, String author});
 }
 
 /// @nodoc
@@ -688,6 +715,7 @@ class __$$_ImageAPICopyWithImpl<$Res> extends _$ImageAPICopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? url = freezed,
+    Object? author = freezed,
   }) {
     return _then(_$_ImageAPI(
       id: id == freezed
@@ -698,6 +726,10 @@ class __$$_ImageAPICopyWithImpl<$Res> extends _$ImageAPICopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      author: author == freezed
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -705,7 +737,8 @@ class __$$_ImageAPICopyWithImpl<$Res> extends _$ImageAPICopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ImageAPI implements _ImageAPI {
-  const _$_ImageAPI({required this.id, required this.url});
+  const _$_ImageAPI(
+      {required this.id, required this.url, required this.author});
 
   factory _$_ImageAPI.fromJson(Map<String, dynamic> json) =>
       _$$_ImageAPIFromJson(json);
@@ -714,10 +747,12 @@ class _$_ImageAPI implements _ImageAPI {
   final int id;
   @override
   final String url;
+  @override
+  final String author;
 
   @override
   String toString() {
-    return 'ImageAPI(id: $id, url: $url)';
+    return 'ImageAPI(id: $id, url: $url, author: $author)';
   }
 
   @override
@@ -726,7 +761,8 @@ class _$_ImageAPI implements _ImageAPI {
         (other.runtimeType == runtimeType &&
             other is _$_ImageAPI &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality().equals(other.author, author));
   }
 
   @JsonKey(ignore: true)
@@ -734,7 +770,8 @@ class _$_ImageAPI implements _ImageAPI {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(url));
+      const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(author));
 
   @JsonKey(ignore: true)
   @override
@@ -750,8 +787,10 @@ class _$_ImageAPI implements _ImageAPI {
 }
 
 abstract class _ImageAPI implements ImageAPI {
-  const factory _ImageAPI({required final int id, required final String url}) =
-      _$_ImageAPI;
+  const factory _ImageAPI(
+      {required final int id,
+      required final String url,
+      required final String author}) = _$_ImageAPI;
 
   factory _ImageAPI.fromJson(Map<String, dynamic> json) = _$_ImageAPI.fromJson;
 
@@ -759,6 +798,8 @@ abstract class _ImageAPI implements ImageAPI {
   int get id;
   @override
   String get url;
+  @override
+  String get author;
   @override
   @JsonKey(ignore: true)
   _$$_ImageAPICopyWith<_$_ImageAPI> get copyWith =>

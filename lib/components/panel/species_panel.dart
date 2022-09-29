@@ -73,6 +73,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                 setShowMe(true);
               } else {
                 setShowMe(false);
+                if (isPanelOpened) _panelController.close();
               }
             }
           },
@@ -177,8 +178,10 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
               image: (species.images.isNotEmpty)
                   ? species.images[0].url
                   : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
-              title:
-                  '${species.taxon.vernacularNames.isNotEmpty ? '${species.taxon.vernacularNames[0]} -' : ''} ${species.taxon.scientificName}',
+              vernacularName: species.taxon.vernacularNames.isNotEmpty
+                  ? species.taxon.vernacularNames[0]
+                  : '',
+              scientificName: species.taxon.scientificName,
               position: species.position,
             ),
           ),

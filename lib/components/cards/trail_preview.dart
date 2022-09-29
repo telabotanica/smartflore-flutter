@@ -9,7 +9,7 @@ class TrailPreview extends StatelessWidget {
   final int index;
   final int id;
   final String title;
-  final String image;
+  final String? image;
   final int length;
   final int nbOccurence;
   final LatLng position;
@@ -21,7 +21,7 @@ class TrailPreview extends StatelessWidget {
     required this.id,
     required this.title,
     required this.length,
-    required this.image,
+    this.image,
     required this.position,
     required this.nbOccurence,
     this.onPressCB,
