@@ -53,8 +53,14 @@ class SmartFloreIcons {
       IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData iconDetails =
       IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData iconDefault =
+      IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData usage =
       IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData source =
       IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData iconWebview =
+      IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData iconForm =
+      IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

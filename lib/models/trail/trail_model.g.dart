@@ -64,7 +64,7 @@ Map<String, dynamic> _$$_OccurrenceToJson(_$_Occurrence instance) =>
     };
 
 _$_Taxon _$$_TaxonFromJson(Map<String, dynamic> json) => _$_Taxon(
-      scientificName: json['scientific_name'] as String,
+      scientificName: json['scientific_name'] as String?,
       fullScientificName: json['full_scientific_name'] as String,
       taxonRepository: json['taxon_repository'] as String,
       nameId: json['name_id'] as int,

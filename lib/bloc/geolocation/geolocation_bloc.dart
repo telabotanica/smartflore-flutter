@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 
 part 'geolocation_event.dart';
@@ -8,9 +11,23 @@ part 'geolocation_state.dart';
 
 class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
   final GeolocationRepo _geolocationRepo;
-  GeolocationBloc({required GeolocationRepo geolocationRepo})
+  final MapBloc _mapBloc;
+  late StreamSubscription mapBlocSub;
+
+  GeolocationBloc(
+      {required GeolocationRepo geolocationRepo, required MapBloc mapBloc})
       : _geolocationRepo = geolocationRepo,
+        _mapBloc = mapBloc,
         super(LocationInitialState()) {
+    mapBlocSub = _mapBloc.stream.listen((state) async {
+      if (state is OnRecenterMap) {
+        PermissionStatus status = await _geolocationRepo.getPermissions();
+        if (status == PermissionStatus.disabled) {
+          await _geolocationRepo.openPreferences();
+        }
+        add(RequestCurrentLocationStreamEvent());
+      }
+    });
     // PERMISSION
     on<RequestLocationPermissionEvent>(((event, emit) async {
       emit(LocationPermissionLoadingState());
@@ -34,7 +51,7 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
       if (locationStream != null) {
         locationStream.listen((Position position) {
           add(UpdateLocationEvent(position: position));
-        });
+        }, onError: (dynamic error) async {});
       } else {}
     });
 

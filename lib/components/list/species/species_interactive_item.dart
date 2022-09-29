@@ -9,8 +9,8 @@ class SpeciesInteractiveItem extends StatelessWidget {
   final bool isInteractive;
   final int index;
   final int id;
-  final String titleLatin;
-  final String title;
+  final String? titleLatin;
+  final String? title;
   final String image;
   final List<String> tags;
   final bool isSelected;
@@ -20,8 +20,8 @@ class SpeciesInteractiveItem extends StatelessWidget {
       this.isInteractive = true,
       required this.index,
       required this.id,
-      required this.titleLatin,
-      required this.title,
+      this.titleLatin,
+      this.title,
       required this.image,
       required this.tags,
       required this.isSelected})

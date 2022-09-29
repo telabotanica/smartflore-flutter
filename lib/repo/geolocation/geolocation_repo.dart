@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_settings/app_settings.dart';
 import 'package:geolocator/geolocator.dart';
 
 enum PermissionStatus { loading, granted, disabled, denied, permanentlyDenied }
@@ -7,9 +8,11 @@ enum PermissionStatus { loading, granted, disabled, denied, permanentlyDenied }
 class GeolocationRepo {
   late bool isPermissionRequested = false;
   GeolocationRepo();
+  late bool appSettingsOpened = false;
 
   Future<Position> getCurrentLocation() async {
     await getPermissions();
+
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
   }
@@ -54,7 +57,14 @@ class GeolocationRepo {
     if (permission == LocationPermission.deniedForever) {
       return PermissionStatus.permanentlyDenied;
     }
-
+    appSettingsOpened = false;
     return PermissionStatus.granted;
+  }
+
+  Future<void> openPreferences() async {
+    if (!appSettingsOpened) {
+      appSettingsOpened = true;
+      await AppSettings.openLocationSettings();
+    }
   }
 }

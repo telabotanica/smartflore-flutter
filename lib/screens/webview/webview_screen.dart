@@ -22,6 +22,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
     return WebView(
+      javascriptMode: JavascriptMode.unrestricted,
       initialUrl: widget.url,
     );
   }

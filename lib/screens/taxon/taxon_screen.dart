@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/components/gallery/gallery.dart';
+import 'package:smartflore/models/taxon/tab_icon_hash.dart';
 import 'package:smartflore/models/taxon/taxon_enum.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/screens/taxon/taxon_description_screen.dart';
 import 'package:smartflore/screens/webview/webview_screen.dart';
-import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class TaxonScreen extends StatefulWidget {
   final int taxonID;
   final String taxonRepo;
-  final String taxonName;
+  final String? vernacularName;
+  final String? scientificName;
 
   const TaxonScreen(
       {Key? key,
       required this.taxonID,
       required this.taxonRepo,
-      required this.taxonName})
+      this.vernacularName,
+      this.scientificName})
       : super(key: key);
 
   @override
@@ -63,7 +65,7 @@ class _TaxonScreenState extends State<TaxonScreen>
           height: 50,
           child: Tab(
               icon: Icon(
-            getIcon(tab.title),
+            TabIconHash.getIcon(tab.icon),
             size: 24,
             color: (_tabController.index == index)
                 ? Colors.white
@@ -88,21 +90,6 @@ class _TaxonScreenState extends State<TaxonScreen>
       }
     }
     return tabViews;
-  }
-
-  IconData getIcon(String title) {
-    switch (title) {
-      case 'Fiche Smart’Flore': //Not optimal, if title tabb change or is localized...
-        return SmartFloreIcons.iconDetails;
-      case 'Galerie':
-        return SmartFloreIcons.iconGallery;
-      case 'Wikipedia':
-        return SmartFloreIcons.iconWiki;
-      case 'Carte de répartition':
-        return SmartFloreIcons.iconMap;
-      default:
-        return SmartFloreIcons.iconDetails;
-    }
   }
 
   Widget buildTabView() {
@@ -164,27 +151,39 @@ class _TaxonScreenState extends State<TaxonScreen>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leadingWidth: 40,
-          leading: ModalRoute.of(context)?.canPop == true
-              ? SizedBox(
-                  width: 15,
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.keyboard_arrow_left,
-                      size: 24,
+            leadingWidth: 40,
+            leading: ModalRoute.of(context)?.canPop == true
+                ? SizedBox(
+                    width: 15,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.keyboard_arrow_left,
+                        size: 24,
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
                     ),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                )
-              : null,
-          iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
-          backgroundColor: Theme.of(context).colorScheme.background,
-          shadowColor: const Color(0x00000000),
-          centerTitle: false,
-          titleSpacing: 0.0,
-          title: Text(widget.taxonName,
-              style: Theme.of(context).textTheme.bodyText1),
-        ),
+                  )
+                : null,
+            iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
+            backgroundColor: Theme.of(context).colorScheme.background,
+            shadowColor: const Color(0x00000000),
+            centerTitle: false,
+            titleSpacing: 0.0,
+            title: RichText(
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              text: TextSpan(
+                  style: Theme.of(context).textTheme.bodyText1,
+                  children: [
+                    TextSpan(
+                        text: (widget.vernacularName != '')
+                            ? '${widget.vernacularName} — '
+                            : ''),
+                    TextSpan(
+                        text: widget.scientificName,
+                        style: const TextStyle(fontStyle: FontStyle.italic))
+                  ]),
+            )),
         body: Stack(children: [
           Center(child: buildTabView()),
           buildBottomBar(),

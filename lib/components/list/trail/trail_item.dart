@@ -13,7 +13,7 @@ class TrailItem extends StatelessWidget {
   final bool isInteractive;
   final int index;
   final String title;
-  final String image;
+  final String? image;
   final int length;
   final LatLng position;
   final int nbOccurence;
@@ -24,7 +24,7 @@ class TrailItem extends StatelessWidget {
     required this.index,
     required this.title,
     required this.length,
-    required this.image,
+    this.image,
     required this.position,
     required this.nbOccurence,
   }) : super(key: key);
@@ -43,10 +43,12 @@ class TrailItem extends StatelessWidget {
           SizedBox(
             width: 68,
             height: 68,
-            child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(6.0)),
-                child: ImageWithLoader(
-                    url: '${StringUtils.removeExtension(image)}XS.jpg')),
+            child: (image != null)
+                ? ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+                    child: ImageWithLoader(
+                        url: '${StringUtils.removeExtension(image!)}XS.jpg'))
+                : Container(),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -95,9 +97,9 @@ class TrailItem extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 buildNbOccurence(context),
-                                const SizedBox(width: 5),
                                 buildDistanceIndicator(context)
                               ],
                             ),
@@ -114,23 +116,35 @@ class TrailItem extends StatelessWidget {
   }
 
   Widget buildNbOccurence(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          SmartFloreIcons.plant,
-          size: 12,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-        const SizedBox(width: 5),
-        Text(AppLocalizations.of(context)!.count_observation(nbOccurence),
-            style: Theme.of(context).textTheme.caption),
-      ],
+    return Flexible(
+      flex: 5,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Icon(
+            SmartFloreIcons.plant,
+            size: 12,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          const SizedBox(width: 5),
+          Flexible(
+            child: Text(
+              AppLocalizations.of(context)!.count_observation(nbOccurence),
+              style: Theme.of(context).textTheme.caption,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget buildDistanceIndicator(BuildContext context) {
-    return Expanded(
+    return Flexible(
+      flex: 3,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             SmartFloreIcons.marker,
@@ -138,7 +152,7 @@ class TrailItem extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
           ),
           const SizedBox(width: 4),
-          Expanded(
+          Flexible(
             child: BlocBuilder<GeolocationBloc, GeolocationState>(
               builder: (context, state) {
                 if (state is LocationUpdatedState) {
