@@ -22,6 +22,9 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
     mapBlocSub = _mapBloc.stream.listen((state) async {
       if (state is OnRecenterMap) {
         PermissionStatus status = await _geolocationRepo.getPermissions();
+        if (status == PermissionStatus.disabled) {
+          await _geolocationRepo.openPreferences();
+        }
         add(RequestCurrentLocationStreamEvent());
       }
     });

@@ -95,6 +95,8 @@ class TrailItem extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 buildNbOccurence(context),
                                 const SizedBox(width: 5),
@@ -114,23 +116,27 @@ class TrailItem extends StatelessWidget {
   }
 
   Widget buildNbOccurence(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          SmartFloreIcons.plant,
-          size: 12,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-        const SizedBox(width: 5),
-        Text(AppLocalizations.of(context)!.count_observation(nbOccurence),
-            style: Theme.of(context).textTheme.caption),
-      ],
+    return Expanded(
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Icon(
+            SmartFloreIcons.plant,
+            size: 12,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          const SizedBox(width: 5),
+          Text(AppLocalizations.of(context)!.count_observation(nbOccurence),
+              style: Theme.of(context).textTheme.caption),
+        ],
+      ),
     );
   }
 
   Widget buildDistanceIndicator(BuildContext context) {
-    return Expanded(
+    return Flexible(
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             SmartFloreIcons.marker,
@@ -138,7 +144,7 @@ class TrailItem extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
           ),
           const SizedBox(width: 4),
-          Expanded(
+          Flexible(
             child: BlocBuilder<GeolocationBloc, GeolocationState>(
               builder: (context, state) {
                 if (state is LocationUpdatedState) {

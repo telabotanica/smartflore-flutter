@@ -19,6 +19,7 @@ class GeolocationRepo {
 
   Future<Stream<Position>?> getLocationStream() async {
     PermissionStatus permissionStatus = await getPermissions();
+    print('===<<> $permissionStatus');
     if (permissionStatus == PermissionStatus.granted) {
       const LocationSettings locationSettings = LocationSettings(
         accuracy: LocationAccuracy.high,
@@ -40,10 +41,6 @@ class GeolocationRepo {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      if (!appSettingsOpened) {
-        appSettingsOpened = true;
-        AppSettings.openLocationSettings();
-      }
       return PermissionStatus.disabled;
     }
 
@@ -63,5 +60,12 @@ class GeolocationRepo {
     }
     appSettingsOpened = false;
     return PermissionStatus.granted;
+  }
+
+  Future<void> openPreferences() async {
+    if (!appSettingsOpened) {
+      appSettingsOpened = true;
+      await AppSettings.openLocationSettings();
+    }
   }
 }
