@@ -73,6 +73,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                 setShowMe(true);
               } else {
                 setShowMe(false);
+                if (isPanelOpened) _panelController.close();
               }
             }
           },
