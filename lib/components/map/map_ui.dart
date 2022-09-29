@@ -7,10 +7,12 @@ import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
 import 'package:smartflore/components/top_bar.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
+import 'package:smartflore/utils/layout.dart';
 
-class MapUI extends StatelessWidget {
+class MapUI extends StatefulWidget {
   final MapMode mapMode;
   final double bottomPadding;
+
   const MapUI({
     Key? key,
     required this.bottomPadding,
@@ -18,13 +20,20 @@ class MapUI extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<MapUI> createState() => _MapUIState();
+}
+
+class _MapUIState extends State<MapUI> {
+  GlobalKey trailPreviewUIKey = GlobalKey();
+  double trailPreviewUIHeight = 0;
+  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         const MapWidget(),
         AnimatedPositioned(
             top: 20,
-            right: (mapMode == MapMode.trail) ? -60 : 20,
+            right: (widget.mapMode == MapMode.trail) ? -60 : 20,
             curve: Curves.easeInOutCubic,
             duration: const Duration(milliseconds: 300),
             child: SafeArea(
@@ -48,7 +57,7 @@ class MapUI extends StatelessWidget {
               ),
             )),
         AnimatedPositioned(
-            top: (mapMode == MapMode.trail) ? 20 : -100,
+            top: (widget.mapMode == MapMode.trail) ? 20 : -100,
             curve: Curves.easeInOutCubic,
             duration: const Duration(milliseconds: 300),
             child: SafeArea(
@@ -71,9 +80,11 @@ class MapUI extends StatelessWidget {
         AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,
-            bottom: (mapMode == MapMode.preview)
-                ? 120 + bottomPadding
-                : -65 + bottomPadding,
+            bottom: (widget.mapMode == MapMode.preview)
+                ? 120 + widget.bottomPadding
+                : 95 -
+                    LayoutUtils.getSizes(trailPreviewUIKey).height +
+                    widget.bottomPadding,
             left: 20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,6 +127,7 @@ class MapUI extends StatelessWidget {
                       builder: (context, state) {
                         if (state is TrailLoadedState) {
                           return TrailPreview(
+                              key: trailPreviewUIKey,
                               onPressCB: () {
                                 BlocProvider.of<MapBloc>(context).add(
                                     const ChangeMapMode(
@@ -130,6 +142,7 @@ class MapUI extends StatelessWidget {
                               nbOccurence: state.trail.occurrencesCount);
                         }
                         return TrailPreview(
+                          key: trailPreviewUIKey,
                           onPressCB: null,
                           isLoading: true,
                           index: 1,

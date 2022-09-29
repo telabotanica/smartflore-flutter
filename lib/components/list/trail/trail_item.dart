@@ -95,11 +95,9 @@ class TrailItem extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Row(
-                              mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 buildNbOccurence(context),
-                                const SizedBox(width: 5),
                                 buildDistanceIndicator(context)
                               ],
                             ),
@@ -116,9 +114,10 @@ class TrailItem extends StatelessWidget {
   }
 
   Widget buildNbOccurence(BuildContext context) {
-    return Expanded(
+    return Flexible(
+      flex: 5,
       child: Row(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Icon(
             SmartFloreIcons.plant,
@@ -126,8 +125,14 @@ class TrailItem extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
           ),
           const SizedBox(width: 5),
-          Text(AppLocalizations.of(context)!.count_observation(nbOccurence),
-              style: Theme.of(context).textTheme.caption),
+          Flexible(
+            child: Text(
+              AppLocalizations.of(context)!.count_observation(nbOccurence),
+              style: Theme.of(context).textTheme.caption,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ],
       ),
     );
@@ -135,6 +140,7 @@ class TrailItem extends StatelessWidget {
 
   Widget buildDistanceIndicator(BuildContext context) {
     return Flexible(
+      flex: 3,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
