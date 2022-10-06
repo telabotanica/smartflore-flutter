@@ -10,8 +10,6 @@ class TrailApiClient extends APIClient {
   TrailApiClient({required this.httpClient, required this.baseUrl});
   Future<TrailDetails?> getTrailData(int id) async {
     final response = await httpClient.get(Uri.parse('$baseUrl/trail/$id'));
-    print('reponse ${response.statusCode}');
-    print('$baseUrl/trail/$id');
     if (response.statusCode == 200) {
       // Needed to simplify the reading of centroid
       String data = response.body;
