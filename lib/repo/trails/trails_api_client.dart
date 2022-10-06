@@ -17,8 +17,7 @@ class TrailsApiClient extends APIClient {
       // Needed to simplify the reading of centroid
       final data = jsonDecode(response.body);
       // return trailList;
-      List<Trail>? trailsData =
-          TrailList.fromJson({'trailList': data}).trailList;
+      List<Trail>? trailsData = Trails.fromJson({'trailList': data}).trailList;
       return trailsData;
     } else {
       // throw Exception('Failed to load trail list');

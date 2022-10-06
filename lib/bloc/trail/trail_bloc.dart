@@ -16,6 +16,7 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
 
   TrailBloc(this.trailsRepo, this.mapBloc) : super(TrailInitialState()) {
     // When asking for trail preview we need to both change mapMode and load trail data.
+
     mapSubscription = mapBloc.stream.listen((state) {
       if (state is OnRequestTrailPreview) {
         add(LoadTrailDataEvent(id: state.trailID));

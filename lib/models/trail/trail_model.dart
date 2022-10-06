@@ -3,24 +3,28 @@
 //     final trail = trailFromJson(jsonString);
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart';
 
 part 'trail_model.freezed.dart';
 part 'trail_model.g.dart';
 
 @freezed
-abstract class TrailDetails with _$TrailDetails {
+class TrailDetails with _$TrailDetails {
+  @HiveType(typeId: 10, adapterName: 'TrailDetailAdapter')
   const factory TrailDetails({
-    required int id,
-    required String name,
-    @JsonKey(name: 'display_name') required String displayName,
-    required String author,
-    required StartEndPosition position,
-    required List<Occurrence> occurrences,
-    @JsonKey(name: 'occurrences_count') required int occurrencesCount,
-    required Image image,
-    required Path path,
-    @JsonKey(name: 'path_length') required int pathLength,
+    @HiveField(0) required int id,
+    @HiveField(1) required String name,
+    @JsonKey(name: 'display_name') @HiveField(2) required String displayName,
+    @HiveField(3) required String author,
+    @HiveField(4) required StartEndPosition position,
+    @HiveField(5) required List<Occurrence> occurrences,
+    @JsonKey(name: 'occurrences_count')
+    @HiveField(6)
+        required int occurrencesCount,
+    @HiveField(7) required Image image,
+    @HiveField(8) required Path path,
+    @JsonKey(name: 'path_length') @HiveField(9) required int pathLength,
   }) = _TrailDetails;
 
   factory TrailDetails.fromJson(Map<String, dynamic> json) =>
@@ -28,21 +32,23 @@ abstract class TrailDetails with _$TrailDetails {
 }
 
 @freezed
-abstract class Image with _$Image {
+class Image with _$Image {
+  @HiveType(typeId: 11, adapterName: 'ImageAdapter')
   const factory Image({
-    required int id,
-    required String url,
+    @HiveField(0) required int id,
+    @HiveField(1) required String url,
   }) = _Image;
 
   factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
 }
 
 @freezed
-abstract class Occurrence with _$Occurrence {
+class Occurrence with _$Occurrence {
+  @HiveType(typeId: 12, adapterName: 'OccurenceAdapter')
   const factory Occurrence({
-    @LatLngConverter() required LatLng position,
-    required Taxon taxon,
-    required List<Image> images,
+    @LatLngConverter() @HiveField(0) required LatLng position,
+    @HiveField(1) required Taxon taxon,
+    @HiveField(2) required List<Image> images,
   }) = _Occurrence;
 
   factory Occurrence.fromJson(Map<String, dynamic> json) =>
@@ -50,23 +56,31 @@ abstract class Occurrence with _$Occurrence {
 }
 
 @freezed
-abstract class Taxon with _$Taxon {
+class Taxon with _$Taxon {
+  @HiveType(typeId: 13, adapterName: 'TaxonAdapter')
   const factory Taxon({
-    @JsonKey(name: 'scientific_name') String? scientificName,
-    @JsonKey(name: 'full_scientific_name') required String fullScientificName,
-    @JsonKey(name: 'taxon_repository') required String taxonRepository,
-    @JsonKey(name: 'name_id') required int nameId,
-    @JsonKey(name: 'vernacular_names') required List<String> vernacularNames,
+    @JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
+    @JsonKey(name: 'full_scientific_name')
+    @HiveField(1)
+        required String fullScientificName,
+    @JsonKey(name: 'taxon_repository')
+    @HiveField(2)
+        required String taxonRepository,
+    @JsonKey(name: 'name_id') @HiveField(3) required int nameId,
+    @JsonKey(name: 'vernacular_names')
+    @HiveField(4)
+        required List<String> vernacularNames,
   }) = _Taxon;
 
   factory Taxon.fromJson(Map<String, dynamic> json) => _$TaxonFromJson(json);
 }
 
 @freezed
-abstract class Path with _$Path {
+class Path with _$Path {
+  @HiveType(typeId: 14, adapterName: 'PathAdapter')
   const factory Path({
-    required String type,
-    @LatLngListConverter() required List<LatLng> coordinates,
+    @HiveField(0) required String type,
+    @LatLngListConverter() @HiveField(1) required List<LatLng> coordinates,
   }) = _Path;
 
   factory Path.fromJson(Map<String, dynamic> json) => _$PathFromJson(json);
@@ -74,9 +88,10 @@ abstract class Path with _$Path {
 
 @freezed
 abstract class StartEndPosition with _$StartEndPosition {
+  @HiveType(typeId: 15, adapterName: 'StartEndPositionAdapter')
   const factory StartEndPosition({
-    @LatLngConverter() required LatLng start,
-    @LatLngConverter() required LatLng end,
+    @LatLngConverter() @HiveField(0) required LatLng start,
+    @LatLngConverter() @HiveField(1) required LatLng end,
   }) = _StartEndPosition;
 
   factory StartEndPosition.fromJson(Map<String, dynamic> json) =>

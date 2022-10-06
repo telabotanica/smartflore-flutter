@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
@@ -8,6 +9,9 @@ import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/components/gallery/gallery_wrapper.dart';
+import 'package:smartflore/hive/latlng_adaptater.dart';
+import 'package:smartflore/models/trail/trail_model.dart';
+import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
@@ -30,7 +34,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(TrailsAdapter());
+  Hive.registerAdapter(TrailAdapter());
+  Hive.registerAdapter(ImageAdapter());
+  Hive.registerAdapter(TrailDetailAdapter());
+  Hive.registerAdapter(StartEndPositionAdapter());
+  Hive.registerAdapter(LatLngAdapter());
+
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
@@ -41,7 +54,7 @@ void main() {
   final TrailRepo trailRepo = TrailRepo(
       trailApiClient: TrailApiClient(
           httpClient: http.Client(),
-          baseUrl: 'https://tela-botanica.org/smartflore-services/trail'));
+          baseUrl: 'https://tela-botanica.org/smartflore-services'));
 
   final WalkRepo walkRepo = WalkRepo();
 
