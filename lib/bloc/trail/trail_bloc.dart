@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
@@ -26,8 +27,15 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
     on<TrailEvent>((event, emit) async {
       if (event is LoadTrailDataEvent) {
         emit(TrailLoadingState());
+        var box = await Hive.openBox('trail');
+        TrailDetails? localTrail = await box.get('trails_${event.id}');
+        if (localTrail != null) {
+          emit(TrailLoadedState(trail: localTrail));
+        }
+
         TrailDetails? trail = await trailsRepo.getTrailData(event.id);
         if (trail != null) {
+          await box.put('trails_${event.id}', trail);
           emit(TrailLoadedState(trail: trail));
         } else {
           emit(TrailErrorState());

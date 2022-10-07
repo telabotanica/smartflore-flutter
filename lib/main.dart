@@ -43,6 +43,9 @@ void main() async {
   Hive.registerAdapter(TrailDetailAdapter());
   Hive.registerAdapter(StartEndPositionAdapter());
   Hive.registerAdapter(LatLngAdapter());
+  Hive.registerAdapter(OccurenceAdapter());
+  Hive.registerAdapter(TaxonAdapter());
+  Hive.registerAdapter(PathAdapter());
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);

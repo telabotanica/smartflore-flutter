@@ -12,9 +12,8 @@ class TrailsBloc extends Bloc<TrailsEvent, TrailsDataState> {
   TrailsBloc(this.trailsRepo) : super(TrailsDataInitialState()) {
     on<TrailsEvent>((event, emit) async {
       if (event is LoadTrailsDataEvent) {
-        var box = await Hive.openBox('trails');
         emit(TrailsDataLoadingState());
-
+        var box = await Hive.openBox('trails');
         Trails trails = box.get('trails');
         if (trails.trailList != null) {
           emit(TrailsDataLoadedState(trails: trails.trailList!));
