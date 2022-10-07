@@ -144,7 +144,7 @@ class OccurenceAdapter extends TypeAdapter<_$_Occurrence> {
           typeId == other.typeId;
 }
 
-class TaxonAdapter extends TypeAdapter<_$_Taxon> {
+class TrailTaxonAdapter extends TypeAdapter<_$_Taxon> {
   @override
   final int typeId = 13;
 
@@ -185,7 +185,7 @@ class TaxonAdapter extends TypeAdapter<_$_Taxon> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TaxonAdapter &&
+      other is TrailTaxonAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

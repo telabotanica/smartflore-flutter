@@ -969,7 +969,7 @@ class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: 13, adapterName: 'TaxonAdapter')
+@HiveType(typeId: 13, adapterName: 'TrailTaxonAdapter')
 class _$_Taxon implements _Taxon {
   const _$_Taxon(
       {@JsonKey(name: 'scientific_name')

@@ -57,7 +57,7 @@ class Occurrence with _$Occurrence {
 
 @freezed
 class Taxon with _$Taxon {
-  @HiveType(typeId: 13, adapterName: 'TaxonAdapter')
+  @HiveType(typeId: 13, adapterName: 'TrailTaxonAdapter')
   const factory Taxon({
     @JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
     @JsonKey(name: 'full_scientific_name')

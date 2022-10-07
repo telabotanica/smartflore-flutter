@@ -10,6 +10,7 @@ import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/components/gallery/gallery_wrapper.dart';
 import 'package:smartflore/hive/latlng_adaptater.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
@@ -44,8 +45,12 @@ void main() async {
   Hive.registerAdapter(StartEndPositionAdapter());
   Hive.registerAdapter(LatLngAdapter());
   Hive.registerAdapter(OccurenceAdapter());
-  Hive.registerAdapter(TaxonAdapter());
+  Hive.registerAdapter(TrailTaxonAdapter());
   Hive.registerAdapter(PathAdapter());
+  Hive.registerAdapter(TaxonAdapter());
+  Hive.registerAdapter(TabAPIAdapter());
+  Hive.registerAdapter(ImageAPIAdapter());
+  Hive.registerAdapter(SectionAPIAdapter());
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);

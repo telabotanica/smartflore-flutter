@@ -21,21 +21,31 @@ Taxon _$TaxonFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Taxon {
   @JsonKey(name: 'scientific_name')
+  @HiveField(0)
   String get scientificName => throw _privateConstructorUsedError;
   @JsonKey(name: 'full_scientific_name')
+  @HiveField(1)
   String get fullScientificName => throw _privateConstructorUsedError;
   @JsonKey(name: 'html_full_scientific_name')
+  @HiveField(2)
   String get htmlFullScientificName => throw _privateConstructorUsedError;
+  @HiveField(3)
   String get genus => throw _privateConstructorUsedError;
+  @HiveField(4)
   String get family => throw _privateConstructorUsedError;
   @JsonKey(name: 'taxon_repository')
+  @HiveField(5)
   String get taxonRepository => throw _privateConstructorUsedError;
   @JsonKey(name: 'name_id')
+  @HiveField(6)
   int get nameId => throw _privateConstructorUsedError;
   @JsonKey(name: 'taxonomic_id')
+  @HiveField(7)
   int get taxonomicId => throw _privateConstructorUsedError;
   @JsonKey(name: 'vernacular_names')
+  @HiveField(8)
   List<String> get vernacularNames => throw _privateConstructorUsedError;
+  @HiveField(9)
   List<TabAPI> get tabs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,16 +58,33 @@ abstract class $TaxonCopyWith<$Res> {
   factory $TaxonCopyWith(Taxon value, $Res Function(Taxon) then) =
       _$TaxonCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'scientific_name') String scientificName,
-      @JsonKey(name: 'full_scientific_name') String fullScientificName,
-      @JsonKey(name: 'html_full_scientific_name') String htmlFullScientificName,
-      String genus,
-      String family,
-      @JsonKey(name: 'taxon_repository') String taxonRepository,
-      @JsonKey(name: 'name_id') int nameId,
-      @JsonKey(name: 'taxonomic_id') int taxonomicId,
-      @JsonKey(name: 'vernacular_names') List<String> vernacularNames,
-      List<TabAPI> tabs});
+      {@JsonKey(name: 'scientific_name')
+      @HiveField(0)
+          String scientificName,
+      @JsonKey(name: 'full_scientific_name')
+      @HiveField(1)
+          String fullScientificName,
+      @JsonKey(name: 'html_full_scientific_name')
+      @HiveField(2)
+          String htmlFullScientificName,
+      @HiveField(3)
+          String genus,
+      @HiveField(4)
+          String family,
+      @JsonKey(name: 'taxon_repository')
+      @HiveField(5)
+          String taxonRepository,
+      @JsonKey(name: 'name_id')
+      @HiveField(6)
+          int nameId,
+      @JsonKey(name: 'taxonomic_id')
+      @HiveField(7)
+          int taxonomicId,
+      @JsonKey(name: 'vernacular_names')
+      @HiveField(8)
+          List<String> vernacularNames,
+      @HiveField(9)
+          List<TabAPI> tabs});
 }
 
 /// @nodoc
@@ -132,16 +159,33 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
       __$$_TaxonCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'scientific_name') String scientificName,
-      @JsonKey(name: 'full_scientific_name') String fullScientificName,
-      @JsonKey(name: 'html_full_scientific_name') String htmlFullScientificName,
-      String genus,
-      String family,
-      @JsonKey(name: 'taxon_repository') String taxonRepository,
-      @JsonKey(name: 'name_id') int nameId,
-      @JsonKey(name: 'taxonomic_id') int taxonomicId,
-      @JsonKey(name: 'vernacular_names') List<String> vernacularNames,
-      List<TabAPI> tabs});
+      {@JsonKey(name: 'scientific_name')
+      @HiveField(0)
+          String scientificName,
+      @JsonKey(name: 'full_scientific_name')
+      @HiveField(1)
+          String fullScientificName,
+      @JsonKey(name: 'html_full_scientific_name')
+      @HiveField(2)
+          String htmlFullScientificName,
+      @HiveField(3)
+          String genus,
+      @HiveField(4)
+          String family,
+      @JsonKey(name: 'taxon_repository')
+      @HiveField(5)
+          String taxonRepository,
+      @JsonKey(name: 'name_id')
+      @HiveField(6)
+          int nameId,
+      @JsonKey(name: 'taxonomic_id')
+      @HiveField(7)
+          int taxonomicId,
+      @JsonKey(name: 'vernacular_names')
+      @HiveField(8)
+          List<String> vernacularNames,
+      @HiveField(9)
+          List<TabAPI> tabs});
 }
 
 /// @nodoc
@@ -213,25 +257,36 @@ class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 30, adapterName: 'TaxonAdapter')
 class _$_Taxon implements _Taxon {
   const _$_Taxon(
       {@JsonKey(name: 'scientific_name')
+      @HiveField(0)
           required this.scientificName,
       @JsonKey(name: 'full_scientific_name')
+      @HiveField(1)
           required this.fullScientificName,
       @JsonKey(name: 'html_full_scientific_name')
+      @HiveField(2)
           required this.htmlFullScientificName,
-      required this.genus,
-      required this.family,
+      @HiveField(3)
+          required this.genus,
+      @HiveField(4)
+          required this.family,
       @JsonKey(name: 'taxon_repository')
+      @HiveField(5)
           required this.taxonRepository,
       @JsonKey(name: 'name_id')
+      @HiveField(6)
           required this.nameId,
       @JsonKey(name: 'taxonomic_id')
+      @HiveField(7)
           required this.taxonomicId,
       @JsonKey(name: 'vernacular_names')
+      @HiveField(8)
           required final List<String> vernacularNames,
-      required final List<TabAPI> tabs})
+      @HiveField(9)
+          required final List<TabAPI> tabs})
       : _vernacularNames = vernacularNames,
         _tabs = tabs;
 
@@ -240,29 +295,38 @@ class _$_Taxon implements _Taxon {
 
   @override
   @JsonKey(name: 'scientific_name')
+  @HiveField(0)
   final String scientificName;
   @override
   @JsonKey(name: 'full_scientific_name')
+  @HiveField(1)
   final String fullScientificName;
   @override
   @JsonKey(name: 'html_full_scientific_name')
+  @HiveField(2)
   final String htmlFullScientificName;
   @override
+  @HiveField(3)
   final String genus;
   @override
+  @HiveField(4)
   final String family;
   @override
   @JsonKey(name: 'taxon_repository')
+  @HiveField(5)
   final String taxonRepository;
   @override
   @JsonKey(name: 'name_id')
+  @HiveField(6)
   final int nameId;
   @override
   @JsonKey(name: 'taxonomic_id')
+  @HiveField(7)
   final int taxonomicId;
   final List<String> _vernacularNames;
   @override
   @JsonKey(name: 'vernacular_names')
+  @HiveField(8)
   List<String> get vernacularNames {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_vernacularNames);
@@ -270,6 +334,7 @@ class _$_Taxon implements _Taxon {
 
   final List<TabAPI> _tabs;
   @override
+  @HiveField(9)
   List<TabAPI> get tabs {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tabs);
@@ -334,51 +399,71 @@ class _$_Taxon implements _Taxon {
 abstract class _Taxon implements Taxon {
   const factory _Taxon(
       {@JsonKey(name: 'scientific_name')
+      @HiveField(0)
           required final String scientificName,
       @JsonKey(name: 'full_scientific_name')
+      @HiveField(1)
           required final String fullScientificName,
       @JsonKey(name: 'html_full_scientific_name')
+      @HiveField(2)
           required final String htmlFullScientificName,
-      required final String genus,
-      required final String family,
+      @HiveField(3)
+          required final String genus,
+      @HiveField(4)
+          required final String family,
       @JsonKey(name: 'taxon_repository')
+      @HiveField(5)
           required final String taxonRepository,
       @JsonKey(name: 'name_id')
+      @HiveField(6)
           required final int nameId,
       @JsonKey(name: 'taxonomic_id')
+      @HiveField(7)
           required final int taxonomicId,
       @JsonKey(name: 'vernacular_names')
+      @HiveField(8)
           required final List<String> vernacularNames,
-      required final List<TabAPI> tabs}) = _$_Taxon;
+      @HiveField(9)
+          required final List<TabAPI> tabs}) = _$_Taxon;
 
   factory _Taxon.fromJson(Map<String, dynamic> json) = _$_Taxon.fromJson;
 
   @override
   @JsonKey(name: 'scientific_name')
+  @HiveField(0)
   String get scientificName;
   @override
   @JsonKey(name: 'full_scientific_name')
+  @HiveField(1)
   String get fullScientificName;
   @override
   @JsonKey(name: 'html_full_scientific_name')
+  @HiveField(2)
   String get htmlFullScientificName;
   @override
+  @HiveField(3)
   String get genus;
   @override
+  @HiveField(4)
   String get family;
   @override
   @JsonKey(name: 'taxon_repository')
+  @HiveField(5)
   String get taxonRepository;
   @override
   @JsonKey(name: 'name_id')
+  @HiveField(6)
   int get nameId;
   @override
   @JsonKey(name: 'taxonomic_id')
+  @HiveField(7)
   int get taxonomicId;
   @override
   @JsonKey(name: 'vernacular_names')
+  @HiveField(8)
   List<String> get vernacularNames;
   @override
+  @HiveField(9)
   List<TabAPI> get tabs;
   @override
   @JsonKey(ignore: true)
@@ -392,11 +477,17 @@ TabAPI _$TabAPIFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TabAPI {
+  @HiveField(0)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get type => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get icon => throw _privateConstructorUsedError;
+  @HiveField(3)
   List<SectionAPI>? get sections => throw _privateConstructorUsedError;
+  @HiveField(4)
   List<ImageAPI>? get images => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -409,12 +500,12 @@ abstract class $TabAPICopyWith<$Res> {
   factory $TabAPICopyWith(TabAPI value, $Res Function(TabAPI) then) =
       _$TabAPICopyWithImpl<$Res>;
   $Res call(
-      {String title,
-      String type,
-      String icon,
-      List<SectionAPI>? sections,
-      List<ImageAPI>? images,
-      String? url});
+      {@HiveField(0) String title,
+      @HiveField(1) String type,
+      @HiveField(2) String icon,
+      @HiveField(3) List<SectionAPI>? sections,
+      @HiveField(4) List<ImageAPI>? images,
+      @HiveField(5) String? url});
 }
 
 /// @nodoc
@@ -469,12 +560,12 @@ abstract class _$$_TabAPICopyWith<$Res> implements $TabAPICopyWith<$Res> {
       __$$_TabAPICopyWithImpl<$Res>;
   @override
   $Res call(
-      {String title,
-      String type,
-      String icon,
-      List<SectionAPI>? sections,
-      List<ImageAPI>? images,
-      String? url});
+      {@HiveField(0) String title,
+      @HiveField(1) String type,
+      @HiveField(2) String icon,
+      @HiveField(3) List<SectionAPI>? sections,
+      @HiveField(4) List<ImageAPI>? images,
+      @HiveField(5) String? url});
 }
 
 /// @nodoc
@@ -526,14 +617,15 @@ class __$$_TabAPICopyWithImpl<$Res> extends _$TabAPICopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 31, adapterName: 'TabAPIAdapter')
 class _$_TabAPI implements _TabAPI {
   const _$_TabAPI(
-      {required this.title,
-      required this.type,
-      required this.icon,
-      final List<SectionAPI>? sections,
-      final List<ImageAPI>? images,
-      this.url})
+      {@HiveField(0) required this.title,
+      @HiveField(1) required this.type,
+      @HiveField(2) required this.icon,
+      @HiveField(3) final List<SectionAPI>? sections,
+      @HiveField(4) final List<ImageAPI>? images,
+      @HiveField(5) this.url})
       : _sections = sections,
         _images = images;
 
@@ -541,13 +633,17 @@ class _$_TabAPI implements _TabAPI {
       _$$_TabAPIFromJson(json);
 
   @override
+  @HiveField(0)
   final String title;
   @override
+  @HiveField(1)
   final String type;
   @override
+  @HiveField(2)
   final String icon;
   final List<SectionAPI>? _sections;
   @override
+  @HiveField(3)
   List<SectionAPI>? get sections {
     final value = _sections;
     if (value == null) return null;
@@ -557,6 +653,7 @@ class _$_TabAPI implements _TabAPI {
 
   final List<ImageAPI>? _images;
   @override
+  @HiveField(4)
   List<ImageAPI>? get images {
     final value = _images;
     if (value == null) return null;
@@ -565,6 +662,7 @@ class _$_TabAPI implements _TabAPI {
   }
 
   @override
+  @HiveField(5)
   final String? url;
 
   @override
@@ -611,26 +709,32 @@ class _$_TabAPI implements _TabAPI {
 
 abstract class _TabAPI implements TabAPI {
   const factory _TabAPI(
-      {required final String title,
-      required final String type,
-      required final String icon,
-      final List<SectionAPI>? sections,
-      final List<ImageAPI>? images,
-      final String? url}) = _$_TabAPI;
+      {@HiveField(0) required final String title,
+      @HiveField(1) required final String type,
+      @HiveField(2) required final String icon,
+      @HiveField(3) final List<SectionAPI>? sections,
+      @HiveField(4) final List<ImageAPI>? images,
+      @HiveField(5) final String? url}) = _$_TabAPI;
 
   factory _TabAPI.fromJson(Map<String, dynamic> json) = _$_TabAPI.fromJson;
 
   @override
+  @HiveField(0)
   String get title;
   @override
+  @HiveField(1)
   String get type;
   @override
+  @HiveField(2)
   String get icon;
   @override
+  @HiveField(3)
   List<SectionAPI>? get sections;
   @override
+  @HiveField(4)
   List<ImageAPI>? get images;
   @override
+  @HiveField(5)
   String? get url;
   @override
   @JsonKey(ignore: true)
@@ -644,8 +748,11 @@ ImageAPI _$ImageAPIFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ImageAPI {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get url => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get author => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -658,7 +765,10 @@ mixin _$ImageAPI {
 abstract class $ImageAPICopyWith<$Res> {
   factory $ImageAPICopyWith(ImageAPI value, $Res Function(ImageAPI) then) =
       _$ImageAPICopyWithImpl<$Res>;
-  $Res call({int id, String url, String author});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String url,
+      @HiveField(2) String author});
 }
 
 /// @nodoc
@@ -698,7 +808,10 @@ abstract class _$$_ImageAPICopyWith<$Res> implements $ImageAPICopyWith<$Res> {
           _$_ImageAPI value, $Res Function(_$_ImageAPI) then) =
       __$$_ImageAPICopyWithImpl<$Res>;
   @override
-  $Res call({int id, String url, String author});
+  $Res call(
+      {@HiveField(0) int id,
+      @HiveField(1) String url,
+      @HiveField(2) String author});
 }
 
 /// @nodoc
@@ -736,18 +849,24 @@ class __$$_ImageAPICopyWithImpl<$Res> extends _$ImageAPICopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 32, adapterName: 'ImageAPIAdapter')
 class _$_ImageAPI implements _ImageAPI {
   const _$_ImageAPI(
-      {required this.id, required this.url, required this.author});
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.url,
+      @HiveField(2) required this.author});
 
   factory _$_ImageAPI.fromJson(Map<String, dynamic> json) =>
       _$$_ImageAPIFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final String url;
   @override
+  @HiveField(2)
   final String author;
 
   @override
@@ -788,17 +907,20 @@ class _$_ImageAPI implements _ImageAPI {
 
 abstract class _ImageAPI implements ImageAPI {
   const factory _ImageAPI(
-      {required final int id,
-      required final String url,
-      required final String author}) = _$_ImageAPI;
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String url,
+      @HiveField(2) required final String author}) = _$_ImageAPI;
 
   factory _ImageAPI.fromJson(Map<String, dynamic> json) = _$_ImageAPI.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   String get url;
   @override
+  @HiveField(2)
   String get author;
   @override
   @JsonKey(ignore: true)
@@ -812,7 +934,9 @@ SectionAPI _$SectionAPIFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SectionAPI {
+  @HiveField(0)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get text => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -826,7 +950,7 @@ abstract class $SectionAPICopyWith<$Res> {
   factory $SectionAPICopyWith(
           SectionAPI value, $Res Function(SectionAPI) then) =
       _$SectionAPICopyWithImpl<$Res>;
-  $Res call({String title, String text});
+  $Res call({@HiveField(0) String title, @HiveField(1) String text});
 }
 
 /// @nodoc
@@ -862,7 +986,7 @@ abstract class _$$_SectionAPICopyWith<$Res>
           _$_SectionAPI value, $Res Function(_$_SectionAPI) then) =
       __$$_SectionAPICopyWithImpl<$Res>;
   @override
-  $Res call({String title, String text});
+  $Res call({@HiveField(0) String title, @HiveField(1) String text});
 }
 
 /// @nodoc
@@ -895,15 +1019,19 @@ class __$$_SectionAPICopyWithImpl<$Res> extends _$SectionAPICopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 33, adapterName: 'SectionAPIAdapter')
 class _$_SectionAPI implements _SectionAPI {
-  const _$_SectionAPI({required this.title, required this.text});
+  const _$_SectionAPI(
+      {@HiveField(0) required this.title, @HiveField(1) required this.text});
 
   factory _$_SectionAPI.fromJson(Map<String, dynamic> json) =>
       _$$_SectionAPIFromJson(json);
 
   @override
+  @HiveField(0)
   final String title;
   @override
+  @HiveField(1)
   final String text;
 
   @override
@@ -942,15 +1070,17 @@ class _$_SectionAPI implements _SectionAPI {
 
 abstract class _SectionAPI implements SectionAPI {
   const factory _SectionAPI(
-      {required final String title,
-      required final String text}) = _$_SectionAPI;
+      {@HiveField(0) required final String title,
+      @HiveField(1) required final String text}) = _$_SectionAPI;
 
   factory _SectionAPI.fromJson(Map<String, dynamic> json) =
       _$_SectionAPI.fromJson;
 
   @override
+  @HiveField(0)
   String get title;
   @override
+  @HiveField(1)
   String get text;
   @override
   @JsonKey(ignore: true)
