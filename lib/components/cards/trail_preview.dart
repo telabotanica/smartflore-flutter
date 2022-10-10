@@ -52,6 +52,7 @@ class TrailPreview extends StatelessWidget {
                     opacity: isLoading ? 0 : 1,
                     child: TrailItem(
                       isInteractive: false,
+                      trailId: id,
                       index: index,
                       title: title,
                       length: length,

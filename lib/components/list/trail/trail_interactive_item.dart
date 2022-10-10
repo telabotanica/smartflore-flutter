@@ -40,6 +40,7 @@ class TrailInteractiveItemWidget extends StatelessWidget {
       id: id,
       onPressed: onPressed,
       child: TrailItem(
+        trailId: id,
         index: index,
         title: title,
         length: length,

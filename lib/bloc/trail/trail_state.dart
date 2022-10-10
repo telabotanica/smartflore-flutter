@@ -17,3 +17,14 @@ class TrailLoadedState extends TrailState {
 }
 
 class TrailErrorState extends TrailState {}
+
+class LocalSaveTrailInitialState extends TrailState {}
+
+class LocalSaveTrailLoadingState extends TrailState {}
+
+class LocalSaveTrailLoadedState extends TrailState {
+  final TrailDetails trail;
+  const LocalSaveTrailLoadedState({required this.trail});
+}
+
+class LocalSaveTrailErrorState extends TrailState {}

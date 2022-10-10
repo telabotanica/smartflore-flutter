@@ -56,7 +56,8 @@ dependencies:
   app_settings: ^4.1.8
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-
+  flutter_cache_manager: ^3.3.0
+  connectivity_plus: ^2.3.9
 
 
 

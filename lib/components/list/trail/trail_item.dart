@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
+import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TrailItem extends StatelessWidget {
   final bool isInteractive;
+  final int trailId;
   final int index;
   final String title;
   final String? image;
@@ -21,6 +23,7 @@ class TrailItem extends StatelessWidget {
   const TrailItem({
     Key? key,
     this.isInteractive = true,
+    required this.trailId,
     required this.index,
     required this.title,
     required this.length,
@@ -70,7 +73,15 @@ class TrailItem extends StatelessWidget {
                             size: 20,
                             color: Theme.of(context).colorScheme.primary,
                           )
-                        : Container(),
+                        : GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<TrailBloc>(context)
+                                  .add(SaveTrailLocallyEvent(id: trailId));
+                            },
+                            child: Container(
+                                width: 25,
+                                height: 25,
+                                color: Theme.of(context).colorScheme.primary)),
                   ],
                 ),
                 Row(
