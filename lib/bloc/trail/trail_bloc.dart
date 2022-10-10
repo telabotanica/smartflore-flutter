@@ -4,8 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
-import 'package:smartflore/models/taxon/taxon_model.dart';
-import 'package:smartflore/models/trail/batch_trail_model.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
 
@@ -44,27 +42,6 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
           emit(TrailErrorState());
         }
       }
-
-      if (event is SaveTrailLocallyEvent) {
-        emit(LocalSaveTrailInitialState());
-
-        BatchedTrail? batchedTrail =
-            await trailRepo.getTrailBatchedData(event.id);
-        if (batchedTrail != null) {
-          // save trial in the trail box
-          var boxTrail = await Hive.openBox('trail');
-          await boxTrail.put('trail_${event.id}', batchedTrail.trail);
-          // save every single taxon of the trail in the taxon box
-          var boxTaxon = await Hive.openBox('taxon');
-          batchedTrail.taxonList.map((taxon) async {
-            boxTaxon.put('taxon_${taxon.nameId}', taxon);
-            // batch download image files.
-            taxon.tabs[0].images?.map((image) {
-              _saveImage(image);
-            });
-          });
-        }
-      }
     });
   }
 
@@ -73,6 +50,4 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
     mapSubscription?.cancel();
     return super.close();
   }
-
-  void _saveImage(ImageAPI image) {}
 }

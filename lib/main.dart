@@ -5,6 +5,7 @@ import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
+import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
@@ -84,6 +85,8 @@ void main() async {
       BlocProvider<TrailBloc>(
           create: (context) =>
               TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
+      BlocProvider<SaveTrailBloc>(
+          create: (context) => SaveTrailBloc(trailRepo)),
       BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
       BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),

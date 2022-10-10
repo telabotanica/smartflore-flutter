@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
-import 'package:smartflore/bloc/trail/trail_bloc.dart';
+import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
@@ -75,8 +75,8 @@ class TrailItem extends StatelessWidget {
                           )
                         : GestureDetector(
                             onTap: () {
-                              BlocProvider.of<TrailBloc>(context)
-                                  .add(SaveTrailLocallyEvent(id: trailId));
+                              BlocProvider.of<SaveTrailBloc>(context).add(
+                                  SaveTrailEvent.saveTrailLocally(id: trailId));
                             },
                             child: Container(
                                 width: 25,
