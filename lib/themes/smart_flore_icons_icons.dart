@@ -12,6 +12,10 @@
 ///       - asset: fonts/SmartFloreIcons.ttf
 ///
 ///
+/// * Entypo, Copyright (C) 2012 by Daniel Bruce
+///         Author:    Daniel Bruce
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://www.entypo.com
 ///
 import 'package:flutter/widgets.dart';
 
@@ -59,6 +63,8 @@ class SmartFloreIcons {
       IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData source =
       IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData dot_3 =
+      IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData iconWebview =
       IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData iconForm =

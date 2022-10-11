@@ -53,6 +53,9 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
             emit(SaveTrailState.loading(
                 nbImageSaved: nbImageSaved, nbImages: imageList.length));
           }
+
+          var boxSavedTrail = await Hive.openBox('saved_trails');
+          boxSavedTrail.put('trail_${event.id}', true);
         }
       }
     });

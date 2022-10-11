@@ -59,6 +59,7 @@ class TrailPreview extends StatelessWidget {
                       position: position,
                       image: image,
                       nbOccurence: nbOccurence,
+                      showIconMore: true,
                     )),
               ],
             ),

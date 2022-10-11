@@ -5,7 +5,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
+import 'package:smartflore/components/cards/download.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
+import 'package:smartflore/components/modal.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,24 +15,26 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class TrailItem extends StatelessWidget {
   final bool isInteractive;
   final int trailId;
-  final int index;
+  final int? index;
   final String title;
   final String? image;
   final int length;
-  final LatLng position;
+  final LatLng? position;
   final int nbOccurence;
+  final bool showIconMore;
 
-  const TrailItem({
-    Key? key,
-    this.isInteractive = true,
-    required this.trailId,
-    required this.index,
-    required this.title,
-    required this.length,
-    this.image,
-    required this.position,
-    required this.nbOccurence,
-  }) : super(key: key);
+  const TrailItem(
+      {Key? key,
+      this.isInteractive = true,
+      required this.trailId,
+      this.index = 1,
+      required this.title,
+      required this.length,
+      this.image,
+      this.position,
+      required this.nbOccurence,
+      this.showIconMore = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,15 +77,28 @@ class TrailItem extends StatelessWidget {
                             size: 20,
                             color: Theme.of(context).colorScheme.primary,
                           )
-                        : GestureDetector(
-                            onTap: () {
-                              BlocProvider.of<SaveTrailBloc>(context).add(
-                                  SaveTrailEvent.saveTrailLocally(id: trailId));
-                            },
-                            child: Container(
-                                width: 25,
-                                height: 25,
-                                color: Theme.of(context).colorScheme.primary)),
+                        : (showIconMore)
+                            ? GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<SaveTrailBloc>(context).add(
+                                      SaveTrailEvent.saveTrailLocally(
+                                          id: trailId));
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => Modal(DownloadCard(
+                                          trailId: trailId,
+                                          title: title,
+                                          length: length,
+                                          image: image,
+                                          nbOccurence: nbOccurence)),
+                                      barrierColor:
+                                          Colors.black.withOpacity(0.1));
+                                },
+                                child: Icon(SmartFloreIcons.dot_3,
+                                    size: 22,
+                                    color:
+                                        Theme.of(context).colorScheme.primary))
+                            : Container(),
                   ],
                 ),
                 Row(
@@ -111,7 +128,9 @@ class TrailItem extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 buildNbOccurence(context),
-                                buildDistanceIndicator(context)
+                                (position != null)
+                                    ? buildDistanceIndicator(context)
+                                    : Container()
                               ],
                             ),
                           ],
@@ -168,8 +187,8 @@ class TrailItem extends StatelessWidget {
               builder: (context, state) {
                 if (state is LocationUpdatedState) {
                   double distance = Geolocator.distanceBetween(
-                      position.latitude,
-                      position.longitude,
+                      position!.latitude,
+                      position!.longitude,
                       state.position.latitude,
                       state.position.longitude);
 
