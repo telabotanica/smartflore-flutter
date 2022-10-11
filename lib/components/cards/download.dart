@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
-import 'package:smartflore/components/progress-bar.dart';
+import 'package:smartflore/components/progress_bar.dart';
 
 class DownloadCard extends StatefulWidget {
   final int trailId;
