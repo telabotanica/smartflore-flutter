@@ -29,6 +29,11 @@ ThemeData lightTheme = ThemeData(
         letterSpacing: 1.1,
         fontWeight: FontWeight.w600,
         fontFamily: 'SourceSansPro'),
+    headline6: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'SourceSansPro'),
     bodyText1: TextStyle(
         color: Color(0xFF12161E),
         fontSize: 15,

@@ -16,7 +16,7 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
   SaveTrailBloc(this.trailRepo) : super(const _Initial()) {
     on<SaveTrailEvent>((event, emit) async {
       if (event is _SaveTrailLocally) {
-        emit(const SaveTrailState.initial());
+        emit(const SaveTrailState.start());
 
         BatchedTrail? batchedTrail =
             await trailRepo.getTrailBatchedData(event.id);
@@ -56,6 +56,10 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
 
           var boxSavedTrail = await Hive.openBox('saved_trails');
           boxSavedTrail.put('trail_${event.id}', true);
+
+          emit(const SaveTrailState.loaded());
+          await Future.delayed(const Duration(seconds: 2), () {})
+              .whenComplete(() => emit(const SaveTrailState.initial()));
         }
       }
     });

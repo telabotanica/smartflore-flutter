@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
-import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/components/cards/download.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/components/modal.dart';
@@ -80,9 +79,6 @@ class TrailItem extends StatelessWidget {
                         : (showIconMore)
                             ? GestureDetector(
                                 onTap: () {
-                                  BlocProvider.of<SaveTrailBloc>(context).add(
-                                      SaveTrailEvent.saveTrailLocally(
-                                          id: trailId));
                                   showDialog(
                                       context: context,
                                       builder: (context) => Modal(DownloadCard(

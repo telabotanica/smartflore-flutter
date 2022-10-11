@@ -22,8 +22,7 @@ class Modal extends StatelessWidget {
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 20),
+                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 30),
                       child: Wrap(children: [child]))),
             ),
           )
