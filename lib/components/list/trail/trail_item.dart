@@ -12,7 +12,7 @@ import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class TrailItem extends StatelessWidget {
+class TrailItem extends StatefulWidget {
   final bool isInteractive;
   final int trailId;
   final int? index;
@@ -39,13 +39,18 @@ class TrailItem extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<TrailItem> createState() => _TrailItemState();
+}
+
+class _TrailItemState extends State<TrailItem> {
+  @override
   Widget build(BuildContext context) {
     String distance = Numbers.convertToKilo(
-        length.toDouble(),
+        widget.length.toDouble(),
         AppLocalizations.of(context)!.distance_m,
         AppLocalizations.of(context)!.distance_km);
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, (index == 0) ? 0 : 20, 0, 20),
+      padding: EdgeInsets.fromLTRB(0, (widget.index == 0) ? 0 : 20, 0, 20),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -54,19 +59,18 @@ class TrailItem extends StatelessWidget {
               SizedBox(
                 width: 68,
                 height: 68,
-                child: (image != null)
+                child: (widget.image != null)
                     ? ClipRRect(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(6.0)),
                         child: ImageWithLoader(
                             url:
-                                '${StringUtils.removeExtension(image!)}XS.jpg'))
+                                '${StringUtils.removeExtension(widget.image!)}XS.jpg'))
                     : Container(),
               ),
-              (isDownloaded)
+              (widget.isDownloaded)
                   ? Transform.translate(
-                      offset: const Offset(58, -6),
-                      child: const DownloadIcon(isDownloaded: true))
+                      offset: const Offset(58, -6), child: const DownloadIcon())
                   : Container(),
             ],
           ),
@@ -79,28 +83,28 @@ class TrailItem extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
-                        child: Text(title,
+                        child: Text(widget.title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.bodyText1)),
                     const SizedBox(width: 8),
-                    (isInteractive)
+                    (widget.isInteractive)
                         ? Icon(
                             SmartFloreIcons.arrowRight,
                             size: 20,
                             color: Theme.of(context).colorScheme.primary,
                           )
-                        : (showIconMore)
+                        : (widget.showIconMore)
                             ? GestureDetector(
                                 onTap: () {
                                   showDialog(
                                       context: context,
                                       builder: (context) => Modal(DownloadCard(
-                                          trailId: trailId,
-                                          title: title,
-                                          length: length,
-                                          image: image,
-                                          nbOccurence: nbOccurence)),
+                                          trailId: widget.trailId,
+                                          title: widget.title,
+                                          length: widget.length,
+                                          image: widget.image,
+                                          nbOccurence: widget.nbOccurence)),
                                       barrierColor:
                                           Colors.black.withOpacity(0.1));
                                 },
@@ -138,7 +142,7 @@ class TrailItem extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 buildNbOccurence(context),
-                                (position != null)
+                                (widget.position != null)
                                     ? buildDistanceIndicator(context)
                                     : Container()
                               ],
@@ -169,7 +173,8 @@ class TrailItem extends StatelessWidget {
           const SizedBox(width: 5),
           Flexible(
             child: Text(
-              AppLocalizations.of(context)!.count_observation(nbOccurence),
+              AppLocalizations.of(context)!
+                  .count_observation(widget.nbOccurence),
               style: Theme.of(context).textTheme.caption,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -197,8 +202,8 @@ class TrailItem extends StatelessWidget {
               builder: (context, state) {
                 if (state is LocationUpdatedState) {
                   double distance = Geolocator.distanceBetween(
-                      position!.latitude,
-                      position!.longitude,
+                      widget.position!.latitude,
+                      widget.position!.longitude,
                       state.position.latitude,
                       state.position.longitude);
 

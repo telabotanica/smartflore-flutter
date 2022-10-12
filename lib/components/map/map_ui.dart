@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
 import 'package:smartflore/components/map/map_widget.dart';
@@ -28,6 +29,7 @@ class _MapUIState extends State<MapUI> {
   GlobalKey trailPreviewUIKey = GlobalKey();
   double trailPreviewUIHeight = 0;
   late Box<dynamic> savedTrailsBox;
+  bool isPreviewLocallySaved = false;
 
   @override
   void initState() {
@@ -138,23 +140,32 @@ class _MapUIState extends State<MapUI> {
                     child: BlocBuilder<TrailBloc, TrailState>(
                       builder: (context, state) {
                         if (state is TrailLoadedState) {
-                          return TrailPreview(
-                              key: trailPreviewUIKey,
-                              onPressCB: () {
-                                BlocProvider.of<MapBloc>(context).add(
-                                    const ChangeMapMode(
-                                        mapMode: MapMode.trail));
+                          isPreviewLocallySaved =
+                              (savedTrailsBox.get('trail_${state.trail.id}')) !=
+                                  null;
+                          return BlocListener<SaveTrailBloc, SaveTrailState>(
+                              listener: (context, saveState) {
+                                setState(() {
+                                  isPreviewLocallySaved = (savedTrailsBox
+                                          .get('trail_${state.trail.id}')) !=
+                                      null;
+                                });
                               },
-                              index: 1,
-                              id: state.trail.id,
-                              title: state.trail.displayName,
-                              length: state.trail.pathLength,
-                              image: state.trail.image.url,
-                              position: state.trail.position.start,
-                              nbOccurence: state.trail.occurrencesCount,
-                              isDownloaded: (savedTrailsBox
-                                      .get('trail_${state.trail.id}')) !=
-                                  null);
+                              child: TrailPreview(
+                                  key: trailPreviewUIKey,
+                                  onPressCB: () {
+                                    BlocProvider.of<MapBloc>(context).add(
+                                        const ChangeMapMode(
+                                            mapMode: MapMode.trail));
+                                  },
+                                  index: 1,
+                                  id: state.trail.id,
+                                  title: state.trail.displayName,
+                                  length: state.trail.pathLength,
+                                  image: state.trail.image.url,
+                                  position: state.trail.position.start,
+                                  nbOccurence: state.trail.occurrencesCount,
+                                  isDownloaded: isPreviewLocallySaved));
                         }
                         return TrailPreview(
                           key: trailPreviewUIKey,

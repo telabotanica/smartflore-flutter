@@ -54,6 +54,7 @@ void main() async {
   Hive.registerAdapter(SectionAPIAdapter());
 
   await Hive.openBox('savedTrails');
+  Box<TrailDetails> trailBox = await Hive.openBox('trail');
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -85,10 +86,10 @@ void main() async {
     child: MultiBlocProvider(providers: [
       BlocProvider<MapBloc>(create: (context) => MapBloc()),
       BlocProvider<TrailBloc>(
-          create: (context) =>
-              TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context))),
+          create: (context) => TrailBloc(
+              trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),
       BlocProvider<SaveTrailBloc>(
-          create: (context) => SaveTrailBloc(trailRepo)),
+          create: (context) => SaveTrailBloc(trailRepo, trailBox)),
       BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
       BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),

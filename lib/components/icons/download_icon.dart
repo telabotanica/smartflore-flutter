@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class DownloadIcon extends StatelessWidget {
-  final bool isDownloaded;
-  const DownloadIcon({Key? key, this.isDownloaded = false}) : super(key: key);
+  const DownloadIcon({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +12,10 @@ class DownloadIcon extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
             color: Theme.of(context).colorScheme.primary),
-        child: Icon(
-          (isDownloaded)
-              ? SmartFloreIcons.downnloaded
-              : SmartFloreIcons.download,
+        child: const Icon(
+          SmartFloreIcons.download,
           color: Colors.white,
-          size: 9,
+          size: 10,
         ));
   }
 }

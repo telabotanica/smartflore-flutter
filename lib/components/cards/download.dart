@@ -6,6 +6,7 @@ import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/components/icons/download_icon.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
 import 'package:smartflore/components/progress_bar.dart';
+import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class DownloadCard extends StatefulWidget {
   final int trailId;
@@ -38,6 +39,7 @@ class _DownloadCardState extends State<DownloadCard> {
     super.initState();
     // get the previously opened user box
     savedTrailsBox = Hive.box('savedTrails');
+    isSelected = (savedTrailsBox.get('trail_${widget.trailId}')) != null;
   }
 
   @override
@@ -89,7 +91,7 @@ class _DownloadCardState extends State<DownloadCard> {
               children: [
                 Row(
                   children: [
-                    DownloadIcon(isDownloaded: widget.isDownloaded),
+                    const DownloadIcon(),
                     const SizedBox(width: 6),
                     Text('Mode Hors ligne',
                         style: Theme.of(context).textTheme.headline6),
@@ -104,7 +106,7 @@ class _DownloadCardState extends State<DownloadCard> {
           Padding(
             padding: const EdgeInsets.only(left: 15.0),
             child: CupertinoSwitch(
-              value: (savedTrailsBox.get('trail_${widget.trailId}')) != null,
+              value: isSelected,
               onChanged: (value) {
                 setState(() {
                   isSelected = value;
@@ -112,6 +114,9 @@ class _DownloadCardState extends State<DownloadCard> {
                 if (value) {
                   BlocProvider.of<SaveTrailBloc>(context)
                       .add(SaveTrailEvent.saveTrailLocally(id: widget.trailId));
+                } else {
+                  BlocProvider.of<SaveTrailBloc>(context).add(
+                      SaveTrailEvent.unSaveTrailLocally(id: widget.trailId));
                 }
               },
               trackColor: const Color(0xFFD8DCD8),
@@ -128,23 +133,21 @@ class _DownloadCardState extends State<DownloadCard> {
 Widget buildLoader(BuildContext context, int total) {
   return BlocBuilder<SaveTrailBloc, SaveTrailState>(
     builder: (context, state) {
-      return state.when(
-        initial: () {
-          return Container();
-        },
-        start: () {
-          return buildProgressBar(0, total, context);
-        },
-        loading: (nbItemsLoaded, nbItems) {
-          return buildProgressBar(nbItemsLoaded, nbItems, context);
-        },
-        loaded: () {
-          return Icon(
-            Icons.check,
-            color: Theme.of(context).colorScheme.primary,
-          );
-        },
-      );
+      return state.maybeWhen(initial: () {
+        return Container();
+      }, start: () {
+        return buildProgressBar(0, total, context);
+      }, loading: (nbItemsLoaded, nbItems) {
+        return buildProgressBar(nbItemsLoaded, nbItems, context);
+      }, loaded: () {
+        return Icon(
+          SmartFloreIcons.downloaded,
+          color: Theme.of(context).colorScheme.primary,
+          size: 15,
+        );
+      }, orElse: () {
+        return Container();
+      });
     },
   );
 }

@@ -14,8 +14,10 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
   final TrailRepo trailRepo;
   final MapBloc mapBloc;
   StreamSubscription? mapSubscription;
+  Box<TrailDetails> trailBox;
 
-  TrailBloc(this.trailRepo, this.mapBloc) : super(TrailInitialState()) {
+  TrailBloc(this.trailRepo, this.mapBloc, this.trailBox)
+      : super(TrailInitialState()) {
     // When asking for trail preview we need to both change mapMode and load trail data.
 
     mapSubscription = mapBloc.stream.listen((state) {
@@ -27,15 +29,14 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
     on<TrailEvent>((event, emit) async {
       if (event is LoadTrailDataEvent) {
         emit(TrailLoadingState());
-        var box = await Hive.openBox('trail');
-        TrailDetails? localTrail = await box.get('trail_${event.id}');
+        TrailDetails? localTrail = trailBox.get('trail_${event.id}');
         if (localTrail != null) {
           emit(TrailLoadedState(trail: localTrail));
         }
 
         TrailDetails? trail = await trailRepo.getTrailData(event.id);
         if (trail != null) {
-          await box.put('trail_${event.id}', trail);
+          await trailBox.put('trail_${event.id}', trail);
 
           emit(TrailLoadedState(trail: trail));
         } else {

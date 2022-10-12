@@ -7,4 +7,6 @@ class SaveTrailState with _$SaveTrailState {
   const factory SaveTrailState.loading(
       {required int nbImageSaved, required int nbImages}) = _Loading;
   const factory SaveTrailState.loaded() = _Loaded;
+  const factory SaveTrailState.unSaveStart() = _StartUnsave;
+  const factory SaveTrailState.unSaveComplete() = _UnSaveComplete;
 }

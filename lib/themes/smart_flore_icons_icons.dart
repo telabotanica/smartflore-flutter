@@ -71,6 +71,6 @@ class SmartFloreIcons {
       IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData download =
       IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData downnloaded =
+  static const IconData downloaded =
       IconData(0xe820, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
