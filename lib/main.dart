@@ -53,6 +53,8 @@ void main() async {
   Hive.registerAdapter(ImageAPIAdapter());
   Hive.registerAdapter(SectionAPIAdapter());
 
+  await Hive.openBox('savedTrails');
+
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 

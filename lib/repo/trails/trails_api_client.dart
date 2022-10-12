@@ -14,7 +14,6 @@ class TrailsApiClient extends APIClient {
   Future<List<Trail>?> getTrailList() async {
     final response = await httpClient.get(Uri.parse(baseUrl));
     if (response.statusCode == 200) {
-      // Needed to simplify the reading of centroid
       final data = jsonDecode(response.body);
       // return trailList;
       List<Trail>? trailsData = Trails.fromJson({'trailList': data}).trailList;

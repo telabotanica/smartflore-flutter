@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/components/cards/download.dart';
+import 'package:smartflore/components/icons/download_icon.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/components/modal.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
@@ -21,6 +22,7 @@ class TrailItem extends StatelessWidget {
   final LatLng? position;
   final int nbOccurence;
   final bool showIconMore;
+  final bool isDownloaded;
 
   const TrailItem(
       {Key? key,
@@ -32,7 +34,8 @@ class TrailItem extends StatelessWidget {
       this.image,
       this.position,
       required this.nbOccurence,
-      this.showIconMore = false})
+      this.showIconMore = false,
+      this.isDownloaded = false})
       : super(key: key);
 
   @override
@@ -46,15 +49,26 @@ class TrailItem extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          SizedBox(
-            width: 68,
-            height: 68,
-            child: (image != null)
-                ? ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(6.0)),
-                    child: ImageWithLoader(
-                        url: '${StringUtils.removeExtension(image!)}XS.jpg'))
-                : Container(),
+          Stack(
+            children: [
+              SizedBox(
+                width: 68,
+                height: 68,
+                child: (image != null)
+                    ? ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(6.0)),
+                        child: ImageWithLoader(
+                            url:
+                                '${StringUtils.removeExtension(image!)}XS.jpg'))
+                    : Container(),
+              ),
+              (isDownloaded)
+                  ? Transform.translate(
+                      offset: const Offset(58, -6),
+                      child: const DownloadIcon(isDownloaded: true))
+                  : Container(),
+            ],
           ),
           const SizedBox(width: 16),
           Expanded(

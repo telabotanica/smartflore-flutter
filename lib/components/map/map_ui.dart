@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
@@ -26,6 +27,15 @@ class MapUI extends StatefulWidget {
 class _MapUIState extends State<MapUI> {
   GlobalKey trailPreviewUIKey = GlobalKey();
   double trailPreviewUIHeight = 0;
+  late Box<dynamic> savedTrailsBox;
+
+  @override
+  void initState() {
+    super.initState();
+    // get the previously opened user box
+    savedTrailsBox = Hive.box('savedTrails');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -141,7 +151,10 @@ class _MapUIState extends State<MapUI> {
                               length: state.trail.pathLength,
                               image: state.trail.image.url,
                               position: state.trail.position.start,
-                              nbOccurence: state.trail.occurrencesCount);
+                              nbOccurence: state.trail.occurrencesCount,
+                              isDownloaded: (savedTrailsBox
+                                      .get('trail_${state.trail.id}')) !=
+                                  null);
                         }
                         return TrailPreview(
                           key: trailPreviewUIKey,

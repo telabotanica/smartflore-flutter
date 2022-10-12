@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/list/trail/trails_list.dart';
@@ -21,6 +22,14 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
   bool isPanelOpened = false;
   bool isPanelMoving = false;
   MapMode _mapMode = MapMode.overview;
+  late Box<dynamic> savedTrailsBox;
+
+  @override
+  void initState() {
+    super.initState();
+    // get the previously opened user box
+    savedTrailsBox = Hive.box('savedTrails');
+  }
 
   void onPanUpdate(details) {
     // Swiping down
@@ -161,11 +170,13 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
             TrailsList(
               controller: scrollController,
               onPanUpdate: onPanUpdate,
+              savedTrailsBox: savedTrailsBox,
             ),
             TrailsList(
               controller: scrollController,
               onPanUpdate: onPanUpdate,
               trailsListType: TrailsListType.myTrails,
+              savedTrailsBox: savedTrailsBox,
             ),
           ],
         ));

@@ -13,7 +13,6 @@ class TrailApiClient extends APIClient {
   Future<TrailDetails?> getTrailData(int id) async {
     final response = await httpClient.get(Uri.parse('$baseUrl/trail/$id'));
     if (response.statusCode == 200) {
-      // Needed to simplify the reading of centroid
       String data = response.body;
 
       Map<String, dynamic> json = jsonDecode(data);
@@ -31,7 +30,6 @@ class TrailApiClient extends APIClient {
     final response =
         await httpClient.get(Uri.parse('$baseUrl/batch/trail/$id'));
     if (response.statusCode == 200) {
-      // Needed to simplify the reading of centroid
       String data = response.body;
 
       Map<String, dynamic> json = jsonDecode(data);

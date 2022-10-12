@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
+import 'package:smartflore/components/icons/download_icon.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
 import 'package:smartflore/components/progress_bar.dart';
 
@@ -12,6 +13,7 @@ class DownloadCard extends StatefulWidget {
   final String? image;
   final int length;
   final int nbOccurence;
+  final bool isDownloaded;
 
   const DownloadCard(
       {Key? key,
@@ -19,7 +21,8 @@ class DownloadCard extends StatefulWidget {
       required this.title,
       required this.length,
       required this.image,
-      required this.nbOccurence})
+      required this.nbOccurence,
+      this.isDownloaded = false})
       : super(key: key);
 
   @override
@@ -28,22 +31,13 @@ class DownloadCard extends StatefulWidget {
 
 class _DownloadCardState extends State<DownloadCard> {
   late bool isSelected;
+  late Box<dynamic> savedTrailsBox;
 
   @override
   void initState() {
-    readDataFromHive();
-    isSelected = false;
     super.initState();
-  }
-
-  void readDataFromHive() async {
-    var boxSavedTrail = await Hive.openBox('saved_trails');
-    dynamic test = boxSavedTrail.get('trail_${widget.trailId}');
-    if (test != null) {
-      setState(() {
-        isSelected = true;
-      });
-    }
+    // get the previously opened user box
+    savedTrailsBox = Hive.box('savedTrails');
   }
 
   @override
@@ -93,8 +87,15 @@ class _DownloadCardState extends State<DownloadCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Mode Hors ligne',
-                    style: Theme.of(context).textTheme.headline6),
+                Row(
+                  children: [
+                    DownloadIcon(isDownloaded: widget.isDownloaded),
+                    const SizedBox(width: 6),
+                    Text('Mode Hors ligne',
+                        style: Theme.of(context).textTheme.headline6),
+                  ],
+                ),
+                const SizedBox(height: 4),
                 Text('Sauvegarder la fiche sentier sur votre appareil',
                     style: Theme.of(context).textTheme.caption)
               ],
@@ -103,7 +104,7 @@ class _DownloadCardState extends State<DownloadCard> {
           Padding(
             padding: const EdgeInsets.only(left: 15.0),
             child: CupertinoSwitch(
-              value: isSelected,
+              value: (savedTrailsBox.get('trail_${widget.trailId}')) != null,
               onChanged: (value) {
                 setState(() {
                   isSelected = value;
