@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
@@ -35,6 +36,8 @@ import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'dart:async';
 
 void main() async {
   await Hive.initFlutter();
@@ -102,8 +105,6 @@ void main() async {
   ));
 }
 
-ThemeManager _themeManager = ThemeManager();
-
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
 
@@ -112,16 +113,25 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  final ThemeManager _themeManager = ThemeManager();
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  ConnectivityResult _connectionStatus = ConnectivityResult.none;
+
   @override
   void dispose() {
     _themeManager.removeListener(themeListener);
+    _connectivitySubscription.cancel();
+
     super.dispose();
   }
 
   @override
   void initState() {
     _themeManager.addListener(themeListener);
-
+    initConnectivity();
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     super.initState();
   }
 
@@ -129,6 +139,32 @@ class _AppState extends State<App> {
     if (mounted) {
       setState(() {});
     }
+  }
+
+  Future<void> initConnectivity() async {
+    late ConnectivityResult result;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      result = await _connectivity.checkConnectivity();
+    } on PlatformException {
+      //NOT SUPPORTED
+      return;
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) {
+      return Future.value(null);
+    }
+
+    return _updateConnectionStatus(result);
+  }
+
+  Future<void> _updateConnectionStatus(ConnectivityResult result) async {
+    setState(() {
+      _connectionStatus = result;
+    });
   }
 
   @override

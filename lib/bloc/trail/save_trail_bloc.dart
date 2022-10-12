@@ -76,10 +76,9 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
             imageList.add(image);
           }
         }
-        int nbImageSaved = imageList.length;
 
         for (var image in imageList) {
-          nbImageSaved -= await _deleteImage(image);
+          await _deleteImage(image);
         }
         boxSavedTrail.delete('trail_${event.id}');
 
