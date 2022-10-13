@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:smartflore/models/taxon/taxon_model.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart' as t;
 import 'package:smartflore/models/trail/batch_trail_model.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
@@ -14,8 +14,10 @@ part 'save_trail_bloc.freezed.dart';
 class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
   final TrailRepo trailRepo;
   final Box<TrailDetails> trailBox;
+  final Box<t.Taxon> taxonBox;
 
-  SaveTrailBloc(this.trailRepo, this.trailBox) : super(const _Initial()) {
+  SaveTrailBloc(this.trailRepo, this.trailBox, this.taxonBox)
+      : super(const _Initial()) {
     late Box boxSavedTrail = Hive.box('savedTrails');
 
     /// SAVE TRAIL
@@ -29,23 +31,16 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
           // save trial in the trail box
           await trailBox.put('trail_${event.id}', batchedTrail.trail);
           // save every single taxon of the trail in the taxon box
-          var boxTaxon = await Hive.openBox('taxon');
-          batchedTrail.taxonList.map((taxon) async {
-            await boxTaxon.put('taxon_${taxon.nameId}', taxon);
-            // batch download image files.
-            taxon.tabs[0].images?.map((image) {
-              //_saveImage(image);
-            });
-          });
 
           // list all images for a trail
-          List<ImageAPI> imageList = [];
-          imageList.add(ImageAPI(
+          List<t.ImageAPI> imageList = [];
+          imageList.add(t.ImageAPI(
               id: batchedTrail.trail.image.id,
               url: batchedTrail.trail.image.url,
               author: ''));
 
           for (var taxon in batchedTrail.taxonList) {
+            await taxonBox.put('taxon_${taxon.nameId}', taxon);
             for (var image in taxon.tabs[0].images!) {
               imageList.add(image);
             }
@@ -69,7 +64,7 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
         trailBox.get('trail_${event.id}');
         BatchedTrail? batchedTrail =
             await trailRepo.getTrailBatchedData(event.id);
-        List<ImageAPI> imageList = [];
+        List<t.ImageAPI> imageList = [];
 
         for (var taxon in batchedTrail!.taxonList) {
           for (var image in taxon.tabs[0].images!) {
@@ -87,14 +82,13 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
     });
   }
 
-  Future<int> _saveImage(ImageAPI image) async {
-    await DefaultCacheManager()
-        .getSingleFile(image.url, key: image.id.toString());
+  Future<int> _saveImage(t.ImageAPI image) async {
+    await DefaultCacheManager().getSingleFile(image.url, key: image.url);
     return 1;
   }
 
-  Future<int> _deleteImage(ImageAPI image) async {
-    await DefaultCacheManager().removeFile(image.id.toString());
+  Future<int> _deleteImage(t.ImageAPI image) async {
+    await DefaultCacheManager().removeFile(image.url);
     return -1;
   }
 }

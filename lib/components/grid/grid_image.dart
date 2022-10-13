@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
-import 'package:smartflore/utils/convert.dart';
 
 class GridImage extends StatelessWidget {
   final String image;
@@ -9,6 +8,6 @@ class GridImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImageWithLoader(url: '${StringUtils.removeExtension(image)}XS.jpg');
+    return ImageWithLoader(url: image, imageFormat: 'XS');
   }
 }

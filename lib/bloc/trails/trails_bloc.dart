@@ -9,23 +9,22 @@ part 'trails_state.dart';
 
 class TrailsBloc extends Bloc<TrailsEvent, TrailsDataState> {
   final TrailsRepo trailsRepo;
-  TrailsBloc(this.trailsRepo) : super(TrailsDataInitialState()) {
+  final Box<Trails> trailsBox;
+  TrailsBloc(this.trailsRepo, this.trailsBox)
+      : super(TrailsDataInitialState()) {
     on<TrailsEvent>((event, emit) async {
       if (event is LoadTrailsDataEvent) {
         emit(TrailsDataLoadingState());
-        var box = await Hive.openBox('trails');
-        Trails trails = box.get('trails');
-        if (trails.trailList != null) {
+        Trails? trails = trailsBox.get('trails');
+        if (trails != null && trails.trailList != null) {
           emit(TrailsDataLoadedState(trails: trails.trailList!));
-          emit(TrailsDataInitialState());
+          // emit(TrailsDataInitialState());
         }
 
         List<Trail>? trailList = await trailsRepo.getTrailList();
         if (trailList != null) {
-          box.put('trails', Trails(trailList: trailList));
+          trailsBox.put('trails', Trails(trailList: trailList));
           emit(TrailsDataLoadedState(trails: trailList));
-        } else {
-          emit(TrailsDataErrorState());
         }
       }
     });

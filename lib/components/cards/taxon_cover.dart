@@ -28,6 +28,7 @@ class TaxonCover extends StatelessWidget {
       : super(key: key);
 
   void handleOnPress(BuildContext context) {
+    print('taxinId: $taxonId');
     Navigator.of(context).pushNamed(
       '/taxon',
       arguments: TaxonScreenArguments(
@@ -48,7 +49,8 @@ class TaxonCover extends StatelessWidget {
           child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(6.0)),
               child: ImageWithLoader(
-                url: '${StringUtils.removeExtension(image)}X2L.jpg',
+                url: image,
+                imageFormat: 'X2L',
                 syncDuration: 300,
               )),
         ),

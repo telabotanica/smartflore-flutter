@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/panel/species_panel.dart';
 import 'package:smartflore/components/panel/trails_panel.dart';
+import 'package:smartflore/components/utils/connectivity_widget.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -21,9 +22,11 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body: DefaultTabController(
-      length: 2,
-      child: SpeciesPanelWidget(body: TrailsPanelWidget()),
+        body: ConnectivityWidget(
+      child: DefaultTabController(
+        length: 2,
+        child: SpeciesPanelWidget(body: TrailsPanelWidget()),
+      ),
     ));
   }
 }

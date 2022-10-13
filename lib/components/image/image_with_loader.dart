@@ -1,9 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_fade/image_fade.dart';
+import 'package:smartflore/utils/convert.dart';
 
 class ImageWithLoader extends StatelessWidget {
   final String url;
   final String? id;
+  final String imageFormat;
   final GestureTapCallback? onTap;
   final EdgeInsets progressIndicatorPadding;
   final int syncDuration;
@@ -11,6 +16,7 @@ class ImageWithLoader extends StatelessWidget {
   const ImageWithLoader(
       {Key? key,
       required this.url,
+      this.imageFormat = 'M',
       this.id,
       this.onTap,
       this.progressIndicatorPadding = const EdgeInsets.all(0),
@@ -18,9 +24,19 @@ class ImageWithLoader extends StatelessWidget {
       : super(key: key);
 
   Widget buildImage(BuildContext context) {
+    Box appConfigBox = Hive.box('appConfig');
+    ConnectivityResult? connectivityStatus =
+        appConfigBox.get('connectivityStatus');
+    bool offline = (connectivityStatus == null)
+        ? true
+        : (connectivityStatus == ConnectivityResult.none);
+
+    String imgUrl =
+        '${StringUtils.removeExtension(url)}${(offline) ? "M" : imageFormat}.jpg';
+
     return ImageFade(
-      image: NetworkImage(url),
-      duration: const Duration(milliseconds: 300),
+      image: CachedNetworkImageProvider(imgUrl, cacheKey: imgUrl),
+      duration: const Duration(milliseconds: 0),
       syncDuration: Duration(milliseconds: syncDuration),
       alignment: Alignment.center,
       fit: BoxFit.cover,
@@ -76,10 +92,11 @@ class ImageWithLoader extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  build(BuildContext context) {
     Widget image = buildImage(context);
     if (id != null) image = withHero(image);
     if (onTap != null) image = withOnTap(image);
-    return image;
+
+    return (image);
   }
 }

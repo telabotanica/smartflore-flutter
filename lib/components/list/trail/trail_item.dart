@@ -64,8 +64,7 @@ class _TrailItemState extends State<TrailItem> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(6.0)),
                         child: ImageWithLoader(
-                            url:
-                                '${StringUtils.removeExtension(widget.image!)}XS.jpg'))
+                            url: widget.image!, imageFormat: 'XS'))
                     : Container(),
               ),
               (widget.isDownloaded)

@@ -11,22 +11,30 @@ class TrailApiClient extends APIClient {
   final String baseUrl;
   TrailApiClient({required this.httpClient, required this.baseUrl});
   Future<TrailDetails?> getTrailData(int id) async {
-    final response = await httpClient.get(Uri.parse('$baseUrl/trail/$id'));
-    if (response.statusCode == 200) {
-      String data = response.body;
+    print('getTrailData');
 
-      Map<String, dynamic> json = jsonDecode(data);
+    try {
+      final response = await httpClient.get(Uri.parse('$baseUrl/trail/$id'));
+      if (response.statusCode == 200) {
+        String data = response.body;
 
-      TrailDetails trailData = TrailDetails.fromJson(json);
+        Map<String, dynamic> json = jsonDecode(data);
 
-      return trailData;
-    } else {
-      // throw Exception('Failed to load trail list');
+        TrailDetails trailData = TrailDetails.fromJson(json);
+
+        return trailData;
+      } else {
+        // throw Exception('Failed to load trail list');
+        return null;
+      }
+    } catch (e) {
+      print('error : $e');
       return null;
     }
   }
 
   Future<BatchedTrail?> getTrailBatchedData(int id) async {
+    print('getTrailBatchedData');
     final response =
         await httpClient.get(Uri.parse('$baseUrl/batch/trail/$id'));
     if (response.statusCode == 200) {

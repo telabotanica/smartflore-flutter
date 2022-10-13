@@ -39,8 +39,6 @@ class TrailBloc extends Bloc<TrailEvent, TrailState> {
           await trailBox.put('trail_${event.id}', trail);
 
           emit(TrailLoadedState(trail: trail));
-        } else {
-          emit(TrailErrorState());
         }
       }
     });

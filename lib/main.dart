@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
@@ -11,8 +10,9 @@ import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/components/gallery/gallery_wrapper.dart';
+import 'package:smartflore/hive/connectivity_result_adapter.dart';
 import 'package:smartflore/hive/latlng_adaptater.dart';
-import 'package:smartflore/models/taxon/taxon_model.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart' as t;
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
@@ -36,8 +36,6 @@ import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'dart:async';
 
 void main() async {
   await Hive.initFlutter();
@@ -51,13 +49,18 @@ void main() async {
   Hive.registerAdapter(OccurenceAdapter());
   Hive.registerAdapter(TrailTaxonAdapter());
   Hive.registerAdapter(PathAdapter());
-  Hive.registerAdapter(TaxonAdapter());
-  Hive.registerAdapter(TabAPIAdapter());
-  Hive.registerAdapter(ImageAPIAdapter());
-  Hive.registerAdapter(SectionAPIAdapter());
+  Hive.registerAdapter(t.TaxonAdapter());
+  Hive.registerAdapter(t.TabAPIAdapter());
+  Hive.registerAdapter(t.ImageAPIAdapter());
+  Hive.registerAdapter(t.SectionAPIAdapter());
+  Hive.registerAdapter(ConnectivityResultAdapter());
 
   await Hive.openBox('savedTrails');
+  Box<Trails> trailsBox = await Hive.openBox('trails');
   Box<TrailDetails> trailBox = await Hive.openBox('trail');
+  Box<t.Taxon> taxonBox = await Hive.openBox('taxon');
+
+  Box appConfigBox = await Hive.openBox('appConfig');
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -92,10 +95,12 @@ void main() async {
           create: (context) => TrailBloc(
               trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),
       BlocProvider<SaveTrailBloc>(
-          create: (context) => SaveTrailBloc(trailRepo, trailBox)),
-      BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo)),
+          create: (context) => SaveTrailBloc(trailRepo, trailBox, taxonBox)),
+      BlocProvider<TrailsBloc>(
+          create: (context) => TrailsBloc(trailsRepo, trailsBox)),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
-      BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo)),
+      BlocProvider<TaxonBloc>(
+          create: (context) => TaxonBloc(taxonRepo, taxonBox)),
       BlocProvider<GeolocationBloc>(
           create: (context) => GeolocationBloc(
               geolocationRepo: geolocationRepo,
@@ -114,14 +119,10 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final ThemeManager _themeManager = ThemeManager();
-  final Connectivity _connectivity = Connectivity();
-  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
-  ConnectivityResult _connectionStatus = ConnectivityResult.none;
 
   @override
   void dispose() {
     _themeManager.removeListener(themeListener);
-    _connectivitySubscription.cancel();
 
     super.dispose();
   }
@@ -129,9 +130,6 @@ class _AppState extends State<App> {
   @override
   void initState() {
     _themeManager.addListener(themeListener);
-    initConnectivity();
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     super.initState();
   }
 
@@ -139,32 +137,6 @@ class _AppState extends State<App> {
     if (mounted) {
       setState(() {});
     }
-  }
-
-  Future<void> initConnectivity() async {
-    late ConnectivityResult result;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      result = await _connectivity.checkConnectivity();
-    } on PlatformException {
-      //NOT SUPPORTED
-      return;
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) {
-      return Future.value(null);
-    }
-
-    return _updateConnectionStatus(result);
-  }
-
-  Future<void> _updateConnectionStatus(ConnectivityResult result) async {
-    setState(() {
-      _connectionStatus = result;
-    });
   }
 
   @override

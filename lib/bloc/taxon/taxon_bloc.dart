@@ -9,23 +9,22 @@ part 'taxon_state.dart';
 
 class TaxonBloc extends Bloc<TaxonEvent, TaxonState> {
   final TaxonRepo taxonRepo;
+  final Box<Taxon> taxonBox;
 
-  TaxonBloc(this.taxonRepo) : super(TaxonInitialState()) {
+  TaxonBloc(this.taxonRepo, this.taxonBox) : super(TaxonInitialState()) {
     on<TaxonEvent>((event, emit) async {
       if (event is LoadTaxonDataEvent) {
         emit(TaxonLoadingState());
-        var box = await Hive.openBox('taxon');
-        Taxon? localTaxon = await box.get('taxon_${event.taxonID}');
+        Taxon? localTaxon = taxonBox.get('taxon_${event.taxonID}');
+        print('localTaxon $localTaxon');
         if (localTaxon != null) {
           emit(TaxonLoadedState(taxon: localTaxon));
         }
 
         Taxon? taxon = await taxonRepo.getTaxon(event.taxonRepo, event.taxonID);
         if (taxon != null) {
-          await box.put('taxon_${event.taxonID}', taxon);
+          await taxonBox.put('taxon_${event.taxonID}', taxon);
           emit(TaxonLoadedState(taxon: taxon));
-        } else {
-          emit(TaxonErrorState());
         }
       }
     });
