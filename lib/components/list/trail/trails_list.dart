@@ -68,7 +68,6 @@ class TrailsList extends StatelessWidget {
         const SizedBox(height: 16),
         BlocBuilder<TrailsBloc, TrailsDataState>(
           builder: (context, state) {
-            print('STATE>>> $state');
             if (state is TrailsDataInitialState) {
               return const CircularProgressIndicator();
             } else if (state is TrailsDataErrorState) {

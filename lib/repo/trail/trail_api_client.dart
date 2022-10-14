@@ -11,8 +11,6 @@ class TrailApiClient extends APIClient {
   final String baseUrl;
   TrailApiClient({required this.httpClient, required this.baseUrl});
   Future<TrailDetails?> getTrailData(int id) async {
-    print('getTrailData');
-
     try {
       final response = await httpClient.get(Uri.parse('$baseUrl/trail/$id'));
       if (response.statusCode == 200) {
@@ -28,13 +26,11 @@ class TrailApiClient extends APIClient {
         return null;
       }
     } catch (e) {
-      print('error : $e');
       return null;
     }
   }
 
   Future<BatchedTrail?> getTrailBatchedData(int id) async {
-    print('getTrailBatchedData $id');
     final response =
         await httpClient.get(Uri.parse('$baseUrl/batch/trail/$id'));
     if (response.statusCode == 200) {

@@ -28,7 +28,6 @@ class TaxonCover extends StatelessWidget {
       : super(key: key);
 
   void handleOnPress(BuildContext context) {
-    print('taxinId: $taxonId');
     Navigator.of(context).pushNamed(
       '/taxon',
       arguments: TaxonScreenArguments(

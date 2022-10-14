@@ -16,7 +16,6 @@ class TaxonBloc extends Bloc<TaxonEvent, TaxonState> {
       if (event is LoadTaxonDataEvent) {
         emit(TaxonLoadingState());
         Taxon? localTaxon = taxonBox.get('taxon_${event.taxonID}');
-        print('localTaxon $localTaxon');
         if (localTaxon != null) {
           emit(TaxonLoadedState(taxon: localTaxon));
         }

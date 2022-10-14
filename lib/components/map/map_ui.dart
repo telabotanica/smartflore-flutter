@@ -140,7 +140,6 @@ class _MapUIState extends State<MapUI> {
                     child: BlocBuilder<TrailBloc, TrailState>(
                       builder: (context, state) {
                         if (state is TrailLoadedState) {
-                          print('TrailLoadedState ');
                           isPreviewLocallySaved =
                               (savedTrailsBox.get('trail_${state.trail.id}')) !=
                                   null;
