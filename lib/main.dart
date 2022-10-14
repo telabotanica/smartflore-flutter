@@ -60,7 +60,7 @@ void main() async {
   Box<TrailDetails> trailBox = await Hive.openBox('trail');
   Box<t.Taxon> taxonBox = await Hive.openBox('taxon');
 
-  Box appConfigBox = await Hive.openBox('appConfig');
+  await Hive.openBox('appConfig');
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
