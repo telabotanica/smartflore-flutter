@@ -34,7 +34,7 @@ class TrailApiClient extends APIClient {
   }
 
   Future<BatchedTrail?> getTrailBatchedData(int id) async {
-    print('getTrailBatchedData');
+    print('getTrailBatchedData $id');
     final response =
         await httpClient.get(Uri.parse('$baseUrl/batch/trail/$id'));
     if (response.statusCode == 200) {

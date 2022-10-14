@@ -58,6 +58,9 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
           emit(const SaveTrailState.loaded());
           await Future.delayed(const Duration(seconds: 2), () {})
               .whenComplete(() => emit(const SaveTrailState.initial()));
+        } else {
+          emit(const SaveTrailState.saveError());
+          return;
         }
       } else if (event is _UnSaveTrailLocally) {
         emit(const SaveTrailState.unSaveStart());
@@ -65,8 +68,11 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
         BatchedTrail? batchedTrail =
             await trailRepo.getTrailBatchedData(event.id);
         List<t.ImageAPI> imageList = [];
-
-        for (var taxon in batchedTrail!.taxonList) {
+        if (batchedTrail == null) {
+          emit(const SaveTrailState.unSaveError());
+          return;
+        }
+        for (var taxon in batchedTrail.taxonList) {
           for (var image in taxon.tabs[0].images!) {
             imageList.add(image);
           }

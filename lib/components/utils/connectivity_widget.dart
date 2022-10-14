@@ -21,6 +21,8 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
   late Box appConfigBox;
   bool isSnackbarActive = false;
   bool isDelayFinished = true;
+  late Flushbar? flush;
+
   @override
   void initState() {
     appConfigBox = Hive.box('appConfig');
@@ -69,13 +71,15 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
           }
         });
       }
+    } else if (isSnackbarActive) {
+      if (flush != null) flush!.dismiss();
+      isSnackbarActive = false;
     }
   }
 
-  showSnackBar() {
+  showSnackBar() async {
     isSnackbarActive = true;
-
-    Flushbar(
+    flush = Flushbar(
         titleColor: Colors.white,
         flushbarPosition: FlushbarPosition.TOP,
         flushbarStyle: FlushbarStyle.FLOATING,
@@ -92,7 +96,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
               blurRadius: 10.0)
         ],
         isDismissible: true,
-        duration: const Duration(seconds: 10),
+        duration: const Duration(seconds: 100),
         icon: const Padding(
           padding: EdgeInsets.all(20.0),
           child: Icon(
@@ -121,7 +125,14 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
                 color: Colors.white,
                 fontFamily: 'ShadowsIntoLightTwo'),
           ),
-        )).show(context).then((value) => {isSnackbarActive = false});
+        ));
+
+    flush!.show(context).then((result) {
+      setState(() {
+        isSnackbarActive = false;
+      });
+      return null;
+    });
   }
 
   @override
