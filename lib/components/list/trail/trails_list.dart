@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -11,12 +12,13 @@ class TrailsList extends StatelessWidget {
   final ScrollController controller;
   final TrailsListType trailsListType;
   final Function onPanUpdate;
-
+  final Box<dynamic> savedTrailsBox;
   const TrailsList(
       {Key? key,
       required this.controller,
       required this.onPanUpdate,
-      this.trailsListType = TrailsListType.allTrails})
+      this.trailsListType = TrailsListType.allTrails,
+      required this.savedTrailsBox})
       : super(key: key);
 
   @override
@@ -79,14 +81,17 @@ class TrailsList extends StatelessWidget {
                   itemCount: state.trails.length,
                   itemBuilder: (context, index) {
                     final trail = state.trails[index];
+
                     return TrailInteractiveItemWidget(
                       index: index,
                       id: trail.id,
                       title: trail.name,
                       length: trail.pathLength,
-                      image: trail.image.url,
+                      image: trail.image!.url,
                       position: trail.position.start,
                       nbOccurence: trail.occurrencesCount,
+                      isDownloaded:
+                          (savedTrailsBox.get('trail_${trail.id}')) != null,
                     );
                   },
                 ),

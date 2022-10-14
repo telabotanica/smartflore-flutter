@@ -3,6 +3,268 @@
 part of 'trail_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class TrailDetailAdapter extends TypeAdapter<_$_TrailDetails> {
+  @override
+  final int typeId = 10;
+
+  @override
+  _$_TrailDetails read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_TrailDetails(
+      id: fields[0] as int,
+      name: fields[1] as String,
+      displayName: fields[2] as String,
+      author: fields[3] as String,
+      position: fields[4] as StartEndPosition,
+      occurrences: (fields[5] as List).cast<Occurrence>(),
+      occurrencesCount: fields[6] as int,
+      image: fields[7] as Image,
+      path: fields[8] as Path,
+      pathLength: fields[9] as int,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_TrailDetails obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.name)
+      ..writeByte(2)
+      ..write(obj.displayName)
+      ..writeByte(3)
+      ..write(obj.author)
+      ..writeByte(4)
+      ..write(obj.position)
+      ..writeByte(6)
+      ..write(obj.occurrencesCount)
+      ..writeByte(7)
+      ..write(obj.image)
+      ..writeByte(8)
+      ..write(obj.path)
+      ..writeByte(9)
+      ..write(obj.pathLength)
+      ..writeByte(5)
+      ..write(obj.occurrences);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TrailDetailAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class ImageAdapter extends TypeAdapter<_$_Image> {
+  @override
+  final int typeId = 11;
+
+  @override
+  _$_Image read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_Image(
+      id: fields[0] as int,
+      url: fields[1] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_Image obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.url);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImageAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class OccurenceAdapter extends TypeAdapter<_$_Occurrence> {
+  @override
+  final int typeId = 12;
+
+  @override
+  _$_Occurrence read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_Occurrence(
+      position: fields[0] as LatLng,
+      taxon: fields[1] as Taxon,
+      images: (fields[2] as List).cast<Image>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_Occurrence obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.position)
+      ..writeByte(1)
+      ..write(obj.taxon)
+      ..writeByte(2)
+      ..write(obj.images);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OccurenceAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class TrailTaxonAdapter extends TypeAdapter<_$_Taxon> {
+  @override
+  final int typeId = 13;
+
+  @override
+  _$_Taxon read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_Taxon(
+      scientificName: fields[0] as String?,
+      fullScientificName: fields[1] as String,
+      taxonRepository: fields[2] as String,
+      nameId: fields[3] as int,
+      vernacularNames: (fields[4] as List).cast<String>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_Taxon obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.scientificName)
+      ..writeByte(1)
+      ..write(obj.fullScientificName)
+      ..writeByte(2)
+      ..write(obj.taxonRepository)
+      ..writeByte(3)
+      ..write(obj.nameId)
+      ..writeByte(4)
+      ..write(obj.vernacularNames);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TrailTaxonAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class PathAdapter extends TypeAdapter<_$_Path> {
+  @override
+  final int typeId = 14;
+
+  @override
+  _$_Path read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_Path(
+      type: fields[0] as String,
+      coordinates: (fields[1] as List).cast<LatLng>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_Path obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.type)
+      ..writeByte(1)
+      ..write(obj.coordinates);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PathAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class StartEndPositionAdapter extends TypeAdapter<_$_StartEndPosition> {
+  @override
+  final int typeId = 15;
+
+  @override
+  _$_StartEndPosition read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return _$_StartEndPosition(
+      start: fields[0] as LatLng,
+      end: fields[1] as LatLng,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, _$_StartEndPosition obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.start)
+      ..writeByte(1)
+      ..write(obj.end);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StartEndPositionAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

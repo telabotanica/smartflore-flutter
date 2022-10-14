@@ -15,6 +15,7 @@ class TrailInteractiveItemWidget extends StatelessWidget {
   final int length;
   final LatLng position;
   final int nbOccurence;
+  final bool isDownloaded;
 
   const TrailInteractiveItemWidget(
       {Key? key,
@@ -25,7 +26,8 @@ class TrailInteractiveItemWidget extends StatelessWidget {
       required this.length,
       required this.image,
       required this.position,
-      required this.nbOccurence})
+      required this.nbOccurence,
+      this.isDownloaded = false})
       : super(key: key);
 
   onPressed(BuildContext context, int id) {
@@ -40,12 +42,14 @@ class TrailInteractiveItemWidget extends StatelessWidget {
       id: id,
       onPressed: onPressed,
       child: TrailItem(
+        trailId: id,
         index: index,
         title: title,
         length: length,
         position: position,
         image: image,
         nbOccurence: nbOccurence,
+        isDownloaded: isDownloaded,
       ),
     ));
   }

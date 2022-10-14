@@ -14,6 +14,7 @@ class TrailPreview extends StatelessWidget {
   final int nbOccurence;
   final LatLng position;
   final Function? onPressCB;
+  final bool isDownloaded;
 
   const TrailPreview({
     Key? key,
@@ -26,6 +27,7 @@ class TrailPreview extends StatelessWidget {
     required this.nbOccurence,
     this.onPressCB,
     this.isLoading = false,
+    this.isDownloaded = false,
   }) : super(key: key);
 
   @override
@@ -52,12 +54,15 @@ class TrailPreview extends StatelessWidget {
                     opacity: isLoading ? 0 : 1,
                     child: TrailItem(
                       isInteractive: false,
+                      trailId: id,
                       index: index,
                       title: title,
                       length: length,
                       position: position,
                       image: image,
                       nbOccurence: nbOccurence,
+                      showIconMore: true,
+                      isDownloaded: isDownloaded,
                     )),
               ],
             ),

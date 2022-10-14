@@ -14,34 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TrailList _$TrailListFromJson(Map<String, dynamic> json) {
-  return _TrailList.fromJson(json);
+Trails _$TrailsFromJson(Map<String, dynamic> json) {
+  return _Trails.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TrailList {
+mixin _$Trails {
+  @HiveField(0)
   List<Trail>? get trailList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TrailListCopyWith<TrailList> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TrailsCopyWith<Trails> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TrailListCopyWith<$Res> {
-  factory $TrailListCopyWith(TrailList value, $Res Function(TrailList) then) =
-      _$TrailListCopyWithImpl<$Res>;
-  $Res call({List<Trail>? trailList});
+abstract class $TrailsCopyWith<$Res> {
+  factory $TrailsCopyWith(Trails value, $Res Function(Trails) then) =
+      _$TrailsCopyWithImpl<$Res>;
+  $Res call({@HiveField(0) List<Trail>? trailList});
 }
 
 /// @nodoc
-class _$TrailListCopyWithImpl<$Res> implements $TrailListCopyWith<$Res> {
-  _$TrailListCopyWithImpl(this._value, this._then);
+class _$TrailsCopyWithImpl<$Res> implements $TrailsCopyWith<$Res> {
+  _$TrailsCopyWithImpl(this._value, this._then);
 
-  final TrailList _value;
+  final Trails _value;
   // ignore: unused_field
-  final $Res Function(TrailList) _then;
+  final $Res Function(Trails) _then;
 
   @override
   $Res call({
@@ -57,29 +57,27 @@ class _$TrailListCopyWithImpl<$Res> implements $TrailListCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_TrailListCopyWith<$Res> implements $TrailListCopyWith<$Res> {
-  factory _$$_TrailListCopyWith(
-          _$_TrailList value, $Res Function(_$_TrailList) then) =
-      __$$_TrailListCopyWithImpl<$Res>;
+abstract class _$$_TrailsCopyWith<$Res> implements $TrailsCopyWith<$Res> {
+  factory _$$_TrailsCopyWith(_$_Trails value, $Res Function(_$_Trails) then) =
+      __$$_TrailsCopyWithImpl<$Res>;
   @override
-  $Res call({List<Trail>? trailList});
+  $Res call({@HiveField(0) List<Trail>? trailList});
 }
 
 /// @nodoc
-class __$$_TrailListCopyWithImpl<$Res> extends _$TrailListCopyWithImpl<$Res>
-    implements _$$_TrailListCopyWith<$Res> {
-  __$$_TrailListCopyWithImpl(
-      _$_TrailList _value, $Res Function(_$_TrailList) _then)
-      : super(_value, (v) => _then(v as _$_TrailList));
+class __$$_TrailsCopyWithImpl<$Res> extends _$TrailsCopyWithImpl<$Res>
+    implements _$$_TrailsCopyWith<$Res> {
+  __$$_TrailsCopyWithImpl(_$_Trails _value, $Res Function(_$_Trails) _then)
+      : super(_value, (v) => _then(v as _$_Trails));
 
   @override
-  _$_TrailList get _value => super._value as _$_TrailList;
+  _$_Trails get _value => super._value as _$_Trails;
 
   @override
   $Res call({
     Object? trailList = freezed,
   }) {
-    return _then(_$_TrailList(
+    return _then(_$_Trails(
       trailList: trailList == freezed
           ? _value._trailList
           : trailList // ignore: cast_nullable_to_non_nullable
@@ -90,14 +88,17 @@ class __$$_TrailListCopyWithImpl<$Res> extends _$TrailListCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TrailList implements _TrailList {
-  const _$_TrailList({final List<Trail>? trailList}) : _trailList = trailList;
+@HiveType(typeId: 1, adapterName: 'TrailsAdapter')
+class _$_Trails implements _Trails {
+  const _$_Trails({@HiveField(0) final List<Trail>? trailList})
+      : _trailList = trailList;
 
-  factory _$_TrailList.fromJson(Map<String, dynamic> json) =>
-      _$$_TrailListFromJson(json);
+  factory _$_Trails.fromJson(Map<String, dynamic> json) =>
+      _$$_TrailsFromJson(json);
 
   final List<Trail>? _trailList;
   @override
+  @HiveField(0)
   List<Trail>? get trailList {
     final value = _trailList;
     if (value == null) return null;
@@ -107,14 +108,14 @@ class _$_TrailList implements _TrailList {
 
   @override
   String toString() {
-    return 'TrailList(trailList: $trailList)';
+    return 'Trails(trailList: $trailList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrailList &&
+            other is _$_Trails &&
             const DeepCollectionEquality()
                 .equals(other._trailList, _trailList));
   }
@@ -126,28 +127,29 @@ class _$_TrailList implements _TrailList {
 
   @JsonKey(ignore: true)
   @override
-  _$$_TrailListCopyWith<_$_TrailList> get copyWith =>
-      __$$_TrailListCopyWithImpl<_$_TrailList>(this, _$identity);
+  _$$_TrailsCopyWith<_$_Trails> get copyWith =>
+      __$$_TrailsCopyWithImpl<_$_Trails>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrailListToJson(
+    return _$$_TrailsToJson(
       this,
     );
   }
 }
 
-abstract class _TrailList implements TrailList {
-  const factory _TrailList({final List<Trail>? trailList}) = _$_TrailList;
+abstract class _Trails implements Trails {
+  const factory _Trails({@HiveField(0) final List<Trail>? trailList}) =
+      _$_Trails;
 
-  factory _TrailList.fromJson(Map<String, dynamic> json) =
-      _$_TrailList.fromJson;
+  factory _Trails.fromJson(Map<String, dynamic> json) = _$_Trails.fromJson;
 
   @override
+  @HiveField(0)
   List<Trail>? get trailList;
   @override
   @JsonKey(ignore: true)
-  _$$_TrailListCopyWith<_$_TrailList> get copyWith =>
+  _$$_TrailsCopyWith<_$_Trails> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -157,17 +159,26 @@ Trail _$TrailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Trail {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'display_name')
+  @HiveField(2)
   String get displayName => throw _privateConstructorUsedError;
+  @HiveField(3)
   String get author => throw _privateConstructorUsedError;
+  @HiveField(4)
   StartEndPosition get position => throw _privateConstructorUsedError;
   @JsonKey(name: 'occurrences_count')
+  @HiveField(5)
   int get occurrencesCount => throw _privateConstructorUsedError;
+  @HiveField(6)
   String get details => throw _privateConstructorUsedError;
-  Image get image => throw _privateConstructorUsedError;
+  @HiveField(7)
+  Image? get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'path_length')
+  @HiveField(8)
   int get pathLength => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -180,18 +191,18 @@ abstract class $TrailCopyWith<$Res> {
   factory $TrailCopyWith(Trail value, $Res Function(Trail) then) =
       _$TrailCopyWithImpl<$Res>;
   $Res call(
-      {int id,
-      String name,
-      @JsonKey(name: 'display_name') String displayName,
-      String author,
-      StartEndPosition position,
-      @JsonKey(name: 'occurrences_count') int occurrencesCount,
-      String details,
-      Image image,
-      @JsonKey(name: 'path_length') int pathLength});
+      {@HiveField(0) int id,
+      @HiveField(1) String name,
+      @JsonKey(name: 'display_name') @HiveField(2) String displayName,
+      @HiveField(3) String author,
+      @HiveField(4) StartEndPosition position,
+      @JsonKey(name: 'occurrences_count') @HiveField(5) int occurrencesCount,
+      @HiveField(6) String details,
+      @HiveField(7) Image? image,
+      @JsonKey(name: 'path_length') @HiveField(8) int pathLength});
 
   $StartEndPositionCopyWith<$Res> get position;
-  $ImageCopyWith<$Res> get image;
+  $ImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -246,7 +257,7 @@ class _$TrailCopyWithImpl<$Res> implements $TrailCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image,
+              as Image?,
       pathLength: pathLength == freezed
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
@@ -262,8 +273,12 @@ class _$TrailCopyWithImpl<$Res> implements $TrailCopyWith<$Res> {
   }
 
   @override
-  $ImageCopyWith<$Res> get image {
-    return $ImageCopyWith<$Res>(_value.image, (value) {
+  $ImageCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $ImageCopyWith<$Res>(_value.image!, (value) {
       return _then(_value.copyWith(image: value));
     });
   }
@@ -275,20 +290,20 @@ abstract class _$$_TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
       __$$_TrailCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int id,
-      String name,
-      @JsonKey(name: 'display_name') String displayName,
-      String author,
-      StartEndPosition position,
-      @JsonKey(name: 'occurrences_count') int occurrencesCount,
-      String details,
-      Image image,
-      @JsonKey(name: 'path_length') int pathLength});
+      {@HiveField(0) int id,
+      @HiveField(1) String name,
+      @JsonKey(name: 'display_name') @HiveField(2) String displayName,
+      @HiveField(3) String author,
+      @HiveField(4) StartEndPosition position,
+      @JsonKey(name: 'occurrences_count') @HiveField(5) int occurrencesCount,
+      @HiveField(6) String details,
+      @HiveField(7) Image? image,
+      @JsonKey(name: 'path_length') @HiveField(8) int pathLength});
 
   @override
   $StartEndPositionCopyWith<$Res> get position;
   @override
-  $ImageCopyWith<$Res> get image;
+  $ImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -344,7 +359,7 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image,
+              as Image?,
       pathLength: pathLength == freezed
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
@@ -355,41 +370,63 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 2, adapterName: 'TrailAdapter')
 class _$_Trail implements _Trail {
   const _$_Trail(
-      {required this.id,
-      required this.name,
-      @JsonKey(name: 'display_name') required this.displayName,
-      required this.author,
-      required this.position,
-      @JsonKey(name: 'occurrences_count') required this.occurrencesCount,
-      required this.details,
-      required this.image,
-      @JsonKey(name: 'path_length') required this.pathLength});
+      {@HiveField(0)
+          required this.id,
+      @HiveField(1)
+          required this.name,
+      @JsonKey(name: 'display_name')
+      @HiveField(2)
+          required this.displayName,
+      @HiveField(3)
+          required this.author,
+      @HiveField(4)
+          required this.position,
+      @JsonKey(name: 'occurrences_count')
+      @HiveField(5)
+          required this.occurrencesCount,
+      @HiveField(6)
+          required this.details,
+      @HiveField(7)
+          this.image,
+      @JsonKey(name: 'path_length')
+      @HiveField(8)
+          required this.pathLength});
 
   factory _$_Trail.fromJson(Map<String, dynamic> json) =>
       _$$_TrailFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final String name;
   @override
   @JsonKey(name: 'display_name')
+  @HiveField(2)
   final String displayName;
   @override
+  @HiveField(3)
   final String author;
   @override
+  @HiveField(4)
   final StartEndPosition position;
   @override
   @JsonKey(name: 'occurrences_count')
+  @HiveField(5)
   final int occurrencesCount;
   @override
+  @HiveField(6)
   final String details;
   @override
-  final Image image;
+  @HiveField(7)
+  final Image? image;
   @override
   @JsonKey(name: 'path_length')
+  @HiveField(8)
   final int pathLength;
 
   @override
@@ -445,186 +482,62 @@ class _$_Trail implements _Trail {
 
 abstract class _Trail implements Trail {
   const factory _Trail(
-      {required final int id,
-      required final String name,
-      @JsonKey(name: 'display_name') required final String displayName,
-      required final String author,
-      required final StartEndPosition position,
-      @JsonKey(name: 'occurrences_count') required final int occurrencesCount,
-      required final String details,
-      required final Image image,
-      @JsonKey(name: 'path_length') required final int pathLength}) = _$_Trail;
+      {@HiveField(0)
+          required final int id,
+      @HiveField(1)
+          required final String name,
+      @JsonKey(name: 'display_name')
+      @HiveField(2)
+          required final String displayName,
+      @HiveField(3)
+          required final String author,
+      @HiveField(4)
+          required final StartEndPosition position,
+      @JsonKey(name: 'occurrences_count')
+      @HiveField(5)
+          required final int occurrencesCount,
+      @HiveField(6)
+          required final String details,
+      @HiveField(7)
+          final Image? image,
+      @JsonKey(name: 'path_length')
+      @HiveField(8)
+          required final int pathLength}) = _$_Trail;
 
   factory _Trail.fromJson(Map<String, dynamic> json) = _$_Trail.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(name: 'display_name')
+  @HiveField(2)
   String get displayName;
   @override
+  @HiveField(3)
   String get author;
   @override
+  @HiveField(4)
   StartEndPosition get position;
   @override
   @JsonKey(name: 'occurrences_count')
+  @HiveField(5)
   int get occurrencesCount;
   @override
+  @HiveField(6)
   String get details;
   @override
-  Image get image;
+  @HiveField(7)
+  Image? get image;
   @override
   @JsonKey(name: 'path_length')
+  @HiveField(8)
   int get pathLength;
   @override
   @JsonKey(ignore: true)
   _$$_TrailCopyWith<_$_Trail> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Image _$ImageFromJson(Map<String, dynamic> json) {
-  return _Image.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Image {
-  int get id => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ImageCopyWith<Image> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ImageCopyWith<$Res> {
-  factory $ImageCopyWith(Image value, $Res Function(Image) then) =
-      _$ImageCopyWithImpl<$Res>;
-  $Res call({int id, String url});
-}
-
-/// @nodoc
-class _$ImageCopyWithImpl<$Res> implements $ImageCopyWith<$Res> {
-  _$ImageCopyWithImpl(this._value, this._then);
-
-  final Image _value;
-  // ignore: unused_field
-  final $Res Function(Image) _then;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? url = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_ImageCopyWith<$Res> implements $ImageCopyWith<$Res> {
-  factory _$$_ImageCopyWith(_$_Image value, $Res Function(_$_Image) then) =
-      __$$_ImageCopyWithImpl<$Res>;
-  @override
-  $Res call({int id, String url});
-}
-
-/// @nodoc
-class __$$_ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res>
-    implements _$$_ImageCopyWith<$Res> {
-  __$$_ImageCopyWithImpl(_$_Image _value, $Res Function(_$_Image) _then)
-      : super(_value, (v) => _then(v as _$_Image));
-
-  @override
-  _$_Image get _value => super._value as _$_Image;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? url = freezed,
-  }) {
-    return _then(_$_Image(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Image implements _Image {
-  const _$_Image({required this.id, required this.url});
-
-  factory _$_Image.fromJson(Map<String, dynamic> json) =>
-      _$$_ImageFromJson(json);
-
-  @override
-  final int id;
-  @override
-  final String url;
-
-  @override
-  String toString() {
-    return 'Image(id: $id, url: $url)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Image &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.url, url));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(url));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_ImageCopyWith<_$_Image> get copyWith =>
-      __$$_ImageCopyWithImpl<_$_Image>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ImageToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Image implements Image {
-  const factory _Image({required final int id, required final String url}) =
-      _$_Image;
-
-  factory _Image.fromJson(Map<String, dynamic> json) = _$_Image.fromJson;
-
-  @override
-  int get id;
-  @override
-  String get url;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ImageCopyWith<_$_Image> get copyWith =>
       throw _privateConstructorUsedError;
 }

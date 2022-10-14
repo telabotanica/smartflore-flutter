@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
-import 'package:smartflore/utils/convert.dart';
 
 class MarkerImage extends StatelessWidget {
   final String url;
@@ -20,8 +19,7 @@ class MarkerImage extends StatelessWidget {
       ),
       child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(100.0)),
-          child: ImageWithLoader(
-              url: '${StringUtils.removeExtension(url)}CRX2S.jpg')),
+          child: ImageWithLoader(url: url, imageFormat: 'CRX2S')),
     );
   }
 }

@@ -1,41 +1,35 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 
 part 'trails_model.freezed.dart';
 part 'trails_model.g.dart';
 
 @freezed
-abstract class TrailList with _$TrailList {
-  const factory TrailList({
-    List<Trail>? trailList,
-  }) = _TrailList;
-  factory TrailList.fromJson(Map<String, dynamic> json) =>
-      _$TrailListFromJson(json);
+class Trails with _$Trails {
+  @HiveType(typeId: 1, adapterName: 'TrailsAdapter')
+  const factory Trails({
+    @HiveField(0) List<Trail>? trailList,
+  }) = _Trails;
+  factory Trails.fromJson(Map<String, dynamic> json) => _$TrailsFromJson(json);
 }
 
 @freezed
-abstract class Trail with _$Trail {
+class Trail with _$Trail {
+  @HiveType(typeId: 2, adapterName: 'TrailAdapter')
   const factory Trail({
-    required int id,
-    required String name,
-    @JsonKey(name: 'display_name') required String displayName,
-    required String author,
-    required StartEndPosition position,
-    @JsonKey(name: 'occurrences_count') required int occurrencesCount,
-    required String details,
-    required Image image,
-    @JsonKey(name: 'path_length') required int pathLength,
+    @HiveField(0) required int id,
+    @HiveField(1) required String name,
+    @JsonKey(name: 'display_name') @HiveField(2) required String displayName,
+    @HiveField(3) required String author,
+    @HiveField(4) required StartEndPosition position,
+    @JsonKey(name: 'occurrences_count')
+    @HiveField(5)
+        required int occurrencesCount,
+    @HiveField(6) required String details,
+    @HiveField(7) Image? image,
+    @JsonKey(name: 'path_length') @HiveField(8) required int pathLength,
   }) = _Trail;
 
   factory Trail.fromJson(Map<String, dynamic> json) => _$TrailFromJson(json);
-}
-
-@freezed
-abstract class Image with _$Image {
-  const factory Image({
-    required int id,
-    required String url,
-  }) = _Image;
-
-  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
 }

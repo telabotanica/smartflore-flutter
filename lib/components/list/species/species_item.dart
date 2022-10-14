@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
-import 'package:smartflore/utils/convert.dart';
 
 class SpeciesItem extends StatelessWidget {
   final int index;
@@ -29,7 +28,9 @@ class SpeciesItem extends StatelessWidget {
             child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(6.0)),
                 child: ImageWithLoader(
-                    url: '${StringUtils.removeExtension(image)}XS.jpg')),
+                  url: image,
+                  imageFormat: 'XS',
+                )),
           ),
           const SizedBox(width: 16),
           Expanded(
