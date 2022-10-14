@@ -88,7 +88,7 @@ class TrailsList extends StatelessWidget {
                       id: trail.id,
                       title: trail.name,
                       length: trail.pathLength,
-                      image: trail.image.url,
+                      image: trail.image!.url,
                       position: trail.position.start,
                       nbOccurence: trail.occurrencesCount,
                       isDownloaded:

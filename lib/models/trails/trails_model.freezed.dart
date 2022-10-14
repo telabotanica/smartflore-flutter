@@ -176,7 +176,7 @@ mixin _$Trail {
   @HiveField(6)
   String get details => throw _privateConstructorUsedError;
   @HiveField(7)
-  Image get image => throw _privateConstructorUsedError;
+  Image? get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'path_length')
   @HiveField(8)
   int get pathLength => throw _privateConstructorUsedError;
@@ -198,11 +198,11 @@ abstract class $TrailCopyWith<$Res> {
       @HiveField(4) StartEndPosition position,
       @JsonKey(name: 'occurrences_count') @HiveField(5) int occurrencesCount,
       @HiveField(6) String details,
-      @HiveField(7) Image image,
+      @HiveField(7) Image? image,
       @JsonKey(name: 'path_length') @HiveField(8) int pathLength});
 
   $StartEndPositionCopyWith<$Res> get position;
-  $ImageCopyWith<$Res> get image;
+  $ImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -257,7 +257,7 @@ class _$TrailCopyWithImpl<$Res> implements $TrailCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image,
+              as Image?,
       pathLength: pathLength == freezed
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
@@ -273,8 +273,12 @@ class _$TrailCopyWithImpl<$Res> implements $TrailCopyWith<$Res> {
   }
 
   @override
-  $ImageCopyWith<$Res> get image {
-    return $ImageCopyWith<$Res>(_value.image, (value) {
+  $ImageCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $ImageCopyWith<$Res>(_value.image!, (value) {
       return _then(_value.copyWith(image: value));
     });
   }
@@ -293,13 +297,13 @@ abstract class _$$_TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
       @HiveField(4) StartEndPosition position,
       @JsonKey(name: 'occurrences_count') @HiveField(5) int occurrencesCount,
       @HiveField(6) String details,
-      @HiveField(7) Image image,
+      @HiveField(7) Image? image,
       @JsonKey(name: 'path_length') @HiveField(8) int pathLength});
 
   @override
   $StartEndPositionCopyWith<$Res> get position;
   @override
-  $ImageCopyWith<$Res> get image;
+  $ImageCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -355,7 +359,7 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Image,
+              as Image?,
       pathLength: pathLength == freezed
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
@@ -386,7 +390,7 @@ class _$_Trail implements _Trail {
       @HiveField(6)
           required this.details,
       @HiveField(7)
-          required this.image,
+          this.image,
       @JsonKey(name: 'path_length')
       @HiveField(8)
           required this.pathLength});
@@ -419,7 +423,7 @@ class _$_Trail implements _Trail {
   final String details;
   @override
   @HiveField(7)
-  final Image image;
+  final Image? image;
   @override
   @JsonKey(name: 'path_length')
   @HiveField(8)
@@ -495,7 +499,7 @@ abstract class _Trail implements Trail {
       @HiveField(6)
           required final String details,
       @HiveField(7)
-          required final Image image,
+          final Image? image,
       @JsonKey(name: 'path_length')
       @HiveField(8)
           required final int pathLength}) = _$_Trail;
@@ -527,7 +531,7 @@ abstract class _Trail implements Trail {
   String get details;
   @override
   @HiveField(7)
-  Image get image;
+  Image? get image;
   @override
   @JsonKey(name: 'path_length')
   @HiveField(8)

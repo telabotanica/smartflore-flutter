@@ -58,7 +58,7 @@ class TrailAdapter extends TypeAdapter<_$_Trail> {
       position: fields[4] as StartEndPosition,
       occurrencesCount: fields[5] as int,
       details: fields[6] as String,
-      image: fields[7] as Image,
+      image: fields[7] as Image?,
       pathLength: fields[8] as int,
     );
   }
@@ -121,7 +121,9 @@ _$_Trail _$$_TrailFromJson(Map<String, dynamic> json) => _$_Trail(
           StartEndPosition.fromJson(json['position'] as Map<String, dynamic>),
       occurrencesCount: json['occurrences_count'] as int,
       details: json['details'] as String,
-      image: Image.fromJson(json['image'] as Map<String, dynamic>),
+      image: json['image'] == null
+          ? null
+          : Image.fromJson(json['image'] as Map<String, dynamic>),
       pathLength: json['path_length'] as int,
     );
 

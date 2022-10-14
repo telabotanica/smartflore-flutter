@@ -33,7 +33,6 @@ dependencies:
   flutter_svg: ^1.0.3
   flutter_image: ^4.1.0
   latlong2: ^0.8.1
-  shared_preferences: ^2.0.13
   equatable: ^2.0.3
   http: ^0.13.4
   json_annotation: ^4.4.0
@@ -58,6 +57,7 @@ dependencies:
   hive_flutter: ^1.1.0
   flutter_cache_manager: ^3.3.0
   connectivity_plus: ^2.3.9
+  another_flushbar: ^1.12.29
 
 
 
