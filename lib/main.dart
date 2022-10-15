@@ -55,11 +55,13 @@ void main() async {
   Hive.registerAdapter(t.SectionAPIAdapter());
   Hive.registerAdapter(ConnectivityResultAdapter());
 
-  await Hive.openBox('savedTrails');
   Box<Trails> trailsBox = await Hive.openBox('trails');
   Box<TrailDetails> trailBox = await Hive.openBox('trail');
   Box<t.Taxon> taxonBox = await Hive.openBox('taxon');
 
+  Box<Map<int, bool>> localImagesBox = await Hive.openBox('localImages');
+
+  Box<bool> saveTrailBox = await Hive.openBox('savedTrails');
   await Hive.openBox('appConfig');
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -95,7 +97,8 @@ void main() async {
           create: (context) => TrailBloc(
               trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),
       BlocProvider<SaveTrailBloc>(
-          create: (context) => SaveTrailBloc(trailRepo, trailBox, taxonBox)),
+          create: (context) => SaveTrailBloc(
+              trailRepo, trailBox, taxonBox, saveTrailBox, localImagesBox)),
       BlocProvider<TrailsBloc>(
           create: (context) => TrailsBloc(trailsRepo, trailsBox)),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),

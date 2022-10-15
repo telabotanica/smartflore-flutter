@@ -15,11 +15,12 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
   final TrailRepo trailRepo;
   final Box<TrailDetails> trailBox;
   final Box<t.Taxon> taxonBox;
+  final Box<bool> savedTrailBox;
+  final Box<Map<int, bool>> localImagesBox;
 
-  SaveTrailBloc(this.trailRepo, this.trailBox, this.taxonBox)
+  SaveTrailBloc(this.trailRepo, this.trailBox, this.taxonBox,
+      this.savedTrailBox, this.localImagesBox)
       : super(const _Initial()) {
-    late Box boxSavedTrail = Hive.box('savedTrails');
-
     /// SAVE TRAIL
     on<SaveTrailEvent>((event, emit) async {
       if (event is _SaveTrailLocally) {
@@ -48,12 +49,12 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
 
           int nbImageSaved = 0;
           for (var image in imageList) {
-            nbImageSaved += await _saveImage(image);
+            nbImageSaved += await _saveImage(image, batchedTrail.trail.id);
             emit(SaveTrailState.loading(
                 nbImageSaved: nbImageSaved, nbImages: imageList.length));
           }
 
-          boxSavedTrail.put('trail_${event.id}', true);
+          savedTrailBox.put('trail_${event.id}', true);
 
           emit(const SaveTrailState.loaded());
           await Future.delayed(const Duration(seconds: 2), () {})
@@ -79,22 +80,42 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
         }
 
         for (var image in imageList) {
-          await _deleteImage(image);
+          await _deleteImage(image, batchedTrail.trail.id);
         }
-        boxSavedTrail.delete('trail_${event.id}');
+        savedTrailBox.delete('trail_${event.id}');
 
         emit(const SaveTrailState.unSaveComplete());
       }
     });
   }
 
-  Future<int> _saveImage(t.ImageAPI image) async {
+  Future<int> _saveImage(t.ImageAPI image, int trailId) async {
+    Map<int, bool>? trailsMap = localImagesBox.get(image.url);
+    if (trailsMap != null) {
+      if (trailsMap[trailId] == null) {
+        trailsMap[trailId] = true;
+        localImagesBox.put(image.url, trailsMap);
+      } else {
+        print('already saved ${image.url}');
+      }
+    } else {
+      trailsMap = {};
+      trailsMap[trailId] = true;
+      localImagesBox.put(image.url, trailsMap);
+    }
     await DefaultCacheManager().getSingleFile(image.url, key: image.url);
     return 1;
   }
 
-  Future<int> _deleteImage(t.ImageAPI image) async {
-    await DefaultCacheManager().removeFile(image.url);
-    return -1;
+  Future<int> _deleteImage(t.ImageAPI image, int trailId) async {
+    Map<int, bool>? trailsMap = localImagesBox.get(image.url);
+    if (trailsMap != null && trailsMap[trailId] != null) {
+      trailsMap.remove(trailId);
+      if (trailsMap.isEmpty) {
+        await DefaultCacheManager().removeFile(image.url);
+        return -1;
+      }
+    }
+    return 0;
   }
 }
