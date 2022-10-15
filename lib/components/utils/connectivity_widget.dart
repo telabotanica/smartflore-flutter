@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ConnectivityWidget extends StatefulWidget {
   final Widget child;
@@ -105,22 +106,22 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
           ),
         ),
         padding: const EdgeInsets.all(16),
-        titleText: const Padding(
-          padding: EdgeInsets.only(left: 8.0),
+        titleText: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            'Vous semblez être hors connexion',
-            style: TextStyle(
+            AppLocalizations.of(context)!.toaster_offline_title,
+            style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
                 color: Colors.white,
                 fontFamily: 'ShadowsIntoLightTwo'),
           ),
         ),
-        messageText: const Padding(
-          padding: EdgeInsets.only(left: 8.0),
+        messageText: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            'Certaines actions sont indisponibles',
-            style: TextStyle(
+            AppLocalizations.of(context)!.toaster_offline_desc,
+            style: const TextStyle(
                 fontSize: 14.0,
                 color: Colors.white,
                 fontFamily: 'ShadowsIntoLightTwo'),

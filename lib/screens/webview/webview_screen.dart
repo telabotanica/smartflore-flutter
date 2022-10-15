@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WebViewScreen extends StatefulWidget {
   final String? url;
@@ -39,7 +40,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
                 SizedBox(
                   width: 200,
                   child: Text(
-                    'Ressource non disponnible hors ligne',
+                    AppLocalizations.of(context)!.resource_unavailable,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headline5,
                   ),

@@ -3,6 +3,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/utils/convert.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GalleryWrapper extends StatefulWidget {
   final List<ImageAPI> images;
@@ -78,7 +79,7 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
                         color: Colors.black.withOpacity(0.4),
                         padding: const EdgeInsets.fromLTRB(5, 0, 5, 2),
                         child: Text(
-                            'Crédits : ${widget.images[currentIndex].author.toString()}',
+                            '${AppLocalizations.of(context)!.credits} : ${widget.images[currentIndex].author.toString()}',
                             style: TextStyle(
                                 color:
                                     Theme.of(context).colorScheme.background)),
