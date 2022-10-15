@@ -7,6 +7,7 @@ import 'package:smartflore/components/icons/download_icon.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
 import 'package:smartflore/components/progress_bar.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DownloadCard extends StatefulWidget {
   final int trailId;
@@ -61,7 +62,7 @@ class _DownloadCardState extends State<DownloadCard> {
           children: [
             Expanded(
               child: Text(
-                'Options du sentier',
+                AppLocalizations.of(context)!.trail_options,
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
@@ -104,12 +105,12 @@ class _DownloadCardState extends State<DownloadCard> {
                     children: [
                       const DownloadIcon(),
                       const SizedBox(width: 6),
-                      Text('Mode Hors ligne',
+                      Text(AppLocalizations.of(context)!.offline,
                           style: Theme.of(context).textTheme.headline6),
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text('Sauvegarder la fiche sentier sur votre appareil',
+                  Text(AppLocalizations.of(context)!.offline_desc,
                       style: Theme.of(context).textTheme.caption)
                 ],
               ),

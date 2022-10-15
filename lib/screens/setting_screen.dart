@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartflore/screens/webview/webview_screen_ctrl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsItemVO {
   final String label;
@@ -42,7 +43,7 @@ class SettingsScreen extends StatelessWidget {
             elevation: 10,
             centerTitle: false,
             titleSpacing: 0.0,
-            title: Text('Paramètres',
+            title: Text(AppLocalizations.of(context)!.params,
                 style: Theme.of(context).textTheme.bodyText1)),
         body: ListView.builder(
           padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
