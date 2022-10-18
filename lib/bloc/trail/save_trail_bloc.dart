@@ -96,7 +96,7 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
         trailsMap[trailId] = true;
         localImagesBox.put(image.url, trailsMap);
       } else {
-        print('already saved ${image.url}');
+        //print('already saved ${image.url}');
       }
     } else {
       trailsMap = {};
@@ -112,7 +112,7 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
     if (trailsMap != null && trailsMap[trailId] != null) {
       trailsMap.remove(trailId);
       if (trailsMap.isEmpty) {
-        print('delete image ${image.url}');
+        //print('delete image ${image.url}');
         await DefaultCacheManager().removeFile(image.url);
         return -1;
       }
