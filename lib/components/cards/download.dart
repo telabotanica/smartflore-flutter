@@ -33,7 +33,7 @@ class DownloadCard extends StatefulWidget {
 
 class _DownloadCardState extends State<DownloadCard> {
   late bool isSelected;
-  late Box<dynamic> savedTrailsBox;
+  late Box<bool> savedTrailsBox;
 
   @override
   void initState() {

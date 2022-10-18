@@ -28,7 +28,7 @@ class MapUI extends StatefulWidget {
 class _MapUIState extends State<MapUI> {
   GlobalKey trailPreviewUIKey = GlobalKey();
   double trailPreviewUIHeight = 0;
-  late Box<dynamic> savedTrailsBox;
+  late Box<bool> savedTrailsBox;
   bool isPreviewLocallySaved = false;
 
   @override
