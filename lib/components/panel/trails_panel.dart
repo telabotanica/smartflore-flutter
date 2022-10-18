@@ -22,7 +22,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
   bool isPanelOpened = false;
   bool isPanelMoving = false;
   MapMode _mapMode = MapMode.overview;
-  late Box<dynamic> savedTrailsBox;
+  late Box<bool> savedTrailsBox;
 
   @override
   void initState() {

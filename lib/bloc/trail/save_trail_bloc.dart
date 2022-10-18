@@ -112,6 +112,7 @@ class SaveTrailBloc extends Bloc<SaveTrailEvent, SaveTrailState> {
     if (trailsMap != null && trailsMap[trailId] != null) {
       trailsMap.remove(trailId);
       if (trailsMap.isEmpty) {
+        print('delete image ${image.url}');
         await DefaultCacheManager().removeFile(image.url);
         return -1;
       }
