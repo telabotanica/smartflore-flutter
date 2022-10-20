@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smartflore/components/form/text-input.dart';
+import 'package:smartflore/components/form/textinput.dart';
 
 class TextFieldWithTitle extends StatelessWidget {
   final String title;

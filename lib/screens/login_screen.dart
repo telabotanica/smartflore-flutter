@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smartflore/components/form/text-input-with-title.dart';
+import 'package:smartflore/components/form/textinput_with_title.dart';
 import 'package:smartflore/components/icons/logo_icon.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -62,9 +62,7 @@ class LoginScreen extends StatelessWidget {
                             .textTheme
                             .headline6
                             ?.copyWith(color: Colors.black.withOpacity(0.4)),
-                        onSaved: (value) {
-                          print('onSaved email $value');
-                        },
+                        onSaved: (value) {},
                       ),
                       const SizedBox(height: 16),
                       TextFieldWithTitle(
@@ -78,9 +76,7 @@ class LoginScreen extends StatelessWidget {
                             .textTheme
                             .headline6
                             ?.copyWith(color: Colors.black.withOpacity(0.4)),
-                        onSaved: (value) {
-                          print('onSaved password $value');
-                        },
+                        onSaved: (value) {},
                       ),
                       const SizedBox(height: 25),
                       SizedBox(
