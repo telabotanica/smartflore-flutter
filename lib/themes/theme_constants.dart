@@ -4,8 +4,8 @@ ThemeData lightTheme = ThemeData(
   textTheme: const TextTheme(
     headline1: TextStyle(
         color: Color(0xFF12161E),
-        fontSize: 24,
-        fontWeight: FontWeight.w700,
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
         fontFamily: 'SourceSansPro'),
     headline2: TextStyle(
         color: Color(0xFF12161E),

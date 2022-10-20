@@ -25,6 +25,7 @@ import 'package:smartflore/repo/trail/trail_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
+import 'package:smartflore/screens/login_screen.dart';
 import 'package:smartflore/screens/map_screen.dart';
 import 'package:smartflore/screens/setting_screen.dart';
 import 'package:smartflore/screens/taxon/taxon_screen.dart';
@@ -160,7 +161,7 @@ class _AppState extends State<App> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate
         },
-        initialRoute: '/',
+        initialRoute: '/login',
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/':
@@ -184,6 +185,13 @@ class _AppState extends State<App> {
                     vernacularName: taxonScreenArgs.taxonVernacularName,
                     scientificName: taxonScreenArgs.taxonScientificName,
                   ));
+            case '/login':
+              return Transitions(
+                  transitionType: TransitionType.slideLeft,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: const LoginScreen());
             case '/settings':
               return Transitions(
                   transitionType: TransitionType.slideLeft,
