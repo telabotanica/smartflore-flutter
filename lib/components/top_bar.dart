@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/cards/card_bg.dart';
+import 'package:smartflore/components/icons/logo_icon.dart';
 import 'package:smartflore/components/map/map_widget.dart';
-import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class TopBar extends StatelessWidget {
   final String title;
@@ -24,25 +24,9 @@ class TopBar extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8),
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(6)),
-                          color: Theme.of(context).colorScheme.secondary,
-                        ),
-                        child: Center(
-                          child: Icon(
-                            SmartFloreIcons.logoIcon,
-                            size: 25,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                        ),
-                      ),
-                    ),
+                    const Padding(
+                        padding: EdgeInsets.only(left: 8, right: 8),
+                        child: LogoIcon()),
                     // Tricky way to make the two texts closer from each other
                     Expanded(
                       child: Align(
