@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
+import 'package:smartflore/components/form/textinput_with_title.dart';
 import 'package:smartflore/components/modal/modal_title.dart';
 
 class CreateTitleModal extends StatelessWidget {
@@ -14,7 +15,15 @@ class CreateTitleModal extends StatelessWidget {
           title: "Création d'un nouveau sentier",
           onClose: onClose,
         ),
-        const RoundedButton(label: 'Suivant')
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 20, 0, 15),
+          child: TextFieldWithTitle(
+            title: 'Titre du sentier',
+            index: 0,
+            titleStyle: Theme.of(context).textTheme.headline6,
+          ),
+        ),
+        const SizedBox(height: 46, child: RoundedButton(label: 'Suivant'))
       ],
     );
   }

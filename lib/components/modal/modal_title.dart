@@ -15,7 +15,7 @@ class ModalTitle extends StatelessWidget {
           Expanded(
             child: Text(
               title,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.left,
               style: Theme.of(context)
                   .textTheme
                   .headline5!
