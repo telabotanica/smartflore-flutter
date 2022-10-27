@@ -26,6 +26,7 @@ import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
 import 'package:smartflore/screens/login_screen.dart';
+import 'package:smartflore/screens/create/create_screen.dart';
 import 'package:smartflore/screens/map_screen.dart';
 import 'package:smartflore/screens/setting_screen.dart';
 import 'package:smartflore/screens/taxon/taxon_screen.dart';
@@ -69,20 +70,17 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   final TrailsRepo trailsRepo = TrailsRepo(
-      trailsApiClient: TrailsApiClient(
-          httpClient: http.Client(),
-          baseUrl: 'https://tela-botanica.org/smartflore-services/trails'));
+      trailsApiClient:
+          TrailsApiClient(httpClient: http.Client(), baseUrl: 'https://tela-botanica.org/smartflore-services/trails'));
   final TrailRepo trailRepo = TrailRepo(
-      trailApiClient: TrailApiClient(
-          httpClient: http.Client(),
-          baseUrl: 'https://tela-botanica.org/smartflore-services'));
+      trailApiClient:
+          TrailApiClient(httpClient: http.Client(), baseUrl: 'https://tela-botanica.org/smartflore-services'));
 
   final WalkRepo walkRepo = WalkRepo();
 
   final TaxonRepo taxonRepo = TaxonRepo(
-      taxonApiClient: TaxonApiClient(
-          httpClient: http.Client(),
-          baseUrl: 'https://tela-botanica.org/smartflore-services/taxon'));
+      taxonApiClient:
+          TaxonApiClient(httpClient: http.Client(), baseUrl: 'https://tela-botanica.org/smartflore-services/taxon'));
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
 
@@ -94,22 +92,16 @@ void main() async {
 
     child: MultiBlocProvider(providers: [
       BlocProvider<MapBloc>(create: (context) => MapBloc()),
-      BlocProvider<TrailBloc>(
-          create: (context) => TrailBloc(
-              trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),
+      BlocProvider<TrailBloc>(create: (context) => TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),
       BlocProvider<SaveTrailBloc>(
-          create: (context) => SaveTrailBloc(
-              trailRepo, trailBox, taxonBox, saveTrailBox, localImagesBox)),
-      BlocProvider<TrailsBloc>(
-          create: (context) => TrailsBloc(trailsRepo, trailsBox)),
+          create: (context) => SaveTrailBloc(trailRepo, trailBox, taxonBox, saveTrailBox, localImagesBox)),
+      BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo, trailsBox)),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
-      BlocProvider<TaxonBloc>(
-          create: (context) => TaxonBloc(taxonRepo, taxonBox)),
+      BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo, taxonBox)),
       BlocProvider<GeolocationBloc>(
-          create: (context) => GeolocationBloc(
-              geolocationRepo: geolocationRepo,
-              mapBloc: BlocProvider.of<MapBloc>(context))
-            ..add(RequestLocationPermissionEvent())),
+          create: (context) =>
+              GeolocationBloc(geolocationRepo: geolocationRepo, mapBloc: BlocProvider.of<MapBloc>(context))
+                ..add(RequestLocationPermissionEvent())),
     ], child: const App()),
   ));
 }
@@ -172,8 +164,7 @@ class _AppState extends State<App> {
                   reverseCurve: Curves.easeOut,
                   newScreen: const MapScreen());
             case '/taxon':
-              TaxonScreenArguments taxonScreenArgs =
-                  settings.arguments as TaxonScreenArguments;
+              TaxonScreenArguments taxonScreenArgs = settings.arguments as TaxonScreenArguments;
               return Transitions(
                   transitionType: TransitionType.slideLeft,
                   duration: const Duration(milliseconds: 300),
@@ -199,9 +190,15 @@ class _AppState extends State<App> {
                   curve: Curves.easeOutQuad,
                   reverseCurve: Curves.easeOut,
                   newScreen: SettingsScreen());
+            case '/create':
+              return Transitions(
+                  transitionType: TransitionType.slideLeft,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: const CreateScreen());
             case '/gallery-fullScreen':
-              GalleryScreenArguments data =
-                  settings.arguments as GalleryScreenArguments;
+              GalleryScreenArguments data = settings.arguments as GalleryScreenArguments;
               return Transitions(
                   transitionType: TransitionType.fade,
                   duration: const Duration(milliseconds: 300),

@@ -68,7 +68,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
           parallaxEnabled: true,
           parallaxOffset: .5,
           maxHeight: screenH * 0.8,
-          minHeight: 100 + bottomPadding,
+          minHeight: (_mapMode == MapMode.create) ? 0 : 100 + bottomPadding,
           isDraggable: widget.isDraggable,
           onPanelOpened: () {
             setState(() {

@@ -16,6 +16,10 @@
 ///         Author:    Daniel Bruce
 ///         License:   SIL (http://scripts.sil.org/OFL)
 ///         Homepage:  http://www.entypo.com
+/// * Material Design Icons, Copyright (C) Google, Inc
+///         Author:    Google
+///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+///         Homepage:  https://design.google.com/icons/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -69,8 +73,12 @@ class SmartFloreIcons {
       IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData iconForm =
       IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData add_circle_outline =
+      IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData wifioff =
       IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData addMarker =
+      IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData download =
       IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData downloaded =

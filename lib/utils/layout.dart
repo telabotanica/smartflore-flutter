@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 
 class LayoutUtils {
-  static Size? getSizes(GlobalKey key) {
+  static Size getSizes(GlobalKey key) {
     if (key.currentContext != null) {
-      final RenderBox renderBoxRed =
+      final RenderBox renderBox =
           key.currentContext!.findRenderObject() as RenderBox;
-      final sizeRed = renderBoxRed.size;
+      final sizeRed = renderBox.size;
       return Size(sizeRed.width, sizeRed.height);
     } else {
-      return null;
+      return Size(0, 0);
     }
   }
 
   static Position getPositions(GlobalKey key) {
-    final RenderBox renderBoxRed =
+    final RenderBox renderBox =
         key.currentContext!.findRenderObject() as RenderBox;
-    final positionRed = renderBoxRed.localToGlobal(Offset.zero);
+    final positionRed = renderBox.localToGlobal(Offset.zero);
+    print('pos ${positionRed.dy}');
     return Position(positionRed.dx, positionRed.dy);
   }
 }

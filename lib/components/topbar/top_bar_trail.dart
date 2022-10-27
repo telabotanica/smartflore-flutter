@@ -5,11 +5,11 @@ import 'package:smartflore/components/cards/card_bg.dart';
 import 'package:smartflore/components/icons/logo_icon.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 
-class TopBar extends StatelessWidget {
+class TopBarTrail extends StatelessWidget {
   final String title;
   final String author;
 
-  const TopBar({Key? key, required this.title, required this.author})
+  const TopBarTrail({Key? key, required this.title, required this.author})
       : super(key: key);
 
   @override

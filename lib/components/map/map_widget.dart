@@ -16,7 +16,7 @@ import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
-enum MapMode { overview, preview, trail }
+enum MapMode { overview, preview, trail, create }
 
 class MapWidget extends StatefulWidget {
   const MapWidget({Key? key}) : super(key: key);
@@ -124,7 +124,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             if (state is TrailLoadedState) {
               BlocProvider.of<MapBloc>(context)
                   .add(const ChangeMapMode(mapMode: MapMode.preview));
-
               setState(() {
                 trailData = state.trail;
 
@@ -213,6 +212,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             if (mapMode == MapMode.overview) ...setupOverviewMode(),
             if (mapMode == MapMode.preview) ...setupPreviewMode(),
             if (mapMode == MapMode.trail) ...setupFocusMode(),
+            if (mapMode == MapMode.create) ...setupCreateMode(),
           ],
         ),
       ),
@@ -350,6 +350,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
               ? getOrderedMarkerList(trailData!.occurrences)
               : []),
     ];
+  }
+
+  List<LayerOptions> setupCreateMode() {
+    return [];
   }
 
   List<Marker> getOrderedMarkerList(List<Occurrence> occurrences) {

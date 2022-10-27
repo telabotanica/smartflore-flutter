@@ -1,0 +1,53 @@
+{
+    "name": "Arbres Remarquables",
+    "author": "Tela Botanica", 
+    "position": {
+      "start": {
+        "lat": 43.610769,
+        "lon": 3.876716
+      },
+      "end": {
+        "lat": 43.610769,
+        "lon": 3.876716
+      }
+    },
+    "occurrences": [
+      {
+        "position": {
+          "lat": 43.610769,
+          "lon": 3.876716
+        },
+        "taxon": {
+          "name_id": 141
+        },
+        "images": [
+          {
+            "id": 131269  
+          }
+        ]
+      }
+    ],
+    "path": {
+      "coordinates": [
+        {
+          "lat": 43.610769,
+          "lon": 3.876716
+        },
+        {
+          "lat": 43.610769,
+          "lon": 3.876716
+        },
+        {
+          "lat": 43.610769,
+          "lon": 3.876716
+        },
+        {
+          "lat": 43.610769,
+          "lon": 3.876716
+        }
+      ]
+    },
+    "path_length": 420,
+    "prm": -1,
+    "best_season": [false, true, true, false]
+  }

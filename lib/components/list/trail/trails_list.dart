@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/components/map/map_widget.dart';
+import 'package:smartflore/components/modal.dart';
+import 'package:smartflore/components/modal/create_title.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
@@ -28,6 +32,29 @@ class TrailsList extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Center(
+            child: OutlinedButton.icon(
+              onPressed: () {
+                BlocProvider.of<MapBloc>(context)
+                    .add(const ChangeMapMode(mapMode: MapMode.create));
+                showDialog(
+                    context: context,
+                    builder: (context) => Modal(CreateTitleModal(onClose: () {
+                          BlocProvider.of<MapBloc>(context).add(
+                              const ChangeMapMode(mapMode: MapMode.overview));
+                          Navigator.of(context).pop();
+                        })),
+                    barrierColor: Colors.black.withOpacity(0.1));
+              },
+              icon: Icon(
+                Icons.add_circle_outline,
+                size: 18,
+                color: Theme.of(context).textTheme.bodyText1?.color,
+              ),
+              label: Text(AppLocalizations.of(context)!.btn_create_trail,
+                  style: Theme.of(context).textTheme.bodyText1),
+            ),
+          ),
           SizedBox(
               width: 42,
               height: 42,
