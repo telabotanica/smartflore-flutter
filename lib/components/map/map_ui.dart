@@ -5,7 +5,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
-import 'package:smartflore/components/buttons/rounded-button.dart';
+import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/topbar/top_bar_create.dart';
@@ -42,7 +42,6 @@ class _MapUIState extends State<MapUI> {
 
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.height);
     return Stack(
       children: [
         const MapWidget(),

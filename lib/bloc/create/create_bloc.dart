@@ -8,7 +8,7 @@ part 'create_state.dart';
 part 'create_bloc.freezed.dart';
 
 class CreateBloc extends Bloc<CreateEvent, CreateState> {
-  CreateBloc() : super(_Initial()) {
+  CreateBloc() : super(const _Initial()) {
     on<CreateEvent>((event, emit) {
       // TODO: implement event handler
     });

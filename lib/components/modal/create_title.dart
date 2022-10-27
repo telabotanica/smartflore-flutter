@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smartflore/components/buttons/rounded-button.dart';
+import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/modal/modal_title.dart';
 
 class CreateTitleModal extends StatelessWidget {

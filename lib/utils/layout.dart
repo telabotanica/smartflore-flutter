@@ -16,7 +16,6 @@ class LayoutUtils {
     final RenderBox renderBox =
         key.currentContext!.findRenderObject() as RenderBox;
     final positionRed = renderBox.localToGlobal(Offset.zero);
-    print('pos ${positionRed.dy}');
     return Position(positionRed.dx, positionRed.dy);
   }
 }

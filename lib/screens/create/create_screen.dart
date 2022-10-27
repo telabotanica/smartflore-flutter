@@ -1,4 +1,4 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 
 class CreateScreen extends StatelessWidget {
