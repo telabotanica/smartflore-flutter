@@ -15,8 +15,10 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
   final GeolocationRepo _geolocationRepo;
   final MapBloc _mapBloc;
   late StreamSubscription mapBlocSub;
-  late Stream<Position>? locationStream;
+  Stream<Position>? locationStream;
   FollowMode? followMode;
+  final StreamController<Position> _streamController =
+      StreamController<Position>();
 
   GeolocationBloc(
       {required GeolocationRepo geolocationRepo, required MapBloc mapBloc})
@@ -55,17 +57,22 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
           },
           requestCurrentLocationStream: () async {
             emit(const GeolocationState.loading());
-            locationStream = await _geolocationRepo.getLocationStream();
-            if (locationStream != null) {
-              locationStream!.listen((Position position) {
+            if (locationStream == null) {
+              locationStream ??= await _geolocationRepo.getLocationStream();
+              if (locationStream != null) {
+                _streamController.addStream(locationStream!);
+              }
+            }
+            if (!_streamController.hasListener) {
+              _streamController.stream.listen((Position position) {
                 add(GeolocationEvent.updateLocation(position));
               }, onError: (dynamic error) async {});
-            } else {}
+            }
           },
           updateLocation: (position) {
             if (followMode == FollowMode.locked) {
               //recenterMode
-              mapBloc.add(const MapEvent.requestCenterMap(true));
+              _mapBloc.add(const MapEvent.requestCenterMap(true));
             }
 
             emit(GeolocationState.locationUpdate(position));
