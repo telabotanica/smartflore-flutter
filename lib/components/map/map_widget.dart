@@ -19,6 +19,8 @@ import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 enum MapMode { overview, preview, trail, create }
 
+enum FollowMode { free, locked }
+
 class MapWidget extends StatefulWidget {
   const MapWidget({Key? key}) : super(key: key);
 

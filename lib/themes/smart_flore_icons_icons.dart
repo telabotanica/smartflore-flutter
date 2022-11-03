@@ -41,8 +41,6 @@ class SmartFloreIcons {
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData setting =
       IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData target =
-      IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData arrowRight =
       IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData markerStart =
@@ -81,6 +79,10 @@ class SmartFloreIcons {
       IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData iconPhoto =
       IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData target =
+      IconData(0xe81b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData targetLocked =
+      IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData download =
       IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData downloaded =

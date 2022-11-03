@@ -8,6 +8,7 @@ import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
 import 'package:smartflore/components/map/map_widget.dart';
+import 'package:smartflore/components/map/ui/btn_target.dart';
 import 'package:smartflore/components/map/ui/topbar_create.dart';
 import 'package:smartflore/components/topbar/top_bar_trail.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
@@ -101,21 +102,10 @@ class _MapUIState extends State<MapUI> {
                     ? 145 + LayoutUtils.getSizes(trailPreviewUIKey).height
                     : 120,
             left: 20,
-            child: SizedBox(
+            child: const SizedBox(
               width: 46,
               height: 46,
-              child: FloatingActionButton(
-                  heroTag: 'target',
-                  backgroundColor: Colors.white,
-                  child: const Icon(
-                    SmartFloreIcons.target,
-                    color: Color(0xFF12161E),
-                    size: 20,
-                  ),
-                  onPressed: () {
-                    BlocProvider.of<MapBloc>(context)
-                        .add(const MapEvent.requestCenterMap());
-                  }),
+              child: BtnTarget(),
             )),
         AnimatedPositioned(
             duration: const Duration(milliseconds: 300),

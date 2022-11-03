@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 
 part 'geolocation_event.dart';
@@ -15,6 +16,7 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
   final MapBloc _mapBloc;
   late StreamSubscription mapBlocSub;
   late Stream<Position>? locationStream;
+  FollowMode? followMode;
 
   GeolocationBloc(
       {required GeolocationRepo geolocationRepo, required MapBloc mapBloc})
@@ -23,6 +25,9 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
         super(const _Initial()) {
     mapBlocSub = _mapBloc.stream.listen((state) async {
       state.maybeWhen(
+          onFollowModeChanged: (FollowMode followMode) {
+            this.followMode = followMode;
+          },
           onRecenterMap: () async {
             PermissionStatus status = await _geolocationRepo.getPermissions();
             if (status == PermissionStatus.disabled) {
@@ -58,6 +63,11 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
             } else {}
           },
           updateLocation: (position) {
+            if (followMode == FollowMode.locked) {
+              //recenterMode
+              mapBloc.add(const MapEvent.requestCenterMap(true));
+            }
+
             emit(GeolocationState.locationUpdate(position));
           });
     });

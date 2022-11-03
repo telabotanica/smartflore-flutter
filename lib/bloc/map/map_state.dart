@@ -7,4 +7,6 @@ class MapState with _$MapState {
   const factory MapState.onMapModeChanged(MapMode mapMode) = _OnMapModeChanged;
   const factory MapState.onRequestTrailPreview(int trailID) =
       _OnRequestTrailPreview;
+  const factory MapState.onFollowModeChanged(FollowMode followMode) =
+      _OnFollowModeChanged;
 }
