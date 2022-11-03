@@ -344,9 +344,10 @@ Map<String, dynamic> _$$_TaxonToJson(_$_Taxon instance) => <String, dynamic>{
     };
 
 _$_Path _$$_PathFromJson(Map<String, dynamic> json) => _$_Path(
-      type: json['type'] as String,
-      coordinates:
-          const LatLngListConverter().fromJson(json['coordinates'] as List),
+      type: json['type'] as String? ?? '',
+      coordinates: json['coordinates'] == null
+          ? const []
+          : const LatLngListConverter().fromJson(json['coordinates'] as List),
     );
 
 Map<String, dynamic> _$$_PathToJson(_$_Path instance) => <String, dynamic>{

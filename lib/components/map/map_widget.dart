@@ -3,7 +3,8 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:latlong2/latlong.dart' hide Path;
+import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
@@ -29,6 +30,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   LatLng currentLocation = LatLng(43.610769, 3.876716);
   TrailDetails? trailData;
   List<Trail>? trailsData;
+  Path? createPath;
   MapMode mapMode = MapMode.overview;
   int? selectedOccurence;
   bool forceOccurenceUpdate = false;
@@ -111,12 +113,13 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       listeners: [
         BlocListener<GeolocationBloc, GeolocationState>(
           listener: (context, state) {
-            if (state is LocationUpdatedState) {
+            state.maybeWhen(locationUpdate: (position) {
               setState(() {
-                currentLocation =
-                    LatLng(state.position.latitude, state.position.longitude);
+                currentLocation = LatLng(position.latitude, position.longitude);
               });
-            }
+            }, orElse: () {
+              return null;
+            });
           },
         ),
         BlocListener<TrailBloc, TrailState>(
@@ -144,6 +147,20 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 trailsData = state.trails;
               });
             }
+          },
+        ),
+        BlocListener<CreateBloc, CreateState>(
+          listener: (context, state) {
+            print('>>> $state');
+            state.maybeWhen(
+                updatePath: (Path path) {
+                  print('>>> path ${path.coordinates.length}');
+
+                  setState(() {
+                    createPath = path;
+                  });
+                },
+                orElse: () {});
           },
         ),
         BlocListener<MapBloc, MapState>(
@@ -353,7 +370,19 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   }
 
   List<LayerOptions> setupCreateMode() {
-    return [];
+    return [
+      PolylineLayerOptions(
+          polylineCulling: true,
+          polylines: (createPath != null)
+              ? [
+                  Polyline(
+                      strokeWidth: 4,
+                      isDotted: false,
+                      color: Theme.of(context).colorScheme.primary,
+                      points: createPath!.coordinates)
+                ]
+              : []),
+    ];
   }
 
   List<Marker> getOrderedMarkerList(List<Occurrence> occurrences) {

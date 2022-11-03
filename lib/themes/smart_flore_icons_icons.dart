@@ -73,13 +73,14 @@ class SmartFloreIcons {
       IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData iconForm =
       IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // ignore: constant_identifier_names
   static const IconData add_circle_outline =
       IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData wifioff =
       IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData addMarker =
       IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData iconPhoto =
+      IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData download =
       IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData downloaded =

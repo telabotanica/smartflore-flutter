@@ -8,7 +8,7 @@ import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/modal.dart';
-import 'package:smartflore/components/modal/create_title.dart';
+import 'package:smartflore/components/modal/create_form_name.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
@@ -39,9 +39,12 @@ class TrailsList extends StatelessWidget {
                     .add(const ChangeMapMode(mapMode: MapMode.create));
                 showDialog(
                     context: context,
-                    builder: (context) => Modal(CreateTitleModal(onClose: () {
-                          BlocProvider.of<MapBloc>(context).add(
-                              const ChangeMapMode(mapMode: MapMode.overview));
+                    builder: (context) => Modal(CreateFormNameModal(
+                            onClose: ({bool leaveCreateMode = false}) {
+                          if (leaveCreateMode) {
+                            BlocProvider.of<MapBloc>(context).add(
+                                const ChangeMapMode(mapMode: MapMode.overview));
+                          }
                           Navigator.of(context).pop();
                         })),
                     barrierColor: Colors.black.withOpacity(0.1));

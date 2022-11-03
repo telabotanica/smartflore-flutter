@@ -199,12 +199,12 @@ class _TrailItemState extends State<TrailItem> {
           Flexible(
             child: BlocBuilder<GeolocationBloc, GeolocationState>(
               builder: (context, state) {
-                if (state is LocationUpdatedState) {
+                return state.maybeWhen(locationUpdate: (position) {
                   double distance = Geolocator.distanceBetween(
                       widget.position!.latitude,
                       widget.position!.longitude,
-                      state.position.latitude,
-                      state.position.longitude);
+                      position.latitude,
+                      position.longitude);
 
                   return AutoSizeText(
                     '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
@@ -214,9 +214,9 @@ class _TrailItemState extends State<TrailItem> {
                         .copyWith(color: Theme.of(context).colorScheme.primary),
                     maxLines: 1,
                   );
-                } else {
+                }, orElse: () {
                   return Container();
-                }
+                });
               },
             ),
           )

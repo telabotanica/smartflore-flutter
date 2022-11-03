@@ -69,7 +69,13 @@ class _TextInputState extends State<TextInput> {
       validator: widget.validator,
       onSaved: widget.onSaved,
       onChanged: (text) {
-        widget.onChanged!(text, widget.maxLength!, widget.index!, widget.id!);
+        if (widget.onChanged != null) {
+          widget.onChanged!(
+              text,
+              (widget.maxLength != null) ? widget.maxLength! : -1,
+              widget.index!,
+              widget.id!);
+        }
       },
       decoration: InputDecoration(
         counterText: '',

@@ -8,7 +8,7 @@ import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
 import 'package:smartflore/components/map/map_widget.dart';
-import 'package:smartflore/components/topbar/top_bar_create.dart';
+import 'package:smartflore/components/map/ui/topbar_create.dart';
 import 'package:smartflore/components/topbar/top_bar_trail.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/layout.dart';
@@ -91,20 +91,7 @@ class _MapUIState extends State<MapUI> {
                     },
                   ))),
             ))),
-        AnimatedPositioned(
-          top: (widget.mapMode == MapMode.create) ? 20 : -120,
-          duration: const Duration(milliseconds: 300),
-          child: SafeArea(
-              child: Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: SizedBox(
-                width: MediaQuery.of(context).size.width - 40,
-                child: const TopBarCreate(
-                    title: 'Le sentier le plus beau',
-                    isRecording: true,
-                    distance: '2.5km')),
-          )),
-        ),
+        TopBarCreateUI(mapMode: widget.mapMode),
         AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,
@@ -142,8 +129,11 @@ class _MapUIState extends State<MapUI> {
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    const Expanded(
+                    Expanded(
                       child: RoundedButton(
+                        onPress: () {
+                          Navigator.of(context).pushNamed('/create');
+                        },
                         label: 'Ajouter',
                         icon: SmartFloreIcons.addMarker,
                       ),

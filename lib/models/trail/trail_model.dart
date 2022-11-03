@@ -79,8 +79,8 @@ class Taxon with _$Taxon {
 class Path with _$Path {
   @HiveType(typeId: 14, adapterName: 'PathAdapter')
   const factory Path({
-    @HiveField(0) required String type,
-    @LatLngListConverter() @HiveField(1) required List<LatLng> coordinates,
+    @HiveField(0) @Default('') String type,
+    @LatLngListConverter() @HiveField(1) @Default([]) List<LatLng> coordinates,
   }) = _Path;
 
   factory Path.fromJson(Map<String, dynamic> json) => _$PathFromJson(json);

@@ -23,20 +23,15 @@ mixin _$CreateTrail {
   @HiveField(0)
   String get name => throw _privateConstructorUsedError;
   @HiveField(1)
-  String get author => throw _privateConstructorUsedError;
-  @HiveField(2)
   SavePosition get position => throw _privateConstructorUsedError;
-  @HiveField(3)
+  @HiveField(2)
   List<SaveOccurrence> get occurrences => throw _privateConstructorUsedError;
-  @HiveField(4)
-  SavePath get path => throw _privateConstructorUsedError;
-  @JsonKey(name: 'path_length')
+  @HiveField(3)
+  Path get path => throw _privateConstructorUsedError;
   @HiveField(5)
-  int get pathLength => throw _privateConstructorUsedError;
-  @HiveField(6)
   int get prm => throw _privateConstructorUsedError;
   @JsonKey(name: 'best_season')
-  @HiveField(7)
+  @HiveField(6)
   List<bool> get bestSeason => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,16 +47,14 @@ abstract class $CreateTrailCopyWith<$Res> {
       _$CreateTrailCopyWithImpl<$Res>;
   $Res call(
       {@HiveField(0) String name,
-      @HiveField(1) String author,
-      @HiveField(2) SavePosition position,
-      @HiveField(3) List<SaveOccurrence> occurrences,
-      @HiveField(4) SavePath path,
-      @JsonKey(name: 'path_length') @HiveField(5) int pathLength,
-      @HiveField(6) int prm,
-      @JsonKey(name: 'best_season') @HiveField(7) List<bool> bestSeason});
+      @HiveField(1) SavePosition position,
+      @HiveField(2) List<SaveOccurrence> occurrences,
+      @HiveField(3) Path path,
+      @HiveField(5) int prm,
+      @JsonKey(name: 'best_season') @HiveField(6) List<bool> bestSeason});
 
   $SavePositionCopyWith<$Res> get position;
-  $SavePathCopyWith<$Res> get path;
+  $PathCopyWith<$Res> get path;
 }
 
 /// @nodoc
@@ -75,11 +68,9 @@ class _$CreateTrailCopyWithImpl<$Res> implements $CreateTrailCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
-    Object? author = freezed,
     Object? position = freezed,
     Object? occurrences = freezed,
     Object? path = freezed,
-    Object? pathLength = freezed,
     Object? prm = freezed,
     Object? bestSeason = freezed,
   }) {
@@ -87,10 +78,6 @@ class _$CreateTrailCopyWithImpl<$Res> implements $CreateTrailCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      author: author == freezed
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
               as String,
       position: position == freezed
           ? _value.position
@@ -103,11 +90,7 @@ class _$CreateTrailCopyWithImpl<$Res> implements $CreateTrailCopyWith<$Res> {
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
-              as SavePath,
-      pathLength: pathLength == freezed
-          ? _value.pathLength
-          : pathLength // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Path,
       prm: prm == freezed
           ? _value.prm
           : prm // ignore: cast_nullable_to_non_nullable
@@ -127,8 +110,8 @@ class _$CreateTrailCopyWithImpl<$Res> implements $CreateTrailCopyWith<$Res> {
   }
 
   @override
-  $SavePathCopyWith<$Res> get path {
-    return $SavePathCopyWith<$Res>(_value.path, (value) {
+  $PathCopyWith<$Res> get path {
+    return $PathCopyWith<$Res>(_value.path, (value) {
       return _then(_value.copyWith(path: value));
     });
   }
@@ -143,18 +126,16 @@ abstract class _$$_CreateTrailCopyWith<$Res>
   @override
   $Res call(
       {@HiveField(0) String name,
-      @HiveField(1) String author,
-      @HiveField(2) SavePosition position,
-      @HiveField(3) List<SaveOccurrence> occurrences,
-      @HiveField(4) SavePath path,
-      @JsonKey(name: 'path_length') @HiveField(5) int pathLength,
-      @HiveField(6) int prm,
-      @JsonKey(name: 'best_season') @HiveField(7) List<bool> bestSeason});
+      @HiveField(1) SavePosition position,
+      @HiveField(2) List<SaveOccurrence> occurrences,
+      @HiveField(3) Path path,
+      @HiveField(5) int prm,
+      @JsonKey(name: 'best_season') @HiveField(6) List<bool> bestSeason});
 
   @override
   $SavePositionCopyWith<$Res> get position;
   @override
-  $SavePathCopyWith<$Res> get path;
+  $PathCopyWith<$Res> get path;
 }
 
 /// @nodoc
@@ -170,11 +151,9 @@ class __$$_CreateTrailCopyWithImpl<$Res> extends _$CreateTrailCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? author = freezed,
     Object? position = freezed,
     Object? occurrences = freezed,
     Object? path = freezed,
-    Object? pathLength = freezed,
     Object? prm = freezed,
     Object? bestSeason = freezed,
   }) {
@@ -182,10 +161,6 @@ class __$$_CreateTrailCopyWithImpl<$Res> extends _$CreateTrailCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      author: author == freezed
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
               as String,
       position: position == freezed
           ? _value.position
@@ -198,11 +173,7 @@ class __$$_CreateTrailCopyWithImpl<$Res> extends _$CreateTrailCopyWithImpl<$Res>
       path: path == freezed
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
-              as SavePath,
-      pathLength: pathLength == freezed
-          ? _value.pathLength
-          : pathLength // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Path,
       prm: prm == freezed
           ? _value.prm
           : prm // ignore: cast_nullable_to_non_nullable
@@ -223,21 +194,16 @@ class _$_CreateTrail implements _CreateTrail {
       {@HiveField(0)
           required this.name,
       @HiveField(1)
-          required this.author,
-      @HiveField(2)
           required this.position,
+      @HiveField(2)
+          final List<SaveOccurrence> occurrences = const [],
       @HiveField(3)
-          required final List<SaveOccurrence> occurrences,
-      @HiveField(4)
-          required this.path,
-      @JsonKey(name: 'path_length')
+          this.path = const Path(),
       @HiveField(5)
-          required this.pathLength,
-      @HiveField(6)
-          required this.prm,
+          this.prm = -1,
       @JsonKey(name: 'best_season')
-      @HiveField(7)
-          required final List<bool> bestSeason})
+      @HiveField(6)
+          final List<bool> bestSeason = const [false, false, false, false]})
       : _occurrences = occurrences,
         _bestSeason = bestSeason;
 
@@ -249,32 +215,28 @@ class _$_CreateTrail implements _CreateTrail {
   final String name;
   @override
   @HiveField(1)
-  final String author;
-  @override
-  @HiveField(2)
   final SavePosition position;
   final List<SaveOccurrence> _occurrences;
   @override
-  @HiveField(3)
+  @JsonKey()
+  @HiveField(2)
   List<SaveOccurrence> get occurrences {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_occurrences);
   }
 
   @override
-  @HiveField(4)
-  final SavePath path;
+  @JsonKey()
+  @HiveField(3)
+  final Path path;
   @override
-  @JsonKey(name: 'path_length')
+  @JsonKey()
   @HiveField(5)
-  final int pathLength;
-  @override
-  @HiveField(6)
   final int prm;
   final List<bool> _bestSeason;
   @override
   @JsonKey(name: 'best_season')
-  @HiveField(7)
+  @HiveField(6)
   List<bool> get bestSeason {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_bestSeason);
@@ -282,7 +244,7 @@ class _$_CreateTrail implements _CreateTrail {
 
   @override
   String toString() {
-    return 'CreateTrail(name: $name, author: $author, position: $position, occurrences: $occurrences, path: $path, pathLength: $pathLength, prm: $prm, bestSeason: $bestSeason)';
+    return 'CreateTrail(name: $name, position: $position, occurrences: $occurrences, path: $path, prm: $prm, bestSeason: $bestSeason)';
   }
 
   @override
@@ -291,13 +253,10 @@ class _$_CreateTrail implements _CreateTrail {
         (other.runtimeType == runtimeType &&
             other is _$_CreateTrail &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.author, author) &&
             const DeepCollectionEquality().equals(other.position, position) &&
             const DeepCollectionEquality()
                 .equals(other._occurrences, _occurrences) &&
             const DeepCollectionEquality().equals(other.path, path) &&
-            const DeepCollectionEquality()
-                .equals(other.pathLength, pathLength) &&
             const DeepCollectionEquality().equals(other.prm, prm) &&
             const DeepCollectionEquality()
                 .equals(other._bestSeason, _bestSeason));
@@ -308,11 +267,9 @@ class _$_CreateTrail implements _CreateTrail {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(author),
       const DeepCollectionEquality().hash(position),
       const DeepCollectionEquality().hash(_occurrences),
       const DeepCollectionEquality().hash(path),
-      const DeepCollectionEquality().hash(pathLength),
       const DeepCollectionEquality().hash(prm),
       const DeepCollectionEquality().hash(_bestSeason));
 
@@ -334,21 +291,16 @@ abstract class _CreateTrail implements CreateTrail {
       {@HiveField(0)
           required final String name,
       @HiveField(1)
-          required final String author,
-      @HiveField(2)
           required final SavePosition position,
+      @HiveField(2)
+          final List<SaveOccurrence> occurrences,
       @HiveField(3)
-          required final List<SaveOccurrence> occurrences,
-      @HiveField(4)
-          required final SavePath path,
-      @JsonKey(name: 'path_length')
+          final Path path,
       @HiveField(5)
-          required final int pathLength,
-      @HiveField(6)
-          required final int prm,
+          final int prm,
       @JsonKey(name: 'best_season')
-      @HiveField(7)
-          required final List<bool> bestSeason}) = _$_CreateTrail;
+      @HiveField(6)
+          final List<bool> bestSeason}) = _$_CreateTrail;
 
   factory _CreateTrail.fromJson(Map<String, dynamic> json) =
       _$_CreateTrail.fromJson;
@@ -358,26 +310,19 @@ abstract class _CreateTrail implements CreateTrail {
   String get name;
   @override
   @HiveField(1)
-  String get author;
-  @override
-  @HiveField(2)
   SavePosition get position;
   @override
-  @HiveField(3)
+  @HiveField(2)
   List<SaveOccurrence> get occurrences;
   @override
-  @HiveField(4)
-  SavePath get path;
+  @HiveField(3)
+  Path get path;
   @override
-  @JsonKey(name: 'path_length')
   @HiveField(5)
-  int get pathLength;
-  @override
-  @HiveField(6)
   int get prm;
   @override
   @JsonKey(name: 'best_season')
-  @HiveField(7)
+  @HiveField(6)
   List<bool> get bestSeason;
   @override
   @JsonKey(ignore: true)
@@ -395,9 +340,9 @@ mixin _$SaveOccurrence {
   @HiveField(0)
   LatLng get position => throw _privateConstructorUsedError;
   @HiveField(1)
-  SaveTaxon get taxon => throw _privateConstructorUsedError;
+  String get taxon_id => throw _privateConstructorUsedError;
   @HiveField(2)
-  List<UploadImage> get images => throw _privateConstructorUsedError;
+  String get image_id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -412,10 +357,8 @@ abstract class $SaveOccurrenceCopyWith<$Res> {
       _$SaveOccurrenceCopyWithImpl<$Res>;
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
-      @HiveField(1) SaveTaxon taxon,
-      @HiveField(2) List<UploadImage> images});
-
-  $SaveTaxonCopyWith<$Res> get taxon;
+      @HiveField(1) String taxon_id,
+      @HiveField(2) String image_id});
 }
 
 /// @nodoc
@@ -430,30 +373,23 @@ class _$SaveOccurrenceCopyWithImpl<$Res>
   @override
   $Res call({
     Object? position = freezed,
-    Object? taxon = freezed,
-    Object? images = freezed,
+    Object? taxon_id = freezed,
+    Object? image_id = freezed,
   }) {
     return _then(_value.copyWith(
       position: position == freezed
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      taxon: taxon == freezed
-          ? _value.taxon
-          : taxon // ignore: cast_nullable_to_non_nullable
-              as SaveTaxon,
-      images: images == freezed
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<UploadImage>,
+      taxon_id: taxon_id == freezed
+          ? _value.taxon_id
+          : taxon_id // ignore: cast_nullable_to_non_nullable
+              as String,
+      image_id: image_id == freezed
+          ? _value.image_id
+          : image_id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  @override
-  $SaveTaxonCopyWith<$Res> get taxon {
-    return $SaveTaxonCopyWith<$Res>(_value.taxon, (value) {
-      return _then(_value.copyWith(taxon: value));
-    });
   }
 }
 
@@ -466,11 +402,8 @@ abstract class _$$_SaveOccurrenceCopyWith<$Res>
   @override
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
-      @HiveField(1) SaveTaxon taxon,
-      @HiveField(2) List<UploadImage> images});
-
-  @override
-  $SaveTaxonCopyWith<$Res> get taxon;
+      @HiveField(1) String taxon_id,
+      @HiveField(2) String image_id});
 }
 
 /// @nodoc
@@ -487,22 +420,22 @@ class __$$_SaveOccurrenceCopyWithImpl<$Res>
   @override
   $Res call({
     Object? position = freezed,
-    Object? taxon = freezed,
-    Object? images = freezed,
+    Object? taxon_id = freezed,
+    Object? image_id = freezed,
   }) {
     return _then(_$_SaveOccurrence(
       position: position == freezed
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      taxon: taxon == freezed
-          ? _value.taxon
-          : taxon // ignore: cast_nullable_to_non_nullable
-              as SaveTaxon,
-      images: images == freezed
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<UploadImage>,
+      taxon_id: taxon_id == freezed
+          ? _value.taxon_id
+          : taxon_id // ignore: cast_nullable_to_non_nullable
+              as String,
+      image_id: image_id == freezed
+          ? _value.image_id
+          : image_id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -513,9 +446,8 @@ class __$$_SaveOccurrenceCopyWithImpl<$Res>
 class _$_SaveOccurrence implements _SaveOccurrence {
   const _$_SaveOccurrence(
       {@LatLngConverter() @HiveField(0) required this.position,
-      @HiveField(1) required this.taxon,
-      @HiveField(2) required final List<UploadImage> images})
-      : _images = images;
+      @HiveField(1) this.taxon_id = '',
+      @HiveField(2) this.image_id = ''});
 
   factory _$_SaveOccurrence.fromJson(Map<String, dynamic> json) =>
       _$$_SaveOccurrenceFromJson(json);
@@ -525,19 +457,17 @@ class _$_SaveOccurrence implements _SaveOccurrence {
   @HiveField(0)
   final LatLng position;
   @override
+  @JsonKey()
   @HiveField(1)
-  final SaveTaxon taxon;
-  final List<UploadImage> _images;
+  final String taxon_id;
   @override
+  @JsonKey()
   @HiveField(2)
-  List<UploadImage> get images {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
-  }
+  final String image_id;
 
   @override
   String toString() {
-    return 'SaveOccurrence(position: $position, taxon: $taxon, images: $images)';
+    return 'SaveOccurrence(position: $position, taxon_id: $taxon_id, image_id: $image_id)';
   }
 
   @override
@@ -546,8 +476,8 @@ class _$_SaveOccurrence implements _SaveOccurrence {
         (other.runtimeType == runtimeType &&
             other is _$_SaveOccurrence &&
             const DeepCollectionEquality().equals(other.position, position) &&
-            const DeepCollectionEquality().equals(other.taxon, taxon) &&
-            const DeepCollectionEquality().equals(other._images, _images));
+            const DeepCollectionEquality().equals(other.taxon_id, taxon_id) &&
+            const DeepCollectionEquality().equals(other.image_id, image_id));
   }
 
   @JsonKey(ignore: true)
@@ -555,8 +485,8 @@ class _$_SaveOccurrence implements _SaveOccurrence {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(position),
-      const DeepCollectionEquality().hash(taxon),
-      const DeepCollectionEquality().hash(_images));
+      const DeepCollectionEquality().hash(taxon_id),
+      const DeepCollectionEquality().hash(image_id));
 
   @JsonKey(ignore: true)
   @override
@@ -573,10 +503,9 @@ class _$_SaveOccurrence implements _SaveOccurrence {
 
 abstract class _SaveOccurrence implements SaveOccurrence {
   const factory _SaveOccurrence(
-          {@LatLngConverter() @HiveField(0) required final LatLng position,
-          @HiveField(1) required final SaveTaxon taxon,
-          @HiveField(2) required final List<UploadImage> images}) =
-      _$_SaveOccurrence;
+      {@LatLngConverter() @HiveField(0) required final LatLng position,
+      @HiveField(1) final String taxon_id,
+      @HiveField(2) final String image_id}) = _$_SaveOccurrence;
 
   factory _SaveOccurrence.fromJson(Map<String, dynamic> json) =
       _$_SaveOccurrence.fromJson;
@@ -587,438 +516,13 @@ abstract class _SaveOccurrence implements SaveOccurrence {
   LatLng get position;
   @override
   @HiveField(1)
-  SaveTaxon get taxon;
+  String get taxon_id;
   @override
   @HiveField(2)
-  List<UploadImage> get images;
+  String get image_id;
   @override
   @JsonKey(ignore: true)
   _$$_SaveOccurrenceCopyWith<_$_SaveOccurrence> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-UploadImage _$UploadImageFromJson(Map<String, dynamic> json) {
-  return _UploadImage.fromJson(json);
-}
-
-/// @nodoc
-mixin _$UploadImage {
-  @HiveField(0)
-  int get id => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UploadImageCopyWith<UploadImage> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UploadImageCopyWith<$Res> {
-  factory $UploadImageCopyWith(
-          UploadImage value, $Res Function(UploadImage) then) =
-      _$UploadImageCopyWithImpl<$Res>;
-  $Res call({@HiveField(0) int id});
-}
-
-/// @nodoc
-class _$UploadImageCopyWithImpl<$Res> implements $UploadImageCopyWith<$Res> {
-  _$UploadImageCopyWithImpl(this._value, this._then);
-
-  final UploadImage _value;
-  // ignore: unused_field
-  final $Res Function(UploadImage) _then;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_UploadImageCopyWith<$Res>
-    implements $UploadImageCopyWith<$Res> {
-  factory _$$_UploadImageCopyWith(
-          _$_UploadImage value, $Res Function(_$_UploadImage) then) =
-      __$$_UploadImageCopyWithImpl<$Res>;
-  @override
-  $Res call({@HiveField(0) int id});
-}
-
-/// @nodoc
-class __$$_UploadImageCopyWithImpl<$Res> extends _$UploadImageCopyWithImpl<$Res>
-    implements _$$_UploadImageCopyWith<$Res> {
-  __$$_UploadImageCopyWithImpl(
-      _$_UploadImage _value, $Res Function(_$_UploadImage) _then)
-      : super(_value, (v) => _then(v as _$_UploadImage));
-
-  @override
-  _$_UploadImage get _value => super._value as _$_UploadImage;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-  }) {
-    return _then(_$_UploadImage(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-@HiveType(typeId: 52, adapterName: 'UploadImageAdapter')
-class _$_UploadImage implements _UploadImage {
-  const _$_UploadImage({@HiveField(0) required this.id});
-
-  factory _$_UploadImage.fromJson(Map<String, dynamic> json) =>
-      _$$_UploadImageFromJson(json);
-
-  @override
-  @HiveField(0)
-  final int id;
-
-  @override
-  String toString() {
-    return 'UploadImage(id: $id)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UploadImage &&
-            const DeepCollectionEquality().equals(other.id, id));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_UploadImageCopyWith<_$_UploadImage> get copyWith =>
-      __$$_UploadImageCopyWithImpl<_$_UploadImage>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_UploadImageToJson(
-      this,
-    );
-  }
-}
-
-abstract class _UploadImage implements UploadImage {
-  const factory _UploadImage({@HiveField(0) required final int id}) =
-      _$_UploadImage;
-
-  factory _UploadImage.fromJson(Map<String, dynamic> json) =
-      _$_UploadImage.fromJson;
-
-  @override
-  @HiveField(0)
-  int get id;
-  @override
-  @JsonKey(ignore: true)
-  _$$_UploadImageCopyWith<_$_UploadImage> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SaveTaxon _$SaveTaxonFromJson(Map<String, dynamic> json) {
-  return _SaveTaxon.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SaveTaxon {
-  @HiveField(0)
-  @JsonKey(name: 'name_id')
-  int get nameId => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SaveTaxonCopyWith<SaveTaxon> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SaveTaxonCopyWith<$Res> {
-  factory $SaveTaxonCopyWith(SaveTaxon value, $Res Function(SaveTaxon) then) =
-      _$SaveTaxonCopyWithImpl<$Res>;
-  $Res call({@HiveField(0) @JsonKey(name: 'name_id') int nameId});
-}
-
-/// @nodoc
-class _$SaveTaxonCopyWithImpl<$Res> implements $SaveTaxonCopyWith<$Res> {
-  _$SaveTaxonCopyWithImpl(this._value, this._then);
-
-  final SaveTaxon _value;
-  // ignore: unused_field
-  final $Res Function(SaveTaxon) _then;
-
-  @override
-  $Res call({
-    Object? nameId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      nameId: nameId == freezed
-          ? _value.nameId
-          : nameId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_SaveTaxonCopyWith<$Res> implements $SaveTaxonCopyWith<$Res> {
-  factory _$$_SaveTaxonCopyWith(
-          _$_SaveTaxon value, $Res Function(_$_SaveTaxon) then) =
-      __$$_SaveTaxonCopyWithImpl<$Res>;
-  @override
-  $Res call({@HiveField(0) @JsonKey(name: 'name_id') int nameId});
-}
-
-/// @nodoc
-class __$$_SaveTaxonCopyWithImpl<$Res> extends _$SaveTaxonCopyWithImpl<$Res>
-    implements _$$_SaveTaxonCopyWith<$Res> {
-  __$$_SaveTaxonCopyWithImpl(
-      _$_SaveTaxon _value, $Res Function(_$_SaveTaxon) _then)
-      : super(_value, (v) => _then(v as _$_SaveTaxon));
-
-  @override
-  _$_SaveTaxon get _value => super._value as _$_SaveTaxon;
-
-  @override
-  $Res call({
-    Object? nameId = freezed,
-  }) {
-    return _then(_$_SaveTaxon(
-      nameId: nameId == freezed
-          ? _value.nameId
-          : nameId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-@HiveType(typeId: 53, adapterName: 'SaveTaxonAdapter')
-class _$_SaveTaxon implements _SaveTaxon {
-  const _$_SaveTaxon(
-      {@HiveField(0) @JsonKey(name: 'name_id') required this.nameId});
-
-  factory _$_SaveTaxon.fromJson(Map<String, dynamic> json) =>
-      _$$_SaveTaxonFromJson(json);
-
-  @override
-  @HiveField(0)
-  @JsonKey(name: 'name_id')
-  final int nameId;
-
-  @override
-  String toString() {
-    return 'SaveTaxon(nameId: $nameId)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SaveTaxon &&
-            const DeepCollectionEquality().equals(other.nameId, nameId));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(nameId));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_SaveTaxonCopyWith<_$_SaveTaxon> get copyWith =>
-      __$$_SaveTaxonCopyWithImpl<_$_SaveTaxon>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_SaveTaxonToJson(
-      this,
-    );
-  }
-}
-
-abstract class _SaveTaxon implements SaveTaxon {
-  const factory _SaveTaxon(
-          {@HiveField(0) @JsonKey(name: 'name_id') required final int nameId}) =
-      _$_SaveTaxon;
-
-  factory _SaveTaxon.fromJson(Map<String, dynamic> json) =
-      _$_SaveTaxon.fromJson;
-
-  @override
-  @HiveField(0)
-  @JsonKey(name: 'name_id')
-  int get nameId;
-  @override
-  @JsonKey(ignore: true)
-  _$$_SaveTaxonCopyWith<_$_SaveTaxon> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SavePath _$SavePathFromJson(Map<String, dynamic> json) {
-  return _SavePath.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SavePath {
-  @LatLngListConverter()
-  @HiveField(0)
-  List<LatLng> get coordinates => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SavePathCopyWith<SavePath> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SavePathCopyWith<$Res> {
-  factory $SavePathCopyWith(SavePath value, $Res Function(SavePath) then) =
-      _$SavePathCopyWithImpl<$Res>;
-  $Res call({@LatLngListConverter() @HiveField(0) List<LatLng> coordinates});
-}
-
-/// @nodoc
-class _$SavePathCopyWithImpl<$Res> implements $SavePathCopyWith<$Res> {
-  _$SavePathCopyWithImpl(this._value, this._then);
-
-  final SavePath _value;
-  // ignore: unused_field
-  final $Res Function(SavePath) _then;
-
-  @override
-  $Res call({
-    Object? coordinates = freezed,
-  }) {
-    return _then(_value.copyWith(
-      coordinates: coordinates == freezed
-          ? _value.coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<LatLng>,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_SavePathCopyWith<$Res> implements $SavePathCopyWith<$Res> {
-  factory _$$_SavePathCopyWith(
-          _$_SavePath value, $Res Function(_$_SavePath) then) =
-      __$$_SavePathCopyWithImpl<$Res>;
-  @override
-  $Res call({@LatLngListConverter() @HiveField(0) List<LatLng> coordinates});
-}
-
-/// @nodoc
-class __$$_SavePathCopyWithImpl<$Res> extends _$SavePathCopyWithImpl<$Res>
-    implements _$$_SavePathCopyWith<$Res> {
-  __$$_SavePathCopyWithImpl(
-      _$_SavePath _value, $Res Function(_$_SavePath) _then)
-      : super(_value, (v) => _then(v as _$_SavePath));
-
-  @override
-  _$_SavePath get _value => super._value as _$_SavePath;
-
-  @override
-  $Res call({
-    Object? coordinates = freezed,
-  }) {
-    return _then(_$_SavePath(
-      coordinates: coordinates == freezed
-          ? _value._coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<LatLng>,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-@HiveType(typeId: 54, adapterName: 'SavePathAdapter')
-class _$_SavePath implements _SavePath {
-  const _$_SavePath(
-      {@LatLngListConverter()
-      @HiveField(0)
-          required final List<LatLng> coordinates})
-      : _coordinates = coordinates;
-
-  factory _$_SavePath.fromJson(Map<String, dynamic> json) =>
-      _$$_SavePathFromJson(json);
-
-  final List<LatLng> _coordinates;
-  @override
-  @LatLngListConverter()
-  @HiveField(0)
-  List<LatLng> get coordinates {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_coordinates);
-  }
-
-  @override
-  String toString() {
-    return 'SavePath(coordinates: $coordinates)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SavePath &&
-            const DeepCollectionEquality()
-                .equals(other._coordinates, _coordinates));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_coordinates));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_SavePathCopyWith<_$_SavePath> get copyWith =>
-      __$$_SavePathCopyWithImpl<_$_SavePath>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_SavePathToJson(
-      this,
-    );
-  }
-}
-
-abstract class _SavePath implements SavePath {
-  const factory _SavePath(
-      {@LatLngListConverter()
-      @HiveField(0)
-          required final List<LatLng> coordinates}) = _$_SavePath;
-
-  factory _SavePath.fromJson(Map<String, dynamic> json) = _$_SavePath.fromJson;
-
-  @override
-  @LatLngListConverter()
-  @HiveField(0)
-  List<LatLng> get coordinates;
-  @override
-  @JsonKey(ignore: true)
-  _$$_SavePathCopyWith<_$_SavePath> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

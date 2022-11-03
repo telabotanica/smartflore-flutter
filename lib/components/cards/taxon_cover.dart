@@ -6,8 +6,8 @@ import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
-import 'package:smartflore/utils/convert.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/utils/convert.dart';
 
 class TaxonCover extends StatelessWidget {
   final int taxonId;
@@ -132,12 +132,12 @@ class TaxonCover extends StatelessWidget {
                 const SizedBox(height: 6),
                 BlocBuilder<GeolocationBloc, GeolocationState>(
                   builder: (context, state) {
-                    if (state is LocationUpdatedState) {
+                    return state.maybeWhen(locationUpdate: (position) {
                       double distance = Geolocator.distanceBetween(
                           position.latitude,
                           position.longitude,
-                          state.position.latitude,
-                          state.position.longitude);
+                          position.latitude,
+                          position.longitude);
 
                       return Text(
                         '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
@@ -146,9 +146,9 @@ class TaxonCover extends StatelessWidget {
                             .bodyText2!
                             .copyWith(color: Colors.white),
                       );
-                    } else {
+                    }, orElse: () {
                       return Container();
-                    }
+                    });
                   },
                 )
               ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
+import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
@@ -12,6 +13,7 @@ import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/components/gallery/gallery_wrapper.dart';
 import 'package:smartflore/hive/connectivity_result_adapter.dart';
 import 'package:smartflore/hive/latlng_adaptater.dart';
+import 'package:smartflore/models/create/create_model.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart' as t;
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
@@ -25,6 +27,7 @@ import 'package:smartflore/repo/trail/trail_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
+import 'package:smartflore/screens/create/camera_screen.dart';
 import 'package:smartflore/screens/login_screen.dart';
 import 'package:smartflore/screens/create/create_screen.dart';
 import 'package:smartflore/screens/map_screen.dart';
@@ -56,10 +59,13 @@ void main() async {
   Hive.registerAdapter(t.ImageAPIAdapter());
   Hive.registerAdapter(t.SectionAPIAdapter());
   Hive.registerAdapter(ConnectivityResultAdapter());
+  Hive.registerAdapter(CreateTrailAdapter());
+  Hive.registerAdapter(SavePositionAdapter());
 
   Box<Trails> trailsBox = await Hive.openBox('trails');
   Box<TrailDetails> trailBox = await Hive.openBox('trail');
   Box<t.Taxon> taxonBox = await Hive.openBox('taxon');
+  Box<CreateTrail> createBox = await Hive.openBox('create');
 
   Box<Map<int, bool>> localImagesBox = await Hive.openBox('localImages');
 
@@ -110,7 +116,11 @@ void main() async {
           create: (context) => GeolocationBloc(
               geolocationRepo: geolocationRepo,
               mapBloc: BlocProvider.of<MapBloc>(context))
-            ..add(RequestLocationPermissionEvent())),
+            ..add(const GeolocationEvent.requestPermission())),
+      BlocProvider<CreateBloc>(
+          create: (context) => CreateBloc(
+              createTrailBox: createBox,
+              geolocationBloc: BlocProvider.of<GeolocationBloc>(context)))
     ], child: const App()),
   ));
 }
@@ -207,6 +217,13 @@ class _AppState extends State<App> {
                   curve: Curves.easeOutQuad,
                   reverseCurve: Curves.easeOut,
                   newScreen: const CreateScreen());
+            case '/camera':
+              return Transitions(
+                  transitionType: TransitionType.slideLeft,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutQuad,
+                  reverseCurve: Curves.easeOut,
+                  newScreen: const CameraScreen());
             case '/gallery-fullScreen':
               GalleryScreenArguments data =
                   settings.arguments as GalleryScreenArguments;

@@ -58,6 +58,7 @@ dependencies:
   connectivity_plus: ^2.3.9
   another_flushbar: ^1.12.29
   flutter_animate: ^2.0.0
+  camera: ^0.10.0+4
 
 dev_dependencies:
   flutter_test:

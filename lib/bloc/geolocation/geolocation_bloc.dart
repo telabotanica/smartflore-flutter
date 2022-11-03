@@ -1,62 +1,63 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 
 part 'geolocation_event.dart';
 part 'geolocation_state.dart';
+part 'geolocation_bloc.freezed.dart';
 
 class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
   final GeolocationRepo _geolocationRepo;
   final MapBloc _mapBloc;
   late StreamSubscription mapBlocSub;
+  late Stream<Position>? locationStream;
 
   GeolocationBloc(
       {required GeolocationRepo geolocationRepo, required MapBloc mapBloc})
       : _geolocationRepo = geolocationRepo,
         _mapBloc = mapBloc,
-        super(LocationInitialState()) {
+        super(const _Initial()) {
     mapBlocSub = _mapBloc.stream.listen((state) async {
       if (state is OnRecenterMap) {
         PermissionStatus status = await _geolocationRepo.getPermissions();
         if (status == PermissionStatus.disabled) {
           await _geolocationRepo.openPreferences();
         }
-        add(RequestCurrentLocationStreamEvent());
+        add(const GeolocationEvent.requestCurrentLocationStream());
       }
     });
-    // PERMISSION
-    on<RequestLocationPermissionEvent>(((event, emit) async {
-      emit(LocationPermissionLoadingState());
-      PermissionStatus status = await _geolocationRepo.getPermissions();
-      emit(LocationPermissionLoadedState(status: status));
-      add(RequestCurrentLocationStreamEvent());
-    }));
 
-    // CURRENT LOCATION
-    on<RequestCurrentLocationEvent>((event, emit) async {
-      emit(LocationLoadingState());
-      final Position position = await _geolocationRepo.getCurrentLocation();
-      emit(LocationUpdatedState(position: position));
-    });
-
-    // STREAM CURRENT LOCATION
-    on<RequestCurrentLocationStreamEvent>((event, emit) async {
-      emit(LocationLoadingState());
-      final Stream<Position>? locationStream =
-          await _geolocationRepo.getLocationStream();
-      if (locationStream != null) {
-        locationStream.listen((Position position) {
-          add(UpdateLocationEvent(position: position));
-        }, onError: (dynamic error) async {});
-      } else {}
-    });
-
-    on<UpdateLocationEvent>((event, emit) async {
-      emit(LocationUpdatedState(position: event.position));
+    on<GeolocationEvent>((event, emit) async {
+      await event.when(
+          started: () {},
+          requestPermission: () async {
+            emit(const GeolocationState.permissionLoading());
+            PermissionStatus status = await _geolocationRepo.getPermissions();
+            emit(GeolocationState.permissionLoaded(status));
+            add(const GeolocationEvent.requestCurrentLocationStream());
+          },
+          requestCurrentLocation: () async {
+            emit(const GeolocationState.loading());
+            final Position position =
+                await _geolocationRepo.getCurrentLocation();
+            emit(GeolocationState.locationUpdate(position));
+          },
+          requestCurrentLocationStream: () async {
+            emit(const GeolocationState.loading());
+            locationStream = await _geolocationRepo.getLocationStream();
+            if (locationStream != null) {
+              locationStream!.listen((Position position) {
+                add(GeolocationEvent.updateLocation(position));
+              }, onError: (dynamic error) async {});
+            } else {}
+          },
+          updateLocation: (position) {
+            emit(GeolocationState.locationUpdate(position));
+          });
     });
   }
 }

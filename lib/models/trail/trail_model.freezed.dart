@@ -1202,19 +1202,21 @@ class __$$_PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res>
 class _$_Path implements _Path {
   const _$_Path(
       {@HiveField(0)
-          required this.type,
+          this.type = '',
       @LatLngListConverter()
       @HiveField(1)
-          required final List<LatLng> coordinates})
+          final List<LatLng> coordinates = const []})
       : _coordinates = coordinates;
 
   factory _$_Path.fromJson(Map<String, dynamic> json) => _$$_PathFromJson(json);
 
   @override
+  @JsonKey()
   @HiveField(0)
   final String type;
   final List<LatLng> _coordinates;
   @override
+  @JsonKey()
   @LatLngListConverter()
   @HiveField(1)
   List<LatLng> get coordinates {
@@ -1260,10 +1262,10 @@ class _$_Path implements _Path {
 abstract class _Path implements Path {
   const factory _Path(
       {@HiveField(0)
-          required final String type,
+          final String type,
       @LatLngListConverter()
       @HiveField(1)
-          required final List<LatLng> coordinates}) = _$_Path;
+          final List<LatLng> coordinates}) = _$_Path;
 
   factory _Path.fromJson(Map<String, dynamic> json) = _$_Path.fromJson;
 

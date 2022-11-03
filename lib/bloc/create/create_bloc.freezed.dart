@@ -19,30 +19,33 @@ mixin _$CreateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function(LatLng pos) logPosition,
+    required TResult Function(String name) saveTitle,
+    required TResult Function() registerLocation,
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
-    required TResult Function(SaveTaxon taxon) registerTaxon,
+    required TResult Function() registerTaxon,
     required TResult Function(CreateTrail trail) saveTrail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) =>
@@ -50,7 +53,8 @@ mixin _$CreateEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Start value) start,
-    required TResult Function(_LogPosition value) logPosition,
+    required TResult Function(_CreateSaveTitle value) saveTitle,
+    required TResult Function(_RegisterLocation value) registerLocation,
     required TResult Function(_FindTaxon value) findTaxon,
     required TResult Function(_AddPic value) addPic,
     required TResult Function(_RegisterTaxon value) registerTaxon,
@@ -60,7 +64,8 @@ mixin _$CreateEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -70,7 +75,8 @@ mixin _$CreateEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -135,10 +141,11 @@ class _$_Start implements _Start {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function(LatLng pos) logPosition,
+    required TResult Function(String name) saveTitle,
+    required TResult Function() registerLocation,
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
-    required TResult Function(SaveTaxon taxon) registerTaxon,
+    required TResult Function() registerTaxon,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return start();
@@ -148,10 +155,11 @@ class _$_Start implements _Start {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
   }) {
     return start?.call();
@@ -161,10 +169,11 @@ class _$_Start implements _Start {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -178,7 +187,8 @@ class _$_Start implements _Start {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Start value) start,
-    required TResult Function(_LogPosition value) logPosition,
+    required TResult Function(_CreateSaveTitle value) saveTitle,
+    required TResult Function(_RegisterLocation value) registerLocation,
     required TResult Function(_FindTaxon value) findTaxon,
     required TResult Function(_AddPic value) addPic,
     required TResult Function(_RegisterTaxon value) registerTaxon,
@@ -191,7 +201,8 @@ class _$_Start implements _Start {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -204,7 +215,8 @@ class _$_Start implements _Start {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -223,105 +235,109 @@ abstract class _Start implements CreateEvent {
 }
 
 /// @nodoc
-abstract class _$$_LogPositionCopyWith<$Res> {
-  factory _$$_LogPositionCopyWith(
-          _$_LogPosition value, $Res Function(_$_LogPosition) then) =
-      __$$_LogPositionCopyWithImpl<$Res>;
-  $Res call({LatLng pos});
+abstract class _$$_CreateSaveTitleCopyWith<$Res> {
+  factory _$$_CreateSaveTitleCopyWith(
+          _$_CreateSaveTitle value, $Res Function(_$_CreateSaveTitle) then) =
+      __$$_CreateSaveTitleCopyWithImpl<$Res>;
+  $Res call({String name});
 }
 
 /// @nodoc
-class __$$_LogPositionCopyWithImpl<$Res> extends _$CreateEventCopyWithImpl<$Res>
-    implements _$$_LogPositionCopyWith<$Res> {
-  __$$_LogPositionCopyWithImpl(
-      _$_LogPosition _value, $Res Function(_$_LogPosition) _then)
-      : super(_value, (v) => _then(v as _$_LogPosition));
+class __$$_CreateSaveTitleCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res>
+    implements _$$_CreateSaveTitleCopyWith<$Res> {
+  __$$_CreateSaveTitleCopyWithImpl(
+      _$_CreateSaveTitle _value, $Res Function(_$_CreateSaveTitle) _then)
+      : super(_value, (v) => _then(v as _$_CreateSaveTitle));
 
   @override
-  _$_LogPosition get _value => super._value as _$_LogPosition;
+  _$_CreateSaveTitle get _value => super._value as _$_CreateSaveTitle;
 
   @override
   $Res call({
-    Object? pos = freezed,
+    Object? name = freezed,
   }) {
-    return _then(_$_LogPosition(
-      pos: pos == freezed
-          ? _value.pos
-          : pos // ignore: cast_nullable_to_non_nullable
-              as LatLng,
+    return _then(_$_CreateSaveTitle(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_LogPosition implements _LogPosition {
-  const _$_LogPosition({required this.pos});
+class _$_CreateSaveTitle implements _CreateSaveTitle {
+  const _$_CreateSaveTitle({required this.name});
 
   @override
-  final LatLng pos;
+  final String name;
 
   @override
   String toString() {
-    return 'CreateEvent.logPosition(pos: $pos)';
+    return 'CreateEvent.saveTitle(name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LogPosition &&
-            const DeepCollectionEquality().equals(other.pos, pos));
+            other is _$_CreateSaveTitle &&
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pos));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
-  _$$_LogPositionCopyWith<_$_LogPosition> get copyWith =>
-      __$$_LogPositionCopyWithImpl<_$_LogPosition>(this, _$identity);
+  _$$_CreateSaveTitleCopyWith<_$_CreateSaveTitle> get copyWith =>
+      __$$_CreateSaveTitleCopyWithImpl<_$_CreateSaveTitle>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function(LatLng pos) logPosition,
+    required TResult Function(String name) saveTitle,
+    required TResult Function() registerLocation,
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
-    required TResult Function(SaveTaxon taxon) registerTaxon,
+    required TResult Function() registerTaxon,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
-    return logPosition(pos);
+    return saveTitle(name);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
   }) {
-    return logPosition?.call(pos);
+    return saveTitle?.call(name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
-    if (logPosition != null) {
-      return logPosition(pos);
+    if (saveTitle != null) {
+      return saveTitle(name);
     }
     return orElse();
   }
@@ -330,53 +346,192 @@ class _$_LogPosition implements _LogPosition {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Start value) start,
-    required TResult Function(_LogPosition value) logPosition,
+    required TResult Function(_CreateSaveTitle value) saveTitle,
+    required TResult Function(_RegisterLocation value) registerLocation,
     required TResult Function(_FindTaxon value) findTaxon,
     required TResult Function(_AddPic value) addPic,
     required TResult Function(_RegisterTaxon value) registerTaxon,
     required TResult Function(_SaveTrail value) saveTrail,
   }) {
-    return logPosition(this);
+    return saveTitle(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
     TResult Function(_SaveTrail value)? saveTrail,
   }) {
-    return logPosition?.call(this);
+    return saveTitle?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
     TResult Function(_SaveTrail value)? saveTrail,
     required TResult orElse(),
   }) {
-    if (logPosition != null) {
-      return logPosition(this);
+    if (saveTitle != null) {
+      return saveTitle(this);
     }
     return orElse();
   }
 }
 
-abstract class _LogPosition implements CreateEvent {
-  const factory _LogPosition({required final LatLng pos}) = _$_LogPosition;
+abstract class _CreateSaveTitle implements CreateEvent {
+  const factory _CreateSaveTitle({required final String name}) =
+      _$_CreateSaveTitle;
 
-  LatLng get pos;
+  String get name;
   @JsonKey(ignore: true)
-  _$$_LogPositionCopyWith<_$_LogPosition> get copyWith =>
+  _$$_CreateSaveTitleCopyWith<_$_CreateSaveTitle> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RegisterLocationCopyWith<$Res> {
+  factory _$$_RegisterLocationCopyWith(
+          _$_RegisterLocation value, $Res Function(_$_RegisterLocation) then) =
+      __$$_RegisterLocationCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_RegisterLocationCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res>
+    implements _$$_RegisterLocationCopyWith<$Res> {
+  __$$_RegisterLocationCopyWithImpl(
+      _$_RegisterLocation _value, $Res Function(_$_RegisterLocation) _then)
+      : super(_value, (v) => _then(v as _$_RegisterLocation));
+
+  @override
+  _$_RegisterLocation get _value => super._value as _$_RegisterLocation;
+}
+
+/// @nodoc
+
+class _$_RegisterLocation implements _RegisterLocation {
+  const _$_RegisterLocation();
+
+  @override
+  String toString() {
+    return 'CreateEvent.registerLocation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_RegisterLocation);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() start,
+    required TResult Function(String name) saveTitle,
+    required TResult Function() registerLocation,
+    required TResult Function(String name, bool isScientificName) findTaxon,
+    required TResult Function() addPic,
+    required TResult Function() registerTaxon,
+    required TResult Function(CreateTrail trail) saveTrail,
+  }) {
+    return registerLocation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? start,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
+    TResult Function(String name, bool isScientificName)? findTaxon,
+    TResult Function()? addPic,
+    TResult Function()? registerTaxon,
+    TResult Function(CreateTrail trail)? saveTrail,
+  }) {
+    return registerLocation?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? start,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
+    TResult Function(String name, bool isScientificName)? findTaxon,
+    TResult Function()? addPic,
+    TResult Function()? registerTaxon,
+    TResult Function(CreateTrail trail)? saveTrail,
+    required TResult orElse(),
+  }) {
+    if (registerLocation != null) {
+      return registerLocation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Start value) start,
+    required TResult Function(_CreateSaveTitle value) saveTitle,
+    required TResult Function(_RegisterLocation value) registerLocation,
+    required TResult Function(_FindTaxon value) findTaxon,
+    required TResult Function(_AddPic value) addPic,
+    required TResult Function(_RegisterTaxon value) registerTaxon,
+    required TResult Function(_SaveTrail value) saveTrail,
+  }) {
+    return registerLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Start value)? start,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
+    TResult Function(_FindTaxon value)? findTaxon,
+    TResult Function(_AddPic value)? addPic,
+    TResult Function(_RegisterTaxon value)? registerTaxon,
+    TResult Function(_SaveTrail value)? saveTrail,
+  }) {
+    return registerLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Start value)? start,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
+    TResult Function(_FindTaxon value)? findTaxon,
+    TResult Function(_AddPic value)? addPic,
+    TResult Function(_RegisterTaxon value)? registerTaxon,
+    TResult Function(_SaveTrail value)? saveTrail,
+    required TResult orElse(),
+  }) {
+    if (registerLocation != null) {
+      return registerLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterLocation implements CreateEvent {
+  const factory _RegisterLocation() = _$_RegisterLocation;
 }
 
 /// @nodoc
@@ -455,10 +610,11 @@ class _$_FindTaxon implements _FindTaxon {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function(LatLng pos) logPosition,
+    required TResult Function(String name) saveTitle,
+    required TResult Function() registerLocation,
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
-    required TResult Function(SaveTaxon taxon) registerTaxon,
+    required TResult Function() registerTaxon,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return findTaxon(name, isScientificName);
@@ -468,10 +624,11 @@ class _$_FindTaxon implements _FindTaxon {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
   }) {
     return findTaxon?.call(name, isScientificName);
@@ -481,10 +638,11 @@ class _$_FindTaxon implements _FindTaxon {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -498,7 +656,8 @@ class _$_FindTaxon implements _FindTaxon {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Start value) start,
-    required TResult Function(_LogPosition value) logPosition,
+    required TResult Function(_CreateSaveTitle value) saveTitle,
+    required TResult Function(_RegisterLocation value) registerLocation,
     required TResult Function(_FindTaxon value) findTaxon,
     required TResult Function(_AddPic value) addPic,
     required TResult Function(_RegisterTaxon value) registerTaxon,
@@ -511,7 +670,8 @@ class _$_FindTaxon implements _FindTaxon {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -524,7 +684,8 @@ class _$_FindTaxon implements _FindTaxon {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -589,10 +750,11 @@ class _$_AddPic implements _AddPic {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function(LatLng pos) logPosition,
+    required TResult Function(String name) saveTitle,
+    required TResult Function() registerLocation,
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
-    required TResult Function(SaveTaxon taxon) registerTaxon,
+    required TResult Function() registerTaxon,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return addPic();
@@ -602,10 +764,11 @@ class _$_AddPic implements _AddPic {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
   }) {
     return addPic?.call();
@@ -615,10 +778,11 @@ class _$_AddPic implements _AddPic {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -632,7 +796,8 @@ class _$_AddPic implements _AddPic {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Start value) start,
-    required TResult Function(_LogPosition value) logPosition,
+    required TResult Function(_CreateSaveTitle value) saveTitle,
+    required TResult Function(_RegisterLocation value) registerLocation,
     required TResult Function(_FindTaxon value) findTaxon,
     required TResult Function(_AddPic value) addPic,
     required TResult Function(_RegisterTaxon value) registerTaxon,
@@ -645,7 +810,8 @@ class _$_AddPic implements _AddPic {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -658,7 +824,8 @@ class _$_AddPic implements _AddPic {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -681,9 +848,6 @@ abstract class _$$_RegisterTaxonCopyWith<$Res> {
   factory _$$_RegisterTaxonCopyWith(
           _$_RegisterTaxon value, $Res Function(_$_RegisterTaxon) then) =
       __$$_RegisterTaxonCopyWithImpl<$Res>;
-  $Res call({SaveTaxon taxon});
-
-  $SaveTaxonCopyWith<$Res> get taxon;
 }
 
 /// @nodoc
@@ -696,96 +860,69 @@ class __$$_RegisterTaxonCopyWithImpl<$Res>
 
   @override
   _$_RegisterTaxon get _value => super._value as _$_RegisterTaxon;
-
-  @override
-  $Res call({
-    Object? taxon = freezed,
-  }) {
-    return _then(_$_RegisterTaxon(
-      taxon == freezed
-          ? _value.taxon
-          : taxon // ignore: cast_nullable_to_non_nullable
-              as SaveTaxon,
-    ));
-  }
-
-  @override
-  $SaveTaxonCopyWith<$Res> get taxon {
-    return $SaveTaxonCopyWith<$Res>(_value.taxon, (value) {
-      return _then(_value.copyWith(taxon: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$_RegisterTaxon implements _RegisterTaxon {
-  const _$_RegisterTaxon(this.taxon);
-
-  @override
-  final SaveTaxon taxon;
+  const _$_RegisterTaxon();
 
   @override
   String toString() {
-    return 'CreateEvent.registerTaxon(taxon: $taxon)';
+    return 'CreateEvent.registerTaxon()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RegisterTaxon &&
-            const DeepCollectionEquality().equals(other.taxon, taxon));
+        (other.runtimeType == runtimeType && other is _$_RegisterTaxon);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(taxon));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_RegisterTaxonCopyWith<_$_RegisterTaxon> get copyWith =>
-      __$$_RegisterTaxonCopyWithImpl<_$_RegisterTaxon>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function(LatLng pos) logPosition,
+    required TResult Function(String name) saveTitle,
+    required TResult Function() registerLocation,
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
-    required TResult Function(SaveTaxon taxon) registerTaxon,
+    required TResult Function() registerTaxon,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
-    return registerTaxon(taxon);
+    return registerTaxon();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
   }) {
-    return registerTaxon?.call(taxon);
+    return registerTaxon?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
     if (registerTaxon != null) {
-      return registerTaxon(taxon);
+      return registerTaxon();
     }
     return orElse();
   }
@@ -794,7 +931,8 @@ class _$_RegisterTaxon implements _RegisterTaxon {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Start value) start,
-    required TResult Function(_LogPosition value) logPosition,
+    required TResult Function(_CreateSaveTitle value) saveTitle,
+    required TResult Function(_RegisterLocation value) registerLocation,
     required TResult Function(_FindTaxon value) findTaxon,
     required TResult Function(_AddPic value) addPic,
     required TResult Function(_RegisterTaxon value) registerTaxon,
@@ -807,7 +945,8 @@ class _$_RegisterTaxon implements _RegisterTaxon {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -820,7 +959,8 @@ class _$_RegisterTaxon implements _RegisterTaxon {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -835,12 +975,7 @@ class _$_RegisterTaxon implements _RegisterTaxon {
 }
 
 abstract class _RegisterTaxon implements CreateEvent {
-  const factory _RegisterTaxon(final SaveTaxon taxon) = _$_RegisterTaxon;
-
-  SaveTaxon get taxon;
-  @JsonKey(ignore: true)
-  _$$_RegisterTaxonCopyWith<_$_RegisterTaxon> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _RegisterTaxon() = _$_RegisterTaxon;
 }
 
 /// @nodoc
@@ -917,10 +1052,11 @@ class _$_SaveTrail implements _SaveTrail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function(LatLng pos) logPosition,
+    required TResult Function(String name) saveTitle,
+    required TResult Function() registerLocation,
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
-    required TResult Function(SaveTaxon taxon) registerTaxon,
+    required TResult Function() registerTaxon,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return saveTrail(trail);
@@ -930,10 +1066,11 @@ class _$_SaveTrail implements _SaveTrail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
   }) {
     return saveTrail?.call(trail);
@@ -943,10 +1080,11 @@ class _$_SaveTrail implements _SaveTrail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function(LatLng pos)? logPosition,
+    TResult Function(String name)? saveTitle,
+    TResult Function()? registerLocation,
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
-    TResult Function(SaveTaxon taxon)? registerTaxon,
+    TResult Function()? registerTaxon,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -960,7 +1098,8 @@ class _$_SaveTrail implements _SaveTrail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Start value) start,
-    required TResult Function(_LogPosition value) logPosition,
+    required TResult Function(_CreateSaveTitle value) saveTitle,
+    required TResult Function(_RegisterLocation value) registerLocation,
     required TResult Function(_FindTaxon value) findTaxon,
     required TResult Function(_AddPic value) addPic,
     required TResult Function(_RegisterTaxon value) registerTaxon,
@@ -973,7 +1112,8 @@ class _$_SaveTrail implements _SaveTrail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -986,7 +1126,8 @@ class _$_SaveTrail implements _SaveTrail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Start value)? start,
-    TResult Function(_LogPosition value)? logPosition,
+    TResult Function(_CreateSaveTitle value)? saveTitle,
+    TResult Function(_RegisterLocation value)? registerLocation,
     TResult Function(_FindTaxon value)? findTaxon,
     TResult Function(_AddPic value)? addPic,
     TResult Function(_RegisterTaxon value)? registerTaxon,
@@ -1014,7 +1155,10 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
     required TResult Function() newTaxon,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
@@ -1024,7 +1168,10 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1034,7 +1181,10 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1045,7 +1195,10 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
     required TResult Function(_NewTaxon value) newTaxon,
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
@@ -1055,7 +1208,10 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1065,7 +1221,10 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1131,7 +1290,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
     required TResult Function() newTaxon,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
@@ -1144,7 +1306,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1157,7 +1322,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1174,7 +1342,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
     required TResult Function(_NewTaxon value) newTaxon,
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
@@ -1187,7 +1358,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1200,7 +1374,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1216,6 +1393,329 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements CreateState {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$$_RegisteringNameCopyWith<$Res> {
+  factory _$$_RegisteringNameCopyWith(
+          _$_RegisteringName value, $Res Function(_$_RegisteringName) then) =
+      __$$_RegisteringNameCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_RegisteringNameCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res>
+    implements _$$_RegisteringNameCopyWith<$Res> {
+  __$$_RegisteringNameCopyWithImpl(
+      _$_RegisteringName _value, $Res Function(_$_RegisteringName) _then)
+      : super(_value, (v) => _then(v as _$_RegisteringName));
+
+  @override
+  _$_RegisteringName get _value => super._value as _$_RegisteringName;
+}
+
+/// @nodoc
+
+class _$_RegisteringName implements _RegisteringName {
+  const _$_RegisteringName();
+
+  @override
+  String toString() {
+    return 'CreateState.registeringName()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_RegisteringName);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
+    required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
+    required TResult Function() newTaxon,
+    required TResult Function() addPicStart,
+    required TResult Function() addPicLoading,
+    required TResult Function() addPicError,
+  }) {
+    return registeringName();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function()? newTaxon,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+  }) {
+    return registeringName?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function()? newTaxon,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+    required TResult orElse(),
+  }) {
+    if (registeringName != null) {
+      return registeringName();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
+    required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
+    required TResult Function(_NewTaxon value) newTaxon,
+    required TResult Function(_AddPicStart value) addPicStart,
+    required TResult Function(_AddPicLoading value) addPicLoading,
+    required TResult Function(_AddPicError value) addPicError,
+  }) {
+    return registeringName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_NewTaxon value)? newTaxon,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+  }) {
+    return registeringName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_NewTaxon value)? newTaxon,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+    required TResult orElse(),
+  }) {
+    if (registeringName != null) {
+      return registeringName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisteringName implements CreateState {
+  const factory _RegisteringName() = _$_RegisteringName;
+}
+
+/// @nodoc
+abstract class _$$_NameRegisteredCopyWith<$Res> {
+  factory _$$_NameRegisteredCopyWith(
+          _$_NameRegistered value, $Res Function(_$_NameRegistered) then) =
+      __$$_NameRegisteredCopyWithImpl<$Res>;
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$_NameRegisteredCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res>
+    implements _$$_NameRegisteredCopyWith<$Res> {
+  __$$_NameRegisteredCopyWithImpl(
+      _$_NameRegistered _value, $Res Function(_$_NameRegistered) _then)
+      : super(_value, (v) => _then(v as _$_NameRegistered));
+
+  @override
+  _$_NameRegistered get _value => super._value as _$_NameRegistered;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_$_NameRegistered(
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_NameRegistered implements _NameRegistered {
+  const _$_NameRegistered(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'CreateState.nameRegistered(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_NameRegistered &&
+            const DeepCollectionEquality().equals(other.name, name));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_NameRegisteredCopyWith<_$_NameRegistered> get copyWith =>
+      __$$_NameRegisteredCopyWithImpl<_$_NameRegistered>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
+    required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
+    required TResult Function() newTaxon,
+    required TResult Function() addPicStart,
+    required TResult Function() addPicLoading,
+    required TResult Function() addPicError,
+  }) {
+    return nameRegistered(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function()? newTaxon,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+  }) {
+    return nameRegistered?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function()? newTaxon,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+    required TResult orElse(),
+  }) {
+    if (nameRegistered != null) {
+      return nameRegistered(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
+    required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
+    required TResult Function(_NewTaxon value) newTaxon,
+    required TResult Function(_AddPicStart value) addPicStart,
+    required TResult Function(_AddPicLoading value) addPicLoading,
+    required TResult Function(_AddPicError value) addPicError,
+  }) {
+    return nameRegistered(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_NewTaxon value)? newTaxon,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+  }) {
+    return nameRegistered?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_NewTaxon value)? newTaxon,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+    required TResult orElse(),
+  }) {
+    if (nameRegistered != null) {
+      return nameRegistered(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NameRegistered implements CreateState {
+  const factory _NameRegistered(final String name) = _$_NameRegistered;
+
+  String get name;
+  @JsonKey(ignore: true)
+  _$$_NameRegisteredCopyWith<_$_NameRegistered> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1259,7 +1759,10 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
     required TResult Function() newTaxon,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
@@ -1272,7 +1775,10 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1285,7 +1791,10 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1302,7 +1811,10 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
     required TResult Function(_NewTaxon value) newTaxon,
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
@@ -1315,7 +1827,10 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1328,7 +1843,10 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1344,6 +1862,190 @@ class _$_StartPath implements _StartPath {
 
 abstract class _StartPath implements CreateState {
   const factory _StartPath() = _$_StartPath;
+}
+
+/// @nodoc
+abstract class _$$_UpdatePathCopyWith<$Res> {
+  factory _$$_UpdatePathCopyWith(
+          _$_UpdatePath value, $Res Function(_$_UpdatePath) then) =
+      __$$_UpdatePathCopyWithImpl<$Res>;
+  $Res call({Path path});
+
+  $PathCopyWith<$Res> get path;
+}
+
+/// @nodoc
+class __$$_UpdatePathCopyWithImpl<$Res> extends _$CreateStateCopyWithImpl<$Res>
+    implements _$$_UpdatePathCopyWith<$Res> {
+  __$$_UpdatePathCopyWithImpl(
+      _$_UpdatePath _value, $Res Function(_$_UpdatePath) _then)
+      : super(_value, (v) => _then(v as _$_UpdatePath));
+
+  @override
+  _$_UpdatePath get _value => super._value as _$_UpdatePath;
+
+  @override
+  $Res call({
+    Object? path = freezed,
+  }) {
+    return _then(_$_UpdatePath(
+      path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as Path,
+    ));
+  }
+
+  @override
+  $PathCopyWith<$Res> get path {
+    return $PathCopyWith<$Res>(_value.path, (value) {
+      return _then(_value.copyWith(path: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_UpdatePath implements _UpdatePath {
+  const _$_UpdatePath(this.path);
+
+  @override
+  final Path path;
+
+  @override
+  String toString() {
+    return 'CreateState.updatePath(path: $path)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdatePath &&
+            const DeepCollectionEquality().equals(other.path, path));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(path));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_UpdatePathCopyWith<_$_UpdatePath> get copyWith =>
+      __$$_UpdatePathCopyWithImpl<_$_UpdatePath>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
+    required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
+    required TResult Function() newTaxon,
+    required TResult Function() addPicStart,
+    required TResult Function() addPicLoading,
+    required TResult Function() addPicError,
+  }) {
+    return updatePath(path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function()? newTaxon,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+  }) {
+    return updatePath?.call(path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function()? newTaxon,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+    required TResult orElse(),
+  }) {
+    if (updatePath != null) {
+      return updatePath(path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
+    required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
+    required TResult Function(_NewTaxon value) newTaxon,
+    required TResult Function(_AddPicStart value) addPicStart,
+    required TResult Function(_AddPicLoading value) addPicLoading,
+    required TResult Function(_AddPicError value) addPicError,
+  }) {
+    return updatePath(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_NewTaxon value)? newTaxon,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+  }) {
+    return updatePath?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_NewTaxon value)? newTaxon,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+    required TResult orElse(),
+  }) {
+    if (updatePath != null) {
+      return updatePath(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdatePath implements CreateState {
+  const factory _UpdatePath(final Path path) = _$_UpdatePath;
+
+  Path get path;
+  @JsonKey(ignore: true)
+  _$$_UpdatePathCopyWith<_$_UpdatePath> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1387,7 +2089,10 @@ class _$_NewTaxon implements _NewTaxon {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
     required TResult Function() newTaxon,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
@@ -1400,7 +2105,10 @@ class _$_NewTaxon implements _NewTaxon {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1413,7 +2121,10 @@ class _$_NewTaxon implements _NewTaxon {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1430,7 +2141,10 @@ class _$_NewTaxon implements _NewTaxon {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
     required TResult Function(_NewTaxon value) newTaxon,
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
@@ -1443,7 +2157,10 @@ class _$_NewTaxon implements _NewTaxon {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1456,7 +2173,10 @@ class _$_NewTaxon implements _NewTaxon {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1515,7 +2235,10 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
     required TResult Function() newTaxon,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
@@ -1528,7 +2251,10 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1541,7 +2267,10 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1558,7 +2287,10 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
     required TResult Function(_NewTaxon value) newTaxon,
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
@@ -1571,7 +2303,10 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1584,7 +2319,10 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1644,7 +2382,10 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
     required TResult Function() newTaxon,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
@@ -1657,7 +2398,10 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1670,7 +2414,10 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1687,7 +2434,10 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
     required TResult Function(_NewTaxon value) newTaxon,
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
@@ -1700,7 +2450,10 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1713,7 +2466,10 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1772,7 +2528,10 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
     required TResult Function() newTaxon,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
@@ -1785,7 +2544,10 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1798,7 +2560,10 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
     TResult Function()? newTaxon,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
@@ -1815,7 +2580,10 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
     required TResult Function(_NewTaxon value) newTaxon,
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
@@ -1828,7 +2596,10 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
@@ -1841,7 +2612,10 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
     TResult Function(_NewTaxon value)? newTaxon,
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,

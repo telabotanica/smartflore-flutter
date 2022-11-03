@@ -15,6 +15,7 @@ class TextFieldWithTitle extends StatelessWidget {
   final Function(String?)? onSaved;
   final FocusNode? focusNode;
   final String? errorText;
+  final bool isMandatory;
   final TextStyle? titleStyle;
   final TextStyle? hintStyle;
 
@@ -33,19 +34,31 @@ class TextFieldWithTitle extends StatelessWidget {
       this.onSaved,
       this.errorText,
       this.focusNode,
+      this.isMandatory = false,
       this.titleStyle,
       this.hintStyle})
       : super(key: key);
 
   void handleTextfieldChange(String text, int maxChar, int index, String id) {
-    onChanged!(text, maxChar, index, id);
+    if (onChanged != null) onChanged!(text, maxChar, index, id);
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(title, textAlign: TextAlign.left, style: titleStyle),
-      const SizedBox(height: 12),
+      Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, textAlign: TextAlign.left, style: titleStyle),
+          (isMandatory)
+              ? Text('Obligatoire',
+                  textAlign: TextAlign.right,
+                  style: Theme.of(context).textTheme.bodyText2)
+              : Container()
+        ],
+      ),
+      const SizedBox(height: 8),
       TextInput(
         initialValue: initValue,
         autocorrect: false,

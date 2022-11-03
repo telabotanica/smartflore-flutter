@@ -14,6 +14,15 @@ class Numbers {
 }
 
 class LatLngUtils {
+  static double pathDistance(List<LatLng> coordinates) {
+    Distance distance = const Distance();
+    double totalDistance = 0;
+    for (var i = 0; i < coordinates.length - 1; i++) {
+      totalDistance += distance(coordinates[i], coordinates[i + 1]);
+    }
+    return totalDistance;
+  }
+
   static LatLng listToLatLng(List<double> list) {
     return LatLng(list[1], list[0]);
   }

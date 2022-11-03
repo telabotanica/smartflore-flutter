@@ -62,5 +62,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+		<string>Used when creating a botanic trail to add pictures of taxons added to the trail</string>
 </dict>
 </plist>

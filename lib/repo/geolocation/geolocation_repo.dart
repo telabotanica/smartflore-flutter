@@ -22,7 +22,7 @@ class GeolocationRepo {
     if (permissionStatus == PermissionStatus.granted) {
       const LocationSettings locationSettings = LocationSettings(
         accuracy: LocationAccuracy.high,
-        distanceFilter: 0,
+        distanceFilter: 2,
       );
 
       Stream<Position> positionStream =
