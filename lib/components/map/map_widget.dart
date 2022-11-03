@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map/flutter_map.dart' hide MapEvent;
 import 'package:latlong2/latlong.dart' hide Path;
 import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
@@ -126,7 +126,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           listener: (context, state) {
             if (state is TrailLoadedState) {
               BlocProvider.of<MapBloc>(context)
-                  .add(const ChangeMapMode(mapMode: MapMode.preview));
+                  .add(const MapEvent.changeMapMode(MapMode.preview));
               setState(() {
                 trailData = state.trail;
 
@@ -165,11 +165,12 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         ),
         BlocListener<MapBloc, MapState>(
           listener: (context, state) {
-            if (state is OnRecenterMap) {
-              recenter();
-            } else if (state is OnMapModeChanged) {
-              setMapMode(state.mapMode);
-            }
+            state.maybeWhen(
+                onRecenterMap: () => recenter(),
+                onMapModeChanged: (MapMode mapMode) {
+                  setMapMode(mapMode);
+                },
+                orElse: () {});
           },
         ),
         BlocListener<WalkBloc, WalkState>(
@@ -183,8 +184,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       child: WillPopScope(
         onWillPop: () async {
           if (mapMode != MapMode.overview) {
-            BlocProvider.of<MapBloc>(context).add(ChangeMapMode(
-                mapMode: (mapMode == MapMode.trail)
+            BlocProvider.of<MapBloc>(context).add(MapEvent.changeMapMode(
+                (mapMode == MapMode.trail)
                     ? MapMode.preview
                     : MapMode.overview));
             return false;
@@ -203,7 +204,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             onTap: (tapPos, LatLng latLng) {
               if (mapMode != MapMode.trail) {
                 BlocProvider.of<MapBloc>(context)
-                    .add(const ChangeMapMode(mapMode: MapMode.overview));
+                    .add(const MapEvent.changeMapMode(MapMode.overview));
               }
             },
           ),
@@ -249,7 +250,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                     builder: (ctx) => IconButton(
                         onPressed: () {
                           BlocProvider.of<MapBloc>(context)
-                              .add(RequestTrailPreview(trailID: trail.id));
+                              .add(MapEvent.requestTrailPreview(trail.id));
                         },
                         icon: AnimatedOpacity(
                             opacity: fade

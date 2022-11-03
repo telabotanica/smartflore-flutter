@@ -57,9 +57,11 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
 
     return BlocListener<MapBloc, MapState>(
       listener: (context, state) {
-        if (state is OnMapModeChanged) {
-          setMapMode(state.mapMode);
-        }
+        state.maybeWhen(
+            onMapModeChanged: (MapMode mapMode) {
+              setMapMode(mapMode);
+            },
+            orElse: () {});
       },
       child: SlidingUpPanel(
           backdropEnabled: true,

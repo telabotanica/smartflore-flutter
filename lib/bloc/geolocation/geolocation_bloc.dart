@@ -22,13 +22,15 @@ class GeolocationBloc extends Bloc<GeolocationEvent, GeolocationState> {
         _mapBloc = mapBloc,
         super(const _Initial()) {
     mapBlocSub = _mapBloc.stream.listen((state) async {
-      if (state is OnRecenterMap) {
-        PermissionStatus status = await _geolocationRepo.getPermissions();
-        if (status == PermissionStatus.disabled) {
-          await _geolocationRepo.openPreferences();
-        }
-        add(const GeolocationEvent.requestCurrentLocationStream());
-      }
+      state.maybeWhen(
+          onRecenterMap: () async {
+            PermissionStatus status = await _geolocationRepo.getPermissions();
+            if (status == PermissionStatus.disabled) {
+              await _geolocationRepo.openPreferences();
+            }
+            add(const GeolocationEvent.requestCurrentLocationStream());
+          },
+          orElse: () {});
     });
 
     on<GeolocationEvent>((event, emit) async {

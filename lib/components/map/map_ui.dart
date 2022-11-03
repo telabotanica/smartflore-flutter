@@ -114,7 +114,7 @@ class _MapUIState extends State<MapUI> {
                   ),
                   onPressed: () {
                     BlocProvider.of<MapBloc>(context)
-                        .add(RequestCenterMapEvent());
+                        .add(const MapEvent.requestCenterMap());
                   }),
             )),
         AnimatedPositioned(
@@ -192,8 +192,8 @@ class _MapUIState extends State<MapUI> {
                               key: trailPreviewUIKey,
                               onPressCB: () {
                                 BlocProvider.of<MapBloc>(context).add(
-                                    const ChangeMapMode(
-                                        mapMode: MapMode.trail));
+                                    const MapEvent.changeMapMode(
+                                        MapMode.trail));
                               },
                               index: 1,
                               id: state.trail.id,

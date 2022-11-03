@@ -36,14 +36,14 @@ class TrailsList extends StatelessWidget {
             child: OutlinedButton.icon(
               onPressed: () {
                 BlocProvider.of<MapBloc>(context)
-                    .add(const ChangeMapMode(mapMode: MapMode.create));
+                    .add(const MapEvent.changeMapMode(MapMode.create));
                 showDialog(
                     context: context,
                     builder: (context) => Modal(CreateFormNameModal(
                             onClose: ({bool leaveCreateMode = false}) {
                           if (leaveCreateMode) {
                             BlocProvider.of<MapBloc>(context).add(
-                                const ChangeMapMode(mapMode: MapMode.overview));
+                                const MapEvent.changeMapMode(MapMode.overview));
                           }
                           Navigator.of(context).pop();
                         })),

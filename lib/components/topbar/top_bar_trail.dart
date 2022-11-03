@@ -58,7 +58,7 @@ class TopBarTrail extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => {
                     BlocProvider.of<MapBloc>(context)
-                        .add(const ChangeMapMode(mapMode: MapMode.preview))
+                        .add(const MapEvent.changeMapMode(MapMode.preview))
                   },
                   child: const Icon(Icons.close, size: 20, color: Colors.black),
                 ),
