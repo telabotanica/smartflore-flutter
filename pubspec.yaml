@@ -59,6 +59,7 @@ dependencies:
   another_flushbar: ^1.12.29
   flutter_animate: ^2.0.0
   camera: ^0.10.0+4
+  group_button: ^5.2.2
 
 dev_dependencies:
   flutter_test:

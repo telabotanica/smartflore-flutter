@@ -27,6 +27,7 @@ class _BtnTargetState extends State<BtnTarget> {
             orElse: () {});
       },
       child: FloatingActionButton(
+          heroTag: 'target',
           backgroundColor: Colors.white,
           child: (followModeUI == FollowMode.free)
               ? const Icon(

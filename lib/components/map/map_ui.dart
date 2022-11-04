@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
@@ -10,6 +11,8 @@ import 'package:smartflore/components/cards/trail_preview.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/map/ui/btn_target.dart';
 import 'package:smartflore/components/map/ui/topbar_create.dart';
+import 'package:smartflore/components/modal.dart';
+import 'package:smartflore/components/modal/create_form_save.dart';
 import 'package:smartflore/components/topbar/top_bar_trail.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/layout.dart';
@@ -148,7 +151,19 @@ class _MapUIState extends State<MapUI> {
                                       Radius.circular(2)),
                                   color:
                                       Theme.of(context).colorScheme.primary)),
-                          onPressed: () {}),
+                          onPressed: () {
+                            BlocProvider.of<CreateBloc>(context)
+                                .add(const CreateEvent.pause());
+                            showDialog(
+                                context: context,
+                                builder: (context) =>
+                                    Modal(CreateEndModal(onClose: () {
+                                      BlocProvider.of<CreateBloc>(context)
+                                          .add(const CreateEvent.unPause());
+                                      Navigator.of(context).pop();
+                                    })),
+                                barrierColor: Colors.black.withOpacity(0.1));
+                          }),
                     ),
                   ],
                 ),

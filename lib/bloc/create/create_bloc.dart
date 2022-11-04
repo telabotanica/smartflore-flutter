@@ -16,11 +16,11 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
   final GeolocationBloc geolocationBloc;
   late DateTime lastRecordPositionTime = DateTime.now();
   LatLng? lastRecordPosition;
+  bool pauseRecording = false;
 
   CreateBloc({required this.createTrailBox, required this.geolocationBloc})
       : super(const _Initial()) {
     on<CreateEvent>((event, emit) {
-      // TODO: implement event handler
       event.maybeWhen(
           // SAVE TITLE
           saveTitle: (String name) {
@@ -36,29 +36,40 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
           registerLocation: () {
             //listen location stream
             geolocationBloc.stream.listen((event) {
-              event.maybeWhen(
-                  locationUpdate: (Position position) {
-                    DateTime now = DateTime.now();
+              if (!pauseRecording) {
+                event.maybeWhen(
+                    locationUpdate: (Position position) {
+                      DateTime now = DateTime.now();
 
-                    if (lastRecordPosition == null ||
-                        now.difference(lastRecordPositionTime).inSeconds > 1) {
-                      LatLng currentPos =
-                          LatLng(position.latitude, position.longitude);
-                      if (lastRecordPosition == null) {
-                        recordPos(currentPos, now);
-                      } else {
-                        Distance distance = const Distance();
-
-                        final double meter =
-                            distance(currentPos, lastRecordPosition!);
-                        if (meter > 2) {
+                      if (lastRecordPosition == null ||
+                          now.difference(lastRecordPositionTime).inSeconds >
+                              1) {
+                        LatLng currentPos =
+                            LatLng(position.latitude, position.longitude);
+                        if (lastRecordPosition == null) {
                           recordPos(currentPos, now);
+                        } else {
+                          Distance distance = const Distance();
+
+                          final double meter =
+                              distance(currentPos, lastRecordPosition!);
+                          if (meter > 2) {
+                            recordPos(currentPos, now);
+                          }
                         }
                       }
-                    }
-                  },
-                  orElse: () {});
+                    },
+                    orElse: () {});
+              }
             });
+          },
+          // PAUSE REGISTER LOCATION
+          pause: () {
+            pauseRecording = true;
+          },
+          // UNPAUSE REGISTER LOCATION
+          unPause: () {
+            pauseRecording = false;
           },
           orElse: () {});
     });

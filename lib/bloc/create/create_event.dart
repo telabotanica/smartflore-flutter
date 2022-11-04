@@ -6,7 +6,8 @@ class CreateEvent with _$CreateEvent {
   const factory CreateEvent.saveTitle({required String name}) =
       _CreateSaveTitle;
   const factory CreateEvent.registerLocation() = _RegisterLocation;
-
+  const factory CreateEvent.pause() = _Pause;
+  const factory CreateEvent.unPause() = _UnPause;
   const factory CreateEvent.findTaxon(
       {required String name, required bool isScientificName}) = _FindTaxon;
   const factory CreateEvent.addPic() = _AddPic;
