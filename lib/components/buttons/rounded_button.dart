@@ -28,7 +28,7 @@ class RoundedButton extends StatelessWidget {
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
               if (states.contains(MaterialState.disabled)) {
-                return primary;
+                return primary.withOpacity(0.5);
               }
               return primary;
             }),

@@ -30,48 +30,73 @@ class CreateScreen extends StatelessWidget {
             titleSpacing: 0.0,
             title: Text('Ajouter un individu',
                 style: Theme.of(context).textTheme.bodyText1)),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(36.0, 16, 36, 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextFieldWithTitle(
-                isMandatory: true,
-                id: 'taxonName',
-                index: 0,
-                title: "Nom de l'espèce",
-                hintText: '',
-                keyboardType: TextInputType.emailAddress,
-                titleStyle: Theme.of(context).textTheme.headline6,
-                hintStyle: Theme.of(context)
-                    .textTheme
-                    .headline6
-                    ?.copyWith(color: Colors.black.withOpacity(0.4)),
-                onSaved: (value) {},
+        body: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(36.0, 16, 36, 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextFieldWithTitle(
+                    isMandatory: true,
+                    id: 'taxonName',
+                    index: 0,
+                    title: "Nom de l'espèce",
+                    hintText: '',
+                    keyboardType: TextInputType.emailAddress,
+                    titleStyle: Theme.of(context).textTheme.headline6,
+                    hintStyle: Theme.of(context)
+                        .textTheme
+                        .headline6
+                        ?.copyWith(color: Colors.black.withOpacity(0.4)),
+                    onSaved: (value) {},
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text('Ajouter une photo',
+                            style: Theme.of(context).textTheme.headline6),
+                        Text('Obligatoire',
+                            style: Theme.of(context).textTheme.bodyText2),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                      height: 46,
+                      child: RoundedButton(
+                          label: '',
+                          onPress: () {
+                            Navigator.of(context).pushNamed('/camera');
+                          },
+                          icon: SmartFloreIcons.iconPhoto))
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text('Ajouter une photo',
-                        style: Theme.of(context).textTheme.headline6),
-                    Text('Obligatoire',
-                        style: Theme.of(context).textTheme.bodyText2),
-                  ],
-                ),
-              ),
-              SizedBox(
-                  height: 46,
-                  child: RoundedButton(
-                      label: '',
-                      onPress: () {
-                        Navigator.of(context).pushNamed('/camera');
-                      },
-                      icon: SmartFloreIcons.iconPhoto))
-            ],
-          ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10,
+                            color: Colors.black.withOpacity(0.15))
+                      ],
+                      color: Theme.of(context).colorScheme.background,
+                      borderRadius: const BorderRadius.all(Radius.circular(6))),
+                  child: const Padding(
+                    padding: EdgeInsets.all(36.0),
+                    child: SizedBox(
+                      height: 46,
+                      child: RoundedButton(
+                        label: 'Ajouter',
+                      ),
+                    ),
+                  )),
+            )
+          ],
         ));
   }
 }
