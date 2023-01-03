@@ -13,11 +13,11 @@ class SettingsScreen extends StatelessWidget {
 
   final List<SettingsItemVO> listItems = [
     SettingsItemVO("Conditions d'utilisation",
-        'https://taxamart.floristic.org/static/fr/terms_of_use.html'),
+        'https://www.tela-botanica.org/smartflore-services/terms_of_use'),
     SettingsItemVO(
-        'Crédits', 'https://taxamart.floristic.org/static/fr/credits.html'),
+        'Crédits', 'https://www.tela-botanica.org/smartflore-services/credits'),
     SettingsItemVO(
-        'À propos', 'https://taxamart.floristic.org/static/fr/about.html')
+        'À propos', 'https://www.tela-botanica.org/smartflore-services/about')
   ];
 
   @override
