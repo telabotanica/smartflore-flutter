@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/ping/ping_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
@@ -18,6 +19,8 @@ import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
+import 'package:smartflore/repo/ping/taxon/ping_api_client.dart';
+import 'package:smartflore/repo/ping/taxon/ping_repo.dart';
 import 'package:smartflore/repo/taxon/taxon_api_client.dart';
 import 'package:smartflore/repo/taxon/taxon_repo.dart';
 import 'package:smartflore/repo/trail/trail_api_client.dart';
@@ -63,7 +66,7 @@ void main() async {
   Box<Map<int, bool>> localImagesBox = await Hive.openBox('localImages');
 
   Box<bool> saveTrailBox = await Hive.openBox('savedTrails');
-  await Hive.openBox('appConfig');
+  Box appConfig = await Hive.openBox('appConfig');
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -86,6 +89,13 @@ void main() async {
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
 
+  final PingRepo pingRepo = PingRepo(
+      pingApiClient: PingApiClient(
+        httpClient: http.Client(),
+        baseUrl: 'https://tela-botanica.org/smartflore-services/ping',
+      ),
+      appConfig: appConfig,
+      geolocationRepo: geolocationRepo);
   Bloc.observer = SimpleBlocObserver();
 
   runApp(RootRestorationScope(
@@ -110,6 +120,7 @@ void main() async {
               geolocationRepo: geolocationRepo,
               mapBloc: BlocProvider.of<MapBloc>(context))
             ..add(RequestLocationPermissionEvent())),
+      BlocProvider<PingBloc>(create: (context) => PingBloc(pingRepo: pingRepo)),
     ], child: const App()),
   ));
 }

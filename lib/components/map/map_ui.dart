@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/ping/ping_bloc.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
 import 'package:smartflore/components/cards/trail_preview.dart';
@@ -157,6 +158,9 @@ class _MapUIState extends State<MapUI> {
                                     BlocProvider.of<MapBloc>(context).add(
                                         const ChangeMapMode(
                                             mapMode: MapMode.trail));
+                                    BlocProvider.of<PingBloc>(context).add(
+                                        PingEvent.ping(state.trail.id,
+                                            state.trail.position.start));
                                   },
                                   index: 1,
                                   id: state.trail.id,
