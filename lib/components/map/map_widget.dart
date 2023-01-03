@@ -153,11 +153,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         ),
         BlocListener<CreateBloc, CreateState>(
           listener: (context, state) {
-            print('>>> $state');
+            //print('>>> $state');
             state.maybeWhen(
                 updatePath: (Path path) {
-                  print('>>> path ${path.coordinates.length}');
-
+                  //print('>>> path ${path.coordinates.length}');
                   setState(() {
                     createPath = path;
                   });

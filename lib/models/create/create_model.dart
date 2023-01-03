@@ -38,8 +38,8 @@ class SaveOccurrence with _$SaveOccurrence {
   @HiveType(typeId: 51, adapterName: 'SaveOccurrenceAdapter')
   const factory SaveOccurrence({
     @LatLngConverter() @HiveField(0) required LatLng position,
-    @HiveField(1) @Default('') String taxon_id,
-    @HiveField(2) @Default('') String image_id,
+    @HiveField(1) @Default('') @JsonKey(name: 'taxon_id') String taxonId,
+    @HiveField(2) @Default('') @JsonKey(name: 'image_id') String imageId,
   }) = _SaveOccurrence;
 
   factory SaveOccurrence.fromJson(Map<String, dynamic> json) =>

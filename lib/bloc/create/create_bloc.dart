@@ -47,14 +47,14 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                         LatLng currentPos =
                             LatLng(position.latitude, position.longitude);
                         if (lastRecordPosition == null) {
-                          recordPos(currentPos, now);
+                          recordPos(currentPos, now, emit);
                         } else {
                           Distance distance = const Distance();
 
                           final double meter =
                               distance(currentPos, lastRecordPosition!);
                           if (meter > 2) {
-                            recordPos(currentPos, now);
+                            recordPos(currentPos, now, emit);
                           }
                         }
                       }
@@ -75,7 +75,7 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
     });
   }
 
-  void recordPos(LatLng currentPos, DateTime now) {
+  void recordPos(LatLng currentPos, DateTime now, emit) {
     lastRecordPositionTime = now;
     lastRecordPosition = currentPos;
     CreateTrail? currentTrail = createTrailBox.get('current');

@@ -46,10 +46,6 @@ class _CameraScreenState extends State<CameraScreen> {
               cameraErrorStatus = CameraError.accessDenied;
             });
             break;
-          default:
-            setState() {
-              cameraErrorStatus = CameraError.other;
-            }
         }
       }
     });
@@ -93,14 +89,14 @@ class _CameraScreenState extends State<CameraScreen> {
                   child: FloatingActionButton(
                     splashColor: Theme.of(context).colorScheme.primary,
                     onPressed: () async {
-                      print('>>> take picture');
-                      XFile? xFile = await takePicture();
+                      //print('>>> take picture');
+                      //XFile? xFile = await takePicture();
 
                       _controller!.takePicture().then((XFile? file) {
-                        print('>>> mounted ${file!.path}');
+                        //print('>>> mounted ${file!.path}');
 
                         if (mounted) {
-                          print('>>> Picture saved to ${file.path}');
+                          //print('>>> Picture saved to ${file.path}');
                         }
                       });
                     },
@@ -158,21 +154,20 @@ class _CameraScreenState extends State<CameraScreen> {
   Future<XFile?> takePicture() async {
     final CameraController? cameraController = _controller;
     if (cameraController == null || !cameraController.value.isInitialized) {
-      print('>>> Error: select a camera first.');
+      //print('>>> Error: select a camera first.');
       return null;
     }
 
-    print(
-        '>>> cameraController.value.isTakingPicture :: ${cameraController.value.isTakingPicture}');
+    //print('>>> cameraController.value.isTakingPicture :: ${cameraController.value.isTakingPicture}');
     if (cameraController.value.isTakingPicture) {
       // A capture is already pending, do nothing.
       return null;
     }
 
     try {
-      print('>>> trying to take picture...');
+      //print('>>> trying to take picture...');
       final XFile file = await cameraController.takePicture();
-      print('>>> picture taken!');
+      //print('>>> picture taken!');
       return file;
     } on CameraException catch (e) {
       _showCameraException(e);
@@ -181,7 +176,7 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   void _showCameraException(CameraException e) {
-    print('>>> Error: ${e.code} - ${e.description}');
+    //print('>>> Error: ${e.code} - ${e.description}');
   }
 
   @override

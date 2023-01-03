@@ -67,8 +67,8 @@ class SaveOccurrenceAdapter extends TypeAdapter<_$_SaveOccurrence> {
     };
     return _$_SaveOccurrence(
       position: fields[0] as LatLng,
-      taxon_id: fields[1] as String,
-      image_id: fields[2] as String,
+      taxonId: fields[1] as String,
+      imageId: fields[2] as String,
     );
   }
 
@@ -79,9 +79,9 @@ class SaveOccurrenceAdapter extends TypeAdapter<_$_SaveOccurrence> {
       ..writeByte(0)
       ..write(obj.position)
       ..writeByte(1)
-      ..write(obj.taxon_id)
+      ..write(obj.taxonId)
       ..writeByte(2)
-      ..write(obj.image_id);
+      ..write(obj.imageId);
   }
 
   @override
@@ -167,15 +167,15 @@ Map<String, dynamic> _$$_CreateTrailToJson(_$_CreateTrail instance) =>
 _$_SaveOccurrence _$$_SaveOccurrenceFromJson(Map<String, dynamic> json) =>
     _$_SaveOccurrence(
       position: const LatLngConverter().fromJson(json['position']),
-      taxon_id: json['taxon_id'] as String? ?? '',
-      image_id: json['image_id'] as String? ?? '',
+      taxonId: json['taxon_id'] as String? ?? '',
+      imageId: json['image_id'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_SaveOccurrenceToJson(_$_SaveOccurrence instance) =>
     <String, dynamic>{
       'position': const LatLngConverter().toJson(instance.position),
-      'taxon_id': instance.taxon_id,
-      'image_id': instance.image_id,
+      'taxon_id': instance.taxonId,
+      'image_id': instance.imageId,
     };
 
 _$_SavePosition _$$_SavePositionFromJson(Map<String, dynamic> json) =>

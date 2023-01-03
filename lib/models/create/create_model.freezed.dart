@@ -340,9 +340,11 @@ mixin _$SaveOccurrence {
   @HiveField(0)
   LatLng get position => throw _privateConstructorUsedError;
   @HiveField(1)
-  String get taxon_id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'taxon_id')
+  String get taxonId => throw _privateConstructorUsedError;
   @HiveField(2)
-  String get image_id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_id')
+  String get imageId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -357,8 +359,8 @@ abstract class $SaveOccurrenceCopyWith<$Res> {
       _$SaveOccurrenceCopyWithImpl<$Res>;
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
-      @HiveField(1) String taxon_id,
-      @HiveField(2) String image_id});
+      @HiveField(1) @JsonKey(name: 'taxon_id') String taxonId,
+      @HiveField(2) @JsonKey(name: 'image_id') String imageId});
 }
 
 /// @nodoc
@@ -373,21 +375,21 @@ class _$SaveOccurrenceCopyWithImpl<$Res>
   @override
   $Res call({
     Object? position = freezed,
-    Object? taxon_id = freezed,
-    Object? image_id = freezed,
+    Object? taxonId = freezed,
+    Object? imageId = freezed,
   }) {
     return _then(_value.copyWith(
       position: position == freezed
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      taxon_id: taxon_id == freezed
-          ? _value.taxon_id
-          : taxon_id // ignore: cast_nullable_to_non_nullable
+      taxonId: taxonId == freezed
+          ? _value.taxonId
+          : taxonId // ignore: cast_nullable_to_non_nullable
               as String,
-      image_id: image_id == freezed
-          ? _value.image_id
-          : image_id // ignore: cast_nullable_to_non_nullable
+      imageId: imageId == freezed
+          ? _value.imageId
+          : imageId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -402,8 +404,8 @@ abstract class _$$_SaveOccurrenceCopyWith<$Res>
   @override
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
-      @HiveField(1) String taxon_id,
-      @HiveField(2) String image_id});
+      @HiveField(1) @JsonKey(name: 'taxon_id') String taxonId,
+      @HiveField(2) @JsonKey(name: 'image_id') String imageId});
 }
 
 /// @nodoc
@@ -420,21 +422,21 @@ class __$$_SaveOccurrenceCopyWithImpl<$Res>
   @override
   $Res call({
     Object? position = freezed,
-    Object? taxon_id = freezed,
-    Object? image_id = freezed,
+    Object? taxonId = freezed,
+    Object? imageId = freezed,
   }) {
     return _then(_$_SaveOccurrence(
       position: position == freezed
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      taxon_id: taxon_id == freezed
-          ? _value.taxon_id
-          : taxon_id // ignore: cast_nullable_to_non_nullable
+      taxonId: taxonId == freezed
+          ? _value.taxonId
+          : taxonId // ignore: cast_nullable_to_non_nullable
               as String,
-      image_id: image_id == freezed
-          ? _value.image_id
-          : image_id // ignore: cast_nullable_to_non_nullable
+      imageId: imageId == freezed
+          ? _value.imageId
+          : imageId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -446,8 +448,8 @@ class __$$_SaveOccurrenceCopyWithImpl<$Res>
 class _$_SaveOccurrence implements _SaveOccurrence {
   const _$_SaveOccurrence(
       {@LatLngConverter() @HiveField(0) required this.position,
-      @HiveField(1) this.taxon_id = '',
-      @HiveField(2) this.image_id = ''});
+      @HiveField(1) @JsonKey(name: 'taxon_id') this.taxonId = '',
+      @HiveField(2) @JsonKey(name: 'image_id') this.imageId = ''});
 
   factory _$_SaveOccurrence.fromJson(Map<String, dynamic> json) =>
       _$$_SaveOccurrenceFromJson(json);
@@ -457,17 +459,17 @@ class _$_SaveOccurrence implements _SaveOccurrence {
   @HiveField(0)
   final LatLng position;
   @override
-  @JsonKey()
   @HiveField(1)
-  final String taxon_id;
+  @JsonKey(name: 'taxon_id')
+  final String taxonId;
   @override
-  @JsonKey()
   @HiveField(2)
-  final String image_id;
+  @JsonKey(name: 'image_id')
+  final String imageId;
 
   @override
   String toString() {
-    return 'SaveOccurrence(position: $position, taxon_id: $taxon_id, image_id: $image_id)';
+    return 'SaveOccurrence(position: $position, taxonId: $taxonId, imageId: $imageId)';
   }
 
   @override
@@ -476,8 +478,8 @@ class _$_SaveOccurrence implements _SaveOccurrence {
         (other.runtimeType == runtimeType &&
             other is _$_SaveOccurrence &&
             const DeepCollectionEquality().equals(other.position, position) &&
-            const DeepCollectionEquality().equals(other.taxon_id, taxon_id) &&
-            const DeepCollectionEquality().equals(other.image_id, image_id));
+            const DeepCollectionEquality().equals(other.taxonId, taxonId) &&
+            const DeepCollectionEquality().equals(other.imageId, imageId));
   }
 
   @JsonKey(ignore: true)
@@ -485,8 +487,8 @@ class _$_SaveOccurrence implements _SaveOccurrence {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(position),
-      const DeepCollectionEquality().hash(taxon_id),
-      const DeepCollectionEquality().hash(image_id));
+      const DeepCollectionEquality().hash(taxonId),
+      const DeepCollectionEquality().hash(imageId));
 
   @JsonKey(ignore: true)
   @override
@@ -503,9 +505,10 @@ class _$_SaveOccurrence implements _SaveOccurrence {
 
 abstract class _SaveOccurrence implements SaveOccurrence {
   const factory _SaveOccurrence(
-      {@LatLngConverter() @HiveField(0) required final LatLng position,
-      @HiveField(1) final String taxon_id,
-      @HiveField(2) final String image_id}) = _$_SaveOccurrence;
+          {@LatLngConverter() @HiveField(0) required final LatLng position,
+          @HiveField(1) @JsonKey(name: 'taxon_id') final String taxonId,
+          @HiveField(2) @JsonKey(name: 'image_id') final String imageId}) =
+      _$_SaveOccurrence;
 
   factory _SaveOccurrence.fromJson(Map<String, dynamic> json) =
       _$_SaveOccurrence.fromJson;
@@ -516,10 +519,12 @@ abstract class _SaveOccurrence implements SaveOccurrence {
   LatLng get position;
   @override
   @HiveField(1)
-  String get taxon_id;
+  @JsonKey(name: 'taxon_id')
+  String get taxonId;
   @override
   @HiveField(2)
-  String get image_id;
+  @JsonKey(name: 'image_id')
+  String get imageId;
   @override
   @JsonKey(ignore: true)
   _$$_SaveOccurrenceCopyWith<_$_SaveOccurrence> get copyWith =>
