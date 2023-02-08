@@ -32,6 +32,7 @@ class _TaxonScreenState extends State<TaxonScreen>
 
   @override
   void initState() {
+    // REQUEST FULL TAXON DATA
     BlocProvider.of<TaxonBloc>(context).add(LoadTaxonDataEvent(
         taxonID: widget.taxonID, taxonRepo: widget.taxonRepo));
     _tabController = TabController(vsync: this, length: 4);

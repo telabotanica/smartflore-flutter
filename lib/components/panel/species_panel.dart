@@ -28,7 +28,6 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
   bool isPanelMoving = false;
   int currentOccurence = 0;
   TrailDetails? currentTrail;
-
   late Animation<double> animation;
   late AnimationController controller;
 
