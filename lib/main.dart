@@ -7,6 +7,7 @@ import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/ping/ping_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
@@ -22,8 +23,8 @@ import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
-import 'package:smartflore/repo/ping/taxon/ping_api_client.dart';
-import 'package:smartflore/repo/ping/taxon/ping_repo.dart';
+import 'package:smartflore/repo/ping/ping_api_client.dart';
+import 'package:smartflore/repo/ping/ping_repo.dart';
 import 'package:smartflore/repo/taxon/taxon_api_client.dart';
 import 'package:smartflore/repo/taxon/taxon_repo.dart';
 import 'package:smartflore/repo/trail/trail_api_client.dart';
@@ -84,7 +85,7 @@ void main() async {
 
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
-          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}trails'));
+          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/trails'));
   final TrailRepo trailRepo = TrailRepo(
       trailApiClient: TrailApiClient(
           httpClient: http.Client(), baseUrl: AppEnv().apiBaseUrl));
@@ -93,14 +94,14 @@ void main() async {
 
   final TaxonRepo taxonRepo = TaxonRepo(
       taxonApiClient: TaxonApiClient(
-          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}taxon'));
+          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/taxon'));
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
 
   final PingRepo pingRepo = PingRepo(
       pingApiClient: PingApiClient(
         httpClient: http.Client(),
-        baseUrl: '${AppEnv().apiBaseUrl}ping',
+        baseUrl: '${AppEnv().apiBaseUrl}/ping',
       ),
       appConfig: appConfig,
       geolocationRepo: geolocationRepo);
@@ -123,6 +124,7 @@ void main() async {
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
       BlocProvider<TaxonBloc>(
           create: (context) => TaxonBloc(taxonRepo, taxonBox)),
+      BlocProvider<PingBloc>(create: (context) => PingBloc(pingRepo: pingRepo)),
       BlocProvider<GeolocationBloc>(
           create: (context) => GeolocationBloc(
               geolocationRepo: geolocationRepo,
@@ -130,6 +132,7 @@ void main() async {
             ..add(const GeolocationEvent.requestPermission())),
       BlocProvider<CreateBloc>(
           create: (context) => CreateBloc(
+              algolia: algolia,
               createTrailBox: createBox,
               geolocationBloc: BlocProvider.of<GeolocationBloc>(context)))
     ], child: const App()),

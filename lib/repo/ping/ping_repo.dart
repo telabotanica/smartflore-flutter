@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/models/ping/ping_model.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
-import 'package:smartflore/repo/ping/taxon/ping_api_client.dart';
+
+import 'ping_api_client.dart';
 
 class PingRepo {
   final PingApiClient pingApiClient;

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:smartflore/repo/ping/taxon/ping_repo.dart';
+import 'package:smartflore/repo/ping/ping_repo.dart';
 
 part 'ping_event.dart';
 part 'ping_state.dart';
