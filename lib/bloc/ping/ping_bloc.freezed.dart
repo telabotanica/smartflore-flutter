@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ping_bloc.dart';
 
@@ -25,7 +25,7 @@ mixin _$PingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int trailId, LatLng trailStartLocation)? ping,
+    TResult? Function(int trailId, LatLng trailStartLocation)? ping,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,7 +41,7 @@ mixin _$PingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Ping value)? ping,
+    TResult? Function(_Ping value)? ping,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,33 +59,37 @@ mixin _$PingEvent {
 /// @nodoc
 abstract class $PingEventCopyWith<$Res> {
   factory $PingEventCopyWith(PingEvent value, $Res Function(PingEvent) then) =
-      _$PingEventCopyWithImpl<$Res>;
+      _$PingEventCopyWithImpl<$Res, PingEvent>;
+  @useResult
   $Res call({int trailId, LatLng trailStartLocation});
 }
 
 /// @nodoc
-class _$PingEventCopyWithImpl<$Res> implements $PingEventCopyWith<$Res> {
+class _$PingEventCopyWithImpl<$Res, $Val extends PingEvent>
+    implements $PingEventCopyWith<$Res> {
   _$PingEventCopyWithImpl(this._value, this._then);
 
-  final PingEvent _value;
   // ignore: unused_field
-  final $Res Function(PingEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trailId = freezed,
-    Object? trailStartLocation = freezed,
+    Object? trailId = null,
+    Object? trailStartLocation = null,
   }) {
     return _then(_value.copyWith(
-      trailId: trailId == freezed
+      trailId: null == trailId
           ? _value.trailId
           : trailId // ignore: cast_nullable_to_non_nullable
               as int,
-      trailStartLocation: trailStartLocation == freezed
+      trailStartLocation: null == trailStartLocation
           ? _value.trailStartLocation
           : trailStartLocation // ignore: cast_nullable_to_non_nullable
               as LatLng,
-    ));
+    ) as $Val);
   }
 }
 
@@ -94,29 +98,28 @@ abstract class _$$_PingCopyWith<$Res> implements $PingEventCopyWith<$Res> {
   factory _$$_PingCopyWith(_$_Ping value, $Res Function(_$_Ping) then) =
       __$$_PingCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int trailId, LatLng trailStartLocation});
 }
 
 /// @nodoc
-class __$$_PingCopyWithImpl<$Res> extends _$PingEventCopyWithImpl<$Res>
+class __$$_PingCopyWithImpl<$Res> extends _$PingEventCopyWithImpl<$Res, _$_Ping>
     implements _$$_PingCopyWith<$Res> {
   __$$_PingCopyWithImpl(_$_Ping _value, $Res Function(_$_Ping) _then)
-      : super(_value, (v) => _then(v as _$_Ping));
+      : super(_value, _then);
 
-  @override
-  _$_Ping get _value => super._value as _$_Ping;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trailId = freezed,
-    Object? trailStartLocation = freezed,
+    Object? trailId = null,
+    Object? trailStartLocation = null,
   }) {
     return _then(_$_Ping(
-      trailId == freezed
+      null == trailId
           ? _value.trailId
           : trailId // ignore: cast_nullable_to_non_nullable
               as int,
-      trailStartLocation == freezed
+      null == trailStartLocation
           ? _value.trailStartLocation
           : trailStartLocation // ignore: cast_nullable_to_non_nullable
               as LatLng,
@@ -144,19 +147,17 @@ class _$_Ping implements _Ping {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Ping &&
-            const DeepCollectionEquality().equals(other.trailId, trailId) &&
-            const DeepCollectionEquality()
-                .equals(other.trailStartLocation, trailStartLocation));
+            (identical(other.trailId, trailId) || other.trailId == trailId) &&
+            (identical(other.trailStartLocation, trailStartLocation) ||
+                other.trailStartLocation == trailStartLocation));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(trailId),
-      const DeepCollectionEquality().hash(trailStartLocation));
+  int get hashCode => Object.hash(runtimeType, trailId, trailStartLocation);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PingCopyWith<_$_Ping> get copyWith =>
       __$$_PingCopyWithImpl<_$_Ping>(this, _$identity);
 
@@ -171,7 +172,7 @@ class _$_Ping implements _Ping {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int trailId, LatLng trailStartLocation)? ping,
+    TResult? Function(int trailId, LatLng trailStartLocation)? ping,
   }) {
     return ping?.call(trailId, trailStartLocation);
   }
@@ -199,7 +200,7 @@ class _$_Ping implements _Ping {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Ping value)? ping,
+    TResult? Function(_Ping value)? ping,
   }) {
     return ping?.call(this);
   }
@@ -242,10 +243,10 @@ mixin _$PingState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -267,10 +268,10 @@ mixin _$PingState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -287,16 +288,18 @@ mixin _$PingState {
 /// @nodoc
 abstract class $PingStateCopyWith<$Res> {
   factory $PingStateCopyWith(PingState value, $Res Function(PingState) then) =
-      _$PingStateCopyWithImpl<$Res>;
+      _$PingStateCopyWithImpl<$Res, PingState>;
 }
 
 /// @nodoc
-class _$PingStateCopyWithImpl<$Res> implements $PingStateCopyWith<$Res> {
+class _$PingStateCopyWithImpl<$Res, $Val extends PingState>
+    implements $PingStateCopyWith<$Res> {
   _$PingStateCopyWithImpl(this._value, this._then);
 
-  final PingState _value;
   // ignore: unused_field
-  final $Res Function(PingState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -307,13 +310,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$PingStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$PingStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -349,10 +350,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) {
     return initial?.call();
   }
@@ -386,10 +387,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -422,13 +423,11 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$PingStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$PingStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -464,10 +463,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) {
     return loading?.call();
   }
@@ -501,10 +500,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -536,13 +535,11 @@ abstract class _$$_LoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res> extends _$PingStateCopyWithImpl<$Res>
+class __$$_LoadedCopyWithImpl<$Res>
+    extends _$PingStateCopyWithImpl<$Res, _$_Loaded>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
-      : super(_value, (v) => _then(v as _$_Loaded));
-
-  @override
-  _$_Loaded get _value => super._value as _$_Loaded;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -578,10 +575,10 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) {
     return loaded?.call();
   }
@@ -615,10 +612,10 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -650,13 +647,11 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$PingStateCopyWithImpl<$Res>
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$PingStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
-
-  @override
-  _$_Error get _value => super._value as _$_Error;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -692,10 +687,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) {
     return error?.call();
   }
@@ -729,10 +724,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
   }

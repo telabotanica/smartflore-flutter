@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'trail_model.dart';
 
@@ -54,7 +54,8 @@ mixin _$TrailDetails {
 abstract class $TrailDetailsCopyWith<$Res> {
   factory $TrailDetailsCopyWith(
           TrailDetails value, $Res Function(TrailDetails) then) =
-      _$TrailDetailsCopyWithImpl<$Res>;
+      _$TrailDetailsCopyWithImpl<$Res, TrailDetails>;
+  @useResult
   $Res call(
       {@HiveField(0) int id,
       @HiveField(1) String name,
@@ -73,88 +74,94 @@ abstract class $TrailDetailsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TrailDetailsCopyWithImpl<$Res> implements $TrailDetailsCopyWith<$Res> {
+class _$TrailDetailsCopyWithImpl<$Res, $Val extends TrailDetails>
+    implements $TrailDetailsCopyWith<$Res> {
   _$TrailDetailsCopyWithImpl(this._value, this._then);
 
-  final TrailDetails _value;
   // ignore: unused_field
-  final $Res Function(TrailDetails) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? displayName = freezed,
-    Object? author = freezed,
-    Object? position = freezed,
-    Object? occurrences = freezed,
-    Object? occurrencesCount = freezed,
-    Object? image = freezed,
-    Object? path = freezed,
-    Object? pathLength = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? displayName = null,
+    Object? author = null,
+    Object? position = null,
+    Object? occurrences = null,
+    Object? occurrencesCount = null,
+    Object? image = null,
+    Object? path = null,
+    Object? pathLength = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      displayName: displayName == freezed
+      displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
+      author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as StartEndPosition,
-      occurrences: occurrences == freezed
+      occurrences: null == occurrences
           ? _value.occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
               as List<Occurrence>,
-      occurrencesCount: occurrencesCount == freezed
+      occurrencesCount: null == occurrencesCount
           ? _value.occurrencesCount
           : occurrencesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      image: image == freezed
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as Image,
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as Path,
-      pathLength: pathLength == freezed
+      pathLength: null == pathLength
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $StartEndPositionCopyWith<$Res> get position {
     return $StartEndPositionCopyWith<$Res>(_value.position, (value) {
-      return _then(_value.copyWith(position: value));
+      return _then(_value.copyWith(position: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ImageCopyWith<$Res> get image {
     return $ImageCopyWith<$Res>(_value.image, (value) {
-      return _then(_value.copyWith(image: value));
+      return _then(_value.copyWith(image: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PathCopyWith<$Res> get path {
     return $PathCopyWith<$Res>(_value.path, (value) {
-      return _then(_value.copyWith(path: value));
+      return _then(_value.copyWith(path: value) as $Val);
     });
   }
 }
@@ -166,6 +173,7 @@ abstract class _$$_TrailDetailsCopyWith<$Res>
           _$_TrailDetails value, $Res Function(_$_TrailDetails) then) =
       __$$_TrailDetailsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@HiveField(0) int id,
       @HiveField(1) String name,
@@ -188,66 +196,64 @@ abstract class _$$_TrailDetailsCopyWith<$Res>
 
 /// @nodoc
 class __$$_TrailDetailsCopyWithImpl<$Res>
-    extends _$TrailDetailsCopyWithImpl<$Res>
+    extends _$TrailDetailsCopyWithImpl<$Res, _$_TrailDetails>
     implements _$$_TrailDetailsCopyWith<$Res> {
   __$$_TrailDetailsCopyWithImpl(
       _$_TrailDetails _value, $Res Function(_$_TrailDetails) _then)
-      : super(_value, (v) => _then(v as _$_TrailDetails));
+      : super(_value, _then);
 
-  @override
-  _$_TrailDetails get _value => super._value as _$_TrailDetails;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? displayName = freezed,
-    Object? author = freezed,
-    Object? position = freezed,
-    Object? occurrences = freezed,
-    Object? occurrencesCount = freezed,
-    Object? image = freezed,
-    Object? path = freezed,
-    Object? pathLength = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? displayName = null,
+    Object? author = null,
+    Object? position = null,
+    Object? occurrences = null,
+    Object? occurrencesCount = null,
+    Object? image = null,
+    Object? path = null,
+    Object? pathLength = null,
   }) {
     return _then(_$_TrailDetails(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      displayName: displayName == freezed
+      displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
+      author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as StartEndPosition,
-      occurrences: occurrences == freezed
+      occurrences: null == occurrences
           ? _value._occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
               as List<Occurrence>,
-      occurrencesCount: occurrencesCount == freezed
+      occurrencesCount: null == occurrencesCount
           ? _value.occurrencesCount
           : occurrencesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      image: image == freezed
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as Image,
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as Path,
-      pathLength: pathLength == freezed
+      pathLength: null == pathLength
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
               as int,
@@ -308,6 +314,7 @@ class _$_TrailDetails implements _TrailDetails {
   @override
   @HiveField(5)
   List<Occurrence> get occurrences {
+    if (_occurrences is EqualUnmodifiableListView) return _occurrences;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_occurrences);
   }
@@ -337,39 +344,41 @@ class _$_TrailDetails implements _TrailDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TrailDetails &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.displayName, displayName) &&
-            const DeepCollectionEquality().equals(other.author, author) &&
-            const DeepCollectionEquality().equals(other.position, position) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.author, author) || other.author == author) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
             const DeepCollectionEquality()
                 .equals(other._occurrences, _occurrences) &&
-            const DeepCollectionEquality()
-                .equals(other.occurrencesCount, occurrencesCount) &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality().equals(other.path, path) &&
-            const DeepCollectionEquality()
-                .equals(other.pathLength, pathLength));
+            (identical(other.occurrencesCount, occurrencesCount) ||
+                other.occurrencesCount == occurrencesCount) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.pathLength, pathLength) ||
+                other.pathLength == pathLength));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(displayName),
-      const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(position),
+      id,
+      name,
+      displayName,
+      author,
+      position,
       const DeepCollectionEquality().hash(_occurrences),
-      const DeepCollectionEquality().hash(occurrencesCount),
-      const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(path),
-      const DeepCollectionEquality().hash(pathLength));
+      occurrencesCount,
+      image,
+      path,
+      pathLength);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TrailDetailsCopyWith<_$_TrailDetails> get copyWith =>
       __$$_TrailDetailsCopyWithImpl<_$_TrailDetails>(this, _$identity);
 
@@ -468,33 +477,37 @@ mixin _$Image {
 /// @nodoc
 abstract class $ImageCopyWith<$Res> {
   factory $ImageCopyWith(Image value, $Res Function(Image) then) =
-      _$ImageCopyWithImpl<$Res>;
+      _$ImageCopyWithImpl<$Res, Image>;
+  @useResult
   $Res call({@HiveField(0) int id, @HiveField(1) String url});
 }
 
 /// @nodoc
-class _$ImageCopyWithImpl<$Res> implements $ImageCopyWith<$Res> {
+class _$ImageCopyWithImpl<$Res, $Val extends Image>
+    implements $ImageCopyWith<$Res> {
   _$ImageCopyWithImpl(this._value, this._then);
 
-  final Image _value;
   // ignore: unused_field
-  final $Res Function(Image) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? url = freezed,
+    Object? id = null,
+    Object? url = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -503,29 +516,28 @@ abstract class _$$_ImageCopyWith<$Res> implements $ImageCopyWith<$Res> {
   factory _$$_ImageCopyWith(_$_Image value, $Res Function(_$_Image) then) =
       __$$_ImageCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@HiveField(0) int id, @HiveField(1) String url});
 }
 
 /// @nodoc
-class __$$_ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res>
+class __$$_ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res, _$_Image>
     implements _$$_ImageCopyWith<$Res> {
   __$$_ImageCopyWithImpl(_$_Image _value, $Res Function(_$_Image) _then)
-      : super(_value, (v) => _then(v as _$_Image));
+      : super(_value, _then);
 
-  @override
-  _$_Image get _value => super._value as _$_Image;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? url = freezed,
+    Object? id = null,
+    Object? url = null,
   }) {
     return _then(_$_Image(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
@@ -560,19 +572,17 @@ class _$_Image implements _Image {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Image &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(runtimeType, id, url);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ImageCopyWith<_$_Image> get copyWith =>
       __$$_ImageCopyWithImpl<_$_Image>(this, _$identity);
 
@@ -627,7 +637,8 @@ mixin _$Occurrence {
 abstract class $OccurrenceCopyWith<$Res> {
   factory $OccurrenceCopyWith(
           Occurrence value, $Res Function(Occurrence) then) =
-      _$OccurrenceCopyWithImpl<$Res>;
+      _$OccurrenceCopyWithImpl<$Res, Occurrence>;
+  @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
       @HiveField(1) Taxon taxon,
@@ -637,39 +648,43 @@ abstract class $OccurrenceCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OccurrenceCopyWithImpl<$Res> implements $OccurrenceCopyWith<$Res> {
+class _$OccurrenceCopyWithImpl<$Res, $Val extends Occurrence>
+    implements $OccurrenceCopyWith<$Res> {
   _$OccurrenceCopyWithImpl(this._value, this._then);
 
-  final Occurrence _value;
   // ignore: unused_field
-  final $Res Function(Occurrence) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position = freezed,
-    Object? taxon = freezed,
-    Object? images = freezed,
+    Object? position = null,
+    Object? taxon = null,
+    Object? images = null,
   }) {
     return _then(_value.copyWith(
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      taxon: taxon == freezed
+      taxon: null == taxon
           ? _value.taxon
           : taxon // ignore: cast_nullable_to_non_nullable
               as Taxon,
-      images: images == freezed
+      images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<Image>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TaxonCopyWith<$Res> get taxon {
     return $TaxonCopyWith<$Res>(_value.taxon, (value) {
-      return _then(_value.copyWith(taxon: value));
+      return _then(_value.copyWith(taxon: value) as $Val);
     });
   }
 }
@@ -681,6 +696,7 @@ abstract class _$$_OccurrenceCopyWith<$Res>
           _$_Occurrence value, $Res Function(_$_Occurrence) then) =
       __$$_OccurrenceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
       @HiveField(1) Taxon taxon,
@@ -691,31 +707,30 @@ abstract class _$$_OccurrenceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OccurrenceCopyWithImpl<$Res> extends _$OccurrenceCopyWithImpl<$Res>
+class __$$_OccurrenceCopyWithImpl<$Res>
+    extends _$OccurrenceCopyWithImpl<$Res, _$_Occurrence>
     implements _$$_OccurrenceCopyWith<$Res> {
   __$$_OccurrenceCopyWithImpl(
       _$_Occurrence _value, $Res Function(_$_Occurrence) _then)
-      : super(_value, (v) => _then(v as _$_Occurrence));
+      : super(_value, _then);
 
-  @override
-  _$_Occurrence get _value => super._value as _$_Occurrence;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position = freezed,
-    Object? taxon = freezed,
-    Object? images = freezed,
+    Object? position = null,
+    Object? taxon = null,
+    Object? images = null,
   }) {
     return _then(_$_Occurrence(
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      taxon: taxon == freezed
+      taxon: null == taxon
           ? _value.taxon
           : taxon // ignore: cast_nullable_to_non_nullable
               as Taxon,
-      images: images == freezed
+      images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<Image>,
@@ -747,6 +762,7 @@ class _$_Occurrence implements _Occurrence {
   @override
   @HiveField(2)
   List<Image> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_images);
   }
@@ -761,21 +777,20 @@ class _$_Occurrence implements _Occurrence {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Occurrence &&
-            const DeepCollectionEquality().equals(other.position, position) &&
-            const DeepCollectionEquality().equals(other.taxon, taxon) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
+            (identical(other.taxon, taxon) || other.taxon == taxon) &&
             const DeepCollectionEquality().equals(other._images, _images));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(position),
-      const DeepCollectionEquality().hash(taxon),
+  int get hashCode => Object.hash(runtimeType, position, taxon,
       const DeepCollectionEquality().hash(_images));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OccurrenceCopyWith<_$_Occurrence> get copyWith =>
       __$$_OccurrenceCopyWithImpl<_$_Occurrence>(this, _$identity);
 
@@ -842,7 +857,8 @@ mixin _$Taxon {
 /// @nodoc
 abstract class $TaxonCopyWith<$Res> {
   factory $TaxonCopyWith(Taxon value, $Res Function(Taxon) then) =
-      _$TaxonCopyWithImpl<$Res>;
+      _$TaxonCopyWithImpl<$Res, Taxon>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
@@ -862,43 +878,46 @@ abstract class $TaxonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TaxonCopyWithImpl<$Res> implements $TaxonCopyWith<$Res> {
+class _$TaxonCopyWithImpl<$Res, $Val extends Taxon>
+    implements $TaxonCopyWith<$Res> {
   _$TaxonCopyWithImpl(this._value, this._then);
 
-  final Taxon _value;
   // ignore: unused_field
-  final $Res Function(Taxon) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? scientificName = freezed,
-    Object? fullScientificName = freezed,
-    Object? taxonRepository = freezed,
-    Object? nameId = freezed,
-    Object? vernacularNames = freezed,
+    Object? fullScientificName = null,
+    Object? taxonRepository = null,
+    Object? nameId = null,
+    Object? vernacularNames = null,
   }) {
     return _then(_value.copyWith(
-      scientificName: scientificName == freezed
+      scientificName: freezed == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullScientificName: fullScientificName == freezed
+      fullScientificName: null == fullScientificName
           ? _value.fullScientificName
           : fullScientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      taxonRepository: taxonRepository == freezed
+      taxonRepository: null == taxonRepository
           ? _value.taxonRepository
           : taxonRepository // ignore: cast_nullable_to_non_nullable
               as String,
-      nameId: nameId == freezed
+      nameId: null == nameId
           ? _value.nameId
           : nameId // ignore: cast_nullable_to_non_nullable
               as int,
-      vernacularNames: vernacularNames == freezed
+      vernacularNames: null == vernacularNames
           ? _value.vernacularNames
           : vernacularNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -907,6 +926,7 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
   factory _$$_TaxonCopyWith(_$_Taxon value, $Res Function(_$_Taxon) then) =
       __$$_TaxonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
@@ -926,40 +946,38 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
+class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res, _$_Taxon>
     implements _$$_TaxonCopyWith<$Res> {
   __$$_TaxonCopyWithImpl(_$_Taxon _value, $Res Function(_$_Taxon) _then)
-      : super(_value, (v) => _then(v as _$_Taxon));
+      : super(_value, _then);
 
-  @override
-  _$_Taxon get _value => super._value as _$_Taxon;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? scientificName = freezed,
-    Object? fullScientificName = freezed,
-    Object? taxonRepository = freezed,
-    Object? nameId = freezed,
-    Object? vernacularNames = freezed,
+    Object? fullScientificName = null,
+    Object? taxonRepository = null,
+    Object? nameId = null,
+    Object? vernacularNames = null,
   }) {
     return _then(_$_Taxon(
-      scientificName: scientificName == freezed
+      scientificName: freezed == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullScientificName: fullScientificName == freezed
+      fullScientificName: null == fullScientificName
           ? _value.fullScientificName
           : fullScientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      taxonRepository: taxonRepository == freezed
+      taxonRepository: null == taxonRepository
           ? _value.taxonRepository
           : taxonRepository // ignore: cast_nullable_to_non_nullable
               as String,
-      nameId: nameId == freezed
+      nameId: null == nameId
           ? _value.nameId
           : nameId // ignore: cast_nullable_to_non_nullable
               as int,
-      vernacularNames: vernacularNames == freezed
+      vernacularNames: null == vernacularNames
           ? _value._vernacularNames
           : vernacularNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
@@ -1013,6 +1031,7 @@ class _$_Taxon implements _Taxon {
   @JsonKey(name: 'vernacular_names')
   @HiveField(4)
   List<String> get vernacularNames {
+    if (_vernacularNames is EqualUnmodifiableListView) return _vernacularNames;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_vernacularNames);
   }
@@ -1027,13 +1046,13 @@ class _$_Taxon implements _Taxon {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Taxon &&
-            const DeepCollectionEquality()
-                .equals(other.scientificName, scientificName) &&
-            const DeepCollectionEquality()
-                .equals(other.fullScientificName, fullScientificName) &&
-            const DeepCollectionEquality()
-                .equals(other.taxonRepository, taxonRepository) &&
-            const DeepCollectionEquality().equals(other.nameId, nameId) &&
+            (identical(other.scientificName, scientificName) ||
+                other.scientificName == scientificName) &&
+            (identical(other.fullScientificName, fullScientificName) ||
+                other.fullScientificName == fullScientificName) &&
+            (identical(other.taxonRepository, taxonRepository) ||
+                other.taxonRepository == taxonRepository) &&
+            (identical(other.nameId, nameId) || other.nameId == nameId) &&
             const DeepCollectionEquality()
                 .equals(other._vernacularNames, _vernacularNames));
   }
@@ -1042,14 +1061,15 @@ class _$_Taxon implements _Taxon {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(scientificName),
-      const DeepCollectionEquality().hash(fullScientificName),
-      const DeepCollectionEquality().hash(taxonRepository),
-      const DeepCollectionEquality().hash(nameId),
+      scientificName,
+      fullScientificName,
+      taxonRepository,
+      nameId,
       const DeepCollectionEquality().hash(_vernacularNames));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
       __$$_TaxonCopyWithImpl<_$_Taxon>(this, _$identity);
 
@@ -1127,35 +1147,39 @@ mixin _$Path {
 /// @nodoc
 abstract class $PathCopyWith<$Res> {
   factory $PathCopyWith(Path value, $Res Function(Path) then) =
-      _$PathCopyWithImpl<$Res>;
+      _$PathCopyWithImpl<$Res, Path>;
+  @useResult
   $Res call(
       {@HiveField(0) String type,
       @LatLngListConverter() @HiveField(1) List<LatLng> coordinates});
 }
 
 /// @nodoc
-class _$PathCopyWithImpl<$Res> implements $PathCopyWith<$Res> {
+class _$PathCopyWithImpl<$Res, $Val extends Path>
+    implements $PathCopyWith<$Res> {
   _$PathCopyWithImpl(this._value, this._then);
 
-  final Path _value;
   // ignore: unused_field
-  final $Res Function(Path) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? coordinates = freezed,
+    Object? type = null,
+    Object? coordinates = null,
   }) {
     return _then(_value.copyWith(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      coordinates: coordinates == freezed
+      coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as List<LatLng>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1164,31 +1188,30 @@ abstract class _$$_PathCopyWith<$Res> implements $PathCopyWith<$Res> {
   factory _$$_PathCopyWith(_$_Path value, $Res Function(_$_Path) then) =
       __$$_PathCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@HiveField(0) String type,
       @LatLngListConverter() @HiveField(1) List<LatLng> coordinates});
 }
 
 /// @nodoc
-class __$$_PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res>
+class __$$_PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res, _$_Path>
     implements _$$_PathCopyWith<$Res> {
   __$$_PathCopyWithImpl(_$_Path _value, $Res Function(_$_Path) _then)
-      : super(_value, (v) => _then(v as _$_Path));
+      : super(_value, _then);
 
-  @override
-  _$_Path get _value => super._value as _$_Path;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = freezed,
-    Object? coordinates = freezed,
+    Object? type = null,
+    Object? coordinates = null,
   }) {
     return _then(_$_Path(
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      coordinates: coordinates == freezed
+      coordinates: null == coordinates
           ? _value._coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as List<LatLng>,
@@ -1220,6 +1243,7 @@ class _$_Path implements _Path {
   @LatLngListConverter()
   @HiveField(1)
   List<LatLng> get coordinates {
+    if (_coordinates is EqualUnmodifiableListView) return _coordinates;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_coordinates);
   }
@@ -1234,7 +1258,7 @@ class _$_Path implements _Path {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Path &&
-            const DeepCollectionEquality().equals(other.type, type) &&
+            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality()
                 .equals(other._coordinates, _coordinates));
   }
@@ -1242,12 +1266,11 @@ class _$_Path implements _Path {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(_coordinates));
+      runtimeType, type, const DeepCollectionEquality().hash(_coordinates));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PathCopyWith<_$_Path> get copyWith =>
       __$$_PathCopyWithImpl<_$_Path>(this, _$identity);
 
@@ -1304,36 +1327,39 @@ mixin _$StartEndPosition {
 abstract class $StartEndPositionCopyWith<$Res> {
   factory $StartEndPositionCopyWith(
           StartEndPosition value, $Res Function(StartEndPosition) then) =
-      _$StartEndPositionCopyWithImpl<$Res>;
+      _$StartEndPositionCopyWithImpl<$Res, StartEndPosition>;
+  @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng start,
       @LatLngConverter() @HiveField(1) LatLng end});
 }
 
 /// @nodoc
-class _$StartEndPositionCopyWithImpl<$Res>
+class _$StartEndPositionCopyWithImpl<$Res, $Val extends StartEndPosition>
     implements $StartEndPositionCopyWith<$Res> {
   _$StartEndPositionCopyWithImpl(this._value, this._then);
 
-  final StartEndPosition _value;
   // ignore: unused_field
-  final $Res Function(StartEndPosition) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? start = freezed,
-    Object? end = freezed,
+    Object? start = null,
+    Object? end = null,
   }) {
     return _then(_value.copyWith(
-      start: start == freezed
+      start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      end: end == freezed
+      end: null == end
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
               as LatLng,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1344,6 +1370,7 @@ abstract class _$$_StartEndPositionCopyWith<$Res>
           _$_StartEndPosition value, $Res Function(_$_StartEndPosition) then) =
       __$$_StartEndPositionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng start,
       @LatLngConverter() @HiveField(1) LatLng end});
@@ -1351,26 +1378,24 @@ abstract class _$$_StartEndPositionCopyWith<$Res>
 
 /// @nodoc
 class __$$_StartEndPositionCopyWithImpl<$Res>
-    extends _$StartEndPositionCopyWithImpl<$Res>
+    extends _$StartEndPositionCopyWithImpl<$Res, _$_StartEndPosition>
     implements _$$_StartEndPositionCopyWith<$Res> {
   __$$_StartEndPositionCopyWithImpl(
       _$_StartEndPosition _value, $Res Function(_$_StartEndPosition) _then)
-      : super(_value, (v) => _then(v as _$_StartEndPosition));
+      : super(_value, _then);
 
-  @override
-  _$_StartEndPosition get _value => super._value as _$_StartEndPosition;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? start = freezed,
-    Object? end = freezed,
+    Object? start = null,
+    Object? end = null,
   }) {
     return _then(_$_StartEndPosition(
-      start: start == freezed
+      start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      end: end == freezed
+      end: null == end
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
               as LatLng,
@@ -1408,19 +1433,17 @@ class _$_StartEndPosition implements _StartEndPosition {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StartEndPosition &&
-            const DeepCollectionEquality().equals(other.start, start) &&
-            const DeepCollectionEquality().equals(other.end, end));
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.end, end) || other.end == end));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(start),
-      const DeepCollectionEquality().hash(end));
+  int get hashCode => Object.hash(runtimeType, start, end);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StartEndPositionCopyWith<_$_StartEndPosition> get copyWith =>
       __$$_StartEndPositionCopyWithImpl<_$_StartEndPosition>(this, _$identity);
 

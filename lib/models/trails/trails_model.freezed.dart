@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'trails_model.dart';
 
@@ -31,28 +31,32 @@ mixin _$Trails {
 /// @nodoc
 abstract class $TrailsCopyWith<$Res> {
   factory $TrailsCopyWith(Trails value, $Res Function(Trails) then) =
-      _$TrailsCopyWithImpl<$Res>;
+      _$TrailsCopyWithImpl<$Res, Trails>;
+  @useResult
   $Res call({@HiveField(0) List<Trail>? trailList});
 }
 
 /// @nodoc
-class _$TrailsCopyWithImpl<$Res> implements $TrailsCopyWith<$Res> {
+class _$TrailsCopyWithImpl<$Res, $Val extends Trails>
+    implements $TrailsCopyWith<$Res> {
   _$TrailsCopyWithImpl(this._value, this._then);
 
-  final Trails _value;
   // ignore: unused_field
-  final $Res Function(Trails) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? trailList = freezed,
   }) {
     return _then(_value.copyWith(
-      trailList: trailList == freezed
+      trailList: freezed == trailList
           ? _value.trailList
           : trailList // ignore: cast_nullable_to_non_nullable
               as List<Trail>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -61,24 +65,24 @@ abstract class _$$_TrailsCopyWith<$Res> implements $TrailsCopyWith<$Res> {
   factory _$$_TrailsCopyWith(_$_Trails value, $Res Function(_$_Trails) then) =
       __$$_TrailsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@HiveField(0) List<Trail>? trailList});
 }
 
 /// @nodoc
-class __$$_TrailsCopyWithImpl<$Res> extends _$TrailsCopyWithImpl<$Res>
+class __$$_TrailsCopyWithImpl<$Res>
+    extends _$TrailsCopyWithImpl<$Res, _$_Trails>
     implements _$$_TrailsCopyWith<$Res> {
   __$$_TrailsCopyWithImpl(_$_Trails _value, $Res Function(_$_Trails) _then)
-      : super(_value, (v) => _then(v as _$_Trails));
+      : super(_value, _then);
 
-  @override
-  _$_Trails get _value => super._value as _$_Trails;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? trailList = freezed,
   }) {
     return _then(_$_Trails(
-      trailList: trailList == freezed
+      trailList: freezed == trailList
           ? _value._trailList
           : trailList // ignore: cast_nullable_to_non_nullable
               as List<Trail>?,
@@ -102,6 +106,7 @@ class _$_Trails implements _Trails {
   List<Trail>? get trailList {
     final value = _trailList;
     if (value == null) return null;
+    if (_trailList is EqualUnmodifiableListView) return _trailList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -127,6 +132,7 @@ class _$_Trails implements _Trails {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TrailsCopyWith<_$_Trails> get copyWith =>
       __$$_TrailsCopyWithImpl<_$_Trails>(this, _$identity);
 
@@ -189,7 +195,8 @@ mixin _$Trail {
 /// @nodoc
 abstract class $TrailCopyWith<$Res> {
   factory $TrailCopyWith(Trail value, $Res Function(Trail) then) =
-      _$TrailCopyWithImpl<$Res>;
+      _$TrailCopyWithImpl<$Res, Trail>;
+  @useResult
   $Res call(
       {@HiveField(0) int id,
       @HiveField(1) String name,
@@ -206,80 +213,85 @@ abstract class $TrailCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TrailCopyWithImpl<$Res> implements $TrailCopyWith<$Res> {
+class _$TrailCopyWithImpl<$Res, $Val extends Trail>
+    implements $TrailCopyWith<$Res> {
   _$TrailCopyWithImpl(this._value, this._then);
 
-  final Trail _value;
   // ignore: unused_field
-  final $Res Function(Trail) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? displayName = freezed,
-    Object? author = freezed,
-    Object? position = freezed,
-    Object? occurrencesCount = freezed,
-    Object? details = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? displayName = null,
+    Object? author = null,
+    Object? position = null,
+    Object? occurrencesCount = null,
+    Object? details = null,
     Object? image = freezed,
-    Object? pathLength = freezed,
+    Object? pathLength = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      displayName: displayName == freezed
+      displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
+      author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as StartEndPosition,
-      occurrencesCount: occurrencesCount == freezed
+      occurrencesCount: null == occurrencesCount
           ? _value.occurrencesCount
           : occurrencesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      details: details == freezed
+      details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as String,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as Image?,
-      pathLength: pathLength == freezed
+      pathLength: null == pathLength
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $StartEndPositionCopyWith<$Res> get position {
     return $StartEndPositionCopyWith<$Res>(_value.position, (value) {
-      return _then(_value.copyWith(position: value));
+      return _then(_value.copyWith(position: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ImageCopyWith<$Res>? get image {
     if (_value.image == null) {
       return null;
     }
 
     return $ImageCopyWith<$Res>(_value.image!, (value) {
-      return _then(_value.copyWith(image: value));
+      return _then(_value.copyWith(image: value) as $Val);
     });
   }
 }
@@ -289,6 +301,7 @@ abstract class _$$_TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
   factory _$$_TrailCopyWith(_$_Trail value, $Res Function(_$_Trail) then) =
       __$$_TrailCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@HiveField(0) int id,
       @HiveField(1) String name,
@@ -307,60 +320,58 @@ abstract class _$$_TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res>
+class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res, _$_Trail>
     implements _$$_TrailCopyWith<$Res> {
   __$$_TrailCopyWithImpl(_$_Trail _value, $Res Function(_$_Trail) _then)
-      : super(_value, (v) => _then(v as _$_Trail));
+      : super(_value, _then);
 
-  @override
-  _$_Trail get _value => super._value as _$_Trail;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? displayName = freezed,
-    Object? author = freezed,
-    Object? position = freezed,
-    Object? occurrencesCount = freezed,
-    Object? details = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? displayName = null,
+    Object? author = null,
+    Object? position = null,
+    Object? occurrencesCount = null,
+    Object? details = null,
     Object? image = freezed,
-    Object? pathLength = freezed,
+    Object? pathLength = null,
   }) {
     return _then(_$_Trail(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      displayName: displayName == freezed
+      displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
+      author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as StartEndPosition,
-      occurrencesCount: occurrencesCount == freezed
+      occurrencesCount: null == occurrencesCount
           ? _value.occurrencesCount
           : occurrencesCount // ignore: cast_nullable_to_non_nullable
               as int,
-      details: details == freezed
+      details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as String,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as Image?,
-      pathLength: pathLength == freezed
+      pathLength: null == pathLength
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
               as int,
@@ -439,36 +450,29 @@ class _$_Trail implements _Trail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Trail &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.displayName, displayName) &&
-            const DeepCollectionEquality().equals(other.author, author) &&
-            const DeepCollectionEquality().equals(other.position, position) &&
-            const DeepCollectionEquality()
-                .equals(other.occurrencesCount, occurrencesCount) &&
-            const DeepCollectionEquality().equals(other.details, details) &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality()
-                .equals(other.pathLength, pathLength));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.author, author) || other.author == author) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
+            (identical(other.occurrencesCount, occurrencesCount) ||
+                other.occurrencesCount == occurrencesCount) &&
+            (identical(other.details, details) || other.details == details) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.pathLength, pathLength) ||
+                other.pathLength == pathLength));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(displayName),
-      const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(position),
-      const DeepCollectionEquality().hash(occurrencesCount),
-      const DeepCollectionEquality().hash(details),
-      const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(pathLength));
+  int get hashCode => Object.hash(runtimeType, id, name, displayName, author,
+      position, occurrencesCount, details, image, pathLength);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TrailCopyWith<_$_Trail> get copyWith =>
       __$$_TrailCopyWithImpl<_$_Trail>(this, _$identity);
 

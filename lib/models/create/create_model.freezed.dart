@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'create_model.dart';
 
@@ -44,7 +44,8 @@ mixin _$CreateTrail {
 abstract class $CreateTrailCopyWith<$Res> {
   factory $CreateTrailCopyWith(
           CreateTrail value, $Res Function(CreateTrail) then) =
-      _$CreateTrailCopyWithImpl<$Res>;
+      _$CreateTrailCopyWithImpl<$Res, CreateTrail>;
+  @useResult
   $Res call(
       {@HiveField(0) String name,
       @HiveField(1) SavePosition position,
@@ -58,61 +59,66 @@ abstract class $CreateTrailCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CreateTrailCopyWithImpl<$Res> implements $CreateTrailCopyWith<$Res> {
+class _$CreateTrailCopyWithImpl<$Res, $Val extends CreateTrail>
+    implements $CreateTrailCopyWith<$Res> {
   _$CreateTrailCopyWithImpl(this._value, this._then);
 
-  final CreateTrail _value;
   // ignore: unused_field
-  final $Res Function(CreateTrail) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? position = freezed,
-    Object? occurrences = freezed,
-    Object? path = freezed,
-    Object? prm = freezed,
-    Object? bestSeason = freezed,
+    Object? name = null,
+    Object? position = null,
+    Object? occurrences = null,
+    Object? path = null,
+    Object? prm = null,
+    Object? bestSeason = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as SavePosition,
-      occurrences: occurrences == freezed
+      occurrences: null == occurrences
           ? _value.occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
               as List<SaveOccurrence>,
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as Path,
-      prm: prm == freezed
+      prm: null == prm
           ? _value.prm
           : prm // ignore: cast_nullable_to_non_nullable
               as int,
-      bestSeason: bestSeason == freezed
+      bestSeason: null == bestSeason
           ? _value.bestSeason
           : bestSeason // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SavePositionCopyWith<$Res> get position {
     return $SavePositionCopyWith<$Res>(_value.position, (value) {
-      return _then(_value.copyWith(position: value));
+      return _then(_value.copyWith(position: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PathCopyWith<$Res> get path {
     return $PathCopyWith<$Res>(_value.path, (value) {
-      return _then(_value.copyWith(path: value));
+      return _then(_value.copyWith(path: value) as $Val);
     });
   }
 }
@@ -124,6 +130,7 @@ abstract class _$$_CreateTrailCopyWith<$Res>
           _$_CreateTrail value, $Res Function(_$_CreateTrail) then) =
       __$$_CreateTrailCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@HiveField(0) String name,
       @HiveField(1) SavePosition position,
@@ -139,46 +146,45 @@ abstract class _$$_CreateTrailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CreateTrailCopyWithImpl<$Res> extends _$CreateTrailCopyWithImpl<$Res>
+class __$$_CreateTrailCopyWithImpl<$Res>
+    extends _$CreateTrailCopyWithImpl<$Res, _$_CreateTrail>
     implements _$$_CreateTrailCopyWith<$Res> {
   __$$_CreateTrailCopyWithImpl(
       _$_CreateTrail _value, $Res Function(_$_CreateTrail) _then)
-      : super(_value, (v) => _then(v as _$_CreateTrail));
+      : super(_value, _then);
 
-  @override
-  _$_CreateTrail get _value => super._value as _$_CreateTrail;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? position = freezed,
-    Object? occurrences = freezed,
-    Object? path = freezed,
-    Object? prm = freezed,
-    Object? bestSeason = freezed,
+    Object? name = null,
+    Object? position = null,
+    Object? occurrences = null,
+    Object? path = null,
+    Object? prm = null,
+    Object? bestSeason = null,
   }) {
     return _then(_$_CreateTrail(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as SavePosition,
-      occurrences: occurrences == freezed
+      occurrences: null == occurrences
           ? _value._occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
               as List<SaveOccurrence>,
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as Path,
-      prm: prm == freezed
+      prm: null == prm
           ? _value.prm
           : prm // ignore: cast_nullable_to_non_nullable
               as int,
-      bestSeason: bestSeason == freezed
+      bestSeason: null == bestSeason
           ? _value._bestSeason
           : bestSeason // ignore: cast_nullable_to_non_nullable
               as List<bool>,
@@ -221,6 +227,7 @@ class _$_CreateTrail implements _CreateTrail {
   @JsonKey()
   @HiveField(2)
   List<SaveOccurrence> get occurrences {
+    if (_occurrences is EqualUnmodifiableListView) return _occurrences;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_occurrences);
   }
@@ -238,6 +245,7 @@ class _$_CreateTrail implements _CreateTrail {
   @JsonKey(name: 'best_season')
   @HiveField(6)
   List<bool> get bestSeason {
+    if (_bestSeason is EqualUnmodifiableListView) return _bestSeason;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_bestSeason);
   }
@@ -252,12 +260,13 @@ class _$_CreateTrail implements _CreateTrail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CreateTrail &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.position, position) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
             const DeepCollectionEquality()
                 .equals(other._occurrences, _occurrences) &&
-            const DeepCollectionEquality().equals(other.path, path) &&
-            const DeepCollectionEquality().equals(other.prm, prm) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.prm, prm) || other.prm == prm) &&
             const DeepCollectionEquality()
                 .equals(other._bestSeason, _bestSeason));
   }
@@ -266,15 +275,16 @@ class _$_CreateTrail implements _CreateTrail {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(position),
+      name,
+      position,
       const DeepCollectionEquality().hash(_occurrences),
-      const DeepCollectionEquality().hash(path),
-      const DeepCollectionEquality().hash(prm),
+      path,
+      prm,
       const DeepCollectionEquality().hash(_bestSeason));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CreateTrailCopyWith<_$_CreateTrail> get copyWith =>
       __$$_CreateTrailCopyWithImpl<_$_CreateTrail>(this, _$identity);
 
@@ -356,7 +366,8 @@ mixin _$SaveOccurrence {
 abstract class $SaveOccurrenceCopyWith<$Res> {
   factory $SaveOccurrenceCopyWith(
           SaveOccurrence value, $Res Function(SaveOccurrence) then) =
-      _$SaveOccurrenceCopyWithImpl<$Res>;
+      _$SaveOccurrenceCopyWithImpl<$Res, SaveOccurrence>;
+  @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
       @HiveField(1) @JsonKey(name: 'taxon_id') String taxonId,
@@ -364,34 +375,36 @@ abstract class $SaveOccurrenceCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SaveOccurrenceCopyWithImpl<$Res>
+class _$SaveOccurrenceCopyWithImpl<$Res, $Val extends SaveOccurrence>
     implements $SaveOccurrenceCopyWith<$Res> {
   _$SaveOccurrenceCopyWithImpl(this._value, this._then);
 
-  final SaveOccurrence _value;
   // ignore: unused_field
-  final $Res Function(SaveOccurrence) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position = freezed,
-    Object? taxonId = freezed,
-    Object? imageId = freezed,
+    Object? position = null,
+    Object? taxonId = null,
+    Object? imageId = null,
   }) {
     return _then(_value.copyWith(
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      taxonId: taxonId == freezed
+      taxonId: null == taxonId
           ? _value.taxonId
           : taxonId // ignore: cast_nullable_to_non_nullable
               as String,
-      imageId: imageId == freezed
+      imageId: null == imageId
           ? _value.imageId
           : imageId // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -402,6 +415,7 @@ abstract class _$$_SaveOccurrenceCopyWith<$Res>
           _$_SaveOccurrence value, $Res Function(_$_SaveOccurrence) then) =
       __$$_SaveOccurrenceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
       @HiveField(1) @JsonKey(name: 'taxon_id') String taxonId,
@@ -410,31 +424,29 @@ abstract class _$$_SaveOccurrenceCopyWith<$Res>
 
 /// @nodoc
 class __$$_SaveOccurrenceCopyWithImpl<$Res>
-    extends _$SaveOccurrenceCopyWithImpl<$Res>
+    extends _$SaveOccurrenceCopyWithImpl<$Res, _$_SaveOccurrence>
     implements _$$_SaveOccurrenceCopyWith<$Res> {
   __$$_SaveOccurrenceCopyWithImpl(
       _$_SaveOccurrence _value, $Res Function(_$_SaveOccurrence) _then)
-      : super(_value, (v) => _then(v as _$_SaveOccurrence));
+      : super(_value, _then);
 
-  @override
-  _$_SaveOccurrence get _value => super._value as _$_SaveOccurrence;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position = freezed,
-    Object? taxonId = freezed,
-    Object? imageId = freezed,
+    Object? position = null,
+    Object? taxonId = null,
+    Object? imageId = null,
   }) {
     return _then(_$_SaveOccurrence(
-      position: position == freezed
+      position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      taxonId: taxonId == freezed
+      taxonId: null == taxonId
           ? _value.taxonId
           : taxonId // ignore: cast_nullable_to_non_nullable
               as String,
-      imageId: imageId == freezed
+      imageId: null == imageId
           ? _value.imageId
           : imageId // ignore: cast_nullable_to_non_nullable
               as String,
@@ -477,21 +489,19 @@ class _$_SaveOccurrence implements _SaveOccurrence {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SaveOccurrence &&
-            const DeepCollectionEquality().equals(other.position, position) &&
-            const DeepCollectionEquality().equals(other.taxonId, taxonId) &&
-            const DeepCollectionEquality().equals(other.imageId, imageId));
+            (identical(other.position, position) ||
+                other.position == position) &&
+            (identical(other.taxonId, taxonId) || other.taxonId == taxonId) &&
+            (identical(other.imageId, imageId) || other.imageId == imageId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(position),
-      const DeepCollectionEquality().hash(taxonId),
-      const DeepCollectionEquality().hash(imageId));
+  int get hashCode => Object.hash(runtimeType, position, taxonId, imageId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SaveOccurrenceCopyWith<_$_SaveOccurrence> get copyWith =>
       __$$_SaveOccurrenceCopyWithImpl<_$_SaveOccurrence>(this, _$identity);
 
@@ -554,35 +564,39 @@ mixin _$SavePosition {
 abstract class $SavePositionCopyWith<$Res> {
   factory $SavePositionCopyWith(
           SavePosition value, $Res Function(SavePosition) then) =
-      _$SavePositionCopyWithImpl<$Res>;
+      _$SavePositionCopyWithImpl<$Res, SavePosition>;
+  @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng start,
       @LatLngConverter() @HiveField(1) LatLng end});
 }
 
 /// @nodoc
-class _$SavePositionCopyWithImpl<$Res> implements $SavePositionCopyWith<$Res> {
+class _$SavePositionCopyWithImpl<$Res, $Val extends SavePosition>
+    implements $SavePositionCopyWith<$Res> {
   _$SavePositionCopyWithImpl(this._value, this._then);
 
-  final SavePosition _value;
   // ignore: unused_field
-  final $Res Function(SavePosition) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? start = freezed,
-    Object? end = freezed,
+    Object? start = null,
+    Object? end = null,
   }) {
     return _then(_value.copyWith(
-      start: start == freezed
+      start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      end: end == freezed
+      end: null == end
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
               as LatLng,
-    ));
+    ) as $Val);
   }
 }
 
@@ -593,6 +607,7 @@ abstract class _$$_SavePositionCopyWith<$Res>
           _$_SavePosition value, $Res Function(_$_SavePosition) then) =
       __$$_SavePositionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng start,
       @LatLngConverter() @HiveField(1) LatLng end});
@@ -600,26 +615,24 @@ abstract class _$$_SavePositionCopyWith<$Res>
 
 /// @nodoc
 class __$$_SavePositionCopyWithImpl<$Res>
-    extends _$SavePositionCopyWithImpl<$Res>
+    extends _$SavePositionCopyWithImpl<$Res, _$_SavePosition>
     implements _$$_SavePositionCopyWith<$Res> {
   __$$_SavePositionCopyWithImpl(
       _$_SavePosition _value, $Res Function(_$_SavePosition) _then)
-      : super(_value, (v) => _then(v as _$_SavePosition));
+      : super(_value, _then);
 
-  @override
-  _$_SavePosition get _value => super._value as _$_SavePosition;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? start = freezed,
-    Object? end = freezed,
+    Object? start = null,
+    Object? end = null,
   }) {
     return _then(_$_SavePosition(
-      start: start == freezed
+      start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      end: end == freezed
+      end: null == end
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
               as LatLng,
@@ -657,19 +670,17 @@ class _$_SavePosition implements _SavePosition {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SavePosition &&
-            const DeepCollectionEquality().equals(other.start, start) &&
-            const DeepCollectionEquality().equals(other.end, end));
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.end, end) || other.end == end));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(start),
-      const DeepCollectionEquality().hash(end));
+  int get hashCode => Object.hash(runtimeType, start, end);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SavePositionCopyWith<_$_SavePosition> get copyWith =>
       __$$_SavePositionCopyWithImpl<_$_SavePosition>(this, _$identity);
 

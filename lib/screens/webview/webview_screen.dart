@@ -1,63 +1,81 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class WebViewScreen extends StatefulWidget {
-  final String? url;
-  const WebViewScreen({Key? key, this.url}) : super(key: key);
+  final String url;
+  const WebViewScreen({Key? key, required this.url}) : super(key: key);
 
   @override
   State<WebViewScreen> createState() => _WebViewScreenState();
 }
 
 class _WebViewScreenState extends State<WebViewScreen> {
-  bool loadError = false;
+  late final WebViewController _controller;
+  int loadProgress = 0;
 
   @override
   void initState() {
     super.initState();
-    // Enable virtual display.
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+
+    late final PlatformWebViewControllerCreationParams params;
+    if (WebViewPlatform.instance is WebKitWebViewPlatform) {
+      params = WebKitWebViewControllerCreationParams(
+        allowsInlineMediaPlayback: true,
+        mediaTypesRequiringUserAction: const <PlaybackMediaTypes>{},
+      );
+    } else {
+      params = const PlatformWebViewControllerCreationParams();
+    }
+
+    final WebViewController controller =
+        WebViewController.fromPlatformCreationParams(params);
+
+    controller
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            setState(() {
+              loadProgress = progress;
+            });
+          },
+          onPageStarted: (String url) {},
+          onPageFinished: (String url) {},
+          onWebResourceError: (WebResourceError error) {},
+          onNavigationRequest: (NavigationRequest request) {
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(widget.url));
+
+    if (controller.platform is AndroidWebViewController) {
+      (controller.platform as AndroidWebViewController)
+          .setMediaPlaybackRequiresUserGesture(false);
+    }
+
+    _controller = controller;
   }
 
   @override
   Widget build(BuildContext context) {
-    return (loadError)
-        ? Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  SmartFloreIcons.wifioff,
-                  size: 30,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: 200,
-                  child: Text(
-                    AppLocalizations.of(context)!.resource_unavailable,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                ),
-                const SizedBox(height: 16),
-              ],
-            ))
-        : WebView(
-            javascriptMode: JavascriptMode.unrestricted,
-            initialUrl: widget.url,
-            onWebResourceError: (error) {
-              if (error.errorType == WebResourceErrorType.hostLookup) {
-                setState(() {
-                  loadError = true;
-                });
-              }
-            },
-          );
+    ThemeData themeData = Theme.of(context);
+    return Stack(
+      children: [
+        WebViewWidget(controller: _controller),
+        (loadProgress < 100)
+            ? AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOutExpo,
+                height: 3,
+                color: themeData.colorScheme.secondary,
+                width:
+                    MediaQuery.of(context).size.width * loadProgress / 100 + 1)
+            : Container(),
+      ],
+    );
   }
 }

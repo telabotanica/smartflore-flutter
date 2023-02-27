@@ -209,16 +209,16 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
               }
             },
           ),
-          layers: [
-            TileLayerOptions(
+          children: [
+            TileLayer(
                 maxZoom: 20,
                 maxNativeZoom: 20,
                 urlTemplate:
                     'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-                subdomains: ['a', 'b', 'c'],
+                subdomains: const ['a', 'b', 'c'],
                 retinaMode: true,
                 tileProvider: CachedTileProvider()),
-            MarkerLayerOptions(
+            MarkerLayer(
               markers: [
                 Marker(
                     anchorPos: AnchorPos.align(AnchorAlign.center),
@@ -238,9 +238,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     );
   }
 
-  List<LayerOptions> setupOverviewMode({bool fade = false}) {
+  List<Widget> setupOverviewMode({bool fade = false}) {
     return [
-      MarkerLayerOptions(
+      MarkerLayer(
           markers: trailsData != null
               ? trailsData!.map((trail) {
                   return Marker(
@@ -274,10 +274,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     ];
   }
 
-  List<LayerOptions> setupPreviewMode() {
+  List<Widget> setupPreviewMode() {
     return [
       //PATH
-      PolylineLayerOptions(
+      PolylineLayer(
           polylineCulling: true,
           polylines: (trailData != null)
               ? [
@@ -289,7 +289,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 ]
               : []),
       //STARTING AND END POINTS
-      MarkerLayerOptions(
+      MarkerLayer(
           markers: trailData != null
               ? [
                   Marker(
@@ -320,10 +320,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     ];
   }
 
-  List<LayerOptions> setupFocusMode() {
+  List<Widget> setupFocusMode() {
     return [
       //PATH
-      PolylineLayerOptions(
+      PolylineLayer(
           polylineCulling: true,
           polylines: (trailData != null)
               ? [
@@ -335,7 +335,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 ]
               : []),
       //STARTING AND END POINTS
-      MarkerLayerOptions(
+      MarkerLayer(
           markers: trailData != null
               ? [
                   Marker(
@@ -364,16 +364,16 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 ]
               : []),
       //OTHERS POINTS
-      MarkerLayerOptions(
+      MarkerLayer(
           markers: trailData != null
               ? getOrderedMarkerList(trailData!.occurrences)
               : []),
     ];
   }
 
-  List<LayerOptions> setupCreateMode() {
+  List<Widget> setupCreateMode() {
     return [
-      PolylineLayerOptions(
+      PolylineLayer(
           polylineCulling: true,
           polylines: (createPath != null)
               ? [
@@ -430,7 +430,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 class CachedTileProvider extends TileProvider {
   CachedTileProvider();
   @override
-  ImageProvider getImage(Coords<num> coords, TileLayerOptions options) {
+  ImageProvider getImage(Coords<num> coords, TileLayer options) {
     return CachedNetworkImageProvider(
       getTileUrl(coords, options),
     );

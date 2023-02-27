@@ -1,4 +1,5 @@
 # Miscellaneous
+*.env
 *.class
 *.log
 *.pyc
@@ -10,11 +11,19 @@
 .svn/
 .VSCodeCounter/
 
+#ENV
+.env.dev
+.env.prod
+
+lib/_env/env_dev.g.dart
+lib/_env/env_prod.g.dart
+
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
 .idea/
+
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line

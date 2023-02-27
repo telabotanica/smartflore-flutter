@@ -83,7 +83,7 @@ class _TaxonScreenState extends State<TaxonScreen>
     List<Widget> tabViews = [];
     for (var tab in taxon.tabs) {
       if (tab.type == TabTypeEnum.webview.name) {
-        tabViews.add(WebViewScreen(url: tab.url));
+        tabViews.add(WebViewScreen(url: tab.url ?? ''));
       } else if (tab.type == TabTypeEnum.card.name) {
         tabViews.add(SpeciesDescription(tabData: tab));
       } else if (tab.type == TabTypeEnum.gallery.name) {

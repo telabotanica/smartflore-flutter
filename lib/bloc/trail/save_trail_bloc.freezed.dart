@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'save_trail_bloc.dart';
 
@@ -26,9 +26,9 @@ mixin _$SaveTrailEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id)? saveTrailLocally,
-    TResult Function(int id)? unSaveTrailLocally,
-    TResult Function(int id)? abortSave,
+    TResult? Function(int id)? saveTrailLocally,
+    TResult? Function(int id)? unSaveTrailLocally,
+    TResult? Function(int id)? abortSave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,9 +48,9 @@ mixin _$SaveTrailEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SaveTrailLocally value)? saveTrailLocally,
-    TResult Function(_UnSaveTrailLocally value)? unSaveTrailLocally,
-    TResult Function(_AbortSaveTrailLocally value)? abortSave,
+    TResult? Function(_SaveTrailLocally value)? saveTrailLocally,
+    TResult? Function(_UnSaveTrailLocally value)? unSaveTrailLocally,
+    TResult? Function(_AbortSaveTrailLocally value)? abortSave,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,29 +71,32 @@ mixin _$SaveTrailEvent {
 abstract class $SaveTrailEventCopyWith<$Res> {
   factory $SaveTrailEventCopyWith(
           SaveTrailEvent value, $Res Function(SaveTrailEvent) then) =
-      _$SaveTrailEventCopyWithImpl<$Res>;
+      _$SaveTrailEventCopyWithImpl<$Res, SaveTrailEvent>;
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class _$SaveTrailEventCopyWithImpl<$Res>
+class _$SaveTrailEventCopyWithImpl<$Res, $Val extends SaveTrailEvent>
     implements $SaveTrailEventCopyWith<$Res> {
   _$SaveTrailEventCopyWithImpl(this._value, this._then);
 
-  final SaveTrailEvent _value;
   // ignore: unused_field
-  final $Res Function(SaveTrailEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -104,26 +107,25 @@ abstract class _$$_SaveTrailLocallyCopyWith<$Res>
           _$_SaveTrailLocally value, $Res Function(_$_SaveTrailLocally) then) =
       __$$_SaveTrailLocallyCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
 class __$$_SaveTrailLocallyCopyWithImpl<$Res>
-    extends _$SaveTrailEventCopyWithImpl<$Res>
+    extends _$SaveTrailEventCopyWithImpl<$Res, _$_SaveTrailLocally>
     implements _$$_SaveTrailLocallyCopyWith<$Res> {
   __$$_SaveTrailLocallyCopyWithImpl(
       _$_SaveTrailLocally _value, $Res Function(_$_SaveTrailLocally) _then)
-      : super(_value, (v) => _then(v as _$_SaveTrailLocally));
+      : super(_value, _then);
 
-  @override
-  _$_SaveTrailLocally get _value => super._value as _$_SaveTrailLocally;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
     return _then(_$_SaveTrailLocally(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
@@ -149,15 +151,15 @@ class _$_SaveTrailLocally implements _SaveTrailLocally {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SaveTrailLocally &&
-            const DeepCollectionEquality().equals(other.id, id));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SaveTrailLocallyCopyWith<_$_SaveTrailLocally> get copyWith =>
       __$$_SaveTrailLocallyCopyWithImpl<_$_SaveTrailLocally>(this, _$identity);
 
@@ -174,9 +176,9 @@ class _$_SaveTrailLocally implements _SaveTrailLocally {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id)? saveTrailLocally,
-    TResult Function(int id)? unSaveTrailLocally,
-    TResult Function(int id)? abortSave,
+    TResult? Function(int id)? saveTrailLocally,
+    TResult? Function(int id)? unSaveTrailLocally,
+    TResult? Function(int id)? abortSave,
   }) {
     return saveTrailLocally?.call(id);
   }
@@ -208,9 +210,9 @@ class _$_SaveTrailLocally implements _SaveTrailLocally {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SaveTrailLocally value)? saveTrailLocally,
-    TResult Function(_UnSaveTrailLocally value)? unSaveTrailLocally,
-    TResult Function(_AbortSaveTrailLocally value)? abortSave,
+    TResult? Function(_SaveTrailLocally value)? saveTrailLocally,
+    TResult? Function(_UnSaveTrailLocally value)? unSaveTrailLocally,
+    TResult? Function(_AbortSaveTrailLocally value)? abortSave,
   }) {
     return saveTrailLocally?.call(this);
   }
@@ -249,26 +251,25 @@ abstract class _$$_UnSaveTrailLocallyCopyWith<$Res>
           $Res Function(_$_UnSaveTrailLocally) then) =
       __$$_UnSaveTrailLocallyCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
 class __$$_UnSaveTrailLocallyCopyWithImpl<$Res>
-    extends _$SaveTrailEventCopyWithImpl<$Res>
+    extends _$SaveTrailEventCopyWithImpl<$Res, _$_UnSaveTrailLocally>
     implements _$$_UnSaveTrailLocallyCopyWith<$Res> {
   __$$_UnSaveTrailLocallyCopyWithImpl(
       _$_UnSaveTrailLocally _value, $Res Function(_$_UnSaveTrailLocally) _then)
-      : super(_value, (v) => _then(v as _$_UnSaveTrailLocally));
+      : super(_value, _then);
 
-  @override
-  _$_UnSaveTrailLocally get _value => super._value as _$_UnSaveTrailLocally;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
     return _then(_$_UnSaveTrailLocally(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
@@ -294,15 +295,15 @@ class _$_UnSaveTrailLocally implements _UnSaveTrailLocally {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UnSaveTrailLocally &&
-            const DeepCollectionEquality().equals(other.id, id));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UnSaveTrailLocallyCopyWith<_$_UnSaveTrailLocally> get copyWith =>
       __$$_UnSaveTrailLocallyCopyWithImpl<_$_UnSaveTrailLocally>(
           this, _$identity);
@@ -320,9 +321,9 @@ class _$_UnSaveTrailLocally implements _UnSaveTrailLocally {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id)? saveTrailLocally,
-    TResult Function(int id)? unSaveTrailLocally,
-    TResult Function(int id)? abortSave,
+    TResult? Function(int id)? saveTrailLocally,
+    TResult? Function(int id)? unSaveTrailLocally,
+    TResult? Function(int id)? abortSave,
   }) {
     return unSaveTrailLocally?.call(id);
   }
@@ -354,9 +355,9 @@ class _$_UnSaveTrailLocally implements _UnSaveTrailLocally {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SaveTrailLocally value)? saveTrailLocally,
-    TResult Function(_UnSaveTrailLocally value)? unSaveTrailLocally,
-    TResult Function(_AbortSaveTrailLocally value)? abortSave,
+    TResult? Function(_SaveTrailLocally value)? saveTrailLocally,
+    TResult? Function(_UnSaveTrailLocally value)? unSaveTrailLocally,
+    TResult? Function(_AbortSaveTrailLocally value)? abortSave,
   }) {
     return unSaveTrailLocally?.call(this);
   }
@@ -395,27 +396,25 @@ abstract class _$$_AbortSaveTrailLocallyCopyWith<$Res>
           $Res Function(_$_AbortSaveTrailLocally) then) =
       __$$_AbortSaveTrailLocallyCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
 class __$$_AbortSaveTrailLocallyCopyWithImpl<$Res>
-    extends _$SaveTrailEventCopyWithImpl<$Res>
+    extends _$SaveTrailEventCopyWithImpl<$Res, _$_AbortSaveTrailLocally>
     implements _$$_AbortSaveTrailLocallyCopyWith<$Res> {
   __$$_AbortSaveTrailLocallyCopyWithImpl(_$_AbortSaveTrailLocally _value,
       $Res Function(_$_AbortSaveTrailLocally) _then)
-      : super(_value, (v) => _then(v as _$_AbortSaveTrailLocally));
+      : super(_value, _then);
 
-  @override
-  _$_AbortSaveTrailLocally get _value =>
-      super._value as _$_AbortSaveTrailLocally;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
     return _then(_$_AbortSaveTrailLocally(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
@@ -441,15 +440,15 @@ class _$_AbortSaveTrailLocally implements _AbortSaveTrailLocally {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AbortSaveTrailLocally &&
-            const DeepCollectionEquality().equals(other.id, id));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AbortSaveTrailLocallyCopyWith<_$_AbortSaveTrailLocally> get copyWith =>
       __$$_AbortSaveTrailLocallyCopyWithImpl<_$_AbortSaveTrailLocally>(
           this, _$identity);
@@ -467,9 +466,9 @@ class _$_AbortSaveTrailLocally implements _AbortSaveTrailLocally {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id)? saveTrailLocally,
-    TResult Function(int id)? unSaveTrailLocally,
-    TResult Function(int id)? abortSave,
+    TResult? Function(int id)? saveTrailLocally,
+    TResult? Function(int id)? unSaveTrailLocally,
+    TResult? Function(int id)? abortSave,
   }) {
     return abortSave?.call(id);
   }
@@ -501,9 +500,9 @@ class _$_AbortSaveTrailLocally implements _AbortSaveTrailLocally {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SaveTrailLocally value)? saveTrailLocally,
-    TResult Function(_UnSaveTrailLocally value)? unSaveTrailLocally,
-    TResult Function(_AbortSaveTrailLocally value)? abortSave,
+    TResult? Function(_SaveTrailLocally value)? saveTrailLocally,
+    TResult? Function(_UnSaveTrailLocally value)? unSaveTrailLocally,
+    TResult? Function(_AbortSaveTrailLocally value)? abortSave,
   }) {
     return abortSave?.call(this);
   }
@@ -551,14 +550,14 @@ mixin _$SaveTrailState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -588,14 +587,14 @@ mixin _$SaveTrailState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -617,17 +616,18 @@ mixin _$SaveTrailState {
 abstract class $SaveTrailStateCopyWith<$Res> {
   factory $SaveTrailStateCopyWith(
           SaveTrailState value, $Res Function(SaveTrailState) then) =
-      _$SaveTrailStateCopyWithImpl<$Res>;
+      _$SaveTrailStateCopyWithImpl<$Res, SaveTrailState>;
 }
 
 /// @nodoc
-class _$SaveTrailStateCopyWithImpl<$Res>
+class _$SaveTrailStateCopyWithImpl<$Res, $Val extends SaveTrailState>
     implements $SaveTrailStateCopyWith<$Res> {
   _$SaveTrailStateCopyWithImpl(this._value, this._then);
 
-  final SaveTrailState _value;
   // ignore: unused_field
-  final $Res Function(SaveTrailState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -638,13 +638,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$SaveTrailStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -684,14 +682,14 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) {
     return initial?.call();
   }
@@ -733,14 +731,14 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) {
     return initial?.call(this);
   }
@@ -776,13 +774,11 @@ abstract class _$$_StartCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StartCopyWithImpl<$Res> extends _$SaveTrailStateCopyWithImpl<$Res>
+class __$$_StartCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$_Start>
     implements _$$_StartCopyWith<$Res> {
   __$$_StartCopyWithImpl(_$_Start _value, $Res Function(_$_Start) _then)
-      : super(_value, (v) => _then(v as _$_Start));
-
-  @override
-  _$_Start get _value => super._value as _$_Start;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -822,14 +818,14 @@ class _$_Start implements _Start {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) {
     return start?.call();
   }
@@ -871,14 +867,14 @@ class _$_Start implements _Start {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) {
     return start?.call(this);
   }
@@ -912,29 +908,29 @@ abstract class _$$_LoadingCopyWith<$Res> {
   factory _$$_LoadingCopyWith(
           _$_Loading value, $Res Function(_$_Loading) then) =
       __$$_LoadingCopyWithImpl<$Res>;
+  @useResult
   $Res call({int nbImageSaved, int nbImages});
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$SaveTrailStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
+      : super(_value, _then);
 
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? nbImageSaved = freezed,
-    Object? nbImages = freezed,
+    Object? nbImageSaved = null,
+    Object? nbImages = null,
   }) {
     return _then(_$_Loading(
-      nbImageSaved: nbImageSaved == freezed
+      nbImageSaved: null == nbImageSaved
           ? _value.nbImageSaved
           : nbImageSaved // ignore: cast_nullable_to_non_nullable
               as int,
-      nbImages: nbImages == freezed
+      nbImages: null == nbImages
           ? _value.nbImages
           : nbImages // ignore: cast_nullable_to_non_nullable
               as int,
@@ -962,19 +958,18 @@ class _$_Loading implements _Loading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loading &&
-            const DeepCollectionEquality()
-                .equals(other.nbImageSaved, nbImageSaved) &&
-            const DeepCollectionEquality().equals(other.nbImages, nbImages));
+            (identical(other.nbImageSaved, nbImageSaved) ||
+                other.nbImageSaved == nbImageSaved) &&
+            (identical(other.nbImages, nbImages) ||
+                other.nbImages == nbImages));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(nbImageSaved),
-      const DeepCollectionEquality().hash(nbImages));
+  int get hashCode => Object.hash(runtimeType, nbImageSaved, nbImages);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoadingCopyWith<_$_Loading> get copyWith =>
       __$$_LoadingCopyWithImpl<_$_Loading>(this, _$identity);
 
@@ -996,14 +991,14 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) {
     return loading?.call(nbImageSaved, nbImages);
   }
@@ -1045,14 +1040,14 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) {
     return loading?.call(this);
   }
@@ -1096,13 +1091,11 @@ abstract class _$$_LoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res> extends _$SaveTrailStateCopyWithImpl<$Res>
+class __$$_LoadedCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$_Loaded>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
-      : super(_value, (v) => _then(v as _$_Loaded));
-
-  @override
-  _$_Loaded get _value => super._value as _$_Loaded;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1142,14 +1135,14 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) {
     return loaded?.call();
   }
@@ -1191,14 +1184,14 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) {
     return loaded?.call(this);
   }
@@ -1236,14 +1229,11 @@ abstract class _$$_StartUnSaveCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StartUnSaveCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$_StartUnSave>
     implements _$$_StartUnSaveCopyWith<$Res> {
   __$$_StartUnSaveCopyWithImpl(
       _$_StartUnSave _value, $Res Function(_$_StartUnSave) _then)
-      : super(_value, (v) => _then(v as _$_StartUnSave));
-
-  @override
-  _$_StartUnSave get _value => super._value as _$_StartUnSave;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1283,14 +1273,14 @@ class _$_StartUnSave implements _StartUnSave {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) {
     return unSaveStart?.call();
   }
@@ -1332,14 +1322,14 @@ class _$_StartUnSave implements _StartUnSave {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) {
     return unSaveStart?.call(this);
   }
@@ -1377,14 +1367,11 @@ abstract class _$$_UnSaveCompleteCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnSaveCompleteCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$_UnSaveComplete>
     implements _$$_UnSaveCompleteCopyWith<$Res> {
   __$$_UnSaveCompleteCopyWithImpl(
       _$_UnSaveComplete _value, $Res Function(_$_UnSaveComplete) _then)
-      : super(_value, (v) => _then(v as _$_UnSaveComplete));
-
-  @override
-  _$_UnSaveComplete get _value => super._value as _$_UnSaveComplete;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1424,14 +1411,14 @@ class _$_UnSaveComplete implements _UnSaveComplete {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) {
     return unSaveComplete?.call();
   }
@@ -1473,14 +1460,14 @@ class _$_UnSaveComplete implements _UnSaveComplete {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) {
     return unSaveComplete?.call(this);
   }
@@ -1518,14 +1505,11 @@ abstract class _$$_UnSaveErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnSaveErrorCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$_UnSaveError>
     implements _$$_UnSaveErrorCopyWith<$Res> {
   __$$_UnSaveErrorCopyWithImpl(
       _$_UnSaveError _value, $Res Function(_$_UnSaveError) _then)
-      : super(_value, (v) => _then(v as _$_UnSaveError));
-
-  @override
-  _$_UnSaveError get _value => super._value as _$_UnSaveError;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1565,14 +1549,14 @@ class _$_UnSaveError implements _UnSaveError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) {
     return unSaveError?.call();
   }
@@ -1614,14 +1598,14 @@ class _$_UnSaveError implements _UnSaveError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) {
     return unSaveError?.call(this);
   }
@@ -1659,14 +1643,11 @@ abstract class _$$_SaveErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_SaveErrorCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$_SaveError>
     implements _$$_SaveErrorCopyWith<$Res> {
   __$$_SaveErrorCopyWithImpl(
       _$_SaveError _value, $Res Function(_$_SaveError) _then)
-      : super(_value, (v) => _then(v as _$_SaveError));
-
-  @override
-  _$_SaveError get _value => super._value as _$_SaveError;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1706,14 +1687,14 @@ class _$_SaveError implements _SaveError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? start,
-    TResult Function(int nbImageSaved, int nbImages)? loading,
-    TResult Function()? loaded,
-    TResult Function()? unSaveStart,
-    TResult Function()? unSaveComplete,
-    TResult Function()? unSaveError,
-    TResult Function()? saveError,
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function(int nbImageSaved, int nbImages)? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? unSaveStart,
+    TResult? Function()? unSaveComplete,
+    TResult? Function()? unSaveError,
+    TResult? Function()? saveError,
   }) {
     return saveError?.call();
   }
@@ -1755,14 +1736,14 @@ class _$_SaveError implements _SaveError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Start value)? start,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_StartUnSave value)? unSaveStart,
-    TResult Function(_UnSaveComplete value)? unSaveComplete,
-    TResult Function(_UnSaveError value)? unSaveError,
-    TResult Function(_SaveError value)? saveError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Start value)? start,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_StartUnSave value)? unSaveStart,
+    TResult? Function(_UnSaveComplete value)? unSaveComplete,
+    TResult? Function(_UnSaveError value)? unSaveError,
+    TResult? Function(_SaveError value)? saveError,
   }) {
     return saveError?.call(this);
   }

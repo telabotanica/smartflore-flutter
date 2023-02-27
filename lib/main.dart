@@ -1,3 +1,4 @@
+import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -5,7 +6,6 @@ import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
-import 'package:smartflore/bloc/ping/ping_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
@@ -39,6 +39,7 @@ import 'package:smartflore/screens/taxon/taxon_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:smartflore/utils/app.dart';
 import 'package:smartflore/utils/transitions.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -46,6 +47,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {
+  Algolia algolia = Application.algolia;
+
   await Hive.initFlutter();
 
   Hive.registerAdapter(TrailsAdapter());

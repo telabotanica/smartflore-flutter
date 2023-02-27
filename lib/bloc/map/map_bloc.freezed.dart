@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'map_bloc.dart';
 
@@ -26,10 +26,10 @@ mixin _$MapEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isFollowMode)? requestCenterMap,
-    TResult Function(MapMode mapMode)? changeMapMode,
-    TResult Function(int trailID)? requestTrailPreview,
-    TResult Function(FollowMode followMode)? changeFollowMode,
+    TResult? Function(bool isFollowMode)? requestCenterMap,
+    TResult? Function(MapMode mapMode)? changeMapMode,
+    TResult? Function(int trailID)? requestTrailPreview,
+    TResult? Function(FollowMode followMode)? changeFollowMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,10 +51,10 @@ mixin _$MapEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RequestCenterMap value)? requestCenterMap,
-    TResult Function(_ChangeMapMode value)? changeMapMode,
-    TResult Function(_RequestTrailPreview value)? requestTrailPreview,
-    TResult Function(_ChangeFollowMode value)? changeFollowMode,
+    TResult? Function(_RequestCenterMap value)? requestCenterMap,
+    TResult? Function(_ChangeMapMode value)? changeMapMode,
+    TResult? Function(_RequestTrailPreview value)? requestTrailPreview,
+    TResult? Function(_ChangeFollowMode value)? changeFollowMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,16 +71,18 @@ mixin _$MapEvent {
 /// @nodoc
 abstract class $MapEventCopyWith<$Res> {
   factory $MapEventCopyWith(MapEvent value, $Res Function(MapEvent) then) =
-      _$MapEventCopyWithImpl<$Res>;
+      _$MapEventCopyWithImpl<$Res, MapEvent>;
 }
 
 /// @nodoc
-class _$MapEventCopyWithImpl<$Res> implements $MapEventCopyWith<$Res> {
+class _$MapEventCopyWithImpl<$Res, $Val extends MapEvent>
+    implements $MapEventCopyWith<$Res> {
   _$MapEventCopyWithImpl(this._value, this._then);
 
-  final MapEvent _value;
   // ignore: unused_field
-  final $Res Function(MapEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -88,26 +90,25 @@ abstract class _$$_RequestCenterMapCopyWith<$Res> {
   factory _$$_RequestCenterMapCopyWith(
           _$_RequestCenterMap value, $Res Function(_$_RequestCenterMap) then) =
       __$$_RequestCenterMapCopyWithImpl<$Res>;
+  @useResult
   $Res call({bool isFollowMode});
 }
 
 /// @nodoc
 class __$$_RequestCenterMapCopyWithImpl<$Res>
-    extends _$MapEventCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$_RequestCenterMap>
     implements _$$_RequestCenterMapCopyWith<$Res> {
   __$$_RequestCenterMapCopyWithImpl(
       _$_RequestCenterMap _value, $Res Function(_$_RequestCenterMap) _then)
-      : super(_value, (v) => _then(v as _$_RequestCenterMap));
+      : super(_value, _then);
 
-  @override
-  _$_RequestCenterMap get _value => super._value as _$_RequestCenterMap;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isFollowMode = freezed,
+    Object? isFollowMode = null,
   }) {
     return _then(_$_RequestCenterMap(
-      isFollowMode == freezed
+      null == isFollowMode
           ? _value.isFollowMode
           : isFollowMode // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -133,16 +134,16 @@ class _$_RequestCenterMap implements _RequestCenterMap {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RequestCenterMap &&
-            const DeepCollectionEquality()
-                .equals(other.isFollowMode, isFollowMode));
+            (identical(other.isFollowMode, isFollowMode) ||
+                other.isFollowMode == isFollowMode));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(isFollowMode));
+  int get hashCode => Object.hash(runtimeType, isFollowMode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RequestCenterMapCopyWith<_$_RequestCenterMap> get copyWith =>
       __$$_RequestCenterMapCopyWithImpl<_$_RequestCenterMap>(this, _$identity);
 
@@ -160,10 +161,10 @@ class _$_RequestCenterMap implements _RequestCenterMap {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isFollowMode)? requestCenterMap,
-    TResult Function(MapMode mapMode)? changeMapMode,
-    TResult Function(int trailID)? requestTrailPreview,
-    TResult Function(FollowMode followMode)? changeFollowMode,
+    TResult? Function(bool isFollowMode)? requestCenterMap,
+    TResult? Function(MapMode mapMode)? changeMapMode,
+    TResult? Function(int trailID)? requestTrailPreview,
+    TResult? Function(FollowMode followMode)? changeFollowMode,
   }) {
     return requestCenterMap?.call(isFollowMode);
   }
@@ -197,10 +198,10 @@ class _$_RequestCenterMap implements _RequestCenterMap {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RequestCenterMap value)? requestCenterMap,
-    TResult Function(_ChangeMapMode value)? changeMapMode,
-    TResult Function(_RequestTrailPreview value)? requestTrailPreview,
-    TResult Function(_ChangeFollowMode value)? changeFollowMode,
+    TResult? Function(_RequestCenterMap value)? requestCenterMap,
+    TResult? Function(_ChangeMapMode value)? changeMapMode,
+    TResult? Function(_RequestTrailPreview value)? requestTrailPreview,
+    TResult? Function(_ChangeFollowMode value)? changeFollowMode,
   }) {
     return requestCenterMap?.call(this);
   }
@@ -236,25 +237,25 @@ abstract class _$$_ChangeMapModeCopyWith<$Res> {
   factory _$$_ChangeMapModeCopyWith(
           _$_ChangeMapMode value, $Res Function(_$_ChangeMapMode) then) =
       __$$_ChangeMapModeCopyWithImpl<$Res>;
+  @useResult
   $Res call({MapMode mapMode});
 }
 
 /// @nodoc
-class __$$_ChangeMapModeCopyWithImpl<$Res> extends _$MapEventCopyWithImpl<$Res>
+class __$$_ChangeMapModeCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$_ChangeMapMode>
     implements _$$_ChangeMapModeCopyWith<$Res> {
   __$$_ChangeMapModeCopyWithImpl(
       _$_ChangeMapMode _value, $Res Function(_$_ChangeMapMode) _then)
-      : super(_value, (v) => _then(v as _$_ChangeMapMode));
+      : super(_value, _then);
 
-  @override
-  _$_ChangeMapMode get _value => super._value as _$_ChangeMapMode;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mapMode = freezed,
+    Object? mapMode = null,
   }) {
     return _then(_$_ChangeMapMode(
-      mapMode == freezed
+      null == mapMode
           ? _value.mapMode
           : mapMode // ignore: cast_nullable_to_non_nullable
               as MapMode,
@@ -280,15 +281,15 @@ class _$_ChangeMapMode implements _ChangeMapMode {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChangeMapMode &&
-            const DeepCollectionEquality().equals(other.mapMode, mapMode));
+            (identical(other.mapMode, mapMode) || other.mapMode == mapMode));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(mapMode));
+  int get hashCode => Object.hash(runtimeType, mapMode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ChangeMapModeCopyWith<_$_ChangeMapMode> get copyWith =>
       __$$_ChangeMapModeCopyWithImpl<_$_ChangeMapMode>(this, _$identity);
 
@@ -306,10 +307,10 @@ class _$_ChangeMapMode implements _ChangeMapMode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isFollowMode)? requestCenterMap,
-    TResult Function(MapMode mapMode)? changeMapMode,
-    TResult Function(int trailID)? requestTrailPreview,
-    TResult Function(FollowMode followMode)? changeFollowMode,
+    TResult? Function(bool isFollowMode)? requestCenterMap,
+    TResult? Function(MapMode mapMode)? changeMapMode,
+    TResult? Function(int trailID)? requestTrailPreview,
+    TResult? Function(FollowMode followMode)? changeFollowMode,
   }) {
     return changeMapMode?.call(mapMode);
   }
@@ -343,10 +344,10 @@ class _$_ChangeMapMode implements _ChangeMapMode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RequestCenterMap value)? requestCenterMap,
-    TResult Function(_ChangeMapMode value)? changeMapMode,
-    TResult Function(_RequestTrailPreview value)? requestTrailPreview,
-    TResult Function(_ChangeFollowMode value)? changeFollowMode,
+    TResult? Function(_RequestCenterMap value)? requestCenterMap,
+    TResult? Function(_ChangeMapMode value)? changeMapMode,
+    TResult? Function(_RequestTrailPreview value)? requestTrailPreview,
+    TResult? Function(_ChangeFollowMode value)? changeFollowMode,
   }) {
     return changeMapMode?.call(this);
   }
@@ -381,26 +382,25 @@ abstract class _$$_RequestTrailPreviewCopyWith<$Res> {
   factory _$$_RequestTrailPreviewCopyWith(_$_RequestTrailPreview value,
           $Res Function(_$_RequestTrailPreview) then) =
       __$$_RequestTrailPreviewCopyWithImpl<$Res>;
+  @useResult
   $Res call({int trailID});
 }
 
 /// @nodoc
 class __$$_RequestTrailPreviewCopyWithImpl<$Res>
-    extends _$MapEventCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$_RequestTrailPreview>
     implements _$$_RequestTrailPreviewCopyWith<$Res> {
   __$$_RequestTrailPreviewCopyWithImpl(_$_RequestTrailPreview _value,
       $Res Function(_$_RequestTrailPreview) _then)
-      : super(_value, (v) => _then(v as _$_RequestTrailPreview));
+      : super(_value, _then);
 
-  @override
-  _$_RequestTrailPreview get _value => super._value as _$_RequestTrailPreview;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trailID = freezed,
+    Object? trailID = null,
   }) {
     return _then(_$_RequestTrailPreview(
-      trailID == freezed
+      null == trailID
           ? _value.trailID
           : trailID // ignore: cast_nullable_to_non_nullable
               as int,
@@ -426,15 +426,15 @@ class _$_RequestTrailPreview implements _RequestTrailPreview {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RequestTrailPreview &&
-            const DeepCollectionEquality().equals(other.trailID, trailID));
+            (identical(other.trailID, trailID) || other.trailID == trailID));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(trailID));
+  int get hashCode => Object.hash(runtimeType, trailID);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RequestTrailPreviewCopyWith<_$_RequestTrailPreview> get copyWith =>
       __$$_RequestTrailPreviewCopyWithImpl<_$_RequestTrailPreview>(
           this, _$identity);
@@ -453,10 +453,10 @@ class _$_RequestTrailPreview implements _RequestTrailPreview {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isFollowMode)? requestCenterMap,
-    TResult Function(MapMode mapMode)? changeMapMode,
-    TResult Function(int trailID)? requestTrailPreview,
-    TResult Function(FollowMode followMode)? changeFollowMode,
+    TResult? Function(bool isFollowMode)? requestCenterMap,
+    TResult? Function(MapMode mapMode)? changeMapMode,
+    TResult? Function(int trailID)? requestTrailPreview,
+    TResult? Function(FollowMode followMode)? changeFollowMode,
   }) {
     return requestTrailPreview?.call(trailID);
   }
@@ -490,10 +490,10 @@ class _$_RequestTrailPreview implements _RequestTrailPreview {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RequestCenterMap value)? requestCenterMap,
-    TResult Function(_ChangeMapMode value)? changeMapMode,
-    TResult Function(_RequestTrailPreview value)? requestTrailPreview,
-    TResult Function(_ChangeFollowMode value)? changeFollowMode,
+    TResult? Function(_RequestCenterMap value)? requestCenterMap,
+    TResult? Function(_ChangeMapMode value)? changeMapMode,
+    TResult? Function(_RequestTrailPreview value)? requestTrailPreview,
+    TResult? Function(_ChangeFollowMode value)? changeFollowMode,
   }) {
     return requestTrailPreview?.call(this);
   }
@@ -529,26 +529,25 @@ abstract class _$$_ChangeFollowModeCopyWith<$Res> {
   factory _$$_ChangeFollowModeCopyWith(
           _$_ChangeFollowMode value, $Res Function(_$_ChangeFollowMode) then) =
       __$$_ChangeFollowModeCopyWithImpl<$Res>;
+  @useResult
   $Res call({FollowMode followMode});
 }
 
 /// @nodoc
 class __$$_ChangeFollowModeCopyWithImpl<$Res>
-    extends _$MapEventCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$_ChangeFollowMode>
     implements _$$_ChangeFollowModeCopyWith<$Res> {
   __$$_ChangeFollowModeCopyWithImpl(
       _$_ChangeFollowMode _value, $Res Function(_$_ChangeFollowMode) _then)
-      : super(_value, (v) => _then(v as _$_ChangeFollowMode));
+      : super(_value, _then);
 
-  @override
-  _$_ChangeFollowMode get _value => super._value as _$_ChangeFollowMode;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? followMode = freezed,
+    Object? followMode = null,
   }) {
     return _then(_$_ChangeFollowMode(
-      followMode == freezed
+      null == followMode
           ? _value.followMode
           : followMode // ignore: cast_nullable_to_non_nullable
               as FollowMode,
@@ -574,16 +573,16 @@ class _$_ChangeFollowMode implements _ChangeFollowMode {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChangeFollowMode &&
-            const DeepCollectionEquality()
-                .equals(other.followMode, followMode));
+            (identical(other.followMode, followMode) ||
+                other.followMode == followMode));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(followMode));
+  int get hashCode => Object.hash(runtimeType, followMode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ChangeFollowModeCopyWith<_$_ChangeFollowMode> get copyWith =>
       __$$_ChangeFollowModeCopyWithImpl<_$_ChangeFollowMode>(this, _$identity);
 
@@ -601,10 +600,10 @@ class _$_ChangeFollowMode implements _ChangeFollowMode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool isFollowMode)? requestCenterMap,
-    TResult Function(MapMode mapMode)? changeMapMode,
-    TResult Function(int trailID)? requestTrailPreview,
-    TResult Function(FollowMode followMode)? changeFollowMode,
+    TResult? Function(bool isFollowMode)? requestCenterMap,
+    TResult? Function(MapMode mapMode)? changeMapMode,
+    TResult? Function(int trailID)? requestTrailPreview,
+    TResult? Function(FollowMode followMode)? changeFollowMode,
   }) {
     return changeFollowMode?.call(followMode);
   }
@@ -638,10 +637,10 @@ class _$_ChangeFollowMode implements _ChangeFollowMode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RequestCenterMap value)? requestCenterMap,
-    TResult Function(_ChangeMapMode value)? changeMapMode,
-    TResult Function(_RequestTrailPreview value)? requestTrailPreview,
-    TResult Function(_ChangeFollowMode value)? changeFollowMode,
+    TResult? Function(_RequestCenterMap value)? requestCenterMap,
+    TResult? Function(_ChangeMapMode value)? changeMapMode,
+    TResult? Function(_RequestTrailPreview value)? requestTrailPreview,
+    TResult? Function(_ChangeFollowMode value)? changeFollowMode,
   }) {
     return changeFollowMode?.call(this);
   }
@@ -685,11 +684,11 @@ mixin _$MapState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onRecenterMap,
-    TResult Function(MapMode mapMode)? onMapModeChanged,
-    TResult Function(int trailID)? onRequestTrailPreview,
-    TResult Function(FollowMode followMode)? onFollowModeChanged,
+    TResult? Function()? initial,
+    TResult? Function()? onRecenterMap,
+    TResult? Function(MapMode mapMode)? onMapModeChanged,
+    TResult? Function(int trailID)? onRequestTrailPreview,
+    TResult? Function(FollowMode followMode)? onFollowModeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -714,11 +713,11 @@ mixin _$MapState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnRecenterMap value)? onRecenterMap,
-    TResult Function(_OnMapModeChanged value)? onMapModeChanged,
-    TResult Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
-    TResult Function(_OnFollowModeChanged value)? onFollowModeChanged,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnRecenterMap value)? onRecenterMap,
+    TResult? Function(_OnMapModeChanged value)? onMapModeChanged,
+    TResult? Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
+    TResult? Function(_OnFollowModeChanged value)? onFollowModeChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -736,16 +735,18 @@ mixin _$MapState {
 /// @nodoc
 abstract class $MapStateCopyWith<$Res> {
   factory $MapStateCopyWith(MapState value, $Res Function(MapState) then) =
-      _$MapStateCopyWithImpl<$Res>;
+      _$MapStateCopyWithImpl<$Res, MapState>;
 }
 
 /// @nodoc
-class _$MapStateCopyWithImpl<$Res> implements $MapStateCopyWith<$Res> {
+class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
+    implements $MapStateCopyWith<$Res> {
   _$MapStateCopyWithImpl(this._value, this._then);
 
-  final MapState _value;
   // ignore: unused_field
-  final $Res Function(MapState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -756,13 +757,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$MapStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -799,11 +798,11 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onRecenterMap,
-    TResult Function(MapMode mapMode)? onMapModeChanged,
-    TResult Function(int trailID)? onRequestTrailPreview,
-    TResult Function(FollowMode followMode)? onFollowModeChanged,
+    TResult? Function()? initial,
+    TResult? Function()? onRecenterMap,
+    TResult? Function(MapMode mapMode)? onMapModeChanged,
+    TResult? Function(int trailID)? onRequestTrailPreview,
+    TResult? Function(FollowMode followMode)? onFollowModeChanged,
   }) {
     return initial?.call();
   }
@@ -840,11 +839,11 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnRecenterMap value)? onRecenterMap,
-    TResult Function(_OnMapModeChanged value)? onMapModeChanged,
-    TResult Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
-    TResult Function(_OnFollowModeChanged value)? onFollowModeChanged,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnRecenterMap value)? onRecenterMap,
+    TResult? Function(_OnMapModeChanged value)? onMapModeChanged,
+    TResult? Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
+    TResult? Function(_OnFollowModeChanged value)? onFollowModeChanged,
   }) {
     return initial?.call(this);
   }
@@ -878,14 +877,12 @@ abstract class _$$_OnRecenterMapCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnRecenterMapCopyWithImpl<$Res> extends _$MapStateCopyWithImpl<$Res>
+class __$$_OnRecenterMapCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_OnRecenterMap>
     implements _$$_OnRecenterMapCopyWith<$Res> {
   __$$_OnRecenterMapCopyWithImpl(
       _$_OnRecenterMap _value, $Res Function(_$_OnRecenterMap) _then)
-      : super(_value, (v) => _then(v as _$_OnRecenterMap));
-
-  @override
-  _$_OnRecenterMap get _value => super._value as _$_OnRecenterMap;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -922,11 +919,11 @@ class _$_OnRecenterMap implements _OnRecenterMap {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onRecenterMap,
-    TResult Function(MapMode mapMode)? onMapModeChanged,
-    TResult Function(int trailID)? onRequestTrailPreview,
-    TResult Function(FollowMode followMode)? onFollowModeChanged,
+    TResult? Function()? initial,
+    TResult? Function()? onRecenterMap,
+    TResult? Function(MapMode mapMode)? onMapModeChanged,
+    TResult? Function(int trailID)? onRequestTrailPreview,
+    TResult? Function(FollowMode followMode)? onFollowModeChanged,
   }) {
     return onRecenterMap?.call();
   }
@@ -963,11 +960,11 @@ class _$_OnRecenterMap implements _OnRecenterMap {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnRecenterMap value)? onRecenterMap,
-    TResult Function(_OnMapModeChanged value)? onMapModeChanged,
-    TResult Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
-    TResult Function(_OnFollowModeChanged value)? onFollowModeChanged,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnRecenterMap value)? onRecenterMap,
+    TResult? Function(_OnMapModeChanged value)? onMapModeChanged,
+    TResult? Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
+    TResult? Function(_OnFollowModeChanged value)? onFollowModeChanged,
   }) {
     return onRecenterMap?.call(this);
   }
@@ -998,26 +995,25 @@ abstract class _$$_OnMapModeChangedCopyWith<$Res> {
   factory _$$_OnMapModeChangedCopyWith(
           _$_OnMapModeChanged value, $Res Function(_$_OnMapModeChanged) then) =
       __$$_OnMapModeChangedCopyWithImpl<$Res>;
+  @useResult
   $Res call({MapMode mapMode});
 }
 
 /// @nodoc
 class __$$_OnMapModeChangedCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_OnMapModeChanged>
     implements _$$_OnMapModeChangedCopyWith<$Res> {
   __$$_OnMapModeChangedCopyWithImpl(
       _$_OnMapModeChanged _value, $Res Function(_$_OnMapModeChanged) _then)
-      : super(_value, (v) => _then(v as _$_OnMapModeChanged));
+      : super(_value, _then);
 
-  @override
-  _$_OnMapModeChanged get _value => super._value as _$_OnMapModeChanged;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mapMode = freezed,
+    Object? mapMode = null,
   }) {
     return _then(_$_OnMapModeChanged(
-      mapMode == freezed
+      null == mapMode
           ? _value.mapMode
           : mapMode // ignore: cast_nullable_to_non_nullable
               as MapMode,
@@ -1043,15 +1039,15 @@ class _$_OnMapModeChanged implements _OnMapModeChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnMapModeChanged &&
-            const DeepCollectionEquality().equals(other.mapMode, mapMode));
+            (identical(other.mapMode, mapMode) || other.mapMode == mapMode));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(mapMode));
+  int get hashCode => Object.hash(runtimeType, mapMode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnMapModeChangedCopyWith<_$_OnMapModeChanged> get copyWith =>
       __$$_OnMapModeChangedCopyWithImpl<_$_OnMapModeChanged>(this, _$identity);
 
@@ -1070,11 +1066,11 @@ class _$_OnMapModeChanged implements _OnMapModeChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onRecenterMap,
-    TResult Function(MapMode mapMode)? onMapModeChanged,
-    TResult Function(int trailID)? onRequestTrailPreview,
-    TResult Function(FollowMode followMode)? onFollowModeChanged,
+    TResult? Function()? initial,
+    TResult? Function()? onRecenterMap,
+    TResult? Function(MapMode mapMode)? onMapModeChanged,
+    TResult? Function(int trailID)? onRequestTrailPreview,
+    TResult? Function(FollowMode followMode)? onFollowModeChanged,
   }) {
     return onMapModeChanged?.call(mapMode);
   }
@@ -1111,11 +1107,11 @@ class _$_OnMapModeChanged implements _OnMapModeChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnRecenterMap value)? onRecenterMap,
-    TResult Function(_OnMapModeChanged value)? onMapModeChanged,
-    TResult Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
-    TResult Function(_OnFollowModeChanged value)? onFollowModeChanged,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnRecenterMap value)? onRecenterMap,
+    TResult? Function(_OnMapModeChanged value)? onMapModeChanged,
+    TResult? Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
+    TResult? Function(_OnFollowModeChanged value)? onFollowModeChanged,
   }) {
     return onMapModeChanged?.call(this);
   }
@@ -1151,27 +1147,25 @@ abstract class _$$_OnRequestTrailPreviewCopyWith<$Res> {
   factory _$$_OnRequestTrailPreviewCopyWith(_$_OnRequestTrailPreview value,
           $Res Function(_$_OnRequestTrailPreview) then) =
       __$$_OnRequestTrailPreviewCopyWithImpl<$Res>;
+  @useResult
   $Res call({int trailID});
 }
 
 /// @nodoc
 class __$$_OnRequestTrailPreviewCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_OnRequestTrailPreview>
     implements _$$_OnRequestTrailPreviewCopyWith<$Res> {
   __$$_OnRequestTrailPreviewCopyWithImpl(_$_OnRequestTrailPreview _value,
       $Res Function(_$_OnRequestTrailPreview) _then)
-      : super(_value, (v) => _then(v as _$_OnRequestTrailPreview));
+      : super(_value, _then);
 
-  @override
-  _$_OnRequestTrailPreview get _value =>
-      super._value as _$_OnRequestTrailPreview;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? trailID = freezed,
+    Object? trailID = null,
   }) {
     return _then(_$_OnRequestTrailPreview(
-      trailID == freezed
+      null == trailID
           ? _value.trailID
           : trailID // ignore: cast_nullable_to_non_nullable
               as int,
@@ -1197,15 +1191,15 @@ class _$_OnRequestTrailPreview implements _OnRequestTrailPreview {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnRequestTrailPreview &&
-            const DeepCollectionEquality().equals(other.trailID, trailID));
+            (identical(other.trailID, trailID) || other.trailID == trailID));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(trailID));
+  int get hashCode => Object.hash(runtimeType, trailID);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnRequestTrailPreviewCopyWith<_$_OnRequestTrailPreview> get copyWith =>
       __$$_OnRequestTrailPreviewCopyWithImpl<_$_OnRequestTrailPreview>(
           this, _$identity);
@@ -1225,11 +1219,11 @@ class _$_OnRequestTrailPreview implements _OnRequestTrailPreview {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onRecenterMap,
-    TResult Function(MapMode mapMode)? onMapModeChanged,
-    TResult Function(int trailID)? onRequestTrailPreview,
-    TResult Function(FollowMode followMode)? onFollowModeChanged,
+    TResult? Function()? initial,
+    TResult? Function()? onRecenterMap,
+    TResult? Function(MapMode mapMode)? onMapModeChanged,
+    TResult? Function(int trailID)? onRequestTrailPreview,
+    TResult? Function(FollowMode followMode)? onFollowModeChanged,
   }) {
     return onRequestTrailPreview?.call(trailID);
   }
@@ -1266,11 +1260,11 @@ class _$_OnRequestTrailPreview implements _OnRequestTrailPreview {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnRecenterMap value)? onRecenterMap,
-    TResult Function(_OnMapModeChanged value)? onMapModeChanged,
-    TResult Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
-    TResult Function(_OnFollowModeChanged value)? onFollowModeChanged,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnRecenterMap value)? onRecenterMap,
+    TResult? Function(_OnMapModeChanged value)? onMapModeChanged,
+    TResult? Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
+    TResult? Function(_OnFollowModeChanged value)? onFollowModeChanged,
   }) {
     return onRequestTrailPreview?.call(this);
   }
@@ -1307,26 +1301,25 @@ abstract class _$$_OnFollowModeChangedCopyWith<$Res> {
   factory _$$_OnFollowModeChangedCopyWith(_$_OnFollowModeChanged value,
           $Res Function(_$_OnFollowModeChanged) then) =
       __$$_OnFollowModeChangedCopyWithImpl<$Res>;
+  @useResult
   $Res call({FollowMode followMode});
 }
 
 /// @nodoc
 class __$$_OnFollowModeChangedCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$_OnFollowModeChanged>
     implements _$$_OnFollowModeChangedCopyWith<$Res> {
   __$$_OnFollowModeChangedCopyWithImpl(_$_OnFollowModeChanged _value,
       $Res Function(_$_OnFollowModeChanged) _then)
-      : super(_value, (v) => _then(v as _$_OnFollowModeChanged));
+      : super(_value, _then);
 
-  @override
-  _$_OnFollowModeChanged get _value => super._value as _$_OnFollowModeChanged;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? followMode = freezed,
+    Object? followMode = null,
   }) {
     return _then(_$_OnFollowModeChanged(
-      followMode == freezed
+      null == followMode
           ? _value.followMode
           : followMode // ignore: cast_nullable_to_non_nullable
               as FollowMode,
@@ -1352,16 +1345,16 @@ class _$_OnFollowModeChanged implements _OnFollowModeChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnFollowModeChanged &&
-            const DeepCollectionEquality()
-                .equals(other.followMode, followMode));
+            (identical(other.followMode, followMode) ||
+                other.followMode == followMode));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(followMode));
+  int get hashCode => Object.hash(runtimeType, followMode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnFollowModeChangedCopyWith<_$_OnFollowModeChanged> get copyWith =>
       __$$_OnFollowModeChangedCopyWithImpl<_$_OnFollowModeChanged>(
           this, _$identity);
@@ -1381,11 +1374,11 @@ class _$_OnFollowModeChanged implements _OnFollowModeChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onRecenterMap,
-    TResult Function(MapMode mapMode)? onMapModeChanged,
-    TResult Function(int trailID)? onRequestTrailPreview,
-    TResult Function(FollowMode followMode)? onFollowModeChanged,
+    TResult? Function()? initial,
+    TResult? Function()? onRecenterMap,
+    TResult? Function(MapMode mapMode)? onMapModeChanged,
+    TResult? Function(int trailID)? onRequestTrailPreview,
+    TResult? Function(FollowMode followMode)? onFollowModeChanged,
   }) {
     return onFollowModeChanged?.call(followMode);
   }
@@ -1422,11 +1415,11 @@ class _$_OnFollowModeChanged implements _OnFollowModeChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnRecenterMap value)? onRecenterMap,
-    TResult Function(_OnMapModeChanged value)? onMapModeChanged,
-    TResult Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
-    TResult Function(_OnFollowModeChanged value)? onFollowModeChanged,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnRecenterMap value)? onRecenterMap,
+    TResult? Function(_OnMapModeChanged value)? onMapModeChanged,
+    TResult? Function(_OnRequestTrailPreview value)? onRequestTrailPreview,
+    TResult? Function(_OnFollowModeChanged value)? onFollowModeChanged,
   }) {
     return onFollowModeChanged?.call(this);
   }

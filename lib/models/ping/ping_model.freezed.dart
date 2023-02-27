@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ping_model.dart';
 
@@ -39,7 +39,8 @@ mixin _$Ping {
 /// @nodoc
 abstract class $PingCopyWith<$Res> {
   factory $PingCopyWith(Ping value, $Res Function(Ping) then) =
-      _$PingCopyWithImpl<$Res>;
+      _$PingCopyWithImpl<$Res, Ping>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'is_logged') bool isLogged,
       @JsonKey(name: 'is_located') bool isLocated,
@@ -50,48 +51,51 @@ abstract class $PingCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PingCopyWithImpl<$Res> implements $PingCopyWith<$Res> {
+class _$PingCopyWithImpl<$Res, $Val extends Ping>
+    implements $PingCopyWith<$Res> {
   _$PingCopyWithImpl(this._value, this._then);
 
-  final Ping _value;
   // ignore: unused_field
-  final $Res Function(Ping) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLogged = freezed,
-    Object? isLocated = freezed,
+    Object? isLogged = null,
+    Object? isLocated = null,
     Object? distanceFromTrail = freezed,
-    Object? isOnline = freezed,
-    Object? date = freezed,
-    Object? trail = freezed,
+    Object? isOnline = null,
+    Object? date = null,
+    Object? trail = null,
   }) {
     return _then(_value.copyWith(
-      isLogged: isLogged == freezed
+      isLogged: null == isLogged
           ? _value.isLogged
           : isLogged // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLocated: isLocated == freezed
+      isLocated: null == isLocated
           ? _value.isLocated
           : isLocated // ignore: cast_nullable_to_non_nullable
               as bool,
-      distanceFromTrail: distanceFromTrail == freezed
+      distanceFromTrail: freezed == distanceFromTrail
           ? _value.distanceFromTrail
           : distanceFromTrail // ignore: cast_nullable_to_non_nullable
               as int?,
-      isOnline: isOnline == freezed
+      isOnline: null == isOnline
           ? _value.isOnline
           : isOnline // ignore: cast_nullable_to_non_nullable
               as bool,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      trail: trail == freezed
+      trail: null == trail
           ? _value.trail
           : trail // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -100,6 +104,7 @@ abstract class _$$_PingCopyWith<$Res> implements $PingCopyWith<$Res> {
   factory _$$_PingCopyWith(_$_Ping value, $Res Function(_$_Ping) then) =
       __$$_PingCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'is_logged') bool isLogged,
       @JsonKey(name: 'is_located') bool isLocated,
@@ -110,45 +115,43 @@ abstract class _$$_PingCopyWith<$Res> implements $PingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PingCopyWithImpl<$Res> extends _$PingCopyWithImpl<$Res>
+class __$$_PingCopyWithImpl<$Res> extends _$PingCopyWithImpl<$Res, _$_Ping>
     implements _$$_PingCopyWith<$Res> {
   __$$_PingCopyWithImpl(_$_Ping _value, $Res Function(_$_Ping) _then)
-      : super(_value, (v) => _then(v as _$_Ping));
+      : super(_value, _then);
 
-  @override
-  _$_Ping get _value => super._value as _$_Ping;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLogged = freezed,
-    Object? isLocated = freezed,
+    Object? isLogged = null,
+    Object? isLocated = null,
     Object? distanceFromTrail = freezed,
-    Object? isOnline = freezed,
-    Object? date = freezed,
-    Object? trail = freezed,
+    Object? isOnline = null,
+    Object? date = null,
+    Object? trail = null,
   }) {
     return _then(_$_Ping(
-      isLogged: isLogged == freezed
+      isLogged: null == isLogged
           ? _value.isLogged
           : isLogged // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLocated: isLocated == freezed
+      isLocated: null == isLocated
           ? _value.isLocated
           : isLocated // ignore: cast_nullable_to_non_nullable
               as bool,
-      distanceFromTrail: distanceFromTrail == freezed
+      distanceFromTrail: freezed == distanceFromTrail
           ? _value.distanceFromTrail
           : distanceFromTrail // ignore: cast_nullable_to_non_nullable
               as int?,
-      isOnline: isOnline == freezed
+      isOnline: null == isOnline
           ? _value.isOnline
           : isOnline // ignore: cast_nullable_to_non_nullable
               as bool,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      trail: trail == freezed
+      trail: null == trail
           ? _value.trail
           : trail // ignore: cast_nullable_to_non_nullable
               as int,
@@ -196,28 +199,26 @@ class _$_Ping implements _Ping {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Ping &&
-            const DeepCollectionEquality().equals(other.isLogged, isLogged) &&
-            const DeepCollectionEquality().equals(other.isLocated, isLocated) &&
-            const DeepCollectionEquality()
-                .equals(other.distanceFromTrail, distanceFromTrail) &&
-            const DeepCollectionEquality().equals(other.isOnline, isOnline) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.trail, trail));
+            (identical(other.isLogged, isLogged) ||
+                other.isLogged == isLogged) &&
+            (identical(other.isLocated, isLocated) ||
+                other.isLocated == isLocated) &&
+            (identical(other.distanceFromTrail, distanceFromTrail) ||
+                other.distanceFromTrail == distanceFromTrail) &&
+            (identical(other.isOnline, isOnline) ||
+                other.isOnline == isOnline) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.trail, trail) || other.trail == trail));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isLogged),
-      const DeepCollectionEquality().hash(isLocated),
-      const DeepCollectionEquality().hash(distanceFromTrail),
-      const DeepCollectionEquality().hash(isOnline),
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(trail));
+  int get hashCode => Object.hash(runtimeType, isLogged, isLocated,
+      distanceFromTrail, isOnline, date, trail);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PingCopyWith<_$_Ping> get copyWith =>
       __$$_PingCopyWithImpl<_$_Ping>(this, _$identity);
 

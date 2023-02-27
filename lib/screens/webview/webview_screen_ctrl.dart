@@ -49,6 +49,8 @@ class WebViewPage extends StatelessWidget {
                 )),
           ],
         ),
-        body: WebViewScreen(url: url));
+        body: url == null
+            ? const Center(child: Text('Oups, aucune URL renseignée !'))
+            : WebViewScreen(url: url!));
   }
 }

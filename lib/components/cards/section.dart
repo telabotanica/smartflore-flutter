@@ -42,7 +42,7 @@ class Section extends StatelessWidget {
         Html(
           data: sectionData.text,
           style: {
-            'body': Style(margin: EdgeInsets.zero, padding: EdgeInsets.zero),
+            'body': Style(margin: Margins.zero, padding: EdgeInsets.zero),
           },
           onLinkTap: (String? url, RenderContext renderContext,
               Map<String, String> attributes, dom.Element? element) {

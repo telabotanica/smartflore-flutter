@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'geolocation_bloc.dart';
 
@@ -27,11 +27,11 @@ mixin _$GeolocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? requestPermission,
-    TResult Function()? requestCurrentLocation,
-    TResult Function()? requestCurrentLocationStream,
-    TResult Function(Position position)? updateLocation,
+    TResult? Function()? started,
+    TResult? Function()? requestPermission,
+    TResult? Function()? requestCurrentLocation,
+    TResult? Function()? requestCurrentLocationStream,
+    TResult? Function(Position position)? updateLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,12 +57,12 @@ mixin _$GeolocationEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_RequestPermission value)? requestPermission,
-    TResult Function(_RequestCurrentLocation value)? requestCurrentLocation,
-    TResult Function(_RequestCurrentLocationStream value)?
+    TResult? Function(_Started value)? started,
+    TResult? Function(_RequestPermission value)? requestPermission,
+    TResult? Function(_RequestCurrentLocation value)? requestCurrentLocation,
+    TResult? Function(_RequestCurrentLocationStream value)?
         requestCurrentLocationStream,
-    TResult Function(_UpdateLocation value)? updateLocation,
+    TResult? Function(_UpdateLocation value)? updateLocation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,17 +82,18 @@ mixin _$GeolocationEvent {
 abstract class $GeolocationEventCopyWith<$Res> {
   factory $GeolocationEventCopyWith(
           GeolocationEvent value, $Res Function(GeolocationEvent) then) =
-      _$GeolocationEventCopyWithImpl<$Res>;
+      _$GeolocationEventCopyWithImpl<$Res, GeolocationEvent>;
 }
 
 /// @nodoc
-class _$GeolocationEventCopyWithImpl<$Res>
+class _$GeolocationEventCopyWithImpl<$Res, $Val extends GeolocationEvent>
     implements $GeolocationEventCopyWith<$Res> {
   _$GeolocationEventCopyWithImpl(this._value, this._then);
 
-  final GeolocationEvent _value;
   // ignore: unused_field
-  final $Res Function(GeolocationEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -104,13 +105,10 @@ abstract class _$$_StartedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StartedCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res, _$_Started>
     implements _$$_StartedCopyWith<$Res> {
   __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, (v) => _then(v as _$_Started));
-
-  @override
-  _$_Started get _value => super._value as _$_Started;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -147,11 +145,11 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? requestPermission,
-    TResult Function()? requestCurrentLocation,
-    TResult Function()? requestCurrentLocationStream,
-    TResult Function(Position position)? updateLocation,
+    TResult? Function()? started,
+    TResult? Function()? requestPermission,
+    TResult? Function()? requestCurrentLocation,
+    TResult? Function()? requestCurrentLocationStream,
+    TResult? Function(Position position)? updateLocation,
   }) {
     return started?.call();
   }
@@ -189,12 +187,12 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_RequestPermission value)? requestPermission,
-    TResult Function(_RequestCurrentLocation value)? requestCurrentLocation,
-    TResult Function(_RequestCurrentLocationStream value)?
+    TResult? Function(_Started value)? started,
+    TResult? Function(_RequestPermission value)? requestPermission,
+    TResult? Function(_RequestCurrentLocation value)? requestCurrentLocation,
+    TResult? Function(_RequestCurrentLocationStream value)?
         requestCurrentLocationStream,
-    TResult Function(_UpdateLocation value)? updateLocation,
+    TResult? Function(_UpdateLocation value)? updateLocation,
   }) {
     return started?.call(this);
   }
@@ -230,14 +228,11 @@ abstract class _$$_RequestPermissionCopyWith<$Res> {
 
 /// @nodoc
 class __$$_RequestPermissionCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res, _$_RequestPermission>
     implements _$$_RequestPermissionCopyWith<$Res> {
   __$$_RequestPermissionCopyWithImpl(
       _$_RequestPermission _value, $Res Function(_$_RequestPermission) _then)
-      : super(_value, (v) => _then(v as _$_RequestPermission));
-
-  @override
-  _$_RequestPermission get _value => super._value as _$_RequestPermission;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -274,11 +269,11 @@ class _$_RequestPermission implements _RequestPermission {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? requestPermission,
-    TResult Function()? requestCurrentLocation,
-    TResult Function()? requestCurrentLocationStream,
-    TResult Function(Position position)? updateLocation,
+    TResult? Function()? started,
+    TResult? Function()? requestPermission,
+    TResult? Function()? requestCurrentLocation,
+    TResult? Function()? requestCurrentLocationStream,
+    TResult? Function(Position position)? updateLocation,
   }) {
     return requestPermission?.call();
   }
@@ -316,12 +311,12 @@ class _$_RequestPermission implements _RequestPermission {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_RequestPermission value)? requestPermission,
-    TResult Function(_RequestCurrentLocation value)? requestCurrentLocation,
-    TResult Function(_RequestCurrentLocationStream value)?
+    TResult? Function(_Started value)? started,
+    TResult? Function(_RequestPermission value)? requestPermission,
+    TResult? Function(_RequestCurrentLocation value)? requestCurrentLocation,
+    TResult? Function(_RequestCurrentLocationStream value)?
         requestCurrentLocationStream,
-    TResult Function(_UpdateLocation value)? updateLocation,
+    TResult? Function(_UpdateLocation value)? updateLocation,
   }) {
     return requestPermission?.call(this);
   }
@@ -357,15 +352,11 @@ abstract class _$$_RequestCurrentLocationCopyWith<$Res> {
 
 /// @nodoc
 class __$$_RequestCurrentLocationCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res, _$_RequestCurrentLocation>
     implements _$$_RequestCurrentLocationCopyWith<$Res> {
   __$$_RequestCurrentLocationCopyWithImpl(_$_RequestCurrentLocation _value,
       $Res Function(_$_RequestCurrentLocation) _then)
-      : super(_value, (v) => _then(v as _$_RequestCurrentLocation));
-
-  @override
-  _$_RequestCurrentLocation get _value =>
-      super._value as _$_RequestCurrentLocation;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -403,11 +394,11 @@ class _$_RequestCurrentLocation implements _RequestCurrentLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? requestPermission,
-    TResult Function()? requestCurrentLocation,
-    TResult Function()? requestCurrentLocationStream,
-    TResult Function(Position position)? updateLocation,
+    TResult? Function()? started,
+    TResult? Function()? requestPermission,
+    TResult? Function()? requestCurrentLocation,
+    TResult? Function()? requestCurrentLocationStream,
+    TResult? Function(Position position)? updateLocation,
   }) {
     return requestCurrentLocation?.call();
   }
@@ -445,12 +436,12 @@ class _$_RequestCurrentLocation implements _RequestCurrentLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_RequestPermission value)? requestPermission,
-    TResult Function(_RequestCurrentLocation value)? requestCurrentLocation,
-    TResult Function(_RequestCurrentLocationStream value)?
+    TResult? Function(_Started value)? started,
+    TResult? Function(_RequestPermission value)? requestPermission,
+    TResult? Function(_RequestCurrentLocation value)? requestCurrentLocation,
+    TResult? Function(_RequestCurrentLocationStream value)?
         requestCurrentLocationStream,
-    TResult Function(_UpdateLocation value)? updateLocation,
+    TResult? Function(_UpdateLocation value)? updateLocation,
   }) {
     return requestCurrentLocation?.call(this);
   }
@@ -487,16 +478,13 @@ abstract class _$$_RequestCurrentLocationStreamCopyWith<$Res> {
 
 /// @nodoc
 class __$$_RequestCurrentLocationStreamCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res,
+        _$_RequestCurrentLocationStream>
     implements _$$_RequestCurrentLocationStreamCopyWith<$Res> {
   __$$_RequestCurrentLocationStreamCopyWithImpl(
       _$_RequestCurrentLocationStream _value,
       $Res Function(_$_RequestCurrentLocationStream) _then)
-      : super(_value, (v) => _then(v as _$_RequestCurrentLocationStream));
-
-  @override
-  _$_RequestCurrentLocationStream get _value =>
-      super._value as _$_RequestCurrentLocationStream;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -534,11 +522,11 @@ class _$_RequestCurrentLocationStream implements _RequestCurrentLocationStream {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? requestPermission,
-    TResult Function()? requestCurrentLocation,
-    TResult Function()? requestCurrentLocationStream,
-    TResult Function(Position position)? updateLocation,
+    TResult? Function()? started,
+    TResult? Function()? requestPermission,
+    TResult? Function()? requestCurrentLocation,
+    TResult? Function()? requestCurrentLocationStream,
+    TResult? Function(Position position)? updateLocation,
   }) {
     return requestCurrentLocationStream?.call();
   }
@@ -576,12 +564,12 @@ class _$_RequestCurrentLocationStream implements _RequestCurrentLocationStream {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_RequestPermission value)? requestPermission,
-    TResult Function(_RequestCurrentLocation value)? requestCurrentLocation,
-    TResult Function(_RequestCurrentLocationStream value)?
+    TResult? Function(_Started value)? started,
+    TResult? Function(_RequestPermission value)? requestPermission,
+    TResult? Function(_RequestCurrentLocation value)? requestCurrentLocation,
+    TResult? Function(_RequestCurrentLocationStream value)?
         requestCurrentLocationStream,
-    TResult Function(_UpdateLocation value)? updateLocation,
+    TResult? Function(_UpdateLocation value)? updateLocation,
   }) {
     return requestCurrentLocationStream?.call(this);
   }
@@ -614,26 +602,25 @@ abstract class _$$_UpdateLocationCopyWith<$Res> {
   factory _$$_UpdateLocationCopyWith(
           _$_UpdateLocation value, $Res Function(_$_UpdateLocation) then) =
       __$$_UpdateLocationCopyWithImpl<$Res>;
+  @useResult
   $Res call({Position position});
 }
 
 /// @nodoc
 class __$$_UpdateLocationCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res, _$_UpdateLocation>
     implements _$$_UpdateLocationCopyWith<$Res> {
   __$$_UpdateLocationCopyWithImpl(
       _$_UpdateLocation _value, $Res Function(_$_UpdateLocation) _then)
-      : super(_value, (v) => _then(v as _$_UpdateLocation));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateLocation get _value => super._value as _$_UpdateLocation;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position = freezed,
+    Object? position = null,
   }) {
     return _then(_$_UpdateLocation(
-      position == freezed
+      null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as Position,
@@ -659,15 +646,16 @@ class _$_UpdateLocation implements _UpdateLocation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateLocation &&
-            const DeepCollectionEquality().equals(other.position, position));
+            (identical(other.position, position) ||
+                other.position == position));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(position));
+  int get hashCode => Object.hash(runtimeType, position);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateLocationCopyWith<_$_UpdateLocation> get copyWith =>
       __$$_UpdateLocationCopyWithImpl<_$_UpdateLocation>(this, _$identity);
 
@@ -686,11 +674,11 @@ class _$_UpdateLocation implements _UpdateLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? requestPermission,
-    TResult Function()? requestCurrentLocation,
-    TResult Function()? requestCurrentLocationStream,
-    TResult Function(Position position)? updateLocation,
+    TResult? Function()? started,
+    TResult? Function()? requestPermission,
+    TResult? Function()? requestCurrentLocation,
+    TResult? Function()? requestCurrentLocationStream,
+    TResult? Function(Position position)? updateLocation,
   }) {
     return updateLocation?.call(position);
   }
@@ -728,12 +716,12 @@ class _$_UpdateLocation implements _UpdateLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_RequestPermission value)? requestPermission,
-    TResult Function(_RequestCurrentLocation value)? requestCurrentLocation,
-    TResult Function(_RequestCurrentLocationStream value)?
+    TResult? Function(_Started value)? started,
+    TResult? Function(_RequestPermission value)? requestPermission,
+    TResult? Function(_RequestCurrentLocation value)? requestCurrentLocation,
+    TResult? Function(_RequestCurrentLocationStream value)?
         requestCurrentLocationStream,
-    TResult Function(_UpdateLocation value)? updateLocation,
+    TResult? Function(_UpdateLocation value)? updateLocation,
   }) {
     return updateLocation?.call(this);
   }
@@ -779,12 +767,12 @@ mixin _$GeolocationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? permissionLoading,
-    TResult Function(PermissionStatus status)? permissionLoaded,
-    TResult Function()? loading,
-    TResult Function(Position position)? locationUpdate,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? permissionLoading,
+    TResult? Function(PermissionStatus status)? permissionLoaded,
+    TResult? Function()? loading,
+    TResult? Function(Position position)? locationUpdate,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -810,12 +798,12 @@ mixin _$GeolocationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionLoading value)? permissionLoading,
-    TResult Function(_PermissionLoaded value)? permissionLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Update value)? locationUpdate,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PermissionLoading value)? permissionLoading,
+    TResult? Function(_PermissionLoaded value)? permissionLoaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Update value)? locationUpdate,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -835,17 +823,18 @@ mixin _$GeolocationState {
 abstract class $GeolocationStateCopyWith<$Res> {
   factory $GeolocationStateCopyWith(
           GeolocationState value, $Res Function(GeolocationState) then) =
-      _$GeolocationStateCopyWithImpl<$Res>;
+      _$GeolocationStateCopyWithImpl<$Res, GeolocationState>;
 }
 
 /// @nodoc
-class _$GeolocationStateCopyWithImpl<$Res>
+class _$GeolocationStateCopyWithImpl<$Res, $Val extends GeolocationState>
     implements $GeolocationStateCopyWith<$Res> {
   _$GeolocationStateCopyWithImpl(this._value, this._then);
 
-  final GeolocationState _value;
   // ignore: unused_field
-  final $Res Function(GeolocationState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -857,13 +846,10 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -901,12 +887,12 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? permissionLoading,
-    TResult Function(PermissionStatus status)? permissionLoaded,
-    TResult Function()? loading,
-    TResult Function(Position position)? locationUpdate,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? permissionLoading,
+    TResult? Function(PermissionStatus status)? permissionLoaded,
+    TResult? Function()? loading,
+    TResult? Function(Position position)? locationUpdate,
+    TResult? Function()? error,
   }) {
     return initial?.call();
   }
@@ -944,12 +930,12 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionLoading value)? permissionLoading,
-    TResult Function(_PermissionLoaded value)? permissionLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Update value)? locationUpdate,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PermissionLoading value)? permissionLoading,
+    TResult? Function(_PermissionLoaded value)? permissionLoaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Update value)? locationUpdate,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -985,14 +971,11 @@ abstract class _$$_PermissionLoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionLoadingCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$_PermissionLoading>
     implements _$$_PermissionLoadingCopyWith<$Res> {
   __$$_PermissionLoadingCopyWithImpl(
       _$_PermissionLoading _value, $Res Function(_$_PermissionLoading) _then)
-      : super(_value, (v) => _then(v as _$_PermissionLoading));
-
-  @override
-  _$_PermissionLoading get _value => super._value as _$_PermissionLoading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1030,12 +1013,12 @@ class _$_PermissionLoading implements _PermissionLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? permissionLoading,
-    TResult Function(PermissionStatus status)? permissionLoaded,
-    TResult Function()? loading,
-    TResult Function(Position position)? locationUpdate,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? permissionLoading,
+    TResult? Function(PermissionStatus status)? permissionLoaded,
+    TResult? Function()? loading,
+    TResult? Function(Position position)? locationUpdate,
+    TResult? Function()? error,
   }) {
     return permissionLoading?.call();
   }
@@ -1073,12 +1056,12 @@ class _$_PermissionLoading implements _PermissionLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionLoading value)? permissionLoading,
-    TResult Function(_PermissionLoaded value)? permissionLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Update value)? locationUpdate,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PermissionLoading value)? permissionLoading,
+    TResult? Function(_PermissionLoaded value)? permissionLoaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Update value)? locationUpdate,
+    TResult? Function(_Error value)? error,
   }) {
     return permissionLoading?.call(this);
   }
@@ -1110,26 +1093,25 @@ abstract class _$$_PermissionLoadedCopyWith<$Res> {
   factory _$$_PermissionLoadedCopyWith(
           _$_PermissionLoaded value, $Res Function(_$_PermissionLoaded) then) =
       __$$_PermissionLoadedCopyWithImpl<$Res>;
+  @useResult
   $Res call({PermissionStatus status});
 }
 
 /// @nodoc
 class __$$_PermissionLoadedCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$_PermissionLoaded>
     implements _$$_PermissionLoadedCopyWith<$Res> {
   __$$_PermissionLoadedCopyWithImpl(
       _$_PermissionLoaded _value, $Res Function(_$_PermissionLoaded) _then)
-      : super(_value, (v) => _then(v as _$_PermissionLoaded));
+      : super(_value, _then);
 
-  @override
-  _$_PermissionLoaded get _value => super._value as _$_PermissionLoaded;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
+    Object? status = null,
   }) {
     return _then(_$_PermissionLoaded(
-      status == freezed
+      null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PermissionStatus,
@@ -1155,15 +1137,15 @@ class _$_PermissionLoaded implements _PermissionLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PermissionLoaded &&
-            const DeepCollectionEquality().equals(other.status, status));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(status));
+  int get hashCode => Object.hash(runtimeType, status);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PermissionLoadedCopyWith<_$_PermissionLoaded> get copyWith =>
       __$$_PermissionLoadedCopyWithImpl<_$_PermissionLoaded>(this, _$identity);
 
@@ -1183,12 +1165,12 @@ class _$_PermissionLoaded implements _PermissionLoaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? permissionLoading,
-    TResult Function(PermissionStatus status)? permissionLoaded,
-    TResult Function()? loading,
-    TResult Function(Position position)? locationUpdate,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? permissionLoading,
+    TResult? Function(PermissionStatus status)? permissionLoaded,
+    TResult? Function()? loading,
+    TResult? Function(Position position)? locationUpdate,
+    TResult? Function()? error,
   }) {
     return permissionLoaded?.call(status);
   }
@@ -1226,12 +1208,12 @@ class _$_PermissionLoaded implements _PermissionLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionLoading value)? permissionLoading,
-    TResult Function(_PermissionLoaded value)? permissionLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Update value)? locationUpdate,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PermissionLoading value)? permissionLoading,
+    TResult? Function(_PermissionLoaded value)? permissionLoaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Update value)? locationUpdate,
+    TResult? Function(_Error value)? error,
   }) {
     return permissionLoaded?.call(this);
   }
@@ -1273,13 +1255,10 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1317,12 +1296,12 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? permissionLoading,
-    TResult Function(PermissionStatus status)? permissionLoaded,
-    TResult Function()? loading,
-    TResult Function(Position position)? locationUpdate,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? permissionLoading,
+    TResult? Function(PermissionStatus status)? permissionLoaded,
+    TResult? Function()? loading,
+    TResult? Function(Position position)? locationUpdate,
+    TResult? Function()? error,
   }) {
     return loading?.call();
   }
@@ -1360,12 +1339,12 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionLoading value)? permissionLoading,
-    TResult Function(_PermissionLoaded value)? permissionLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Update value)? locationUpdate,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PermissionLoading value)? permissionLoading,
+    TResult? Function(_PermissionLoaded value)? permissionLoaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Update value)? locationUpdate,
+    TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -1396,24 +1375,24 @@ abstract class _Loading implements GeolocationState {
 abstract class _$$_UpdateCopyWith<$Res> {
   factory _$$_UpdateCopyWith(_$_Update value, $Res Function(_$_Update) then) =
       __$$_UpdateCopyWithImpl<$Res>;
+  @useResult
   $Res call({Position position});
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res> extends _$GeolocationStateCopyWithImpl<$Res>
+class __$$_UpdateCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$_Update>
     implements _$$_UpdateCopyWith<$Res> {
   __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
-      : super(_value, (v) => _then(v as _$_Update));
+      : super(_value, _then);
 
-  @override
-  _$_Update get _value => super._value as _$_Update;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position = freezed,
+    Object? position = null,
   }) {
     return _then(_$_Update(
-      position == freezed
+      null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as Position,
@@ -1439,15 +1418,16 @@ class _$_Update implements _Update {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Update &&
-            const DeepCollectionEquality().equals(other.position, position));
+            (identical(other.position, position) ||
+                other.position == position));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(position));
+  int get hashCode => Object.hash(runtimeType, position);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateCopyWith<_$_Update> get copyWith =>
       __$$_UpdateCopyWithImpl<_$_Update>(this, _$identity);
 
@@ -1467,12 +1447,12 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? permissionLoading,
-    TResult Function(PermissionStatus status)? permissionLoaded,
-    TResult Function()? loading,
-    TResult Function(Position position)? locationUpdate,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? permissionLoading,
+    TResult? Function(PermissionStatus status)? permissionLoaded,
+    TResult? Function()? loading,
+    TResult? Function(Position position)? locationUpdate,
+    TResult? Function()? error,
   }) {
     return locationUpdate?.call(position);
   }
@@ -1510,12 +1490,12 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionLoading value)? permissionLoading,
-    TResult Function(_PermissionLoaded value)? permissionLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Update value)? locationUpdate,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PermissionLoading value)? permissionLoading,
+    TResult? Function(_PermissionLoaded value)? permissionLoaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Update value)? locationUpdate,
+    TResult? Function(_Error value)? error,
   }) {
     return locationUpdate?.call(this);
   }
@@ -1554,13 +1534,11 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$GeolocationStateCopyWithImpl<$Res>
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
-
-  @override
-  _$_Error get _value => super._value as _$_Error;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1598,12 +1576,12 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? permissionLoading,
-    TResult Function(PermissionStatus status)? permissionLoaded,
-    TResult Function()? loading,
-    TResult Function(Position position)? locationUpdate,
-    TResult Function()? error,
+    TResult? Function()? initial,
+    TResult? Function()? permissionLoading,
+    TResult? Function(PermissionStatus status)? permissionLoaded,
+    TResult? Function()? loading,
+    TResult? Function(Position position)? locationUpdate,
+    TResult? Function()? error,
   }) {
     return error?.call();
   }
@@ -1641,12 +1619,12 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_PermissionLoading value)? permissionLoading,
-    TResult Function(_PermissionLoaded value)? permissionLoaded,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Update value)? locationUpdate,
-    TResult Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PermissionLoading value)? permissionLoading,
+    TResult? Function(_PermissionLoaded value)? permissionLoaded,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Update value)? locationUpdate,
+    TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
   }
