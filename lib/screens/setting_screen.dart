@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartflore/_env/app_env.dart';
 import 'package:smartflore/screens/webview/webview_screen_ctrl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,12 +13,10 @@ class SettingsScreen extends StatelessWidget {
   SettingsScreen({Key? key}) : super(key: key);
 
   final List<SettingsItemVO> listItems = [
-    SettingsItemVO("Conditions d'utilisation",
-        'https://www.tela-botanica.org/smartflore-services/terms_of_use'),
     SettingsItemVO(
-        'Crédits', 'https://www.tela-botanica.org/smartflore-services/credits'),
-    SettingsItemVO(
-        'À propos', 'https://www.tela-botanica.org/smartflore-services/about')
+        "Conditions d'utilisation", '${AppEnv().apiBaseUrl}terms_of_use'),
+    SettingsItemVO('Crédits', '${AppEnv().apiBaseUrl}credits'),
+    SettingsItemVO('À propos', '${AppEnv().apiBaseUrl}about')
   ];
 
   @override

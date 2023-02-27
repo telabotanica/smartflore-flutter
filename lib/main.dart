@@ -2,6 +2,7 @@ import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:smartflore/_env/app_env.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
@@ -83,26 +84,23 @@ void main() async {
 
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
-          httpClient: http.Client(),
-          baseUrl: 'https://tela-botanica.org/smartflore-services/trails'));
+          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}trails'));
   final TrailRepo trailRepo = TrailRepo(
       trailApiClient: TrailApiClient(
-          httpClient: http.Client(),
-          baseUrl: 'https://tela-botanica.org/smartflore-services'));
+          httpClient: http.Client(), baseUrl: AppEnv().apiBaseUrl));
 
   final WalkRepo walkRepo = WalkRepo();
 
   final TaxonRepo taxonRepo = TaxonRepo(
       taxonApiClient: TaxonApiClient(
-          httpClient: http.Client(),
-          baseUrl: 'https://tela-botanica.org/smartflore-services/taxon'));
+          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}taxon'));
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
 
   final PingRepo pingRepo = PingRepo(
       pingApiClient: PingApiClient(
         httpClient: http.Client(),
-        baseUrl: 'https://tela-botanica.org/smartflore-services/ping',
+        baseUrl: '${AppEnv().apiBaseUrl}ping',
       ),
       appConfig: appConfig,
       geolocationRepo: geolocationRepo);

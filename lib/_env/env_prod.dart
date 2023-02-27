@@ -12,6 +12,10 @@ class ProdEnv implements AppEnv, AppEnvFields {
   final String apiBaseUrl = _Env.apiBaseUrl;
 
   @override
+  @EnviedField(varName: 'OSM_URL')
+  final String osmUrl = _Env.osmUrl;
+
+  @override
   @EnviedField(varName: 'ALGOLIA_APP_ID', obfuscate: true)
   final String algoliaAppId = _Env.algoliaAppId;
 

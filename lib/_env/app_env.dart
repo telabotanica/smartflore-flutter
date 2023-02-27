@@ -9,6 +9,7 @@ abstract class AppEnv implements AppEnvFields {
 
 abstract class AppEnvFields {
   abstract final String apiBaseUrl;
+  abstract final String osmUrl;
   abstract final String algoliaAppId;
   abstract final String algoliaApiKey;
   abstract final String algoliaIndex;

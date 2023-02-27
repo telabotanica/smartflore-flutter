@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart' hide MapEvent;
 import 'package:latlong2/latlong.dart' hide Path;
+import 'package:smartflore/_env/app_env.dart';
 import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
@@ -213,8 +214,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             TileLayer(
                 maxZoom: 20,
                 maxNativeZoom: 20,
-                urlTemplate:
-                    'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+                urlTemplate: '${AppEnv().osmUrl}{z}/{x}/{y}.png',
                 subdomains: const ['a', 'b', 'c'],
                 retinaMode: true,
                 tileProvider: CachedTileProvider()),
