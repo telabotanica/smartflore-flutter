@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -41,7 +40,6 @@ import 'package:smartflore/screens/taxon/taxon_screen.dart';
 import 'package:smartflore/themes/theme_constants.dart';
 import 'package:smartflore/themes/theme_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:smartflore/utils/app.dart';
 import 'package:smartflore/utils/transitions.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -49,8 +47,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {
-  Algolia algolia = Application.algolia;
-
   await Hive.initFlutter();
 
   Hive.registerAdapter(TrailsAdapter());
@@ -132,7 +128,6 @@ void main() async {
             ..add(const GeolocationEvent.requestPermission())),
       BlocProvider<CreateBloc>(
           create: (context) => CreateBloc(
-              algolia: algolia,
               createTrailBox: createBox,
               geolocationBloc: BlocProvider.of<GeolocationBloc>(context)))
     ], child: const App()),
@@ -186,7 +181,7 @@ class _AppState extends State<App> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate
         },
-        initialRoute: '/',
+        initialRoute: '/create',
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/':

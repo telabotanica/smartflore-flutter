@@ -18,6 +18,7 @@ class TextFieldWithTitle extends StatelessWidget {
   final bool isMandatory;
   final TextStyle? titleStyle;
   final TextStyle? hintStyle;
+  final TextEditingController? textController;
 
   const TextFieldWithTitle(
       {Key? key,
@@ -26,6 +27,7 @@ class TextFieldWithTitle extends StatelessWidget {
       this.initValue = '',
       this.isPassword = false,
       this.id,
+      this.textController,
       this.validator,
       this.keyboardType,
       this.maxLength,
@@ -61,6 +63,7 @@ class TextFieldWithTitle extends StatelessWidget {
       const SizedBox(height: 8),
       TextInput(
         initialValue: initValue,
+        textController: textController,
         autocorrect: false,
         hintText: hintText,
         focusNode: focusNode,

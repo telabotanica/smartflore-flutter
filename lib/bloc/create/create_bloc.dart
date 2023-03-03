@@ -13,18 +13,16 @@ part 'create_state.dart';
 part 'create_bloc.freezed.dart';
 
 class CreateBloc extends Bloc<CreateEvent, CreateState> {
-  final Algolia algolia;
   final Box<CreateTrail> createTrailBox;
   final GeolocationBloc geolocationBloc;
   late DateTime lastRecordPositionTime = DateTime.now();
   LatLng? lastRecordPosition;
   bool pauseRecording = false;
 
-  CreateBloc(
-      {required this.createTrailBox,
-      required this.geolocationBloc,
-      required this.algolia})
-      : super(const _Initial()) {
+  CreateBloc({
+    required this.createTrailBox,
+    required this.geolocationBloc,
+  }) : super(const _Initial()) {
     on<CreateEvent>((event, emit) {
       event.maybeWhen(
           // SAVE TITLE

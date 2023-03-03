@@ -56,6 +56,7 @@ dependencies:
   html: ^0.15.0
   http: ^0.13.4
   image_fade: ^0.6.1
+  infinite_scroll_pagination: ^3.2.0
   intl: ^0.17.0
   json_annotation: ^4.8.0
   latlong2: ^0.8.1

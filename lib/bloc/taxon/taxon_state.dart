@@ -1,19 +1,9 @@
 part of 'taxon_bloc.dart';
 
-abstract class TaxonState extends Equatable {
-  const TaxonState();
-
-  @override
-  List<Object> get props => [];
+@freezed
+class TaxonState with _$TaxonState {
+  const factory TaxonState.initial() = _Initial;
+  const factory TaxonState.loading() = _Loading;
+  const factory TaxonState.loaded(Taxon taxon) = _Loaded;
+  const factory TaxonState.error() = _Error;
 }
-
-class TaxonInitialState extends TaxonState {}
-
-class TaxonLoadingState extends TaxonState {}
-
-class TaxonLoadedState extends TaxonState {
-  final Taxon taxon;
-  const TaxonLoadedState({required this.taxon});
-}
-
-class TaxonErrorState extends TaxonState {}
