@@ -1,10 +1,17 @@
 import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/form/textinput_with_title.dart';
+import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/components/search/list_item.dart';
 import 'package:smartflore/models/algolia/taxon_hits_model.dart';
+import 'package:smartflore/models/taxon/taxon_enum.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart';
+import 'package:smartflore/navigation/gallery_screen_args.dart';
+import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/utils/app.dart';
 
 class CreateScreen extends StatefulWidget {
@@ -161,10 +168,12 @@ class _CreateScreenState extends State<CreateScreen> {
                         item.highlightResult!.bdtfx!.commonName != null)) {
                   return TextButton(
                     onPressed: () {
+                      BlocProvider.of<TaxonBloc>(context).add(
+                          TaxonEvent.loadTaxonData(
+                              'bdtfx', item.bdtfx!.nomenclaturalNumber!));
                       setState(() {
                         selectedTaxon = item;
                       });
-                      print('item=== ${item.bdtfx!.nomenclaturalNumber}');
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
@@ -228,67 +237,165 @@ class _CreateScreenState extends State<CreateScreen> {
   }
 
   Widget buildTaxonUI(ThemeData theme, double screenW) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 36.0),
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
+              child: Text(
+                'Espèce',
+                style: theme.textTheme.headline6,
+              ),
+            ),
+            Container(
+                width: screenW - 72,
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                    border:
+                        Border.all(color: const Color(0xFFD8DCD8), width: 1),
+                    borderRadius: const BorderRadius.all(Radius.circular(6))),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          selectedTaxon!.bdtfx!.scientificName != null &&
+                                  selectedTaxon!.bdtfx!.scientificName != ''
+                              ? Text(selectedTaxon!.bdtfx!.scientificName ?? '',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: theme.textTheme.bodyText1!
+                                      .copyWith(fontStyle: FontStyle.italic))
+                              : Container(),
+                          selectedTaxon!.bdtfx!.commonName != null &&
+                                  selectedTaxon!.bdtfx!.commonName != ''
+                              ? Text(selectedTaxon!.bdtfx!.commonName!,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: theme.textTheme.bodyText2)
+                              : Container()
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedTaxon = null;
+                        });
+                      },
+                      child: Icon(
+                        Icons.close,
+                        size: 20.0,
+                        color: theme.colorScheme.primary,
+                      ),
+                    )
+                  ],
+                )),
+            BlocBuilder<TaxonBloc, TaxonState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                    loaded: (taxon) =>
+                        Flexible(child: buildGridGallery(theme, taxon)),
+                    orElse: () => const Center(
+                            child: Padding(
+                          padding: EdgeInsets.only(top: 80),
+                          child: CircularProgressIndicator(),
+                        )));
+              },
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildGridGallery(ThemeData theme, Taxon taxon) {
+    List<ImageAPI> imageList = [];
+    for (var tab in taxon.tabs) {
+      if (tab.type == TabTypeEnum.gallery.name) {
+        imageList = tab.images!;
+      }
+    }
+
     return Align(
       alignment: Alignment.topCenter,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
-            child: Text(
-              'Espèce',
-              style: theme.textTheme.headline6,
-            ),
-          ),
-          Container(
-              width: screenW - 72,
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xFFD8DCD8), width: 1),
-                  borderRadius: const BorderRadius.all(Radius.circular(6))),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        selectedTaxon!.bdtfx!.scientificName != null &&
-                                selectedTaxon!.bdtfx!.scientificName != ''
-                            ? Text(selectedTaxon!.bdtfx!.scientificName ?? '',
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: theme.textTheme.bodyText1!
-                                    .copyWith(fontStyle: FontStyle.italic))
-                            : Container(),
-                        selectedTaxon!.bdtfx!.commonName != null &&
-                                selectedTaxon!.bdtfx!.commonName != ''
-                            ? Text(selectedTaxon!.bdtfx!.commonName!,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: theme.textTheme.bodyText2)
-                            : Container()
-                      ],
-                    ),
+          imageList.isNotEmpty
+              ? Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
+                  child: Text(
+                    'Galerie Smart\'Flore',
+                    style: theme.textTheme.headline6,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedTaxon = null;
-                      });
-                    },
-                    child: Icon(
-                      Icons.close,
-                      size: 20.0,
-                      color: theme.colorScheme.primary,
-                    ),
-                  )
-                ],
-              )),
+                )
+              : Container(),
+          imageList.isNotEmpty
+              ? Flexible(
+                  child: GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 0,
+                        crossAxisCount: 3,
+                      ),
+                      shrinkWrap: true,
+                      itemCount: imageList.length >= 9 ? 9 : imageList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ImageWithLoader(
+                          url: imageList[index].url,
+                          imageFormat: 'S',
+                          id: imageList[index].id.toString(),
+                          onTap: () {
+                            _openGallery(context, imageList, index);
+                          },
+                        );
+                      }),
+                )
+              : const SizedBox(height: 16),
+          Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+                height: 46,
+                child: RoundedButton(
+                    outline: true,
+                    label: 'Voir la fiche',
+                    icon: Icons.remove_red_eye_outlined,
+                    iconColor: theme.colorScheme.primary,
+                    onPress: () {
+                      Navigator.of(context).pushNamed(
+                        '/taxon',
+                        arguments: TaxonScreenArguments(
+                          taxon.nameId,
+                          taxon.taxonRepository,
+                          taxon.vernacularNames[0],
+                          taxon.scientificName,
+                        ),
+                      );
+                    })),
+          ),
         ],
       ),
     );
+  }
+
+  _openGallery(
+      BuildContext context, final List<ImageAPI> imageList, final int index) {
+    Navigator.of(context).pushNamed('/gallery-fullScreen',
+        arguments: GalleryScreenArguments(imageList,
+            const BoxDecoration(color: Colors.black), index, Axis.horizontal));
   }
 
   @override

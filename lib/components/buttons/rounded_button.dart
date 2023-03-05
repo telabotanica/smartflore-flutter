@@ -4,11 +4,13 @@ class RoundedButton extends StatelessWidget {
   final String label;
   final void Function()? onPress;
   final IconData? icon;
+  final Color? iconColor;
   final bool outline;
   const RoundedButton(
       {Key? key,
       required this.label,
       this.icon,
+      this.iconColor,
       this.outline = false,
       this.onPress})
       : super(key: key);
@@ -50,7 +52,8 @@ class RoundedButton extends StatelessWidget {
           child: Row(mainAxisSize: MainAxisSize.min, children: [
             if (icon != null) ...[
               Icon(icon,
-                  color: Theme.of(context).colorScheme.background, size: 18),
+                  color: iconColor ?? Theme.of(context).colorScheme.background,
+                  size: 18),
               const SizedBox(width: 8)
             ],
             Text(label,
