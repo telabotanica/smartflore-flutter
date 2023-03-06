@@ -2,6 +2,7 @@ import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/form/textinput_with_title.dart';
@@ -27,6 +28,7 @@ class _CreateScreenState extends State<CreateScreen> {
   late Algolia algolia;
   String currentSearch = '';
   TaxonHit? selectedTaxon;
+  Taxon? selectedTaxonSF;
   final textController = TextEditingController();
 
   @override
@@ -84,57 +86,76 @@ class _CreateScreenState extends State<CreateScreen> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     double screenW = MediaQuery.of(context).size.width;
-    return Scaffold(
-        backgroundColor: const Color(0xFFFDFDFD),
-        appBar: AppBar(
-            leadingWidth: 40,
-            leading: ModalRoute.of(context)?.canPop == true
-                ? SizedBox(
-                    width: 15,
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.keyboard_arrow_left,
-                        size: 24,
+    return BlocListener<CreateBloc, CreateState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          taxonAdded: () {
+            Navigator.of(context).pop();
+          },
+        );
+      },
+      child: Scaffold(
+          backgroundColor: const Color(0xFFFDFDFD),
+          appBar: AppBar(
+              leadingWidth: 40,
+              leading: ModalRoute.of(context)?.canPop == true
+                  ? SizedBox(
+                      width: 15,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.keyboard_arrow_left,
+                          size: 24,
+                        ),
+                        onPressed: () => Navigator.of(context).pop(),
                       ),
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
-                  )
-                : null,
-            iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
-            backgroundColor: Theme.of(context).colorScheme.background,
-            shadowColor: const Color(0x00000000),
-            centerTitle: false,
-            titleSpacing: 0.0,
-            title: Text('Ajouter un individu',
-                style: Theme.of(context).textTheme.bodyText1)),
-        body: Stack(
-          children: [
-            selectedTaxon == null
-                ? buildSearchUI(theme)
-                : buildTaxonUI(theme, screenW),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 10,
-                            color: Colors.black.withOpacity(0.15))
-                      ],
-                      color: Theme.of(context).colorScheme.background,
-                      borderRadius: const BorderRadius.all(Radius.circular(6))),
-                  child: const Padding(
-                    padding: EdgeInsets.all(36.0),
-                    child: SizedBox(
-                      height: 46,
-                      child: RoundedButton(
-                        label: 'Ajouter',
+                    )
+                  : null,
+              iconTheme:
+                  const IconThemeData(color: Color(0xFF13161C), size: 14),
+              backgroundColor: Theme.of(context).colorScheme.background,
+              shadowColor: const Color(0x00000000),
+              centerTitle: false,
+              titleSpacing: 0.0,
+              title: Text('Ajouter un individu',
+                  style: Theme.of(context).textTheme.bodyText1)),
+          body: Stack(
+            children: [
+              selectedTaxon == null
+                  ? buildSearchUI(theme)
+                  : buildTaxonUI(theme, screenW),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 10,
+                              color: Colors.black.withOpacity(0.15))
+                        ],
+                        color: Theme.of(context).colorScheme.background,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(6))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(36.0),
+                      child: SizedBox(
+                        height: 46,
+                        child: RoundedButton(
+                          label: 'Ajouter',
+                          onPress: selectedTaxon == null
+                              ? null
+                              : () {
+                                  print('ADD TAXON');
+                                  BlocProvider.of<CreateBloc>(context).add(
+                                      CreateEvent.registerTaxon(
+                                          selectedTaxonSF!));
+                                },
+                        ),
                       ),
-                    ),
-                  )),
-            )
-          ],
-        ));
+                    )),
+              )
+            ],
+          )),
+    );
   }
 
   Widget buildHits(BuildContext context, ThemeData theme) {
@@ -213,7 +234,7 @@ class _CreateScreenState extends State<CreateScreen> {
             id: 'taxonName',
             index: 0,
             title: 'Espèce',
-            hintText: '',
+            hintText: 'Nom de l\'espèce',
             keyboardType: TextInputType.emailAddress,
             titleStyle: Theme.of(context).textTheme.headline6,
             hintStyle: Theme.of(context)
@@ -290,6 +311,7 @@ class _CreateScreenState extends State<CreateScreen> {
                       onTap: () {
                         setState(() {
                           selectedTaxon = null;
+                          selectedTaxonSF = null;
                         });
                       },
                       child: Icon(
@@ -303,8 +325,10 @@ class _CreateScreenState extends State<CreateScreen> {
             BlocBuilder<TaxonBloc, TaxonState>(
               builder: (context, state) {
                 return state.maybeWhen(
-                    loaded: (taxon) =>
-                        Flexible(child: buildGridGallery(theme, taxon)),
+                    loaded: (taxon) {
+                      selectedTaxonSF = taxon;
+                      return Flexible(child: buildGridGallery(theme, taxon));
+                    },
                     orElse: () => const Center(
                             child: Padding(
                           padding: EdgeInsets.only(top: 80),
@@ -380,7 +404,9 @@ class _CreateScreenState extends State<CreateScreen> {
                         arguments: TaxonScreenArguments(
                           taxon.nameId,
                           taxon.taxonRepository,
-                          taxon.vernacularNames[0],
+                          taxon.vernacularNames.isNotEmpty
+                              ? taxon.vernacularNames[0]
+                              : '',
                           taxon.scientificName,
                         ),
                       );

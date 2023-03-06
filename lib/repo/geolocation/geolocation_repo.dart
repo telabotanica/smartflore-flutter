@@ -13,8 +13,9 @@ class GeolocationRepo {
   Future<Position> getCurrentLocation() async {
     await getPermissions();
 
-    return await Geolocator.getCurrentPosition(
+    Position currentPosition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
+    return currentPosition;
   }
 
   Future<Stream<Position>?> getLocationStream() async {

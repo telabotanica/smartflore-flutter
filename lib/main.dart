@@ -65,6 +65,7 @@ void main() async {
   Hive.registerAdapter(ConnectivityResultAdapter());
   Hive.registerAdapter(CreateTrailAdapter());
   Hive.registerAdapter(SavePositionAdapter());
+  Hive.registerAdapter(SaveOccurrenceAdapter());
 
   Box<Trails> trailsBox = await Hive.openBox('trails');
   Box<TrailDetails> trailBox = await Hive.openBox('trail');
@@ -129,7 +130,8 @@ void main() async {
       BlocProvider<CreateBloc>(
           create: (context) => CreateBloc(
               createTrailBox: createBox,
-              geolocationBloc: BlocProvider.of<GeolocationBloc>(context)))
+              geolocationBloc: BlocProvider.of<GeolocationBloc>(context),
+              geolocationRepo: geolocationRepo))
     ], child: const App()),
   ));
 }
@@ -181,7 +183,7 @@ class _AppState extends State<App> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate
         },
-        initialRoute: '/create',
+        initialRoute: '/',
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/':

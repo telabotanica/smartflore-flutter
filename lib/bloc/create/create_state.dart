@@ -8,7 +8,8 @@ class CreateState with _$CreateState {
   const factory CreateState.startPath() = _StartPath;
   const factory CreateState.updatePath(Path path) = _UpdatePath;
 
-  const factory CreateState.newTaxon() = _NewTaxon;
+  const factory CreateState.taxonAdded() = _TaxonAdded;
+
   const factory CreateState.addPicStart() = _AddPicStart;
   const factory CreateState.addPicLoading() = _AddPicLoading;
   const factory CreateState.addPicError() = _AddPicError;

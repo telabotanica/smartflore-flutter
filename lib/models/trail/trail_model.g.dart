@@ -116,7 +116,7 @@ class OccurenceAdapter extends TypeAdapter<_$_Occurrence> {
     };
     return _$_Occurrence(
       position: fields[0] as LatLng,
-      taxon: fields[1] as Taxon,
+      taxon: fields[1] as TaxonLight,
       images: (fields[2] as List).cast<Image>(),
     );
   }
@@ -144,17 +144,17 @@ class OccurenceAdapter extends TypeAdapter<_$_Occurrence> {
           typeId == other.typeId;
 }
 
-class TrailTaxonAdapter extends TypeAdapter<_$_Taxon> {
+class TrailTaxonAdapter extends TypeAdapter<_$_TaxonLight> {
   @override
   final int typeId = 13;
 
   @override
-  _$_Taxon read(BinaryReader reader) {
+  _$_TaxonLight read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_Taxon(
+    return _$_TaxonLight(
       scientificName: fields[0] as String?,
       fullScientificName: fields[1] as String,
       taxonRepository: fields[2] as String,
@@ -164,7 +164,7 @@ class TrailTaxonAdapter extends TypeAdapter<_$_Taxon> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_Taxon obj) {
+  void write(BinaryWriter writer, _$_TaxonLight obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
@@ -312,7 +312,7 @@ Map<String, dynamic> _$$_ImageToJson(_$_Image instance) => <String, dynamic>{
 _$_Occurrence _$$_OccurrenceFromJson(Map<String, dynamic> json) =>
     _$_Occurrence(
       position: const LatLngConverter().fromJson(json['position']),
-      taxon: Taxon.fromJson(json['taxon'] as Map<String, dynamic>),
+      taxon: TaxonLight.fromJson(json['taxon'] as Map<String, dynamic>),
       images: (json['images'] as List<dynamic>)
           .map((e) => Image.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -325,7 +325,8 @@ Map<String, dynamic> _$$_OccurrenceToJson(_$_Occurrence instance) =>
       'images': instance.images,
     };
 
-_$_Taxon _$$_TaxonFromJson(Map<String, dynamic> json) => _$_Taxon(
+_$_TaxonLight _$$_TaxonLightFromJson(Map<String, dynamic> json) =>
+    _$_TaxonLight(
       scientificName: json['scientific_name'] as String?,
       fullScientificName: json['full_scientific_name'] as String,
       taxonRepository: json['taxon_repository'] as String,
@@ -335,7 +336,8 @@ _$_Taxon _$$_TaxonFromJson(Map<String, dynamic> json) => _$_Taxon(
           .toList(),
     );
 
-Map<String, dynamic> _$$_TaxonToJson(_$_Taxon instance) => <String, dynamic>{
+Map<String, dynamic> _$$_TaxonLightToJson(_$_TaxonLight instance) =>
+    <String, dynamic>{
       'scientific_name': instance.scientificName,
       'full_scientific_name': instance.fullScientificName,
       'taxon_repository': instance.taxonRepository,

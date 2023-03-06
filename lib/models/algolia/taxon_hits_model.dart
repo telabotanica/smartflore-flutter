@@ -32,7 +32,6 @@ class TaxonHits with _$TaxonHits {
     for (var hit in response.hits) {
       taxonHitList.add(TaxonHit.fromJson(hit.toMap()));
     }
-    print('taxonHitList ===== ${taxonHitList.length}');
 
     final isLastPage = response.page >= response.nbPages;
     final nextPageKey = isLastPage ? null : response.page + 1;

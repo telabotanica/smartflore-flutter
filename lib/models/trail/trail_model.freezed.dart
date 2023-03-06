@@ -623,7 +623,7 @@ mixin _$Occurrence {
   @HiveField(0)
   LatLng get position => throw _privateConstructorUsedError;
   @HiveField(1)
-  Taxon get taxon => throw _privateConstructorUsedError;
+  TaxonLight get taxon => throw _privateConstructorUsedError;
   @HiveField(2)
   List<Image> get images => throw _privateConstructorUsedError;
 
@@ -641,10 +641,10 @@ abstract class $OccurrenceCopyWith<$Res> {
   @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
-      @HiveField(1) Taxon taxon,
+      @HiveField(1) TaxonLight taxon,
       @HiveField(2) List<Image> images});
 
-  $TaxonCopyWith<$Res> get taxon;
+  $TaxonLightCopyWith<$Res> get taxon;
 }
 
 /// @nodoc
@@ -672,7 +672,7 @@ class _$OccurrenceCopyWithImpl<$Res, $Val extends Occurrence>
       taxon: null == taxon
           ? _value.taxon
           : taxon // ignore: cast_nullable_to_non_nullable
-              as Taxon,
+              as TaxonLight,
       images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -682,8 +682,8 @@ class _$OccurrenceCopyWithImpl<$Res, $Val extends Occurrence>
 
   @override
   @pragma('vm:prefer-inline')
-  $TaxonCopyWith<$Res> get taxon {
-    return $TaxonCopyWith<$Res>(_value.taxon, (value) {
+  $TaxonLightCopyWith<$Res> get taxon {
+    return $TaxonLightCopyWith<$Res>(_value.taxon, (value) {
       return _then(_value.copyWith(taxon: value) as $Val);
     });
   }
@@ -699,11 +699,11 @@ abstract class _$$_OccurrenceCopyWith<$Res>
   @useResult
   $Res call(
       {@LatLngConverter() @HiveField(0) LatLng position,
-      @HiveField(1) Taxon taxon,
+      @HiveField(1) TaxonLight taxon,
       @HiveField(2) List<Image> images});
 
   @override
-  $TaxonCopyWith<$Res> get taxon;
+  $TaxonLightCopyWith<$Res> get taxon;
 }
 
 /// @nodoc
@@ -729,7 +729,7 @@ class __$$_OccurrenceCopyWithImpl<$Res>
       taxon: null == taxon
           ? _value.taxon
           : taxon // ignore: cast_nullable_to_non_nullable
-              as Taxon,
+              as TaxonLight,
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
@@ -757,7 +757,7 @@ class _$_Occurrence implements _Occurrence {
   final LatLng position;
   @override
   @HiveField(1)
-  final Taxon taxon;
+  final TaxonLight taxon;
   final List<Image> _images;
   @override
   @HiveField(2)
@@ -805,7 +805,7 @@ class _$_Occurrence implements _Occurrence {
 abstract class _Occurrence implements Occurrence {
   const factory _Occurrence(
       {@LatLngConverter() @HiveField(0) required final LatLng position,
-      @HiveField(1) required final Taxon taxon,
+      @HiveField(1) required final TaxonLight taxon,
       @HiveField(2) required final List<Image> images}) = _$_Occurrence;
 
   factory _Occurrence.fromJson(Map<String, dynamic> json) =
@@ -817,7 +817,7 @@ abstract class _Occurrence implements Occurrence {
   LatLng get position;
   @override
   @HiveField(1)
-  Taxon get taxon;
+  TaxonLight get taxon;
   @override
   @HiveField(2)
   List<Image> get images;
@@ -827,12 +827,12 @@ abstract class _Occurrence implements Occurrence {
       throw _privateConstructorUsedError;
 }
 
-Taxon _$TaxonFromJson(Map<String, dynamic> json) {
-  return _Taxon.fromJson(json);
+TaxonLight _$TaxonLightFromJson(Map<String, dynamic> json) {
+  return _TaxonLight.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Taxon {
+mixin _$TaxonLight {
   @JsonKey(name: 'scientific_name')
   @HiveField(0)
   String? get scientificName => throw _privateConstructorUsedError;
@@ -851,13 +851,15 @@ mixin _$Taxon {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TaxonCopyWith<Taxon> get copyWith => throw _privateConstructorUsedError;
+  $TaxonLightCopyWith<TaxonLight> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TaxonCopyWith<$Res> {
-  factory $TaxonCopyWith(Taxon value, $Res Function(Taxon) then) =
-      _$TaxonCopyWithImpl<$Res, Taxon>;
+abstract class $TaxonLightCopyWith<$Res> {
+  factory $TaxonLightCopyWith(
+          TaxonLight value, $Res Function(TaxonLight) then) =
+      _$TaxonLightCopyWithImpl<$Res, TaxonLight>;
   @useResult
   $Res call(
       {@JsonKey(name: 'scientific_name')
@@ -878,9 +880,9 @@ abstract class $TaxonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TaxonCopyWithImpl<$Res, $Val extends Taxon>
-    implements $TaxonCopyWith<$Res> {
-  _$TaxonCopyWithImpl(this._value, this._then);
+class _$TaxonLightCopyWithImpl<$Res, $Val extends TaxonLight>
+    implements $TaxonLightCopyWith<$Res> {
+  _$TaxonLightCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -922,9 +924,11 @@ class _$TaxonCopyWithImpl<$Res, $Val extends Taxon>
 }
 
 /// @nodoc
-abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
-  factory _$$_TaxonCopyWith(_$_Taxon value, $Res Function(_$_Taxon) then) =
-      __$$_TaxonCopyWithImpl<$Res>;
+abstract class _$$_TaxonLightCopyWith<$Res>
+    implements $TaxonLightCopyWith<$Res> {
+  factory _$$_TaxonLightCopyWith(
+          _$_TaxonLight value, $Res Function(_$_TaxonLight) then) =
+      __$$_TaxonLightCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -946,9 +950,11 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res, _$_Taxon>
-    implements _$$_TaxonCopyWith<$Res> {
-  __$$_TaxonCopyWithImpl(_$_Taxon _value, $Res Function(_$_Taxon) _then)
+class __$$_TaxonLightCopyWithImpl<$Res>
+    extends _$TaxonLightCopyWithImpl<$Res, _$_TaxonLight>
+    implements _$$_TaxonLightCopyWith<$Res> {
+  __$$_TaxonLightCopyWithImpl(
+      _$_TaxonLight _value, $Res Function(_$_TaxonLight) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -960,7 +966,7 @@ class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res, _$_Taxon>
     Object? nameId = null,
     Object? vernacularNames = null,
   }) {
-    return _then(_$_Taxon(
+    return _then(_$_TaxonLight(
       scientificName: freezed == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
@@ -988,8 +994,8 @@ class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res, _$_Taxon>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 13, adapterName: 'TrailTaxonAdapter')
-class _$_Taxon implements _Taxon {
-  const _$_Taxon(
+class _$_TaxonLight implements _TaxonLight {
+  const _$_TaxonLight(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
           this.scientificName,
@@ -1007,8 +1013,8 @@ class _$_Taxon implements _Taxon {
           required final List<String> vernacularNames})
       : _vernacularNames = vernacularNames;
 
-  factory _$_Taxon.fromJson(Map<String, dynamic> json) =>
-      _$$_TaxonFromJson(json);
+  factory _$_TaxonLight.fromJson(Map<String, dynamic> json) =>
+      _$$_TaxonLightFromJson(json);
 
   @override
   @JsonKey(name: 'scientific_name')
@@ -1038,14 +1044,14 @@ class _$_Taxon implements _Taxon {
 
   @override
   String toString() {
-    return 'Taxon(scientificName: $scientificName, fullScientificName: $fullScientificName, taxonRepository: $taxonRepository, nameId: $nameId, vernacularNames: $vernacularNames)';
+    return 'TaxonLight(scientificName: $scientificName, fullScientificName: $fullScientificName, taxonRepository: $taxonRepository, nameId: $nameId, vernacularNames: $vernacularNames)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Taxon &&
+            other is _$_TaxonLight &&
             (identical(other.scientificName, scientificName) ||
                 other.scientificName == scientificName) &&
             (identical(other.fullScientificName, fullScientificName) ||
@@ -1070,19 +1076,19 @@ class _$_Taxon implements _Taxon {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
-      __$$_TaxonCopyWithImpl<_$_Taxon>(this, _$identity);
+  _$$_TaxonLightCopyWith<_$_TaxonLight> get copyWith =>
+      __$$_TaxonLightCopyWithImpl<_$_TaxonLight>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TaxonToJson(
+    return _$$_TaxonLightToJson(
       this,
     );
   }
 }
 
-abstract class _Taxon implements Taxon {
-  const factory _Taxon(
+abstract class _TaxonLight implements TaxonLight {
+  const factory _TaxonLight(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
           final String? scientificName,
@@ -1097,9 +1103,10 @@ abstract class _Taxon implements Taxon {
           required final int nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          required final List<String> vernacularNames}) = _$_Taxon;
+          required final List<String> vernacularNames}) = _$_TaxonLight;
 
-  factory _Taxon.fromJson(Map<String, dynamic> json) = _$_Taxon.fromJson;
+  factory _TaxonLight.fromJson(Map<String, dynamic> json) =
+      _$_TaxonLight.fromJson;
 
   @override
   @JsonKey(name: 'scientific_name')
@@ -1123,7 +1130,7 @@ abstract class _Taxon implements Taxon {
   List<String> get vernacularNames;
   @override
   @JsonKey(ignore: true)
-  _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
+  _$$_TaxonLightCopyWith<_$_TaxonLight> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
@@ -6,7 +5,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart' hide Path;
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/models/create/create_model.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
+import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 
 part 'create_event.dart';
 part 'create_state.dart';
@@ -15,14 +16,17 @@ part 'create_bloc.freezed.dart';
 class CreateBloc extends Bloc<CreateEvent, CreateState> {
   final Box<CreateTrail> createTrailBox;
   final GeolocationBloc geolocationBloc;
+  final GeolocationRepo geolocationRepo;
+
   late DateTime lastRecordPositionTime = DateTime.now();
   LatLng? lastRecordPosition;
   bool pauseRecording = false;
 
-  CreateBloc({
-    required this.createTrailBox,
-    required this.geolocationBloc,
-  }) : super(const _Initial()) {
+  CreateBloc(
+      {required this.createTrailBox,
+      required this.geolocationBloc,
+      required this.geolocationRepo})
+      : super(const _Initial()) {
     on<CreateEvent>((event, emit) {
       event.maybeWhen(
           // SAVE TITLE
@@ -40,32 +44,32 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
             //listen location stream
             geolocationBloc.stream.listen((event) {
               if (!pauseRecording) {
-                event.maybeWhen(
-                    locationUpdate: (Position position) {
-                      DateTime now = DateTime.now();
+                event.whenOrNull(locationUpdate: (Position position) {
+                  DateTime now = DateTime.now();
 
-                      if (lastRecordPosition == null ||
-                          now.difference(lastRecordPositionTime).inSeconds >
-                              1) {
-                        LatLng currentPos =
-                            LatLng(position.latitude, position.longitude);
-                        if (lastRecordPosition == null) {
-                          recordPos(currentPos, now, emit);
-                        } else {
-                          Distance distance = const Distance();
+                  if (lastRecordPosition == null ||
+                      now.difference(lastRecordPositionTime).inSeconds > 1) {
+                    LatLng currentPos =
+                        LatLng(position.latitude, position.longitude);
+                    if (lastRecordPosition == null) {
+                      recordPos(currentPos, now, emit);
+                    } else {
+                      Distance distance = const Distance();
 
-                          final double meter =
-                              distance(currentPos, lastRecordPosition!);
-                          if (meter > 2) {
-                            recordPos(currentPos, now, emit);
-                          }
-                        }
+                      final double meter =
+                          distance(currentPos, lastRecordPosition!);
+                      if (meter > 2) {
+                        recordPos(currentPos, now, emit);
                       }
-                    },
-                    orElse: () {});
+                    }
+                  }
+                });
               }
             });
           },
+          updatePath: ((path) {
+            emit(CreateState.updatePath(path));
+          }),
           // PAUSE REGISTER LOCATION
           pause: () {
             pauseRecording = true;
@@ -74,22 +78,76 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
           unPause: () {
             pauseRecording = false;
           },
+          registerTaxon: (taxon) async {
+            print('====> registerTaxon');
+
+            emit(const CreateState.initial());
+            print('====> registerTaxon init ');
+
+            CreateTrail? currentTrail = createTrailBox.get('current');
+            print('====> currentTrail $currentTrail');
+            if (currentTrail != null) {
+              print('====> getCurrentLocation ');
+              Position currentPos = await geolocationRepo.getCurrentLocation();
+              print('====> currentPos : $currentPos ');
+              LatLng currentLatLng =
+                  LatLng(currentPos.latitude, currentPos.longitude);
+              List<LatLng> coordinates = currentTrail.path.coordinates.toList();
+              print('====> coordinates : $coordinates ');
+
+              coordinates.add(currentLatLng);
+
+              print('====> coordinates.length ${coordinates.length}');
+
+              SaveOccurrence occurrence = SaveOccurrence(
+                position: currentLatLng,
+                taxonId: taxon.nameId,
+                repoId: taxon.taxonRepository,
+              );
+
+              print('====> occurrence :: $occurrence');
+
+              List<SaveOccurrence> occurrences =
+                  currentTrail.occurrences.toList();
+              print('====> >>>>>occurrences $occurrences');
+
+              print('====> >>>>> occurrences.length ${occurrences.length}');
+              occurrences.add(occurrence);
+              print('====> occurrences $occurrences');
+
+              print('====> occurrences.length ${occurrences.length}');
+
+              CreateTrail updatedTrail =
+                  currentTrail.copyWith(occurrences: occurrences);
+
+              print('====> updatedTrail $updatedTrail ');
+              createTrailBox.put('current', updatedTrail);
+              print('====> updated trail');
+
+              add(const CreateEvent.taxonRegistered());
+            }
+          },
+          taxonRegistered: () {
+            emit(const CreateState.taxonAdded());
+          },
           orElse: () {});
     });
   }
 
   void recordPos(LatLng currentPos, DateTime now, emit) {
+    print('record path');
     lastRecordPositionTime = now;
     lastRecordPosition = currentPos;
     CreateTrail? currentTrail = createTrailBox.get('current');
     if (currentTrail != null) {
       List<LatLng> coordinates = currentTrail.path.coordinates.toList();
+
       coordinates.add(currentPos);
       Path path = Path(type: currentTrail.path.type, coordinates: coordinates);
       CreateTrail updatedTrail = currentTrail.copyWith(path: path);
 
       createTrailBox.put('current', updatedTrail);
-      emit(CreateState.updatePath(updatedTrail.path));
+      add(CreateEvent.updatePath(path));
     }
   }
 }

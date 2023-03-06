@@ -47,7 +47,7 @@ class Occurrence with _$Occurrence {
   @HiveType(typeId: 12, adapterName: 'OccurenceAdapter')
   const factory Occurrence({
     @LatLngConverter() @HiveField(0) required LatLng position,
-    @HiveField(1) required Taxon taxon,
+    @HiveField(1) required TaxonLight taxon,
     @HiveField(2) required List<Image> images,
   }) = _Occurrence;
 
@@ -56,9 +56,9 @@ class Occurrence with _$Occurrence {
 }
 
 @freezed
-class Taxon with _$Taxon {
+class TaxonLight with _$TaxonLight {
   @HiveType(typeId: 13, adapterName: 'TrailTaxonAdapter')
-  const factory Taxon({
+  const factory TaxonLight({
     @JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
     @JsonKey(name: 'full_scientific_name')
     @HiveField(1)
@@ -70,9 +70,10 @@ class Taxon with _$Taxon {
     @JsonKey(name: 'vernacular_names')
     @HiveField(4)
         required List<String> vernacularNames,
-  }) = _Taxon;
+  }) = _TaxonLight;
 
-  factory Taxon.fromJson(Map<String, dynamic> json) => _$TaxonFromJson(json);
+  factory TaxonLight.fromJson(Map<String, dynamic> json) =>
+      _$TaxonLightFromJson(json);
 }
 
 @freezed
