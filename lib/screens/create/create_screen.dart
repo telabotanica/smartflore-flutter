@@ -144,7 +144,6 @@ class _CreateScreenState extends State<CreateScreen> {
                           onPress: selectedTaxon == null
                               ? null
                               : () {
-                                  print('ADD TAXON');
                                   BlocProvider.of<CreateBloc>(context).add(
                                       CreateEvent.registerTaxon(
                                           selectedTaxonSF!));
