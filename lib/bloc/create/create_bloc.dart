@@ -79,25 +79,16 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
             pauseRecording = false;
           },
           registerTaxon: (taxon) async {
-            print('====> registerTaxon');
-
             emit(const CreateState.initial());
-            print('====> registerTaxon init ');
 
             CreateTrail? currentTrail = createTrailBox.get('current');
-            print('====> currentTrail $currentTrail');
             if (currentTrail != null) {
-              print('====> getCurrentLocation ');
               Position currentPos = await geolocationRepo.getCurrentLocation();
-              print('====> currentPos : $currentPos ');
               LatLng currentLatLng =
                   LatLng(currentPos.latitude, currentPos.longitude);
               List<LatLng> coordinates = currentTrail.path.coordinates.toList();
-              print('====> coordinates : $coordinates ');
 
               coordinates.add(currentLatLng);
-
-              print('====> coordinates.length ${coordinates.length}');
 
               SaveOccurrence occurrence = SaveOccurrence(
                 position: currentLatLng,
@@ -105,24 +96,15 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                 repoId: taxon.taxonRepository,
               );
 
-              print('====> occurrence :: $occurrence');
-
               List<SaveOccurrence> occurrences =
                   currentTrail.occurrences.toList();
-              print('====> >>>>>occurrences $occurrences');
 
-              print('====> >>>>> occurrences.length ${occurrences.length}');
               occurrences.add(occurrence);
-              print('====> occurrences $occurrences');
-
-              print('====> occurrences.length ${occurrences.length}');
 
               CreateTrail updatedTrail =
                   currentTrail.copyWith(occurrences: occurrences);
 
-              print('====> updatedTrail $updatedTrail ');
               createTrailBox.put('current', updatedTrail);
-              print('====> updated trail');
 
               add(const CreateEvent.taxonRegistered());
             }
@@ -135,7 +117,6 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
   }
 
   void recordPos(LatLng currentPos, DateTime now, emit) {
-    print('record path');
     lastRecordPositionTime = now;
     lastRecordPosition = currentPos;
     CreateTrail? currentTrail = createTrailBox.get('current');
