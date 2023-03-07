@@ -44,8 +44,6 @@ class _CreateEndModalState extends State<CreateEndModal> {
     String firstImage = '_path_placeholder';
 
     if (createTrail.occurrences.isNotEmpty) {
-      int index = 0;
-
       for (int i = 0; i < createTrail.occurrences.length; i++) {
         if (createTrail.occurrences[i].images.isNotEmpty) {
           firstImage = createTrail.occurrences[i].images[0].url;
