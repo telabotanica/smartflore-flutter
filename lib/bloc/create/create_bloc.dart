@@ -9,6 +9,7 @@ import 'package:smartflore/models/taxon/taxon_enum.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
+import 'package:smartflore/repo/trail/trail_repo.dart';
 
 part 'create_event.dart';
 part 'create_state.dart';
@@ -18,6 +19,7 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
   final Box<CreateTrail> createTrailBox;
   final GeolocationBloc geolocationBloc;
   final GeolocationRepo geolocationRepo;
+  final TrailRepo trailRepo;
 
   late DateTime lastRecordPositionTime = DateTime.now();
   LatLng? lastRecordPosition;
@@ -26,7 +28,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
   CreateBloc(
       {required this.createTrailBox,
       required this.geolocationBloc,
-      required this.geolocationRepo})
+      required this.geolocationRepo,
+      required this.trailRepo})
       : super(const _Initial()) {
     on<CreateEvent>((event, emit) {
       event.maybeWhen(
@@ -123,6 +126,16 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
           },
           taxonRegistered: (occurrences) {
             emit(CreateState.taxonAdded(occurrences));
+          },
+          saveTrail: (trail) {
+            if (trail.path.coordinates.isNotEmpty) {
+              trail = trail.copyWith(
+                position: SavePosition(
+                    start: trail.path.coordinates[0],
+                    end: trail.path.coordinates.last),
+              );
+            }
+            trailRepo.saveTrail(trail);
           },
           orElse: () {});
     });

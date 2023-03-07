@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:group_button/group_button.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/form/checkbox_with_label.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
@@ -29,6 +31,8 @@ class _CreateEndModalState extends State<CreateEndModal> {
     CheckBoxState(index: 2, title: 'Automne'),
     CheckBoxState(index: 3, title: 'Hiver'),
   ];
+
+  int pmrValue = 0;
   late Box<CreateTrail> createBox;
 
   final List<String> pmr = ['Non', 'Je ne sais pas', 'Oui'];
@@ -101,8 +105,10 @@ class _CreateEndModalState extends State<CreateEndModal> {
                     spacing: 0,
                   ),
                   buttons: pmr,
-                  onSelected: (val, i, selected) =>
-                      debugPrint('===> Button: $val index: $i $selected'),
+                  onSelected: (val, i, selected) {
+                    pmrValue = i - 1;
+                    debugPrint('===> Button: $val index: $i $selected');
+                  },
                   buttonIndexedBuilder: (selected, index, context) {
                     return Center(
                       child: Container(
@@ -186,8 +192,11 @@ class _CreateEndModalState extends State<CreateEndModal> {
                             List<bool> seasons = [];
                             for (var element in bestPeriod) {
                               seasons.add(element.value);
-                              print('element.value ${element.value}');
                             }
+                            CreateTrail trailToSave = createTrail.copyWith(
+                                bestSeason: seasons, prm: pmrValue);
+                            BlocProvider.of<CreateBloc>(context)
+                                .add(CreateEvent.saveTrail(trailToSave));
                           }))),
             ],
           ),

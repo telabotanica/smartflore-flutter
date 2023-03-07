@@ -130,7 +130,8 @@ void main() async {
           create: (context) => CreateBloc(
               createTrailBox: createBox,
               geolocationBloc: BlocProvider.of<GeolocationBloc>(context),
-              geolocationRepo: geolocationRepo))
+              geolocationRepo: geolocationRepo,
+              trailRepo: trailRepo))
     ], child: const App()),
   ));
 }
