@@ -4,6 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/form/checkbox_with_label.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
+import 'package:smartflore/components/modal.dart';
+import 'package:smartflore/components/modal/create_confirm.dart';
 import 'package:smartflore/components/modal/modal_title.dart';
 import 'package:smartflore/models/checkbox_state.dart';
 import 'package:smartflore/models/create/create_model.dart';
@@ -166,13 +168,27 @@ class _CreateEndModalState extends State<CreateEndModal> {
                   child: SizedBox(
                       height: 46,
                       child: RoundedButton(
-                          outline: true, label: 'Annuler', onPress: () {}))),
+                          outline: true,
+                          label: 'Annuler',
+                          onPress: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) => Modal(CreateConfirmModal(
+                                    onClose: widget.onClose)));
+                          }))),
               const SizedBox(width: 10),
               Expanded(
                   child: SizedBox(
                       height: 46,
-                      child:
-                          RoundedButton(label: 'Enregistrer', onPress: () {}))),
+                      child: RoundedButton(
+                          label: 'Enregistrer',
+                          onPress: () {
+                            List<bool> seasons = [];
+                            for (var element in bestPeriod) {
+                              seasons.add(element.value);
+                              print('element.value ${element.value}');
+                            }
+                          }))),
             ],
           ),
         ],

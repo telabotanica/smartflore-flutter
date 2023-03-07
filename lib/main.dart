@@ -182,7 +182,7 @@ class _AppState extends State<App> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate
         },
-        initialRoute: '/login',
+        initialRoute: '/',
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/':
