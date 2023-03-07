@@ -25,7 +25,7 @@ mixin _$CreateTrail {
   @HiveField(1)
   SavePosition get position => throw _privateConstructorUsedError;
   @HiveField(2)
-  List<SaveOccurrence> get occurrences => throw _privateConstructorUsedError;
+  List<Occurrence> get occurrences => throw _privateConstructorUsedError;
   @HiveField(3)
   Path get path => throw _privateConstructorUsedError;
   @HiveField(5)
@@ -49,7 +49,7 @@ abstract class $CreateTrailCopyWith<$Res> {
   $Res call(
       {@HiveField(0) String name,
       @HiveField(1) SavePosition position,
-      @HiveField(2) List<SaveOccurrence> occurrences,
+      @HiveField(2) List<Occurrence> occurrences,
       @HiveField(3) Path path,
       @HiveField(5) int prm,
       @JsonKey(name: 'best_season') @HiveField(6) List<bool> bestSeason});
@@ -90,7 +90,7 @@ class _$CreateTrailCopyWithImpl<$Res, $Val extends CreateTrail>
       occurrences: null == occurrences
           ? _value.occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
-              as List<SaveOccurrence>,
+              as List<Occurrence>,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ abstract class _$$_CreateTrailCopyWith<$Res>
   $Res call(
       {@HiveField(0) String name,
       @HiveField(1) SavePosition position,
-      @HiveField(2) List<SaveOccurrence> occurrences,
+      @HiveField(2) List<Occurrence> occurrences,
       @HiveField(3) Path path,
       @HiveField(5) int prm,
       @JsonKey(name: 'best_season') @HiveField(6) List<bool> bestSeason});
@@ -175,7 +175,7 @@ class __$$_CreateTrailCopyWithImpl<$Res>
       occurrences: null == occurrences
           ? _value._occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
-              as List<SaveOccurrence>,
+              as List<Occurrence>,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -202,7 +202,7 @@ class _$_CreateTrail implements _CreateTrail {
       @HiveField(1)
           required this.position,
       @HiveField(2)
-          final List<SaveOccurrence> occurrences = const [],
+          final List<Occurrence> occurrences = const [],
       @HiveField(3)
           this.path = const Path(),
       @HiveField(5)
@@ -222,11 +222,11 @@ class _$_CreateTrail implements _CreateTrail {
   @override
   @HiveField(1)
   final SavePosition position;
-  final List<SaveOccurrence> _occurrences;
+  final List<Occurrence> _occurrences;
   @override
   @JsonKey()
   @HiveField(2)
-  List<SaveOccurrence> get occurrences {
+  List<Occurrence> get occurrences {
     if (_occurrences is EqualUnmodifiableListView) return _occurrences;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_occurrences);
@@ -303,7 +303,7 @@ abstract class _CreateTrail implements CreateTrail {
       @HiveField(1)
           required final SavePosition position,
       @HiveField(2)
-          final List<SaveOccurrence> occurrences,
+          final List<Occurrence> occurrences,
       @HiveField(3)
           final Path path,
       @HiveField(5)
@@ -323,7 +323,7 @@ abstract class _CreateTrail implements CreateTrail {
   SavePosition get position;
   @override
   @HiveField(2)
-  List<SaveOccurrence> get occurrences;
+  List<Occurrence> get occurrences;
   @override
   @HiveField(3)
   Path get path;
@@ -337,234 +337,6 @@ abstract class _CreateTrail implements CreateTrail {
   @override
   @JsonKey(ignore: true)
   _$$_CreateTrailCopyWith<_$_CreateTrail> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SaveOccurrence _$SaveOccurrenceFromJson(Map<String, dynamic> json) {
-  return _SaveOccurrence.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SaveOccurrence {
-  @LatLngConverter()
-  @HiveField(0)
-  LatLng get position => throw _privateConstructorUsedError;
-  @HiveField(1)
-  @JsonKey(name: 'taxon_id')
-  int get taxonId => throw _privateConstructorUsedError;
-  @HiveField(2)
-  @JsonKey(name: 'repo_id')
-  String get repoId => throw _privateConstructorUsedError;
-  @HiveField(3)
-  @JsonKey(name: 'image_id')
-  String get imageId => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SaveOccurrenceCopyWith<SaveOccurrence> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SaveOccurrenceCopyWith<$Res> {
-  factory $SaveOccurrenceCopyWith(
-          SaveOccurrence value, $Res Function(SaveOccurrence) then) =
-      _$SaveOccurrenceCopyWithImpl<$Res, SaveOccurrence>;
-  @useResult
-  $Res call(
-      {@LatLngConverter() @HiveField(0) LatLng position,
-      @HiveField(1) @JsonKey(name: 'taxon_id') int taxonId,
-      @HiveField(2) @JsonKey(name: 'repo_id') String repoId,
-      @HiveField(3) @JsonKey(name: 'image_id') String imageId});
-}
-
-/// @nodoc
-class _$SaveOccurrenceCopyWithImpl<$Res, $Val extends SaveOccurrence>
-    implements $SaveOccurrenceCopyWith<$Res> {
-  _$SaveOccurrenceCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? position = null,
-    Object? taxonId = null,
-    Object? repoId = null,
-    Object? imageId = null,
-  }) {
-    return _then(_value.copyWith(
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as LatLng,
-      taxonId: null == taxonId
-          ? _value.taxonId
-          : taxonId // ignore: cast_nullable_to_non_nullable
-              as int,
-      repoId: null == repoId
-          ? _value.repoId
-          : repoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageId: null == imageId
-          ? _value.imageId
-          : imageId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_SaveOccurrenceCopyWith<$Res>
-    implements $SaveOccurrenceCopyWith<$Res> {
-  factory _$$_SaveOccurrenceCopyWith(
-          _$_SaveOccurrence value, $Res Function(_$_SaveOccurrence) then) =
-      __$$_SaveOccurrenceCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@LatLngConverter() @HiveField(0) LatLng position,
-      @HiveField(1) @JsonKey(name: 'taxon_id') int taxonId,
-      @HiveField(2) @JsonKey(name: 'repo_id') String repoId,
-      @HiveField(3) @JsonKey(name: 'image_id') String imageId});
-}
-
-/// @nodoc
-class __$$_SaveOccurrenceCopyWithImpl<$Res>
-    extends _$SaveOccurrenceCopyWithImpl<$Res, _$_SaveOccurrence>
-    implements _$$_SaveOccurrenceCopyWith<$Res> {
-  __$$_SaveOccurrenceCopyWithImpl(
-      _$_SaveOccurrence _value, $Res Function(_$_SaveOccurrence) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? position = null,
-    Object? taxonId = null,
-    Object? repoId = null,
-    Object? imageId = null,
-  }) {
-    return _then(_$_SaveOccurrence(
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as LatLng,
-      taxonId: null == taxonId
-          ? _value.taxonId
-          : taxonId // ignore: cast_nullable_to_non_nullable
-              as int,
-      repoId: null == repoId
-          ? _value.repoId
-          : repoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageId: null == imageId
-          ? _value.imageId
-          : imageId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-@HiveType(typeId: 51, adapterName: 'SaveOccurrenceAdapter')
-class _$_SaveOccurrence implements _SaveOccurrence {
-  const _$_SaveOccurrence(
-      {@LatLngConverter() @HiveField(0) required this.position,
-      @HiveField(1) @JsonKey(name: 'taxon_id') this.taxonId = 0,
-      @HiveField(2) @JsonKey(name: 'repo_id') this.repoId = '',
-      @HiveField(3) @JsonKey(name: 'image_id') this.imageId = ''});
-
-  factory _$_SaveOccurrence.fromJson(Map<String, dynamic> json) =>
-      _$$_SaveOccurrenceFromJson(json);
-
-  @override
-  @LatLngConverter()
-  @HiveField(0)
-  final LatLng position;
-  @override
-  @HiveField(1)
-  @JsonKey(name: 'taxon_id')
-  final int taxonId;
-  @override
-  @HiveField(2)
-  @JsonKey(name: 'repo_id')
-  final String repoId;
-  @override
-  @HiveField(3)
-  @JsonKey(name: 'image_id')
-  final String imageId;
-
-  @override
-  String toString() {
-    return 'SaveOccurrence(position: $position, taxonId: $taxonId, repoId: $repoId, imageId: $imageId)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SaveOccurrence &&
-            (identical(other.position, position) ||
-                other.position == position) &&
-            (identical(other.taxonId, taxonId) || other.taxonId == taxonId) &&
-            (identical(other.repoId, repoId) || other.repoId == repoId) &&
-            (identical(other.imageId, imageId) || other.imageId == imageId));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, position, taxonId, repoId, imageId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SaveOccurrenceCopyWith<_$_SaveOccurrence> get copyWith =>
-      __$$_SaveOccurrenceCopyWithImpl<_$_SaveOccurrence>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_SaveOccurrenceToJson(
-      this,
-    );
-  }
-}
-
-abstract class _SaveOccurrence implements SaveOccurrence {
-  const factory _SaveOccurrence(
-          {@LatLngConverter() @HiveField(0) required final LatLng position,
-          @HiveField(1) @JsonKey(name: 'taxon_id') final int taxonId,
-          @HiveField(2) @JsonKey(name: 'repo_id') final String repoId,
-          @HiveField(3) @JsonKey(name: 'image_id') final String imageId}) =
-      _$_SaveOccurrence;
-
-  factory _SaveOccurrence.fromJson(Map<String, dynamic> json) =
-      _$_SaveOccurrence.fromJson;
-
-  @override
-  @LatLngConverter()
-  @HiveField(0)
-  LatLng get position;
-  @override
-  @HiveField(1)
-  @JsonKey(name: 'taxon_id')
-  int get taxonId;
-  @override
-  @HiveField(2)
-  @JsonKey(name: 'repo_id')
-  String get repoId;
-  @override
-  @HiveField(3)
-  @JsonKey(name: 'image_id')
-  String get imageId;
-  @override
-  @JsonKey(ignore: true)
-  _$$_SaveOccurrenceCopyWith<_$_SaveOccurrence> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

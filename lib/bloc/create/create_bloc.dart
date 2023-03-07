@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart' hide Path;
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/models/create/create_model.dart';
+import 'package:smartflore/models/taxon/taxon_enum.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
@@ -80,7 +81,6 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
           },
           registerTaxon: (taxon) async {
             emit(const CreateState.initial());
-
             CreateTrail? currentTrail = createTrailBox.get('current');
             if (currentTrail != null) {
               Position currentPos = await geolocationRepo.getCurrentLocation();
@@ -89,15 +89,27 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
               List<LatLng> coordinates = currentTrail.path.coordinates.toList();
 
               coordinates.add(currentLatLng);
+              TaxonLight taxonLight = TaxonLight.fromTaxon(taxon);
 
-              SaveOccurrence occurrence = SaveOccurrence(
+              List<ImageAPI> imageList = [];
+              for (var tab in taxon.tabs) {
+                if (tab.type == TabTypeEnum.gallery.name) {
+                  imageList = tab.images!;
+                }
+              }
+
+              ImageAPI? imageApi = imageList.isNotEmpty ? imageList[0] : null;
+              List<Image> images = imageApi != null
+                  ? [Image(id: imageApi.id, url: imageApi.url)]
+                  : [];
+
+              Occurrence occurrence = Occurrence(
                 position: currentLatLng,
-                taxonId: taxon.nameId,
-                repoId: taxon.taxonRepository,
+                taxon: taxonLight,
+                images: images,
               );
 
-              List<SaveOccurrence> occurrences =
-                  currentTrail.occurrences.toList();
+              List<Occurrence> occurrences = currentTrail.occurrences.toList();
 
               occurrences.add(occurrence);
 
@@ -106,11 +118,11 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
 
               createTrailBox.put('current', updatedTrail);
 
-              add(const CreateEvent.taxonRegistered());
+              add(CreateEvent.taxonRegistered(occurrences));
             }
           },
-          taxonRegistered: () {
-            emit(const CreateState.taxonAdded());
+          taxonRegistered: (occurrences) {
+            emit(CreateState.taxonAdded(occurrences));
           },
           orElse: () {});
     });

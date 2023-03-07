@@ -10,6 +10,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(children: [
           SvgPicture.asset('assets/graphics/dots_bg.svg',

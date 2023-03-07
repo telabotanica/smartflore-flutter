@@ -65,7 +65,6 @@ void main() async {
   Hive.registerAdapter(ConnectivityResultAdapter());
   Hive.registerAdapter(CreateTrailAdapter());
   Hive.registerAdapter(SavePositionAdapter());
-  Hive.registerAdapter(SaveOccurrenceAdapter());
 
   Box<Trails> trailsBox = await Hive.openBox('trails');
   Box<TrailDetails> trailBox = await Hive.openBox('trail');
@@ -183,7 +182,7 @@ class _AppState extends State<App> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate
         },
-        initialRoute: '/',
+        initialRoute: '/login',
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/':

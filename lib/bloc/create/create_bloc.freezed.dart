@@ -27,7 +27,7 @@ mixin _$CreateEvent {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$CreateEvent {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) =>
       throw _privateConstructorUsedError;
@@ -57,7 +57,7 @@ mixin _$CreateEvent {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) =>
@@ -173,7 +173,7 @@ class _$_Start implements _Start {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return start();
@@ -191,7 +191,7 @@ class _$_Start implements _Start {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return start?.call();
@@ -209,7 +209,7 @@ class _$_Start implements _Start {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -355,7 +355,7 @@ class _$_CreateSaveTitle implements _CreateSaveTitle {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return saveTitle(name);
@@ -373,7 +373,7 @@ class _$_CreateSaveTitle implements _CreateSaveTitle {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return saveTitle?.call(name);
@@ -391,7 +391,7 @@ class _$_CreateSaveTitle implements _CreateSaveTitle {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -517,7 +517,7 @@ class _$_RegisterLocation implements _RegisterLocation {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return registerLocation();
@@ -535,7 +535,7 @@ class _$_RegisterLocation implements _RegisterLocation {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return registerLocation?.call();
@@ -553,7 +553,7 @@ class _$_RegisterLocation implements _RegisterLocation {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -710,7 +710,7 @@ class _$_RequestUpdatePath implements _RequestUpdatePath {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return updatePath(path);
@@ -728,7 +728,7 @@ class _$_RequestUpdatePath implements _RequestUpdatePath {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return updatePath?.call(path);
@@ -746,7 +746,7 @@ class _$_RequestUpdatePath implements _RequestUpdatePath {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -869,7 +869,7 @@ class _$_Pause implements _Pause {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return pause();
@@ -887,7 +887,7 @@ class _$_Pause implements _Pause {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return pause?.call();
@@ -905,7 +905,7 @@ class _$_Pause implements _Pause {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -1024,7 +1024,7 @@ class _$_UnPause implements _UnPause {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return unPause();
@@ -1042,7 +1042,7 @@ class _$_UnPause implements _UnPause {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return unPause?.call();
@@ -1060,7 +1060,7 @@ class _$_UnPause implements _UnPause {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -1215,7 +1215,7 @@ class _$_FindTaxon implements _FindTaxon {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return findTaxon(name, isScientificName);
@@ -1233,7 +1233,7 @@ class _$_FindTaxon implements _FindTaxon {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return findTaxon?.call(name, isScientificName);
@@ -1251,7 +1251,7 @@ class _$_FindTaxon implements _FindTaxon {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -1377,7 +1377,7 @@ class _$_AddPic implements _AddPic {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return addPic();
@@ -1395,7 +1395,7 @@ class _$_AddPic implements _AddPic {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return addPic?.call();
@@ -1413,7 +1413,7 @@ class _$_AddPic implements _AddPic {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -1569,7 +1569,7 @@ class _$_RegisterTaxon implements _RegisterTaxon {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return registerTaxon(taxon);
@@ -1587,7 +1587,7 @@ class _$_RegisterTaxon implements _RegisterTaxon {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return registerTaxon?.call(taxon);
@@ -1605,7 +1605,7 @@ class _$_RegisterTaxon implements _RegisterTaxon {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -1688,6 +1688,8 @@ abstract class _$$_TaxonRegisteredCopyWith<$Res> {
   factory _$$_TaxonRegisteredCopyWith(
           _$_TaxonRegistered value, $Res Function(_$_TaxonRegistered) then) =
       __$$_TaxonRegisteredCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Occurrence> occurrences});
 }
 
 /// @nodoc
@@ -1697,26 +1699,58 @@ class __$$_TaxonRegisteredCopyWithImpl<$Res>
   __$$_TaxonRegisteredCopyWithImpl(
       _$_TaxonRegistered _value, $Res Function(_$_TaxonRegistered) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? occurrences = null,
+  }) {
+    return _then(_$_TaxonRegistered(
+      null == occurrences
+          ? _value._occurrences
+          : occurrences // ignore: cast_nullable_to_non_nullable
+              as List<Occurrence>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_TaxonRegistered implements _TaxonRegistered {
-  const _$_TaxonRegistered();
+  const _$_TaxonRegistered(final List<Occurrence> occurrences)
+      : _occurrences = occurrences;
+
+  final List<Occurrence> _occurrences;
+  @override
+  List<Occurrence> get occurrences {
+    if (_occurrences is EqualUnmodifiableListView) return _occurrences;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_occurrences);
+  }
 
   @override
   String toString() {
-    return 'CreateEvent.taxonRegistered()';
+    return 'CreateEvent.taxonRegistered(occurrences: $occurrences)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TaxonRegistered);
+        (other.runtimeType == runtimeType &&
+            other is _$_TaxonRegistered &&
+            const DeepCollectionEquality()
+                .equals(other._occurrences, _occurrences));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_occurrences));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TaxonRegisteredCopyWith<_$_TaxonRegistered> get copyWith =>
+      __$$_TaxonRegisteredCopyWithImpl<_$_TaxonRegistered>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1730,10 +1764,10 @@ class _$_TaxonRegistered implements _TaxonRegistered {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
-    return taxonRegistered();
+    return taxonRegistered(occurrences);
   }
 
   @override
@@ -1748,10 +1782,10 @@ class _$_TaxonRegistered implements _TaxonRegistered {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
-    return taxonRegistered?.call();
+    return taxonRegistered?.call(occurrences);
   }
 
   @override
@@ -1766,12 +1800,12 @@ class _$_TaxonRegistered implements _TaxonRegistered {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
     if (taxonRegistered != null) {
-      return taxonRegistered();
+      return taxonRegistered(occurrences);
     }
     return orElse();
   }
@@ -1836,7 +1870,13 @@ class _$_TaxonRegistered implements _TaxonRegistered {
 }
 
 abstract class _TaxonRegistered implements CreateEvent {
-  const factory _TaxonRegistered() = _$_TaxonRegistered;
+  const factory _TaxonRegistered(final List<Occurrence> occurrences) =
+      _$_TaxonRegistered;
+
+  List<Occurrence> get occurrences;
+  @JsonKey(ignore: true)
+  _$$_TaxonRegisteredCopyWith<_$_TaxonRegistered> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1922,7 +1962,7 @@ class _$_SaveTrail implements _SaveTrail {
     required TResult Function(String name, bool isScientificName) findTaxon,
     required TResult Function() addPic,
     required TResult Function(Taxon taxon) registerTaxon,
-    required TResult Function() taxonRegistered,
+    required TResult Function(List<Occurrence> occurrences) taxonRegistered,
     required TResult Function(CreateTrail trail) saveTrail,
   }) {
     return saveTrail(trail);
@@ -1940,7 +1980,7 @@ class _$_SaveTrail implements _SaveTrail {
     TResult? Function(String name, bool isScientificName)? findTaxon,
     TResult? Function()? addPic,
     TResult? Function(Taxon taxon)? registerTaxon,
-    TResult? Function()? taxonRegistered,
+    TResult? Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult? Function(CreateTrail trail)? saveTrail,
   }) {
     return saveTrail?.call(trail);
@@ -1958,7 +1998,7 @@ class _$_SaveTrail implements _SaveTrail {
     TResult Function(String name, bool isScientificName)? findTaxon,
     TResult Function()? addPic,
     TResult Function(Taxon taxon)? registerTaxon,
-    TResult Function()? taxonRegistered,
+    TResult Function(List<Occurrence> occurrences)? taxonRegistered,
     TResult Function(CreateTrail trail)? saveTrail,
     required TResult orElse(),
   }) {
@@ -2045,7 +2085,7 @@ mixin _$CreateState {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -2058,7 +2098,7 @@ mixin _$CreateState {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -2071,7 +2111,7 @@ mixin _$CreateState {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
@@ -2180,7 +2220,7 @@ class _$_Initial implements _Initial {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -2196,7 +2236,7 @@ class _$_Initial implements _Initial {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -2212,7 +2252,7 @@ class _$_Initial implements _Initial {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
@@ -2324,7 +2364,7 @@ class _$_RegisteringName implements _RegisteringName {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -2340,7 +2380,7 @@ class _$_RegisteringName implements _RegisteringName {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -2356,7 +2396,7 @@ class _$_RegisteringName implements _RegisteringName {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
@@ -2494,7 +2534,7 @@ class _$_NameRegistered implements _NameRegistered {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -2510,7 +2550,7 @@ class _$_NameRegistered implements _NameRegistered {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -2526,7 +2566,7 @@ class _$_NameRegistered implements _NameRegistered {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
@@ -2643,7 +2683,7 @@ class _$_StartPath implements _StartPath {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -2659,7 +2699,7 @@ class _$_StartPath implements _StartPath {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -2675,7 +2715,7 @@ class _$_StartPath implements _StartPath {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
@@ -2823,7 +2863,7 @@ class _$_UpdatePath implements _UpdatePath {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -2839,7 +2879,7 @@ class _$_UpdatePath implements _UpdatePath {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -2855,7 +2895,7 @@ class _$_UpdatePath implements _UpdatePath {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
@@ -2934,6 +2974,8 @@ abstract class _$$_TaxonAddedCopyWith<$Res> {
   factory _$$_TaxonAddedCopyWith(
           _$_TaxonAdded value, $Res Function(_$_TaxonAdded) then) =
       __$$_TaxonAddedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Occurrence> occurrences});
 }
 
 /// @nodoc
@@ -2943,26 +2985,58 @@ class __$$_TaxonAddedCopyWithImpl<$Res>
   __$$_TaxonAddedCopyWithImpl(
       _$_TaxonAdded _value, $Res Function(_$_TaxonAdded) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? occurrences = null,
+  }) {
+    return _then(_$_TaxonAdded(
+      null == occurrences
+          ? _value._occurrences
+          : occurrences // ignore: cast_nullable_to_non_nullable
+              as List<Occurrence>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_TaxonAdded implements _TaxonAdded {
-  const _$_TaxonAdded();
+  const _$_TaxonAdded(final List<Occurrence> occurrences)
+      : _occurrences = occurrences;
+
+  final List<Occurrence> _occurrences;
+  @override
+  List<Occurrence> get occurrences {
+    if (_occurrences is EqualUnmodifiableListView) return _occurrences;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_occurrences);
+  }
 
   @override
   String toString() {
-    return 'CreateState.taxonAdded()';
+    return 'CreateState.taxonAdded(occurrences: $occurrences)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TaxonAdded);
+        (other.runtimeType == runtimeType &&
+            other is _$_TaxonAdded &&
+            const DeepCollectionEquality()
+                .equals(other._occurrences, _occurrences));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_occurrences));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TaxonAddedCopyWith<_$_TaxonAdded> get copyWith =>
+      __$$_TaxonAddedCopyWithImpl<_$_TaxonAdded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2972,12 +3046,12 @@ class _$_TaxonAdded implements _TaxonAdded {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
   }) {
-    return taxonAdded();
+    return taxonAdded(occurrences);
   }
 
   @override
@@ -2988,12 +3062,12 @@ class _$_TaxonAdded implements _TaxonAdded {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
   }) {
-    return taxonAdded?.call();
+    return taxonAdded?.call(occurrences);
   }
 
   @override
@@ -3004,14 +3078,14 @@ class _$_TaxonAdded implements _TaxonAdded {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
     required TResult orElse(),
   }) {
     if (taxonAdded != null) {
-      return taxonAdded();
+      return taxonAdded(occurrences);
     }
     return orElse();
   }
@@ -3070,7 +3144,12 @@ class _$_TaxonAdded implements _TaxonAdded {
 }
 
 abstract class _TaxonAdded implements CreateState {
-  const factory _TaxonAdded() = _$_TaxonAdded;
+  const factory _TaxonAdded(final List<Occurrence> occurrences) = _$_TaxonAdded;
+
+  List<Occurrence> get occurrences;
+  @JsonKey(ignore: true)
+  _$$_TaxonAddedCopyWith<_$_TaxonAdded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3116,7 +3195,7 @@ class _$_AddPicStart implements _AddPicStart {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -3132,7 +3211,7 @@ class _$_AddPicStart implements _AddPicStart {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -3148,7 +3227,7 @@ class _$_AddPicStart implements _AddPicStart {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
@@ -3260,7 +3339,7 @@ class _$_AddPicLoading implements _AddPicLoading {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -3276,7 +3355,7 @@ class _$_AddPicLoading implements _AddPicLoading {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -3292,7 +3371,7 @@ class _$_AddPicLoading implements _AddPicLoading {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
@@ -3404,7 +3483,7 @@ class _$_AddPicError implements _AddPicError {
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
     required TResult Function(Path path) updatePath,
-    required TResult Function() taxonAdded,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
@@ -3420,7 +3499,7 @@ class _$_AddPicError implements _AddPicError {
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
     TResult? Function(Path path)? updatePath,
-    TResult? Function()? taxonAdded,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
@@ -3436,7 +3515,7 @@ class _$_AddPicError implements _AddPicError {
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
     TResult Function(Path path)? updatePath,
-    TResult Function()? taxonAdded,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,

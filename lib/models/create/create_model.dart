@@ -20,7 +20,7 @@ class CreateTrail with _$CreateTrail {
   const factory CreateTrail({
     @HiveField(0) required String name,
     @HiveField(1) required SavePosition position,
-    @HiveField(2) @Default([]) List<SaveOccurrence> occurrences,
+    @HiveField(2) @Default([]) List<Occurrence> occurrences,
     @HiveField(3) @Default(Path()) Path path,
     @HiveField(5) @Default(-1) int prm,
     @JsonKey(name: 'best_season')
@@ -31,20 +31,6 @@ class CreateTrail with _$CreateTrail {
 
   factory CreateTrail.fromJson(Map<String, dynamic> json) =>
       _$CreateTrailFromJson(json);
-}
-
-@freezed
-class SaveOccurrence with _$SaveOccurrence {
-  @HiveType(typeId: 51, adapterName: 'SaveOccurrenceAdapter')
-  const factory SaveOccurrence({
-    @LatLngConverter() @HiveField(0) required LatLng position,
-    @HiveField(1) @Default(0) @JsonKey(name: 'taxon_id') int taxonId,
-    @HiveField(2) @Default('') @JsonKey(name: 'repo_id') String repoId,
-    @HiveField(3) @Default('') @JsonKey(name: 'image_id') String imageId,
-  }) = _SaveOccurrence;
-
-  factory SaveOccurrence.fromJson(Map<String, dynamic> json) =>
-      _$SaveOccurrenceFromJson(json);
 }
 
 @freezed

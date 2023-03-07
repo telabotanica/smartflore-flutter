@@ -19,7 +19,7 @@ class CreateTrailAdapter extends TypeAdapter<_$_CreateTrail> {
     return _$_CreateTrail(
       name: fields[0] as String,
       position: fields[1] as SavePosition,
-      occurrences: (fields[2] as List).cast<SaveOccurrence>(),
+      occurrences: (fields[2] as List).cast<Occurrence>(),
       path: fields[3] as Path,
       prm: fields[5] as int,
       bestSeason: (fields[6] as List).cast<bool>(),
@@ -51,49 +51,6 @@ class CreateTrailAdapter extends TypeAdapter<_$_CreateTrail> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CreateTrailAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
-}
-
-class SaveOccurrenceAdapter extends TypeAdapter<_$_SaveOccurrence> {
-  @override
-  final int typeId = 51;
-
-  @override
-  _$_SaveOccurrence read(BinaryReader reader) {
-    final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return _$_SaveOccurrence(
-      position: fields[0] as LatLng,
-      taxonId: fields[1] as int,
-      repoId: fields[2] as String,
-      imageId: fields[3] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, _$_SaveOccurrence obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.position)
-      ..writeByte(1)
-      ..write(obj.taxonId)
-      ..writeByte(2)
-      ..write(obj.repoId)
-      ..writeByte(3)
-      ..write(obj.imageId);
-  }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SaveOccurrenceAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -144,7 +101,7 @@ _$_CreateTrail _$$_CreateTrailFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       position: SavePosition.fromJson(json['position'] as Map<String, dynamic>),
       occurrences: (json['occurrences'] as List<dynamic>?)
-              ?.map((e) => SaveOccurrence.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => Occurrence.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       path: json['path'] == null
@@ -165,22 +122,6 @@ Map<String, dynamic> _$$_CreateTrailToJson(_$_CreateTrail instance) =>
       'path': instance.path,
       'prm': instance.prm,
       'best_season': instance.bestSeason,
-    };
-
-_$_SaveOccurrence _$$_SaveOccurrenceFromJson(Map<String, dynamic> json) =>
-    _$_SaveOccurrence(
-      position: const LatLngConverter().fromJson(json['position']),
-      taxonId: json['taxon_id'] as int? ?? 0,
-      repoId: json['repo_id'] as String? ?? '',
-      imageId: json['image_id'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$$_SaveOccurrenceToJson(_$_SaveOccurrence instance) =>
-    <String, dynamic>{
-      'position': const LatLngConverter().toJson(instance.position),
-      'taxon_id': instance.taxonId,
-      'repo_id': instance.repoId,
-      'image_id': instance.imageId,
     };
 
 _$_SavePosition _$$_SavePositionFromJson(Map<String, dynamic> json) =>

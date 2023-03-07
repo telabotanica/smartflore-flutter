@@ -89,7 +89,7 @@ class _CreateScreenState extends State<CreateScreen> {
     return BlocListener<CreateBloc, CreateState>(
       listener: (context, state) {
         state.whenOrNull(
-          taxonAdded: () {
+          taxonAdded: (occurrences) {
             Navigator.of(context).pop();
           },
         );

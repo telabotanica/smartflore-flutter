@@ -57,16 +57,16 @@ class _TrailItemState extends State<TrailItem> {
           Stack(
             children: [
               SizedBox(
-                width: 68,
-                height: 68,
-                child: (widget.image != null)
-                    ? ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(6.0)),
-                        child: ImageWithLoader(
-                            url: widget.image!, imageFormat: 'XS'))
-                    : Container(),
-              ),
+                  width: 68,
+                  height: 68,
+                  child: ClipRRect(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(6.0)),
+                      child: widget.image == null ||
+                              widget.image == '_path_placeholder'
+                          ? Image.asset('assets/images/path_placeholder.jpg')
+                          : ImageWithLoader(
+                              url: widget.image!, imageFormat: 'XS'))),
               (widget.isDownloaded)
                   ? Transform.translate(
                       offset: const Offset(58, -6), child: const DownloadIcon())

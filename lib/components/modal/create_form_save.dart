@@ -39,9 +39,28 @@ class _CreateEndModalState extends State<CreateEndModal> {
     super.initState();
   }
 
+  String? getFirstTrailImage(CreateTrail? createTrail) {
+    if (createTrail == null) return null;
+    String firstImage = '_path_placeholder';
+
+    if (createTrail.occurrences.isNotEmpty) {
+      int index = 0;
+
+      for (int i = 0; i < createTrail.occurrences.length; i++) {
+        if (createTrail.occurrences[i].images.isNotEmpty) {
+          firstImage = createTrail.occurrences[i].images[0].url;
+          break;
+        }
+      }
+    }
+
+    return firstImage;
+  }
+
   @override
   Widget build(BuildContext context) {
     CreateTrail? createTrail = createBox.get('current');
+    String? firstImageUrl = getFirstTrailImage(createTrail);
     return Form(
       key: _formKey,
       child: Column(
@@ -59,6 +78,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
                 LatLngUtils.pathDistance(createTrail!.path.coordinates).toInt(),
             nbOccurence: createTrail.occurrences.length,
             title: createTrail.name,
+            image: firstImageUrl,
             trailId: 1,
           ),
           const SizedBox(height: 20),

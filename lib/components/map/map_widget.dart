@@ -34,6 +34,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   TrailDetails? trailData;
   List<Trail>? trailsData;
   Path? createPath;
+  List<Occurrence>? createOccurrences;
   MapMode mapMode = MapMode.overview;
   int? selectedOccurence;
   bool forceOccurenceUpdate = false;
@@ -157,9 +158,13 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             //print('>>> $state');
             state.maybeWhen(
                 updatePath: (Path path) {
-                  //print('>>> path ${path.coordinates.length}');
                   setState(() {
                     createPath = path;
+                  });
+                },
+                taxonAdded: (occurrences) {
+                  setState(() {
+                    createOccurrences = occurrences;
                   });
                 },
                 orElse: () {});
@@ -204,7 +209,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             zoom: 16.0,
             maxZoom: 19,
             onTap: (tapPos, LatLng latLng) {
-              if (mapMode != MapMode.trail) {
+              if (mapMode != MapMode.trail && mapMode != MapMode.create) {
                 BlocProvider.of<MapBloc>(context)
                     .add(const MapEvent.changeMapMode(MapMode.overview));
               }
@@ -383,6 +388,26 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                       color: Theme.of(context).colorScheme.primary,
                       points: createPath!.coordinates)
                 ]
+              : []),
+      MarkerLayer(
+          markers: createPath != null && createPath!.coordinates.isNotEmpty
+              ? [
+                  Marker(
+                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
+                    width: 18.0,
+                    height: 18.0,
+                    point: createPath!.coordinates[0],
+                    builder: (ctx) => const MarkerWithBG(
+                      icon: SmartFloreIcons.markerStart,
+                      size: 39,
+                      color: Color(0xFF3EB17B),
+                    ),
+                  ),
+                ]
+              : []),
+      MarkerLayer(
+          markers: createOccurrences != null
+              ? getOrderedMarkerList(createOccurrences!)
               : []),
     ];
   }

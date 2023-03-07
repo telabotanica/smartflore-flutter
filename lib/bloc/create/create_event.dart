@@ -13,6 +13,7 @@ class CreateEvent with _$CreateEvent {
       {required String name, required bool isScientificName}) = _FindTaxon;
   const factory CreateEvent.addPic() = _AddPic;
   const factory CreateEvent.registerTaxon(Taxon taxon) = _RegisterTaxon;
-  const factory CreateEvent.taxonRegistered() = _TaxonRegistered;
+  const factory CreateEvent.taxonRegistered(List<Occurrence> occurrences) =
+      _TaxonRegistered;
   const factory CreateEvent.saveTrail(CreateTrail trail) = _SaveTrail;
 }

@@ -5,6 +5,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart';
 
 part 'trail_model.freezed.dart';
 part 'trail_model.g.dart';
@@ -74,6 +75,15 @@ class TaxonLight with _$TaxonLight {
 
   factory TaxonLight.fromJson(Map<String, dynamic> json) =>
       _$TaxonLightFromJson(json);
+
+  factory TaxonLight.fromTaxon(Taxon taxon) {
+    return TaxonLight(
+        scientificName: taxon.scientificName,
+        fullScientificName: taxon.fullScientificName,
+        taxonRepository: taxon.taxonRepository,
+        nameId: taxon.nameId,
+        vernacularNames: taxon.vernacularNames);
+  }
 }
 
 @freezed
