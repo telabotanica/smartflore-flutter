@@ -50,31 +50,38 @@ class _MapUIState extends State<MapUI> {
     return Stack(
       children: [
         const MapWidget(),
-        AnimatedPositioned(
-            top: 20,
-            right: (widget.mapMode == MapMode.overview) ? 20 : -60,
-            curve: Curves.easeInOutCubic,
-            duration: const Duration(milliseconds: 300),
-            child: SafeArea(
-              child: SizedBox(
-                width: 46,
-                height: 46,
-                child: FloatingActionButton(
-                  heroTag: 'settings',
-                  backgroundColor: Colors.white,
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: const Icon(
-                    SmartFloreIcons.setting,
-                    size: 20,
-                    color: Color(0xFF12161E),
+        BlocListener<TrailBloc, TrailState>(
+          listener: (context, state) {
+            if (state is TrailLoadedState) {
+              setState(() {});
+            }
+          },
+          child: AnimatedPositioned(
+              top: 20,
+              right: (widget.mapMode == MapMode.overview) ? 20 : -60,
+              curve: Curves.easeInOutCubic,
+              duration: const Duration(milliseconds: 300),
+              child: SafeArea(
+                child: SizedBox(
+                  width: 46,
+                  height: 46,
+                  child: FloatingActionButton(
+                    heroTag: 'settings',
+                    backgroundColor: Colors.white,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: const Icon(
+                      SmartFloreIcons.setting,
+                      size: 20,
+                      color: Color(0xFF12161E),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/settings');
+                    },
                   ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/settings');
-                  },
                 ),
-              ),
-            )),
+              )),
+        ),
         AnimatedPositioned(
             top: (widget.mapMode == MapMode.trail) ? 20 : -100,
             curve: Curves.easeInOutCubic,
@@ -174,9 +181,10 @@ class _MapUIState extends State<MapUI> {
         AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,
-            bottom: (widget.mapMode == MapMode.preview)
-                ? LayoutUtils.getSizes(trailPreviewUIKey).height - 30
-                : -200,
+            onEnd: () {
+              setState(() {});
+            },
+            bottom: (widget.mapMode == MapMode.preview) ? 156 - 30 : -200,
             left: 20,
             child: Center(
               child: SizedBox(
