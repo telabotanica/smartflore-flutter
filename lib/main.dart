@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/_env/app_env.dart';
+import 'package:smartflore/bloc/auth/auth_bloc.dart';
 import 'package:smartflore/bloc/bloc_observer.dart';
 import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
@@ -21,6 +22,8 @@ import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
+import 'package:smartflore/repo/auth/auth_api_client.dart';
+import 'package:smartflore/repo/auth/auth_repo.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 import 'package:smartflore/repo/ping/ping_api_client.dart';
 import 'package:smartflore/repo/ping/ping_repo.dart';
@@ -85,6 +88,9 @@ void main() async {
   final TrailRepo trailRepo = TrailRepo(
       trailApiClient: TrailApiClient(
           httpClient: http.Client(), baseUrl: AppEnv().apiBaseUrl));
+  final AuthRepo authRepo = AuthRepo(
+      authApiClient: AuthApiClient(
+          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/login'));
 
   final WalkRepo walkRepo = WalkRepo();
 
@@ -109,6 +115,7 @@ void main() async {
 
     child: MultiBlocProvider(providers: [
       BlocProvider<MapBloc>(create: (context) => MapBloc()),
+      BlocProvider<AuthBloc>(create: (context) => AuthBloc(authRepo)),
       BlocProvider<TrailBloc>(
           create: (context) => TrailBloc(
               trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),

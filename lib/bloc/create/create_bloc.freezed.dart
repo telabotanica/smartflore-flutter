@@ -2089,6 +2089,8 @@ mixin _$CreateState {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2102,6 +2104,8 @@ mixin _$CreateState {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2115,6 +2119,8 @@ mixin _$CreateState {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2129,6 +2135,8 @@ mixin _$CreateState {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2142,6 +2150,8 @@ mixin _$CreateState {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2155,6 +2165,8 @@ mixin _$CreateState {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2224,6 +2236,8 @@ class _$_Initial implements _Initial {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return initial();
   }
@@ -2240,6 +2254,8 @@ class _$_Initial implements _Initial {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return initial?.call();
   }
@@ -2256,6 +2272,8 @@ class _$_Initial implements _Initial {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -2276,6 +2294,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return initial(this);
   }
@@ -2292,6 +2312,8 @@ class _$_Initial implements _Initial {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return initial?.call(this);
   }
@@ -2308,6 +2330,8 @@ class _$_Initial implements _Initial {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -2368,6 +2392,8 @@ class _$_RegisteringName implements _RegisteringName {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return registeringName();
   }
@@ -2384,6 +2410,8 @@ class _$_RegisteringName implements _RegisteringName {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return registeringName?.call();
   }
@@ -2400,6 +2428,8 @@ class _$_RegisteringName implements _RegisteringName {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (registeringName != null) {
@@ -2420,6 +2450,8 @@ class _$_RegisteringName implements _RegisteringName {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return registeringName(this);
   }
@@ -2436,6 +2468,8 @@ class _$_RegisteringName implements _RegisteringName {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return registeringName?.call(this);
   }
@@ -2452,6 +2486,8 @@ class _$_RegisteringName implements _RegisteringName {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (registeringName != null) {
@@ -2538,6 +2574,8 @@ class _$_NameRegistered implements _NameRegistered {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return nameRegistered(name);
   }
@@ -2554,6 +2592,8 @@ class _$_NameRegistered implements _NameRegistered {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return nameRegistered?.call(name);
   }
@@ -2570,6 +2610,8 @@ class _$_NameRegistered implements _NameRegistered {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (nameRegistered != null) {
@@ -2590,6 +2632,8 @@ class _$_NameRegistered implements _NameRegistered {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return nameRegistered(this);
   }
@@ -2606,6 +2650,8 @@ class _$_NameRegistered implements _NameRegistered {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return nameRegistered?.call(this);
   }
@@ -2622,6 +2668,8 @@ class _$_NameRegistered implements _NameRegistered {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (nameRegistered != null) {
@@ -2687,6 +2735,8 @@ class _$_StartPath implements _StartPath {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return startPath();
   }
@@ -2703,6 +2753,8 @@ class _$_StartPath implements _StartPath {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return startPath?.call();
   }
@@ -2719,6 +2771,8 @@ class _$_StartPath implements _StartPath {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (startPath != null) {
@@ -2739,6 +2793,8 @@ class _$_StartPath implements _StartPath {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return startPath(this);
   }
@@ -2755,6 +2811,8 @@ class _$_StartPath implements _StartPath {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return startPath?.call(this);
   }
@@ -2771,6 +2829,8 @@ class _$_StartPath implements _StartPath {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (startPath != null) {
@@ -2867,6 +2927,8 @@ class _$_UpdatePath implements _UpdatePath {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return updatePath(path);
   }
@@ -2883,6 +2945,8 @@ class _$_UpdatePath implements _UpdatePath {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return updatePath?.call(path);
   }
@@ -2899,6 +2963,8 @@ class _$_UpdatePath implements _UpdatePath {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (updatePath != null) {
@@ -2919,6 +2985,8 @@ class _$_UpdatePath implements _UpdatePath {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return updatePath(this);
   }
@@ -2935,6 +3003,8 @@ class _$_UpdatePath implements _UpdatePath {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return updatePath?.call(this);
   }
@@ -2951,6 +3021,8 @@ class _$_UpdatePath implements _UpdatePath {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (updatePath != null) {
@@ -3050,6 +3122,8 @@ class _$_TaxonAdded implements _TaxonAdded {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return taxonAdded(occurrences);
   }
@@ -3066,6 +3140,8 @@ class _$_TaxonAdded implements _TaxonAdded {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return taxonAdded?.call(occurrences);
   }
@@ -3082,6 +3158,8 @@ class _$_TaxonAdded implements _TaxonAdded {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (taxonAdded != null) {
@@ -3102,6 +3180,8 @@ class _$_TaxonAdded implements _TaxonAdded {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return taxonAdded(this);
   }
@@ -3118,6 +3198,8 @@ class _$_TaxonAdded implements _TaxonAdded {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return taxonAdded?.call(this);
   }
@@ -3134,6 +3216,8 @@ class _$_TaxonAdded implements _TaxonAdded {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (taxonAdded != null) {
@@ -3199,6 +3283,8 @@ class _$_AddPicStart implements _AddPicStart {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return addPicStart();
   }
@@ -3215,6 +3301,8 @@ class _$_AddPicStart implements _AddPicStart {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return addPicStart?.call();
   }
@@ -3231,6 +3319,8 @@ class _$_AddPicStart implements _AddPicStart {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (addPicStart != null) {
@@ -3251,6 +3341,8 @@ class _$_AddPicStart implements _AddPicStart {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return addPicStart(this);
   }
@@ -3267,6 +3359,8 @@ class _$_AddPicStart implements _AddPicStart {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return addPicStart?.call(this);
   }
@@ -3283,6 +3377,8 @@ class _$_AddPicStart implements _AddPicStart {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (addPicStart != null) {
@@ -3343,6 +3439,8 @@ class _$_AddPicLoading implements _AddPicLoading {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return addPicLoading();
   }
@@ -3359,6 +3457,8 @@ class _$_AddPicLoading implements _AddPicLoading {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return addPicLoading?.call();
   }
@@ -3375,6 +3475,8 @@ class _$_AddPicLoading implements _AddPicLoading {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (addPicLoading != null) {
@@ -3395,6 +3497,8 @@ class _$_AddPicLoading implements _AddPicLoading {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return addPicLoading(this);
   }
@@ -3411,6 +3515,8 @@ class _$_AddPicLoading implements _AddPicLoading {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return addPicLoading?.call(this);
   }
@@ -3427,6 +3533,8 @@ class _$_AddPicLoading implements _AddPicLoading {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (addPicLoading != null) {
@@ -3487,6 +3595,8 @@ class _$_AddPicError implements _AddPicError {
     required TResult Function() addPicStart,
     required TResult Function() addPicLoading,
     required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
   }) {
     return addPicError();
   }
@@ -3503,6 +3613,8 @@ class _$_AddPicError implements _AddPicError {
     TResult? Function()? addPicStart,
     TResult? Function()? addPicLoading,
     TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
   }) {
     return addPicError?.call();
   }
@@ -3519,6 +3631,8 @@ class _$_AddPicError implements _AddPicError {
     TResult Function()? addPicStart,
     TResult Function()? addPicLoading,
     TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
     required TResult orElse(),
   }) {
     if (addPicError != null) {
@@ -3539,6 +3653,8 @@ class _$_AddPicError implements _AddPicError {
     required TResult Function(_AddPicStart value) addPicStart,
     required TResult Function(_AddPicLoading value) addPicLoading,
     required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
   }) {
     return addPicError(this);
   }
@@ -3555,6 +3671,8 @@ class _$_AddPicError implements _AddPicError {
     TResult? Function(_AddPicStart value)? addPicStart,
     TResult? Function(_AddPicLoading value)? addPicLoading,
     TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
   }) {
     return addPicError?.call(this);
   }
@@ -3571,6 +3689,8 @@ class _$_AddPicError implements _AddPicError {
     TResult Function(_AddPicStart value)? addPicStart,
     TResult Function(_AddPicLoading value)? addPicLoading,
     TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
     required TResult orElse(),
   }) {
     if (addPicError != null) {
@@ -3582,4 +3702,316 @@ class _$_AddPicError implements _AddPicError {
 
 abstract class _AddPicError implements CreateState {
   const factory _AddPicError() = _$_AddPicError;
+}
+
+/// @nodoc
+abstract class _$$_SavingTrailCopyWith<$Res> {
+  factory _$$_SavingTrailCopyWith(
+          _$_SavingTrail value, $Res Function(_$_SavingTrail) then) =
+      __$$_SavingTrailCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SavingTrailCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$_SavingTrail>
+    implements _$$_SavingTrailCopyWith<$Res> {
+  __$$_SavingTrailCopyWithImpl(
+      _$_SavingTrail _value, $Res Function(_$_SavingTrail) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SavingTrail implements _SavingTrail {
+  const _$_SavingTrail();
+
+  @override
+  String toString() {
+    return 'CreateState.savingTrail()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SavingTrail);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
+    required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
+    required TResult Function() addPicStart,
+    required TResult Function() addPicLoading,
+    required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
+  }) {
+    return savingTrail();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? registeringName,
+    TResult? Function(String name)? nameRegistered,
+    TResult? Function()? startPath,
+    TResult? Function(Path path)? updatePath,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
+    TResult? Function()? addPicStart,
+    TResult? Function()? addPicLoading,
+    TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
+  }) {
+    return savingTrail?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
+    required TResult orElse(),
+  }) {
+    if (savingTrail != null) {
+      return savingTrail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
+    required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
+    required TResult Function(_TaxonAdded value) taxonAdded,
+    required TResult Function(_AddPicStart value) addPicStart,
+    required TResult Function(_AddPicLoading value) addPicLoading,
+    required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
+  }) {
+    return savingTrail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_RegisteringName value)? registeringName,
+    TResult? Function(_NameRegistered value)? nameRegistered,
+    TResult? Function(_StartPath value)? startPath,
+    TResult? Function(_UpdatePath value)? updatePath,
+    TResult? Function(_TaxonAdded value)? taxonAdded,
+    TResult? Function(_AddPicStart value)? addPicStart,
+    TResult? Function(_AddPicLoading value)? addPicLoading,
+    TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
+  }) {
+    return savingTrail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_TaxonAdded value)? taxonAdded,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
+    required TResult orElse(),
+  }) {
+    if (savingTrail != null) {
+      return savingTrail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SavingTrail implements CreateState {
+  const factory _SavingTrail() = _$_SavingTrail;
+}
+
+/// @nodoc
+abstract class _$$_TrailSavedCopyWith<$Res> {
+  factory _$$_TrailSavedCopyWith(
+          _$_TrailSaved value, $Res Function(_$_TrailSaved) then) =
+      __$$_TrailSavedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TrailSavedCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$_TrailSaved>
+    implements _$$_TrailSavedCopyWith<$Res> {
+  __$$_TrailSavedCopyWithImpl(
+      _$_TrailSaved _value, $Res Function(_$_TrailSaved) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_TrailSaved implements _TrailSaved {
+  const _$_TrailSaved();
+
+  @override
+  String toString() {
+    return 'CreateState.trailSaved()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TrailSaved);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
+    required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
+    required TResult Function() addPicStart,
+    required TResult Function() addPicLoading,
+    required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
+  }) {
+    return trailSaved();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? registeringName,
+    TResult? Function(String name)? nameRegistered,
+    TResult? Function()? startPath,
+    TResult? Function(Path path)? updatePath,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
+    TResult? Function()? addPicStart,
+    TResult? Function()? addPicLoading,
+    TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
+  }) {
+    return trailSaved?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
+    required TResult orElse(),
+  }) {
+    if (trailSaved != null) {
+      return trailSaved();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
+    required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
+    required TResult Function(_TaxonAdded value) taxonAdded,
+    required TResult Function(_AddPicStart value) addPicStart,
+    required TResult Function(_AddPicLoading value) addPicLoading,
+    required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
+  }) {
+    return trailSaved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_RegisteringName value)? registeringName,
+    TResult? Function(_NameRegistered value)? nameRegistered,
+    TResult? Function(_StartPath value)? startPath,
+    TResult? Function(_UpdatePath value)? updatePath,
+    TResult? Function(_TaxonAdded value)? taxonAdded,
+    TResult? Function(_AddPicStart value)? addPicStart,
+    TResult? Function(_AddPicLoading value)? addPicLoading,
+    TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
+  }) {
+    return trailSaved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_TaxonAdded value)? taxonAdded,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
+    required TResult orElse(),
+  }) {
+    if (trailSaved != null) {
+      return trailSaved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TrailSaved implements CreateState {
+  const factory _TrailSaved() = _$_TrailSaved;
 }

@@ -127,7 +127,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
           taxonRegistered: (occurrences) {
             emit(CreateState.taxonAdded(occurrences));
           },
-          saveTrail: (trail) {
+          saveTrail: (trail) async {
+            emit(const CreateState.savingTrail());
             if (trail.path.coordinates.isNotEmpty) {
               trail = trail.copyWith(
                 position: SavePosition(
@@ -135,7 +136,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                     end: trail.path.coordinates.last),
               );
             }
-            trailRepo.saveTrail(trail);
+            await trailRepo.saveTrail(trail);
+            emit(const CreateState.trailSaved());
           },
           orElse: () {});
     });

@@ -57,7 +57,8 @@ class TrailApiClient extends APIClient {
     }
   }
 
-  saveTrail(CreateTrail trail) async {
+  Future<bool> saveTrail(CreateTrail trail) async {
+    return true;
     //print('trail ::: ${trail.toJson()}');
     /*final response = await httpClient.post(Uri.parse('$baseUrl/trail/'), body: jsonEncode(trail.toJson()));
     if (response.statusCode == 200) {

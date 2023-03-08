@@ -18,7 +18,7 @@ class TrailRepo {
     return trail;
   }
 
-  saveTrail(CreateTrail trail) async {
-    await trailApiClient.saveTrail(trail);
+  Future<bool> saveTrail(CreateTrail trail) async {
+    return await trailApiClient.saveTrail(trail);
   }
 }
