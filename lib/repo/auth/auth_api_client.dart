@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:smartflore/models/user/user_model.dart';
 import 'package:smartflore/repo/api_client.dart';
@@ -26,14 +27,15 @@ class AuthApiClient extends APIClient {
   }
 
   dynamic _returnResponse(Response response) {
-    print('>>>>_returnResponse ${response.statusCode}');
-    print('>>>>_returnResponse ${response.body}');
+    debugPrint('>>>>_returnResponse ${response.statusCode}');
+    debugPrint('>>>>_returnResponse ${response.body}');
     switch (response.statusCode) {
       case 200:
         final data = jsonDecode(response.body);
         final header = jsonEncode(response.headers).toString();
 
-        print('>>>> header == $header');
+        debugPrint('>>>> header == $header');
+        debugPrint('>>>> data == $data');
         // return trailList;
 
         return '';
