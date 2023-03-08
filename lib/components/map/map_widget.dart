@@ -49,7 +49,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   }
 
   void setMapMode(MapMode mapMode) {
-    print('====mapMode $mapMode');
     if (this.mapMode != mapMode) {
       setState(() {
         this.mapMode = mapMode;
@@ -114,7 +113,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    print('=== mapMode $mapMode');
     return MultiBlocListener(
       listeners: [
         BlocListener<GeolocationBloc, GeolocationState>(
@@ -162,7 +160,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           listener: (context, state) {
             state.maybeWhen(
                 start: () {
-                  print('====:::: start');
                   setState(() {
                     mapMode = MapMode.create;
                     createPath = null;
@@ -170,7 +167,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                   });
                 },
                 updatePath: (Path path) {
-                  print('========UPDATE PATH ${path.coordinates.length}');
                   setState(() {
                     createPath = path;
                   });
@@ -390,12 +386,6 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   }
 
   List<Widget> setupCreateMode() {
-    print('=========U : $createPath');
-
-    if (createPath != null) {
-      print('===========Update = ${createPath!.coordinates.length}');
-    }
-
     return [
       PolylineLayer(
           polylineCulling: true,

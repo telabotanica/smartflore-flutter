@@ -51,9 +51,7 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
           // REGISTER LOCATION
           registerLocation: () {
             //listen location stream
-            print('registerLocation ::: ====');
             geolocationBloc.stream.listen((event) {
-              print('geolocationBloc ===== $event');
               if (!pauseRecording) {
                 event.whenOrNull(locationUpdate: (Position position) {
                   DateTime now = DateTime.now();
@@ -65,7 +63,6 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                     if (lastRecordPosition == null) {
                       Path? registerPath = recordPos(currentPos, now);
                       if (registerPath != null) {
-                        print('=====-------------- emit 1');
                         add(CreateEvent.updatePath(registerPath));
                       }
                     } else {
@@ -76,7 +73,6 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                       if (meter > 2) {
                         Path? registerPath = recordPos(currentPos, now);
                         if (registerPath != null) {
-                          print('=====-------------- emit next');
                           add(CreateEvent.updatePath(registerPath));
                         }
                       }
@@ -87,7 +83,6 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
             });
           },
           updatePath: (path) {
-            print('=====EMIT UPDATEPATH ${path.coordinates.length}');
             emit(CreateState.updatePath(path));
           },
           // PAUSE REGISTER LOCATION
@@ -160,11 +155,9 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
   }
 
   Path? recordPos(LatLng currentPos, DateTime now) {
-    print('recordPos ====RecordPos');
     lastRecordPositionTime = now;
     lastRecordPosition = currentPos;
     CreateTrail? currentTrail = createTrailBox.get('current');
-    print('recordPos ==== currentTrial  : ${(currentTrail != null)}');
     if (currentTrail != null) {
       List<LatLng> coordinates = currentTrail.path.coordinates.toList();
       coordinates.add(currentPos);
@@ -173,8 +166,6 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
 
       createTrailBox.put('current', updatedTrail);
 
-      print('recordPos ===== ${path.coordinates.length}');
-      //add(CreateEvent.updatePath(path));
       return path;
     }
     return null;
