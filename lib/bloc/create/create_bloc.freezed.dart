@@ -2081,6 +2081,7 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -2096,6 +2097,7 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -2111,6 +2113,7 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -2127,6 +2130,7 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -2142,6 +2146,7 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -2157,6 +2162,7 @@ mixin _$CreateState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -2228,6 +2234,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -2246,6 +2253,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -2264,6 +2272,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -2286,6 +2295,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -2304,6 +2314,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -2322,6 +2333,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -2343,6 +2355,168 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements CreateState {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$$_StartTrailCopyWith<$Res> {
+  factory _$$_StartTrailCopyWith(
+          _$_StartTrail value, $Res Function(_$_StartTrail) then) =
+      __$$_StartTrailCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_StartTrailCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$_StartTrail>
+    implements _$$_StartTrailCopyWith<$Res> {
+  __$$_StartTrailCopyWithImpl(
+      _$_StartTrail _value, $Res Function(_$_StartTrail) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_StartTrail implements _StartTrail {
+  const _$_StartTrail();
+
+  @override
+  String toString() {
+    return 'CreateState.start()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_StartTrail);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() start,
+    required TResult Function() registeringName,
+    required TResult Function(String name) nameRegistered,
+    required TResult Function() startPath,
+    required TResult Function(Path path) updatePath,
+    required TResult Function(List<Occurrence> occurrences) taxonAdded,
+    required TResult Function() addPicStart,
+    required TResult Function() addPicLoading,
+    required TResult Function() addPicError,
+    required TResult Function() savingTrail,
+    required TResult Function() trailSaved,
+  }) {
+    return start();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? start,
+    TResult? Function()? registeringName,
+    TResult? Function(String name)? nameRegistered,
+    TResult? Function()? startPath,
+    TResult? Function(Path path)? updatePath,
+    TResult? Function(List<Occurrence> occurrences)? taxonAdded,
+    TResult? Function()? addPicStart,
+    TResult? Function()? addPicLoading,
+    TResult? Function()? addPicError,
+    TResult? Function()? savingTrail,
+    TResult? Function()? trailSaved,
+  }) {
+    return start?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? start,
+    TResult Function()? registeringName,
+    TResult Function(String name)? nameRegistered,
+    TResult Function()? startPath,
+    TResult Function(Path path)? updatePath,
+    TResult Function(List<Occurrence> occurrences)? taxonAdded,
+    TResult Function()? addPicStart,
+    TResult Function()? addPicLoading,
+    TResult Function()? addPicError,
+    TResult Function()? savingTrail,
+    TResult Function()? trailSaved,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
+    required TResult Function(_RegisteringName value) registeringName,
+    required TResult Function(_NameRegistered value) nameRegistered,
+    required TResult Function(_StartPath value) startPath,
+    required TResult Function(_UpdatePath value) updatePath,
+    required TResult Function(_TaxonAdded value) taxonAdded,
+    required TResult Function(_AddPicStart value) addPicStart,
+    required TResult Function(_AddPicLoading value) addPicLoading,
+    required TResult Function(_AddPicError value) addPicError,
+    required TResult Function(_SavingTrail value) savingTrail,
+    required TResult Function(_TrailSaved value) trailSaved,
+  }) {
+    return start(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
+    TResult? Function(_RegisteringName value)? registeringName,
+    TResult? Function(_NameRegistered value)? nameRegistered,
+    TResult? Function(_StartPath value)? startPath,
+    TResult? Function(_UpdatePath value)? updatePath,
+    TResult? Function(_TaxonAdded value)? taxonAdded,
+    TResult? Function(_AddPicStart value)? addPicStart,
+    TResult? Function(_AddPicLoading value)? addPicLoading,
+    TResult? Function(_AddPicError value)? addPicError,
+    TResult? Function(_SavingTrail value)? savingTrail,
+    TResult? Function(_TrailSaved value)? trailSaved,
+  }) {
+    return start?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
+    TResult Function(_RegisteringName value)? registeringName,
+    TResult Function(_NameRegistered value)? nameRegistered,
+    TResult Function(_StartPath value)? startPath,
+    TResult Function(_UpdatePath value)? updatePath,
+    TResult Function(_TaxonAdded value)? taxonAdded,
+    TResult Function(_AddPicStart value)? addPicStart,
+    TResult Function(_AddPicLoading value)? addPicLoading,
+    TResult Function(_AddPicError value)? addPicError,
+    TResult Function(_SavingTrail value)? savingTrail,
+    TResult Function(_TrailSaved value)? trailSaved,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StartTrail implements CreateState {
+  const factory _StartTrail() = _$_StartTrail;
 }
 
 /// @nodoc
@@ -2384,6 +2558,7 @@ class _$_RegisteringName implements _RegisteringName {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -2402,6 +2577,7 @@ class _$_RegisteringName implements _RegisteringName {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -2420,6 +2596,7 @@ class _$_RegisteringName implements _RegisteringName {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -2442,6 +2619,7 @@ class _$_RegisteringName implements _RegisteringName {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -2460,6 +2638,7 @@ class _$_RegisteringName implements _RegisteringName {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -2478,6 +2657,7 @@ class _$_RegisteringName implements _RegisteringName {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -2566,6 +2746,7 @@ class _$_NameRegistered implements _NameRegistered {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -2584,6 +2765,7 @@ class _$_NameRegistered implements _NameRegistered {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -2602,6 +2784,7 @@ class _$_NameRegistered implements _NameRegistered {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -2624,6 +2807,7 @@ class _$_NameRegistered implements _NameRegistered {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -2642,6 +2826,7 @@ class _$_NameRegistered implements _NameRegistered {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -2660,6 +2845,7 @@ class _$_NameRegistered implements _NameRegistered {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -2727,6 +2913,7 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -2745,6 +2932,7 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -2763,6 +2951,7 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -2785,6 +2974,7 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -2803,6 +2993,7 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -2821,6 +3012,7 @@ class _$_StartPath implements _StartPath {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -2919,6 +3111,7 @@ class _$_UpdatePath implements _UpdatePath {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -2937,6 +3130,7 @@ class _$_UpdatePath implements _UpdatePath {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -2955,6 +3149,7 @@ class _$_UpdatePath implements _UpdatePath {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -2977,6 +3172,7 @@ class _$_UpdatePath implements _UpdatePath {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -2995,6 +3191,7 @@ class _$_UpdatePath implements _UpdatePath {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -3013,6 +3210,7 @@ class _$_UpdatePath implements _UpdatePath {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -3114,6 +3312,7 @@ class _$_TaxonAdded implements _TaxonAdded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -3132,6 +3331,7 @@ class _$_TaxonAdded implements _TaxonAdded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -3150,6 +3350,7 @@ class _$_TaxonAdded implements _TaxonAdded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -3172,6 +3373,7 @@ class _$_TaxonAdded implements _TaxonAdded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -3190,6 +3392,7 @@ class _$_TaxonAdded implements _TaxonAdded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -3208,6 +3411,7 @@ class _$_TaxonAdded implements _TaxonAdded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -3275,6 +3479,7 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -3293,6 +3498,7 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -3311,6 +3517,7 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -3333,6 +3540,7 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -3351,6 +3559,7 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -3369,6 +3578,7 @@ class _$_AddPicStart implements _AddPicStart {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -3431,6 +3641,7 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -3449,6 +3660,7 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -3467,6 +3679,7 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -3489,6 +3702,7 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -3507,6 +3721,7 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -3525,6 +3740,7 @@ class _$_AddPicLoading implements _AddPicLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -3587,6 +3803,7 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -3605,6 +3822,7 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -3623,6 +3841,7 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -3645,6 +3864,7 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -3663,6 +3883,7 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -3681,6 +3902,7 @@ class _$_AddPicError implements _AddPicError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -3743,6 +3965,7 @@ class _$_SavingTrail implements _SavingTrail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -3761,6 +3984,7 @@ class _$_SavingTrail implements _SavingTrail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -3779,6 +4003,7 @@ class _$_SavingTrail implements _SavingTrail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -3801,6 +4026,7 @@ class _$_SavingTrail implements _SavingTrail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -3819,6 +4045,7 @@ class _$_SavingTrail implements _SavingTrail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -3837,6 +4064,7 @@ class _$_SavingTrail implements _SavingTrail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,
@@ -3899,6 +4127,7 @@ class _$_TrailSaved implements _TrailSaved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() start,
     required TResult Function() registeringName,
     required TResult Function(String name) nameRegistered,
     required TResult Function() startPath,
@@ -3917,6 +4146,7 @@ class _$_TrailSaved implements _TrailSaved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? start,
     TResult? Function()? registeringName,
     TResult? Function(String name)? nameRegistered,
     TResult? Function()? startPath,
@@ -3935,6 +4165,7 @@ class _$_TrailSaved implements _TrailSaved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? start,
     TResult Function()? registeringName,
     TResult Function(String name)? nameRegistered,
     TResult Function()? startPath,
@@ -3957,6 +4188,7 @@ class _$_TrailSaved implements _TrailSaved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_StartTrail value) start,
     required TResult Function(_RegisteringName value) registeringName,
     required TResult Function(_NameRegistered value) nameRegistered,
     required TResult Function(_StartPath value) startPath,
@@ -3975,6 +4207,7 @@ class _$_TrailSaved implements _TrailSaved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_StartTrail value)? start,
     TResult? Function(_RegisteringName value)? registeringName,
     TResult? Function(_NameRegistered value)? nameRegistered,
     TResult? Function(_StartPath value)? startPath,
@@ -3993,6 +4226,7 @@ class _$_TrailSaved implements _TrailSaved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_StartTrail value)? start,
     TResult Function(_RegisteringName value)? registeringName,
     TResult Function(_NameRegistered value)? nameRegistered,
     TResult Function(_StartPath value)? startPath,

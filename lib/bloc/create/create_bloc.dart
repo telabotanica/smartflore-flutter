@@ -33,6 +33,11 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
       : super(const _Initial()) {
     on<CreateEvent>((event, emit) {
       event.maybeWhen(
+          start: () {
+            createTrailBox.clear();
+            pauseRecording = false;
+            emit(const CreateState.start());
+          },
           // SAVE TITLE
           saveTitle: (String name) {
             emit(const CreateState.registeringName());
@@ -46,7 +51,9 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
           // REGISTER LOCATION
           registerLocation: () {
             //listen location stream
+            print('registerLocation ::: ====');
             geolocationBloc.stream.listen((event) {
+              print('geolocationBloc ===== $event');
               if (!pauseRecording) {
                 event.whenOrNull(locationUpdate: (Position position) {
                   DateTime now = DateTime.now();
@@ -56,14 +63,22 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                     LatLng currentPos =
                         LatLng(position.latitude, position.longitude);
                     if (lastRecordPosition == null) {
-                      recordPos(currentPos, now, emit);
+                      Path? registerPath = recordPos(currentPos, now);
+                      if (registerPath != null) {
+                        print('=====-------------- emit 1');
+                        add(CreateEvent.updatePath(registerPath));
+                      }
                     } else {
                       Distance distance = const Distance();
 
                       final double meter =
                           distance(currentPos, lastRecordPosition!);
                       if (meter > 2) {
-                        recordPos(currentPos, now, emit);
+                        Path? registerPath = recordPos(currentPos, now);
+                        if (registerPath != null) {
+                          print('=====-------------- emit next');
+                          add(CreateEvent.updatePath(registerPath));
+                        }
                       }
                     }
                   }
@@ -71,9 +86,10 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
               }
             });
           },
-          updatePath: ((path) {
+          updatePath: (path) {
+            print('=====EMIT UPDATEPATH ${path.coordinates.length}');
             emit(CreateState.updatePath(path));
-          }),
+          },
           // PAUSE REGISTER LOCATION
           pause: () {
             pauseRecording = true;
@@ -143,19 +159,24 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
     });
   }
 
-  void recordPos(LatLng currentPos, DateTime now, emit) {
+  Path? recordPos(LatLng currentPos, DateTime now) {
+    print('recordPos ====RecordPos');
     lastRecordPositionTime = now;
     lastRecordPosition = currentPos;
     CreateTrail? currentTrail = createTrailBox.get('current');
+    print('recordPos ==== currentTrial  : ${(currentTrail != null)}');
     if (currentTrail != null) {
       List<LatLng> coordinates = currentTrail.path.coordinates.toList();
-
       coordinates.add(currentPos);
       Path path = Path(type: currentTrail.path.type, coordinates: coordinates);
       CreateTrail updatedTrail = currentTrail.copyWith(path: path);
 
       createTrailBox.put('current', updatedTrail);
-      add(CreateEvent.updatePath(path));
+
+      print('recordPos ===== ${path.coordinates.length}');
+      //add(CreateEvent.updatePath(path));
+      return path;
     }
+    return null;
   }
 }

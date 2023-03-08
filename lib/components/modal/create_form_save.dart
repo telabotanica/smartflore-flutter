@@ -4,9 +4,11 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:group_button/group_button.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/create/create_bloc.dart';
+import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/form/checkbox_with_label.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
+import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/modal.dart';
 import 'package:smartflore/components/modal/create_confirm.dart';
 import 'package:smartflore/components/modal/modal_title.dart';
@@ -96,21 +98,19 @@ class _CreateEndModalState extends State<CreateEndModal> {
                   : (isSaved)
                       ? 'Sentier sauvegardé !'
                       : 'Voulez vous enregistrer votre sentier ?',
-              onClose: widget.onClose,
+              onClose: () {
+                if (isSaved || isSaving) {
+                  BlocProvider.of<MapBloc>(context)
+                      .add(const MapEvent.changeMapMode(MapMode.overview));
+                }
+                if (widget.onClose != null) widget.onClose!();
+              },
             ),
             const SizedBox(height: 16),
             if (isSaving)
               const CircularProgressIndicator()
             else if (isSaved)
-              Html(
-                data:
-                    'Veuillez vous rendre sur votre <a href="https://www.tela-botanica.org/smart-form/">tableau de bord</a> afin de le compléter et le publier',
-                onLinkTap: (url, renderContext, attributes, element) {
-                  if (url != null) {
-                    _launchUrl(url, context);
-                  }
-                },
-              )
+              ...buildSaveConfirm()
             else
               ...buildTrail(createTrail!)
           ],
@@ -152,6 +152,33 @@ class _CreateEndModalState extends State<CreateEndModal> {
               .bodyText2
               ?.copyWith(color: Colors.black)),
     );
+  }
+
+  List<Widget> buildSaveConfirm() {
+    return [
+      Html(
+        data:
+            'Veuillez vous rendre sur votre <a href="https://www.tela-botanica.org/smart-form/">tableau de bord</a> afin de le compléter et le publier',
+        onLinkTap: (url, renderContext, attributes, element) {
+          if (url != null) {
+            _launchUrl(url, context);
+          }
+        },
+      ),
+      const SizedBox(height: 20),
+      Center(
+        child: SizedBox(
+            height: 46,
+            width: 155,
+            child: RoundedButton(
+                label: 'Fermer',
+                onPress: () {
+                  BlocProvider.of<MapBloc>(context)
+                      .add(const MapEvent.changeMapMode(MapMode.overview));
+                  Navigator.of(context).pop();
+                })),
+      ),
+    ];
   }
 
   List<Widget> buildTrail(CreateTrail createTrail) {

@@ -49,6 +49,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   }
 
   void setMapMode(MapMode mapMode) {
+    print('====mapMode $mapMode');
     if (this.mapMode != mapMode) {
       setState(() {
         this.mapMode = mapMode;
@@ -113,6 +114,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    print('=== mapMode $mapMode');
     return MultiBlocListener(
       listeners: [
         BlocListener<GeolocationBloc, GeolocationState>(
@@ -146,18 +148,29 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         BlocListener<TrailsBloc, TrailsDataState>(
           listener: (context, state) {
             if (state is TrailsDataLoadedState) {
-              setMapMode(MapMode.overview);
-              setState(() {
+              if (mapMode == MapMode.overview) {
+                setState(() {
+                  trailsData = state.trails;
+                });
+              } else {
                 trailsData = state.trails;
-              });
+              }
             }
           },
         ),
         BlocListener<CreateBloc, CreateState>(
           listener: (context, state) {
-            //print('>>> $state');
             state.maybeWhen(
+                start: () {
+                  print('====:::: start');
+                  setState(() {
+                    mapMode = MapMode.create;
+                    createPath = null;
+                    createOccurrences = null;
+                  });
+                },
                 updatePath: (Path path) {
+                  print('========UPDATE PATH ${path.coordinates.length}');
                   setState(() {
                     createPath = path;
                   });
@@ -377,6 +390,12 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   }
 
   List<Widget> setupCreateMode() {
+    print('=========U : $createPath');
+
+    if (createPath != null) {
+      print('===========Update = ${createPath!.coordinates.length}');
+    }
+
     return [
       PolylineLayer(
           polylineCulling: true,

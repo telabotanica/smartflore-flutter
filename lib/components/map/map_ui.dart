@@ -157,6 +157,7 @@ class _MapUIState extends State<MapUI> {
                                 .add(const CreateEvent.pause());
                             showDialog(
                                 context: context,
+                                barrierDismissible: false,
                                 builder: (context) =>
                                     Modal(CreateEndModal(onClose: () {
                                       BlocProvider.of<CreateBloc>(context)

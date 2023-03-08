@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
@@ -35,8 +36,11 @@ class TrailsList extends StatelessWidget {
           Center(
             child: OutlinedButton.icon(
               onPressed: () {
+                BlocProvider.of<CreateBloc>(context)
+                    .add(const CreateEvent.start());
                 BlocProvider.of<MapBloc>(context)
                     .add(const MapEvent.changeMapMode(MapMode.create));
+
                 showDialog(
                     context: context,
                     builder: (context) => Modal(CreateFormNameModal(
