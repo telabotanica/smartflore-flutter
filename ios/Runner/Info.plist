@@ -66,5 +66,7 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
 		<string>Used when creating a botanic trail to add pictures of taxons added to the trail</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

@@ -3,7 +3,7 @@
     "placeholders": {
       "count": {
         "format": "decimalPattern",
-        "type": "double"
+        "type": "num"
       }
     }
   },
