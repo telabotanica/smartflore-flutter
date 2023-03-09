@@ -107,10 +107,18 @@ class _TrailItemState extends State<TrailItem> {
                                       barrierColor:
                                           Colors.black.withOpacity(0.1));
                                 },
-                                child: Icon(SmartFloreIcons.dot_3,
-                                    size: 22,
-                                    color:
-                                        Theme.of(context).colorScheme.primary))
+                                child: Container(
+                                  color: Colors.transparent,
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 0, 0, 20),
+                                    child: Icon(SmartFloreIcons.dot_3,
+                                        size: 22,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  ),
+                                ))
                             : Container(),
                   ],
                 ),
