@@ -174,7 +174,7 @@ class _TaxonScreenState extends State<TaxonScreen>
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               text: TextSpan(
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyLarge,
                   children: [
                     TextSpan(
                         text: (widget.vernacularName != '')

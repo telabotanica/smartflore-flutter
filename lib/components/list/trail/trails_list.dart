@@ -56,10 +56,10 @@ class TrailsList extends StatelessWidget {
               icon: Icon(
                 Icons.add_circle_outline,
                 size: 18,
-                color: Theme.of(context).textTheme.bodyText1?.color,
+                color: Theme.of(context).textTheme.bodyLarge?.color,
               ),
-              label: Text(AppLocalizations.of(context)!.btn_create_trail,
-                  style: Theme.of(context).textTheme.bodyText1),
+              label: Text(AppLocalizations.of(context).btn_create_trail,
+                  style: Theme.of(context).textTheme.bodyLarge),
             ),
           ),
           SizedBox(
@@ -67,8 +67,8 @@ class TrailsList extends StatelessWidget {
               height: 42,
               child: SvgPicture.asset('assets/graphics/wait.svg')),
           const SizedBox(height: 12),
-          Text(AppLocalizations.of(context)!.wip,
-              style: Theme.of(context).textTheme.headline4!.copyWith(
+          Text(AppLocalizations.of(context).wip,
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.bold)),
           const SizedBox(height: 150),
@@ -92,9 +92,9 @@ class TrailsList extends StatelessWidget {
                 icon: Icon(
                   SmartFloreIcons.qrcode,
                   size: 18,
-                  color: Theme.of(context).textTheme.bodyText1?.color,
+                  color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
-                label: Text(AppLocalizations.of(context)!.btn_scan_trail, style: Theme.of(context).textTheme.bodyText1),
+                label: Text(AppLocalizations.of(context).btn_scan_trail, style: Theme.of(context).textTheme.bodyLarge),
               ),
             ),*/
               ),
@@ -105,7 +105,7 @@ class TrailsList extends StatelessWidget {
             if (state is TrailsDataInitialState) {
               return const CircularProgressIndicator();
             } else if (state is TrailsDataErrorState) {
-              return Text(AppLocalizations.of(context)!.error_API,
+              return Text(AppLocalizations.of(context).error_API,
                   style: const TextStyle(color: Colors.red));
             } else if (state is TrailsDataLoadedState) {
               return Expanded(

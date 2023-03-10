@@ -136,12 +136,12 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
                           tabs: [
                             Tab(
                                 child: Text(
-                              AppLocalizations.of(context)!.btn_all_trail,
+                              AppLocalizations.of(context).btn_all_trail,
                               style: const TextStyle(fontSize: 16),
                             )),
                             Tab(
                                 child: Text(
-                                    AppLocalizations.of(context)!.btn_my_trail,
+                                    AppLocalizations.of(context).btn_my_trail,
                                     style: const TextStyle(fontSize: 16)))
                           ]),
                     ),

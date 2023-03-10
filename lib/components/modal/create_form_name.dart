@@ -55,7 +55,7 @@ class _CreateFormNameModalState extends State<CreateFormNameModal> {
               child: TextFieldWithTitle(
                 title: 'Nom du sentier',
                 index: 0,
-                titleStyle: Theme.of(context).textTheme.headline6,
+                titleStyle: Theme.of(context).textTheme.titleLarge,
                 onSaved: (value) {
                   textFieldsValue.add(value);
                 },

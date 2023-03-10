@@ -42,8 +42,8 @@ class SettingsScreen extends StatelessWidget {
             elevation: 10,
             centerTitle: false,
             titleSpacing: 0.0,
-            title: Text(AppLocalizations.of(context)!.params,
-                style: Theme.of(context).textTheme.bodyText1)),
+            title: Text(AppLocalizations.of(context).params,
+                style: Theme.of(context).textTheme.bodyLarge)),
         body: ListView.builder(
           padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
           itemCount: listItems.length,
@@ -73,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(25, 20, 25, 20),
                       child: Text(
                         listItems[index].label,
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     )));
           },

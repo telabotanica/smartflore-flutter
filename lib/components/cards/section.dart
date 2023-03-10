@@ -37,7 +37,8 @@ class Section extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
           ),
           const SizedBox(width: 10),
-          Text(sectionData.title, style: Theme.of(context).textTheme.headline3)
+          Text(sectionData.title,
+              style: Theme.of(context).textTheme.displaySmall)
         ]),
         Html(
           data: sectionData.text,

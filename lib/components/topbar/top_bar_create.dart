@@ -51,7 +51,7 @@ class TopBarCreate extends StatelessWidget {
                       child: Text(title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.bodyText1),
+                          style: Theme.of(context).textTheme.bodyLarge),
                     ),
                   ],
                 ),
@@ -68,7 +68,8 @@ class TopBarCreate extends StatelessWidget {
                     const SizedBox(
                       width: 6,
                     ),
-                    Text(distance, style: Theme.of(context).textTheme.bodyText2)
+                    Text(distance,
+                        style: Theme.of(context).textTheme.bodyMedium)
                   ],
                 ),
               )

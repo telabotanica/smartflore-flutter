@@ -117,7 +117,7 @@ class _CreateScreenState extends State<CreateScreen> {
               centerTitle: false,
               titleSpacing: 0.0,
               title: Text('Ajouter un individu',
-                  style: Theme.of(context).textTheme.bodyText1)),
+                  style: Theme.of(context).textTheme.bodyLarge)),
           body: Stack(
             children: [
               selectedTaxon == null
@@ -235,10 +235,10 @@ class _CreateScreenState extends State<CreateScreen> {
             title: 'Espèce',
             hintText: 'Nom de l\'espèce',
             keyboardType: TextInputType.emailAddress,
-            titleStyle: Theme.of(context).textTheme.headline6,
+            titleStyle: Theme.of(context).textTheme.titleLarge,
             hintStyle: Theme.of(context)
                 .textTheme
-                .headline6
+                .titleLarge
                 ?.copyWith(color: Colors.black.withOpacity(0.4)),
             textController: textController,
             onSaved: (value) {},
@@ -269,7 +269,7 @@ class _CreateScreenState extends State<CreateScreen> {
               padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
               child: Text(
                 'Espèce',
-                style: theme.textTheme.headline6,
+                style: theme.textTheme.titleLarge,
               ),
             ),
             Container(
@@ -293,7 +293,7 @@ class _CreateScreenState extends State<CreateScreen> {
                               ? Text(selectedTaxon!.bdtfx!.scientificName ?? '',
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
-                                  style: theme.textTheme.bodyText1!
+                                  style: theme.textTheme.bodyLarge!
                                       .copyWith(fontStyle: FontStyle.italic))
                               : Container(),
                           selectedTaxon!.bdtfx!.commonName != null &&
@@ -301,7 +301,7 @@ class _CreateScreenState extends State<CreateScreen> {
                               ? Text(selectedTaxon!.bdtfx!.commonName!,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
-                                  style: theme.textTheme.bodyText2)
+                                  style: theme.textTheme.bodyMedium)
                               : Container()
                         ],
                       ),
@@ -360,7 +360,7 @@ class _CreateScreenState extends State<CreateScreen> {
                   padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
                   child: Text(
                     'Galerie Smart\'Flore',
-                    style: theme.textTheme.headline6,
+                    style: theme.textTheme.titleLarge,
                   ),
                 )
               : Container(),

@@ -49,8 +49,8 @@ class _TopBarCreateUIState extends State<TopBarCreateUI> {
                       isRecording: true,
                       distance: Numbers.convertToKilo(
                           distance,
-                          AppLocalizations.of(context)!.distance_m,
-                          AppLocalizations.of(context)!.distance_km)))),
+                          AppLocalizations.of(context).distance_m,
+                          AppLocalizations.of(context).distance_km)))),
         )),
       ),
     );

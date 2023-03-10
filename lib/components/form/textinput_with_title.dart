@@ -56,7 +56,7 @@ class TextFieldWithTitle extends StatelessWidget {
           (isMandatory)
               ? Text('Obligatoire',
                   textAlign: TextAlign.right,
-                  style: Theme.of(context).textTheme.bodyText2)
+                  style: Theme.of(context).textTheme.bodyMedium)
               : Container()
         ],
       ),

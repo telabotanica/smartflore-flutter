@@ -47,8 +47,8 @@ class _TrailItemState extends State<TrailItem> {
   Widget build(BuildContext context) {
     String distance = Numbers.convertToKilo(
         widget.length.toDouble(),
-        AppLocalizations.of(context)!.distance_m,
-        AppLocalizations.of(context)!.distance_km);
+        AppLocalizations.of(context).distance_m,
+        AppLocalizations.of(context).distance_km);
     return Padding(
       padding: EdgeInsets.fromLTRB(0, (widget.index == 0) ? 0 : 20, 0, 20),
       child: Row(
@@ -85,7 +85,7 @@ class _TrailItemState extends State<TrailItem> {
                         child: Text(widget.title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodyText1)),
+                            style: Theme.of(context).textTheme.bodyLarge)),
                     const SizedBox(width: 8),
                     (widget.isInteractive)
                         ? Icon(
@@ -141,7 +141,8 @@ class _TrailItemState extends State<TrailItem> {
                                 ),
                                 const SizedBox(width: 5),
                                 Text(distance,
-                                    style: Theme.of(context).textTheme.caption),
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall),
                               ],
                             ),
                             const SizedBox(height: 4),
@@ -180,9 +181,9 @@ class _TrailItemState extends State<TrailItem> {
           const SizedBox(width: 5),
           Flexible(
             child: Text(
-              AppLocalizations.of(context)!
+              AppLocalizations.of(context)
                   .count_observation(widget.nbOccurence),
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -215,10 +216,10 @@ class _TrailItemState extends State<TrailItem> {
                       position.longitude);
 
                   return AutoSizeText(
-                    '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
+                    '${AppLocalizations.of(context).to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context).distance_m, AppLocalizations.of(context).distance_km)}',
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText2!
+                        .bodyMedium!
                         .copyWith(color: Theme.of(context).colorScheme.primary),
                     maxLines: 1,
                   );

@@ -37,13 +37,14 @@ class TopBarTrail extends StatelessWidget {
                             Text(title,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context).textTheme.bodyText1),
+                                style: Theme.of(context).textTheme.bodyLarge),
                             Padding(
                               padding: const EdgeInsets.only(top: 19.0),
                               child: Text(author,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context).textTheme.bodyText2),
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium),
                             )
                           ]),
                         ),

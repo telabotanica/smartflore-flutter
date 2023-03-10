@@ -67,10 +67,10 @@ class TaxonCover extends StatelessWidget {
                   onPressed: () {
                     handleOnPress(context);
                   },
-                  child: Text(AppLocalizations.of(context)!.see_taxon,
+                  child: Text(AppLocalizations.of(context).see_taxon,
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
+                          .bodyLarge!
                           .copyWith(color: Colors.white)),
                 ),
               ),
@@ -115,7 +115,7 @@ class TaxonCover extends StatelessWidget {
                     text: TextSpan(
                         style: Theme.of(context)
                             .textTheme
-                            .headline4!
+                            .headlineMedium!
                             .copyWith(color: Colors.white),
                         children: [
                           TextSpan(
@@ -140,10 +140,10 @@ class TaxonCover extends StatelessWidget {
                           position.longitude);
 
                       return Text(
-                        '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
+                        '${AppLocalizations.of(context).to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context).distance_m, AppLocalizations.of(context).distance_km)}',
                         style: Theme.of(context)
                             .textTheme
-                            .bodyText2!
+                            .bodyMedium!
                             .copyWith(color: Colors.white),
                       );
                     }, orElse: () {

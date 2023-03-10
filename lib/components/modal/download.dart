@@ -59,7 +59,7 @@ class _DownloadCardState extends State<DownloadCard> {
       },
       child: Column(children: [
         ModalTitle(
-            title: AppLocalizations.of(context)!.trail_options,
+            title: AppLocalizations.of(context).trail_options,
             onClose: () {
               Navigator.of(context).pop();
             }),
@@ -82,13 +82,13 @@ class _DownloadCardState extends State<DownloadCard> {
                     children: [
                       const DownloadIcon(),
                       const SizedBox(width: 6),
-                      Text(AppLocalizations.of(context)!.offline,
-                          style: Theme.of(context).textTheme.headline6),
+                      Text(AppLocalizations.of(context).offline,
+                          style: Theme.of(context).textTheme.titleLarge),
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text(AppLocalizations.of(context)!.offline_desc,
-                      style: Theme.of(context).textTheme.caption)
+                  Text(AppLocalizations.of(context).offline_desc,
+                      style: Theme.of(context).textTheme.bodySmall)
                 ],
               ),
             ),

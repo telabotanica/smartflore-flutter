@@ -62,7 +62,7 @@ class SpeciesItem extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context)
                 .textTheme
-                .bodyText2
+                .bodyMedium
                 ?.copyWith(fontStyle: FontStyle.italic)),
         const SizedBox(height: 5)
       ];
@@ -71,14 +71,14 @@ class SpeciesItem extends StatelessWidget {
         Text(title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.bodyText1),
+            style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(height: 2),
         Text(titleLatin!,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context)
                 .textTheme
-                .bodyText2
+                .bodyMedium
                 ?.copyWith(fontStyle: FontStyle.italic)),
         const SizedBox(height: 5),
       ];

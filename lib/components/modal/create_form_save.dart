@@ -124,12 +124,14 @@ class _CreateEndModalState extends State<CreateEndModal> {
 
     if (!await launchUrl(urlURI)) {
       //throw Exception('Could not launch $url');
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => WebViewPage(title: url, url: url),
-        ),
-      );
+      if (context.mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WebViewPage(title: url, url: url),
+          ),
+        );
+      }
     }
   }
 
@@ -149,7 +151,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
       title: Text(state.title,
           style: Theme.of(context)
               .textTheme
-              .bodyText2
+              .bodyMedium
               ?.copyWith(color: Colors.black)),
     );
   }
@@ -196,7 +198,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
       ),
       const SizedBox(height: 20),
       Text('Le sentier est il accessible PMR ?',
-          style: Theme.of(context).textTheme.headline6),
+          style: Theme.of(context).textTheme.titleLarge),
       const SizedBox(height: 8),
       LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
@@ -250,9 +252,9 @@ class _CreateEndModalState extends State<CreateEndModal> {
                         style: (selected)
                             ? Theme.of(context)
                                 .textTheme
-                                .headline6
+                                .titleLarge
                                 ?.copyWith(color: Colors.white)
-                            : Theme.of(context).textTheme.headline6?.copyWith(
+                            : Theme.of(context).textTheme.titleLarge?.copyWith(
                                 color: Theme.of(context).colorScheme.primary)),
                   ),
                 );
@@ -261,7 +263,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
       }),
       const SizedBox(height: 20),
       Text('Quelle est la saison idéale pour observer ce parcours',
-          style: Theme.of(context).textTheme.headline6),
+          style: Theme.of(context).textTheme.titleLarge),
       const SizedBox(height: 8),
       ...bestPeriod.map(buildCheckBox).toList(),
       const SizedBox(height: 20),

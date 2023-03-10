@@ -18,7 +18,7 @@ class ModalTitle extends StatelessWidget {
               textAlign: TextAlign.left,
               style: Theme.of(context)
                   .textTheme
-                  .headline5!
+                  .headlineSmall!
                   .copyWith(color: Theme.of(context).colorScheme.primary),
             ),
           ),

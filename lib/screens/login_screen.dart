@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Theme.of(context).colorScheme.primary,
                           ),
                           Text('Retour',
-                              style: Theme.of(context).textTheme.headline6),
+                              style: Theme.of(context).textTheme.titleLarge),
                         ],
                       ),
                     ),
@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 40),
                 Text("Smart'Flore",
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline1),
+                    style: Theme.of(context).textTheme.displayLarge),
                 buildForm(context)
               ],
             ),
@@ -95,10 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
               title: 'Login',
               hintText: 'example@example.com',
               keyboardType: TextInputType.emailAddress,
-              titleStyle: Theme.of(context).textTheme.headline6,
+              titleStyle: Theme.of(context).textTheme.titleLarge,
               hintStyle: Theme.of(context)
                   .textTheme
-                  .headline6
+                  .titleLarge
                   ?.copyWith(color: Colors.black.withOpacity(0.4)),
               onSaved: (value) {
                 textFieldsValue.add(value);
@@ -111,10 +111,10 @@ class _LoginScreenState extends State<LoginScreen> {
               title: 'Mot de passe',
               hintText: 'password',
               isPassword: true,
-              titleStyle: Theme.of(context).textTheme.headline6,
+              titleStyle: Theme.of(context).textTheme.titleLarge,
               hintStyle: Theme.of(context)
                   .textTheme
-                  .headline6
+                  .titleLarge
                   ?.copyWith(color: Colors.black.withOpacity(0.4)),
               onSaved: (value) {
                 textFieldsValue.add(value);
