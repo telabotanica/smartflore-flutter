@@ -31,7 +31,7 @@ dependencies:
   cached_network_image: ^3.2.0
   camera: ^0.10.0+4
   carousel_slider: ^4.1.1
-  collection: ^1.16.0
+  collection: ^1.17.0
   connectivity_plus: ^3.0.3
   cupertino_icons: ^1.0.2
   envied: ^0.3.0
