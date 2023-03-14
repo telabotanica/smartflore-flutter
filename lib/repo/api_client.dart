@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:smartflore/utils/app.dart';
 
 class APIClient {
@@ -7,5 +9,18 @@ class APIClient {
     if (version != '') {
       version = await AppUtils.getVersionNumber();
     }
+  }
+
+  getHeaders(String? token) async {
+    await getVersion();
+    if (token == null) {
+      return {
+        HttpHeaders.contentTypeHeader: 'application/json',
+      };
+    }
+    return {
+      HttpHeaders.contentTypeHeader: 'application/json',
+      HttpHeaders.authorizationHeader: token,
+    };
   }
 }

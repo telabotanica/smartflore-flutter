@@ -6,7 +6,7 @@ class AuthRepo {
 
   AuthRepo({required this.authApiClient});
 
-  login(AuthLogin user) async {
-    await authApiClient.login(user);
+  Future<AuthenticationResponse> login(AuthLogin user) async {
+    return await authApiClient.login(user);
   }
 }

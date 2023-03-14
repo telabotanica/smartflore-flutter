@@ -18,6 +18,7 @@
   "login_connection": "conexión",
   "login_no_account": "¿Todavía no tiene una cuenta Smart'Flore?",
   "near": "Cerca",
+  "need_login": "Para poder crear sus propios senderos, debe iniciar sesión en su cuenta Smart'Flore",
   "offline": "Modo offline",
   "offline_desc": "Guarde los datos de la ruta en su dispositivo",
   "params": "parámetros",

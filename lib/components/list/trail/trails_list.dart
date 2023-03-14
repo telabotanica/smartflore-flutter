@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:smartflore/bloc/create/create_bloc.dart';
-import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/auth/auth_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
+import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:smartflore/components/map/map_widget.dart';
-import 'package:smartflore/components/modal.dart';
-import 'package:smartflore/components/modal/create_form_name.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
@@ -18,62 +14,36 @@ class TrailsList extends StatelessWidget {
   final TrailsListType trailsListType;
   final Function onPanUpdate;
   final Box<dynamic> savedTrailsBox;
+  final bool isAuth;
   const TrailsList(
       {Key? key,
       required this.controller,
       required this.onPanUpdate,
       this.trailsListType = TrailsListType.allTrails,
-      required this.savedTrailsBox})
+      required this.savedTrailsBox,
+      required this.isAuth})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     if (trailsListType == TrailsListType.myTrails) {
-      return Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: OutlinedButton.icon(
-              onPressed: () {
-                BlocProvider.of<CreateBloc>(context)
-                    .add(const CreateEvent.start());
-                BlocProvider.of<MapBloc>(context)
-                    .add(const MapEvent.changeMapMode(MapMode.create));
-
-                showDialog(
-                    context: context,
-                    builder: (context) => Modal(CreateFormNameModal(
-                            onClose: ({bool leaveCreateMode = false}) {
-                          if (leaveCreateMode) {
-                            BlocProvider.of<MapBloc>(context).add(
-                                const MapEvent.changeMapMode(MapMode.overview));
-                          }
-                          Navigator.of(context).pop();
-                        })),
-                    barrierColor: Colors.black.withOpacity(0.1));
-              },
-              icon: Icon(
-                Icons.add_circle_outline,
-                size: 18,
-                color: Theme.of(context).textTheme.bodyLarge?.color,
-              ),
-              label: Text(AppLocalizations.of(context).btn_create_trail,
-                  style: Theme.of(context).textTheme.bodyLarge),
-            ),
-          ),
-          SizedBox(
-              width: 42,
-              height: 42,
-              child: SvgPicture.asset('assets/graphics/wait.svg')),
-          const SizedBox(height: 12),
-          Text(AppLocalizations.of(context).wip,
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.bold)),
-          const SizedBox(height: 150),
-        ],
-      );
+      return (isAuth == true)
+          ? Container(
+              width: 200,
+              height: 100,
+              color: Colors.green,
+              child: SizedBox(
+                width: 150,
+                height: 46,
+                child: RoundedButton(
+                  label: 'logout',
+                  onPress: () {
+                    BlocProvider.of<AuthBloc>(context)
+                        .add(const AuthEvent.logout());
+                  },
+                ),
+              ))
+          : buildMyTrailLogout(context);
     }
 
     return Column(
@@ -135,6 +105,35 @@ class TrailsList extends StatelessWidget {
             }
           },
         )
+      ],
+    );
+  }
+
+  Widget buildMyTrailLogout(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20.0, 0, 20, 20),
+          child: Text(AppLocalizations.of(context).need_login,
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium!
+                  .copyWith(fontWeight: FontWeight.bold)),
+        ),
+        SizedBox(
+            width: 190,
+            height: 46,
+            child: RoundedButton(
+                label: AppLocalizations.of(context).btn_login,
+                onPress: () {
+                  Navigator.of(context).pushNamed(
+                    '/login',
+                  );
+                })),
+        const SizedBox(height: 150),
       ],
     );
   }

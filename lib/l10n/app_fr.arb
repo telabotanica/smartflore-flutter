@@ -18,6 +18,7 @@
   "login_connection": "Connexion",
   "login_no_account": "Pas encore de compte Smart'Flore",
   "near": "À proximité",
+  "need_login": "Afin de pouvoir créer vos propres sentiers vous devez vous connecter à votre compte Smart’Flore",
   "offline": "Mode Hors ligne",
   "offline_desc": "Sauvegarder la fiche sentier sur votre appareil",
   "params": "Paramètres",

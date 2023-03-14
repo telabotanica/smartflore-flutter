@@ -10,7 +10,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TrailsPanelWidget extends StatefulWidget {
   final bool isDraggable;
-  const TrailsPanelWidget({Key? key, this.isDraggable = true})
+  final bool isAuth;
+  const TrailsPanelWidget(
+      {Key? key, required this.isAuth, this.isDraggable = true})
       : super(key: key);
 
   @override
@@ -170,16 +172,16 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
           physics: const NeverScrollableScrollPhysics(),
           children: [
             TrailsList(
-              controller: scrollController,
-              onPanUpdate: onPanUpdate,
-              savedTrailsBox: savedTrailsBox,
-            ),
+                controller: scrollController,
+                onPanUpdate: onPanUpdate,
+                savedTrailsBox: savedTrailsBox,
+                isAuth: widget.isAuth),
             TrailsList(
-              controller: scrollController,
-              onPanUpdate: onPanUpdate,
-              trailsListType: TrailsListType.myTrails,
-              savedTrailsBox: savedTrailsBox,
-            ),
+                controller: scrollController,
+                onPanUpdate: onPanUpdate,
+                trailsListType: TrailsListType.myTrails,
+                savedTrailsBox: savedTrailsBox,
+                isAuth: widget.isAuth),
           ],
         ));
   }

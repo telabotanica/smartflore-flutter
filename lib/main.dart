@@ -20,6 +20,7 @@ import 'package:smartflore/models/create/create_model.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart' as t;
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
+import 'package:smartflore/models/user/user_model.dart';
 import 'package:smartflore/navigation/gallery_screen_args.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/repo/auth/auth_api_client.dart';
@@ -33,6 +34,8 @@ import 'package:smartflore/repo/trail/trail_api_client.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
 import 'package:smartflore/repo/trails/trails_api_client.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
+import 'package:smartflore/repo/user/user_local_client.dart';
+import 'package:smartflore/repo/user/user_repo.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
 import 'package:smartflore/screens/create/camera_screen.dart';
 import 'package:smartflore/screens/login_screen.dart';
@@ -68,16 +71,26 @@ void main() async {
   Hive.registerAdapter(ConnectivityResultAdapter());
   Hive.registerAdapter(CreateTrailAdapter());
   Hive.registerAdapter(SavePositionAdapter());
+  Hive.registerAdapter(UserAdapter());
 
   Box<Trails> trailsBox = await Hive.openBox('trails');
   Box<TrailDetails> trailBox = await Hive.openBox('trail');
   Box<t.Taxon> taxonBox = await Hive.openBox('taxon');
   Box<CreateTrail> createBox = await Hive.openBox('create');
-
   Box<Map<int, bool>> localImagesBox = await Hive.openBox('localImages');
-
   Box<bool> saveTrailBox = await Hive.openBox('savedTrails');
   Box appConfig = await Hive.openBox('appConfig');
+  Box<UserInfoApp?> userBox = await Hive.openBox('userInfoApp');
+  UserLocalClient userLocalClient = UserLocalClient(userBox);
+
+  String getToken() {
+    UserInfoApp? userInfoApp = userLocalClient.getUserInfo();
+    return userInfoApp.token ?? '';
+  }
+
+  bool isAuth() {
+    return (userLocalClient.getUserInfo().token != null) ? true : false;
+  }
 
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -86,12 +99,15 @@ void main() async {
       trailsApiClient: TrailsApiClient(
           httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/trails'));
   final TrailRepo trailRepo = TrailRepo(
-      trailApiClient: TrailApiClient(
-          httpClient: http.Client(), baseUrl: AppEnv().apiBaseUrl));
+    trailApiClient: TrailApiClient(
+        httpClient: http.Client(),
+        baseUrl: AppEnv().apiBaseUrl,
+        getTokenCB: getToken),
+  );
   final AuthRepo authRepo = AuthRepo(
       authApiClient: AuthApiClient(
           httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/login'));
-
+  final UserRepo userRepo = UserRepo(userLocalClient);
   final WalkRepo walkRepo = WalkRepo();
 
   final TaxonRepo taxonRepo = TaxonRepo(
@@ -107,6 +123,7 @@ void main() async {
       ),
       appConfig: appConfig,
       geolocationRepo: geolocationRepo);
+
   Bloc.observer = SimpleBlocObserver();
 
   runApp(RootRestorationScope(
@@ -115,7 +132,7 @@ void main() async {
 
     child: MultiBlocProvider(providers: [
       BlocProvider<MapBloc>(create: (context) => MapBloc()),
-      BlocProvider<AuthBloc>(create: (context) => AuthBloc(authRepo)),
+      BlocProvider<AuthBloc>(create: (context) => AuthBloc(authRepo, userRepo)),
       BlocProvider<TrailBloc>(
           create: (context) => TrailBloc(
               trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),
@@ -139,12 +156,13 @@ void main() async {
               geolocationBloc: BlocProvider.of<GeolocationBloc>(context),
               geolocationRepo: geolocationRepo,
               trailRepo: trailRepo))
-    ], child: const App()),
+    ], child: App(isAuth: isAuth())),
   ));
 }
 
 class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
+  final bool isAuth;
+  const App({Key? key, required this.isAuth}) : super(key: key);
 
   @override
   State<App> createState() => _AppState();
@@ -152,7 +170,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final ThemeManager _themeManager = ThemeManager();
-
+  bool isAuth = false;
   @override
   void dispose() {
     _themeManager.removeListener(themeListener);
@@ -163,6 +181,9 @@ class _AppState extends State<App> {
   @override
   void initState() {
     _themeManager.addListener(themeListener);
+    setState(() {
+      isAuth = widget.isAuth;
+    });
     super.initState();
   }
 
@@ -176,92 +197,104 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
 
-    return MaterialApp(
-        title: "Smart'Flore",
-        debugShowCheckedModeBanner: false,
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: _themeManager.themeMode,
-        home: const MapScreen(),
-        supportedLocales: L10n.all,
-        localizationsDelegates: const {
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate
-        },
-        initialRoute: '/',
-        onGenerateRoute: (settings) {
-          switch (settings.name) {
-            case '/':
-              return Transitions(
-                  transitionType: TransitionType.slideRight,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeIn,
-                  reverseCurve: Curves.easeOut,
-                  newScreen: const MapScreen());
-            case '/taxon':
-              TaxonScreenArguments taxonScreenArgs =
-                  settings.arguments as TaxonScreenArguments;
-              return Transitions(
-                  transitionType: TransitionType.slideLeft,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOutQuad,
-                  reverseCurve: Curves.easeOut,
-                  newScreen: TaxonScreen(
-                    taxonID: taxonScreenArgs.taxonID,
-                    taxonRepo: taxonScreenArgs.taxonRepo,
-                    vernacularName: taxonScreenArgs.taxonVernacularName,
-                    scientificName: taxonScreenArgs.taxonScientificName,
-                  ));
-            case '/login':
-              return Transitions(
-                  transitionType: TransitionType.slideLeft,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOutQuad,
-                  reverseCurve: Curves.easeOut,
-                  newScreen: const LoginScreen());
-            case '/settings':
-              return Transitions(
-                  transitionType: TransitionType.slideLeft,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOutQuad,
-                  reverseCurve: Curves.easeOut,
-                  newScreen: SettingsScreen());
-            case '/create':
-              return Transitions(
-                  transitionType: TransitionType.slideLeft,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOutQuad,
-                  reverseCurve: Curves.easeOut,
-                  newScreen: const CreateScreen());
-            case '/camera':
-              return Transitions(
-                  transitionType: TransitionType.slideLeft,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOutQuad,
-                  reverseCurve: Curves.easeOut,
-                  newScreen: const CameraScreen());
-            case '/gallery-fullScreen':
-              GalleryScreenArguments data =
-                  settings.arguments as GalleryScreenArguments;
-              return Transitions(
-                  transitionType: TransitionType.fade,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOutQuad,
-                  reverseCurve: Curves.easeOut,
-                  newScreen: GalleryWrapper(
-                    images: data.images,
-                    backgroundDecoration: data.backgroundDecoration,
-                    initialIndex: data.initialIndex,
-                    scrollDirection: data.scrollDirection,
-                    minScale: data.minScale,
-                    maxScale: data.maxScale,
-                    loadingBuilder: data.loadingBuilder,
-                    onCurrentIndexChanged: data.onCurrentIndexChanged,
-                  ));
-          }
-          return null;
-        });
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        state.maybeWhen(
+            authStatus: (isAuthRepo) {
+              print('>>>> authStatus $isAuthRepo');
+              setState(() {
+                isAuth = isAuthRepo;
+              });
+            },
+            orElse: () {});
+      },
+      child: MaterialApp(
+          title: "Smart'Flore",
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: _themeManager.themeMode,
+          home: MapScreen(isAuth: isAuth),
+          supportedLocales: L10n.all,
+          localizationsDelegates: const {
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate
+          },
+          initialRoute: '/',
+          onGenerateRoute: (settings) {
+            switch (settings.name) {
+              case '/':
+                return Transitions(
+                    transitionType: TransitionType.slideRight,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                    reverseCurve: Curves.easeOut,
+                    newScreen: MapScreen(isAuth: isAuth));
+              case '/taxon':
+                TaxonScreenArguments taxonScreenArgs =
+                    settings.arguments as TaxonScreenArguments;
+                return Transitions(
+                    transitionType: TransitionType.slideLeft,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutQuad,
+                    reverseCurve: Curves.easeOut,
+                    newScreen: TaxonScreen(
+                      taxonID: taxonScreenArgs.taxonID,
+                      taxonRepo: taxonScreenArgs.taxonRepo,
+                      vernacularName: taxonScreenArgs.taxonVernacularName,
+                      scientificName: taxonScreenArgs.taxonScientificName,
+                    ));
+              case '/login':
+                return Transitions(
+                    transitionType: TransitionType.slideLeft,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutQuad,
+                    reverseCurve: Curves.easeOut,
+                    newScreen: const LoginScreen());
+              case '/settings':
+                return Transitions(
+                    transitionType: TransitionType.slideLeft,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutQuad,
+                    reverseCurve: Curves.easeOut,
+                    newScreen: SettingsScreen());
+              case '/create':
+                return Transitions(
+                    transitionType: TransitionType.slideLeft,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutQuad,
+                    reverseCurve: Curves.easeOut,
+                    newScreen: const CreateScreen());
+              case '/camera':
+                return Transitions(
+                    transitionType: TransitionType.slideLeft,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutQuad,
+                    reverseCurve: Curves.easeOut,
+                    newScreen: const CameraScreen());
+              case '/gallery-fullScreen':
+                GalleryScreenArguments data =
+                    settings.arguments as GalleryScreenArguments;
+                return Transitions(
+                    transitionType: TransitionType.fade,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutQuad,
+                    reverseCurve: Curves.easeOut,
+                    newScreen: GalleryWrapper(
+                      images: data.images,
+                      backgroundDecoration: data.backgroundDecoration,
+                      initialIndex: data.initialIndex,
+                      scrollDirection: data.scrollDirection,
+                      minScale: data.minScale,
+                      maxScale: data.maxScale,
+                      loadingBuilder: data.loadingBuilder,
+                      onCurrentIndexChanged: data.onCurrentIndexChanged,
+                    ));
+            }
+            return null;
+          }),
+    );
   }
 }

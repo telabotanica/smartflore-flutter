@@ -10,7 +10,12 @@ import 'package:smartflore/models/taxon/taxon_model.dart' as t;
 class TrailApiClient extends APIClient {
   final Client httpClient;
   final String baseUrl;
-  TrailApiClient({required this.httpClient, required this.baseUrl});
+  final Function getTokenCB;
+
+  TrailApiClient(
+      {required this.httpClient,
+      required this.baseUrl,
+      required this.getTokenCB});
   Future<TrailDetails?> getTrailData(int id) async {
     try {
       final response = await httpClient.get(Uri.parse('$baseUrl/trail/$id'));
@@ -58,30 +63,26 @@ class TrailApiClient extends APIClient {
   }
 
   Future<bool> saveTrail(CreateTrail trail) async {
-    return true;
-    //print('trail ::: ${trail.toJson()}');
-    /*final response = await httpClient.post(Uri.parse('$baseUrl/trail/'), body: jsonEncode(trail.toJson()));
-    if (response.statusCode == 200) {
-      String data = response.body;
-      print('success');
+    try {
+      dynamic headers = await getHeaders(getTokenCB());
 
-      Map<String, dynamic> json = jsonDecode(data);
+      final response = await httpClient.post(Uri.parse('$baseUrl/trail/'),
+          body: jsonEncode(trail.toJson()), headers: headers);
 
-      TrailDetails trailDData = TrailDetails.fromJson(json);
+      print('>>>>> saveTrail ${response.statusCode}');
 
-      List<t.Taxon> taxonsList = [];
-      if (json['occurrences'] != null) {
-        List<dynamic>? list = json['occurrences'];
-        list?.map((occurrence) {
-          if (occurrence != null && occurrence['taxon'] != null) {
-            taxonsList.add(t.Taxon.fromJson(occurrence['taxon']));
-          }
-        }).toList();
+      if (response.statusCode == 200) {
+        print('>>>>> saveTrail success');
+        String data = response.body;
+        Map<String, dynamic> json = jsonDecode(data);
+
+        return true;
+      } else {
+        // throw Exception('Failed to load trail list');
+        return false;
       }
-      return BatchedTrail(trailDData, taxonsList);
-    } else {
-      // throw Exception('Failed to load trail list');
-      return null;
-    }*/
+    } catch (e) {
+      return false;
+    }
   }
 }
