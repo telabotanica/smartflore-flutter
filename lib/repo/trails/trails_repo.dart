@@ -11,4 +11,9 @@ class TrailsRepo {
 
     return trails;
   }
+
+  getMyTrailList() async {
+    final List<Trail>? trails = await trailsApiClient.getMyTrailList();
+    return trails;
+  }
 }

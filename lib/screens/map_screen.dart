@@ -17,7 +17,8 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<TrailsBloc>(context).add(LoadTrailsDataEvent());
+    BlocProvider.of<TrailsBloc>(context)
+        .add(const TrailsEvent.loadTrailsData());
   }
 
   @override

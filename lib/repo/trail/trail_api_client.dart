@@ -69,13 +69,10 @@ class TrailApiClient extends APIClient {
       final response = await httpClient.post(Uri.parse('$baseUrl/trail/'),
           body: jsonEncode(trail.toJson()), headers: headers);
 
-      print('>>>>> saveTrail ${response.statusCode}');
-
       if (response.statusCode == 200) {
-        print('>>>>> saveTrail success');
         String data = response.body;
         Map<String, dynamic> json = jsonDecode(data);
-
+        json.toString();
         return true;
       } else {
         // throw Exception('Failed to load trail list');

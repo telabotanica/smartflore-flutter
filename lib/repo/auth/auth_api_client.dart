@@ -22,6 +22,9 @@ class AuthApiClient extends APIClient {
 
       switch (response.statusCode) {
         case 200:
+          debugPrint('>>>>response status code $response');
+          debugPrint('>>>>response status body ${response.body}');
+
           String? cookie = response.headers['set-cookie'];
           Cookie cookieObj = Cookie.fromSetCookieValue(cookie ?? '');
           debugPrint('>>>>cookieObj ${cookieObj.value}');

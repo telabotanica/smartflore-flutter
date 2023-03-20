@@ -143,17 +143,19 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             }
           },
         ),
-        BlocListener<TrailsBloc, TrailsDataState>(
+        BlocListener<TrailsBloc, TrailsState>(
           listener: (context, state) {
-            if (state is TrailsDataLoadedState) {
-              if (mapMode == MapMode.overview) {
-                setState(() {
-                  trailsData = state.trails;
-                });
-              } else {
-                trailsData = state.trails;
-              }
-            }
+            state.maybeWhen(
+                dataLoaded: (trailsData) {
+                  if (mapMode == MapMode.overview) {
+                    setState(() {
+                      this.trailsData = trailsData;
+                    });
+                  } else {
+                    this.trailsData = trailsData;
+                  }
+                },
+                orElse: () {});
           },
         ),
         BlocListener<CreateBloc, CreateState>(

@@ -17,56 +17,70 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   List<String?> textFieldsValue = [];
   bool isFormProcessing = false;
+  AuthenticationResponse? response;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Stack(children: [
-          SvgPicture.asset('assets/graphics/dots_bg.svg',
-              width: MediaQuery.of(context).size.width,
-              color: Theme.of(context).colorScheme.secondary),
-          Center(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.chevron_left,
-                            size: 20,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                          Text('Retour',
-                              style: Theme.of(context).textTheme.titleLarge),
-                        ],
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        state.maybeWhen(
+            loginCompleted: () {
+              Navigator.of(context).pop();
+            },
+            loginError: (authResponse) {
+              setState(() {
+                response = authResponse;
+              });
+            },
+            orElse: () {});
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Stack(children: [
+            SvgPicture.asset('assets/graphics/dots_bg.svg',
+                width: MediaQuery.of(context).size.width,
+                color: Theme.of(context).colorScheme.secondary),
+            Center(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.chevron_left,
+                              size: 20,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                            Text('Retour',
+                                style: Theme.of(context).textTheme.titleLarge),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const LogoIcon(
-                    backgroundSize: 136, iconSize: 76, boarderRadius: 24),
-                const SizedBox(height: 40),
-                Text("Smart'Flore",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.displayLarge),
-                buildForm(context)
-              ],
-            ),
-          )
-        ]),
+                  const LogoIcon(
+                      backgroundSize: 136, iconSize: 76, boarderRadius: 24),
+                  const SizedBox(height: 40),
+                  Text("Smart'Flore",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.displayLarge),
+                  buildForm(context)
+                ],
+              ),
+            )
+          ]),
+        ),
       ),
-    ));
+    );
   }
 
   _handleForm() {
@@ -109,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
               id: 'pwd',
               index: 0,
               title: 'Mot de passe',
-              hintText: 'password',
+              hintText: '********',
               isPassword: true,
               titleStyle: Theme.of(context).textTheme.titleLarge,
               hintStyle: Theme.of(context)
@@ -120,6 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 textFieldsValue.add(value);
               },
             ),
+            (response != null && response!.isOk == false)
+                ? _buildError(Theme.of(context))
+                : Container(),
             const SizedBox(height: 25),
             SizedBox(
               height: 50,
@@ -158,6 +175,16 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildError(ThemeData theme) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 16.0),
+      child: Text(response!.message ?? '',
+          textAlign: TextAlign.center,
+          style: theme.textTheme.bodyLarge!
+              .copyWith(color: theme.colorScheme.error)),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/trails/mytrails_bloc.dart';
 import 'package:smartflore/components/list/trail/trails_list.dart';
 import 'package:smartflore/components/map/map_ui.dart';
 import 'package:smartflore/components/map/map_widget.dart';
@@ -19,18 +20,29 @@ class TrailsPanelWidget extends StatefulWidget {
   State<TrailsPanelWidget> createState() => _TrailsPanelWidgetState();
 }
 
-class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
+class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
+    with SingleTickerProviderStateMixin {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
   MapMode _mapMode = MapMode.overview;
   late Box<bool> savedTrailsBox;
+  late TabController tabController;
 
   @override
   void initState() {
     super.initState();
     // get the previously opened user box
     savedTrailsBox = Hive.box('savedTrails');
+    tabController = TabController(length: 2, vsync: this);
+    tabController.addListener(() {
+      if (tabController.indexIsChanging) {
+        if (tabController.index == 1 && widget.isAuth == true) {
+          BlocProvider.of<MyTrailsBloc>(context)
+              .add(const MyTrailsEvent.loadTrailsData());
+        }
+      }
+    });
   }
 
   void onPanUpdate(details) {
@@ -129,6 +141,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(6))),
                       child: TabBar(
+                          controller: tabController,
                           isScrollable: false,
                           unselectedLabelColor: primary,
                           indicator: BoxDecoration(
@@ -153,7 +166,9 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
             ),
           ),
           panelBuilder: (scrollController) => _buildSlidingPanel(
-              scrollController: scrollController, bottomPadding: bottomPadding),
+              scrollController: scrollController,
+              tabController: tabController,
+              bottomPadding: bottomPadding),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           body: MapUI(
             bottomPadding: bottomPadding,
@@ -164,11 +179,13 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
 
   Widget _buildSlidingPanel({
     required ScrollController scrollController,
+    required TabController tabController,
     double bottomPadding = 0,
   }) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
         child: TabBarView(
+          controller: tabController,
           physics: const NeverScrollableScrollPhysics(),
           children: [
             TrailsList(
@@ -184,5 +201,12 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
                 isAuth: widget.isAuth),
           ],
         ));
+  }
+
+  @override
+  void dispose() {
+    tabController.removeListener(() {});
+    tabController.dispose();
+    super.dispose();
   }
 }

@@ -11,6 +11,7 @@ import 'package:smartflore/bloc/ping/ping_bloc.dart';
 import 'package:smartflore/bloc/taxon/taxon_bloc.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
+import 'package:smartflore/bloc/trails/mytrails_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/components/gallery/gallery_wrapper.dart';
@@ -92,12 +93,18 @@ void main() async {
     return (userLocalClient.getUserInfo().token != null) ? true : false;
   }
 
+  UserInfoApp getUserInfo() {
+    return userLocalClient.getUserInfo();
+  }
+
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   final TrailsRepo trailsRepo = TrailsRepo(
       trailsApiClient: TrailsApiClient(
-          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/trails'));
+          httpClient: http.Client(),
+          baseUrl: AppEnv().apiBaseUrl,
+          getUserInfo: getUserInfo));
   final TrailRepo trailRepo = TrailRepo(
     trailApiClient: TrailApiClient(
         httpClient: http.Client(),
@@ -141,6 +148,8 @@ void main() async {
               trailRepo, trailBox, taxonBox, saveTrailBox, localImagesBox)),
       BlocProvider<TrailsBloc>(
           create: (context) => TrailsBloc(trailsRepo, trailsBox)),
+      BlocProvider<MyTrailsBloc>(
+          create: (context) => MyTrailsBloc(trailsRepo, trailsBox)),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
       BlocProvider<TaxonBloc>(
           create: (context) => TaxonBloc(taxonRepo, taxonBox)),
@@ -201,7 +210,6 @@ class _AppState extends State<App> {
       listener: (context, state) {
         state.maybeWhen(
             authStatus: (isAuthRepo) {
-              print('>>>> authStatus $isAuthRepo');
               setState(() {
                 isAuth = isAuthRepo;
               });

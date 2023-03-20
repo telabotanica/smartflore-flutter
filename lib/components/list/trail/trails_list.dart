@@ -70,39 +70,44 @@ class TrailsList extends StatelessWidget {
               ),
         ),
         const SizedBox(height: 16),
-        BlocBuilder<TrailsBloc, TrailsDataState>(
+        BlocBuilder<TrailsBloc, TrailsState>(
           builder: (context, state) {
-            if (state is TrailsDataInitialState) {
-              return const CircularProgressIndicator();
-            } else if (state is TrailsDataErrorState) {
-              return Text(AppLocalizations.of(context).error_API,
-                  style: const TextStyle(color: Colors.red));
-            } else if (state is TrailsDataLoadedState) {
-              return Expanded(
-                child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  controller: controller,
-                  itemCount: state.trails.length,
-                  itemBuilder: (context, index) {
-                    final trail = state.trails[index];
+            return state.when(
+              initial: () {
+                return const CircularProgressIndicator();
+              },
+              dataLoading: () {
+                return const CircularProgressIndicator();
+              },
+              dataLoaded: (trailsData) {
+                return Expanded(
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    controller: controller,
+                    itemCount: trailsData.length,
+                    itemBuilder: (context, index) {
+                      final trail = trailsData[index];
 
-                    return TrailInteractiveItemWidget(
-                      index: index,
-                      id: trail.id,
-                      title: trail.name,
-                      length: trail.pathLength,
-                      image: trail.image!.url,
-                      position: trail.position.start,
-                      nbOccurence: trail.occurrencesCount,
-                      isDownloaded:
-                          (savedTrailsBox.get('trail_${trail.id}')) != null,
-                    );
-                  },
-                ),
-              );
-            } else {
-              return Container();
-            }
+                      return TrailInteractiveItemWidget(
+                        index: index,
+                        id: trail.id,
+                        title: trail.name,
+                        length: trail.pathLength,
+                        image: trail.image!.url,
+                        position: trail.position.start,
+                        nbOccurence: trail.occurrencesCount,
+                        isDownloaded:
+                            (savedTrailsBox.get('trail_${trail.id}')) != null,
+                      );
+                    },
+                  ),
+                );
+              },
+              dataLoadError: () {
+                return Text(AppLocalizations.of(context).error_API,
+                    style: const TextStyle(color: Colors.red));
+              },
+            );
           },
         )
       ],

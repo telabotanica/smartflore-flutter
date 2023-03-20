@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart';
+import 'package:smartflore/models/user/user_model.dart';
 import 'package:smartflore/repo/api_client.dart';
 
 import '../../models/trails/trails_model.dart';
@@ -9,14 +10,20 @@ import '../../models/trails/trails_model.dart';
 class TrailsApiClient extends APIClient {
   final Client httpClient;
   final String baseUrl;
+  final UserInfoApp Function() getUserInfo;
 
-  TrailsApiClient({required this.httpClient, required this.baseUrl});
+  TrailsApiClient(
+      {required this.httpClient,
+      required this.baseUrl,
+      required this.getUserInfo});
 
   Future<List<Trail>?> getTrailList() async {
     List<Trail>? trailsData;
     try {
-      final response = await httpClient.get(Uri.parse(baseUrl)).onError(
-          (error, stackTrace) => Future.error('No Internet connection 😑'));
+      final response = await httpClient
+          .get(Uri.parse('$baseUrl/trails'))
+          .onError(
+              (error, stackTrace) => Future.error('No Internet connection 😑'));
       trailsData = _returnResponse(response);
     } on SocketException {
       return Future.error('No Internet connection 😑');
@@ -43,5 +50,22 @@ class TrailsApiClient extends APIClient {
         throw Future.error(
             'Error occurred while Communication with Server with StatusCode : ${response.statusCode}');
     }
+  }
+
+  getMyTrailList() async {
+    List<Trail>? trailsData;
+    try {
+      final response = await httpClient
+          .get(Uri.parse('$baseUrl/me'),
+              headers: await getHeaders(getUserInfo().token ?? ''))
+          .onError(
+              (error, stackTrace) => Future.error('No Internet connection 😑'));
+      trailsData = _returnResponse(response);
+    } on SocketException {
+      return Future.error('No Internet connection 😑');
+    } on Exception {
+      return Future.error('Unexpected error 😢');
+    }
+    return trailsData;
   }
 }

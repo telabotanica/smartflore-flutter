@@ -1,6 +1,6 @@
 part of 'trails_bloc.dart';
 
-@immutable
-abstract class TrailsEvent {}
-
-class LoadTrailsDataEvent extends TrailsEvent {}
+@freezed
+class TrailsEvent with _$TrailsEvent {
+  const factory TrailsEvent.loadTrailsData() = _LoadTrailsData;
+}
