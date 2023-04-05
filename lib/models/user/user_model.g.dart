@@ -58,18 +58,6 @@ Map<String, dynamic> _$$_AuthLoginToJson(_$_AuthLogin instance) =>
       'password': instance.password,
     };
 
-_$_UserInfoApp _$$_UserInfoAppFromJson(Map<String, dynamic> json) =>
-    _$_UserInfoApp(
-      email: json['email'] as String?,
-      token: json['token'] as String?,
-    );
-
-Map<String, dynamic> _$$_UserInfoAppToJson(_$_UserInfoApp instance) =>
-    <String, dynamic>{
-      'email': instance.email,
-      'token': instance.token,
-    };
-
 _$_AuthenticationResponse _$$_AuthenticationResponseFromJson(
         Map<String, dynamic> json) =>
     _$_AuthenticationResponse(
@@ -88,4 +76,32 @@ Map<String, dynamic> _$$_AuthenticationResponseToJson(
       'user': instance.user,
       'isOk': instance.isOk,
       'statusCode': instance.statusCode,
+    };
+
+_$_UserInfoApp _$$_UserInfoAppFromJson(Map<String, dynamic> json) =>
+    _$_UserInfoApp(
+      email: json['email'] as String?,
+      token: json['token'] as String?,
+    );
+
+Map<String, dynamic> _$$_UserInfoAppToJson(_$_UserInfoApp instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'token': instance.token,
+    };
+
+_$_RemoteUser _$$_RemoteUserFromJson(Map<String, dynamic> json) =>
+    _$_RemoteUser(
+      name: json['name'] as String?,
+      avatar: json['avatar'] as String?,
+      trails: (json['trails'] as List<dynamic>?)
+          ?.map((e) => Trail.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_RemoteUserToJson(_$_RemoteUser instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'avatar': instance.avatar,
+      'trails': instance.trails,
     };

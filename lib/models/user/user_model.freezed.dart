@@ -167,167 +167,6 @@ abstract class _AuthLogin implements AuthLogin {
       throw _privateConstructorUsedError;
 }
 
-UserInfoApp _$UserInfoAppFromJson(Map<String, dynamic> json) {
-  return _UserInfoApp.fromJson(json);
-}
-
-/// @nodoc
-mixin _$UserInfoApp {
-  @HiveField(0)
-  String? get email => throw _privateConstructorUsedError;
-  @HiveField(1)
-  String? get token => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UserInfoAppCopyWith<UserInfoApp> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserInfoAppCopyWith<$Res> {
-  factory $UserInfoAppCopyWith(
-          UserInfoApp value, $Res Function(UserInfoApp) then) =
-      _$UserInfoAppCopyWithImpl<$Res, UserInfoApp>;
-  @useResult
-  $Res call({@HiveField(0) String? email, @HiveField(1) String? token});
-}
-
-/// @nodoc
-class _$UserInfoAppCopyWithImpl<$Res, $Val extends UserInfoApp>
-    implements $UserInfoAppCopyWith<$Res> {
-  _$UserInfoAppCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = freezed,
-    Object? token = freezed,
-  }) {
-    return _then(_value.copyWith(
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_UserInfoAppCopyWith<$Res>
-    implements $UserInfoAppCopyWith<$Res> {
-  factory _$$_UserInfoAppCopyWith(
-          _$_UserInfoApp value, $Res Function(_$_UserInfoApp) then) =
-      __$$_UserInfoAppCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@HiveField(0) String? email, @HiveField(1) String? token});
-}
-
-/// @nodoc
-class __$$_UserInfoAppCopyWithImpl<$Res>
-    extends _$UserInfoAppCopyWithImpl<$Res, _$_UserInfoApp>
-    implements _$$_UserInfoAppCopyWith<$Res> {
-  __$$_UserInfoAppCopyWithImpl(
-      _$_UserInfoApp _value, $Res Function(_$_UserInfoApp) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = freezed,
-    Object? token = freezed,
-  }) {
-    return _then(_$_UserInfoApp(
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-@HiveType(typeId: 20, adapterName: 'UserAdapter')
-class _$_UserInfoApp implements _UserInfoApp {
-  const _$_UserInfoApp({@HiveField(0) this.email, @HiveField(1) this.token});
-
-  factory _$_UserInfoApp.fromJson(Map<String, dynamic> json) =>
-      _$$_UserInfoAppFromJson(json);
-
-  @override
-  @HiveField(0)
-  final String? email;
-  @override
-  @HiveField(1)
-  final String? token;
-
-  @override
-  String toString() {
-    return 'UserInfoApp(email: $email, token: $token)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UserInfoApp &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.token, token) || other.token == token));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, email, token);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UserInfoAppCopyWith<_$_UserInfoApp> get copyWith =>
-      __$$_UserInfoAppCopyWithImpl<_$_UserInfoApp>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_UserInfoAppToJson(
-      this,
-    );
-  }
-}
-
-abstract class _UserInfoApp implements UserInfoApp {
-  const factory _UserInfoApp(
-      {@HiveField(0) final String? email,
-      @HiveField(1) final String? token}) = _$_UserInfoApp;
-
-  factory _UserInfoApp.fromJson(Map<String, dynamic> json) =
-      _$_UserInfoApp.fromJson;
-
-  @override
-  @HiveField(0)
-  String? get email;
-  @override
-  @HiveField(1)
-  String? get token;
-  @override
-  @JsonKey(ignore: true)
-  _$$_UserInfoAppCopyWith<_$_UserInfoApp> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
 AuthenticationResponse _$AuthenticationResponseFromJson(
     Map<String, dynamic> json) {
   return _AuthenticationResponse.fromJson(json);
@@ -536,5 +375,346 @@ abstract class _AuthenticationResponse implements AuthenticationResponse {
   @override
   @JsonKey(ignore: true)
   _$$_AuthenticationResponseCopyWith<_$_AuthenticationResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UserInfoApp _$UserInfoAppFromJson(Map<String, dynamic> json) {
+  return _UserInfoApp.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserInfoApp {
+  @HiveField(0)
+  String? get email => throw _privateConstructorUsedError;
+  @HiveField(1)
+  String? get token => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserInfoAppCopyWith<UserInfoApp> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserInfoAppCopyWith<$Res> {
+  factory $UserInfoAppCopyWith(
+          UserInfoApp value, $Res Function(UserInfoApp) then) =
+      _$UserInfoAppCopyWithImpl<$Res, UserInfoApp>;
+  @useResult
+  $Res call({@HiveField(0) String? email, @HiveField(1) String? token});
+}
+
+/// @nodoc
+class _$UserInfoAppCopyWithImpl<$Res, $Val extends UserInfoApp>
+    implements $UserInfoAppCopyWith<$Res> {
+  _$UserInfoAppCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? token = freezed,
+  }) {
+    return _then(_value.copyWith(
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_UserInfoAppCopyWith<$Res>
+    implements $UserInfoAppCopyWith<$Res> {
+  factory _$$_UserInfoAppCopyWith(
+          _$_UserInfoApp value, $Res Function(_$_UserInfoApp) then) =
+      __$$_UserInfoAppCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@HiveField(0) String? email, @HiveField(1) String? token});
+}
+
+/// @nodoc
+class __$$_UserInfoAppCopyWithImpl<$Res>
+    extends _$UserInfoAppCopyWithImpl<$Res, _$_UserInfoApp>
+    implements _$$_UserInfoAppCopyWith<$Res> {
+  __$$_UserInfoAppCopyWithImpl(
+      _$_UserInfoApp _value, $Res Function(_$_UserInfoApp) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? token = freezed,
+  }) {
+    return _then(_$_UserInfoApp(
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+@HiveType(typeId: 20, adapterName: 'UserAdapter')
+class _$_UserInfoApp implements _UserInfoApp {
+  const _$_UserInfoApp({@HiveField(0) this.email, @HiveField(1) this.token});
+
+  factory _$_UserInfoApp.fromJson(Map<String, dynamic> json) =>
+      _$$_UserInfoAppFromJson(json);
+
+  @override
+  @HiveField(0)
+  final String? email;
+  @override
+  @HiveField(1)
+  final String? token;
+
+  @override
+  String toString() {
+    return 'UserInfoApp(email: $email, token: $token)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserInfoApp &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.token, token) || other.token == token));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, email, token);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserInfoAppCopyWith<_$_UserInfoApp> get copyWith =>
+      __$$_UserInfoAppCopyWithImpl<_$_UserInfoApp>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserInfoAppToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserInfoApp implements UserInfoApp {
+  const factory _UserInfoApp(
+      {@HiveField(0) final String? email,
+      @HiveField(1) final String? token}) = _$_UserInfoApp;
+
+  factory _UserInfoApp.fromJson(Map<String, dynamic> json) =
+      _$_UserInfoApp.fromJson;
+
+  @override
+  @HiveField(0)
+  String? get email;
+  @override
+  @HiveField(1)
+  String? get token;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UserInfoAppCopyWith<_$_UserInfoApp> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+RemoteUser _$RemoteUserFromJson(Map<String, dynamic> json) {
+  return _RemoteUser.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RemoteUser {
+  String? get name => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
+  List<Trail>? get trails => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RemoteUserCopyWith<RemoteUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RemoteUserCopyWith<$Res> {
+  factory $RemoteUserCopyWith(
+          RemoteUser value, $Res Function(RemoteUser) then) =
+      _$RemoteUserCopyWithImpl<$Res, RemoteUser>;
+  @useResult
+  $Res call({String? name, String? avatar, List<Trail>? trails});
+}
+
+/// @nodoc
+class _$RemoteUserCopyWithImpl<$Res, $Val extends RemoteUser>
+    implements $RemoteUserCopyWith<$Res> {
+  _$RemoteUserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? avatar = freezed,
+    Object? trails = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trails: freezed == trails
+          ? _value.trails
+          : trails // ignore: cast_nullable_to_non_nullable
+              as List<Trail>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_RemoteUserCopyWith<$Res>
+    implements $RemoteUserCopyWith<$Res> {
+  factory _$$_RemoteUserCopyWith(
+          _$_RemoteUser value, $Res Function(_$_RemoteUser) then) =
+      __$$_RemoteUserCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? name, String? avatar, List<Trail>? trails});
+}
+
+/// @nodoc
+class __$$_RemoteUserCopyWithImpl<$Res>
+    extends _$RemoteUserCopyWithImpl<$Res, _$_RemoteUser>
+    implements _$$_RemoteUserCopyWith<$Res> {
+  __$$_RemoteUserCopyWithImpl(
+      _$_RemoteUser _value, $Res Function(_$_RemoteUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? avatar = freezed,
+    Object? trails = freezed,
+  }) {
+    return _then(_$_RemoteUser(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trails: freezed == trails
+          ? _value._trails
+          : trails // ignore: cast_nullable_to_non_nullable
+              as List<Trail>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_RemoteUser implements _RemoteUser {
+  const _$_RemoteUser({this.name, this.avatar, final List<Trail>? trails})
+      : _trails = trails;
+
+  factory _$_RemoteUser.fromJson(Map<String, dynamic> json) =>
+      _$$_RemoteUserFromJson(json);
+
+  @override
+  final String? name;
+  @override
+  final String? avatar;
+  final List<Trail>? _trails;
+  @override
+  List<Trail>? get trails {
+    final value = _trails;
+    if (value == null) return null;
+    if (_trails is EqualUnmodifiableListView) return _trails;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'RemoteUser(name: $name, avatar: $avatar, trails: $trails)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RemoteUser &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            const DeepCollectionEquality().equals(other._trails, _trails));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, name, avatar, const DeepCollectionEquality().hash(_trails));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RemoteUserCopyWith<_$_RemoteUser> get copyWith =>
+      __$$_RemoteUserCopyWithImpl<_$_RemoteUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_RemoteUserToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RemoteUser implements RemoteUser {
+  const factory _RemoteUser(
+      {final String? name,
+      final String? avatar,
+      final List<Trail>? trails}) = _$_RemoteUser;
+
+  factory _RemoteUser.fromJson(Map<String, dynamic> json) =
+      _$_RemoteUser.fromJson;
+
+  @override
+  String? get name;
+  @override
+  String? get avatar;
+  @override
+  List<Trail>? get trails;
+  @override
+  @JsonKey(ignore: true)
+  _$$_RemoteUserCopyWith<_$_RemoteUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

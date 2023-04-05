@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/auth/auth_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
@@ -87,14 +88,17 @@ class TrailsList extends StatelessWidget {
                     itemCount: trailsData.length,
                     itemBuilder: (context, index) {
                       final trail = trailsData[index];
-
+                      LatLng startPos = (trail.position != null &&
+                              trail.position?.start != null)
+                          ? trail.position!.start
+                          : LatLng(0, 0);
                       return TrailInteractiveItemWidget(
                         index: index,
                         id: trail.id,
                         title: trail.name,
                         length: trail.pathLength,
                         image: trail.image!.url,
-                        position: trail.position.start,
+                        position: startPos,
                         nbOccurence: trail.occurrencesCount,
                         isDownloaded:
                             (savedTrailsBox.get('trail_${trail.id}')) != null,

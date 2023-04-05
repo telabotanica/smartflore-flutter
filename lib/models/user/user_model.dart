@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+import 'package:smartflore/models/trails/trails_model.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
@@ -16,6 +17,18 @@ class AuthLogin with _$AuthLogin {
 }
 
 @freezed
+class AuthenticationResponse with _$AuthenticationResponse {
+  const factory AuthenticationResponse(
+      {String? message,
+      UserInfoApp? user,
+      bool? isOk,
+      int? statusCode}) = _AuthenticationResponse;
+
+  factory AuthenticationResponse.fromJson(Map<String, dynamic> json) =>
+      _$AuthenticationResponseFromJson(json);
+}
+
+@freezed
 class UserInfoApp with _$UserInfoApp {
   @HiveType(typeId: 20, adapterName: 'UserAdapter')
   const factory UserInfoApp({
@@ -28,13 +41,13 @@ class UserInfoApp with _$UserInfoApp {
 }
 
 @freezed
-class AuthenticationResponse with _$AuthenticationResponse {
-  const factory AuthenticationResponse(
-      {String? message,
-      UserInfoApp? user,
-      bool? isOk,
-      int? statusCode}) = _AuthenticationResponse;
+class RemoteUser with _$RemoteUser {
+  const factory RemoteUser({
+    String? name,
+    String? avatar,
+    List<Trail>? trails,
+  }) = _RemoteUser;
 
-  factory AuthenticationResponse.fromJson(Map<String, dynamic> json) =>
-      _$AuthenticationResponseFromJson(json);
+  factory RemoteUser.fromJson(Map<String, dynamic> json) =>
+      _$RemoteUserFromJson(json);
 }

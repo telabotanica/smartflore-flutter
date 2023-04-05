@@ -259,11 +259,15 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       MarkerLayer(
           markers: trailsData != null
               ? trailsData!.map((trail) {
+                  LatLng startPos =
+                      (trail.position != null && trail.position?.start != null)
+                          ? trail.position!.start
+                          : LatLng(0, 0);
                   return Marker(
                     anchorPos: AnchorPos.align(AnchorAlign.center),
                     width: 38.0,
                     height: 38.0,
-                    point: trail.position.start,
+                    point: startPos,
                     builder: (ctx) => IconButton(
                         onPressed: () {
                           BlocProvider.of<MapBloc>(context)

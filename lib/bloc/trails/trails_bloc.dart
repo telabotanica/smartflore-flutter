@@ -14,7 +14,7 @@ class TrailsBloc extends Bloc<TrailsEvent, TrailsState> {
 
   TrailsBloc(this.trailsRepo, this.trailsBox) : super(const _Initial()) {
     on<TrailsEvent>((event, emit) async {
-      event.when(
+      await event.when(
         loadTrailsData: () async {
           emit(const TrailsState.dataLoading());
           Trails? trails = trailsBox.get('trails');

@@ -175,7 +175,7 @@ mixin _$Trail {
   @HiveField(3)
   String get author => throw _privateConstructorUsedError;
   @HiveField(4)
-  StartEndPosition get position => throw _privateConstructorUsedError;
+  StartEndPosition? get position => throw _privateConstructorUsedError;
   @JsonKey(name: 'occurrences_count')
   @HiveField(5)
   int get occurrencesCount => throw _privateConstructorUsedError;
@@ -186,6 +186,8 @@ mixin _$Trail {
   @JsonKey(name: 'path_length')
   @HiveField(8)
   int get pathLength => throw _privateConstructorUsedError;
+  @HiveField(9)
+  String? get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -202,13 +204,14 @@ abstract class $TrailCopyWith<$Res> {
       @HiveField(1) String name,
       @JsonKey(name: 'display_name') @HiveField(2) String displayName,
       @HiveField(3) String author,
-      @HiveField(4) StartEndPosition position,
+      @HiveField(4) StartEndPosition? position,
       @JsonKey(name: 'occurrences_count') @HiveField(5) int occurrencesCount,
       @HiveField(6) String details,
       @HiveField(7) Image? image,
-      @JsonKey(name: 'path_length') @HiveField(8) int pathLength});
+      @JsonKey(name: 'path_length') @HiveField(8) int pathLength,
+      @HiveField(9) String? status});
 
-  $StartEndPositionCopyWith<$Res> get position;
+  $StartEndPositionCopyWith<$Res>? get position;
   $ImageCopyWith<$Res>? get image;
 }
 
@@ -229,11 +232,12 @@ class _$TrailCopyWithImpl<$Res, $Val extends Trail>
     Object? name = null,
     Object? displayName = null,
     Object? author = null,
-    Object? position = null,
+    Object? position = freezed,
     Object? occurrencesCount = null,
     Object? details = null,
     Object? image = freezed,
     Object? pathLength = null,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -252,10 +256,10 @@ class _$TrailCopyWithImpl<$Res, $Val extends Trail>
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-      position: null == position
+      position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
-              as StartEndPosition,
+              as StartEndPosition?,
       occurrencesCount: null == occurrencesCount
           ? _value.occurrencesCount
           : occurrencesCount // ignore: cast_nullable_to_non_nullable
@@ -272,13 +276,21 @@ class _$TrailCopyWithImpl<$Res, $Val extends Trail>
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
               as int,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $StartEndPositionCopyWith<$Res> get position {
-    return $StartEndPositionCopyWith<$Res>(_value.position, (value) {
+  $StartEndPositionCopyWith<$Res>? get position {
+    if (_value.position == null) {
+      return null;
+    }
+
+    return $StartEndPositionCopyWith<$Res>(_value.position!, (value) {
       return _then(_value.copyWith(position: value) as $Val);
     });
   }
@@ -307,14 +319,15 @@ abstract class _$$_TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
       @HiveField(1) String name,
       @JsonKey(name: 'display_name') @HiveField(2) String displayName,
       @HiveField(3) String author,
-      @HiveField(4) StartEndPosition position,
+      @HiveField(4) StartEndPosition? position,
       @JsonKey(name: 'occurrences_count') @HiveField(5) int occurrencesCount,
       @HiveField(6) String details,
       @HiveField(7) Image? image,
-      @JsonKey(name: 'path_length') @HiveField(8) int pathLength});
+      @JsonKey(name: 'path_length') @HiveField(8) int pathLength,
+      @HiveField(9) String? status});
 
   @override
-  $StartEndPositionCopyWith<$Res> get position;
+  $StartEndPositionCopyWith<$Res>? get position;
   @override
   $ImageCopyWith<$Res>? get image;
 }
@@ -332,11 +345,12 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res, _$_Trail>
     Object? name = null,
     Object? displayName = null,
     Object? author = null,
-    Object? position = null,
+    Object? position = freezed,
     Object? occurrencesCount = null,
     Object? details = null,
     Object? image = freezed,
     Object? pathLength = null,
+    Object? status = freezed,
   }) {
     return _then(_$_Trail(
       id: null == id
@@ -355,10 +369,10 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res, _$_Trail>
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-      position: null == position
+      position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
-              as StartEndPosition,
+              as StartEndPosition?,
       occurrencesCount: null == occurrencesCount
           ? _value.occurrencesCount
           : occurrencesCount // ignore: cast_nullable_to_non_nullable
@@ -375,6 +389,10 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res, _$_Trail>
           ? _value.pathLength
           : pathLength // ignore: cast_nullable_to_non_nullable
               as int,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -394,7 +412,7 @@ class _$_Trail implements _Trail {
       @HiveField(3)
           required this.author,
       @HiveField(4)
-          required this.position,
+          this.position,
       @JsonKey(name: 'occurrences_count')
       @HiveField(5)
           required this.occurrencesCount,
@@ -404,7 +422,9 @@ class _$_Trail implements _Trail {
           this.image,
       @JsonKey(name: 'path_length')
       @HiveField(8)
-          required this.pathLength});
+          required this.pathLength,
+      @HiveField(9)
+          this.status});
 
   factory _$_Trail.fromJson(Map<String, dynamic> json) =>
       _$$_TrailFromJson(json);
@@ -424,7 +444,7 @@ class _$_Trail implements _Trail {
   final String author;
   @override
   @HiveField(4)
-  final StartEndPosition position;
+  final StartEndPosition? position;
   @override
   @JsonKey(name: 'occurrences_count')
   @HiveField(5)
@@ -439,10 +459,13 @@ class _$_Trail implements _Trail {
   @JsonKey(name: 'path_length')
   @HiveField(8)
   final int pathLength;
+  @override
+  @HiveField(9)
+  final String? status;
 
   @override
   String toString() {
-    return 'Trail(id: $id, name: $name, displayName: $displayName, author: $author, position: $position, occurrencesCount: $occurrencesCount, details: $details, image: $image, pathLength: $pathLength)';
+    return 'Trail(id: $id, name: $name, displayName: $displayName, author: $author, position: $position, occurrencesCount: $occurrencesCount, details: $details, image: $image, pathLength: $pathLength, status: $status)';
   }
 
   @override
@@ -462,13 +485,14 @@ class _$_Trail implements _Trail {
             (identical(other.details, details) || other.details == details) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.pathLength, pathLength) ||
-                other.pathLength == pathLength));
+                other.pathLength == pathLength) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, displayName, author,
-      position, occurrencesCount, details, image, pathLength);
+      position, occurrencesCount, details, image, pathLength, status);
 
   @JsonKey(ignore: true)
   @override
@@ -496,7 +520,7 @@ abstract class _Trail implements Trail {
       @HiveField(3)
           required final String author,
       @HiveField(4)
-          required final StartEndPosition position,
+          final StartEndPosition? position,
       @JsonKey(name: 'occurrences_count')
       @HiveField(5)
           required final int occurrencesCount,
@@ -506,7 +530,9 @@ abstract class _Trail implements Trail {
           final Image? image,
       @JsonKey(name: 'path_length')
       @HiveField(8)
-          required final int pathLength}) = _$_Trail;
+          required final int pathLength,
+      @HiveField(9)
+          final String? status}) = _$_Trail;
 
   factory _Trail.fromJson(Map<String, dynamic> json) = _$_Trail.fromJson;
 
@@ -525,7 +551,7 @@ abstract class _Trail implements Trail {
   String get author;
   @override
   @HiveField(4)
-  StartEndPosition get position;
+  StartEndPosition? get position;
   @override
   @JsonKey(name: 'occurrences_count')
   @HiveField(5)
@@ -540,6 +566,9 @@ abstract class _Trail implements Trail {
   @JsonKey(name: 'path_length')
   @HiveField(8)
   int get pathLength;
+  @override
+  @HiveField(9)
+  String? get status;
   @override
   @JsonKey(ignore: true)
   _$$_TrailCopyWith<_$_Trail> get copyWith =>

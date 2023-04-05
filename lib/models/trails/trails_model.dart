@@ -22,13 +22,14 @@ class Trail with _$Trail {
     @HiveField(1) required String name,
     @JsonKey(name: 'display_name') @HiveField(2) required String displayName,
     @HiveField(3) required String author,
-    @HiveField(4) required StartEndPosition position,
+    @HiveField(4) StartEndPosition? position,
     @JsonKey(name: 'occurrences_count')
     @HiveField(5)
         required int occurrencesCount,
     @HiveField(6) required String details,
     @HiveField(7) Image? image,
     @JsonKey(name: 'path_length') @HiveField(8) required int pathLength,
+    @HiveField(9) String? status,
   }) = _Trail;
 
   factory Trail.fromJson(Map<String, dynamic> json) => _$TrailFromJson(json);
