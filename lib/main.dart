@@ -149,7 +149,8 @@ void main() async {
       BlocProvider<TrailsBloc>(
           create: (context) => TrailsBloc(trailsRepo, trailsBox)),
       BlocProvider<MyTrailsBloc>(
-          create: (context) => MyTrailsBloc(trailsRepo, trailsBox)),
+          create: (context) => MyTrailsBloc(
+              trailsRepo, trailsBox, BlocProvider.of<AuthBloc>(context))),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
       BlocProvider<TaxonBloc>(
           create: (context) => TaxonBloc(taxonRepo, taxonBox)),
