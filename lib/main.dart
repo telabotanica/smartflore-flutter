@@ -109,7 +109,7 @@ void main() async {
     trailApiClient: TrailApiClient(
         httpClient: http.Client(),
         baseUrl: AppEnv().apiBaseUrl,
-        getTokenCB: getToken),
+        getUserInfo: getUserInfo),
   );
   final AuthRepo authRepo = AuthRepo(
       authApiClient: AuthApiClient(
@@ -264,11 +264,20 @@ class _AppState extends State<App> {
                     newScreen: const LoginScreen());
               case '/settings':
                 return Transitions(
+                    transitionType: TransitionType.slideRight,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutQuad,
+                    reverseCurve: Curves.easeOut,
+                    newScreen: SettingsScreen(isAuth: isAuth));
+              case '/search':
+                return Transitions(
                     transitionType: TransitionType.slideLeft,
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeOutQuad,
                     reverseCurve: Curves.easeOut,
-                    newScreen: SettingsScreen());
+                    newScreen: const CreateScreen(
+                      simpleSearch: true,
+                    ));
               case '/create':
                 return Transitions(
                     transitionType: TransitionType.slideLeft,

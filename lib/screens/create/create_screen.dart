@@ -16,7 +16,8 @@ import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/utils/app.dart';
 
 class CreateScreen extends StatefulWidget {
-  const CreateScreen({Key? key}) : super(key: key);
+  final bool simpleSearch;
+  const CreateScreen({Key? key, this.simpleSearch = false}) : super(key: key);
 
   @override
   State<CreateScreen> createState() => _CreateScreenState();
@@ -116,42 +117,47 @@ class _CreateScreenState extends State<CreateScreen> {
               shadowColor: const Color(0x00000000),
               centerTitle: false,
               titleSpacing: 0.0,
-              title: Text('Ajouter un individu',
+              title: Text(
+                  widget.simpleSearch
+                      ? 'Rechercher un individu'
+                      : 'Ajouter un individu',
                   style: Theme.of(context).textTheme.bodyLarge)),
           body: Stack(
             children: [
               selectedTaxon == null
                   ? buildSearchUI(theme)
                   : buildTaxonUI(theme, screenW),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 10,
-                              color: Colors.black.withOpacity(0.15))
-                        ],
-                        color: Theme.of(context).colorScheme.background,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(6))),
-                    child: Padding(
-                      padding: const EdgeInsets.all(36.0),
-                      child: SizedBox(
-                        height: 46,
-                        child: RoundedButton(
-                          label: 'Ajouter',
-                          onPress: selectedTaxon == null
-                              ? null
-                              : () {
-                                  BlocProvider.of<CreateBloc>(context).add(
-                                      CreateEvent.registerTaxon(
-                                          selectedTaxonSF!));
-                                },
-                        ),
-                      ),
-                    )),
-              )
+              widget.simpleSearch
+                  ? Container()
+                  : Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 10,
+                                    color: Colors.black.withOpacity(0.15))
+                              ],
+                              color: Theme.of(context).colorScheme.background,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(6))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(36.0),
+                            child: SizedBox(
+                              height: 46,
+                              child: RoundedButton(
+                                label: 'Ajouter',
+                                onPress: selectedTaxon == null
+                                    ? null
+                                    : () {
+                                        BlocProvider.of<CreateBloc>(context)
+                                            .add(CreateEvent.registerTaxon(
+                                                selectedTaxonSF!));
+                                      },
+                              ),
+                            ),
+                          )),
+                    )
             ],
           )),
     );

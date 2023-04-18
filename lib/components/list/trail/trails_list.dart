@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:smartflore/bloc/auth/auth_bloc.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
-import 'package:smartflore/components/buttons/rounded_button.dart';
+import 'package:smartflore/components/list/trail/my_trails.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,24 +26,10 @@ class TrailsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('>>>>>>> buiiild');
     if (trailsListType == TrailsListType.myTrails) {
-      return (isAuth == true)
-          ? Container(
-              width: 200,
-              height: 100,
-              color: Colors.green,
-              child: SizedBox(
-                width: 150,
-                height: 46,
-                child: RoundedButton(
-                  label: 'logout',
-                  onPress: () {
-                    BlocProvider.of<AuthBloc>(context)
-                        .add(const AuthEvent.logout());
-                  },
-                ),
-              ))
-          : buildMyTrailLogout(context);
+      return MyTrails(
+          isAuth: isAuth, controller: controller, onPanUpdate: onPanUpdate);
     }
 
     return Column(
@@ -114,35 +99,6 @@ class TrailsList extends StatelessWidget {
             );
           },
         )
-      ],
-    );
-  }
-
-  Widget buildMyTrailLogout(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 0, 20, 20),
-          child: Text(AppLocalizations.of(context).need_login,
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium!
-                  .copyWith(fontWeight: FontWeight.bold)),
-        ),
-        SizedBox(
-            width: 190,
-            height: 46,
-            child: RoundedButton(
-                label: AppLocalizations.of(context).btn_login,
-                onPress: () {
-                  Navigator.of(context).pushNamed(
-                    '/login',
-                  );
-                })),
-        const SizedBox(height: 150),
       ],
     );
   }

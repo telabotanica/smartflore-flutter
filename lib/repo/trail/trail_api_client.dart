@@ -10,12 +10,12 @@ import 'package:smartflore/models/taxon/taxon_model.dart' as t;
 class TrailApiClient extends APIClient {
   final Client httpClient;
   final String baseUrl;
-  final Function getTokenCB;
+  final Function getUserInfo;
 
   TrailApiClient(
       {required this.httpClient,
       required this.baseUrl,
-      required this.getTokenCB});
+      required this.getUserInfo});
   Future<TrailDetails?> getTrailData(int id) async {
     try {
       final response = await httpClient.get(Uri.parse('$baseUrl/trail/$id'));
@@ -64,10 +64,11 @@ class TrailApiClient extends APIClient {
 
   Future<bool> saveTrail(CreateTrail trail) async {
     try {
-      dynamic headers = await getHeaders(getTokenCB());
-
-      final response = await httpClient.post(Uri.parse('$baseUrl/trail/'),
-          body: jsonEncode(trail.toJson()), headers: headers);
+      print("=======> ${'$baseUrl/trail'}");
+      print('=======> ${getUserInfo().token}');
+      final response = await httpClient.post(Uri.parse('$baseUrl/trail'),
+          body: jsonEncode(trail.toJson()),
+          headers: await getHeaders(getUserInfo().token ?? ''));
 
       if (response.statusCode == 200) {
         String data = response.body;
@@ -75,6 +76,8 @@ class TrailApiClient extends APIClient {
         json.toString();
         return true;
       } else {
+        print('======> SAVE ERROR:: ${response.statusCode}');
+        print('======> SAVE response:: $response');
         // throw Exception('Failed to load trail list');
         return false;
       }

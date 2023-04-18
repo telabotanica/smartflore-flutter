@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:smartflore/models/user/user_model.dart';
 import 'package:smartflore/repo/api_client.dart';
@@ -18,16 +17,17 @@ class AuthApiClient extends APIClient {
           .post(Uri.parse(baseUrl), body: jsonEncode(user.toJson()))
           .onError(
               (error, stackTrace) => Future.error('No Internet connection 😑'));
-      debugPrint('>>>>response status code ${response.statusCode}');
+      print('>>>>response status code ${response.statusCode}');
 
       switch (response.statusCode) {
         case 200:
-          debugPrint('>>>>response status code $response');
-          debugPrint('>>>>response status body ${response.body}');
+          print('>>>>response status code $response');
+          print('>>>>response status body ${response.body}');
 
           String? cookie = response.headers['set-cookie'];
+          print('>>>>cookie $cookie');
           Cookie cookieObj = Cookie.fromSetCookieValue(cookie ?? '');
-          debugPrint('>>>>cookieObj ${cookieObj.value}');
+          print('>>>>cookieObj ${cookieObj.value}');
 
           AuthenticationResponse authResponse = AuthenticationResponse(
               isOk: true,

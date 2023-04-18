@@ -36,6 +36,7 @@ class MyTrailsBloc extends Bloc<MyTrailsEvent, MyTrailsState> {
         }
 
         List<Trail>? trailList = await trailsRepo.getMyTrailList();
+        print('====>>> trailList $trailList');
         if (trailList != null) {
           trailsBox.put('mytrails', Trails(trailList: trailList));
           emit(MyTrailsState.dataLoaded(trailList));

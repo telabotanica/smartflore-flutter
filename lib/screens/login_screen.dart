@@ -5,6 +5,7 @@ import 'package:smartflore/bloc/auth/auth_bloc.dart';
 import 'package:smartflore/components/form/textinput_with_title.dart';
 import 'package:smartflore/components/icons/logo_icon.dart';
 import 'package:smartflore/models/user/user_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -165,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ))),
                   child: Center(
                     child: Text(
-                      'Se connecter',
+                      AppLocalizations.of(context).btn_login,
                       style: TextStyle(
                           fontSize: 16,
                           color: Theme.of(context).colorScheme.background),

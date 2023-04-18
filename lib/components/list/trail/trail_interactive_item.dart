@@ -11,11 +11,12 @@ class TrailInteractiveItemWidget extends StatelessWidget {
   final int id;
   final int index;
   final String title;
-  final String image;
+  final String? image;
   final int length;
   final LatLng position;
   final int nbOccurence;
   final bool isDownloaded;
+  final bool isLast;
 
   const TrailInteractiveItemWidget(
       {Key? key,
@@ -24,10 +25,11 @@ class TrailInteractiveItemWidget extends StatelessWidget {
       required this.id,
       required this.title,
       required this.length,
-      required this.image,
+      this.image,
       required this.position,
       required this.nbOccurence,
-      this.isDownloaded = false})
+      this.isDownloaded = false,
+      this.isLast = false})
       : super(key: key);
 
   onPressed(BuildContext context, int id) {
@@ -37,20 +39,27 @@ class TrailInteractiveItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ItemSeparator(
-        child: InteractiveItem(
-      isSelected: false,
-      id: id,
-      onPressed: onPressed,
-      child: TrailItem(
-        trailId: id,
-        index: index,
-        title: title,
-        length: length,
-        position: position,
-        image: image,
-        nbOccurence: nbOccurence,
-        isDownloaded: isDownloaded,
-      ),
-    ));
+        isLast: isLast,
+        child: addInteractivity(
+          isInteractive,
+          TrailItem(
+            trailId: id,
+            index: index,
+            title: title,
+            length: length,
+            position: position,
+            image: image,
+            isInteractive: isInteractive,
+            nbOccurence: nbOccurence,
+            isDownloaded: isDownloaded,
+          ),
+        ));
+  }
+
+  Widget addInteractivity(bool isInteractive, Widget child) {
+    return isInteractive
+        ? InteractiveItem(
+            isSelected: false, id: id, onPressed: onPressed, child: child)
+        : child;
   }
 }

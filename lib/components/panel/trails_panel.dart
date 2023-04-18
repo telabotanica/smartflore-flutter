@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trails/mytrails_bloc.dart';
+import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trails_list.dart';
 import 'package:smartflore/components/map/map_ui.dart';
 import 'package:smartflore/components/map/map_widget.dart';
@@ -33,6 +34,9 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
   void initState() {
     super.initState();
     // get the previously opened user box
+    BlocProvider.of<TrailsBloc>(context)
+        .add(const TrailsEvent.loadTrailsData());
+
     savedTrailsBox = Hive.box('savedTrails');
     tabController = TabController(length: 2, vsync: this);
     tabController.addListener(() {

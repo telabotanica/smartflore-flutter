@@ -20,7 +20,7 @@ class APIClient {
     }
     return {
       HttpHeaders.contentTypeHeader: 'application/json',
-      HttpHeaders.authorizationHeader: token,
+      HttpHeaders.cookieHeader: 'tb_auth=$token',
     };
   }
 }

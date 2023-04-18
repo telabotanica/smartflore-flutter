@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/panel/species_panel.dart';
 import 'package:smartflore/components/panel/trails_panel.dart';
 import 'package:smartflore/components/utils/connectivity_widget.dart';
@@ -17,8 +15,8 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<TrailsBloc>(context)
-        .add(const TrailsEvent.loadTrailsData());
+
+    if (widget.isAuth == true) {}
   }
 
   @override
