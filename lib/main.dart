@@ -84,11 +84,6 @@ void main() async {
   Box<UserInfoApp?> userBox = await Hive.openBox('userInfoApp');
   UserLocalClient userLocalClient = UserLocalClient(userBox);
 
-  String getToken() {
-    UserInfoApp? userInfoApp = userLocalClient.getUserInfo();
-    return userInfoApp.token ?? '';
-  }
-
   bool isAuth() {
     return (userLocalClient.getUserInfo().token != null) ? true : false;
   }

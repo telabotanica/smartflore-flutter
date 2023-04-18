@@ -17,17 +17,11 @@ class AuthApiClient extends APIClient {
           .post(Uri.parse(baseUrl), body: jsonEncode(user.toJson()))
           .onError(
               (error, stackTrace) => Future.error('No Internet connection 😑'));
-      print('>>>>response status code ${response.statusCode}');
 
       switch (response.statusCode) {
         case 200:
-          print('>>>>response status code $response');
-          print('>>>>response status body ${response.body}');
-
           String? cookie = response.headers['set-cookie'];
-          print('>>>>cookie $cookie');
           Cookie cookieObj = Cookie.fromSetCookieValue(cookie ?? '');
-          print('>>>>cookieObj ${cookieObj.value}');
 
           AuthenticationResponse authResponse = AuthenticationResponse(
               isOk: true,

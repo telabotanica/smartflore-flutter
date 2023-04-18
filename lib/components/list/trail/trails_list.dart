@@ -26,7 +26,7 @@ class TrailsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('>>>>>>> buiiild');
+    debugPrint('>>>>>>> buiiild');
     if (trailsListType == TrailsListType.myTrails) {
       return MyTrails(
           isAuth: isAuth, controller: controller, onPanUpdate: onPanUpdate);

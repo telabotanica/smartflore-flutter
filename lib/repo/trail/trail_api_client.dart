@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:smartflore/models/create/create_model.dart';
 import 'package:smartflore/models/trail/batch_trail_model.dart';
@@ -64,8 +65,8 @@ class TrailApiClient extends APIClient {
 
   Future<bool> saveTrail(CreateTrail trail) async {
     try {
-      print("=======> ${'$baseUrl/trail'}");
-      print('=======> ${getUserInfo().token}');
+      debugPrint("=======> ${'$baseUrl/trail'}");
+      debugPrint('=======> ${getUserInfo().token}');
       final response = await httpClient.post(Uri.parse('$baseUrl/trail'),
           body: jsonEncode(trail.toJson()),
           headers: await getHeaders(getUserInfo().token ?? ''));
@@ -76,8 +77,8 @@ class TrailApiClient extends APIClient {
         json.toString();
         return true;
       } else {
-        print('======> SAVE ERROR:: ${response.statusCode}');
-        print('======> SAVE response:: $response');
+        debugPrint('======> SAVE ERROR:: ${response.statusCode}');
+        debugPrint('======> SAVE response:: $response');
         // throw Exception('Failed to load trail list');
         return false;
       }

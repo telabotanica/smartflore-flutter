@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:smartflore/bloc/auth/auth_bloc.dart';
@@ -36,7 +37,7 @@ class MyTrailsBloc extends Bloc<MyTrailsEvent, MyTrailsState> {
         }
 
         List<Trail>? trailList = await trailsRepo.getMyTrailList();
-        print('====>>> trailList $trailList');
+        debugPrint('====>>> trailList $trailList');
         if (trailList != null) {
           trailsBox.put('mytrails', Trails(trailList: trailList));
           emit(MyTrailsState.dataLoaded(trailList));

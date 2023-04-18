@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:smartflore/models/user/user_model.dart';
 import 'package:smartflore/repo/api_client.dart';
@@ -40,7 +41,7 @@ class TrailsApiClient extends APIClient {
       case 400:
       case 401:
       case 403:
-        print('>>>>403:: ${response.body.toString()}');
+        debugPrint('>>>>403:: ${response.body.toString()}');
         throw Future.error(response.body.toString());
       case 500:
       default:
@@ -58,8 +59,6 @@ class TrailsApiClient extends APIClient {
               (error, stackTrace) => Future.error('No Internet connection 😑'));
 
       dynamic data = _returnResponse(response);
-      print('>>>>response:: $response');
-      print('>>>>response:: ${RemoteUser.fromJson(data).trails}');
       return RemoteUser.fromJson(data).trails;
     } on SocketException {
       return Future.error('No Internet connection 😑');

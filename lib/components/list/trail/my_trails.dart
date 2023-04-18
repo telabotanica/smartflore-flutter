@@ -176,7 +176,7 @@ class _MyTrailsState extends State<MyTrails> {
                         ? trail.position!.start
                         : LatLng(0, 0);
                 bool isLast = (index == trailsList.length - 1);
-                print('>>> isLast : $isLast');
+                debugPrint('>>> isLast : $isLast');
                 return Opacity(
                   opacity: isDraft ? 0.5 : 1,
                   child: TrailInteractiveItemWidget(
