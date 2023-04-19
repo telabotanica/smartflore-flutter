@@ -31,8 +31,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
       required this.geolocationRepo,
       required this.trailRepo})
       : super(const _Initial()) {
-    on<CreateEvent>((event, emit) {
-      event.maybeWhen(
+    on<CreateEvent>((event, emit) async {
+      await event.maybeWhen(
           start: () {
             createTrailBox.clear();
             pauseRecording = false;

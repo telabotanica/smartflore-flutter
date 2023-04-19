@@ -114,13 +114,13 @@ class LatLngConverter implements JsonConverter<LatLng, dynamic> {
 
   @override
   LatLng fromJson(coordinates) {
-    LatLng latLng = LatLng(coordinates['lat'], coordinates['lng']);
+    LatLng latLng = LatLng(coordinates['lat'], coordinates['lon']);
     return latLng;
   }
 
   @override
   String toJson(LatLng latlng) {
-    String latLngJson = '{lat: ${latlng.latitude}, lng: ${latlng.longitude}}';
+    String latLngJson = '{lat: ${latlng.latitude}, lon: ${latlng.longitude}}';
     return latLngJson;
   }
 }
@@ -143,7 +143,7 @@ class LatLngListConverter
   List<dynamic> toJson(coordinates) {
     List<dynamic> latLngList = [];
     for (var coordinate in coordinates) {
-      latLngList.add({'lat': coordinate.longitude, 'lng': coordinate.latitude});
+      latLngList.add({'lat': coordinate.longitude, 'lon': coordinate.latitude});
     }
     return latLngList;
   }

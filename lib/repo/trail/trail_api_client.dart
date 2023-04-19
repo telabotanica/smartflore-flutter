@@ -63,16 +63,29 @@ class TrailApiClient extends APIClient {
     }
   }
 
+  void printWrapped(String text) {
+    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    pattern.allMatches(text).forEach((match) => debugPrint(match.group(0)));
+  }
+
   Future<bool> saveTrail(CreateTrail trail) async {
     try {
-      debugPrint("=======> ${'$baseUrl/trail'}");
-      debugPrint('=======> ${getUserInfo().token}');
+      debugPrint("=======> url: ${'$baseUrl/trail'}");
+      debugPrint('=======> token:  ${getUserInfo().token}');
+      dynamic test = await getHeaders(getUserInfo().token ?? '');
+      debugPrint('=======> header: $test');
+      printWrapped(jsonEncode(trail));
+      // debugPrint('=======> json: ${jsonEncode(trail)}', wrapWidth: 100000);
+
       final response = await httpClient.post(Uri.parse('$baseUrl/trail'),
-          body: jsonEncode(trail.toJson()),
+          body: jsonEncode(jsonEncode(trail)),
           headers: await getHeaders(getUserInfo().token ?? ''));
 
       if (response.statusCode == 200) {
         String data = response.body;
+        debugPrint('======> SAVE OK:: ${response.statusCode}');
+        debugPrint('======> data :: $data');
+
         Map<String, dynamic> json = jsonDecode(data);
         json.toString();
         return true;
