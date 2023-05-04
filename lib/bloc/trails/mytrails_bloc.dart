@@ -21,28 +21,31 @@ class MyTrailsBloc extends Bloc<MyTrailsEvent, MyTrailsState> {
   MyTrailsBloc(this.trailsRepo, this.trailsBox, this.authBloc)
       : super(const _Initial()) {
     authSubscription = authBloc.stream.listen((state) {
-      state.whenOrNull(
-        loginCompleted: () {
-          add(const MyTrailsEvent.loadTrailsData());
-        },
-      );
+      state.maybeWhen(
+          authStatus: (status) {},
+          loginCompleted: () {
+            add(const MyTrailsEvent.loadTrailsData());
+          },
+          orElse: () {});
     });
 
     on<MyTrailsEvent>((event, emit) async {
-      await event.when(loadTrailsData: () async {
-        emit(const MyTrailsState.dataLoading());
-        Trails? trails = trailsBox.get('mytrails');
-        if (trails != null && trails.trailList != null) {
-          emit(MyTrailsState.dataLoaded(trails.trailList!));
-        }
+      await event.when(
+          init: () {},
+          loadTrailsData: () async {
+            emit(const MyTrailsState.dataLoading());
+            Trails? trails = trailsBox.get('mytrails');
+            if (trails != null && trails.trailList != null) {
+              emit(MyTrailsState.dataLoaded(trails.trailList!));
+            }
 
-        List<Trail>? trailList = await trailsRepo.getMyTrailList();
-        debugPrint('====>>> trailList $trailList');
-        if (trailList != null) {
-          trailsBox.put('mytrails', Trails(trailList: trailList));
-          emit(MyTrailsState.dataLoaded(trailList));
-        }
-      });
+            List<Trail>? trailList = await trailsRepo.getMyTrailList();
+            debugPrint('====>>> trailList $trailList');
+            if (trailList != null) {
+              trailsBox.put('mytrails', Trails(trailList: trailList));
+              emit(MyTrailsState.dataLoaded(trailList));
+            }
+          });
     });
   }
 }

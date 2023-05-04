@@ -35,7 +35,6 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
     on<CreateEvent>((event, emit) async {
       await event.maybeWhen(
           start: () {
-            print('=====> START');
             createTrailBox.delete('current');
             pauseRecording = false;
             emit(const CreateState.start());

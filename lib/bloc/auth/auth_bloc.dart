@@ -21,7 +21,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           if (authResponse.isOk == true && authResponse.user != null) {
             await userRepo.updateUserInfo(UserInfoApp(
                 email: user.login, token: authResponse.user!.token));
+
             emit(AuthState.authStatus(userRepo.isAuth()));
+
             emit(const AuthState.loginCompleted());
           } else {
             emit(AuthState.loginError(authResponse));

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smartflore/bloc/auth/auth_bloc.dart';
+import 'package:smartflore/bloc/trails/mytrails_bloc.dart';
 import 'package:smartflore/components/form/textinput_with_title.dart';
 import 'package:smartflore/components/icons/logo_icon.dart';
 import 'package:smartflore/models/user/user_model.dart';
@@ -26,9 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    BlocProvider.of<MyTrailsBloc>(context).add(const MyTrailsEvent.init());
     _controllerLogin.addListener(_onTextChanged);
     _controllerPwd.addListener(_onTextChanged);
+    super.initState();
   }
 
   void _onTextChanged() {

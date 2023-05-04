@@ -54,7 +54,6 @@ class TrailsApiClient extends APIClient {
 
   Future<List<Trail>?> getMyTrailList() async {
     try {
-      print('getUserInfo().token ${getUserInfo().token}');
       final response = await httpClient
           .get(Uri.parse('$baseUrl/me'),
               headers: await getHeaders(getUserInfo().token ?? ''))

@@ -109,11 +109,7 @@ class TrailApiClient extends APIClient {
   }
 
   String trailConverter(String trail) {
-    print('======> trail');
-
     final originalMap = jsonDecode(trail);
-    print('======> trail string : $trail');
-    print('======> original map : ${originalMap.toString()}');
 
     final newMap = {
       'name': originalMap['name'],
@@ -145,8 +141,6 @@ class TrailApiClient extends APIClient {
       'prm': originalMap['prm'],
       'best_season': originalMap['best_season'],
     };
-
-    print(' ==========>> ${jsonEncode(newMap)}');
 
     return jsonEncode(newMap);
   }

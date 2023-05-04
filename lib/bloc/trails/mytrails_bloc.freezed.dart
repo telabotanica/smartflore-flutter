@@ -18,32 +18,38 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MyTrailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() loadTrailsData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? loadTrailsData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? loadTrailsData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_MyTrailsInit value) init,
     required TResult Function(_LoadTrailsData value) loadTrailsData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_MyTrailsInit value)? init,
     TResult? Function(_LoadTrailsData value)? loadTrailsData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_MyTrailsInit value)? init,
     TResult Function(_LoadTrailsData value)? loadTrailsData,
     required TResult orElse(),
   }) =>
@@ -66,6 +72,108 @@ class _$MyTrailsEventCopyWithImpl<$Res, $Val extends MyTrailsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_MyTrailsInitCopyWith<$Res> {
+  factory _$$_MyTrailsInitCopyWith(
+          _$_MyTrailsInit value, $Res Function(_$_MyTrailsInit) then) =
+      __$$_MyTrailsInitCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_MyTrailsInitCopyWithImpl<$Res>
+    extends _$MyTrailsEventCopyWithImpl<$Res, _$_MyTrailsInit>
+    implements _$$_MyTrailsInitCopyWith<$Res> {
+  __$$_MyTrailsInitCopyWithImpl(
+      _$_MyTrailsInit _value, $Res Function(_$_MyTrailsInit) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_MyTrailsInit implements _MyTrailsInit {
+  const _$_MyTrailsInit();
+
+  @override
+  String toString() {
+    return 'MyTrailsEvent.init()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_MyTrailsInit);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() loadTrailsData,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? loadTrailsData,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? loadTrailsData,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MyTrailsInit value) init,
+    required TResult Function(_LoadTrailsData value) loadTrailsData,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_MyTrailsInit value)? init,
+    TResult? Function(_LoadTrailsData value)? loadTrailsData,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_MyTrailsInit value)? init,
+    TResult Function(_LoadTrailsData value)? loadTrailsData,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MyTrailsInit implements MyTrailsEvent {
+  const factory _MyTrailsInit() = _$_MyTrailsInit;
 }
 
 /// @nodoc
@@ -106,6 +214,7 @@ class _$_LoadTrailsData implements _LoadTrailsData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() loadTrailsData,
   }) {
     return loadTrailsData();
@@ -114,6 +223,7 @@ class _$_LoadTrailsData implements _LoadTrailsData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? loadTrailsData,
   }) {
     return loadTrailsData?.call();
@@ -122,6 +232,7 @@ class _$_LoadTrailsData implements _LoadTrailsData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? loadTrailsData,
     required TResult orElse(),
   }) {
@@ -134,6 +245,7 @@ class _$_LoadTrailsData implements _LoadTrailsData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_MyTrailsInit value) init,
     required TResult Function(_LoadTrailsData value) loadTrailsData,
   }) {
     return loadTrailsData(this);
@@ -142,6 +254,7 @@ class _$_LoadTrailsData implements _LoadTrailsData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_MyTrailsInit value)? init,
     TResult? Function(_LoadTrailsData value)? loadTrailsData,
   }) {
     return loadTrailsData?.call(this);
@@ -150,6 +263,7 @@ class _$_LoadTrailsData implements _LoadTrailsData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_MyTrailsInit value)? init,
     TResult Function(_LoadTrailsData value)? loadTrailsData,
     required TResult orElse(),
   }) {

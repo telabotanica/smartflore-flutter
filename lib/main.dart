@@ -131,9 +131,7 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
 
   runApp(RootRestorationScope(
-    // <--fix
     restorationId: 'root',
-
     child: MultiBlocProvider(providers: [
       BlocProvider<MapBloc>(create: (context) => MapBloc()),
       BlocProvider<AuthBloc>(create: (context) => AuthBloc(authRepo, userRepo)),
