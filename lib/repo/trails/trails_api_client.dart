@@ -37,6 +37,8 @@ class TrailsApiClient extends APIClient {
   dynamic _returnResponse(Response response) {
     switch (response.statusCode) {
       case 200:
+        debugPrint('body:: ${response.body.toString()}');
+
         return jsonDecode(response.body);
       case 400:
       case 401:
@@ -52,6 +54,7 @@ class TrailsApiClient extends APIClient {
 
   Future<List<Trail>?> getMyTrailList() async {
     try {
+      print('getUserInfo().token ${getUserInfo().token}');
       final response = await httpClient
           .get(Uri.parse('$baseUrl/me'),
               headers: await getHeaders(getUserInfo().token ?? ''))
@@ -59,11 +62,20 @@ class TrailsApiClient extends APIClient {
               (error, stackTrace) => Future.error('No Internet connection 😑'));
 
       dynamic data = _returnResponse(response);
+      printWrapped('/me ===>  $data');
+
       return RemoteUser.fromJson(data).trails;
     } on SocketException {
       return Future.error('No Internet connection 😑');
     } on Exception {
       return Future.error('Unexpected error 😢');
     }
+  }
+
+  void printWrapped(String text) {
+    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    debugPrint(':::::::::::::::::::::::::::');
+    pattern.allMatches(text).forEach((match) => debugPrint(match.group(0)));
+    debugPrint(':::::::::::::::::::::::::::');
   }
 }

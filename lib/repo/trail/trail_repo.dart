@@ -2,6 +2,7 @@ import 'package:smartflore/models/create/create_model.dart';
 import 'package:smartflore/models/trail/batch_trail_model.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/trail/trail_api_client.dart';
+import 'package:smartflore/utils/data.dart';
 
 class TrailRepo {
   final TrailApiClient trailApiClient;
@@ -18,7 +19,7 @@ class TrailRepo {
     return trail;
   }
 
-  Future<bool> saveTrail(CreateTrail trail) async {
+  Future<GenericRequestResponse> saveTrail(CreateTrail trail) async {
     return await trailApiClient.saveTrail(trail);
   }
 }

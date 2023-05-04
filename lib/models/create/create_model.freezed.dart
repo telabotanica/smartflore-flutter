@@ -340,6 +340,280 @@ abstract class _CreateTrail implements CreateTrail {
       throw _privateConstructorUsedError;
 }
 
+OccurrenceCreate _$OccurrenceCreateFromJson(Map<String, dynamic> json) {
+  return _OccurrenceCreate.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OccurrenceCreate {
+  @LatLngConverter()
+  @HiveField(0)
+  LatLng get position => throw _privateConstructorUsedError;
+  @JsonKey(name: 'scientific_name')
+  @HiveField(1)
+  String? get scientificName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name_id')
+  @HiveField(2)
+  int get nameId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'taxon_repository')
+  @HiveField(3)
+  String get taxonRepository => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_id')
+  @HiveField(4)
+  String? get imageId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OccurrenceCreateCopyWith<OccurrenceCreate> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OccurrenceCreateCopyWith<$Res> {
+  factory $OccurrenceCreateCopyWith(
+          OccurrenceCreate value, $Res Function(OccurrenceCreate) then) =
+      _$OccurrenceCreateCopyWithImpl<$Res, OccurrenceCreate>;
+  @useResult
+  $Res call(
+      {@LatLngConverter() @HiveField(0) LatLng position,
+      @JsonKey(name: 'scientific_name') @HiveField(1) String? scientificName,
+      @JsonKey(name: 'name_id') @HiveField(2) int nameId,
+      @JsonKey(name: 'taxon_repository') @HiveField(3) String taxonRepository,
+      @JsonKey(name: 'image_id') @HiveField(4) String? imageId});
+}
+
+/// @nodoc
+class _$OccurrenceCreateCopyWithImpl<$Res, $Val extends OccurrenceCreate>
+    implements $OccurrenceCreateCopyWith<$Res> {
+  _$OccurrenceCreateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? position = null,
+    Object? scientificName = freezed,
+    Object? nameId = null,
+    Object? taxonRepository = null,
+    Object? imageId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as LatLng,
+      scientificName: freezed == scientificName
+          ? _value.scientificName
+          : scientificName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameId: null == nameId
+          ? _value.nameId
+          : nameId // ignore: cast_nullable_to_non_nullable
+              as int,
+      taxonRepository: null == taxonRepository
+          ? _value.taxonRepository
+          : taxonRepository // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageId: freezed == imageId
+          ? _value.imageId
+          : imageId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_OccurrenceCreateCopyWith<$Res>
+    implements $OccurrenceCreateCopyWith<$Res> {
+  factory _$$_OccurrenceCreateCopyWith(
+          _$_OccurrenceCreate value, $Res Function(_$_OccurrenceCreate) then) =
+      __$$_OccurrenceCreateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@LatLngConverter() @HiveField(0) LatLng position,
+      @JsonKey(name: 'scientific_name') @HiveField(1) String? scientificName,
+      @JsonKey(name: 'name_id') @HiveField(2) int nameId,
+      @JsonKey(name: 'taxon_repository') @HiveField(3) String taxonRepository,
+      @JsonKey(name: 'image_id') @HiveField(4) String? imageId});
+}
+
+/// @nodoc
+class __$$_OccurrenceCreateCopyWithImpl<$Res>
+    extends _$OccurrenceCreateCopyWithImpl<$Res, _$_OccurrenceCreate>
+    implements _$$_OccurrenceCreateCopyWith<$Res> {
+  __$$_OccurrenceCreateCopyWithImpl(
+      _$_OccurrenceCreate _value, $Res Function(_$_OccurrenceCreate) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? position = null,
+    Object? scientificName = freezed,
+    Object? nameId = null,
+    Object? taxonRepository = null,
+    Object? imageId = freezed,
+  }) {
+    return _then(_$_OccurrenceCreate(
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as LatLng,
+      scientificName: freezed == scientificName
+          ? _value.scientificName
+          : scientificName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameId: null == nameId
+          ? _value.nameId
+          : nameId // ignore: cast_nullable_to_non_nullable
+              as int,
+      taxonRepository: null == taxonRepository
+          ? _value.taxonRepository
+          : taxonRepository // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageId: freezed == imageId
+          ? _value.imageId
+          : imageId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_OccurrenceCreate implements _OccurrenceCreate {
+  const _$_OccurrenceCreate(
+      {@LatLngConverter()
+      @HiveField(0)
+          required this.position,
+      @JsonKey(name: 'scientific_name')
+      @HiveField(1)
+          this.scientificName,
+      @JsonKey(name: 'name_id')
+      @HiveField(2)
+          required this.nameId,
+      @JsonKey(name: 'taxon_repository')
+      @HiveField(3)
+          required this.taxonRepository,
+      @JsonKey(name: 'image_id')
+      @HiveField(4)
+          this.imageId});
+
+  factory _$_OccurrenceCreate.fromJson(Map<String, dynamic> json) =>
+      _$$_OccurrenceCreateFromJson(json);
+
+  @override
+  @LatLngConverter()
+  @HiveField(0)
+  final LatLng position;
+  @override
+  @JsonKey(name: 'scientific_name')
+  @HiveField(1)
+  final String? scientificName;
+  @override
+  @JsonKey(name: 'name_id')
+  @HiveField(2)
+  final int nameId;
+  @override
+  @JsonKey(name: 'taxon_repository')
+  @HiveField(3)
+  final String taxonRepository;
+  @override
+  @JsonKey(name: 'image_id')
+  @HiveField(4)
+  final String? imageId;
+
+  @override
+  String toString() {
+    return 'OccurrenceCreate(position: $position, scientificName: $scientificName, nameId: $nameId, taxonRepository: $taxonRepository, imageId: $imageId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OccurrenceCreate &&
+            (identical(other.position, position) ||
+                other.position == position) &&
+            (identical(other.scientificName, scientificName) ||
+                other.scientificName == scientificName) &&
+            (identical(other.nameId, nameId) || other.nameId == nameId) &&
+            (identical(other.taxonRepository, taxonRepository) ||
+                other.taxonRepository == taxonRepository) &&
+            (identical(other.imageId, imageId) || other.imageId == imageId));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, position, scientificName, nameId, taxonRepository, imageId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OccurrenceCreateCopyWith<_$_OccurrenceCreate> get copyWith =>
+      __$$_OccurrenceCreateCopyWithImpl<_$_OccurrenceCreate>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_OccurrenceCreateToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OccurrenceCreate implements OccurrenceCreate {
+  const factory _OccurrenceCreate(
+      {@LatLngConverter()
+      @HiveField(0)
+          required final LatLng position,
+      @JsonKey(name: 'scientific_name')
+      @HiveField(1)
+          final String? scientificName,
+      @JsonKey(name: 'name_id')
+      @HiveField(2)
+          required final int nameId,
+      @JsonKey(name: 'taxon_repository')
+      @HiveField(3)
+          required final String taxonRepository,
+      @JsonKey(name: 'image_id')
+      @HiveField(4)
+          final String? imageId}) = _$_OccurrenceCreate;
+
+  factory _OccurrenceCreate.fromJson(Map<String, dynamic> json) =
+      _$_OccurrenceCreate.fromJson;
+
+  @override
+  @LatLngConverter()
+  @HiveField(0)
+  LatLng get position;
+  @override
+  @JsonKey(name: 'scientific_name')
+  @HiveField(1)
+  String? get scientificName;
+  @override
+  @JsonKey(name: 'name_id')
+  @HiveField(2)
+  int get nameId;
+  @override
+  @JsonKey(name: 'taxon_repository')
+  @HiveField(3)
+  String get taxonRepository;
+  @override
+  @JsonKey(name: 'image_id')
+  @HiveField(4)
+  String? get imageId;
+  @override
+  @JsonKey(ignore: true)
+  _$$_OccurrenceCreateCopyWith<_$_OccurrenceCreate> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 SavePosition _$SavePositionFromJson(Map<String, dynamic> json) {
   return _SavePosition.fromJson(json);
 }

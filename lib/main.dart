@@ -40,7 +40,7 @@ import 'package:smartflore/repo/user/user_repo.dart';
 import 'package:smartflore/repo/walk/walk_repo.dart';
 import 'package:smartflore/screens/create/camera_screen.dart';
 import 'package:smartflore/screens/login_screen.dart';
-import 'package:smartflore/screens/create/create_screen.dart';
+import 'package:smartflore/screens/create/search_screen.dart';
 import 'package:smartflore/screens/map_screen.dart';
 import 'package:smartflore/screens/setting_screen.dart';
 import 'package:smartflore/screens/taxon/taxon_screen.dart';
@@ -52,6 +52,8 @@ import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+
+getImageIdIfPossible(taxon) {}
 
 void main() async {
   await Hive.initFlutter();
@@ -270,7 +272,7 @@ class _AppState extends State<App> {
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeOutQuad,
                     reverseCurve: Curves.easeOut,
-                    newScreen: const CreateScreen(
+                    newScreen: const SearchTaxonScreen(
                       simpleSearch: true,
                     ));
               case '/create':
@@ -279,7 +281,7 @@ class _AppState extends State<App> {
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeOutQuad,
                     reverseCurve: Curves.easeOut,
-                    newScreen: const CreateScreen());
+                    newScreen: const SearchTaxonScreen());
               case '/camera':
                 return Transitions(
                     transitionType: TransitionType.slideLeft,

@@ -10,6 +10,7 @@ import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 import 'package:smartflore/repo/trail/trail_repo.dart';
+import 'package:smartflore/utils/data.dart';
 
 part 'create_event.dart';
 part 'create_state.dart';
@@ -34,7 +35,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
     on<CreateEvent>((event, emit) async {
       await event.maybeWhen(
           start: () {
-            createTrailBox.clear();
+            print('=====> START');
+            createTrailBox.delete('current');
             pauseRecording = false;
             emit(const CreateState.start());
           },
@@ -147,8 +149,12 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                     end: trail.path.coordinates.last),
               );
             }
-            await trailRepo.saveTrail(trail);
-            emit(const CreateState.trailSaved());
+            GenericRequestResponse response = await trailRepo.saveTrail(trail);
+            if (response.success == true) {
+              emit(const CreateState.trailSaved());
+            } else {
+              emit(CreateState.trailSaveError(response.message));
+            }
           },
           orElse: () {});
     });

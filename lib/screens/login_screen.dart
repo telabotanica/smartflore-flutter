@@ -16,9 +16,28 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _controllerLogin = TextEditingController();
+  final TextEditingController _controllerPwd = TextEditingController();
+  bool _isSendButtonDisabled = true;
+
   List<String?> textFieldsValue = [];
   bool isFormProcessing = false;
   AuthenticationResponse? response;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _controllerLogin.addListener(_onTextChanged);
+    _controllerPwd.addListener(_onTextChanged);
+  }
+
+  void _onTextChanged() {
+    final isNotEmpty =
+        _controllerLogin.text.isNotEmpty && _controllerPwd.text.isNotEmpty;
+    setState(() {
+      _isSendButtonDisabled = !isNotEmpty;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,40 +61,43 @@ class _LoginScreenState extends State<LoginScreen> {
             SvgPicture.asset('assets/graphics/dots_bg.svg',
                 width: MediaQuery.of(context).size.width,
                 color: Theme.of(context).colorScheme.secondary),
-            Center(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.chevron_left,
-                              size: 20,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                            Text('Retour',
-                                style: Theme.of(context).textTheme.titleLarge),
-                          ],
+            SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.chevron_left,
+                                size: 20,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                              Text('Retour',
+                                  style:
+                                      Theme.of(context).textTheme.titleLarge),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const LogoIcon(
-                      backgroundSize: 136, iconSize: 76, boarderRadius: 24),
-                  const SizedBox(height: 40),
-                  Text("Smart'Flore",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.displayLarge),
-                  buildForm(context)
-                ],
+                    const LogoIcon(
+                        backgroundSize: 136, iconSize: 76, boarderRadius: 24),
+                    const SizedBox(height: 40),
+                    Text("Smart'Flore",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.displayLarge),
+                    buildForm(context)
+                  ],
+                ),
               ),
             )
           ]),
@@ -106,6 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             TextFieldWithTitle(
               id: 'email',
+              textController: _controllerLogin,
               index: 0,
               title: 'Login',
               hintText: 'example@example.com',
@@ -122,6 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 16),
             TextFieldWithTitle(
               id: 'pwd',
+              textController: _controllerPwd,
               index: 0,
               title: 'Mot de passe',
               hintText: '********',
@@ -142,9 +166,11 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 50,
               child: TextButton(
-                  onPressed: () {
-                    _handleForm();
-                  },
+                  onPressed: _isSendButtonDisabled
+                      ? null
+                      : () {
+                          _handleForm();
+                        },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {

@@ -6,6 +6,52 @@ part of 'create_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
+class OccurenceCreateAdapter extends TypeAdapter<OccurrenceCreate> {
+  @override
+  final int typeId = 51;
+
+  @override
+  OccurrenceCreate read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return OccurrenceCreate(
+      position: fields[0] as LatLng,
+      scientificName: fields[1] as String?,
+      nameId: fields[2] as int,
+      taxonRepository: fields[3] as String,
+      imageId: fields[4] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, OccurrenceCreate obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.position)
+      ..writeByte(1)
+      ..write(obj.scientificName)
+      ..writeByte(2)
+      ..write(obj.nameId)
+      ..writeByte(3)
+      ..write(obj.taxonRepository)
+      ..writeByte(4)
+      ..write(obj.imageId);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OccurenceCreateAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
 class CreateTrailAdapter extends TypeAdapter<_$_CreateTrail> {
   @override
   final int typeId = 50;
@@ -122,6 +168,24 @@ Map<String, dynamic> _$$_CreateTrailToJson(_$_CreateTrail instance) =>
       'path': instance.path,
       'prm': instance.prm,
       'best_season': instance.bestSeason,
+    };
+
+_$_OccurrenceCreate _$$_OccurrenceCreateFromJson(Map<String, dynamic> json) =>
+    _$_OccurrenceCreate(
+      position: const LatLngConverter().fromJson(json['position']),
+      scientificName: json['scientific_name'] as String?,
+      nameId: json['name_id'] as int,
+      taxonRepository: json['taxon_repository'] as String,
+      imageId: json['image_id'] as String?,
+    );
+
+Map<String, dynamic> _$$_OccurrenceCreateToJson(_$_OccurrenceCreate instance) =>
+    <String, dynamic>{
+      'position': const LatLngConverter().toJson(instance.position),
+      'scientific_name': instance.scientificName,
+      'name_id': instance.nameId,
+      'taxon_repository': instance.taxonRepository,
+      'image_id': instance.imageId,
     };
 
 _$_SavePosition _$$_SavePositionFromJson(Map<String, dynamic> json) =>

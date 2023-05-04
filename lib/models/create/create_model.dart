@@ -33,6 +33,24 @@ class CreateTrail with _$CreateTrail {
       _$CreateTrailFromJson(json);
 }
 
+// TODO: REMOVE IF NOT USED
+@freezed
+@HiveType(typeId: 51, adapterName: 'OccurenceCreateAdapter')
+class OccurrenceCreate with _$OccurrenceCreate {
+  const factory OccurrenceCreate({
+    @LatLngConverter() @HiveField(0) required LatLng position,
+    @JsonKey(name: 'scientific_name') @HiveField(1) String? scientificName,
+    @JsonKey(name: 'name_id') @HiveField(2) required int nameId,
+    @JsonKey(name: 'taxon_repository')
+    @HiveField(3)
+        required String taxonRepository,
+    @JsonKey(name: 'image_id') @HiveField(4) String? imageId,
+  }) = _OccurrenceCreate;
+
+  factory OccurrenceCreate.fromJson(Map<String, dynamic> json) =>
+      _$OccurrenceCreateFromJson(json);
+}
+
 @freezed
 class SavePosition with _$SavePosition {
   @HiveType(typeId: 55, adapterName: 'SavePositionAdapter')

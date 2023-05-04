@@ -12,6 +12,11 @@ class AuthApiClient extends APIClient {
   AuthApiClient({required this.httpClient, required this.baseUrl});
 
   Future<AuthenticationResponse> login(AuthLogin user) async {
+    if (user.login == '' && user.password == '') {
+      return const AuthenticationResponse(
+          isOk: false,
+          message: 'Vous devez renseigner les champs login et mot de passe');
+    }
     try {
       final response = await httpClient
           .post(Uri.parse(baseUrl), body: jsonEncode(user.toJson()))

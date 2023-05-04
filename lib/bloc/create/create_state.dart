@@ -15,4 +15,5 @@ class CreateState with _$CreateState {
   const factory CreateState.addPicError() = _AddPicError;
   const factory CreateState.savingTrail() = _SavingTrail;
   const factory CreateState.trailSaved() = _TrailSaved;
+  const factory CreateState.trailSaveError(String? message) = _TrailSaveError;
 }

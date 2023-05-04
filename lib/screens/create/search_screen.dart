@@ -15,15 +15,16 @@ import 'package:smartflore/navigation/gallery_screen_args.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/utils/app.dart';
 
-class CreateScreen extends StatefulWidget {
+class SearchTaxonScreen extends StatefulWidget {
   final bool simpleSearch;
-  const CreateScreen({Key? key, this.simpleSearch = false}) : super(key: key);
+  const SearchTaxonScreen({Key? key, this.simpleSearch = false})
+      : super(key: key);
 
   @override
-  State<CreateScreen> createState() => _CreateScreenState();
+  State<SearchTaxonScreen> createState() => _SearchTaxonScreenState();
 }
 
-class _CreateScreenState extends State<CreateScreen> {
+class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
   final PagingController<int, TaxonHit> _pagingController =
       PagingController(firstPageKey: 0);
   late Algolia algolia;
@@ -252,7 +253,8 @@ class _CreateScreenState extends State<CreateScreen> {
           (currentSearch != '')
               ? Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 90.0),
+                    padding:
+                        EdgeInsets.only(bottom: widget.simpleSearch ? 0 : 90.0),
                     child: Container(child: buildHits(context, theme)),
                   ),
                 )

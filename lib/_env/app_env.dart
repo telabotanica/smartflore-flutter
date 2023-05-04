@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
+import 'package:smartflore/_env/env_prod.dart';
 
 import 'env_dev.dart';
 
 abstract class AppEnv implements AppEnvFields {
   factory AppEnv() => _instance;
-  static final AppEnv _instance = kDebugMode ? DevEnv() : AppEnv();
+  static final AppEnv _instance = kDebugMode ? DevEnv() : ProdEnv();
 }
 
 abstract class AppEnvFields {
