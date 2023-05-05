@@ -19,7 +19,7 @@ class SpeciesList extends StatelessWidget {
         if (state is TrailInitialState) {
           return const CircularProgressIndicator();
         } else if (state is TrailErrorState) {
-          return Text(AppLocalizations.of(context)!.error_API,
+          return Text(AppLocalizations.of(context).error_API,
               style: const TextStyle(color: Colors.red));
         } else if (state is TrailLoadedState) {
           return ListView.builder(

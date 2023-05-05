@@ -1,22 +1,12 @@
 part of 'map_bloc.dart';
 
-abstract class MapState extends Equatable {
-  const MapState();
-
-  @override
-  List<Object> get props => [];
-}
-
-class MapInitial extends MapState {}
-
-class OnRecenterMap extends MapState {}
-
-class OnMapModeChanged extends MapState {
-  final MapMode mapMode;
-  const OnMapModeChanged({required this.mapMode});
-}
-
-class OnRequestTrailPreview extends MapState {
-  final int trailID;
-  const OnRequestTrailPreview({required this.trailID});
+@freezed
+class MapState with _$MapState {
+  const factory MapState.initial() = _Initial;
+  const factory MapState.onRecenterMap() = _OnRecenterMap;
+  const factory MapState.onMapModeChanged(MapMode mapMode) = _OnMapModeChanged;
+  const factory MapState.onRequestTrailPreview(int trailID) =
+      _OnRequestTrailPreview;
+  const factory MapState.onFollowModeChanged(FollowMode followMode) =
+      _OnFollowModeChanged;
 }

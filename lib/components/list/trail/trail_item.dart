@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
-import 'package:smartflore/components/cards/download.dart';
+import 'package:smartflore/components/modal/download.dart';
 import 'package:smartflore/components/icons/download_icon.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/components/modal.dart';
@@ -47,8 +47,8 @@ class _TrailItemState extends State<TrailItem> {
   Widget build(BuildContext context) {
     String distance = Numbers.convertToKilo(
         widget.length.toDouble(),
-        AppLocalizations.of(context)!.distance_m,
-        AppLocalizations.of(context)!.distance_km);
+        AppLocalizations.of(context).distance_m,
+        AppLocalizations.of(context).distance_km);
     return Padding(
       padding: EdgeInsets.fromLTRB(0, (widget.index == 0) ? 0 : 20, 0, 20),
       child: Row(
@@ -57,16 +57,16 @@ class _TrailItemState extends State<TrailItem> {
           Stack(
             children: [
               SizedBox(
-                width: 68,
-                height: 68,
-                child: (widget.image != null)
-                    ? ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(6.0)),
-                        child: ImageWithLoader(
-                            url: widget.image!, imageFormat: 'XS'))
-                    : Container(),
-              ),
+                  width: 68,
+                  height: 68,
+                  child: ClipRRect(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(6.0)),
+                      child: widget.image == null ||
+                              widget.image == '_path_placeholder'
+                          ? Image.asset('assets/images/path_placeholder.jpg')
+                          : ImageWithLoader(
+                              url: widget.image!, imageFormat: 'XS'))),
               (widget.isDownloaded)
                   ? Transform.translate(
                       offset: const Offset(58, -6), child: const DownloadIcon())
@@ -85,7 +85,7 @@ class _TrailItemState extends State<TrailItem> {
                         child: Text(widget.title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodyText1)),
+                            style: Theme.of(context).textTheme.bodyLarge)),
                     const SizedBox(width: 8),
                     (widget.isInteractive)
                         ? Icon(
@@ -107,10 +107,18 @@ class _TrailItemState extends State<TrailItem> {
                                       barrierColor:
                                           Colors.black.withOpacity(0.1));
                                 },
-                                child: Icon(SmartFloreIcons.dot_3,
-                                    size: 22,
-                                    color:
-                                        Theme.of(context).colorScheme.primary))
+                                child: Container(
+                                  color: Colors.transparent,
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 0, 0, 20),
+                                    child: Icon(SmartFloreIcons.dot_3,
+                                        size: 22,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  ),
+                                ))
                             : Container(),
                   ],
                 ),
@@ -133,7 +141,8 @@ class _TrailItemState extends State<TrailItem> {
                                 ),
                                 const SizedBox(width: 5),
                                 Text(distance,
-                                    style: Theme.of(context).textTheme.caption),
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall),
                               ],
                             ),
                             const SizedBox(height: 4),
@@ -172,9 +181,9 @@ class _TrailItemState extends State<TrailItem> {
           const SizedBox(width: 5),
           Flexible(
             child: Text(
-              AppLocalizations.of(context)!
+              AppLocalizations.of(context)
                   .count_observation(widget.nbOccurence),
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -199,24 +208,24 @@ class _TrailItemState extends State<TrailItem> {
           Flexible(
             child: BlocBuilder<GeolocationBloc, GeolocationState>(
               builder: (context, state) {
-                if (state is LocationUpdatedState) {
+                return state.maybeWhen(locationUpdate: (position) {
                   double distance = Geolocator.distanceBetween(
                       widget.position!.latitude,
                       widget.position!.longitude,
-                      state.position.latitude,
-                      state.position.longitude);
+                      position.latitude,
+                      position.longitude);
 
                   return AutoSizeText(
-                    '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
+                    '${AppLocalizations.of(context).to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context).distance_m, AppLocalizations.of(context).distance_km)}',
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText2!
+                        .bodyMedium!
                         .copyWith(color: Theme.of(context).colorScheme.primary),
                     maxLines: 1,
                   );
-                } else {
+                }, orElse: () {
                   return Container();
-                }
+                });
               },
             ),
           )

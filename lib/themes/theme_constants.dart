@@ -2,49 +2,49 @@ import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
   textTheme: const TextTheme(
-    headline1: TextStyle(
+    displayLarge: TextStyle(
         color: Color(0xFF12161E),
         fontSize: 28,
         fontWeight: FontWeight.bold,
         fontFamily: 'SourceSansPro'),
-    headline2: TextStyle(
+    displayMedium: TextStyle(
         color: Color(0xFF12161E),
         fontSize: 22,
         fontWeight: FontWeight.w700,
         fontFamily: 'SourceSansPro'),
-    headline3: TextStyle(
+    displaySmall: TextStyle(
         color: Color(0xFF12161E),
         fontSize: 18,
         fontWeight: FontWeight.w700,
         fontFamily: 'SourceSansPro'),
-    headline4: TextStyle(
+    headlineMedium: TextStyle(
         color: Color(0xFF12161E),
         fontSize: 16,
         fontWeight: FontWeight.w800,
         fontFamily: 'SourceSansPro'),
-    headline5: TextStyle(
+    headlineSmall: TextStyle(
         color: Color(0xffff7469),
         fontSize: 17,
         height: 1.2,
         letterSpacing: 1.1,
         fontWeight: FontWeight.w600,
         fontFamily: 'SourceSansPro'),
-    headline6: TextStyle(
+    titleLarge: TextStyle(
         color: Color(0xFF12161E),
         fontSize: 16,
         fontWeight: FontWeight.w600,
         fontFamily: 'SourceSansPro'),
-    bodyText1: TextStyle(
+    bodyLarge: TextStyle(
         color: Color(0xFF12161E),
         fontSize: 15,
         fontWeight: FontWeight.w600,
         fontFamily: 'SourceSansPro'),
-    bodyText2: TextStyle(
+    bodyMedium: TextStyle(
         color: Color(0xFF647883),
         fontSize: 15,
         fontWeight: FontWeight.w400,
         fontFamily: 'SourceSansPro'),
-    caption: TextStyle(
+    bodySmall: TextStyle(
         color: Color(0xFF647883),
         fontSize: 15,
         fontWeight: FontWeight.w400,

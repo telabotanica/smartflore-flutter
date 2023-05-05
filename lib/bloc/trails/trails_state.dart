@@ -1,15 +1,9 @@
 part of 'trails_bloc.dart';
 
-@immutable
-abstract class TrailsDataState {}
-
-class TrailsDataInitialState extends TrailsDataState {}
-
-class TrailsDataLoadingState extends TrailsDataState {}
-
-class TrailsDataLoadedState extends TrailsDataState {
-  final List<Trail> trails;
-  TrailsDataLoadedState({required this.trails});
+@freezed
+class TrailsState with _$TrailsState {
+  const factory TrailsState.initial() = _Initial;
+  const factory TrailsState.dataLoading() = _DataLoading;
+  const factory TrailsState.dataLoaded(List<Trail> trails) = _DataLoaded;
+  const factory TrailsState.dataLoadError() = _DataLoadError;
 }
-
-class TrailsDataErrorState extends TrailsDataState {}

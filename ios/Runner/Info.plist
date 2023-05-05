@@ -37,10 +37,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>SmartFlore a besoin de votre position pour vous situer sur la carte et vous permettre de créer vos sentiers botaniques.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs access to location when in the background.</string>
+	<string>SmartFlore a besoin de votre position pour vous situer sur la carte et vous permettre de créer vos sentiers botaniques même lorsque votre téléphone est en veille pendant votre balade.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need to access your location when open.</string>
+	<string>SmartFlore a besoin de votre position pour vous situer sur la carte et vous permettre de créer vos sentiers botaniques.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -62,5 +64,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+		<string>Used when creating a botanic trail to add pictures of taxons added to the trail</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

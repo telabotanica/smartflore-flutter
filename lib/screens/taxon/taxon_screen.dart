@@ -32,15 +32,18 @@ class _TaxonScreenState extends State<TaxonScreen>
 
   @override
   void initState() {
-    BlocProvider.of<TaxonBloc>(context).add(LoadTaxonDataEvent(
-        taxonID: widget.taxonID, taxonRepo: widget.taxonRepo));
+    // REQUEST FULL TAXON DATA
+    BlocProvider.of<TaxonBloc>(context)
+        .add(TaxonEvent.loadTaxonData(widget.taxonRepo, widget.taxonID));
     _tabController = TabController(vsync: this, length: 4);
     _tabController.addListener(_handleTabSelection);
     BlocListener<TaxonBloc, TaxonState>(listener: (context, state) {
-      if (state is TaxonLoadedState) {
-        _tabController =
-            TabController(vsync: this, length: state.taxon.tabs.length);
-      }
+      state.whenOrNull(
+        loaded: (taxon) {
+          _tabController =
+              TabController(vsync: this, length: taxon.tabs.length);
+        },
+      );
     });
 
     super.initState();
@@ -82,7 +85,7 @@ class _TaxonScreenState extends State<TaxonScreen>
     List<Widget> tabViews = [];
     for (var tab in taxon.tabs) {
       if (tab.type == TabTypeEnum.webview.name) {
-        tabViews.add(WebViewScreen(url: tab.url));
+        tabViews.add(WebViewScreen(url: tab.url ?? ''));
       } else if (tab.type == TabTypeEnum.card.name) {
         tabViews.add(SpeciesDescription(tabData: tab));
       } else if (tab.type == TabTypeEnum.gallery.name) {
@@ -94,56 +97,54 @@ class _TaxonScreenState extends State<TaxonScreen>
 
   Widget buildTabView() {
     return BlocBuilder<TaxonBloc, TaxonState>(builder: (context, state) {
-      if (state is TaxonInitialState) {
-        return Center(
-            child: Container(
-                color: Colors.white, child: const CircularProgressIndicator()));
-      } else if (state is TaxonLoadedState) {
-        return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 50),
-            child: TabBarView(
-              controller: _tabController,
-              physics: const NeverScrollableScrollPhysics(),
-              children: getTabViews(state.taxon),
-            ),
-          ),
-        );
-      } else {
-        return Container();
-      }
+      return state.when(
+          initial: () => Center(
+              child: Container(
+                  color: Colors.white,
+                  child: const CircularProgressIndicator())),
+          loading: () => Center(
+              child: Container(
+                  color: Colors.white,
+                  child: const CircularProgressIndicator())),
+          loaded: (taxon) => SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 50),
+                  child: TabBarView(
+                    controller: _tabController,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: getTabViews(taxon),
+                  ),
+                ),
+              ),
+          error: () => Container());
     });
   }
 
   Widget buildBottomBar() {
     return BlocBuilder<TaxonBloc, TaxonState>(builder: (context, state) {
-      if (state is TaxonInitialState) {
-        return Container();
-      } else if (state is TaxonLoadedState) {
-        return Align(
-          alignment: Alignment.bottomCenter,
-          child: ClipRRect(
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(6.0)),
-            child: Container(
-              color: Colors.black,
-              child: SafeArea(
+      return state.maybeWhen(
+          loaded: (taxon) => Align(
+                alignment: Alignment.bottomCenter,
+                child: ClipRRect(
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(6.0)),
                   child: Container(
-                color: Colors.white,
-                child: TabBar(
-                    isScrollable: false,
-                    controller: _tabController,
-                    indicator: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    tabs: getTabs(state.taxon)),
-              )),
-            ),
-          ),
-        );
-      } else {
-        return Container();
-      }
+                    color: Colors.black,
+                    child: SafeArea(
+                        child: Container(
+                      color: Colors.white,
+                      child: TabBar(
+                          isScrollable: false,
+                          controller: _tabController,
+                          indicator: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          tabs: getTabs(taxon)),
+                    )),
+                  ),
+                ),
+              ),
+          orElse: () => Container());
     });
   }
 
@@ -173,7 +174,7 @@ class _TaxonScreenState extends State<TaxonScreen>
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               text: TextSpan(
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyLarge,
                   children: [
                     TextSpan(
                         text: (widget.vernacularName != '')

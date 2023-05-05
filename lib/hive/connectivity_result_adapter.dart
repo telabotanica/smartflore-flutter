@@ -41,6 +41,12 @@ class ConnectivityResultAdapter extends TypeAdapter<ConnectivityResult> {
       case ConnectivityResult.none:
         writer.writeByte(4);
         break;
+      case ConnectivityResult.vpn:
+        // TODO: Handle this case.
+        break;
+      case ConnectivityResult.other:
+        // TODO: Handle this case.
+        break;
     }
   }
 }

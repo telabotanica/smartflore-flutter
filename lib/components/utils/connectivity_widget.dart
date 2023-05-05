@@ -109,7 +109,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
         titleText: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            AppLocalizations.of(context)!.toaster_offline_title,
+            AppLocalizations.of(context).toaster_offline_title,
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
@@ -120,7 +120,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
         messageText: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            AppLocalizations.of(context)!.toaster_offline_desc,
+            AppLocalizations.of(context).toaster_offline_desc,
             style: const TextStyle(
                 fontSize: 14.0,
                 color: Colors.white,

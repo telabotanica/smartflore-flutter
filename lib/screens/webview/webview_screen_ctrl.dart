@@ -34,7 +34,7 @@ class WebViewPage extends StatelessWidget {
           shadowColor: const Color(0x40000000),
           elevation: 10,
           title:
-              Text(title ?? '', style: Theme.of(context).textTheme.bodyText1),
+              Text(title ?? '', style: Theme.of(context).textTheme.bodyLarge),
           actions: <Widget>[
             Padding(
                 padding: const EdgeInsets.only(right: 20.0),
@@ -49,6 +49,8 @@ class WebViewPage extends StatelessWidget {
                 )),
           ],
         ),
-        body: WebViewScreen(url: url));
+        body: url == null
+            ? const Center(child: Text('Oups, aucune URL renseignée !'))
+            : WebViewScreen(url: url!));
   }
 }

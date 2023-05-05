@@ -55,18 +55,19 @@ class TrailAdapter extends TypeAdapter<_$_Trail> {
       name: fields[1] as String,
       displayName: fields[2] as String,
       author: fields[3] as String,
-      position: fields[4] as StartEndPosition,
+      position: fields[4] as StartEndPosition?,
       occurrencesCount: fields[5] as int,
       details: fields[6] as String,
       image: fields[7] as Image?,
       pathLength: fields[8] as int,
+      status: fields[9] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_Trail obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -84,7 +85,9 @@ class TrailAdapter extends TypeAdapter<_$_Trail> {
       ..writeByte(7)
       ..write(obj.image)
       ..writeByte(8)
-      ..write(obj.pathLength);
+      ..write(obj.pathLength)
+      ..writeByte(9)
+      ..write(obj.status);
   }
 
   @override
@@ -117,14 +120,16 @@ _$_Trail _$$_TrailFromJson(Map<String, dynamic> json) => _$_Trail(
       name: json['name'] as String,
       displayName: json['display_name'] as String,
       author: json['author'] as String,
-      position:
-          StartEndPosition.fromJson(json['position'] as Map<String, dynamic>),
+      position: json['position'] == null
+          ? null
+          : StartEndPosition.fromJson(json['position'] as Map<String, dynamic>),
       occurrencesCount: json['occurrences_count'] as int,
       details: json['details'] as String,
       image: json['image'] == null
           ? null
           : Image.fromJson(json['image'] as Map<String, dynamic>),
       pathLength: json['path_length'] as int,
+      status: json['status'] as String?,
     );
 
 Map<String, dynamic> _$$_TrailToJson(_$_Trail instance) => <String, dynamic>{
@@ -137,4 +142,5 @@ Map<String, dynamic> _$$_TrailToJson(_$_Trail instance) => <String, dynamic>{
       'details': instance.details,
       'image': instance.image,
       'path_length': instance.pathLength,
+      'status': instance.status,
     };

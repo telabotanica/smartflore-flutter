@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:flutter_map/flutter_map.dart' hide MapEvent;
+import 'package:latlong2/latlong.dart' hide Path;
+import 'package:smartflore/_env/app_env.dart';
+import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/bloc/trail/trail_bloc.dart';
@@ -16,7 +18,9 @@ import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
-enum MapMode { overview, preview, trail }
+enum MapMode { overview, preview, trail, create }
+
+enum FollowMode { free, locked }
 
 class MapWidget extends StatefulWidget {
   const MapWidget({Key? key}) : super(key: key);
@@ -29,6 +33,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   LatLng currentLocation = LatLng(43.610769, 3.876716);
   TrailDetails? trailData;
   List<Trail>? trailsData;
+  Path? createPath;
+  List<Occurrence>? createOccurrences;
   MapMode mapMode = MapMode.overview;
   int? selectedOccurence;
   bool forceOccurenceUpdate = false;
@@ -111,20 +117,20 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       listeners: [
         BlocListener<GeolocationBloc, GeolocationState>(
           listener: (context, state) {
-            if (state is LocationUpdatedState) {
+            state.maybeWhen(locationUpdate: (position) {
               setState(() {
-                currentLocation =
-                    LatLng(state.position.latitude, state.position.longitude);
+                currentLocation = LatLng(position.latitude, position.longitude);
               });
-            }
+            }, orElse: () {
+              return null;
+            });
           },
         ),
         BlocListener<TrailBloc, TrailState>(
           listener: (context, state) {
             if (state is TrailLoadedState) {
               BlocProvider.of<MapBloc>(context)
-                  .add(const ChangeMapMode(mapMode: MapMode.preview));
-
+                  .add(const MapEvent.changeMapMode(MapMode.preview));
               setState(() {
                 trailData = state.trail;
 
@@ -137,23 +143,52 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             }
           },
         ),
-        BlocListener<TrailsBloc, TrailsDataState>(
+        BlocListener<TrailsBloc, TrailsState>(
           listener: (context, state) {
-            if (state is TrailsDataLoadedState) {
-              setMapMode(MapMode.overview);
-              setState(() {
-                trailsData = state.trails;
-              });
-            }
+            state.maybeWhen(
+                dataLoaded: (trailsData) {
+                  if (mapMode == MapMode.overview) {
+                    setState(() {
+                      this.trailsData = trailsData;
+                    });
+                  } else {
+                    this.trailsData = trailsData;
+                  }
+                },
+                orElse: () {});
+          },
+        ),
+        BlocListener<CreateBloc, CreateState>(
+          listener: (context, state) {
+            state.maybeWhen(
+                start: () {
+                  setState(() {
+                    mapMode = MapMode.create;
+                    createPath = null;
+                    createOccurrences = null;
+                  });
+                },
+                updatePath: (Path path) {
+                  setState(() {
+                    createPath = path;
+                  });
+                },
+                taxonAdded: (occurrences) {
+                  setState(() {
+                    createOccurrences = occurrences;
+                  });
+                },
+                orElse: () {});
           },
         ),
         BlocListener<MapBloc, MapState>(
           listener: (context, state) {
-            if (state is OnRecenterMap) {
-              recenter();
-            } else if (state is OnMapModeChanged) {
-              setMapMode(state.mapMode);
-            }
+            state.maybeWhen(
+                onRecenterMap: () => recenter(),
+                onMapModeChanged: (MapMode mapMode) {
+                  setMapMode(mapMode);
+                },
+                orElse: () {});
           },
         ),
         BlocListener<WalkBloc, WalkState>(
@@ -167,8 +202,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       child: WillPopScope(
         onWillPop: () async {
           if (mapMode != MapMode.overview) {
-            BlocProvider.of<MapBloc>(context).add(ChangeMapMode(
-                mapMode: (mapMode == MapMode.trail)
+            BlocProvider.of<MapBloc>(context).add(MapEvent.changeMapMode(
+                (mapMode == MapMode.trail)
                     ? MapMode.preview
                     : MapMode.overview));
             return false;
@@ -185,22 +220,21 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             zoom: 16.0,
             maxZoom: 19,
             onTap: (tapPos, LatLng latLng) {
-              if (mapMode != MapMode.trail) {
+              if (mapMode != MapMode.trail && mapMode != MapMode.create) {
                 BlocProvider.of<MapBloc>(context)
-                    .add(const ChangeMapMode(mapMode: MapMode.overview));
+                    .add(const MapEvent.changeMapMode(MapMode.overview));
               }
             },
           ),
-          layers: [
-            TileLayerOptions(
+          children: [
+            TileLayer(
                 maxZoom: 20,
                 maxNativeZoom: 20,
-                urlTemplate:
-                    'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-                subdomains: ['a', 'b', 'c'],
+                urlTemplate: '${AppEnv().osmUrl}{z}/{x}/{y}.png',
+                subdomains: const ['a', 'b', 'c'],
                 retinaMode: true,
                 tileProvider: CachedTileProvider()),
-            MarkerLayerOptions(
+            MarkerLayer(
               markers: [
                 Marker(
                     anchorPos: AnchorPos.align(AnchorAlign.center),
@@ -213,26 +247,31 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             if (mapMode == MapMode.overview) ...setupOverviewMode(),
             if (mapMode == MapMode.preview) ...setupPreviewMode(),
             if (mapMode == MapMode.trail) ...setupFocusMode(),
+            if (mapMode == MapMode.create) ...setupCreateMode(),
           ],
         ),
       ),
     );
   }
 
-  List<LayerOptions> setupOverviewMode({bool fade = false}) {
+  List<Widget> setupOverviewMode({bool fade = false}) {
     return [
-      MarkerLayerOptions(
+      MarkerLayer(
           markers: trailsData != null
               ? trailsData!.map((trail) {
+                  LatLng startPos =
+                      (trail.position != null && trail.position?.start != null)
+                          ? trail.position!.start
+                          : LatLng(0, 0);
                   return Marker(
                     anchorPos: AnchorPos.align(AnchorAlign.center),
                     width: 38.0,
                     height: 38.0,
-                    point: trail.position.start,
+                    point: startPos,
                     builder: (ctx) => IconButton(
                         onPressed: () {
                           BlocProvider.of<MapBloc>(context)
-                              .add(RequestTrailPreview(trailID: trail.id));
+                              .add(MapEvent.requestTrailPreview(trail.id));
                         },
                         icon: AnimatedOpacity(
                             opacity: fade
@@ -255,10 +294,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     ];
   }
 
-  List<LayerOptions> setupPreviewMode() {
+  List<Widget> setupPreviewMode() {
     return [
       //PATH
-      PolylineLayerOptions(
+      PolylineLayer(
           polylineCulling: true,
           polylines: (trailData != null)
               ? [
@@ -270,7 +309,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 ]
               : []),
       //STARTING AND END POINTS
-      MarkerLayerOptions(
+      MarkerLayer(
           markers: trailData != null
               ? [
                   Marker(
@@ -301,10 +340,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     ];
   }
 
-  List<LayerOptions> setupFocusMode() {
+  List<Widget> setupFocusMode() {
     return [
       //PATH
-      PolylineLayerOptions(
+      PolylineLayer(
           polylineCulling: true,
           polylines: (trailData != null)
               ? [
@@ -316,7 +355,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 ]
               : []),
       //STARTING AND END POINTS
-      MarkerLayerOptions(
+      MarkerLayer(
           markers: trailData != null
               ? [
                   Marker(
@@ -345,9 +384,45 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 ]
               : []),
       //OTHERS POINTS
-      MarkerLayerOptions(
+      MarkerLayer(
           markers: trailData != null
               ? getOrderedMarkerList(trailData!.occurrences)
+              : []),
+    ];
+  }
+
+  List<Widget> setupCreateMode() {
+    return [
+      PolylineLayer(
+          polylineCulling: true,
+          polylines: (createPath != null)
+              ? [
+                  Polyline(
+                      strokeWidth: 4,
+                      isDotted: false,
+                      color: Theme.of(context).colorScheme.primary,
+                      points: createPath!.coordinates)
+                ]
+              : []),
+      MarkerLayer(
+          markers: createPath != null && createPath!.coordinates.isNotEmpty
+              ? [
+                  Marker(
+                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
+                    width: 18.0,
+                    height: 18.0,
+                    point: createPath!.coordinates[0],
+                    builder: (ctx) => const MarkerWithBG(
+                      icon: SmartFloreIcons.markerStart,
+                      size: 39,
+                      color: Color(0xFF3EB17B),
+                    ),
+                  ),
+                ]
+              : []),
+      MarkerLayer(
+          markers: createOccurrences != null
+              ? getOrderedMarkerList(createOccurrences!)
               : []),
     ];
   }
@@ -395,7 +470,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 class CachedTileProvider extends TileProvider {
   CachedTileProvider();
   @override
-  ImageProvider getImage(Coords<num> coords, TileLayerOptions options) {
+  ImageProvider getImage(Coords<num> coords, TileLayer options) {
     return CachedNetworkImageProvider(
       getTileUrl(coords, options),
     );

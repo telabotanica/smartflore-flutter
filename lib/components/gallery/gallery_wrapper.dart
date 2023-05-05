@@ -79,7 +79,7 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
                         color: Colors.black.withOpacity(0.4),
                         padding: const EdgeInsets.fromLTRB(5, 0, 5, 2),
                         child: Text(
-                            '${AppLocalizations.of(context)!.credits} : ${widget.images[currentIndex].author.toString()}',
+                            '${AppLocalizations.of(context).credits} : ${widget.images[currentIndex].author.toString()}',
                             style: TextStyle(
                                 color:
                                     Theme.of(context).colorScheme.background)),

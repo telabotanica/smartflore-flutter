@@ -28,7 +28,6 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
   bool isPanelMoving = false;
   int currentOccurence = 0;
   TrailDetails? currentTrail;
-
   late Animation<double> animation;
   late AnimationController controller;
 
@@ -68,14 +67,16 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
       listeners: [
         BlocListener<MapBloc, MapState>(
           listener: (context, state) {
-            if (state is OnMapModeChanged) {
-              if (state.mapMode == MapMode.trail) {
-                setShowMe(true);
-              } else {
-                setShowMe(false);
-                if (isPanelOpened) _panelController.close();
-              }
-            }
+            state.maybeWhen(
+                onMapModeChanged: (MapMode mapMode) {
+                  if (mapMode == MapMode.trail) {
+                    setShowMe(true);
+                  } else {
+                    setShowMe(false);
+                    if (isPanelOpened) _panelController.close();
+                  }
+                },
+                orElse: () {});
           },
         ),
         BlocListener<TrailBloc, TrailState>(

@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:smartflore/bloc/map/map_bloc.dart';
+import 'package:smartflore/bloc/trails/mytrails_bloc.dart';
+import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trails_list.dart';
 import 'package:smartflore/components/map/map_ui.dart';
 import 'package:smartflore/components/map/map_widget.dart';
@@ -10,25 +12,41 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TrailsPanelWidget extends StatefulWidget {
   final bool isDraggable;
-  const TrailsPanelWidget({Key? key, this.isDraggable = true})
+  final bool isAuth;
+  const TrailsPanelWidget(
+      {Key? key, required this.isAuth, this.isDraggable = true})
       : super(key: key);
 
   @override
   State<TrailsPanelWidget> createState() => _TrailsPanelWidgetState();
 }
 
-class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
+class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
+    with SingleTickerProviderStateMixin {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
   MapMode _mapMode = MapMode.overview;
   late Box<bool> savedTrailsBox;
+  late TabController tabController;
 
   @override
   void initState() {
     super.initState();
     // get the previously opened user box
+    BlocProvider.of<TrailsBloc>(context)
+        .add(const TrailsEvent.loadTrailsData());
+
     savedTrailsBox = Hive.box('savedTrails');
+    tabController = TabController(length: 2, vsync: this);
+    tabController.addListener(() {
+      if (tabController.indexIsChanging) {
+        if (tabController.index == 1 && widget.isAuth == true) {
+          BlocProvider.of<MyTrailsBloc>(context)
+              .add(const MyTrailsEvent.loadTrailsData());
+        }
+      }
+    });
   }
 
   void onPanUpdate(details) {
@@ -57,9 +75,11 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
 
     return BlocListener<MapBloc, MapState>(
       listener: (context, state) {
-        if (state is OnMapModeChanged) {
-          setMapMode(state.mapMode);
-        }
+        state.maybeWhen(
+            onMapModeChanged: (MapMode mapMode) {
+              setMapMode(mapMode);
+            },
+            orElse: () {});
       },
       child: SlidingUpPanel(
           backdropEnabled: true,
@@ -68,7 +88,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
           parallaxEnabled: true,
           parallaxOffset: .5,
           maxHeight: screenH * 0.8,
-          minHeight: 100 + bottomPadding,
+          minHeight: (_mapMode == MapMode.create) ? 0 : 100 + bottomPadding,
           isDraggable: widget.isDraggable,
           onPanelOpened: () {
             setState(() {
@@ -125,6 +145,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(6))),
                       child: TabBar(
+                          controller: tabController,
                           isScrollable: false,
                           unselectedLabelColor: primary,
                           indicator: BoxDecoration(
@@ -134,12 +155,12 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
                           tabs: [
                             Tab(
                                 child: Text(
-                              AppLocalizations.of(context)!.btn_all_trail,
+                              AppLocalizations.of(context).btn_all_trail,
                               style: const TextStyle(fontSize: 16),
                             )),
                             Tab(
                                 child: Text(
-                                    AppLocalizations.of(context)!.btn_my_trail,
+                                    AppLocalizations.of(context).btn_my_trail,
                                     style: const TextStyle(fontSize: 16)))
                           ]),
                     ),
@@ -149,7 +170,9 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
             ),
           ),
           panelBuilder: (scrollController) => _buildSlidingPanel(
-              scrollController: scrollController, bottomPadding: bottomPadding),
+              scrollController: scrollController,
+              tabController: tabController,
+              bottomPadding: bottomPadding),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           body: MapUI(
             bottomPadding: bottomPadding,
@@ -160,25 +183,34 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget> {
 
   Widget _buildSlidingPanel({
     required ScrollController scrollController,
+    required TabController tabController,
     double bottomPadding = 0,
   }) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
         child: TabBarView(
+          controller: tabController,
           physics: const NeverScrollableScrollPhysics(),
           children: [
             TrailsList(
-              controller: scrollController,
-              onPanUpdate: onPanUpdate,
-              savedTrailsBox: savedTrailsBox,
-            ),
+                controller: scrollController,
+                onPanUpdate: onPanUpdate,
+                savedTrailsBox: savedTrailsBox,
+                isAuth: widget.isAuth),
             TrailsList(
-              controller: scrollController,
-              onPanUpdate: onPanUpdate,
-              trailsListType: TrailsListType.myTrails,
-              savedTrailsBox: savedTrailsBox,
-            ),
+                controller: scrollController,
+                onPanUpdate: onPanUpdate,
+                trailsListType: TrailsListType.myTrails,
+                savedTrailsBox: savedTrailsBox,
+                isAuth: widget.isAuth),
           ],
         ));
+  }
+
+  @override
+  void dispose() {
+    tabController.removeListener(() {});
+    tabController.dispose();
+    super.dispose();
   }
 }

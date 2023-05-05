@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/bloc/trail/save_trail_bloc.dart';
 import 'package:smartflore/components/icons/download_icon.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
+import 'package:smartflore/components/modal/modal_title.dart';
 import 'package:smartflore/components/progress_bar.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -57,35 +58,11 @@ class _DownloadCardState extends State<DownloadCard> {
             orElse: () {});
       },
       child: Column(children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Text(
-                AppLocalizations.of(context)!.trail_options,
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5!
-                    .copyWith(color: Theme.of(context).colorScheme.primary),
-              ),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Icon(
-                  Icons.close,
-                  size: 20.0,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 20),
-        const Divider(height: 1, thickness: 1, color: Color(0xFFD8DCD8)),
+        ModalTitle(
+            title: AppLocalizations.of(context).trail_options,
+            onClose: () {
+              Navigator.of(context).pop();
+            }),
         TrailItem(
             isInteractive: false,
             trailId: widget.trailId,
@@ -105,13 +82,13 @@ class _DownloadCardState extends State<DownloadCard> {
                     children: [
                       const DownloadIcon(),
                       const SizedBox(width: 6),
-                      Text(AppLocalizations.of(context)!.offline,
-                          style: Theme.of(context).textTheme.headline6),
+                      Text(AppLocalizations.of(context).offline,
+                          style: Theme.of(context).textTheme.titleLarge),
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text(AppLocalizations.of(context)!.offline_desc,
-                      style: Theme.of(context).textTheme.caption)
+                  Text(AppLocalizations.of(context).offline_desc,
+                      style: Theme.of(context).textTheme.bodySmall)
                 ],
               ),
             ),

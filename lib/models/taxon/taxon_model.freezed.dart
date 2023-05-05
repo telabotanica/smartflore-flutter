@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'taxon_model.dart';
 
@@ -56,7 +56,8 @@ mixin _$Taxon {
 /// @nodoc
 abstract class $TaxonCopyWith<$Res> {
   factory $TaxonCopyWith(Taxon value, $Res Function(Taxon) then) =
-      _$TaxonCopyWithImpl<$Res>;
+      _$TaxonCopyWithImpl<$Res, Taxon>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
@@ -88,68 +89,71 @@ abstract class $TaxonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TaxonCopyWithImpl<$Res> implements $TaxonCopyWith<$Res> {
+class _$TaxonCopyWithImpl<$Res, $Val extends Taxon>
+    implements $TaxonCopyWith<$Res> {
   _$TaxonCopyWithImpl(this._value, this._then);
 
-  final Taxon _value;
   // ignore: unused_field
-  final $Res Function(Taxon) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? scientificName = freezed,
-    Object? fullScientificName = freezed,
-    Object? htmlFullScientificName = freezed,
-    Object? genus = freezed,
-    Object? family = freezed,
-    Object? taxonRepository = freezed,
-    Object? nameId = freezed,
-    Object? taxonomicId = freezed,
-    Object? vernacularNames = freezed,
-    Object? tabs = freezed,
+    Object? scientificName = null,
+    Object? fullScientificName = null,
+    Object? htmlFullScientificName = null,
+    Object? genus = null,
+    Object? family = null,
+    Object? taxonRepository = null,
+    Object? nameId = null,
+    Object? taxonomicId = null,
+    Object? vernacularNames = null,
+    Object? tabs = null,
   }) {
     return _then(_value.copyWith(
-      scientificName: scientificName == freezed
+      scientificName: null == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      fullScientificName: fullScientificName == freezed
+      fullScientificName: null == fullScientificName
           ? _value.fullScientificName
           : fullScientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      htmlFullScientificName: htmlFullScientificName == freezed
+      htmlFullScientificName: null == htmlFullScientificName
           ? _value.htmlFullScientificName
           : htmlFullScientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      genus: genus == freezed
+      genus: null == genus
           ? _value.genus
           : genus // ignore: cast_nullable_to_non_nullable
               as String,
-      family: family == freezed
+      family: null == family
           ? _value.family
           : family // ignore: cast_nullable_to_non_nullable
               as String,
-      taxonRepository: taxonRepository == freezed
+      taxonRepository: null == taxonRepository
           ? _value.taxonRepository
           : taxonRepository // ignore: cast_nullable_to_non_nullable
               as String,
-      nameId: nameId == freezed
+      nameId: null == nameId
           ? _value.nameId
           : nameId // ignore: cast_nullable_to_non_nullable
               as int,
-      taxonomicId: taxonomicId == freezed
+      taxonomicId: null == taxonomicId
           ? _value.taxonomicId
           : taxonomicId // ignore: cast_nullable_to_non_nullable
               as int,
-      vernacularNames: vernacularNames == freezed
+      vernacularNames: null == vernacularNames
           ? _value.vernacularNames
           : vernacularNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      tabs: tabs == freezed
+      tabs: null == tabs
           ? _value.tabs
           : tabs // ignore: cast_nullable_to_non_nullable
               as List<TabAPI>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -158,6 +162,7 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
   factory _$$_TaxonCopyWith(_$_Taxon value, $Res Function(_$_Taxon) then) =
       __$$_TaxonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
@@ -189,65 +194,63 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res>
+class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res, _$_Taxon>
     implements _$$_TaxonCopyWith<$Res> {
   __$$_TaxonCopyWithImpl(_$_Taxon _value, $Res Function(_$_Taxon) _then)
-      : super(_value, (v) => _then(v as _$_Taxon));
+      : super(_value, _then);
 
-  @override
-  _$_Taxon get _value => super._value as _$_Taxon;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? scientificName = freezed,
-    Object? fullScientificName = freezed,
-    Object? htmlFullScientificName = freezed,
-    Object? genus = freezed,
-    Object? family = freezed,
-    Object? taxonRepository = freezed,
-    Object? nameId = freezed,
-    Object? taxonomicId = freezed,
-    Object? vernacularNames = freezed,
-    Object? tabs = freezed,
+    Object? scientificName = null,
+    Object? fullScientificName = null,
+    Object? htmlFullScientificName = null,
+    Object? genus = null,
+    Object? family = null,
+    Object? taxonRepository = null,
+    Object? nameId = null,
+    Object? taxonomicId = null,
+    Object? vernacularNames = null,
+    Object? tabs = null,
   }) {
     return _then(_$_Taxon(
-      scientificName: scientificName == freezed
+      scientificName: null == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      fullScientificName: fullScientificName == freezed
+      fullScientificName: null == fullScientificName
           ? _value.fullScientificName
           : fullScientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      htmlFullScientificName: htmlFullScientificName == freezed
+      htmlFullScientificName: null == htmlFullScientificName
           ? _value.htmlFullScientificName
           : htmlFullScientificName // ignore: cast_nullable_to_non_nullable
               as String,
-      genus: genus == freezed
+      genus: null == genus
           ? _value.genus
           : genus // ignore: cast_nullable_to_non_nullable
               as String,
-      family: family == freezed
+      family: null == family
           ? _value.family
           : family // ignore: cast_nullable_to_non_nullable
               as String,
-      taxonRepository: taxonRepository == freezed
+      taxonRepository: null == taxonRepository
           ? _value.taxonRepository
           : taxonRepository // ignore: cast_nullable_to_non_nullable
               as String,
-      nameId: nameId == freezed
+      nameId: null == nameId
           ? _value.nameId
           : nameId // ignore: cast_nullable_to_non_nullable
               as int,
-      taxonomicId: taxonomicId == freezed
+      taxonomicId: null == taxonomicId
           ? _value.taxonomicId
           : taxonomicId // ignore: cast_nullable_to_non_nullable
               as int,
-      vernacularNames: vernacularNames == freezed
+      vernacularNames: null == vernacularNames
           ? _value._vernacularNames
           : vernacularNames // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      tabs: tabs == freezed
+      tabs: null == tabs
           ? _value._tabs
           : tabs // ignore: cast_nullable_to_non_nullable
               as List<TabAPI>,
@@ -328,6 +331,7 @@ class _$_Taxon implements _Taxon {
   @JsonKey(name: 'vernacular_names')
   @HiveField(8)
   List<String> get vernacularNames {
+    if (_vernacularNames is EqualUnmodifiableListView) return _vernacularNames;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_vernacularNames);
   }
@@ -336,6 +340,7 @@ class _$_Taxon implements _Taxon {
   @override
   @HiveField(9)
   List<TabAPI> get tabs {
+    if (_tabs is EqualUnmodifiableListView) return _tabs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tabs);
   }
@@ -350,19 +355,19 @@ class _$_Taxon implements _Taxon {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Taxon &&
-            const DeepCollectionEquality()
-                .equals(other.scientificName, scientificName) &&
-            const DeepCollectionEquality()
-                .equals(other.fullScientificName, fullScientificName) &&
-            const DeepCollectionEquality()
-                .equals(other.htmlFullScientificName, htmlFullScientificName) &&
-            const DeepCollectionEquality().equals(other.genus, genus) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.taxonRepository, taxonRepository) &&
-            const DeepCollectionEquality().equals(other.nameId, nameId) &&
-            const DeepCollectionEquality()
-                .equals(other.taxonomicId, taxonomicId) &&
+            (identical(other.scientificName, scientificName) ||
+                other.scientificName == scientificName) &&
+            (identical(other.fullScientificName, fullScientificName) ||
+                other.fullScientificName == fullScientificName) &&
+            (identical(other.htmlFullScientificName, htmlFullScientificName) ||
+                other.htmlFullScientificName == htmlFullScientificName) &&
+            (identical(other.genus, genus) || other.genus == genus) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.taxonRepository, taxonRepository) ||
+                other.taxonRepository == taxonRepository) &&
+            (identical(other.nameId, nameId) || other.nameId == nameId) &&
+            (identical(other.taxonomicId, taxonomicId) ||
+                other.taxonomicId == taxonomicId) &&
             const DeepCollectionEquality()
                 .equals(other._vernacularNames, _vernacularNames) &&
             const DeepCollectionEquality().equals(other._tabs, _tabs));
@@ -372,19 +377,20 @@ class _$_Taxon implements _Taxon {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(scientificName),
-      const DeepCollectionEquality().hash(fullScientificName),
-      const DeepCollectionEquality().hash(htmlFullScientificName),
-      const DeepCollectionEquality().hash(genus),
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(taxonRepository),
-      const DeepCollectionEquality().hash(nameId),
-      const DeepCollectionEquality().hash(taxonomicId),
+      scientificName,
+      fullScientificName,
+      htmlFullScientificName,
+      genus,
+      family,
+      taxonRepository,
+      nameId,
+      taxonomicId,
       const DeepCollectionEquality().hash(_vernacularNames),
       const DeepCollectionEquality().hash(_tabs));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
       __$$_TaxonCopyWithImpl<_$_Taxon>(this, _$identity);
 
@@ -498,7 +504,8 @@ mixin _$TabAPI {
 /// @nodoc
 abstract class $TabAPICopyWith<$Res> {
   factory $TabAPICopyWith(TabAPI value, $Res Function(TabAPI) then) =
-      _$TabAPICopyWithImpl<$Res>;
+      _$TabAPICopyWithImpl<$Res, TabAPI>;
+  @useResult
   $Res call(
       {@HiveField(0) String title,
       @HiveField(1) String type,
@@ -509,48 +516,51 @@ abstract class $TabAPICopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TabAPICopyWithImpl<$Res> implements $TabAPICopyWith<$Res> {
+class _$TabAPICopyWithImpl<$Res, $Val extends TabAPI>
+    implements $TabAPICopyWith<$Res> {
   _$TabAPICopyWithImpl(this._value, this._then);
 
-  final TabAPI _value;
   // ignore: unused_field
-  final $Res Function(TabAPI) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? type = freezed,
-    Object? icon = freezed,
+    Object? title = null,
+    Object? type = null,
+    Object? icon = null,
     Object? sections = freezed,
     Object? images = freezed,
     Object? url = freezed,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: icon == freezed
+      icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
-      sections: sections == freezed
+      sections: freezed == sections
           ? _value.sections
           : sections // ignore: cast_nullable_to_non_nullable
               as List<SectionAPI>?,
-      images: images == freezed
+      images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ImageAPI>?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -559,6 +569,7 @@ abstract class _$$_TabAPICopyWith<$Res> implements $TabAPICopyWith<$Res> {
   factory _$$_TabAPICopyWith(_$_TabAPI value, $Res Function(_$_TabAPI) then) =
       __$$_TabAPICopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@HiveField(0) String title,
       @HiveField(1) String type,
@@ -569,45 +580,44 @@ abstract class _$$_TabAPICopyWith<$Res> implements $TabAPICopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TabAPICopyWithImpl<$Res> extends _$TabAPICopyWithImpl<$Res>
+class __$$_TabAPICopyWithImpl<$Res>
+    extends _$TabAPICopyWithImpl<$Res, _$_TabAPI>
     implements _$$_TabAPICopyWith<$Res> {
   __$$_TabAPICopyWithImpl(_$_TabAPI _value, $Res Function(_$_TabAPI) _then)
-      : super(_value, (v) => _then(v as _$_TabAPI));
+      : super(_value, _then);
 
-  @override
-  _$_TabAPI get _value => super._value as _$_TabAPI;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? type = freezed,
-    Object? icon = freezed,
+    Object? title = null,
+    Object? type = null,
+    Object? icon = null,
     Object? sections = freezed,
     Object? images = freezed,
     Object? url = freezed,
   }) {
     return _then(_$_TabAPI(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: icon == freezed
+      icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
-      sections: sections == freezed
+      sections: freezed == sections
           ? _value._sections
           : sections // ignore: cast_nullable_to_non_nullable
               as List<SectionAPI>?,
-      images: images == freezed
+      images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ImageAPI>?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -647,6 +657,7 @@ class _$_TabAPI implements _TabAPI {
   List<SectionAPI>? get sections {
     final value = _sections;
     if (value == null) return null;
+    if (_sections is EqualUnmodifiableListView) return _sections;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -657,6 +668,7 @@ class _$_TabAPI implements _TabAPI {
   List<ImageAPI>? get images {
     final value = _images;
     if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -675,27 +687,28 @@ class _$_TabAPI implements _TabAPI {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TabAPI &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
             const DeepCollectionEquality().equals(other._sections, _sections) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(icon),
+      title,
+      type,
+      icon,
       const DeepCollectionEquality().hash(_sections),
       const DeepCollectionEquality().hash(_images),
-      const DeepCollectionEquality().hash(url));
+      url);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TabAPICopyWith<_$_TabAPI> get copyWith =>
       __$$_TabAPICopyWithImpl<_$_TabAPI>(this, _$identity);
 
@@ -764,7 +777,8 @@ mixin _$ImageAPI {
 /// @nodoc
 abstract class $ImageAPICopyWith<$Res> {
   factory $ImageAPICopyWith(ImageAPI value, $Res Function(ImageAPI) then) =
-      _$ImageAPICopyWithImpl<$Res>;
+      _$ImageAPICopyWithImpl<$Res, ImageAPI>;
+  @useResult
   $Res call(
       {@HiveField(0) int id,
       @HiveField(1) String url,
@@ -772,33 +786,36 @@ abstract class $ImageAPICopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ImageAPICopyWithImpl<$Res> implements $ImageAPICopyWith<$Res> {
+class _$ImageAPICopyWithImpl<$Res, $Val extends ImageAPI>
+    implements $ImageAPICopyWith<$Res> {
   _$ImageAPICopyWithImpl(this._value, this._then);
 
-  final ImageAPI _value;
   // ignore: unused_field
-  final $Res Function(ImageAPI) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? url = freezed,
-    Object? author = freezed,
+    Object? id = null,
+    Object? url = null,
+    Object? author = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
+      author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -808,6 +825,7 @@ abstract class _$$_ImageAPICopyWith<$Res> implements $ImageAPICopyWith<$Res> {
           _$_ImageAPI value, $Res Function(_$_ImageAPI) then) =
       __$$_ImageAPICopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@HiveField(0) int id,
       @HiveField(1) String url,
@@ -815,31 +833,30 @@ abstract class _$$_ImageAPICopyWith<$Res> implements $ImageAPICopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ImageAPICopyWithImpl<$Res> extends _$ImageAPICopyWithImpl<$Res>
+class __$$_ImageAPICopyWithImpl<$Res>
+    extends _$ImageAPICopyWithImpl<$Res, _$_ImageAPI>
     implements _$$_ImageAPICopyWith<$Res> {
   __$$_ImageAPICopyWithImpl(
       _$_ImageAPI _value, $Res Function(_$_ImageAPI) _then)
-      : super(_value, (v) => _then(v as _$_ImageAPI));
+      : super(_value, _then);
 
-  @override
-  _$_ImageAPI get _value => super._value as _$_ImageAPI;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? url = freezed,
-    Object? author = freezed,
+    Object? id = null,
+    Object? url = null,
+    Object? author = null,
   }) {
     return _then(_$_ImageAPI(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      author: author == freezed
+      author: null == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
@@ -879,21 +896,18 @@ class _$_ImageAPI implements _ImageAPI {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ImageAPI &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.author, author));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.author, author) || other.author == author));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(author));
+  int get hashCode => Object.hash(runtimeType, id, url, author);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ImageAPICopyWith<_$_ImageAPI> get copyWith =>
       __$$_ImageAPICopyWithImpl<_$_ImageAPI>(this, _$identity);
 
@@ -949,33 +963,37 @@ mixin _$SectionAPI {
 abstract class $SectionAPICopyWith<$Res> {
   factory $SectionAPICopyWith(
           SectionAPI value, $Res Function(SectionAPI) then) =
-      _$SectionAPICopyWithImpl<$Res>;
+      _$SectionAPICopyWithImpl<$Res, SectionAPI>;
+  @useResult
   $Res call({@HiveField(0) String title, @HiveField(1) String text});
 }
 
 /// @nodoc
-class _$SectionAPICopyWithImpl<$Res> implements $SectionAPICopyWith<$Res> {
+class _$SectionAPICopyWithImpl<$Res, $Val extends SectionAPI>
+    implements $SectionAPICopyWith<$Res> {
   _$SectionAPICopyWithImpl(this._value, this._then);
 
-  final SectionAPI _value;
   // ignore: unused_field
-  final $Res Function(SectionAPI) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? text = freezed,
+    Object? title = null,
+    Object? text = null,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      text: text == freezed
+      text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -986,30 +1004,30 @@ abstract class _$$_SectionAPICopyWith<$Res>
           _$_SectionAPI value, $Res Function(_$_SectionAPI) then) =
       __$$_SectionAPICopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@HiveField(0) String title, @HiveField(1) String text});
 }
 
 /// @nodoc
-class __$$_SectionAPICopyWithImpl<$Res> extends _$SectionAPICopyWithImpl<$Res>
+class __$$_SectionAPICopyWithImpl<$Res>
+    extends _$SectionAPICopyWithImpl<$Res, _$_SectionAPI>
     implements _$$_SectionAPICopyWith<$Res> {
   __$$_SectionAPICopyWithImpl(
       _$_SectionAPI _value, $Res Function(_$_SectionAPI) _then)
-      : super(_value, (v) => _then(v as _$_SectionAPI));
+      : super(_value, _then);
 
-  @override
-  _$_SectionAPI get _value => super._value as _$_SectionAPI;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? text = freezed,
+    Object? title = null,
+    Object? text = null,
   }) {
     return _then(_$_SectionAPI(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      text: text == freezed
+      text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1044,19 +1062,17 @@ class _$_SectionAPI implements _SectionAPI {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SectionAPI &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.text, text));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.text, text) || other.text == text));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(text));
+  int get hashCode => Object.hash(runtimeType, title, text);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SectionAPICopyWith<_$_SectionAPI> get copyWith =>
       __$$_SectionAPICopyWithImpl<_$_SectionAPI>(this, _$identity);
 

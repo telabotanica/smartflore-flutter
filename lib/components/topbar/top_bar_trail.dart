@@ -5,11 +5,11 @@ import 'package:smartflore/components/cards/card_bg.dart';
 import 'package:smartflore/components/icons/logo_icon.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 
-class TopBar extends StatelessWidget {
+class TopBarTrail extends StatelessWidget {
   final String title;
   final String author;
 
-  const TopBar({Key? key, required this.title, required this.author})
+  const TopBarTrail({Key? key, required this.title, required this.author})
       : super(key: key);
 
   @override
@@ -37,13 +37,14 @@ class TopBar extends StatelessWidget {
                             Text(title,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context).textTheme.bodyText1),
+                                style: Theme.of(context).textTheme.bodyLarge),
                             Padding(
                               padding: const EdgeInsets.only(top: 19.0),
                               child: Text(author,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context).textTheme.bodyText2),
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium),
                             )
                           ]),
                         ),
@@ -58,7 +59,7 @@ class TopBar extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => {
                     BlocProvider.of<MapBloc>(context)
-                        .add(const ChangeMapMode(mapMode: MapMode.preview))
+                        .add(const MapEvent.changeMapMode(MapMode.preview))
                   },
                   child: const Icon(Icons.close, size: 20, color: Colors.black),
                 ),

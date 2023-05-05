@@ -14,7 +14,7 @@ class TextInput extends StatefulWidget {
   final void Function(String?)? onSaved;
   final int? index;
   final String? id;
-
+  final TextEditingController? textController;
   final String? errorText;
   final TextStyle? errorStyle;
   final TextStyle? hintStyle;
@@ -22,6 +22,7 @@ class TextInput extends StatefulWidget {
   const TextInput(
       {Key? key,
       this.initialValue = '',
+      this.textController,
       this.obscureText = false,
       this.enableSuggestions = true,
       this.autocorrect = true,
@@ -54,7 +55,8 @@ class _TextInputState extends State<TextInput> {
     var keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
 
     TextFormField tf = TextFormField(
-      initialValue: widget.initialValue,
+      controller: widget.textController,
+      initialValue: widget.textController == null ? widget.initialValue : null,
       scrollPadding: EdgeInsets.symmetric(vertical: keyboardHeight + 100),
       focusNode: widget.focusNode,
       autovalidateMode: AutovalidateMode.disabled,
@@ -69,7 +71,13 @@ class _TextInputState extends State<TextInput> {
       validator: widget.validator,
       onSaved: widget.onSaved,
       onChanged: (text) {
-        widget.onChanged!(text, widget.maxLength!, widget.index!, widget.id!);
+        if (widget.onChanged != null) {
+          widget.onChanged!(
+              text,
+              (widget.maxLength != null) ? widget.maxLength! : -1,
+              widget.index!,
+              widget.id!);
+        }
       },
       decoration: InputDecoration(
         counterText: '',

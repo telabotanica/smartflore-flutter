@@ -3,7 +3,7 @@
     "placeholders": {
       "count": {
         "format": "decimalPattern",
-        "type": "double"
+        "type": "num"
       }
     }
   },
@@ -25,12 +25,15 @@
   "error_API": "Something went wrong :(",
   "login_connection": "Connection",
   "login_no_account": "No Smart'Flore account yet?",
+  "logout": "Logout",
   "near": "Near",
+  "need_login": "In order to be able to create your own trails, you must log in to your Smart'Flore account",
   "offline": "Offline mode",
   "offline_desc": "Save the trail data on your device",
   "params": "Params",
   "register_title": "Create Smart'Flore account",
   "resource_unavailable": "Resource not available offline",
+  "review": "Waiting for review",
   "see_taxon": "See the card",
   "species": "species",
   "to": "To",

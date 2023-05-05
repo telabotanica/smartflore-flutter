@@ -1,32 +1,12 @@
 part of 'geolocation_bloc.dart';
 
-abstract class GeolocationState extends Equatable {
-  const GeolocationState();
-
-  @override
-  List<Object> get props => [];
+@freezed
+class GeolocationState with _$GeolocationState {
+  const factory GeolocationState.initial() = _Initial;
+  const factory GeolocationState.permissionLoading() = _PermissionLoading;
+  const factory GeolocationState.permissionLoaded(PermissionStatus status) =
+      _PermissionLoaded;
+  const factory GeolocationState.loading() = _Loading;
+  const factory GeolocationState.locationUpdate(Position position) = _Update;
+  const factory GeolocationState.error() = _Error;
 }
-
-class LocationInitialState extends GeolocationState {}
-
-class LocationPermissionLoadingState extends GeolocationState {}
-
-class LocationPermissionLoadedState extends GeolocationState {
-  final PermissionStatus status;
-  const LocationPermissionLoadedState({required this.status});
-
-  @override
-  List<Object> get props => [status];
-}
-
-class LocationLoadingState extends GeolocationState {}
-
-class LocationUpdatedState extends GeolocationState {
-  final Position position;
-  const LocationUpdatedState({required this.position});
-
-  @override
-  List<Object> get props => [position];
-}
-
-class LocationErrorState extends GeolocationState {}

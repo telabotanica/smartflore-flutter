@@ -13,8 +13,9 @@ class GeolocationRepo {
   Future<Position> getCurrentLocation() async {
     await getPermissions();
 
-    return await Geolocator.getCurrentPosition(
+    Position currentPosition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
+    return currentPosition;
   }
 
   Future<Stream<Position>?> getLocationStream() async {
@@ -22,7 +23,7 @@ class GeolocationRepo {
     if (permissionStatus == PermissionStatus.granted) {
       const LocationSettings locationSettings = LocationSettings(
         accuracy: LocationAccuracy.high,
-        distanceFilter: 0,
+        distanceFilter: 2,
       );
 
       Stream<Position> positionStream =

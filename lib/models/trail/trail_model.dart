@@ -5,6 +5,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:smartflore/models/taxon/taxon_model.dart';
 
 part 'trail_model.freezed.dart';
 part 'trail_model.g.dart';
@@ -47,7 +48,7 @@ class Occurrence with _$Occurrence {
   @HiveType(typeId: 12, adapterName: 'OccurenceAdapter')
   const factory Occurrence({
     @LatLngConverter() @HiveField(0) required LatLng position,
-    @HiveField(1) required Taxon taxon,
+    @HiveField(1) required TaxonLight taxon,
     @HiveField(2) required List<Image> images,
   }) = _Occurrence;
 
@@ -56,9 +57,9 @@ class Occurrence with _$Occurrence {
 }
 
 @freezed
-class Taxon with _$Taxon {
+class TaxonLight with _$TaxonLight {
   @HiveType(typeId: 13, adapterName: 'TrailTaxonAdapter')
-  const factory Taxon({
+  const factory TaxonLight({
     @JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
     @JsonKey(name: 'full_scientific_name')
     @HiveField(1)
@@ -70,17 +71,27 @@ class Taxon with _$Taxon {
     @JsonKey(name: 'vernacular_names')
     @HiveField(4)
         required List<String> vernacularNames,
-  }) = _Taxon;
+  }) = _TaxonLight;
 
-  factory Taxon.fromJson(Map<String, dynamic> json) => _$TaxonFromJson(json);
+  factory TaxonLight.fromJson(Map<String, dynamic> json) =>
+      _$TaxonLightFromJson(json);
+
+  factory TaxonLight.fromTaxon(Taxon taxon) {
+    return TaxonLight(
+        scientificName: taxon.scientificName,
+        fullScientificName: taxon.fullScientificName,
+        taxonRepository: taxon.taxonRepository,
+        nameId: taxon.nameId,
+        vernacularNames: taxon.vernacularNames);
+  }
 }
 
 @freezed
 class Path with _$Path {
   @HiveType(typeId: 14, adapterName: 'PathAdapter')
   const factory Path({
-    @HiveField(0) required String type,
-    @LatLngListConverter() @HiveField(1) required List<LatLng> coordinates,
+    @HiveField(0) @Default('') String type,
+    @LatLngListConverter() @HiveField(1) @Default([]) List<LatLng> coordinates,
   }) = _Path;
 
   factory Path.fromJson(Map<String, dynamic> json) => _$PathFromJson(json);
@@ -108,9 +119,8 @@ class LatLngConverter implements JsonConverter<LatLng, dynamic> {
   }
 
   @override
-  String toJson(LatLng latlng) {
-    String latLngJson = '{lat: ${latlng.latitude}, lng: ${latlng.longitude}}';
-    return latLngJson;
+  dynamic toJson(LatLng latlng) {
+    return {'lat': latlng.latitude, 'lng': latlng.longitude};
   }
 }
 
@@ -132,7 +142,7 @@ class LatLngListConverter
   List<dynamic> toJson(coordinates) {
     List<dynamic> latLngList = [];
     for (var coordinate in coordinates) {
-      latLngList.add({'lat': coordinate.longitude, 'lng': coordinate.latitude});
+      latLngList.add({'lat': coordinate.latitude, 'lng': coordinate.longitude});
     }
     return latLngList;
   }
