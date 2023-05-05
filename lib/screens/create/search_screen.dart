@@ -124,6 +124,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                       : 'Ajouter un individu',
                   style: Theme.of(context).textTheme.bodyLarge)),
           body: Stack(
+            fit: StackFit.expand,
             children: [
               selectedTaxon == null
                   ? buildSearchUI(theme)
@@ -143,7 +144,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(6))),
                           child: Padding(
-                            padding: const EdgeInsets.all(36.0),
+                            padding: const EdgeInsets.fromLTRB(36, 24, 36, 24),
                             child: SizedBox(
                               height: 46,
                               child: RoundedButton(
@@ -267,83 +268,87 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
   Widget buildTaxonUI(ThemeData theme, double screenW) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36.0),
-      child: Align(
-        alignment: Alignment.topCenter,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
-              child: Text(
-                'Espèce',
-                style: theme.textTheme.titleLarge,
+      child: SingleChildScrollView(
+        physics: const RangeMaintainingScrollPhysics(),
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 16, 0, 8),
+                child: Text(
+                  'Espèce',
+                  style: theme.textTheme.titleLarge,
+                ),
               ),
-            ),
-            Container(
-                width: screenW - 72,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color(0xFFD8DCD8), width: 1),
-                    borderRadius: const BorderRadius.all(Radius.circular(6))),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          selectedTaxon!.bdtfx!.scientificName != null &&
-                                  selectedTaxon!.bdtfx!.scientificName != ''
-                              ? Text(selectedTaxon!.bdtfx!.scientificName ?? '',
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: theme.textTheme.bodyLarge!
-                                      .copyWith(fontStyle: FontStyle.italic))
-                              : Container(),
-                          selectedTaxon!.bdtfx!.commonName != null &&
-                                  selectedTaxon!.bdtfx!.commonName != ''
-                              ? Text(selectedTaxon!.bdtfx!.commonName!,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: theme.textTheme.bodyMedium)
-                              : Container()
-                        ],
+              Container(
+                  width: screenW - 72,
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: const Color(0xFFD8DCD8), width: 1),
+                      borderRadius: const BorderRadius.all(Radius.circular(6))),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            selectedTaxon!.bdtfx!.scientificName != null &&
+                                    selectedTaxon!.bdtfx!.scientificName != ''
+                                ? Text(
+                                    selectedTaxon!.bdtfx!.scientificName ?? '',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: theme.textTheme.bodyLarge!
+                                        .copyWith(fontStyle: FontStyle.italic))
+                                : Container(),
+                            selectedTaxon!.bdtfx!.commonName != null &&
+                                    selectedTaxon!.bdtfx!.commonName != ''
+                                ? Text(selectedTaxon!.bdtfx!.commonName!,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: theme.textTheme.bodyMedium)
+                                : Container()
+                          ],
+                        ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedTaxon = null;
-                          selectedTaxonSF = null;
-                        });
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedTaxon = null;
+                            selectedTaxonSF = null;
+                          });
+                        },
+                        child: Icon(
+                          Icons.close,
+                          size: 20.0,
+                          color: theme.colorScheme.primary,
+                        ),
+                      )
+                    ],
+                  )),
+              BlocBuilder<TaxonBloc, TaxonState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                      loaded: (taxon) {
+                        selectedTaxonSF = taxon;
+                        return Flexible(child: buildGridGallery(theme, taxon));
                       },
-                      child: Icon(
-                        Icons.close,
-                        size: 20.0,
-                        color: theme.colorScheme.primary,
-                      ),
-                    )
-                  ],
-                )),
-            BlocBuilder<TaxonBloc, TaxonState>(
-              builder: (context, state) {
-                return state.maybeWhen(
-                    loaded: (taxon) {
-                      selectedTaxonSF = taxon;
-                      return Flexible(child: buildGridGallery(theme, taxon));
-                    },
-                    orElse: () => const Center(
-                            child: Padding(
-                          padding: EdgeInsets.only(top: 80),
-                          child: CircularProgressIndicator(),
-                        )));
-              },
-            )
-          ],
+                      orElse: () => const Center(
+                              child: Padding(
+                            padding: EdgeInsets.only(top: 80),
+                            child: CircularProgressIndicator(),
+                          )));
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -396,29 +401,33 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                       }),
                 )
               : const SizedBox(height: 16),
-          Align(
-            alignment: Alignment.topCenter,
-            child: SizedBox(
-                height: 46,
-                child: RoundedButton(
-                    outline: true,
-                    label: 'Voir la fiche',
-                    icon: Icons.remove_red_eye_outlined,
-                    iconColor: theme.colorScheme.primary,
-                    onPress: () {
-                      Navigator.of(context).pushNamed(
-                        '/taxon',
-                        arguments: TaxonScreenArguments(
-                          taxon.nameId,
-                          taxon.taxonRepository,
-                          taxon.vernacularNames.isNotEmpty
-                              ? taxon.vernacularNames[0]
-                              : '',
-                          taxon.scientificName,
-                        ),
-                      );
-                    })),
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                  height: 46,
+                  child: RoundedButton(
+                      outline: true,
+                      label: 'Voir la fiche',
+                      icon: Icons.remove_red_eye_outlined,
+                      iconColor: theme.colorScheme.primary,
+                      onPress: () {
+                        Navigator.of(context).pushNamed(
+                          '/taxon',
+                          arguments: TaxonScreenArguments(
+                            taxon.nameId,
+                            taxon.taxonRepository,
+                            taxon.vernacularNames.isNotEmpty
+                                ? taxon.vernacularNames[0]
+                                : '',
+                            taxon.scientificName,
+                          ),
+                        );
+                      })),
+            ),
           ),
+          SizedBox(height: widget.simpleSearch ? 0 : 118)
         ],
       ),
     );
