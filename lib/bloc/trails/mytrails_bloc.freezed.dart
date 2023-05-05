@@ -285,7 +285,7 @@ mixin _$MyTrailsState {
     required TResult Function() initial,
     required TResult Function() dataLoading,
     required TResult Function(List<Trail> trails) dataLoaded,
-    required TResult Function() dataLoadError,
+    required TResult Function(String msg) dataLoadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -293,7 +293,7 @@ mixin _$MyTrailsState {
     TResult? Function()? initial,
     TResult? Function()? dataLoading,
     TResult? Function(List<Trail> trails)? dataLoaded,
-    TResult? Function()? dataLoadError,
+    TResult? Function(String msg)? dataLoadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -301,7 +301,7 @@ mixin _$MyTrailsState {
     TResult Function()? initial,
     TResult Function()? dataLoading,
     TResult Function(List<Trail> trails)? dataLoaded,
-    TResult Function()? dataLoadError,
+    TResult Function(String msg)? dataLoadError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -390,7 +390,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() dataLoading,
     required TResult Function(List<Trail> trails) dataLoaded,
-    required TResult Function() dataLoadError,
+    required TResult Function(String msg) dataLoadError,
   }) {
     return initial();
   }
@@ -401,7 +401,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? dataLoading,
     TResult? Function(List<Trail> trails)? dataLoaded,
-    TResult? Function()? dataLoadError,
+    TResult? Function(String msg)? dataLoadError,
   }) {
     return initial?.call();
   }
@@ -412,7 +412,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? dataLoading,
     TResult Function(List<Trail> trails)? dataLoaded,
-    TResult Function()? dataLoadError,
+    TResult Function(String msg)? dataLoadError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -504,7 +504,7 @@ class _$_DataLoading implements _DataLoading {
     required TResult Function() initial,
     required TResult Function() dataLoading,
     required TResult Function(List<Trail> trails) dataLoaded,
-    required TResult Function() dataLoadError,
+    required TResult Function(String msg) dataLoadError,
   }) {
     return dataLoading();
   }
@@ -515,7 +515,7 @@ class _$_DataLoading implements _DataLoading {
     TResult? Function()? initial,
     TResult? Function()? dataLoading,
     TResult? Function(List<Trail> trails)? dataLoaded,
-    TResult? Function()? dataLoadError,
+    TResult? Function(String msg)? dataLoadError,
   }) {
     return dataLoading?.call();
   }
@@ -526,7 +526,7 @@ class _$_DataLoading implements _DataLoading {
     TResult Function()? initial,
     TResult Function()? dataLoading,
     TResult Function(List<Trail> trails)? dataLoaded,
-    TResult Function()? dataLoadError,
+    TResult Function(String msg)? dataLoadError,
     required TResult orElse(),
   }) {
     if (dataLoading != null) {
@@ -650,7 +650,7 @@ class _$_DataLoaded implements _DataLoaded {
     required TResult Function() initial,
     required TResult Function() dataLoading,
     required TResult Function(List<Trail> trails) dataLoaded,
-    required TResult Function() dataLoadError,
+    required TResult Function(String msg) dataLoadError,
   }) {
     return dataLoaded(trails);
   }
@@ -661,7 +661,7 @@ class _$_DataLoaded implements _DataLoaded {
     TResult? Function()? initial,
     TResult? Function()? dataLoading,
     TResult? Function(List<Trail> trails)? dataLoaded,
-    TResult? Function()? dataLoadError,
+    TResult? Function(String msg)? dataLoadError,
   }) {
     return dataLoaded?.call(trails);
   }
@@ -672,7 +672,7 @@ class _$_DataLoaded implements _DataLoaded {
     TResult Function()? initial,
     TResult Function()? dataLoading,
     TResult Function(List<Trail> trails)? dataLoaded,
-    TResult Function()? dataLoadError,
+    TResult Function(String msg)? dataLoadError,
     required TResult orElse(),
   }) {
     if (dataLoaded != null) {
@@ -733,6 +733,8 @@ abstract class _$$_DataLoadErrorCopyWith<$Res> {
   factory _$$_DataLoadErrorCopyWith(
           _$_DataLoadError value, $Res Function(_$_DataLoadError) then) =
       __$$_DataLoadErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -742,26 +744,50 @@ class __$$_DataLoadErrorCopyWithImpl<$Res>
   __$$_DataLoadErrorCopyWithImpl(
       _$_DataLoadError _value, $Res Function(_$_DataLoadError) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? msg = null,
+  }) {
+    return _then(_$_DataLoadError(
+      null == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_DataLoadError implements _DataLoadError {
-  const _$_DataLoadError();
+  const _$_DataLoadError(this.msg);
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'MyTrailsState.dataLoadError()';
+    return 'MyTrailsState.dataLoadError(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DataLoadError);
+        (other.runtimeType == runtimeType &&
+            other is _$_DataLoadError &&
+            (identical(other.msg, msg) || other.msg == msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, msg);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DataLoadErrorCopyWith<_$_DataLoadError> get copyWith =>
+      __$$_DataLoadErrorCopyWithImpl<_$_DataLoadError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -769,9 +795,9 @@ class _$_DataLoadError implements _DataLoadError {
     required TResult Function() initial,
     required TResult Function() dataLoading,
     required TResult Function(List<Trail> trails) dataLoaded,
-    required TResult Function() dataLoadError,
+    required TResult Function(String msg) dataLoadError,
   }) {
-    return dataLoadError();
+    return dataLoadError(msg);
   }
 
   @override
@@ -780,9 +806,9 @@ class _$_DataLoadError implements _DataLoadError {
     TResult? Function()? initial,
     TResult? Function()? dataLoading,
     TResult? Function(List<Trail> trails)? dataLoaded,
-    TResult? Function()? dataLoadError,
+    TResult? Function(String msg)? dataLoadError,
   }) {
-    return dataLoadError?.call();
+    return dataLoadError?.call(msg);
   }
 
   @override
@@ -791,11 +817,11 @@ class _$_DataLoadError implements _DataLoadError {
     TResult Function()? initial,
     TResult Function()? dataLoading,
     TResult Function(List<Trail> trails)? dataLoaded,
-    TResult Function()? dataLoadError,
+    TResult Function(String msg)? dataLoadError,
     required TResult orElse(),
   }) {
     if (dataLoadError != null) {
-      return dataLoadError();
+      return dataLoadError(msg);
     }
     return orElse();
   }
@@ -839,5 +865,10 @@ class _$_DataLoadError implements _DataLoadError {
 }
 
 abstract class _DataLoadError implements MyTrailsState {
-  const factory _DataLoadError() = _$_DataLoadError;
+  const factory _DataLoadError(final String msg) = _$_DataLoadError;
+
+  String get msg;
+  @JsonKey(ignore: true)
+  _$$_DataLoadErrorCopyWith<_$_DataLoadError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

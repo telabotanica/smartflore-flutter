@@ -43,10 +43,13 @@ class MyTrails extends StatelessWidget {
                 },
                 dataLoading: () {
                   return const Center(
-                      child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: CircularProgressIndicator(),
+                      child: Padding(
+                    padding: EdgeInsets.fromLTRB(16, 0, 16, 100),
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(),
+                    ),
                   ));
                 },
                 dataLoaded: (trails) {
@@ -114,8 +117,15 @@ class MyTrails extends StatelessWidget {
                         buildItemList(reorderTrailList(trails)),
                       ]);
                 },
-                dataLoadError: () {
-                  return const Center(child: Text('Error'));
+                dataLoadError: (String message) {
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
+                    child: Center(
+                        child: Text(
+                      message,
+                      textAlign: TextAlign.center,
+                    )),
+                  );
                 },
               );
             },

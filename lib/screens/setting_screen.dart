@@ -23,9 +23,9 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   final List<SettingsItemVO> listItems = [
     SettingsItemVO(
-        "Conditions d'utilisation", '${AppEnv().apiBaseUrl}terms_of_use'),
-    SettingsItemVO('Crédits', '${AppEnv().apiBaseUrl}credits'),
-    SettingsItemVO('À propos', '${AppEnv().apiBaseUrl}about')
+        "Conditions d'utilisation", '${AppEnv().apiBaseUrl}/terms_of_use'),
+    SettingsItemVO('Crédits', '${AppEnv().apiBaseUrl}/credits'),
+    SettingsItemVO('À propos', '${AppEnv().apiBaseUrl}/about')
   ];
 
   bool isAuth = false;

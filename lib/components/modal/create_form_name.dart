@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartflore/bloc/create/create_bloc.dart';
+import 'package:smartflore/bloc/map/map_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/components/form/textinput_with_title.dart';
+import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/modal/modal_title.dart';
 
 class CreateFormNameModal extends StatefulWidget {
@@ -77,6 +79,8 @@ class _CreateFormNameModalState extends State<CreateFormNameModal> {
       _formKey.currentState?.validate();
       _formKey.currentState?.save();
       if (textFieldsValue.length == 1) {
+        BlocProvider.of<MapBloc>(context)
+            .add(const MapEvent.changeFollowMode(FollowMode.locked));
         BlocProvider.of<CreateBloc>(context)
             .add(CreateEvent.saveTitle(name: textFieldsValue[0] ?? ''));
       }

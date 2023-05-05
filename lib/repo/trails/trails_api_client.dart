@@ -37,18 +37,15 @@ class TrailsApiClient extends APIClient {
   dynamic _returnResponse(Response response) {
     switch (response.statusCode) {
       case 200:
-        debugPrint('body:: ${response.body.toString()}');
-
         return jsonDecode(response.body);
       case 400:
       case 401:
       case 403:
         debugPrint('>>>>403:: ${response.body.toString()}');
-        throw Future.error(response.body.toString());
+        throw (response.body.toString());
       case 500:
       default:
-        throw Future.error(
-            'Error occurred while Communication with Server with StatusCode : ${response.statusCode}');
+        throw ('Error occurred while Communication with Server with StatusCode : ${response.statusCode}');
     }
   }
 
@@ -65,9 +62,15 @@ class TrailsApiClient extends APIClient {
 
       return RemoteUser.fromJson(data).trails;
     } on SocketException {
-      return Future.error('No Internet connection 😑');
+      throw ('No Internet connection 😑');
     } on Exception {
-      return Future.error('Unexpected error 😢');
+      throw ('Unexpected error 😢');
+    } catch (e) {
+      if (e.toString().contains('type')) {
+        throw ('Erreur dans le format de données du sentier, merci de contacter le support');
+      } else {
+        throw ('Unexpected error 😢');
+      }
     }
   }
 

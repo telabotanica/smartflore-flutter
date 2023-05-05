@@ -111,7 +111,7 @@ void main() async {
   final AuthRepo authRepo = AuthRepo(
       authApiClient: AuthApiClient(
           httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/login'));
-  final UserRepo userRepo = UserRepo(userLocalClient);
+  final UserRepo userRepo = UserRepo(userLocalClient, trailsBox);
   final WalkRepo walkRepo = WalkRepo();
 
   final TaxonRepo taxonRepo = TaxonRepo(

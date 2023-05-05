@@ -39,11 +39,15 @@ class MyTrailsBloc extends Bloc<MyTrailsEvent, MyTrailsState> {
               emit(MyTrailsState.dataLoaded(trails.trailList!));
             }
 
-            List<Trail>? trailList = await trailsRepo.getMyTrailList();
-            debugPrint('====>>> trailList $trailList');
-            if (trailList != null) {
-              trailsBox.put('mytrails', Trails(trailList: trailList));
-              emit(MyTrailsState.dataLoaded(trailList));
+            try {
+              List<Trail>? trailList = await trailsRepo.getMyTrailList();
+              debugPrint('====>>> trailList $trailList');
+              if (trailList != null) {
+                trailsBox.put('mytrails', Trails(trailList: trailList));
+                emit(MyTrailsState.dataLoaded(trailList));
+              }
+            } catch (e) {
+              emit(MyTrailsState.dataLoadError(e.toString()));
             }
           });
     });

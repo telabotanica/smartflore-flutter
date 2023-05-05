@@ -5,5 +5,5 @@ class MyTrailsState with _$MyTrailsState {
   const factory MyTrailsState.initial() = _Initial;
   const factory MyTrailsState.dataLoading() = _DataLoading;
   const factory MyTrailsState.dataLoaded(List<Trail> trails) = _DataLoaded;
-  const factory MyTrailsState.dataLoadError() = _DataLoadError;
+  const factory MyTrailsState.dataLoadError(String msg) = _DataLoadError;
 }
