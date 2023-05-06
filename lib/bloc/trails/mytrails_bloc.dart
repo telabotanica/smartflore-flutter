@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:smartflore/bloc/auth/auth_bloc.dart';
+import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/repo/trails/trails_repo.dart';
 
@@ -16,9 +17,11 @@ class MyTrailsBloc extends Bloc<MyTrailsEvent, MyTrailsState> {
   final TrailsRepo trailsRepo;
   final Box<Trails> trailsBox;
   final AuthBloc authBloc;
+  final CreateBloc createBloc;
   StreamSubscription? authSubscription;
+  StreamSubscription? createSubscription;
 
-  MyTrailsBloc(this.trailsRepo, this.trailsBox, this.authBloc)
+  MyTrailsBloc(this.trailsRepo, this.trailsBox, this.authBloc, this.createBloc)
       : super(const _Initial()) {
     authSubscription = authBloc.stream.listen((state) {
       state.maybeWhen(
@@ -27,6 +30,14 @@ class MyTrailsBloc extends Bloc<MyTrailsEvent, MyTrailsState> {
             add(const MyTrailsEvent.loadTrailsData());
           },
           orElse: () {});
+    });
+
+    createSubscription = createBloc.stream.listen((state) {
+      state.whenOrNull(
+        trailSaved: () {
+          add(const MyTrailsEvent.loadTrailsData());
+        },
+      );
     });
 
     on<MyTrailsEvent>((event, emit) async {

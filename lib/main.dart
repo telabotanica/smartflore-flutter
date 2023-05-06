@@ -143,9 +143,6 @@ void main() async {
               trailRepo, trailBox, taxonBox, saveTrailBox, localImagesBox)),
       BlocProvider<TrailsBloc>(
           create: (context) => TrailsBloc(trailsRepo, trailsBox)),
-      BlocProvider<MyTrailsBloc>(
-          create: (context) => MyTrailsBloc(
-              trailsRepo, trailsBox, BlocProvider.of<AuthBloc>(context))),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
       BlocProvider<TaxonBloc>(
           create: (context) => TaxonBloc(taxonRepo, taxonBox)),
@@ -160,7 +157,14 @@ void main() async {
               createTrailBox: createBox,
               geolocationBloc: BlocProvider.of<GeolocationBloc>(context),
               geolocationRepo: geolocationRepo,
-              trailRepo: trailRepo))
+              trailRepo: trailRepo)),
+      BlocProvider<MyTrailsBloc>(
+        create: (context) => MyTrailsBloc(
+            trailsRepo,
+            trailsBox,
+            BlocProvider.of<AuthBloc>(context),
+            BlocProvider.of<CreateBloc>(context)),
+      ),
     ], child: App(isAuth: isAuth())),
   ));
 }
