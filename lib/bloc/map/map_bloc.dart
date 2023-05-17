@@ -44,6 +44,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
           changeFollowMode: (FollowMode followMode) {
         emit(const MapState.initial());
         emit(MapState.onFollowModeChanged(followMode));
+        emit(const MapState.onRecenterMap());
       });
     });
   }
