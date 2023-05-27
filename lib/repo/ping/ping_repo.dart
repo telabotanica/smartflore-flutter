@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/models/ping/ping_model.dart';
+import 'package:smartflore/models/user/user_model.dart';
 import 'package:smartflore/repo/geolocation/geolocation_repo.dart';
 
 import 'ping_api_client.dart';
@@ -12,11 +13,13 @@ class PingRepo {
   final PingApiClient pingApiClient;
   final Box appConfig;
   final GeolocationRepo geolocationRepo;
+  final Function getUserInfo;
 
   PingRepo(
       {required this.pingApiClient,
       required this.appConfig,
-      required this.geolocationRepo});
+      required this.geolocationRepo,
+      required this.getUserInfo});
 
   Future<bool> postPing(int trailId, LatLng trailStartLocation) async {
     // Get connection status:
@@ -43,8 +46,11 @@ class PingRepo {
     //convert Date
     String date = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
 
+    UserInfoApp userInfoApp = getUserInfo();
+    bool isLogged =
+        userInfoApp.email != null && userInfoApp.token != null ? true : false;
     Ping ping = Ping(
-        isLogged: false,
+        isLogged: isLogged,
         isLocated: isLocated,
         date: date,
         distanceFromTrail: distance,

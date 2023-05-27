@@ -51,6 +51,8 @@ class TrailsApiClient extends APIClient {
 
   Future<List<Trail>?> getMyTrailList() async {
     try {
+      print('::: getMyTrailList');
+      print('::: getUserInfo().token : ${getUserInfo().token}');
       final response = await httpClient
           .get(Uri.parse('$baseUrl/me'),
               headers: await getHeaders(getUserInfo().token ?? ''))
@@ -69,6 +71,7 @@ class TrailsApiClient extends APIClient {
       if (e.toString().contains('type')) {
         throw ('Erreur dans le format de données du sentier, merci de contacter le support');
       } else {
+        print(':::e :: $e');
         throw ('Unexpected error 😢');
       }
     }
