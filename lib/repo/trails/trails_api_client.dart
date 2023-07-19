@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -13,17 +14,13 @@ class TrailsApiClient extends APIClient {
   final String baseUrl;
   final UserInfoApp Function() getUserInfo;
 
-  TrailsApiClient(
-      {required this.httpClient,
-      required this.baseUrl,
-      required this.getUserInfo});
+  TrailsApiClient({required this.httpClient, required this.baseUrl, required this.getUserInfo});
 
   Future<List<Trail>?> getTrailList() async {
     try {
       final response = await httpClient
           .get(Uri.parse('$baseUrl/trails'))
-          .onError(
-              (error, stackTrace) => Future.error('No Internet connection 😑'));
+          .onError((error, stackTrace) => Future.error('No Internet connection 😑'));
 
       dynamic data = _returnResponse(response);
       return Trails.fromJson({'trailList': data}).trailList;
@@ -51,27 +48,22 @@ class TrailsApiClient extends APIClient {
 
   Future<List<Trail>?> getMyTrailList() async {
     try {
-      print('::: getMyTrailList');
-      print('::: getUserInfo().token : ${getUserInfo().token}');
       final response = await httpClient
-          .get(Uri.parse('$baseUrl/me'),
-              headers: await getHeaders(getUserInfo().token ?? ''))
-          .onError(
-              (error, stackTrace) => Future.error('No Internet connection 😑'));
+          .get(Uri.parse('$baseUrl/me'), headers: await getHeaders(getUserInfo().token ?? ''))
+          .onError((error, stackTrace) => Future.error('No Internet connection 😑'));
 
       dynamic data = _returnResponse(response);
-      printWrapped('/me ===>  $data');
 
       return RemoteUser.fromJson(data).trails;
     } on SocketException {
-      throw ('No Internet connection 😑');
+      throw ('No Internet connection 😑 - trails');
     } on Exception {
       throw ('Unexpected error 😢');
     } catch (e) {
       if (e.toString().contains('type')) {
         throw ('Erreur dans le format de données du sentier, merci de contacter le support');
       } else {
-        print(':::e :: $e');
+        debugPrint(':::e :: $e');
         throw ('Unexpected error 😢');
       }
     }
