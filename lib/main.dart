@@ -126,7 +126,8 @@ void main() async {
         baseUrl: '${AppEnv().apiBaseUrl}/ping',
       ),
       appConfig: appConfig,
-      geolocationRepo: geolocationRepo);
+      geolocationRepo: geolocationRepo,
+      getUserInfo: getUserInfo);
 
   Bloc.observer = SimpleBlocObserver();
 
