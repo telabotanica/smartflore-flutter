@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -14,10 +15,7 @@ class TrailApiClient extends APIClient {
   final String baseUrl;
   final Function getUserInfo;
 
-  TrailApiClient(
-      {required this.httpClient,
-      required this.baseUrl,
-      required this.getUserInfo});
+  TrailApiClient({required this.httpClient, required this.baseUrl, required this.getUserInfo});
   Future<TrailDetails?> getTrailData(int id) async {
     try {
       final response = await httpClient.get(Uri.parse('$baseUrl/trail/$id'));
@@ -39,8 +37,7 @@ class TrailApiClient extends APIClient {
   }
 
   Future<BatchedTrail?> getTrailBatchedData(int id) async {
-    final response =
-        await httpClient.get(Uri.parse('$baseUrl/batch/trail/$id'));
+    final response = await httpClient.get(Uri.parse('$baseUrl/batch/trail/$id'));
     if (response.statusCode == 200) {
       String data = response.body;
 
@@ -80,31 +77,27 @@ class TrailApiClient extends APIClient {
       debugPrint('=======> header: $test');
 
       String jsonConverted = trailConverter(jsonEncode(trail));
-      printWrapped(jsonConverted);
+      log('=======> $jsonConverted');
 
       final response = await httpClient.post(Uri.parse('$baseUrl/trail'),
-          body: jsonConverted,
-          headers: await getHeaders(getUserInfo().token ?? ''));
+          body: jsonConverted, headers: await getHeaders(getUserInfo().token ?? ''));
+      log('=======> response :: $response');
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         String data = response.body;
         debugPrint('======> SAVE OK:: ${response.statusCode}');
         debugPrint('======> data :: $data');
 
-        return GenericRequestResponse(
-            success: true, statusCode: response.statusCode);
+        return GenericRequestResponse(success: true, statusCode: response.statusCode);
       } else {
         debugPrint('======> SAVE ERROR:: ${response.statusCode}');
         debugPrint('======> SAVE response:: ${response.body}');
         // throw Exception('Failed to load trail list');
-        return GenericRequestResponse(
-            success: false,
-            message: response.body,
-            statusCode: response.statusCode);
+        return GenericRequestResponse(success: false, message: response.body, statusCode: response.statusCode);
       }
     } catch (e) {
-      return GenericRequestResponse(
-          success: false, message: e.toString(), statusCode: 600);
+      debugPrint('======> CATCH ERROR:: $e');
+      return GenericRequestResponse(success: false, message: e.toString(), statusCode: 600);
     }
   }
 
@@ -123,8 +116,7 @@ class TrailApiClient extends APIClient {
                 'scientific_name': occurrence['taxon']['scientific_name'],
                 'name_id': occurrence['taxon']['name_id'],
                 'taxon_repository': occurrence['taxon']['taxon_repository'],
-                'image_id': (occurrence['images'] != null &&
-                        occurrence['images'].length > 0)
+                'image_id': (occurrence['images'] != null && occurrence['images'].length > 0)
                     ? occurrence['images'][0]['id']
                     : null
               })
