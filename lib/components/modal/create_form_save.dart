@@ -40,6 +40,9 @@ class _CreateEndModalState extends State<CreateEndModal> {
   int pmrValue = 0;
   bool isSaving = false;
   bool isSaved = false;
+  bool isError = false;
+  String? errorMsg;
+  CreateTrail? trailToSave;
   late Box<CreateTrail> createBox;
 
   final List<String> pmr = ['Non', 'Je ne sais pas', 'Oui'];
@@ -76,6 +79,8 @@ class _CreateEndModalState extends State<CreateEndModal> {
           savingTrail: () {
             setState(() {
               isSaving = true;
+              isError = false;
+              errorMsg = null;
             });
           },
           trailSaved: () {
@@ -83,6 +88,11 @@ class _CreateEndModalState extends State<CreateEndModal> {
               isSaving = false;
               isSaved = true;
             });
+          },
+          trailSaveError: (msg) {
+            isSaving = false;
+            isError = true;
+            errorMsg = msg;
           },
           orElse: () {},
         );
@@ -93,22 +103,25 @@ class _CreateEndModalState extends State<CreateEndModal> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ModalTitle(
-              title: (isSaving)
-                  ? 'Sentier en cours de sauvegarde'
-                  : (isSaved)
-                      ? 'Sentier sauvegardé !'
-                      : 'Voulez vous enregistrer votre sentier ?',
+              title: (isError)
+                  ? 'Erreur lors de la sauvegarde 😔'
+                  : (isSaving)
+                      ? 'Sentier en cours de sauvegarde'
+                      : (isSaved)
+                          ? 'Sentier sauvegardé !'
+                          : 'Voulez vous enregistrer votre sentier ?',
               onClose: () {
                 if (isSaved || isSaving) {
-                  BlocProvider.of<MapBloc>(context)
-                      .add(const MapEvent.changeMapMode(MapMode.overview));
+                  BlocProvider.of<MapBloc>(context).add(const MapEvent.changeMapMode(MapMode.overview));
                 }
                 if (widget.onClose != null) widget.onClose!();
               },
             ),
             const SizedBox(height: 16),
-            if (isSaving)
-              const CircularProgressIndicator()
+            if (isError)
+              ...buildError(errorMsg, createTrail!)
+            else if (isSaving)
+              const Center(child: CircularProgressIndicator())
             else if (isSaved)
               ...buildSaveConfirm()
             else
@@ -117,6 +130,46 @@ class _CreateEndModalState extends State<CreateEndModal> {
         ),
       ),
     );
+  }
+
+  List<Widget> buildError(String? msg, CreateTrail createTrail) {
+    return [
+      Text(
+        msg != null ? 'Erreur : $msg' : "Une erreur inconnue s'est produite lors de la sauvegarde...",
+        textAlign: TextAlign.left,
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
+      const SizedBox(height: 20),
+      Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+                child: SizedBox(
+                    height: 46,
+                    child: RoundedButton(
+                        outline: true,
+                        label: 'Annuler',
+                        onPress: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) => Modal(CreateConfirmModal(onClose: widget.onClose)));
+                        }))),
+            SizedBox(width: (trailToSave != null) ? 10 : 0),
+            (trailToSave != null)
+                ? Expanded(
+                    child: SizedBox(
+                        height: 46,
+                        child: RoundedButton(
+                            label: 'Ressayer',
+                            onPress: () {
+                              BlocProvider.of<CreateBloc>(context).add(CreateEvent.saveTrail(trailToSave!));
+                            })))
+                : Container(),
+          ],
+        ),
+      ),
+    ];
   }
 
   Future<void> _launchUrl(String url, BuildContext context) async {
@@ -139,8 +192,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
     return CheckBoxWithTitle(
       height: 30,
       activeColor: Theme.of(context).colorScheme.primary,
-      checkboxShape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      checkboxShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       checkboxSide: BorderSide(color: Theme.of(context).colorScheme.primary),
       value: state.value,
       onChanged: (value) {
@@ -148,11 +200,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
           state.value = value!;
         });
       },
-      title: Text(state.title,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: Colors.black)),
+      title: Text(state.title, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.black)),
     );
   }
 
@@ -175,8 +223,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
             child: RoundedButton(
                 label: 'Fermer',
                 onPress: () {
-                  BlocProvider.of<MapBloc>(context)
-                      .add(const MapEvent.changeMapMode(MapMode.overview));
+                  BlocProvider.of<MapBloc>(context).add(const MapEvent.changeMapMode(MapMode.overview));
                   Navigator.of(context).pop();
                 })),
       ),
@@ -197,11 +244,9 @@ class _CreateEndModalState extends State<CreateEndModal> {
         trailId: 1,
       ),
       const SizedBox(height: 20),
-      Text('Le sentier est il accessible PMR ?',
-          style: Theme.of(context).textTheme.titleLarge),
+      Text('Le sentier est il accessible PMR ?', style: Theme.of(context).textTheme.titleLarge),
       const SizedBox(height: 8),
-      LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
+      LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
         return Container(
           width: constraints.maxWidth,
           decoration: BoxDecoration(
@@ -224,46 +269,35 @@ class _CreateEndModalState extends State<CreateEndModal> {
                   child: Container(
                     alignment: Alignment.center,
                     height: 40,
-                    width: (index == 1)
-                        ? constraints.maxWidth / 2 - 2
-                        : constraints.maxWidth / 4,
+                    width: (index == 1) ? constraints.maxWidth / 2 - 2 : constraints.maxWidth / 4,
                     decoration: BoxDecoration(
                       color: (selected)
                           ? Theme.of(context).colorScheme.primary
-                          : Theme.of(context)
-                              .colorScheme
-                              .background
-                              .withOpacity(0),
+                          : Theme.of(context).colorScheme.background.withOpacity(0),
                       border: (index == 1)
                           ? Border(
-                              top: BorderSide(
-                                  color: Colors.white.withOpacity(0)),
-                              left: BorderSide(
-                                  color: Theme.of(context).colorScheme.primary),
-                              right: BorderSide(
-                                  color: Theme.of(context).colorScheme.primary),
-                              bottom: BorderSide(
-                                  color: Colors.white.withOpacity(0)),
+                              top: BorderSide(color: Colors.white.withOpacity(0)),
+                              left: BorderSide(color: Theme.of(context).colorScheme.primary),
+                              right: BorderSide(color: Theme.of(context).colorScheme.primary),
+                              bottom: BorderSide(color: Colors.white.withOpacity(0)),
                             )
                           : Border.all(color: const Color(0x00FFFFFF)),
                     ),
                     padding: const EdgeInsets.all(8.0),
                     child: Text(pmr[index],
                         style: (selected)
-                            ? Theme.of(context)
+                            ? Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white)
+                            : Theme.of(context)
                                 .textTheme
                                 .titleLarge
-                                ?.copyWith(color: Colors.white)
-                            : Theme.of(context).textTheme.titleLarge?.copyWith(
-                                color: Theme.of(context).colorScheme.primary)),
+                                ?.copyWith(color: Theme.of(context).colorScheme.primary)),
                   ),
                 );
               }),
         );
       }),
       const SizedBox(height: 20),
-      Text('Quelle est la saison idéale pour observer ce parcours',
-          style: Theme.of(context).textTheme.titleLarge),
+      Text('Quelle est la saison idéale pour observer ce parcours', style: Theme.of(context).textTheme.titleLarge),
       const SizedBox(height: 8),
       ...bestPeriod.map(buildCheckBox).toList(),
       const SizedBox(height: 20),
@@ -278,9 +312,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
                       label: 'Annuler',
                       onPress: () {
                         showDialog(
-                            context: context,
-                            builder: (context) => Modal(
-                                CreateConfirmModal(onClose: widget.onClose)));
+                            context: context, builder: (context) => Modal(CreateConfirmModal(onClose: widget.onClose)));
                       }))),
           const SizedBox(width: 10),
           Expanded(
@@ -293,10 +325,8 @@ class _CreateEndModalState extends State<CreateEndModal> {
                         for (var element in bestPeriod) {
                           seasons.add(element.value);
                         }
-                        CreateTrail trailToSave = createTrail.copyWith(
-                            bestSeason: seasons, prm: pmrValue);
-                        BlocProvider.of<CreateBloc>(context)
-                            .add(CreateEvent.saveTrail(trailToSave));
+                        trailToSave = createTrail.copyWith(bestSeason: seasons, prm: pmrValue);
+                        BlocProvider.of<CreateBloc>(context).add(CreateEvent.saveTrail(trailToSave!));
                       }))),
         ],
       ),
