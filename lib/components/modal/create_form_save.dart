@@ -121,7 +121,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
             if (isError)
               ...buildError(errorMsg, createTrail!)
             else if (isSaving)
-              const CircularProgressIndicator()
+              const Center(child: CircularProgressIndicator())
             else if (isSaved)
               ...buildSaveConfirm()
             else
@@ -135,34 +135,37 @@ class _CreateEndModalState extends State<CreateEndModal> {
   List<Widget> buildError(String? msg, CreateTrail createTrail) {
     return [
       Text(
-        msg ?? "Une erreur inconnue s'est produite lors de la sauvegarde...",
+        msg != null ? 'Erreur : $msg' : "Une erreur inconnue s'est produite lors de la sauvegarde...",
         textAlign: TextAlign.left,
-        style: Theme.of(context).textTheme.titleLarge,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       const SizedBox(height: 20),
       Center(
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            (trailToSave != null)
-                ? SizedBox(
+            Expanded(
+                child: SizedBox(
                     height: 46,
-                    width: 155,
                     child: RoundedButton(
-                        label: 'Ressayer',
+                        outline: true,
+                        label: 'Annuler',
                         onPress: () {
-                          BlocProvider.of<CreateBloc>(context).add(CreateEvent.saveTrail(trailToSave!));
-                          Navigator.of(context).pop();
-                        }))
+                          showDialog(
+                              context: context,
+                              builder: (context) => Modal(CreateConfirmModal(onClose: widget.onClose)));
+                        }))),
+            SizedBox(width: (trailToSave != null) ? 10 : 0),
+            (trailToSave != null)
+                ? Expanded(
+                    child: SizedBox(
+                        height: 46,
+                        child: RoundedButton(
+                            label: 'Ressayer',
+                            onPress: () {
+                              BlocProvider.of<CreateBloc>(context).add(CreateEvent.saveTrail(trailToSave!));
+                            })))
                 : Container(),
-            SizedBox(
-                height: 46,
-                width: 155,
-                child: RoundedButton(
-                    label: 'Fermer',
-                    onPress: () {
-                      BlocProvider.of<MapBloc>(context).add(const MapEvent.changeMapMode(MapMode.overview));
-                      Navigator.of(context).pop();
-                    })),
           ],
         ),
       ),

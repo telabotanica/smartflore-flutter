@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -70,33 +69,16 @@ class TrailApiClient extends APIClient {
 
   Future<GenericRequestResponse> saveTrail(CreateTrail trail) async {
     try {
-      debugPrint("=======> url: ${'$baseUrl/trail'}");
-      debugPrint('=======> token:  ${getUserInfo().token}');
-
-      dynamic test = await getHeaders(getUserInfo().token ?? '');
-      debugPrint('=======> header: $test');
-
       String jsonConverted = trailConverter(jsonEncode(trail));
-      log('=======> $jsonConverted');
 
       final response = await httpClient.post(Uri.parse('$baseUrl/trail'),
           body: jsonConverted, headers: await getHeaders(getUserInfo().token ?? ''));
-      log('=======> response :: $response');
-
       if (response.statusCode == 200 || response.statusCode == 201) {
-        String data = response.body;
-        debugPrint('======> SAVE OK:: ${response.statusCode}');
-        debugPrint('======> data :: $data');
-
         return GenericRequestResponse(success: true, statusCode: response.statusCode);
       } else {
-        debugPrint('======> SAVE ERROR:: ${response.statusCode}');
-        debugPrint('======> SAVE response:: ${response.body}');
-        // throw Exception('Failed to load trail list');
         return GenericRequestResponse(success: false, message: response.body, statusCode: response.statusCode);
       }
     } catch (e) {
-      debugPrint('======> CATCH ERROR:: $e');
       return GenericRequestResponse(success: false, message: e.toString(), statusCode: 600);
     }
   }
