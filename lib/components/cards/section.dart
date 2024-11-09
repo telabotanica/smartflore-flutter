@@ -8,8 +8,7 @@ import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 class Section extends StatelessWidget {
   final SectionAPI sectionData;
   final bool hasSeparator;
-  const Section({Key? key, required this.sectionData, this.hasSeparator = true})
-      : super(key: key);
+  const Section({Key? key, required this.sectionData, this.hasSeparator = true}) : super(key: key);
 
   IconData getIcon(String type) {
     switch (type) {
@@ -37,16 +36,14 @@ class Section extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
           ),
           const SizedBox(width: 10),
-          Text(sectionData.title,
-              style: Theme.of(context).textTheme.displaySmall)
+          Text(sectionData.title, style: Theme.of(context).textTheme.displaySmall)
         ]),
         Html(
           data: sectionData.text,
           style: {
-            'body': Style(margin: Margins.zero, padding: EdgeInsets.zero),
+            'body': Style(margin: Margins.zero, padding: HtmlPaddings.zero),
           },
-          onLinkTap: (String? url, RenderContext renderContext,
-              Map<String, String> attributes, dom.Element? element) {
+          onLinkTap: (String? url, Map<String, String> attributes, dom.Element? element) {
             Navigator.push(
               context,
               MaterialPageRoute(

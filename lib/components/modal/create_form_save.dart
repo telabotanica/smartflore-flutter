@@ -209,7 +209,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
       Html(
         data:
             'Veuillez vous rendre sur votre <a href="https://www.tela-botanica.org/smart-form/">tableau de bord</a> afin de le compléter et le publier',
-        onLinkTap: (url, renderContext, attributes, element) {
+        onLinkTap: (url, attributes, element) {
           if (url != null) {
             _launchUrl(url, context);
           }
@@ -273,7 +273,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
                     decoration: BoxDecoration(
                       color: (selected)
                           ? Theme.of(context).colorScheme.primary
-                          : Theme.of(context).colorScheme.background.withOpacity(0),
+                          : Theme.of(context).colorScheme.surface.withOpacity(0),
                       border: (index == 1)
                           ? Border(
                               top: BorderSide(color: Colors.white.withOpacity(0)),

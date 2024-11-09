@@ -13,16 +13,13 @@ class SpeciesPanelWidget extends StatefulWidget {
   final bool isDraggable;
   final Widget body;
 
-  const SpeciesPanelWidget(
-      {Key? key, this.isDraggable = true, required this.body})
-      : super(key: key);
+  const SpeciesPanelWidget({Key? key, this.isDraggable = true, required this.body}) : super(key: key);
 
   @override
   State<SpeciesPanelWidget> createState() => _SpeciesPanelWidgetState();
 }
 
-class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
-    with SingleTickerProviderStateMixin {
+class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget> with SingleTickerProviderStateMixin {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
@@ -34,13 +31,12 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 300));
-    animation = Tween<double>(begin: 0, end: 300).animate(
-        CurvedAnimation(parent: controller, curve: Curves.easeInOutCubic))
-      ..addListener(() {
-        setState(() {});
-      });
+    controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
+    animation =
+        Tween<double>(begin: 0, end: 300).animate(CurvedAnimation(parent: controller, curve: Curves.easeInOutCubic))
+          ..addListener(() {
+            setState(() {});
+          });
   }
 
   void onPanUpdate(details) {
@@ -133,18 +129,14 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                       color: Colors.transparent,
                       child: TextButton(
                         style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
+                          overlayColor: WidgetStateProperty.all(Colors.white),
                         ),
                         onPressed: () =>
                             // Needed because the builtin panelController.isPanelOpen is not working
-                            (isPanelOpened)
-                                ? _panelController.close()
-                                : _panelController.open(),
+                            (isPanelOpened) ? _panelController.close() : _panelController.open(),
                         child: Container(
                           decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
-                              color: Color(0xFFD8DCD8)),
+                              borderRadius: BorderRadius.all(Radius.circular(4)), color: Color(0xFFD8DCD8)),
                           width: 45,
                           height: 4,
                         ),
@@ -157,8 +149,8 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
               ),
             ),
           ),
-          panelBuilder: (scrollController) => _buildSlidingPanel(
-              scrollController: scrollController, bottomPadding: bottomPadding),
+          panelBuilder: (scrollController) =>
+              _buildSlidingPanel(scrollController: scrollController, bottomPadding: bottomPadding),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           body: widget.body),
     );
@@ -179,9 +171,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
               image: (species.images.isNotEmpty)
                   ? species.images[0].url
                   : 'https://lightwidget.com/wp-content/uploads/local-file-not-found.png',
-              vernacularName: species.taxon.vernacularNames.isNotEmpty
-                  ? species.taxon.vernacularNames[0]
-                  : '',
+              vernacularName: species.taxon.vernacularNames.isNotEmpty ? species.taxon.vernacularNames[0] : '',
               scientificName: species.taxon.scientificName,
               position: species.position,
             ),
@@ -193,10 +183,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [
-                  Colors.white.withOpacity(1),
-                  Colors.white.withOpacity(0)
-                ])))
+                    colors: [Colors.white.withOpacity(1), Colors.white.withOpacity(0)])))
       ],
     );
   }

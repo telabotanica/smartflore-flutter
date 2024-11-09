@@ -17,16 +17,14 @@ import 'package:smartflore/utils/app.dart';
 
 class SearchTaxonScreen extends StatefulWidget {
   final bool simpleSearch;
-  const SearchTaxonScreen({Key? key, this.simpleSearch = false})
-      : super(key: key);
+  const SearchTaxonScreen({Key? key, this.simpleSearch = false}) : super(key: key);
 
   @override
   State<SearchTaxonScreen> createState() => _SearchTaxonScreenState();
 }
 
 class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
-  final PagingController<int, TaxonHit> _pagingController =
-      PagingController(firstPageKey: 0);
+  final PagingController<int, TaxonHit> _pagingController = PagingController(firstPageKey: 0);
   late Algolia algolia;
   String currentSearch = '';
   TaxonHit? selectedTaxon;
@@ -61,12 +59,8 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
           )
           .query(currentSearch)
           .setPage(page)
-          .setAttributesToRetrieve([
-            'referentiels',
-            'bdtfx.scientific_name',
-            'bdtfx.common_name',
-            'bdtfx.nomenclatural_number'
-          ])
+          .setAttributesToRetrieve(
+              ['referentiels', 'bdtfx.scientific_name', 'bdtfx.common_name', 'bdtfx.nomenclatural_number'])
           .setAttributesToHighlight(
             ['bdtfx.scientific_name', 'bdtfx.common_name'],
           )
@@ -112,37 +106,26 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                       ),
                     )
                   : null,
-              iconTheme:
-                  const IconThemeData(color: Color(0xFF13161C), size: 14),
-              backgroundColor: Theme.of(context).colorScheme.background,
+              iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
+              backgroundColor: Theme.of(context).colorScheme.surface,
               shadowColor: const Color(0x00000000),
               centerTitle: false,
               titleSpacing: 0.0,
-              title: Text(
-                  widget.simpleSearch
-                      ? 'Rechercher un individu'
-                      : 'Ajouter un individu',
+              title: Text(widget.simpleSearch ? 'Rechercher un individu' : 'Ajouter un individu',
                   style: Theme.of(context).textTheme.bodyLarge)),
           body: Stack(
             fit: StackFit.expand,
             children: [
-              selectedTaxon == null
-                  ? buildSearchUI(theme)
-                  : buildTaxonUI(theme, screenW),
+              selectedTaxon == null ? buildSearchUI(theme) : buildTaxonUI(theme, screenW),
               widget.simpleSearch
                   ? Container()
                   : Align(
                       alignment: Alignment.bottomCenter,
                       child: Container(
                           decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 10,
-                                    color: Colors.black.withOpacity(0.15))
-                              ],
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(6))),
+                              boxShadow: [BoxShadow(blurRadius: 10, color: Colors.black.withOpacity(0.15))],
+                              color: Theme.of(context).colorScheme.surface,
+                              borderRadius: const BorderRadius.all(Radius.circular(6))),
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(36, 24, 36, 24),
                             child: SizedBox(
@@ -153,8 +136,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                                     ? null
                                     : () {
                                         BlocProvider.of<CreateBloc>(context)
-                                            .add(CreateEvent.registerTaxon(
-                                                selectedTaxonSF!));
+                                            .add(CreateEvent.registerTaxon(selectedTaxonSF!));
                                       },
                               ),
                             ),
@@ -167,20 +149,12 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
 
   Widget buildHits(BuildContext context, ThemeData theme) {
     TextStyle matchScientificStyle = TextStyle(
-        fontSize: 16.0,
-        fontWeight: FontWeight.bold,
-        fontStyle: FontStyle.italic,
-        color: theme.colorScheme.primary);
+        fontSize: 16.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, color: theme.colorScheme.primary);
     TextStyle matchCommonStyle = TextStyle(
-        fontSize: 14.0,
-        fontWeight: FontWeight.normal,
-        fontStyle: FontStyle.normal,
-        color: theme.colorScheme.primary);
+        fontSize: 14.0, fontWeight: FontWeight.normal, fontStyle: FontStyle.normal, color: theme.colorScheme.primary);
 
-    TextStyle defaultScientificStyle =
-        matchScientificStyle.copyWith(color: const Color(0xFF778992));
-    TextStyle defaultCommonStyle =
-        matchCommonStyle.copyWith(color: const Color(0xFF778992));
+    TextStyle defaultScientificStyle = matchScientificStyle.copyWith(color: const Color(0xFF778992));
+    TextStyle defaultCommonStyle = matchCommonStyle.copyWith(color: const Color(0xFF778992));
 
     return PagedListView<int, TaxonHit>(
         pagingController: _pagingController,
@@ -196,9 +170,8 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                         item.highlightResult!.bdtfx!.commonName != null)) {
                   return TextButton(
                     onPressed: () {
-                      BlocProvider.of<TaxonBloc>(context).add(
-                          TaxonEvent.loadTaxonData(
-                              'bdtfx', item.bdtfx!.nomenclaturalNumber!));
+                      BlocProvider.of<TaxonBloc>(context)
+                          .add(TaxonEvent.loadTaxonData('bdtfx', item.bdtfx!.nomenclaturalNumber!));
                       setState(() {
                         selectedTaxon = item;
                       });
@@ -210,11 +183,8 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                       ),
                     ),
                     child: ListItemUI(
-                      scientificName:
-                          item.highlightResult!.bdtfx!.scientificName!.value ??
-                              '',
-                      commonName:
-                          item.highlightResult!.bdtfx!.commonName!.value ?? '',
+                      scientificName: item.highlightResult!.bdtfx!.scientificName!.value ?? '',
+                      commonName: item.highlightResult!.bdtfx!.commonName!.value ?? '',
                       defaultCommonStyle: defaultCommonStyle,
                       matchCommonStyle: matchCommonStyle,
                       defaultScientificStyle: defaultScientificStyle,
@@ -244,18 +214,14 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
             hintText: 'Nom de l\'espèce',
             keyboardType: TextInputType.emailAddress,
             titleStyle: Theme.of(context).textTheme.titleLarge,
-            hintStyle: Theme.of(context)
-                .textTheme
-                .titleLarge
-                ?.copyWith(color: Colors.black.withOpacity(0.4)),
+            hintStyle: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black.withOpacity(0.4)),
             textController: textController,
             onSaved: (value) {},
           ),
           (currentSearch != '')
               ? Expanded(
                   child: Padding(
-                    padding:
-                        EdgeInsets.only(bottom: widget.simpleSearch ? 0 : 90.0),
+                    padding: EdgeInsets.only(bottom: widget.simpleSearch ? 0 : 90.0),
                     child: Container(child: buildHits(context, theme)),
                   ),
                 )
@@ -287,8 +253,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                   width: screenW - 72,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                      border:
-                          Border.all(color: const Color(0xFFD8DCD8), width: 1),
+                      border: Border.all(color: const Color(0xFFD8DCD8), width: 1),
                       borderRadius: const BorderRadius.all(Radius.circular(6))),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -299,21 +264,15 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            selectedTaxon!.bdtfx!.scientificName != null &&
-                                    selectedTaxon!.bdtfx!.scientificName != ''
-                                ? Text(
-                                    selectedTaxon!.bdtfx!.scientificName ?? '',
+                            selectedTaxon!.bdtfx!.scientificName != null && selectedTaxon!.bdtfx!.scientificName != ''
+                                ? Text(selectedTaxon!.bdtfx!.scientificName ?? '',
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
-                                    style: theme.textTheme.bodyLarge!
-                                        .copyWith(fontStyle: FontStyle.italic))
+                                    style: theme.textTheme.bodyLarge!.copyWith(fontStyle: FontStyle.italic))
                                 : Container(),
-                            selectedTaxon!.bdtfx!.commonName != null &&
-                                    selectedTaxon!.bdtfx!.commonName != ''
+                            selectedTaxon!.bdtfx!.commonName != null && selectedTaxon!.bdtfx!.commonName != ''
                                 ? Text(selectedTaxon!.bdtfx!.commonName!,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: theme.textTheme.bodyMedium)
+                                    maxLines: 2, overflow: TextOverflow.ellipsis, style: theme.textTheme.bodyMedium)
                                 : Container()
                           ],
                         ),
@@ -381,8 +340,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
               ? Flexible(
                   child: GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         mainAxisSpacing: 0,
                         crossAxisSpacing: 0,
                         crossAxisCount: 3,
@@ -418,9 +376,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                           arguments: TaxonScreenArguments(
                             taxon.nameId,
                             taxon.taxonRepository,
-                            taxon.vernacularNames.isNotEmpty
-                                ? taxon.vernacularNames[0]
-                                : '',
+                            taxon.vernacularNames.isNotEmpty ? taxon.vernacularNames[0] : '',
                             taxon.scientificName,
                           ),
                         );
@@ -433,11 +389,9 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
     );
   }
 
-  _openGallery(
-      BuildContext context, final List<ImageAPI> imageList, final int index) {
+  _openGallery(BuildContext context, final List<ImageAPI> imageList, final int index) {
     Navigator.of(context).pushNamed('/gallery-fullScreen',
-        arguments: GalleryScreenArguments(imageList,
-            const BoxDecoration(color: Colors.black), index, Axis.horizontal));
+        arguments: GalleryScreenArguments(imageList, const BoxDecoration(color: Colors.black), index, Axis.horizontal));
   }
 
   @override

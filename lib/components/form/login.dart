@@ -13,18 +13,15 @@ class LoginForm extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20.0, 0, 20, 20),
-          child: Text(AppLocalizations.of(context).need_login,
+          child: Text(AppLocalizations.of(context)!.need_login,
               textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium!
-                  .copyWith(fontWeight: FontWeight.bold)),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.bold)),
         ),
         SizedBox(
             width: 190,
             height: 46,
             child: RoundedButton(
-                label: AppLocalizations.of(context).btn_login,
+                label: AppLocalizations.of(context)!.btn_login,
                 onPress: () {
                   Navigator.of(context).pushNamed(
                     '/login',

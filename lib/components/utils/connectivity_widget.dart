@@ -28,8 +28,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
   void initState() {
     appConfigBox = Hive.box('appConfig');
     initConnectivity();
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     super.initState();
   }
 
@@ -63,8 +62,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
     if (result == ConnectivityResult.none && !isSnackbarActive) {
       if (isDelayFinished) {
         Future.delayed(const Duration(seconds: 2)).then((value) async {
-          ConnectivityResult doubleCheck =
-              await _connectivity.checkConnectivity();
+          ConnectivityResult doubleCheck = await _connectivity.checkConnectivity();
           isDelayFinished = true;
 
           if (doubleCheck == ConnectivityResult.none && !isSnackbarActive) {
@@ -90,12 +88,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
         backgroundColor: const Color(0xFFEA5448),
         margin: const EdgeInsets.all(20),
         borderRadius: BorderRadius.circular(6),
-        boxShadows: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.4),
-              offset: const Offset(0.0, 4.0),
-              blurRadius: 10.0)
-        ],
+        boxShadows: [BoxShadow(color: Colors.black.withOpacity(0.4), offset: const Offset(0.0, 4.0), blurRadius: 10.0)],
         isDismissible: true,
         duration: const Duration(seconds: 100),
         icon: const Padding(
@@ -109,22 +102,16 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
         titleText: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            AppLocalizations.of(context).toaster_offline_title,
+            AppLocalizations.of(context)!.toaster_offline_title,
             style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-                color: Colors.white,
-                fontFamily: 'ShadowsIntoLightTwo'),
+                fontWeight: FontWeight.bold, fontSize: 16.0, color: Colors.white, fontFamily: 'ShadowsIntoLightTwo'),
           ),
         ),
         messageText: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            AppLocalizations.of(context).toaster_offline_desc,
-            style: const TextStyle(
-                fontSize: 14.0,
-                color: Colors.white,
-                fontFamily: 'ShadowsIntoLightTwo'),
+            AppLocalizations.of(context)!.toaster_offline_desc,
+            style: const TextStyle(fontSize: 14.0, color: Colors.white, fontFamily: 'ShadowsIntoLightTwo'),
           ),
         ));
 

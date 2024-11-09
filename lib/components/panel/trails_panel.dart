@@ -13,16 +13,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class TrailsPanelWidget extends StatefulWidget {
   final bool isDraggable;
   final bool isAuth;
-  const TrailsPanelWidget(
-      {Key? key, required this.isAuth, this.isDraggable = true})
-      : super(key: key);
+  const TrailsPanelWidget({Key? key, required this.isAuth, this.isDraggable = true}) : super(key: key);
 
   @override
   State<TrailsPanelWidget> createState() => _TrailsPanelWidgetState();
 }
 
-class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
-    with SingleTickerProviderStateMixin {
+class _TrailsPanelWidgetState extends State<TrailsPanelWidget> with SingleTickerProviderStateMixin {
   final PanelController _panelController = PanelController();
   bool isPanelOpened = false;
   bool isPanelMoving = false;
@@ -34,16 +31,14 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
   void initState() {
     super.initState();
     // get the previously opened user box
-    BlocProvider.of<TrailsBloc>(context)
-        .add(const TrailsEvent.loadTrailsData());
+    BlocProvider.of<TrailsBloc>(context).add(const TrailsEvent.loadTrailsData());
 
     savedTrailsBox = Hive.box('savedTrails');
     tabController = TabController(length: 2, vsync: this);
     tabController.addListener(() {
       if (tabController.indexIsChanging) {
         if (tabController.index == 1 && widget.isAuth == true) {
-          BlocProvider.of<MyTrailsBloc>(context)
-              .add(const MyTrailsEvent.loadTrailsData());
+          BlocProvider.of<MyTrailsBloc>(context).add(const MyTrailsEvent.loadTrailsData());
         }
       }
     });
@@ -118,18 +113,14 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
                       color: Colors.transparent,
                       child: TextButton(
                         style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
+                          overlayColor: WidgetStateProperty.all(Colors.white),
                         ),
                         onPressed: () =>
                             // Needed because the builtin panelController.isPanelOpen is not working
-                            (isPanelOpened)
-                                ? _panelController.close()
-                                : _panelController.open(),
+                            (isPanelOpened) ? _panelController.close() : _panelController.open(),
                         child: Container(
                           decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
-                              color: Color(0xFFD8DCD8)),
+                              borderRadius: BorderRadius.all(Radius.circular(4)), color: Color(0xFFD8DCD8)),
                           width: 45,
                           height: 4,
                         ),
@@ -139,28 +130,25 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
                     Container(
                       height: 46,
                       decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 1),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(6))),
+                          border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1),
+                          borderRadius: const BorderRadius.all(Radius.circular(6))),
                       child: TabBar(
                           controller: tabController,
                           isScrollable: false,
                           unselectedLabelColor: primary,
-                          indicator: BoxDecoration(
-                              color: primary,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(4))),
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          dividerColor: Colors.transparent,
+                          labelColor: Colors.white,
+                          indicator:
+                              BoxDecoration(color: primary, borderRadius: const BorderRadius.all(Radius.circular(4))),
                           tabs: [
                             Tab(
                                 child: Text(
-                              AppLocalizations.of(context).btn_all_trail,
+                              AppLocalizations.of(context)!.btn_all_trail,
                               style: const TextStyle(fontSize: 16),
                             )),
                             Tab(
-                                child: Text(
-                                    AppLocalizations.of(context).btn_my_trail,
+                                child: Text(AppLocalizations.of(context)!.btn_my_trail,
                                     style: const TextStyle(fontSize: 16)))
                           ]),
                     ),
@@ -170,9 +158,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
             ),
           ),
           panelBuilder: (scrollController) => _buildSlidingPanel(
-              scrollController: scrollController,
-              tabController: tabController,
-              bottomPadding: bottomPadding),
+              scrollController: scrollController, tabController: tabController, bottomPadding: bottomPadding),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           body: MapUI(
             bottomPadding: bottomPadding,

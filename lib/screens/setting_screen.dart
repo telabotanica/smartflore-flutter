@@ -22,8 +22,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final List<SettingsItemVO> listItems = [
-    SettingsItemVO(
-        "Conditions d'utilisation", '${AppEnv().apiBaseUrl}/terms_of_use'),
+    SettingsItemVO("Conditions d'utilisation", '${AppEnv().apiBaseUrl}/terms_of_use'),
     SettingsItemVO('Crédits', '${AppEnv().apiBaseUrl}/credits'),
     SettingsItemVO('À propos', '${AppEnv().apiBaseUrl}/about')
   ];
@@ -63,14 +62,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     )
                   : null,
-              iconTheme:
-                  const IconThemeData(color: Color(0xFF13161C), size: 14),
-              backgroundColor: Theme.of(context).colorScheme.background,
+              iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
+              backgroundColor: Theme.of(context).colorScheme.surface,
               shadowColor: const Color(0x40000000),
               elevation: 10,
               centerTitle: false,
               titleSpacing: 0.0,
-              title: Text(AppLocalizations.of(context).params,
+              title: Text(AppLocalizations.of(context) != null ? AppLocalizations.of(context)!.params : '',
                   style: Theme.of(context).textTheme.bodyLarge)),
           body: Stack(
             children: [
@@ -79,25 +77,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 itemCount: listItems.length,
                 itemBuilder: (context, index) {
                   return TextButton(
-                      style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.all(0))),
+                      style: ButtonStyle(padding: WidgetStateProperty.all(const EdgeInsets.all(0))),
                       onPressed: () => {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => WebViewPage(
-                                    title: listItems[index].label,
-                                    url: listItems[index].url),
+                                builder: (context) =>
+                                    WebViewPage(title: listItems[index].label, url: listItems[index].url),
                               ),
                             )
                           },
                       child: Container(
                           width: MediaQuery.of(context).size.width,
                           decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    width: 1.0, color: Color(0xFFCCCCCC))),
+                            border: Border(bottom: BorderSide(width: 1.0, color: Color(0xFFCCCCCC))),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(25, 20, 25, 20),
@@ -119,15 +112,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           outline: isAuth ? true : false,
                           onPress: () {
                             isAuth
-                                ? BlocProvider.of<AuthBloc>(context)
-                                    .add(const AuthEvent.logout())
+                                ? BlocProvider.of<AuthBloc>(context).add(const AuthEvent.logout())
                                 : Navigator.of(context).pushNamed(
                                     '/login',
                                   );
                           },
-                          label: isAuth
-                              ? AppLocalizations.of(context).logout
-                              : AppLocalizations.of(context).btn_login,
+                          label:
+                              isAuth ? AppLocalizations.of(context)!.logout : AppLocalizations.of(context)!.btn_login,
                         ),
                       )),
                 ),

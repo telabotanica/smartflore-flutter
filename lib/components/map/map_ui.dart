@@ -68,8 +68,7 @@ class _MapUIState extends State<MapUI> {
                   child: FloatingActionButton(
                     heroTag: 'settings',
                     backgroundColor: Colors.white,
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: const Icon(
                       SmartFloreIcons.setting,
                       size: 20,
@@ -93,8 +92,7 @@ class _MapUIState extends State<MapUI> {
                   child: FloatingActionButton(
                     heroTag: 'search',
                     backgroundColor: Colors.white,
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: const Icon(
                       SmartFloreIcons.search,
                       size: 20,
@@ -168,31 +166,25 @@ class _MapUIState extends State<MapUI> {
                         width: 46,
                         height: 46,
                         decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 1),
+                          border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1),
                           shape: BoxShape.circle,
                         ),
                         child: FloatingActionButton(
                             backgroundColor: Colors.white,
+                            shape: const CircleBorder(),
                             child: Container(
                                 width: 14,
                                 height: 14,
                                 decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(2)),
-                                    color:
-                                        Theme.of(context).colorScheme.primary)),
+                                    borderRadius: const BorderRadius.all(Radius.circular(2)),
+                                    color: Theme.of(context).colorScheme.primary)),
                             onPressed: () {
-                              BlocProvider.of<CreateBloc>(context)
-                                  .add(const CreateEvent.pause());
+                              BlocProvider.of<CreateBloc>(context).add(const CreateEvent.pause());
                               showDialog(
                                   context: context,
                                   barrierDismissible: false,
-                                  builder: (context) =>
-                                      Modal(CreateEndModal(onClose: () {
-                                        BlocProvider.of<CreateBloc>(context)
-                                            .add(const CreateEvent.unPause());
+                                  builder: (context) => Modal(CreateEndModal(onClose: () {
+                                        BlocProvider.of<CreateBloc>(context).add(const CreateEvent.unPause());
                                         Navigator.of(context).pop();
                                       })),
                                   barrierColor: Colors.black.withOpacity(0.1));
@@ -216,26 +208,19 @@ class _MapUIState extends State<MapUI> {
                   child: BlocBuilder<TrailBloc, TrailState>(
                     builder: (context, state) {
                       if (state is TrailLoadedState) {
-                        isPreviewLocallySaved =
-                            (savedTrailsBox.get('trail_${state.trail.id}')) !=
-                                null;
+                        isPreviewLocallySaved = (savedTrailsBox.get('trail_${state.trail.id}')) != null;
                         return BlocListener<SaveTrailBloc, SaveTrailState>(
                             listener: (context, saveState) {
                               setState(() {
-                                isPreviewLocallySaved = (savedTrailsBox
-                                        .get('trail_${state.trail.id}')) !=
-                                    null;
+                                isPreviewLocallySaved = (savedTrailsBox.get('trail_${state.trail.id}')) != null;
                               });
                             },
                             child: TrailPreview(
                                 key: trailPreviewUIKey,
                                 onPressCB: () {
-                                  BlocProvider.of<MapBloc>(context).add(
-                                      const MapEvent.changeMapMode(
-                                          MapMode.trail));
-                                  BlocProvider.of<PingBloc>(context).add(
-                                      PingEvent.ping(state.trail.id,
-                                          state.trail.position.start));
+                                  BlocProvider.of<MapBloc>(context).add(const MapEvent.changeMapMode(MapMode.trail));
+                                  BlocProvider.of<PingBloc>(context)
+                                      .add(PingEvent.ping(state.trail.id, state.trail.position.start));
                                 },
                                 index: 1,
                                 id: state.trail.id,
@@ -254,7 +239,7 @@ class _MapUIState extends State<MapUI> {
                         id: 1,
                         title: '',
                         length: 150,
-                        position: LatLng(0, 0),
+                        position: const LatLng(0, 0),
                         nbOccurence: 0,
                       );
                     },

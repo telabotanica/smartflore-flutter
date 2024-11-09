@@ -47,10 +47,8 @@ class _TopBarCreateUIState extends State<TopBarCreateUI> {
                   child: TopBarCreate(
                       title: trailName,
                       isRecording: true,
-                      distance: Numbers.convertToKilo(
-                          distance,
-                          AppLocalizations.of(context).distance_m,
-                          AppLocalizations.of(context).distance_km)))),
+                      distance: Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m,
+                          AppLocalizations.of(context)!.distance_km)))),
         )),
       ),
     );

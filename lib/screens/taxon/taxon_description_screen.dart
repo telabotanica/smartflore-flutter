@@ -31,7 +31,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
 
   int _current = 0;
   List<ImageAPI> galleryItems = [];
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
   @override
   void initState() {
     galleryItems = getCarouselImages(widget.tabData.images);
@@ -42,8 +42,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
     List<Widget> sectionList = [];
     int index = 0;
     for (var section in sections) {
-      sectionList.add(Section(
-          sectionData: section, hasSeparator: index < sections.length - 1));
+      sectionList.add(Section(sectionData: section, hasSeparator: index < sections.length - 1));
       index++;
     }
 
@@ -53,10 +52,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
   _openGallery(BuildContext context, final int index) {
     Navigator.of(context).pushNamed('/gallery-fullScreen',
         arguments: GalleryScreenArguments(
-            getCarouselImages(widget.tabData.images),
-            const BoxDecoration(color: Colors.black),
-            index,
-            Axis.horizontal,
+            getCarouselImages(widget.tabData.images), const BoxDecoration(color: Colors.black), index, Axis.horizontal,
             onCurrentIndexChanged: onCurrentGalleryIndexChanged));
   }
 
@@ -110,18 +106,16 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
                     children: galleryItems.asMap().entries.map((entry) {
                       return GestureDetector(
                         onTap: () => _controller.animateToPage(entry.key,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeInOutCubic),
+                            duration: const Duration(milliseconds: 300), curve: Curves.easeInOutCubic),
                         child: Container(
                           width: 7.0,
                           height: 7.0,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 3.0),
+                          margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 3.0),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: (_current == entry.key)
                                   ? Theme.of(context).colorScheme.primary
-                                  : Theme.of(context).colorScheme.background),
+                                  : Theme.of(context).colorScheme.tertiary),
                         ),
                       );
                     }).toList(),
