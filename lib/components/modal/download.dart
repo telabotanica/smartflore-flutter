@@ -82,11 +82,13 @@ class _DownloadCardState extends State<DownloadCard> {
                     children: [
                       const DownloadIcon(),
                       const SizedBox(width: 6),
-                      Text(AppLocalizations.of(context)!.offline, style: Theme.of(context).textTheme.titleLarge),
+                      Text(AppLocalizations.of(context)!.offline,
+                          style: Theme.of(context).textTheme.titleLarge),
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text(AppLocalizations.of(context)!.offline_desc, style: Theme.of(context).textTheme.bodySmall)
+                  Text(AppLocalizations.of(context)!.offline_desc,
+                      style: Theme.of(context).textTheme.bodySmall)
                 ],
               ),
             ),
@@ -99,9 +101,11 @@ class _DownloadCardState extends State<DownloadCard> {
                     isSelected = value;
                   });
                   if (value) {
-                    BlocProvider.of<SaveTrailBloc>(context).add(SaveTrailEvent.saveTrailLocally(id: widget.trailId));
+                    BlocProvider.of<SaveTrailBloc>(context).add(
+                        SaveTrailEvent.saveTrailLocally(id: widget.trailId));
                   } else {
-                    BlocProvider.of<SaveTrailBloc>(context).add(SaveTrailEvent.unSaveTrailLocally(id: widget.trailId));
+                    BlocProvider.of<SaveTrailBloc>(context).add(
+                        SaveTrailEvent.unSaveTrailLocally(id: widget.trailId));
                   }
                 },
                 trackColor: const Color(0xFFD8DCD8),
@@ -150,7 +154,9 @@ Widget buildProgressBar(int value, int total, BuildContext context) {
           color: Theme.of(context).colorScheme.primary,
           backgroundColor: const Color(0xFFD8DCD8),
         ),
-        Text('$value / $total', style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12))
+        Text('$value / $total',
+            style: TextStyle(
+                color: Theme.of(context).colorScheme.primary, fontSize: 12))
       ],
     ),
   );

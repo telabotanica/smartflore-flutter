@@ -266,29 +266,18 @@ class __$$_TrailDetailsCopyWithImpl<$Res>
 @HiveType(typeId: 10, adapterName: 'TrailDetailAdapter')
 class _$_TrailDetails implements _TrailDetails {
   const _$_TrailDetails(
-      {@HiveField(0)
-          required this.id,
-      @HiveField(1)
-          required this.name,
-      @JsonKey(name: 'display_name')
-      @HiveField(2)
-          required this.displayName,
-      @HiveField(3)
-          required this.author,
-      @HiveField(4)
-          required this.position,
-      @HiveField(5)
-          required final List<Occurrence> occurrences,
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.name,
+      @JsonKey(name: 'display_name') @HiveField(2) required this.displayName,
+      @HiveField(3) required this.author,
+      @HiveField(4) required this.position,
+      @HiveField(5) required final List<Occurrence> occurrences,
       @JsonKey(name: 'occurrences_count')
       @HiveField(6)
-          required this.occurrencesCount,
-      @HiveField(7)
-          required this.image,
-      @HiveField(8)
-          required this.path,
-      @JsonKey(name: 'path_length')
-      @HiveField(9)
-          required this.pathLength})
+      required this.occurrencesCount,
+      @HiveField(7) required this.image,
+      @HiveField(8) required this.path,
+      @JsonKey(name: 'path_length') @HiveField(9) required this.pathLength})
       : _occurrences = occurrences;
 
   factory _$_TrailDetails.fromJson(Map<String, dynamic> json) =>
@@ -392,29 +381,22 @@ class _$_TrailDetails implements _TrailDetails {
 
 abstract class _TrailDetails implements TrailDetails {
   const factory _TrailDetails(
-      {@HiveField(0)
-          required final int id,
-      @HiveField(1)
-          required final String name,
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String name,
       @JsonKey(name: 'display_name')
       @HiveField(2)
-          required final String displayName,
-      @HiveField(3)
-          required final String author,
-      @HiveField(4)
-          required final StartEndPosition position,
-      @HiveField(5)
-          required final List<Occurrence> occurrences,
+      required final String displayName,
+      @HiveField(3) required final String author,
+      @HiveField(4) required final StartEndPosition position,
+      @HiveField(5) required final List<Occurrence> occurrences,
       @JsonKey(name: 'occurrences_count')
       @HiveField(6)
-          required final int occurrencesCount,
-      @HiveField(7)
-          required final Image image,
-      @HiveField(8)
-          required final Path path,
+      required final int occurrencesCount,
+      @HiveField(7) required final Image image,
+      @HiveField(8) required final Path path,
       @JsonKey(name: 'path_length')
       @HiveField(9)
-          required final int pathLength}) = _$_TrailDetails;
+      required final int pathLength}) = _$_TrailDetails;
 
   factory _TrailDetails.fromJson(Map<String, dynamic> json) =
       _$_TrailDetails.fromJson;
@@ -862,21 +844,15 @@ abstract class $TaxonLightCopyWith<$Res> {
       _$TaxonLightCopyWithImpl<$Res, TaxonLight>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'scientific_name')
-      @HiveField(0)
-          String? scientificName,
+      {@JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          String fullScientificName,
-      @JsonKey(name: 'taxon_repository')
-      @HiveField(2)
-          String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(3)
-          int nameId,
+      String fullScientificName,
+      @JsonKey(name: 'taxon_repository') @HiveField(2) String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(3) int nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          List<String> vernacularNames});
+      List<String> vernacularNames});
 }
 
 /// @nodoc
@@ -932,21 +908,15 @@ abstract class _$$_TaxonLightCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'scientific_name')
-      @HiveField(0)
-          String? scientificName,
+      {@JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          String fullScientificName,
-      @JsonKey(name: 'taxon_repository')
-      @HiveField(2)
-          String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(3)
-          int nameId,
+      String fullScientificName,
+      @JsonKey(name: 'taxon_repository') @HiveField(2) String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(3) int nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          List<String> vernacularNames});
+      List<String> vernacularNames});
 }
 
 /// @nodoc
@@ -996,21 +966,17 @@ class __$$_TaxonLightCopyWithImpl<$Res>
 @HiveType(typeId: 13, adapterName: 'TrailTaxonAdapter')
 class _$_TaxonLight implements _TaxonLight {
   const _$_TaxonLight(
-      {@JsonKey(name: 'scientific_name')
-      @HiveField(0)
-          this.scientificName,
+      {@JsonKey(name: 'scientific_name') @HiveField(0) this.scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          required this.fullScientificName,
+      required this.fullScientificName,
       @JsonKey(name: 'taxon_repository')
       @HiveField(2)
-          required this.taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(3)
-          required this.nameId,
+      required this.taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(3) required this.nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          required final List<String> vernacularNames})
+      required final List<String> vernacularNames})
       : _vernacularNames = vernacularNames;
 
   factory _$_TaxonLight.fromJson(Map<String, dynamic> json) =>
@@ -1091,19 +1057,17 @@ abstract class _TaxonLight implements TaxonLight {
   const factory _TaxonLight(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
-          final String? scientificName,
+      final String? scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          required final String fullScientificName,
+      required final String fullScientificName,
       @JsonKey(name: 'taxon_repository')
       @HiveField(2)
-          required final String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(3)
-          required final int nameId,
+      required final String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(3) required final int nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          required final List<String> vernacularNames}) = _$_TaxonLight;
+      required final List<String> vernacularNames}) = _$_TaxonLight;
 
   factory _TaxonLight.fromJson(Map<String, dynamic> json) =
       _$_TaxonLight.fromJson;
@@ -1231,11 +1195,10 @@ class __$$_PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res, _$_Path>
 @HiveType(typeId: 14, adapterName: 'PathAdapter')
 class _$_Path implements _Path {
   const _$_Path(
-      {@HiveField(0)
-          this.type = '',
+      {@HiveField(0) this.type = '',
       @LatLngListConverter()
       @HiveField(1)
-          final List<LatLng> coordinates = const []})
+      final List<LatLng> coordinates = const []})
       : _coordinates = coordinates;
 
   factory _$_Path.fromJson(Map<String, dynamic> json) => _$$_PathFromJson(json);
@@ -1291,11 +1254,10 @@ class _$_Path implements _Path {
 
 abstract class _Path implements Path {
   const factory _Path(
-      {@HiveField(0)
-          final String type,
+      {@HiveField(0) final String type,
       @LatLngListConverter()
       @HiveField(1)
-          final List<LatLng> coordinates}) = _$_Path;
+      final List<LatLng> coordinates}) = _$_Path;
 
   factory _Path.fromJson(Map<String, dynamic> json) = _$_Path.fromJson;
 

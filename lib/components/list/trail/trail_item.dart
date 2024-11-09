@@ -46,7 +46,9 @@ class _TrailItemState extends State<TrailItem> {
   @override
   Widget build(BuildContext context) {
     String distance = Numbers.convertToKilo(
-        widget.length.toDouble(), AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km);
+        widget.length.toDouble(),
+        AppLocalizations.of(context)!.distance_m,
+        AppLocalizations.of(context)!.distance_km);
     return Padding(
       padding: EdgeInsets.fromLTRB(0, (widget.index == 0) ? 0 : 20, 0, 20),
       child: Row(
@@ -58,12 +60,16 @@ class _TrailItemState extends State<TrailItem> {
                   width: 68,
                   height: 68,
                   child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(6.0)),
-                      child: widget.image == null || widget.image == '_path_placeholder'
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(6.0)),
+                      child: widget.image == null ||
+                              widget.image == '_path_placeholder'
                           ? Image.asset('assets/images/path_placeholder.jpg')
-                          : ImageWithLoader(url: widget.image!, imageFormat: 'XS'))),
+                          : ImageWithLoader(
+                              url: widget.image!, imageFormat: 'XS'))),
               (widget.isDownloaded)
-                  ? Transform.translate(offset: const Offset(58, -6), child: const DownloadIcon())
+                  ? Transform.translate(
+                      offset: const Offset(58, -6), child: const DownloadIcon())
                   : Container(),
             ],
           ),
@@ -98,14 +104,19 @@ class _TrailItemState extends State<TrailItem> {
                                           length: widget.length,
                                           image: widget.image,
                                           nbOccurence: widget.nbOccurence)),
-                                      barrierColor: Colors.black.withOpacity(0.1));
+                                      barrierColor:
+                                          Colors.black.withOpacity(0.1));
                                 },
                                 child: Container(
                                   color: Colors.transparent,
                                   child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(20, 0, 0, 20),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 0, 0, 20),
                                     child: Icon(SmartFloreIcons.dot_3,
-                                        size: 22, color: Theme.of(context).colorScheme.primary),
+                                        size: 22,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
                                   ),
                                 ))
                             : Container(),
@@ -129,7 +140,9 @@ class _TrailItemState extends State<TrailItem> {
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
                                 const SizedBox(width: 5),
-                                Text(distance, style: Theme.of(context).textTheme.bodySmall),
+                                Text(distance,
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall),
                               ],
                             ),
                             const SizedBox(height: 4),
@@ -137,7 +150,9 @@ class _TrailItemState extends State<TrailItem> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 buildNbOccurence(context),
-                                (widget.position != null) ? buildDistanceIndicator(context) : Container()
+                                (widget.position != null)
+                                    ? buildDistanceIndicator(context)
+                                    : Container()
                               ],
                             ),
                           ],
@@ -166,7 +181,8 @@ class _TrailItemState extends State<TrailItem> {
           const SizedBox(width: 5),
           Flexible(
             child: Text(
-              AppLocalizations.of(context)!.count_observation(widget.nbOccurence),
+              AppLocalizations.of(context)!
+                  .count_observation(widget.nbOccurence),
               style: Theme.of(context).textTheme.bodySmall,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -194,12 +210,17 @@ class _TrailItemState extends State<TrailItem> {
               builder: (context, state) {
                 return state.maybeWhen(locationUpdate: (position) {
                   double distance = Geolocator.distanceBetween(
-                      widget.position!.latitude, widget.position!.longitude, position.latitude, position.longitude);
+                      widget.position!.latitude,
+                      widget.position!.longitude,
+                      position.latitude,
+                      position.longitude);
 
                   return AutoSizeText(
                     '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
-                    style:
-                        Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.primary),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: Theme.of(context).colorScheme.primary),
                     maxLines: 1,
                   );
                 }, orElse: () {

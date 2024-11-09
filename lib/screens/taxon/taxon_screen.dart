@@ -15,26 +15,33 @@ class TaxonScreen extends StatefulWidget {
   final String? scientificName;
 
   const TaxonScreen(
-      {Key? key, required this.taxonID, required this.taxonRepo, this.vernacularName, this.scientificName})
+      {Key? key,
+      required this.taxonID,
+      required this.taxonRepo,
+      this.vernacularName,
+      this.scientificName})
       : super(key: key);
 
   @override
   State<TaxonScreen> createState() => _TaxonScreenState();
 }
 
-class _TaxonScreenState extends State<TaxonScreen> with SingleTickerProviderStateMixin {
+class _TaxonScreenState extends State<TaxonScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
     // REQUEST FULL TAXON DATA
-    BlocProvider.of<TaxonBloc>(context).add(TaxonEvent.loadTaxonData(widget.taxonRepo, widget.taxonID));
+    BlocProvider.of<TaxonBloc>(context)
+        .add(TaxonEvent.loadTaxonData(widget.taxonRepo, widget.taxonID));
     _tabController = TabController(vsync: this, length: 4);
     _tabController.addListener(_handleTabSelection);
     BlocListener<TaxonBloc, TaxonState>(listener: (context, state) {
       state.whenOrNull(
         loaded: (taxon) {
-          _tabController = TabController(vsync: this, length: taxon.tabs.length);
+          _tabController =
+              TabController(vsync: this, length: taxon.tabs.length);
         },
       );
     });
@@ -63,7 +70,9 @@ class _TaxonScreenState extends State<TaxonScreen> with SingleTickerProviderStat
               icon: Icon(
             TabIconHash.getIcon(tab.icon),
             size: 24,
-            color: (_tabController.index == index) ? Colors.white : Theme.of(context).colorScheme.primary,
+            color: (_tabController.index == index)
+                ? Colors.white
+                : Theme.of(context).colorScheme.primary,
           )),
         ),
       );
@@ -89,8 +98,14 @@ class _TaxonScreenState extends State<TaxonScreen> with SingleTickerProviderStat
   Widget buildTabView() {
     return BlocBuilder<TaxonBloc, TaxonState>(builder: (context, state) {
       return state.when(
-          initial: () => Center(child: Container(color: Colors.white, child: const CircularProgressIndicator())),
-          loading: () => Center(child: Container(color: Colors.white, child: const CircularProgressIndicator())),
+          initial: () => Center(
+              child: Container(
+                  color: Colors.white,
+                  child: const CircularProgressIndicator())),
+          loading: () => Center(
+              child: Container(
+                  color: Colors.white,
+                  child: const CircularProgressIndicator())),
           loaded: (taxon) => SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 50),
@@ -111,7 +126,8 @@ class _TaxonScreenState extends State<TaxonScreen> with SingleTickerProviderStat
           loaded: (taxon) => Align(
                 alignment: Alignment.bottomCenter,
                 child: ClipRRect(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(6.0)),
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(6.0)),
                   child: Container(
                     color: Colors.black,
                     child: SafeArea(
@@ -159,10 +175,17 @@ class _TaxonScreenState extends State<TaxonScreen> with SingleTickerProviderStat
             title: RichText(
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
-              text: TextSpan(style: Theme.of(context).textTheme.bodyLarge, children: [
-                TextSpan(text: (widget.vernacularName != '') ? '${widget.vernacularName} — ' : ''),
-                TextSpan(text: widget.scientificName, style: const TextStyle(fontStyle: FontStyle.italic))
-              ]),
+              text: TextSpan(
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  children: [
+                    TextSpan(
+                        text: (widget.vernacularName != '')
+                            ? '${widget.vernacularName} — '
+                            : ''),
+                    TextSpan(
+                        text: widget.scientificName,
+                        style: const TextStyle(fontStyle: FontStyle.italic))
+                  ]),
             )),
         body: Stack(children: [
           Center(child: buildTabView()),

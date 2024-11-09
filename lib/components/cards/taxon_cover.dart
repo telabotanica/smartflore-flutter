@@ -68,7 +68,10 @@ class TaxonCover extends StatelessWidget {
                     handleOnPress(context);
                   },
                   child: Text(AppLocalizations.of(context)!.see_taxon,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white)),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(color: Colors.white)),
                 ),
               ),
             )),
@@ -77,7 +80,8 @@ class TaxonCover extends StatelessWidget {
           child: Container(
               height: 125,
               decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.vertical(bottom: Radius.circular(6)),
+                  borderRadius:
+                      const BorderRadius.vertical(bottom: Radius.circular(6)),
                   gradient: LinearGradient(
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
@@ -100,7 +104,8 @@ class TaxonCover extends StatelessWidget {
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 2.0),
-                    child: Icon(SmartFloreIcons.plant, size: 14, color: Theme.of(context).colorScheme.primary),
+                    child: Icon(SmartFloreIcons.plant,
+                        size: 14, color: Theme.of(context).colorScheme.primary),
                   ),
                   const SizedBox(width: 6),
                   Flexible(
@@ -108,10 +113,19 @@ class TaxonCover extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     text: TextSpan(
-                        style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: Colors.white),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(color: Colors.white),
                         children: [
-                          TextSpan(text: (vernacularName != '') ? '$vernacularName — ' : ''),
-                          TextSpan(text: scientificName, style: const TextStyle(fontStyle: FontStyle.italic))
+                          TextSpan(
+                              text: (vernacularName != '')
+                                  ? '$vernacularName — '
+                                  : ''),
+                          TextSpan(
+                              text: scientificName,
+                              style:
+                                  const TextStyle(fontStyle: FontStyle.italic))
                         ]),
                   )),
                 ]),
@@ -120,11 +134,17 @@ class TaxonCover extends StatelessWidget {
                   builder: (context, state) {
                     return state.maybeWhen(locationUpdate: (position) {
                       double distance = Geolocator.distanceBetween(
-                          position.latitude, position.longitude, position.latitude, position.longitude);
+                          position.latitude,
+                          position.longitude,
+                          position.latitude,
+                          position.longitude);
 
                       return Text(
                         '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: Colors.white),
                       );
                     }, orElse: () {
                       return Container();

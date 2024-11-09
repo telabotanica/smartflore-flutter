@@ -27,7 +27,8 @@ class TrailsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (trailsListType == TrailsListType.myTrails) {
-      return MyTrails(isAuth: isAuth, controller: controller, onPanUpdate: onPanUpdate);
+      return MyTrails(
+          isAuth: isAuth, controller: controller, onPanUpdate: onPanUpdate);
     }
 
     return Column(
@@ -35,7 +36,9 @@ class TrailsList extends StatelessWidget {
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: GestureDetector(
-              behavior: HitTestBehavior.translucent, onPanUpdate: (details) => onPanUpdate(details), child: Container()
+              behavior: HitTestBehavior.translucent,
+              onPanUpdate: (details) => onPanUpdate(details),
+              child: Container()
               /*Center(
               child: OutlinedButton.icon(
                 onPressed: () {
@@ -69,7 +72,8 @@ class TrailsList extends StatelessWidget {
                     itemCount: trailsData.length,
                     itemBuilder: (context, index) {
                       final trail = trailsData[index];
-                      LatLng startPos = (trail.position != null && trail.position?.start != null)
+                      LatLng startPos = (trail.position != null &&
+                              trail.position?.start != null)
                           ? trail.position!.start
                           : const LatLng(0, 0);
                       return TrailInteractiveItemWidget(
@@ -80,14 +84,16 @@ class TrailsList extends StatelessWidget {
                         image: trail.image!.url,
                         position: startPos,
                         nbOccurence: trail.occurrencesCount,
-                        isDownloaded: (savedTrailsBox.get('trail_${trail.id}')) != null,
+                        isDownloaded:
+                            (savedTrailsBox.get('trail_${trail.id}')) != null,
                       );
                     },
                   ),
                 );
               },
               dataLoadError: () {
-                return Text(AppLocalizations.of(context)!.error_API, style: const TextStyle(color: Colors.red));
+                return Text(AppLocalizations.of(context)!.error_API,
+                    style: const TextStyle(color: Colors.red));
               },
             );
           },

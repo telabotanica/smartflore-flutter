@@ -58,7 +58,9 @@ class MyTrails extends StatelessWidget {
                   Trail current;
                   for (var i = 0; i < trails.length; i++) {
                     current = trails[i];
-                    (current.status == 'draft') ? draftList.add(current) : okList.add(current);
+                    (current.status == 'draft')
+                        ? draftList.add(current)
+                        : okList.add(current);
                   }
 
                   return Column(
@@ -73,27 +75,40 @@ class MyTrails extends StatelessWidget {
                             child: Center(
                               child: OutlinedButton.icon(
                                 onPressed: () {
-                                  BlocProvider.of<CreateBloc>(context).add(const CreateEvent.start());
-                                  BlocProvider.of<MapBloc>(context).add(const MapEvent.changeMapMode(MapMode.create));
+                                  BlocProvider.of<CreateBloc>(context)
+                                      .add(const CreateEvent.start());
+                                  BlocProvider.of<MapBloc>(context).add(
+                                      const MapEvent.changeMapMode(
+                                          MapMode.create));
                                   showDialog(
                                       context: context,
                                       builder: (context) =>
-                                          Modal(CreateFormNameModal(onClose: ({bool leaveCreateMode = false}) {
+                                          Modal(CreateFormNameModal(onClose: (
+                                              {bool leaveCreateMode = false}) {
                                             if (leaveCreateMode) {
                                               BlocProvider.of<MapBloc>(context)
-                                                  .add(const MapEvent.changeMapMode(MapMode.overview));
+                                                  .add(const MapEvent
+                                                      .changeMapMode(
+                                                      MapMode.overview));
                                             }
                                             Navigator.of(context).pop();
                                           })),
-                                      barrierColor: Colors.black.withOpacity(0.1));
+                                      barrierColor:
+                                          Colors.black.withOpacity(0.1));
                                 },
                                 icon: Icon(
                                   SmartFloreIcons.add_circle_outline,
                                   size: 18,
-                                  color: Theme.of(context).textTheme.bodyLarge?.color,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.color,
                                 ),
-                                label: Text(AppLocalizations.of(context)!.btn_create_trail,
-                                    style: Theme.of(context).textTheme.bodyLarge),
+                                label: Text(
+                                    AppLocalizations.of(context)!
+                                        .btn_create_trail,
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge),
                               ),
                             ),
                           ),
@@ -141,7 +156,8 @@ class MyTrails extends StatelessWidget {
               size: 22,
             ),
             const SizedBox(width: 8),
-            Text(AppLocalizations.of(context)!.review, style: Theme.of(context).textTheme.bodyLarge)
+            Text(AppLocalizations.of(context)!.review,
+                style: Theme.of(context).textTheme.bodyLarge)
           ],
         ),
         const SizedBox(height: 18),
@@ -159,11 +175,13 @@ class MyTrails extends StatelessWidget {
               itemBuilder: (context, index) {
                 final Trail? trail = trailsList[index];
                 if (trail == null) return buildDraftTitleSeparator(context);
-                LatLng startPos = (trail.position != null && trail.position?.start != null)
-                    ? trail.position!.start
-                    : const LatLng(0, 0);
+                LatLng startPos =
+                    (trail.position != null && trail.position?.start != null)
+                        ? trail.position!.start
+                        : const LatLng(0, 0);
                 bool isLast = (index == trailsList.length - 1 ||
-                    (index < trailsList.length - 1 && trailsList[index + 1] == null));
+                    (index < trailsList.length - 1 &&
+                        trailsList[index + 1] == null));
                 bool isDraft = trail.status == 'draft';
                 return Opacity(
                   opacity: isDraft ? 0.5 : 1,

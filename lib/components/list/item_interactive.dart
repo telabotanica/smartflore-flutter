@@ -6,15 +6,22 @@ class InteractiveItem extends StatelessWidget {
   final Function onPressed;
   final bool isSelected;
   const InteractiveItem(
-      {Key? key, required this.id, required this.child, required this.onPressed, required this.isSelected})
+      {Key? key,
+      required this.id,
+      required this.child,
+      required this.onPressed,
+      required this.isSelected})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
         style: ButtonStyle(
-            backgroundColor: WidgetStateProperty.all((isSelected ? Colors.red.withOpacity(0.09) : Colors.transparent)),
-            shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+            backgroundColor: WidgetStateProperty.all((isSelected
+                ? Colors.red.withOpacity(0.09)
+                : Colors.transparent)),
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0),
             ))),
         onPressed: () {

@@ -499,7 +499,7 @@ abstract class _TaxonHit implements TaxonHit {
       final HitBdtfx? bdtfx,
       final String? objectId,
       @JsonKey(name: '_highlightResult')
-          final HighlightResult? highlightResult}) = _$_TaxonHit;
+      final HighlightResult? highlightResult}) = _$_TaxonHit;
 
   factory _TaxonHit.fromJson(Map<String, dynamic> json) = _$_TaxonHit.fromJson;
 

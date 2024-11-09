@@ -402,29 +402,18 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res, _$_Trail>
 @HiveType(typeId: 2, adapterName: 'TrailAdapter')
 class _$_Trail implements _Trail {
   const _$_Trail(
-      {@HiveField(0)
-          required this.id,
-      @HiveField(1)
-          required this.name,
-      @JsonKey(name: 'display_name')
-      @HiveField(2)
-          required this.displayName,
-      @HiveField(3)
-          required this.author,
-      @HiveField(4)
-          this.position,
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.name,
+      @JsonKey(name: 'display_name') @HiveField(2) required this.displayName,
+      @HiveField(3) required this.author,
+      @HiveField(4) this.position,
       @JsonKey(name: 'occurrences_count')
       @HiveField(5)
-          required this.occurrencesCount,
-      @HiveField(6)
-          required this.details,
-      @HiveField(7)
-          this.image,
-      @JsonKey(name: 'path_length')
-      @HiveField(8)
-          required this.pathLength,
-      @HiveField(9)
-          this.status});
+      required this.occurrencesCount,
+      @HiveField(6) required this.details,
+      @HiveField(7) this.image,
+      @JsonKey(name: 'path_length') @HiveField(8) required this.pathLength,
+      @HiveField(9) this.status});
 
   factory _$_Trail.fromJson(Map<String, dynamic> json) =>
       _$$_TrailFromJson(json);
@@ -510,29 +499,20 @@ class _$_Trail implements _Trail {
 
 abstract class _Trail implements Trail {
   const factory _Trail(
-      {@HiveField(0)
-          required final int id,
-      @HiveField(1)
-          required final String name,
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String name,
       @JsonKey(name: 'display_name')
       @HiveField(2)
-          required final String displayName,
-      @HiveField(3)
-          required final String author,
-      @HiveField(4)
-          final StartEndPosition? position,
+      required final String displayName,
+      @HiveField(3) required final String author,
+      @HiveField(4) final StartEndPosition? position,
       @JsonKey(name: 'occurrences_count')
       @HiveField(5)
-          required final int occurrencesCount,
-      @HiveField(6)
-          required final String details,
-      @HiveField(7)
-          final Image? image,
-      @JsonKey(name: 'path_length')
-      @HiveField(8)
-          required final int pathLength,
-      @HiveField(9)
-          final String? status}) = _$_Trail;
+      required final int occurrencesCount,
+      @HiveField(6) required final String details,
+      @HiveField(7) final Image? image,
+      @JsonKey(name: 'path_length') @HiveField(8) required final int pathLength,
+      @HiveField(9) final String? status}) = _$_Trail;
 
   factory _Trail.fromJson(Map<String, dynamic> json) = _$_Trail.fromJson;
 

@@ -25,7 +25,7 @@ class Trail with _$Trail {
     @HiveField(4) StartEndPosition? position,
     @JsonKey(name: 'occurrences_count')
     @HiveField(5)
-        required int occurrencesCount,
+    required int occurrencesCount,
     @HiveField(6) required String details,
     @HiveField(7) Image? image,
     @JsonKey(name: 'path_length') @HiveField(8) required int pathLength,

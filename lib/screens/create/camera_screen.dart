@@ -57,7 +57,9 @@ class _CameraScreenState extends State<CameraScreen> {
       return Scaffold(
         body: Stack(children: [
           backButton(),
-          (cameraErrorStatus != null ? buildError(cameraErrorStatus) : const Center(child: CircularProgressIndicator()))
+          (cameraErrorStatus != null
+              ? buildError(cameraErrorStatus)
+              : const Center(child: CircularProgressIndicator()))
         ]),
       );
     }
@@ -68,7 +70,8 @@ class _CameraScreenState extends State<CameraScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Transform.scale(scale: scale, child: Center(child: CameraPreview(_controller!))),
+          Transform.scale(
+              scale: scale, child: Center(child: CameraPreview(_controller!))),
           backButton(),
           SafeArea(
             child: Padding(

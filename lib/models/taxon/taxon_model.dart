@@ -16,23 +16,23 @@ class Taxon with _$Taxon {
   const factory Taxon({
     @JsonKey(name: 'scientific_name')
     @HiveField(0)
-        required String scientificName,
+    required String scientificName,
     @JsonKey(name: 'full_scientific_name')
     @HiveField(1)
-        required String fullScientificName,
+    required String fullScientificName,
     @JsonKey(name: 'html_full_scientific_name')
     @HiveField(2)
-        required String htmlFullScientificName,
+    required String htmlFullScientificName,
     @HiveField(3) required String genus,
     @HiveField(4) required String family,
     @JsonKey(name: 'taxon_repository')
     @HiveField(5)
-        required String taxonRepository,
+    required String taxonRepository,
     @JsonKey(name: 'name_id') @HiveField(6) required int nameId,
     @JsonKey(name: 'taxonomic_id') @HiveField(7) required int taxonomicId,
     @JsonKey(name: 'vernacular_names')
     @HiveField(8)
-        required List<String> vernacularNames,
+    required List<String> vernacularNames,
     @HiveField(9) required List<TabAPI> tabs,
   }) = _Taxon;
 

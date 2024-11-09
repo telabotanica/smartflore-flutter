@@ -15,7 +15,10 @@ class LoginForm extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20.0, 0, 20, 20),
           child: Text(AppLocalizations.of(context)!.need_login,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.bold)),
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium!
+                  .copyWith(fontWeight: FontWeight.bold)),
         ),
         SizedBox(
             width: 190,

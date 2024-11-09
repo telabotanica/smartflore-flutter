@@ -98,18 +98,25 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   final TrailsRepo trailsRepo = TrailsRepo(
-      trailsApiClient:
-          TrailsApiClient(httpClient: http.Client(), baseUrl: AppEnv().apiBaseUrl, getUserInfo: getUserInfo));
+      trailsApiClient: TrailsApiClient(
+          httpClient: http.Client(),
+          baseUrl: AppEnv().apiBaseUrl,
+          getUserInfo: getUserInfo));
   final TrailRepo trailRepo = TrailRepo(
-    trailApiClient: TrailApiClient(httpClient: http.Client(), baseUrl: AppEnv().apiBaseUrl, getUserInfo: getUserInfo),
+    trailApiClient: TrailApiClient(
+        httpClient: http.Client(),
+        baseUrl: AppEnv().apiBaseUrl,
+        getUserInfo: getUserInfo),
   );
-  final AuthRepo authRepo =
-      AuthRepo(authApiClient: AuthApiClient(httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/login'));
+  final AuthRepo authRepo = AuthRepo(
+      authApiClient: AuthApiClient(
+          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/login'));
   final UserRepo userRepo = UserRepo(userLocalClient, trailsBox);
   final WalkRepo walkRepo = WalkRepo();
 
-  final TaxonRepo taxonRepo =
-      TaxonRepo(taxonApiClient: TaxonApiClient(httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/taxon'));
+  final TaxonRepo taxonRepo = TaxonRepo(
+      taxonApiClient: TaxonApiClient(
+          httpClient: http.Client(), baseUrl: '${AppEnv().apiBaseUrl}/taxon'));
 
   final GeolocationRepo geolocationRepo = GeolocationRepo();
 
@@ -129,17 +136,23 @@ void main() async {
     child: MultiBlocProvider(providers: [
       BlocProvider<MapBloc>(create: (context) => MapBloc()),
       BlocProvider<AuthBloc>(create: (context) => AuthBloc(authRepo, userRepo)),
-      BlocProvider<TrailBloc>(create: (context) => TrailBloc(trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),
+      BlocProvider<TrailBloc>(
+          create: (context) => TrailBloc(
+              trailRepo, BlocProvider.of<MapBloc>(context), trailBox)),
       BlocProvider<SaveTrailBloc>(
-          create: (context) => SaveTrailBloc(trailRepo, trailBox, taxonBox, saveTrailBox, localImagesBox)),
-      BlocProvider<TrailsBloc>(create: (context) => TrailsBloc(trailsRepo, trailsBox)),
+          create: (context) => SaveTrailBloc(
+              trailRepo, trailBox, taxonBox, saveTrailBox, localImagesBox)),
+      BlocProvider<TrailsBloc>(
+          create: (context) => TrailsBloc(trailsRepo, trailsBox)),
       BlocProvider<WalkBloc>(create: (context) => WalkBloc(walkRepo)),
-      BlocProvider<TaxonBloc>(create: (context) => TaxonBloc(taxonRepo, taxonBox)),
+      BlocProvider<TaxonBloc>(
+          create: (context) => TaxonBloc(taxonRepo, taxonBox)),
       BlocProvider<PingBloc>(create: (context) => PingBloc(pingRepo: pingRepo)),
       BlocProvider<GeolocationBloc>(
-          create: (context) =>
-              GeolocationBloc(geolocationRepo: geolocationRepo, mapBloc: BlocProvider.of<MapBloc>(context))
-                ..add(const GeolocationEvent.requestPermission())),
+          create: (context) => GeolocationBloc(
+              geolocationRepo: geolocationRepo,
+              mapBloc: BlocProvider.of<MapBloc>(context))
+            ..add(const GeolocationEvent.requestPermission())),
       BlocProvider<CreateBloc>(
           create: (context) => CreateBloc(
               createTrailBox: createBox,
@@ -148,7 +161,10 @@ void main() async {
               trailRepo: trailRepo)),
       BlocProvider<MyTrailsBloc>(
         create: (context) => MyTrailsBloc(
-            trailsRepo, trailsBox, BlocProvider.of<AuthBloc>(context), BlocProvider.of<CreateBloc>(context)),
+            trailsRepo,
+            trailsBox,
+            BlocProvider.of<AuthBloc>(context),
+            BlocProvider.of<CreateBloc>(context)),
       ),
     ], child: App(isAuth: isAuth())),
   ));
@@ -226,7 +242,8 @@ class _AppState extends State<App> {
                     reverseCurve: Curves.easeOut,
                     newScreen: MapScreen(isAuth: isAuth));
               case '/taxon':
-                TaxonScreenArguments taxonScreenArgs = settings.arguments as TaxonScreenArguments;
+                TaxonScreenArguments taxonScreenArgs =
+                    settings.arguments as TaxonScreenArguments;
                 return Transitions(
                     transitionType: TransitionType.slideLeft,
                     duration: const Duration(milliseconds: 300),
@@ -276,7 +293,8 @@ class _AppState extends State<App> {
                     reverseCurve: Curves.easeOut,
                     newScreen: const CameraScreen());
               case '/gallery-fullScreen':
-                GalleryScreenArguments data = settings.arguments as GalleryScreenArguments;
+                GalleryScreenArguments data =
+                    settings.arguments as GalleryScreenArguments;
                 return Transitions(
                     transitionType: TransitionType.fade,
                     duration: const Duration(milliseconds: 300),

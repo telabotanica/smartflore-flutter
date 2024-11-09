@@ -2,14 +2,26 @@ import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
   textTheme: const TextTheme(
-    displayLarge:
-        TextStyle(color: Color(0xFF12161E), fontSize: 28, fontWeight: FontWeight.bold, fontFamily: 'SourceSansPro'),
-    displayMedium:
-        TextStyle(color: Color(0xFF12161E), fontSize: 22, fontWeight: FontWeight.w700, fontFamily: 'SourceSansPro'),
-    displaySmall:
-        TextStyle(color: Color(0xFF12161E), fontSize: 18, fontWeight: FontWeight.w700, fontFamily: 'SourceSansPro'),
-    headlineMedium:
-        TextStyle(color: Color(0xFF12161E), fontSize: 16, fontWeight: FontWeight.w800, fontFamily: 'SourceSansPro'),
+    displayLarge: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'SourceSansPro'),
+    displayMedium: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'SourceSansPro'),
+    displaySmall: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'SourceSansPro'),
+    headlineMedium: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 16,
+        fontWeight: FontWeight.w800,
+        fontFamily: 'SourceSansPro'),
     headlineSmall: TextStyle(
         color: Color(0xffff7469),
         fontSize: 17,
@@ -17,14 +29,26 @@ ThemeData lightTheme = ThemeData(
         letterSpacing: 1.1,
         fontWeight: FontWeight.w600,
         fontFamily: 'SourceSansPro'),
-    titleLarge:
-        TextStyle(color: Color(0xFF12161E), fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'SourceSansPro'),
-    bodyLarge:
-        TextStyle(color: Color(0xFF12161E), fontSize: 15, fontWeight: FontWeight.w600, fontFamily: 'SourceSansPro'),
-    bodyMedium:
-        TextStyle(color: Color(0xFF647883), fontSize: 15, fontWeight: FontWeight.w400, fontFamily: 'SourceSansPro'),
-    bodySmall:
-        TextStyle(color: Color(0xFF647883), fontSize: 15, fontWeight: FontWeight.w400, fontFamily: 'SourceSansPro'),
+    titleLarge: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'SourceSansPro'),
+    bodyLarge: TextStyle(
+        color: Color(0xFF12161E),
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'SourceSansPro'),
+    bodyMedium: TextStyle(
+        color: Color(0xFF647883),
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'SourceSansPro'),
+    bodySmall: TextStyle(
+        color: Color(0xFF647883),
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'SourceSansPro'),
   ),
   colorScheme: const ColorScheme.light(
     primary: Color(0xffff7469),

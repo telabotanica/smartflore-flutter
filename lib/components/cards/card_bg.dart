@@ -11,7 +11,9 @@ class CardBackground extends StatelessWidget {
     return Container(
         height: height,
         decoration: BoxDecoration(
-            boxShadow: [BoxShadow(blurRadius: 10, color: Colors.black.withOpacity(0.15))],
+            boxShadow: [
+              BoxShadow(blurRadius: 10, color: Colors.black.withOpacity(0.15))
+            ],
             color: Theme.of(context).colorScheme.surface,
             borderRadius: const BorderRadius.all(Radius.circular(6))),
         child: child);

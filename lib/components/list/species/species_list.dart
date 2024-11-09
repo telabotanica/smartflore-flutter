@@ -8,7 +8,9 @@ class SpeciesList extends StatelessWidget {
   final ScrollController controller;
   final int selectedID;
 
-  const SpeciesList({Key? key, required this.controller, required this.selectedID}) : super(key: key);
+  const SpeciesList(
+      {Key? key, required this.controller, required this.selectedID})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,8 @@ class SpeciesList extends StatelessWidget {
         if (state is TrailInitialState) {
           return const CircularProgressIndicator();
         } else if (state is TrailErrorState) {
-          return Text(AppLocalizations.of(context)!.error_API, style: const TextStyle(color: Colors.red));
+          return Text(AppLocalizations.of(context)!.error_API,
+              style: const TextStyle(color: Colors.red));
         } else if (state is TrailLoadedState) {
           return ListView.builder(
             padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
@@ -27,7 +30,9 @@ class SpeciesList extends StatelessWidget {
               if (state.trail.occurrences.isNotEmpty) {
                 final species = state.trail.occurrences[index];
                 final String vernacularName =
-                    species.taxon.vernacularNames.isNotEmpty ? species.taxon.vernacularNames[0] : '';
+                    species.taxon.vernacularNames.isNotEmpty
+                        ? species.taxon.vernacularNames[0]
+                        : '';
                 return SpeciesInteractiveItem(
                     isSelected: (selectedID == index),
                     index: index,

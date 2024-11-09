@@ -61,9 +61,11 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       if (trailData != null) {
         Occurrence occurrence = trailData!.occurrences[occurrenceID];
         double lat = (_mapController.camera.zoom > 16)
-            ? occurrence.position.latitude - 0.0008 / (_mapController.camera.zoom - 16)
+            ? occurrence.position.latitude -
+                0.0008 / (_mapController.camera.zoom - 16)
             : occurrence.position.latitude - 0.0008;
-        _animatedMapMove(LatLng(lat, occurrence.position.longitude), _mapController.camera.zoom);
+        _animatedMapMove(LatLng(lat, occurrence.position.longitude),
+            _mapController.camera.zoom);
       }
       setState(() {
         selectedOccurence = occurrenceID;
@@ -79,19 +81,27 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   void _animatedMapMove(LatLng destLocation, double destZoom) {
     // Create some tweens. These serve to split up the transition from one location to another.
     // In our case, we want to split the transition be<tween> our current map center and the destination.
-    final latTween = Tween<double>(begin: _mapController.camera.center.latitude, end: destLocation.latitude);
-    final lngTween = Tween<double>(begin: _mapController.camera.center.longitude, end: destLocation.longitude);
-    final zoomTween = Tween<double>(begin: _mapController.camera.zoom, end: destZoom);
+    final latTween = Tween<double>(
+        begin: _mapController.camera.center.latitude,
+        end: destLocation.latitude);
+    final lngTween = Tween<double>(
+        begin: _mapController.camera.center.longitude,
+        end: destLocation.longitude);
+    final zoomTween =
+        Tween<double>(begin: _mapController.camera.zoom, end: destZoom);
 
     // Create a animation controller that has a duration and a TickerProvider.
-    var controller = AnimationController(duration: const Duration(milliseconds: 500), vsync: this);
+    var controller = AnimationController(
+        duration: const Duration(milliseconds: 500), vsync: this);
     // The animation determines what path the animation will take. You can try different Curves values, although I found
     // fastOutSlowIn to be my favorite.
-    Animation<double> animation = CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
+    Animation<double> animation =
+        CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
 
     controller.addListener(() {
       _mapController.move(
-          LatLng(latTween.evaluate(animation), lngTween.evaluate(animation)), zoomTween.evaluate(animation));
+          LatLng(latTween.evaluate(animation), lngTween.evaluate(animation)),
+          zoomTween.evaluate(animation));
     });
 
     animation.addStatusListener((status) {
@@ -123,11 +133,13 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         BlocListener<TrailBloc, TrailState>(
           listener: (context, state) {
             if (state is TrailLoadedState) {
-              BlocProvider.of<MapBloc>(context).add(const MapEvent.changeMapMode(MapMode.preview));
+              BlocProvider.of<MapBloc>(context)
+                  .add(const MapEvent.changeMapMode(MapMode.preview));
               setState(() {
                 trailData = state.trail;
 
-                _mapController.fitCamera(CameraFit.coordinates(coordinates: trailData!.path.coordinates));
+                _mapController.fitCamera(CameraFit.coordinates(
+                    coordinates: trailData!.path.coordinates));
 
                 /*
                 CenterZoom centerZoom =
@@ -201,8 +213,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       child: PopScope(
         onPopInvokedWithResult: (didPop, result) async {
           if (mapMode != MapMode.overview) {
-            BlocProvider.of<MapBloc>(context)
-                .add(MapEvent.changeMapMode((mapMode == MapMode.trail) ? MapMode.preview : MapMode.overview));
+            BlocProvider.of<MapBloc>(context).add(MapEvent.changeMapMode(
+                (mapMode == MapMode.trail)
+                    ? MapMode.preview
+                    : MapMode.overview));
             return;
           } else {
             return;
@@ -220,7 +234,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             maxZoom: 19,
             onTap: (tapPos, LatLng latLng) {
               if (mapMode != MapMode.trail && mapMode != MapMode.create) {
-                BlocProvider.of<MapBloc>(context).add(const MapEvent.changeMapMode(MapMode.overview));
+                BlocProvider.of<MapBloc>(context)
+                    .add(const MapEvent.changeMapMode(MapMode.overview));
               }
             },
           ),
@@ -257,9 +272,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       MarkerLayer(
           markers: trailsData != null
               ? trailsData!.map((trail) {
-                  LatLng startPos = (trail.position != null && trail.position?.start != null)
-                      ? trail.position!.start
-                      : const LatLng(0, 0);
+                  LatLng startPos =
+                      (trail.position != null && trail.position?.start != null)
+                          ? trail.position!.start
+                          : const LatLng(0, 0);
                   return Marker(
                     alignment: Alignment.center,
                     width: 38.0,
@@ -267,18 +283,25 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                     point: startPos,
                     child: IconButton(
                         onPressed: () {
-                          BlocProvider.of<MapBloc>(context).add(MapEvent.requestTrailPreview(trail.id));
+                          BlocProvider.of<MapBloc>(context)
+                              .add(MapEvent.requestTrailPreview(trail.id));
                         },
                         icon: AnimatedOpacity(
                             opacity: fade
-                                ? (trailData != null && trailData!.id == trail.id)
+                                ? (trailData != null &&
+                                        trailData!.id == trail.id)
                                     ? 0
                                     : 0.5
                                 : 1,
-                            duration:
-                                Duration(milliseconds: (trailData != null && trailData!.id == trail.id) ? 0 : 500),
-                            child:
-                                Icon(SmartFloreIcons.marker, size: 38, color: Theme.of(context).colorScheme.tertiary))),
+                            duration: Duration(
+                                milliseconds: (trailData != null &&
+                                        trailData!.id == trail.id)
+                                    ? 0
+                                    : 500),
+                            child: Icon(SmartFloreIcons.marker,
+                                size: 38,
+                                color:
+                                    Theme.of(context).colorScheme.tertiary))),
                   );
                 }).toList()
               : []),
@@ -351,7 +374,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                     alignment: const Alignment(0, -20),
                     width: 18.0,
                     height: 18.0,
-                    point: trailData!.path.coordinates[trailData!.path.coordinates.length - 1],
+                    point: trailData!.path
+                        .coordinates[trailData!.path.coordinates.length - 1],
                     child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerEnd,
                       size: 39,
@@ -372,7 +396,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 ]
               : []),
       //OTHERS POINTS
-      MarkerLayer(markers: trailData != null ? getOrderedMarkerList(trailData!.occurrences) : []),
+      MarkerLayer(
+          markers: trailData != null
+              ? getOrderedMarkerList(trailData!.occurrences)
+              : []),
     ];
   }
 
@@ -404,7 +431,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                   ),
                 ]
               : []),
-      MarkerLayer(markers: createOccurrences != null ? getOrderedMarkerList(createOccurrences!) : []),
+      MarkerLayer(
+          markers: createOccurrences != null
+              ? getOrderedMarkerList(createOccurrences!)
+              : []),
     ];
   }
 
@@ -423,7 +453,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         child: SizedBox.expand(
           child: IconButton(
               onPressed: () {
-                BlocProvider.of<WalkBloc>(context).add(SelectOccurrence(occurrenceID: index));
+                BlocProvider.of<WalkBloc>(context)
+                    .add(SelectOccurrence(occurrenceID: index));
               },
               icon: MarkerOccurrence(
                 imageUrl: (occurrence.images.isNotEmpty)

@@ -42,8 +42,10 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
           // SAVE TITLE
           saveTitle: (String name) {
             emit(const CreateState.registeringName());
-            CreateTrail currentTrail =
-                CreateTrail(name: name, position: const SavePosition(start: LatLng(0, 0), end: LatLng(0, 0)));
+            CreateTrail currentTrail = CreateTrail(
+                name: name,
+                position:
+                    const SavePosition(start: LatLng(0, 0), end: LatLng(0, 0)));
             createTrailBox.put('current', currentTrail);
             emit(CreateState.nameRegistered(name));
             add(const CreateEvent.registerLocation());
@@ -56,8 +58,10 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                 event.whenOrNull(locationUpdate: (Position position) {
                   DateTime now = DateTime.now();
 
-                  if (lastRecordPosition == null || now.difference(lastRecordPositionTime).inSeconds > 1) {
-                    LatLng currentPos = LatLng(position.latitude, position.longitude);
+                  if (lastRecordPosition == null ||
+                      now.difference(lastRecordPositionTime).inSeconds > 1) {
+                    LatLng currentPos =
+                        LatLng(position.latitude, position.longitude);
                     if (lastRecordPosition == null) {
                       Path? registerPath = recordPos(currentPos, now);
                       if (registerPath != null) {
@@ -66,7 +70,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
                     } else {
                       Distance distance = const Distance();
 
-                      final double meter = distance(currentPos, lastRecordPosition!);
+                      final double meter =
+                          distance(currentPos, lastRecordPosition!);
                       if (meter > 2) {
                         Path? registerPath = recordPos(currentPos, now);
                         if (registerPath != null) {
@@ -95,7 +100,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
             CreateTrail? currentTrail = createTrailBox.get('current');
             if (currentTrail != null) {
               Position currentPos = await geolocationRepo.getCurrentLocation();
-              LatLng currentLatLng = LatLng(currentPos.latitude, currentPos.longitude);
+              LatLng currentLatLng =
+                  LatLng(currentPos.latitude, currentPos.longitude);
               List<LatLng> coordinates = currentTrail.path.coordinates.toList();
 
               coordinates.add(currentLatLng);
@@ -109,7 +115,9 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
               }
 
               ImageAPI? imageApi = imageList.isNotEmpty ? imageList[0] : null;
-              List<Image> images = imageApi != null ? [Image(id: imageApi.id, url: imageApi.url)] : [];
+              List<Image> images = imageApi != null
+                  ? [Image(id: imageApi.id, url: imageApi.url)]
+                  : [];
 
               Occurrence occurrence = Occurrence(
                 position: currentLatLng,
@@ -121,7 +129,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
 
               occurrences.add(occurrence);
 
-              CreateTrail updatedTrail = currentTrail.copyWith(occurrences: occurrences);
+              CreateTrail updatedTrail =
+                  currentTrail.copyWith(occurrences: occurrences);
 
               createTrailBox.put('current', updatedTrail);
 
@@ -135,7 +144,9 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
             emit(const CreateState.savingTrail());
             if (trail.path.coordinates.isNotEmpty) {
               trail = trail.copyWith(
-                position: SavePosition(start: trail.path.coordinates[0], end: trail.path.coordinates.last),
+                position: SavePosition(
+                    start: trail.path.coordinates[0],
+                    end: trail.path.coordinates.last),
               );
             }
             GenericRequestResponse response = await trailRepo.saveTrail(trail);

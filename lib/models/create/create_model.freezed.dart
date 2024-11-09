@@ -197,19 +197,14 @@ class __$$_CreateTrailCopyWithImpl<$Res>
 @HiveType(typeId: 50, adapterName: 'CreateTrailAdapter')
 class _$_CreateTrail implements _CreateTrail {
   const _$_CreateTrail(
-      {@HiveField(0)
-          required this.name,
-      @HiveField(1)
-          required this.position,
-      @HiveField(2)
-          final List<Occurrence> occurrences = const [],
-      @HiveField(3)
-          this.path = const Path(),
-      @HiveField(5)
-          this.prm = -1,
+      {@HiveField(0) required this.name,
+      @HiveField(1) required this.position,
+      @HiveField(2) final List<Occurrence> occurrences = const [],
+      @HiveField(3) this.path = const Path(),
+      @HiveField(5) this.prm = -1,
       @JsonKey(name: 'best_season')
       @HiveField(6)
-          final List<bool> bestSeason = const [false, false, false, false]})
+      final List<bool> bestSeason = const [false, false, false, false]})
       : _occurrences = occurrences,
         _bestSeason = bestSeason;
 
@@ -298,19 +293,14 @@ class _$_CreateTrail implements _CreateTrail {
 
 abstract class _CreateTrail implements CreateTrail {
   const factory _CreateTrail(
-      {@HiveField(0)
-          required final String name,
-      @HiveField(1)
-          required final SavePosition position,
-      @HiveField(2)
-          final List<Occurrence> occurrences,
-      @HiveField(3)
-          final Path path,
-      @HiveField(5)
-          final int prm,
+      {@HiveField(0) required final String name,
+      @HiveField(1) required final SavePosition position,
+      @HiveField(2) final List<Occurrence> occurrences,
+      @HiveField(3) final Path path,
+      @HiveField(5) final int prm,
       @JsonKey(name: 'best_season')
       @HiveField(6)
-          final List<bool> bestSeason}) = _$_CreateTrail;
+      final List<bool> bestSeason}) = _$_CreateTrail;
 
   factory _CreateTrail.fromJson(Map<String, dynamic> json) =
       _$_CreateTrail.fromJson;
@@ -488,21 +478,13 @@ class __$$_OccurrenceCreateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OccurrenceCreate implements _OccurrenceCreate {
   const _$_OccurrenceCreate(
-      {@LatLngConverter()
-      @HiveField(0)
-          required this.position,
-      @JsonKey(name: 'scientific_name')
-      @HiveField(1)
-          this.scientificName,
-      @JsonKey(name: 'name_id')
-      @HiveField(2)
-          required this.nameId,
+      {@LatLngConverter() @HiveField(0) required this.position,
+      @JsonKey(name: 'scientific_name') @HiveField(1) this.scientificName,
+      @JsonKey(name: 'name_id') @HiveField(2) required this.nameId,
       @JsonKey(name: 'taxon_repository')
       @HiveField(3)
-          required this.taxonRepository,
-      @JsonKey(name: 'image_id')
-      @HiveField(4)
-          this.imageId});
+      required this.taxonRepository,
+      @JsonKey(name: 'image_id') @HiveField(4) this.imageId});
 
   factory _$_OccurrenceCreate.fromJson(Map<String, dynamic> json) =>
       _$$_OccurrenceCreateFromJson(json);
@@ -569,21 +551,16 @@ class _$_OccurrenceCreate implements _OccurrenceCreate {
 
 abstract class _OccurrenceCreate implements OccurrenceCreate {
   const factory _OccurrenceCreate(
-      {@LatLngConverter()
-      @HiveField(0)
-          required final LatLng position,
-      @JsonKey(name: 'scientific_name')
-      @HiveField(1)
+          {@LatLngConverter() @HiveField(0) required final LatLng position,
+          @JsonKey(name: 'scientific_name')
+          @HiveField(1)
           final String? scientificName,
-      @JsonKey(name: 'name_id')
-      @HiveField(2)
-          required final int nameId,
-      @JsonKey(name: 'taxon_repository')
-      @HiveField(3)
+          @JsonKey(name: 'name_id') @HiveField(2) required final int nameId,
+          @JsonKey(name: 'taxon_repository')
+          @HiveField(3)
           required final String taxonRepository,
-      @JsonKey(name: 'image_id')
-      @HiveField(4)
-          final String? imageId}) = _$_OccurrenceCreate;
+          @JsonKey(name: 'image_id') @HiveField(4) final String? imageId}) =
+      _$_OccurrenceCreate;
 
   factory _OccurrenceCreate.fromJson(Map<String, dynamic> json) =
       _$_OccurrenceCreate.fromJson;

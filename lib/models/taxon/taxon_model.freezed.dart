@@ -59,33 +59,22 @@ abstract class $TaxonCopyWith<$Res> {
       _$TaxonCopyWithImpl<$Res, Taxon>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'scientific_name')
-      @HiveField(0)
-          String scientificName,
+      {@JsonKey(name: 'scientific_name') @HiveField(0) String scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          String fullScientificName,
+      String fullScientificName,
       @JsonKey(name: 'html_full_scientific_name')
       @HiveField(2)
-          String htmlFullScientificName,
-      @HiveField(3)
-          String genus,
-      @HiveField(4)
-          String family,
-      @JsonKey(name: 'taxon_repository')
-      @HiveField(5)
-          String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(6)
-          int nameId,
-      @JsonKey(name: 'taxonomic_id')
-      @HiveField(7)
-          int taxonomicId,
+      String htmlFullScientificName,
+      @HiveField(3) String genus,
+      @HiveField(4) String family,
+      @JsonKey(name: 'taxon_repository') @HiveField(5) String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(6) int nameId,
+      @JsonKey(name: 'taxonomic_id') @HiveField(7) int taxonomicId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(8)
-          List<String> vernacularNames,
-      @HiveField(9)
-          List<TabAPI> tabs});
+      List<String> vernacularNames,
+      @HiveField(9) List<TabAPI> tabs});
 }
 
 /// @nodoc
@@ -164,33 +153,22 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'scientific_name')
-      @HiveField(0)
-          String scientificName,
+      {@JsonKey(name: 'scientific_name') @HiveField(0) String scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          String fullScientificName,
+      String fullScientificName,
       @JsonKey(name: 'html_full_scientific_name')
       @HiveField(2)
-          String htmlFullScientificName,
-      @HiveField(3)
-          String genus,
-      @HiveField(4)
-          String family,
-      @JsonKey(name: 'taxon_repository')
-      @HiveField(5)
-          String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(6)
-          int nameId,
-      @JsonKey(name: 'taxonomic_id')
-      @HiveField(7)
-          int taxonomicId,
+      String htmlFullScientificName,
+      @HiveField(3) String genus,
+      @HiveField(4) String family,
+      @JsonKey(name: 'taxon_repository') @HiveField(5) String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(6) int nameId,
+      @JsonKey(name: 'taxonomic_id') @HiveField(7) int taxonomicId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(8)
-          List<String> vernacularNames,
-      @HiveField(9)
-          List<TabAPI> tabs});
+      List<String> vernacularNames,
+      @HiveField(9) List<TabAPI> tabs});
 }
 
 /// @nodoc
@@ -265,31 +243,24 @@ class _$_Taxon implements _Taxon {
   const _$_Taxon(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
-          required this.scientificName,
+      required this.scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          required this.fullScientificName,
+      required this.fullScientificName,
       @JsonKey(name: 'html_full_scientific_name')
       @HiveField(2)
-          required this.htmlFullScientificName,
-      @HiveField(3)
-          required this.genus,
-      @HiveField(4)
-          required this.family,
+      required this.htmlFullScientificName,
+      @HiveField(3) required this.genus,
+      @HiveField(4) required this.family,
       @JsonKey(name: 'taxon_repository')
       @HiveField(5)
-          required this.taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(6)
-          required this.nameId,
-      @JsonKey(name: 'taxonomic_id')
-      @HiveField(7)
-          required this.taxonomicId,
+      required this.taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(6) required this.nameId,
+      @JsonKey(name: 'taxonomic_id') @HiveField(7) required this.taxonomicId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(8)
-          required final List<String> vernacularNames,
-      @HiveField(9)
-          required final List<TabAPI> tabs})
+      required final List<String> vernacularNames,
+      @HiveField(9) required final List<TabAPI> tabs})
       : _vernacularNames = vernacularNames,
         _tabs = tabs;
 
@@ -406,31 +377,26 @@ abstract class _Taxon implements Taxon {
   const factory _Taxon(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
-          required final String scientificName,
+      required final String scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          required final String fullScientificName,
+      required final String fullScientificName,
       @JsonKey(name: 'html_full_scientific_name')
       @HiveField(2)
-          required final String htmlFullScientificName,
-      @HiveField(3)
-          required final String genus,
-      @HiveField(4)
-          required final String family,
+      required final String htmlFullScientificName,
+      @HiveField(3) required final String genus,
+      @HiveField(4) required final String family,
       @JsonKey(name: 'taxon_repository')
       @HiveField(5)
-          required final String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(6)
-          required final int nameId,
+      required final String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(6) required final int nameId,
       @JsonKey(name: 'taxonomic_id')
       @HiveField(7)
-          required final int taxonomicId,
+      required final int taxonomicId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(8)
-          required final List<String> vernacularNames,
-      @HiveField(9)
-          required final List<TabAPI> tabs}) = _$_Taxon;
+      required final List<String> vernacularNames,
+      @HiveField(9) required final List<TabAPI> tabs}) = _$_Taxon;
 
   factory _Taxon.fromJson(Map<String, dynamic> json) = _$_Taxon.fromJson;
 
