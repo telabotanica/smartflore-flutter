@@ -141,15 +141,11 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 _mapController.fitCamera(CameraFit.coordinates(
                     coordinates: trailData!.path.coordinates));
 
-                /*
-                CenterZoom centerZoom =
-                    _mapController.centerZoomFitBounds(LatLngBounds.fromPoints(trailData!.path.coordinates));
-
-                _mapController.fitCamera(CameraFit.coordinates(coordinates: trailData!.path.coordinates));
                 //workaround to make sure the center of the map is slightly higher.
-                centerZoom.center.latitude -= 0.0008;
-                _animatedMapMove(centerZoom.center, centerZoom.zoom);
-                */
+                MapCamera camera = _mapController.camera;
+                LatLng latLng = LatLng(
+                    camera.center.latitude - 0.0007, camera.center.longitude);
+                _animatedMapMove(latLng, camera.zoom - 1);
               });
             }
           },
