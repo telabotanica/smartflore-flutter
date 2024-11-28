@@ -81,7 +81,7 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
                         child: Text(
                             '${AppLocalizations.of(context)!.credits} : ${widget.images[currentIndex].author.toString()}',
                             style: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary)),
+                                color: Theme.of(context).colorScheme.surface)),
                       ),
                     ),
                   ),

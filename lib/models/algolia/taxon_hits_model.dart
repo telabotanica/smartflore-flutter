@@ -64,7 +64,7 @@ class HitBdtfx with _$HitBdtfx {
   const factory HitBdtfx({
     @JsonKey(name: 'nomenclatural_number') int? nomenclaturalNumber,
     @JsonKey(name: 'scientific_name') String? scientificName,
-    @JsonKey(name: 'common_name') String? commonName,
+    @JsonKey(name: 'line_names') List<String>? commonName,
   }) = _HitBdtfx;
 
   factory HitBdtfx.fromJson(Map<String, dynamic> json) =>
@@ -84,8 +84,8 @@ class HighlightResult with _$HighlightResult {
 @freezed
 class HighlightResultBdtfx with _$HighlightResultBdtfx {
   const factory HighlightResultBdtfx({
-    @JsonKey(name: 'scientific_name') Name? scientificName,
-    @JsonKey(name: 'common_name') Name? commonName,
+    @JsonKey(name: 'scientific_name') required Name? scientificName,
+    @JsonKey(name: 'common_name') required List<Name> commonName,
   }) = _HighlightResultBdtfx;
 
   factory HighlightResultBdtfx.fromJson(Map<String, dynamic> json) =>
@@ -95,8 +95,9 @@ class HighlightResultBdtfx with _$HighlightResultBdtfx {
 @freezed
 class Name with _$Name {
   const factory Name({
-    String? value,
-    List<String>? matchedWords,
+    required String value,
+    @JsonKey(name: 'match_level') String? matchLevel,
+    @JsonKey(name: 'matched_words') List<dynamic>? matchedWords,
   }) = _Name;
 
   factory Name.fromJson(Map<String, dynamic> json) => _$NameFromJson(json);

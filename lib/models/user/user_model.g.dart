@@ -6,24 +6,24 @@ part of 'user_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<_$_UserInfoApp> {
+class UserAdapter extends TypeAdapter<_$UserInfoAppImpl> {
   @override
   final int typeId = 20;
 
   @override
-  _$_UserInfoApp read(BinaryReader reader) {
+  _$UserInfoAppImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_UserInfoApp(
+    return _$UserInfoAppImpl(
       email: fields[0] as String?,
       token: fields[1] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_UserInfoApp obj) {
+  void write(BinaryWriter writer, _$UserInfoAppImpl obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -47,30 +47,31 @@ class UserAdapter extends TypeAdapter<_$_UserInfoApp> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AuthLogin _$$_AuthLoginFromJson(Map<String, dynamic> json) => _$_AuthLogin(
+_$AuthLoginImpl _$$AuthLoginImplFromJson(Map<String, dynamic> json) =>
+    _$AuthLoginImpl(
       login: json['login'] as String,
       password: json['password'] as String,
     );
 
-Map<String, dynamic> _$$_AuthLoginToJson(_$_AuthLogin instance) =>
+Map<String, dynamic> _$$AuthLoginImplToJson(_$AuthLoginImpl instance) =>
     <String, dynamic>{
       'login': instance.login,
       'password': instance.password,
     };
 
-_$_AuthenticationResponse _$$_AuthenticationResponseFromJson(
+_$AuthenticationResponseImpl _$$AuthenticationResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AuthenticationResponse(
+    _$AuthenticationResponseImpl(
       message: json['message'] as String?,
       user: json['user'] == null
           ? null
           : UserInfoApp.fromJson(json['user'] as Map<String, dynamic>),
       isOk: json['isOk'] as bool?,
-      statusCode: json['statusCode'] as int?,
+      statusCode: (json['statusCode'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$_AuthenticationResponseToJson(
-        _$_AuthenticationResponse instance) =>
+Map<String, dynamic> _$$AuthenticationResponseImplToJson(
+        _$AuthenticationResponseImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'user': instance.user,
@@ -78,20 +79,20 @@ Map<String, dynamic> _$$_AuthenticationResponseToJson(
       'statusCode': instance.statusCode,
     };
 
-_$_UserInfoApp _$$_UserInfoAppFromJson(Map<String, dynamic> json) =>
-    _$_UserInfoApp(
+_$UserInfoAppImpl _$$UserInfoAppImplFromJson(Map<String, dynamic> json) =>
+    _$UserInfoAppImpl(
       email: json['email'] as String?,
       token: json['token'] as String?,
     );
 
-Map<String, dynamic> _$$_UserInfoAppToJson(_$_UserInfoApp instance) =>
+Map<String, dynamic> _$$UserInfoAppImplToJson(_$UserInfoAppImpl instance) =>
     <String, dynamic>{
       'email': instance.email,
       'token': instance.token,
     };
 
-_$_RemoteUser _$$_RemoteUserFromJson(Map<String, dynamic> json) =>
-    _$_RemoteUser(
+_$RemoteUserImpl _$$RemoteUserImplFromJson(Map<String, dynamic> json) =>
+    _$RemoteUserImpl(
       name: json['name'] as String?,
       avatar: json['avatar'] as String?,
       trails: (json['trails'] as List<dynamic>?)
@@ -99,7 +100,7 @@ _$_RemoteUser _$$_RemoteUserFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_RemoteUserToJson(_$_RemoteUser instance) =>
+Map<String, dynamic> _$$RemoteUserImplToJson(_$RemoteUserImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'avatar': instance.avatar,

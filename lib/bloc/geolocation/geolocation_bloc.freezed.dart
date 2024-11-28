@@ -12,7 +12,7 @@ part of 'geolocation_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GeolocationEvent {
@@ -97,24 +97,25 @@ class _$GeolocationEventCopyWithImpl<$Res, $Val extends GeolocationEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -122,9 +123,9 @@ class _$_Started implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -216,29 +217,29 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements GeolocationEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_RequestPermissionCopyWith<$Res> {
-  factory _$$_RequestPermissionCopyWith(_$_RequestPermission value,
-          $Res Function(_$_RequestPermission) then) =
-      __$$_RequestPermissionCopyWithImpl<$Res>;
+abstract class _$$RequestPermissionImplCopyWith<$Res> {
+  factory _$$RequestPermissionImplCopyWith(_$RequestPermissionImpl value,
+          $Res Function(_$RequestPermissionImpl) then) =
+      __$$RequestPermissionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RequestPermissionCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res, _$_RequestPermission>
-    implements _$$_RequestPermissionCopyWith<$Res> {
-  __$$_RequestPermissionCopyWithImpl(
-      _$_RequestPermission _value, $Res Function(_$_RequestPermission) _then)
+class __$$RequestPermissionImplCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res, _$RequestPermissionImpl>
+    implements _$$RequestPermissionImplCopyWith<$Res> {
+  __$$RequestPermissionImplCopyWithImpl(_$RequestPermissionImpl _value,
+      $Res Function(_$RequestPermissionImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_RequestPermission implements _RequestPermission {
-  const _$_RequestPermission();
+class _$RequestPermissionImpl implements _RequestPermission {
+  const _$RequestPermissionImpl();
 
   @override
   String toString() {
@@ -246,9 +247,9 @@ class _$_RequestPermission implements _RequestPermission {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RequestPermission);
+        (other.runtimeType == runtimeType && other is _$RequestPermissionImpl);
   }
 
   @override
@@ -340,29 +341,31 @@ class _$_RequestPermission implements _RequestPermission {
 }
 
 abstract class _RequestPermission implements GeolocationEvent {
-  const factory _RequestPermission() = _$_RequestPermission;
+  const factory _RequestPermission() = _$RequestPermissionImpl;
 }
 
 /// @nodoc
-abstract class _$$_RequestCurrentLocationCopyWith<$Res> {
-  factory _$$_RequestCurrentLocationCopyWith(_$_RequestCurrentLocation value,
-          $Res Function(_$_RequestCurrentLocation) then) =
-      __$$_RequestCurrentLocationCopyWithImpl<$Res>;
+abstract class _$$RequestCurrentLocationImplCopyWith<$Res> {
+  factory _$$RequestCurrentLocationImplCopyWith(
+          _$RequestCurrentLocationImpl value,
+          $Res Function(_$RequestCurrentLocationImpl) then) =
+      __$$RequestCurrentLocationImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RequestCurrentLocationCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res, _$_RequestCurrentLocation>
-    implements _$$_RequestCurrentLocationCopyWith<$Res> {
-  __$$_RequestCurrentLocationCopyWithImpl(_$_RequestCurrentLocation _value,
-      $Res Function(_$_RequestCurrentLocation) _then)
+class __$$RequestCurrentLocationImplCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res, _$RequestCurrentLocationImpl>
+    implements _$$RequestCurrentLocationImplCopyWith<$Res> {
+  __$$RequestCurrentLocationImplCopyWithImpl(
+      _$RequestCurrentLocationImpl _value,
+      $Res Function(_$RequestCurrentLocationImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_RequestCurrentLocation implements _RequestCurrentLocation {
-  const _$_RequestCurrentLocation();
+class _$RequestCurrentLocationImpl implements _RequestCurrentLocation {
+  const _$RequestCurrentLocationImpl();
 
   @override
   String toString() {
@@ -370,10 +373,10 @@ class _$_RequestCurrentLocation implements _RequestCurrentLocation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RequestCurrentLocation);
+            other is _$RequestCurrentLocationImpl);
   }
 
   @override
@@ -465,32 +468,33 @@ class _$_RequestCurrentLocation implements _RequestCurrentLocation {
 }
 
 abstract class _RequestCurrentLocation implements GeolocationEvent {
-  const factory _RequestCurrentLocation() = _$_RequestCurrentLocation;
+  const factory _RequestCurrentLocation() = _$RequestCurrentLocationImpl;
 }
 
 /// @nodoc
-abstract class _$$_RequestCurrentLocationStreamCopyWith<$Res> {
-  factory _$$_RequestCurrentLocationStreamCopyWith(
-          _$_RequestCurrentLocationStream value,
-          $Res Function(_$_RequestCurrentLocationStream) then) =
-      __$$_RequestCurrentLocationStreamCopyWithImpl<$Res>;
+abstract class _$$RequestCurrentLocationStreamImplCopyWith<$Res> {
+  factory _$$RequestCurrentLocationStreamImplCopyWith(
+          _$RequestCurrentLocationStreamImpl value,
+          $Res Function(_$RequestCurrentLocationStreamImpl) then) =
+      __$$RequestCurrentLocationStreamImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RequestCurrentLocationStreamCopyWithImpl<$Res>
+class __$$RequestCurrentLocationStreamImplCopyWithImpl<$Res>
     extends _$GeolocationEventCopyWithImpl<$Res,
-        _$_RequestCurrentLocationStream>
-    implements _$$_RequestCurrentLocationStreamCopyWith<$Res> {
-  __$$_RequestCurrentLocationStreamCopyWithImpl(
-      _$_RequestCurrentLocationStream _value,
-      $Res Function(_$_RequestCurrentLocationStream) _then)
+        _$RequestCurrentLocationStreamImpl>
+    implements _$$RequestCurrentLocationStreamImplCopyWith<$Res> {
+  __$$RequestCurrentLocationStreamImplCopyWithImpl(
+      _$RequestCurrentLocationStreamImpl _value,
+      $Res Function(_$RequestCurrentLocationStreamImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_RequestCurrentLocationStream implements _RequestCurrentLocationStream {
-  const _$_RequestCurrentLocationStream();
+class _$RequestCurrentLocationStreamImpl
+    implements _RequestCurrentLocationStream {
+  const _$RequestCurrentLocationStreamImpl();
 
   @override
   String toString() {
@@ -498,10 +502,10 @@ class _$_RequestCurrentLocationStream implements _RequestCurrentLocationStream {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RequestCurrentLocationStream);
+            other is _$RequestCurrentLocationStreamImpl);
   }
 
   @override
@@ -594,24 +598,24 @@ class _$_RequestCurrentLocationStream implements _RequestCurrentLocationStream {
 
 abstract class _RequestCurrentLocationStream implements GeolocationEvent {
   const factory _RequestCurrentLocationStream() =
-      _$_RequestCurrentLocationStream;
+      _$RequestCurrentLocationStreamImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdateLocationCopyWith<$Res> {
-  factory _$$_UpdateLocationCopyWith(
-          _$_UpdateLocation value, $Res Function(_$_UpdateLocation) then) =
-      __$$_UpdateLocationCopyWithImpl<$Res>;
+abstract class _$$UpdateLocationImplCopyWith<$Res> {
+  factory _$$UpdateLocationImplCopyWith(_$UpdateLocationImpl value,
+          $Res Function(_$UpdateLocationImpl) then) =
+      __$$UpdateLocationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Position position});
 }
 
 /// @nodoc
-class __$$_UpdateLocationCopyWithImpl<$Res>
-    extends _$GeolocationEventCopyWithImpl<$Res, _$_UpdateLocation>
-    implements _$$_UpdateLocationCopyWith<$Res> {
-  __$$_UpdateLocationCopyWithImpl(
-      _$_UpdateLocation _value, $Res Function(_$_UpdateLocation) _then)
+class __$$UpdateLocationImplCopyWithImpl<$Res>
+    extends _$GeolocationEventCopyWithImpl<$Res, _$UpdateLocationImpl>
+    implements _$$UpdateLocationImplCopyWith<$Res> {
+  __$$UpdateLocationImplCopyWithImpl(
+      _$UpdateLocationImpl _value, $Res Function(_$UpdateLocationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -619,7 +623,7 @@ class __$$_UpdateLocationCopyWithImpl<$Res>
   $Res call({
     Object? position = null,
   }) {
-    return _then(_$_UpdateLocation(
+    return _then(_$UpdateLocationImpl(
       null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -630,8 +634,8 @@ class __$$_UpdateLocationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateLocation implements _UpdateLocation {
-  const _$_UpdateLocation(this.position);
+class _$UpdateLocationImpl implements _UpdateLocation {
+  const _$UpdateLocationImpl(this.position);
 
   @override
   final Position position;
@@ -642,10 +646,10 @@ class _$_UpdateLocation implements _UpdateLocation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateLocation &&
+            other is _$UpdateLocationImpl &&
             (identical(other.position, position) ||
                 other.position == position));
   }
@@ -656,8 +660,9 @@ class _$_UpdateLocation implements _UpdateLocation {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateLocationCopyWith<_$_UpdateLocation> get copyWith =>
-      __$$_UpdateLocationCopyWithImpl<_$_UpdateLocation>(this, _$identity);
+  _$$UpdateLocationImplCopyWith<_$UpdateLocationImpl> get copyWith =>
+      __$$UpdateLocationImplCopyWithImpl<_$UpdateLocationImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -745,11 +750,11 @@ class _$_UpdateLocation implements _UpdateLocation {
 }
 
 abstract class _UpdateLocation implements GeolocationEvent {
-  const factory _UpdateLocation(final Position position) = _$_UpdateLocation;
+  const factory _UpdateLocation(final Position position) = _$UpdateLocationImpl;
 
   Position get position;
   @JsonKey(ignore: true)
-  _$$_UpdateLocationCopyWith<_$_UpdateLocation> get copyWith =>
+  _$$UpdateLocationImplCopyWith<_$UpdateLocationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -838,24 +843,25 @@ class _$GeolocationStateCopyWithImpl<$Res, $Val extends GeolocationState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -863,9 +869,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -959,29 +965,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements GeolocationState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_PermissionLoadingCopyWith<$Res> {
-  factory _$$_PermissionLoadingCopyWith(_$_PermissionLoading value,
-          $Res Function(_$_PermissionLoading) then) =
-      __$$_PermissionLoadingCopyWithImpl<$Res>;
+abstract class _$$PermissionLoadingImplCopyWith<$Res> {
+  factory _$$PermissionLoadingImplCopyWith(_$PermissionLoadingImpl value,
+          $Res Function(_$PermissionLoadingImpl) then) =
+      __$$PermissionLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PermissionLoadingCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res, _$_PermissionLoading>
-    implements _$$_PermissionLoadingCopyWith<$Res> {
-  __$$_PermissionLoadingCopyWithImpl(
-      _$_PermissionLoading _value, $Res Function(_$_PermissionLoading) _then)
+class __$$PermissionLoadingImplCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$PermissionLoadingImpl>
+    implements _$$PermissionLoadingImplCopyWith<$Res> {
+  __$$PermissionLoadingImplCopyWithImpl(_$PermissionLoadingImpl _value,
+      $Res Function(_$PermissionLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PermissionLoading implements _PermissionLoading {
-  const _$_PermissionLoading();
+class _$PermissionLoadingImpl implements _PermissionLoading {
+  const _$PermissionLoadingImpl();
 
   @override
   String toString() {
@@ -989,9 +995,9 @@ class _$_PermissionLoading implements _PermissionLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PermissionLoading);
+        (other.runtimeType == runtimeType && other is _$PermissionLoadingImpl);
   }
 
   @override
@@ -1085,24 +1091,24 @@ class _$_PermissionLoading implements _PermissionLoading {
 }
 
 abstract class _PermissionLoading implements GeolocationState {
-  const factory _PermissionLoading() = _$_PermissionLoading;
+  const factory _PermissionLoading() = _$PermissionLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_PermissionLoadedCopyWith<$Res> {
-  factory _$$_PermissionLoadedCopyWith(
-          _$_PermissionLoaded value, $Res Function(_$_PermissionLoaded) then) =
-      __$$_PermissionLoadedCopyWithImpl<$Res>;
+abstract class _$$PermissionLoadedImplCopyWith<$Res> {
+  factory _$$PermissionLoadedImplCopyWith(_$PermissionLoadedImpl value,
+          $Res Function(_$PermissionLoadedImpl) then) =
+      __$$PermissionLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PermissionStatus status});
 }
 
 /// @nodoc
-class __$$_PermissionLoadedCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res, _$_PermissionLoaded>
-    implements _$$_PermissionLoadedCopyWith<$Res> {
-  __$$_PermissionLoadedCopyWithImpl(
-      _$_PermissionLoaded _value, $Res Function(_$_PermissionLoaded) _then)
+class __$$PermissionLoadedImplCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$PermissionLoadedImpl>
+    implements _$$PermissionLoadedImplCopyWith<$Res> {
+  __$$PermissionLoadedImplCopyWithImpl(_$PermissionLoadedImpl _value,
+      $Res Function(_$PermissionLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1110,7 +1116,7 @@ class __$$_PermissionLoadedCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$_PermissionLoaded(
+    return _then(_$PermissionLoadedImpl(
       null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1121,8 +1127,8 @@ class __$$_PermissionLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PermissionLoaded implements _PermissionLoaded {
-  const _$_PermissionLoaded(this.status);
+class _$PermissionLoadedImpl implements _PermissionLoaded {
+  const _$PermissionLoadedImpl(this.status);
 
   @override
   final PermissionStatus status;
@@ -1133,10 +1139,10 @@ class _$_PermissionLoaded implements _PermissionLoaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PermissionLoaded &&
+            other is _$PermissionLoadedImpl &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -1146,8 +1152,9 @@ class _$_PermissionLoaded implements _PermissionLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PermissionLoadedCopyWith<_$_PermissionLoaded> get copyWith =>
-      __$$_PermissionLoadedCopyWithImpl<_$_PermissionLoaded>(this, _$identity);
+  _$$PermissionLoadedImplCopyWith<_$PermissionLoadedImpl> get copyWith =>
+      __$$PermissionLoadedImplCopyWithImpl<_$PermissionLoadedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1238,33 +1245,34 @@ class _$_PermissionLoaded implements _PermissionLoaded {
 
 abstract class _PermissionLoaded implements GeolocationState {
   const factory _PermissionLoaded(final PermissionStatus status) =
-      _$_PermissionLoaded;
+      _$PermissionLoadedImpl;
 
   PermissionStatus get status;
   @JsonKey(ignore: true)
-  _$$_PermissionLoadedCopyWith<_$_PermissionLoaded> get copyWith =>
+  _$$PermissionLoadedImplCopyWith<_$PermissionLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -1272,9 +1280,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -1368,22 +1376,24 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements GeolocationState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdateCopyWith<$Res> {
-  factory _$$_UpdateCopyWith(_$_Update value, $Res Function(_$_Update) then) =
-      __$$_UpdateCopyWithImpl<$Res>;
+abstract class _$$UpdateImplCopyWith<$Res> {
+  factory _$$UpdateImplCopyWith(
+          _$UpdateImpl value, $Res Function(_$UpdateImpl) then) =
+      __$$UpdateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Position position});
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res, _$_Update>
-    implements _$$_UpdateCopyWith<$Res> {
-  __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
+class __$$UpdateImplCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$UpdateImpl>
+    implements _$$UpdateImplCopyWith<$Res> {
+  __$$UpdateImplCopyWithImpl(
+      _$UpdateImpl _value, $Res Function(_$UpdateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1391,7 +1401,7 @@ class __$$_UpdateCopyWithImpl<$Res>
   $Res call({
     Object? position = null,
   }) {
-    return _then(_$_Update(
+    return _then(_$UpdateImpl(
       null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -1402,8 +1412,8 @@ class __$$_UpdateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Update implements _Update {
-  const _$_Update(this.position);
+class _$UpdateImpl implements _Update {
+  const _$UpdateImpl(this.position);
 
   @override
   final Position position;
@@ -1414,10 +1424,10 @@ class _$_Update implements _Update {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Update &&
+            other is _$UpdateImpl &&
             (identical(other.position, position) ||
                 other.position == position));
   }
@@ -1428,8 +1438,8 @@ class _$_Update implements _Update {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateCopyWith<_$_Update> get copyWith =>
-      __$$_UpdateCopyWithImpl<_$_Update>(this, _$identity);
+  _$$UpdateImplCopyWith<_$UpdateImpl> get copyWith =>
+      __$$UpdateImplCopyWithImpl<_$UpdateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1519,32 +1529,34 @@ class _$_Update implements _Update {
 }
 
 abstract class _Update implements GeolocationState {
-  const factory _Update(final Position position) = _$_Update;
+  const factory _Update(final Position position) = _$UpdateImpl;
 
   Position get position;
   @JsonKey(ignore: true)
-  _$$_UpdateCopyWith<_$_Update> get copyWith =>
+  _$$UpdateImplCopyWith<_$UpdateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$GeolocationStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$GeolocationStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -1552,9 +1564,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -1648,5 +1660,5 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements GeolocationState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }

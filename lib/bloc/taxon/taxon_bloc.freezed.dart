@@ -12,7 +12,7 @@ part of 'taxon_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TaxonEvent {
@@ -95,22 +95,22 @@ class _$TaxonEventCopyWithImpl<$Res, $Val extends TaxonEvent>
 }
 
 /// @nodoc
-abstract class _$$_LoadTaxonDataCopyWith<$Res>
+abstract class _$$LoadTaxonDataImplCopyWith<$Res>
     implements $TaxonEventCopyWith<$Res> {
-  factory _$$_LoadTaxonDataCopyWith(
-          _$_LoadTaxonData value, $Res Function(_$_LoadTaxonData) then) =
-      __$$_LoadTaxonDataCopyWithImpl<$Res>;
+  factory _$$LoadTaxonDataImplCopyWith(
+          _$LoadTaxonDataImpl value, $Res Function(_$LoadTaxonDataImpl) then) =
+      __$$LoadTaxonDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String repo, int id});
 }
 
 /// @nodoc
-class __$$_LoadTaxonDataCopyWithImpl<$Res>
-    extends _$TaxonEventCopyWithImpl<$Res, _$_LoadTaxonData>
-    implements _$$_LoadTaxonDataCopyWith<$Res> {
-  __$$_LoadTaxonDataCopyWithImpl(
-      _$_LoadTaxonData _value, $Res Function(_$_LoadTaxonData) _then)
+class __$$LoadTaxonDataImplCopyWithImpl<$Res>
+    extends _$TaxonEventCopyWithImpl<$Res, _$LoadTaxonDataImpl>
+    implements _$$LoadTaxonDataImplCopyWith<$Res> {
+  __$$LoadTaxonDataImplCopyWithImpl(
+      _$LoadTaxonDataImpl _value, $Res Function(_$LoadTaxonDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_LoadTaxonDataCopyWithImpl<$Res>
     Object? repo = null,
     Object? id = null,
   }) {
-    return _then(_$_LoadTaxonData(
+    return _then(_$LoadTaxonDataImpl(
       null == repo
           ? _value.repo
           : repo // ignore: cast_nullable_to_non_nullable
@@ -134,8 +134,8 @@ class __$$_LoadTaxonDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadTaxonData implements _LoadTaxonData {
-  const _$_LoadTaxonData(this.repo, this.id);
+class _$LoadTaxonDataImpl implements _LoadTaxonData {
+  const _$LoadTaxonDataImpl(this.repo, this.id);
 
   @override
   final String repo;
@@ -148,10 +148,10 @@ class _$_LoadTaxonData implements _LoadTaxonData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadTaxonData &&
+            other is _$LoadTaxonDataImpl &&
             (identical(other.repo, repo) || other.repo == repo) &&
             (identical(other.id, id) || other.id == id));
   }
@@ -162,8 +162,8 @@ class _$_LoadTaxonData implements _LoadTaxonData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadTaxonDataCopyWith<_$_LoadTaxonData> get copyWith =>
-      __$$_LoadTaxonDataCopyWithImpl<_$_LoadTaxonData>(this, _$identity);
+  _$$LoadTaxonDataImplCopyWith<_$LoadTaxonDataImpl> get copyWith =>
+      __$$LoadTaxonDataImplCopyWithImpl<_$LoadTaxonDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -224,7 +224,7 @@ class _$_LoadTaxonData implements _LoadTaxonData {
 
 abstract class _LoadTaxonData implements TaxonEvent {
   const factory _LoadTaxonData(final String repo, final int id) =
-      _$_LoadTaxonData;
+      _$LoadTaxonDataImpl;
 
   @override
   String get repo;
@@ -232,7 +232,7 @@ abstract class _LoadTaxonData implements TaxonEvent {
   int get id;
   @override
   @JsonKey(ignore: true)
-  _$$_LoadTaxonDataCopyWith<_$_LoadTaxonData> get copyWith =>
+  _$$LoadTaxonDataImplCopyWith<_$LoadTaxonDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -309,24 +309,25 @@ class _$TaxonStateCopyWithImpl<$Res, $Val extends TaxonState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$TaxonStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$TaxonStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -334,9 +335,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -418,28 +419,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements TaxonState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$TaxonStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$TaxonStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -447,9 +449,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -531,13 +533,14 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements TaxonState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Taxon taxon});
 
@@ -545,10 +548,11 @@ abstract class _$$_LoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$TaxonStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$TaxonStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -556,7 +560,7 @@ class __$$_LoadedCopyWithImpl<$Res>
   $Res call({
     Object? taxon = null,
   }) {
-    return _then(_$_Loaded(
+    return _then(_$LoadedImpl(
       null == taxon
           ? _value.taxon
           : taxon // ignore: cast_nullable_to_non_nullable
@@ -575,8 +579,8 @@ class __$$_LoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.taxon);
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(this.taxon);
 
   @override
   final Taxon taxon;
@@ -587,10 +591,10 @@ class _$_Loaded implements _Loaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
+            other is _$LoadedImpl &&
             (identical(other.taxon, taxon) || other.taxon == taxon));
   }
 
@@ -600,8 +604,8 @@ class _$_Loaded implements _Loaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -679,32 +683,34 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements TaxonState {
-  const factory _Loaded(final Taxon taxon) = _$_Loaded;
+  const factory _Loaded(final Taxon taxon) = _$LoadedImpl;
 
   Taxon get taxon;
   @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$TaxonStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$TaxonStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -712,9 +718,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -796,5 +802,5 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements TaxonState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }

@@ -12,7 +12,7 @@ part of 'trails_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Trails _$TrailsFromJson(Map<String, dynamic> json) {
   return _Trails.fromJson(json);
@@ -61,19 +61,21 @@ class _$TrailsCopyWithImpl<$Res, $Val extends Trails>
 }
 
 /// @nodoc
-abstract class _$$_TrailsCopyWith<$Res> implements $TrailsCopyWith<$Res> {
-  factory _$$_TrailsCopyWith(_$_Trails value, $Res Function(_$_Trails) then) =
-      __$$_TrailsCopyWithImpl<$Res>;
+abstract class _$$TrailsImplCopyWith<$Res> implements $TrailsCopyWith<$Res> {
+  factory _$$TrailsImplCopyWith(
+          _$TrailsImpl value, $Res Function(_$TrailsImpl) then) =
+      __$$TrailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@HiveField(0) List<Trail>? trailList});
 }
 
 /// @nodoc
-class __$$_TrailsCopyWithImpl<$Res>
-    extends _$TrailsCopyWithImpl<$Res, _$_Trails>
-    implements _$$_TrailsCopyWith<$Res> {
-  __$$_TrailsCopyWithImpl(_$_Trails _value, $Res Function(_$_Trails) _then)
+class __$$TrailsImplCopyWithImpl<$Res>
+    extends _$TrailsCopyWithImpl<$Res, _$TrailsImpl>
+    implements _$$TrailsImplCopyWith<$Res> {
+  __$$TrailsImplCopyWithImpl(
+      _$TrailsImpl _value, $Res Function(_$TrailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -81,7 +83,7 @@ class __$$_TrailsCopyWithImpl<$Res>
   $Res call({
     Object? trailList = freezed,
   }) {
-    return _then(_$_Trails(
+    return _then(_$TrailsImpl(
       trailList: freezed == trailList
           ? _value._trailList
           : trailList // ignore: cast_nullable_to_non_nullable
@@ -93,12 +95,12 @@ class __$$_TrailsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 1, adapterName: 'TrailsAdapter')
-class _$_Trails implements _Trails {
-  const _$_Trails({@HiveField(0) final List<Trail>? trailList})
+class _$TrailsImpl implements _Trails {
+  const _$TrailsImpl({@HiveField(0) final List<Trail>? trailList})
       : _trailList = trailList;
 
-  factory _$_Trails.fromJson(Map<String, dynamic> json) =>
-      _$$_TrailsFromJson(json);
+  factory _$TrailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TrailsImplFromJson(json);
 
   final List<Trail>? _trailList;
   @override
@@ -117,10 +119,10 @@ class _$_Trails implements _Trails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Trails &&
+            other is _$TrailsImpl &&
             const DeepCollectionEquality()
                 .equals(other._trailList, _trailList));
   }
@@ -133,12 +135,12 @@ class _$_Trails implements _Trails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrailsCopyWith<_$_Trails> get copyWith =>
-      __$$_TrailsCopyWithImpl<_$_Trails>(this, _$identity);
+  _$$TrailsImplCopyWith<_$TrailsImpl> get copyWith =>
+      __$$TrailsImplCopyWithImpl<_$TrailsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrailsToJson(
+    return _$$TrailsImplToJson(
       this,
     );
   }
@@ -146,16 +148,16 @@ class _$_Trails implements _Trails {
 
 abstract class _Trails implements Trails {
   const factory _Trails({@HiveField(0) final List<Trail>? trailList}) =
-      _$_Trails;
+      _$TrailsImpl;
 
-  factory _Trails.fromJson(Map<String, dynamic> json) = _$_Trails.fromJson;
+  factory _Trails.fromJson(Map<String, dynamic> json) = _$TrailsImpl.fromJson;
 
   @override
   @HiveField(0)
   List<Trail>? get trailList;
   @override
   @JsonKey(ignore: true)
-  _$$_TrailsCopyWith<_$_Trails> get copyWith =>
+  _$$TrailsImplCopyWith<_$TrailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -309,9 +311,10 @@ class _$TrailCopyWithImpl<$Res, $Val extends Trail>
 }
 
 /// @nodoc
-abstract class _$$_TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
-  factory _$$_TrailCopyWith(_$_Trail value, $Res Function(_$_Trail) then) =
-      __$$_TrailCopyWithImpl<$Res>;
+abstract class _$$TrailImplCopyWith<$Res> implements $TrailCopyWith<$Res> {
+  factory _$$TrailImplCopyWith(
+          _$TrailImpl value, $Res Function(_$TrailImpl) then) =
+      __$$TrailImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -333,9 +336,11 @@ abstract class _$$_TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res, _$_Trail>
-    implements _$$_TrailCopyWith<$Res> {
-  __$$_TrailCopyWithImpl(_$_Trail _value, $Res Function(_$_Trail) _then)
+class __$$TrailImplCopyWithImpl<$Res>
+    extends _$TrailCopyWithImpl<$Res, _$TrailImpl>
+    implements _$$TrailImplCopyWith<$Res> {
+  __$$TrailImplCopyWithImpl(
+      _$TrailImpl _value, $Res Function(_$TrailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -352,7 +357,7 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res, _$_Trail>
     Object? pathLength = null,
     Object? status = freezed,
   }) {
-    return _then(_$_Trail(
+    return _then(_$TrailImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -400,8 +405,8 @@ class __$$_TrailCopyWithImpl<$Res> extends _$TrailCopyWithImpl<$Res, _$_Trail>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 2, adapterName: 'TrailAdapter')
-class _$_Trail implements _Trail {
-  const _$_Trail(
+class _$TrailImpl implements _Trail {
+  const _$TrailImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) required this.name,
       @JsonKey(name: 'display_name') @HiveField(2) required this.displayName,
@@ -415,8 +420,8 @@ class _$_Trail implements _Trail {
       @JsonKey(name: 'path_length') @HiveField(8) required this.pathLength,
       @HiveField(9) this.status});
 
-  factory _$_Trail.fromJson(Map<String, dynamic> json) =>
-      _$$_TrailFromJson(json);
+  factory _$TrailImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TrailImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -458,10 +463,10 @@ class _$_Trail implements _Trail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Trail &&
+            other is _$TrailImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.displayName, displayName) ||
@@ -486,12 +491,12 @@ class _$_Trail implements _Trail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrailCopyWith<_$_Trail> get copyWith =>
-      __$$_TrailCopyWithImpl<_$_Trail>(this, _$identity);
+  _$$TrailImplCopyWith<_$TrailImpl> get copyWith =>
+      __$$TrailImplCopyWithImpl<_$TrailImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrailToJson(
+    return _$$TrailImplToJson(
       this,
     );
   }
@@ -512,9 +517,9 @@ abstract class _Trail implements Trail {
       @HiveField(6) required final String details,
       @HiveField(7) final Image? image,
       @JsonKey(name: 'path_length') @HiveField(8) required final int pathLength,
-      @HiveField(9) final String? status}) = _$_Trail;
+      @HiveField(9) final String? status}) = _$TrailImpl;
 
-  factory _Trail.fromJson(Map<String, dynamic> json) = _$_Trail.fromJson;
+  factory _Trail.fromJson(Map<String, dynamic> json) = _$TrailImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -551,6 +556,6 @@ abstract class _Trail implements Trail {
   String? get status;
   @override
   @JsonKey(ignore: true)
-  _$$_TrailCopyWith<_$_Trail> get copyWith =>
+  _$$TrailImplCopyWith<_$TrailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

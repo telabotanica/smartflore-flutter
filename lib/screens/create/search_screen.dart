@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,6 +77,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
           .setHitsPerPage(10);
 
       AlgoliaQuerySnapshot snap = await query.getObjects();
+      log('snap: ${jsonEncode(snap.toMap())}');
       TaxonHits taxonHits = TaxonHits.fromResponse(snap);
       if (page == 0) {
         _pagingController.refresh();
@@ -192,8 +196,11 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
               if (item.bdtfx != null) {
                 if (item.highlightResult != null &&
                     item.highlightResult!.bdtfx != null &&
-                    (item.highlightResult!.bdtfx!.scientificName != null &&
-                        item.highlightResult!.bdtfx!.commonName != null)) {
+                    (item.highlightResult!.bdtfx!.commonName != null)) {
+                  List<Name> list = item.highlightResult!.bdtfx!.commonName;
+                  String concatenatedValues =
+                      list.map((name) => name.value).join(', ');
+                  print('----concatenatedValues :: $concatenatedValues');
                   return TextButton(
                     onPressed: () {
                       BlocProvider.of<TaxonBloc>(context).add(
@@ -211,10 +218,11 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                     ),
                     child: ListItemUI(
                       scientificName:
-                          item.highlightResult!.bdtfx!.scientificName!.value ??
-                              '',
-                      commonName:
-                          item.highlightResult!.bdtfx!.commonName!.value ?? '',
+                          item.highlightResult!.bdtfx!.scientificName != null
+                              ? item
+                                  .highlightResult!.bdtfx!.scientificName!.value
+                              : '',
+                      commonName: concatenatedValues,
                       defaultCommonStyle: defaultCommonStyle,
                       matchCommonStyle: matchCommonStyle,
                       defaultScientificStyle: defaultScientificStyle,
@@ -308,9 +316,9 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                                     style: theme.textTheme.bodyLarge!
                                         .copyWith(fontStyle: FontStyle.italic))
                                 : Container(),
-                            selectedTaxon!.bdtfx!.commonName != null &&
-                                    selectedTaxon!.bdtfx!.commonName != ''
-                                ? Text(selectedTaxon!.bdtfx!.commonName!,
+                            selectedTaxon!.bdtfx!.commonName != ''
+                                ? Text('',
+                                    //selectedTaxon!.bdtfx!.commonName ,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: theme.textTheme.bodyMedium)

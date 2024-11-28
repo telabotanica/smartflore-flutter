@@ -6,17 +6,17 @@ part of 'trail_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TrailDetailAdapter extends TypeAdapter<_$_TrailDetails> {
+class TrailDetailAdapter extends TypeAdapter<_$TrailDetailsImpl> {
   @override
   final int typeId = 10;
 
   @override
-  _$_TrailDetails read(BinaryReader reader) {
+  _$TrailDetailsImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_TrailDetails(
+    return _$TrailDetailsImpl(
       id: fields[0] as int,
       name: fields[1] as String,
       displayName: fields[2] as String,
@@ -31,7 +31,7 @@ class TrailDetailAdapter extends TypeAdapter<_$_TrailDetails> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_TrailDetails obj) {
+  void write(BinaryWriter writer, _$TrailDetailsImpl obj) {
     writer
       ..writeByte(10)
       ..writeByte(0)
@@ -67,24 +67,24 @@ class TrailDetailAdapter extends TypeAdapter<_$_TrailDetails> {
           typeId == other.typeId;
 }
 
-class ImageAdapter extends TypeAdapter<_$_Image> {
+class ImageAdapter extends TypeAdapter<_$ImageImpl> {
   @override
   final int typeId = 11;
 
   @override
-  _$_Image read(BinaryReader reader) {
+  _$ImageImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_Image(
+    return _$ImageImpl(
       id: fields[0] as int,
       url: fields[1] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_Image obj) {
+  void write(BinaryWriter writer, _$ImageImpl obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -104,17 +104,17 @@ class ImageAdapter extends TypeAdapter<_$_Image> {
           typeId == other.typeId;
 }
 
-class OccurenceAdapter extends TypeAdapter<_$_Occurrence> {
+class OccurenceAdapter extends TypeAdapter<_$OccurrenceImpl> {
   @override
   final int typeId = 12;
 
   @override
-  _$_Occurrence read(BinaryReader reader) {
+  _$OccurrenceImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_Occurrence(
+    return _$OccurrenceImpl(
       position: fields[0] as LatLng,
       taxon: fields[1] as TaxonLight,
       images: (fields[2] as List).cast<Image>(),
@@ -122,7 +122,7 @@ class OccurenceAdapter extends TypeAdapter<_$_Occurrence> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_Occurrence obj) {
+  void write(BinaryWriter writer, _$OccurrenceImpl obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)
@@ -144,17 +144,17 @@ class OccurenceAdapter extends TypeAdapter<_$_Occurrence> {
           typeId == other.typeId;
 }
 
-class TrailTaxonAdapter extends TypeAdapter<_$_TaxonLight> {
+class TrailTaxonAdapter extends TypeAdapter<_$TaxonLightImpl> {
   @override
   final int typeId = 13;
 
   @override
-  _$_TaxonLight read(BinaryReader reader) {
+  _$TaxonLightImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_TaxonLight(
+    return _$TaxonLightImpl(
       scientificName: fields[0] as String?,
       fullScientificName: fields[1] as String,
       taxonRepository: fields[2] as String,
@@ -164,7 +164,7 @@ class TrailTaxonAdapter extends TypeAdapter<_$_TaxonLight> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_TaxonLight obj) {
+  void write(BinaryWriter writer, _$TaxonLightImpl obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
@@ -190,24 +190,24 @@ class TrailTaxonAdapter extends TypeAdapter<_$_TaxonLight> {
           typeId == other.typeId;
 }
 
-class PathAdapter extends TypeAdapter<_$_Path> {
+class PathAdapter extends TypeAdapter<_$PathImpl> {
   @override
   final int typeId = 14;
 
   @override
-  _$_Path read(BinaryReader reader) {
+  _$PathImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_Path(
+    return _$PathImpl(
       type: fields[0] as String,
       coordinates: (fields[1] as List).cast<LatLng>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_Path obj) {
+  void write(BinaryWriter writer, _$PathImpl obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -227,24 +227,24 @@ class PathAdapter extends TypeAdapter<_$_Path> {
           typeId == other.typeId;
 }
 
-class StartEndPositionAdapter extends TypeAdapter<_$_StartEndPosition> {
+class StartEndPositionAdapter extends TypeAdapter<_$StartEndPositionImpl> {
   @override
   final int typeId = 15;
 
   @override
-  _$_StartEndPosition read(BinaryReader reader) {
+  _$StartEndPositionImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_StartEndPosition(
+    return _$StartEndPositionImpl(
       start: fields[0] as LatLng,
       end: fields[1] as LatLng,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_StartEndPosition obj) {
+  void write(BinaryWriter writer, _$StartEndPositionImpl obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -268,9 +268,9 @@ class StartEndPositionAdapter extends TypeAdapter<_$_StartEndPosition> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TrailDetails _$$_TrailDetailsFromJson(Map<String, dynamic> json) =>
-    _$_TrailDetails(
-      id: json['id'] as int,
+_$TrailDetailsImpl _$$TrailDetailsImplFromJson(Map<String, dynamic> json) =>
+    _$TrailDetailsImpl(
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       displayName: json['display_name'] as String,
       author: json['author'] as String,
@@ -279,13 +279,13 @@ _$_TrailDetails _$$_TrailDetailsFromJson(Map<String, dynamic> json) =>
       occurrences: (json['occurrences'] as List<dynamic>)
           .map((e) => Occurrence.fromJson(e as Map<String, dynamic>))
           .toList(),
-      occurrencesCount: json['occurrences_count'] as int,
+      occurrencesCount: (json['occurrences_count'] as num).toInt(),
       image: Image.fromJson(json['image'] as Map<String, dynamic>),
       path: Path.fromJson(json['path'] as Map<String, dynamic>),
-      pathLength: json['path_length'] as int,
+      pathLength: (json['path_length'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$_TrailDetailsToJson(_$_TrailDetails instance) =>
+Map<String, dynamic> _$$TrailDetailsImplToJson(_$TrailDetailsImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -299,18 +299,19 @@ Map<String, dynamic> _$$_TrailDetailsToJson(_$_TrailDetails instance) =>
       'path_length': instance.pathLength,
     };
 
-_$_Image _$$_ImageFromJson(Map<String, dynamic> json) => _$_Image(
-      id: json['id'] as int,
+_$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
+      id: (json['id'] as num).toInt(),
       url: json['url'] as String,
     );
 
-Map<String, dynamic> _$$_ImageToJson(_$_Image instance) => <String, dynamic>{
+Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
     };
 
-_$_Occurrence _$$_OccurrenceFromJson(Map<String, dynamic> json) =>
-    _$_Occurrence(
+_$OccurrenceImpl _$$OccurrenceImplFromJson(Map<String, dynamic> json) =>
+    _$OccurrenceImpl(
       position: const LatLngConverter().fromJson(json['position']),
       taxon: TaxonLight.fromJson(json['taxon'] as Map<String, dynamic>),
       images: (json['images'] as List<dynamic>)
@@ -318,25 +319,25 @@ _$_Occurrence _$$_OccurrenceFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_OccurrenceToJson(_$_Occurrence instance) =>
+Map<String, dynamic> _$$OccurrenceImplToJson(_$OccurrenceImpl instance) =>
     <String, dynamic>{
       'position': const LatLngConverter().toJson(instance.position),
       'taxon': instance.taxon,
       'images': instance.images,
     };
 
-_$_TaxonLight _$$_TaxonLightFromJson(Map<String, dynamic> json) =>
-    _$_TaxonLight(
+_$TaxonLightImpl _$$TaxonLightImplFromJson(Map<String, dynamic> json) =>
+    _$TaxonLightImpl(
       scientificName: json['scientific_name'] as String?,
       fullScientificName: json['full_scientific_name'] as String,
       taxonRepository: json['taxon_repository'] as String,
-      nameId: json['name_id'] as int,
+      nameId: (json['name_id'] as num).toInt(),
       vernacularNames: (json['vernacular_names'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
     );
 
-Map<String, dynamic> _$$_TaxonLightToJson(_$_TaxonLight instance) =>
+Map<String, dynamic> _$$TaxonLightImplToJson(_$TaxonLightImpl instance) =>
     <String, dynamic>{
       'scientific_name': instance.scientificName,
       'full_scientific_name': instance.fullScientificName,
@@ -345,25 +346,28 @@ Map<String, dynamic> _$$_TaxonLightToJson(_$_TaxonLight instance) =>
       'vernacular_names': instance.vernacularNames,
     };
 
-_$_Path _$$_PathFromJson(Map<String, dynamic> json) => _$_Path(
+_$PathImpl _$$PathImplFromJson(Map<String, dynamic> json) => _$PathImpl(
       type: json['type'] as String? ?? '',
       coordinates: json['coordinates'] == null
           ? const []
           : const LatLngListConverter().fromJson(json['coordinates'] as List),
     );
 
-Map<String, dynamic> _$$_PathToJson(_$_Path instance) => <String, dynamic>{
+Map<String, dynamic> _$$PathImplToJson(_$PathImpl instance) =>
+    <String, dynamic>{
       'type': instance.type,
       'coordinates': const LatLngListConverter().toJson(instance.coordinates),
     };
 
-_$_StartEndPosition _$$_StartEndPositionFromJson(Map<String, dynamic> json) =>
-    _$_StartEndPosition(
+_$StartEndPositionImpl _$$StartEndPositionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$StartEndPositionImpl(
       start: const LatLngConverter().fromJson(json['start']),
       end: const LatLngConverter().fromJson(json['end']),
     );
 
-Map<String, dynamic> _$$_StartEndPositionToJson(_$_StartEndPosition instance) =>
+Map<String, dynamic> _$$StartEndPositionImplToJson(
+        _$StartEndPositionImpl instance) =>
     <String, dynamic>{
       'start': const LatLngConverter().toJson(instance.start),
       'end': const LatLngConverter().toJson(instance.end),

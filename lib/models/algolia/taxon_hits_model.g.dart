@@ -6,18 +6,19 @@ part of 'taxon_hits_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TaxonHits _$$_TaxonHitsFromJson(Map<String, dynamic> json) => _$_TaxonHits(
+_$TaxonHitsImpl _$$TaxonHitsImplFromJson(Map<String, dynamic> json) =>
+    _$TaxonHitsImpl(
       hits: (json['hits'] as List<dynamic>)
           .map((e) => TaxonHit.fromJson(e as Map<String, dynamic>))
           .toList(),
-      nbHits: json['nbHits'] as int,
-      page: json['page'] as int,
-      nbPages: json['nbPages'] as int,
-      hitsPerPage: json['hitsPerPage'] as int,
-      nextPageKey: json['nextPageKey'] as int?,
+      nbHits: (json['nbHits'] as num).toInt(),
+      page: (json['page'] as num).toInt(),
+      nbPages: (json['nbPages'] as num).toInt(),
+      hitsPerPage: (json['hitsPerPage'] as num).toInt(),
+      nextPageKey: (json['nextPageKey'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$_TaxonHitsToJson(_$_TaxonHits instance) =>
+Map<String, dynamic> _$$TaxonHitsImplToJson(_$TaxonHitsImpl instance) =>
     <String, dynamic>{
       'hits': instance.hits,
       'nbHits': instance.nbHits,
@@ -27,7 +28,8 @@ Map<String, dynamic> _$$_TaxonHitsToJson(_$_TaxonHits instance) =>
       'nextPageKey': instance.nextPageKey,
     };
 
-_$_TaxonHit _$$_TaxonHitFromJson(Map<String, dynamic> json) => _$_TaxonHit(
+_$TaxonHitImpl _$$TaxonHitImplFromJson(Map<String, dynamic> json) =>
+    _$TaxonHitImpl(
       referentiels: (json['referentiels'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -41,7 +43,7 @@ _$_TaxonHit _$$_TaxonHitFromJson(Map<String, dynamic> json) => _$_TaxonHit(
               json['_highlightResult'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_TaxonHitToJson(_$_TaxonHit instance) =>
+Map<String, dynamic> _$$TaxonHitImplToJson(_$TaxonHitImpl instance) =>
     <String, dynamic>{
       'referentiels': instance.referentiels,
       'bdtfx': instance.bdtfx,
@@ -49,58 +51,64 @@ Map<String, dynamic> _$$_TaxonHitToJson(_$_TaxonHit instance) =>
       '_highlightResult': instance.highlightResult,
     };
 
-_$_HitBdtfx _$$_HitBdtfxFromJson(Map<String, dynamic> json) => _$_HitBdtfx(
-      nomenclaturalNumber: json['nomenclatural_number'] as int?,
+_$HitBdtfxImpl _$$HitBdtfxImplFromJson(Map<String, dynamic> json) =>
+    _$HitBdtfxImpl(
+      nomenclaturalNumber: (json['nomenclatural_number'] as num?)?.toInt(),
       scientificName: json['scientific_name'] as String?,
-      commonName: json['common_name'] as String?,
+      commonName: (json['line_names'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
-Map<String, dynamic> _$$_HitBdtfxToJson(_$_HitBdtfx instance) =>
+Map<String, dynamic> _$$HitBdtfxImplToJson(_$HitBdtfxImpl instance) =>
     <String, dynamic>{
       'nomenclatural_number': instance.nomenclaturalNumber,
       'scientific_name': instance.scientificName,
-      'common_name': instance.commonName,
+      'line_names': instance.commonName,
     };
 
-_$_HighlightResult _$$_HighlightResultFromJson(Map<String, dynamic> json) =>
-    _$_HighlightResult(
+_$HighlightResultImpl _$$HighlightResultImplFromJson(
+        Map<String, dynamic> json) =>
+    _$HighlightResultImpl(
       bdtfx: json['bdtfx'] == null
           ? null
           : HighlightResultBdtfx.fromJson(
               json['bdtfx'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_HighlightResultToJson(_$_HighlightResult instance) =>
+Map<String, dynamic> _$$HighlightResultImplToJson(
+        _$HighlightResultImpl instance) =>
     <String, dynamic>{
       'bdtfx': instance.bdtfx,
     };
 
-_$_HighlightResultBdtfx _$$_HighlightResultBdtfxFromJson(
+_$HighlightResultBdtfxImpl _$$HighlightResultBdtfxImplFromJson(
         Map<String, dynamic> json) =>
-    _$_HighlightResultBdtfx(
+    _$HighlightResultBdtfxImpl(
       scientificName: json['scientific_name'] == null
           ? null
           : Name.fromJson(json['scientific_name'] as Map<String, dynamic>),
-      commonName: json['common_name'] == null
-          ? null
-          : Name.fromJson(json['common_name'] as Map<String, dynamic>),
+      commonName: (json['common_name'] as List<dynamic>)
+          .map((e) => Name.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$$_HighlightResultBdtfxToJson(
-        _$_HighlightResultBdtfx instance) =>
+Map<String, dynamic> _$$HighlightResultBdtfxImplToJson(
+        _$HighlightResultBdtfxImpl instance) =>
     <String, dynamic>{
       'scientific_name': instance.scientificName,
       'common_name': instance.commonName,
     };
 
-_$_Name _$$_NameFromJson(Map<String, dynamic> json) => _$_Name(
-      value: json['value'] as String?,
-      matchedWords: (json['matchedWords'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+_$NameImpl _$$NameImplFromJson(Map<String, dynamic> json) => _$NameImpl(
+      value: json['value'] as String,
+      matchLevel: json['match_level'] as String?,
+      matchedWords: json['matched_words'] as List<dynamic>?,
     );
 
-Map<String, dynamic> _$$_NameToJson(_$_Name instance) => <String, dynamic>{
+Map<String, dynamic> _$$NameImplToJson(_$NameImpl instance) =>
+    <String, dynamic>{
       'value': instance.value,
-      'matchedWords': instance.matchedWords,
+      'match_level': instance.matchLevel,
+      'matched_words': instance.matchedWords,
     };

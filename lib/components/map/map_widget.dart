@@ -277,9 +277,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                           ? trail.position!.start
                           : const LatLng(0, 0);
                   return Marker(
-                    alignment: Alignment.center,
-                    width: 38.0,
-                    height: 38.0,
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: startPos,
                     child: IconButton(
                         onPressed: () {
@@ -326,9 +326,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           markers: trailData != null
               ? [
                   Marker(
-                    alignment: const Alignment(0, -20),
-                    width: 18.0,
-                    height: 18.0,
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: trailData!.position.start,
                     child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerEnd,
@@ -337,9 +337,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                     ),
                   ),
                   Marker(
-                    alignment: const Alignment(0, -20),
-                    width: 18.0,
-                    height: 18.0,
+                    alignment: Alignment.topCenter,
+                    width: 39,
+                    height: 39,
                     point: trailData!.position.end,
                     child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerStart,
@@ -371,9 +371,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           markers: trailData != null
               ? [
                   Marker(
-                    alignment: const Alignment(0, -20),
-                    width: 18.0,
-                    height: 18.0,
+                    //alignment: const Alignment(0, -20),
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: trailData!.path
                         .coordinates[trailData!.path.coordinates.length - 1],
                     child: const MarkerWithBG(
@@ -383,9 +384,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                     ),
                   ),
                   Marker(
-                    alignment: const Alignment(0, -20),
-                    width: 18.0,
-                    height: 18.0,
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: trailData!.path.coordinates[0],
                     child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerStart,
@@ -419,9 +420,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           markers: createPath != null && createPath!.coordinates.isNotEmpty
               ? [
                   Marker(
-                    alignment: const Alignment(0, -20),
-                    width: 18.0,
-                    height: 18.0,
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: createPath!.coordinates[0],
                     child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerStart,

@@ -12,7 +12,7 @@ part of 'mytrails_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MyTrailsEvent {
@@ -75,25 +75,25 @@ class _$MyTrailsEventCopyWithImpl<$Res, $Val extends MyTrailsEvent>
 }
 
 /// @nodoc
-abstract class _$$_MyTrailsInitCopyWith<$Res> {
-  factory _$$_MyTrailsInitCopyWith(
-          _$_MyTrailsInit value, $Res Function(_$_MyTrailsInit) then) =
-      __$$_MyTrailsInitCopyWithImpl<$Res>;
+abstract class _$$MyTrailsInitImplCopyWith<$Res> {
+  factory _$$MyTrailsInitImplCopyWith(
+          _$MyTrailsInitImpl value, $Res Function(_$MyTrailsInitImpl) then) =
+      __$$MyTrailsInitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MyTrailsInitCopyWithImpl<$Res>
-    extends _$MyTrailsEventCopyWithImpl<$Res, _$_MyTrailsInit>
-    implements _$$_MyTrailsInitCopyWith<$Res> {
-  __$$_MyTrailsInitCopyWithImpl(
-      _$_MyTrailsInit _value, $Res Function(_$_MyTrailsInit) _then)
+class __$$MyTrailsInitImplCopyWithImpl<$Res>
+    extends _$MyTrailsEventCopyWithImpl<$Res, _$MyTrailsInitImpl>
+    implements _$$MyTrailsInitImplCopyWith<$Res> {
+  __$$MyTrailsInitImplCopyWithImpl(
+      _$MyTrailsInitImpl _value, $Res Function(_$MyTrailsInitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_MyTrailsInit implements _MyTrailsInit {
-  const _$_MyTrailsInit();
+class _$MyTrailsInitImpl implements _MyTrailsInit {
+  const _$MyTrailsInitImpl();
 
   @override
   String toString() {
@@ -101,9 +101,9 @@ class _$_MyTrailsInit implements _MyTrailsInit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MyTrailsInit);
+        (other.runtimeType == runtimeType && other is _$MyTrailsInitImpl);
   }
 
   @override
@@ -173,29 +173,29 @@ class _$_MyTrailsInit implements _MyTrailsInit {
 }
 
 abstract class _MyTrailsInit implements MyTrailsEvent {
-  const factory _MyTrailsInit() = _$_MyTrailsInit;
+  const factory _MyTrailsInit() = _$MyTrailsInitImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadTrailsDataCopyWith<$Res> {
-  factory _$$_LoadTrailsDataCopyWith(
-          _$_LoadTrailsData value, $Res Function(_$_LoadTrailsData) then) =
-      __$$_LoadTrailsDataCopyWithImpl<$Res>;
+abstract class _$$LoadTrailsDataImplCopyWith<$Res> {
+  factory _$$LoadTrailsDataImplCopyWith(_$LoadTrailsDataImpl value,
+          $Res Function(_$LoadTrailsDataImpl) then) =
+      __$$LoadTrailsDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadTrailsDataCopyWithImpl<$Res>
-    extends _$MyTrailsEventCopyWithImpl<$Res, _$_LoadTrailsData>
-    implements _$$_LoadTrailsDataCopyWith<$Res> {
-  __$$_LoadTrailsDataCopyWithImpl(
-      _$_LoadTrailsData _value, $Res Function(_$_LoadTrailsData) _then)
+class __$$LoadTrailsDataImplCopyWithImpl<$Res>
+    extends _$MyTrailsEventCopyWithImpl<$Res, _$LoadTrailsDataImpl>
+    implements _$$LoadTrailsDataImplCopyWith<$Res> {
+  __$$LoadTrailsDataImplCopyWithImpl(
+      _$LoadTrailsDataImpl _value, $Res Function(_$LoadTrailsDataImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadTrailsData implements _LoadTrailsData {
-  const _$_LoadTrailsData();
+class _$LoadTrailsDataImpl implements _LoadTrailsData {
+  const _$LoadTrailsDataImpl();
 
   @override
   String toString() {
@@ -203,9 +203,9 @@ class _$_LoadTrailsData implements _LoadTrailsData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadTrailsData);
+        (other.runtimeType == runtimeType && other is _$LoadTrailsDataImpl);
   }
 
   @override
@@ -275,7 +275,7 @@ class _$_LoadTrailsData implements _LoadTrailsData {
 }
 
 abstract class _LoadTrailsData implements MyTrailsEvent {
-  const factory _LoadTrailsData() = _$_LoadTrailsData;
+  const factory _LoadTrailsData() = _$LoadTrailsDataImpl;
 }
 
 /// @nodoc
@@ -351,24 +351,25 @@ class _$MyTrailsStateCopyWithImpl<$Res, $Val extends MyTrailsState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$MyTrailsStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$MyTrailsStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -376,9 +377,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -460,29 +461,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements MyTrailsState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_DataLoadingCopyWith<$Res> {
-  factory _$$_DataLoadingCopyWith(
-          _$_DataLoading value, $Res Function(_$_DataLoading) then) =
-      __$$_DataLoadingCopyWithImpl<$Res>;
+abstract class _$$DataLoadingImplCopyWith<$Res> {
+  factory _$$DataLoadingImplCopyWith(
+          _$DataLoadingImpl value, $Res Function(_$DataLoadingImpl) then) =
+      __$$DataLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DataLoadingCopyWithImpl<$Res>
-    extends _$MyTrailsStateCopyWithImpl<$Res, _$_DataLoading>
-    implements _$$_DataLoadingCopyWith<$Res> {
-  __$$_DataLoadingCopyWithImpl(
-      _$_DataLoading _value, $Res Function(_$_DataLoading) _then)
+class __$$DataLoadingImplCopyWithImpl<$Res>
+    extends _$MyTrailsStateCopyWithImpl<$Res, _$DataLoadingImpl>
+    implements _$$DataLoadingImplCopyWith<$Res> {
+  __$$DataLoadingImplCopyWithImpl(
+      _$DataLoadingImpl _value, $Res Function(_$DataLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_DataLoading implements _DataLoading {
-  const _$_DataLoading();
+class _$DataLoadingImpl implements _DataLoading {
+  const _$DataLoadingImpl();
 
   @override
   String toString() {
@@ -490,9 +491,9 @@ class _$_DataLoading implements _DataLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DataLoading);
+        (other.runtimeType == runtimeType && other is _$DataLoadingImpl);
   }
 
   @override
@@ -574,24 +575,24 @@ class _$_DataLoading implements _DataLoading {
 }
 
 abstract class _DataLoading implements MyTrailsState {
-  const factory _DataLoading() = _$_DataLoading;
+  const factory _DataLoading() = _$DataLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_DataLoadedCopyWith<$Res> {
-  factory _$$_DataLoadedCopyWith(
-          _$_DataLoaded value, $Res Function(_$_DataLoaded) then) =
-      __$$_DataLoadedCopyWithImpl<$Res>;
+abstract class _$$DataLoadedImplCopyWith<$Res> {
+  factory _$$DataLoadedImplCopyWith(
+          _$DataLoadedImpl value, $Res Function(_$DataLoadedImpl) then) =
+      __$$DataLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Trail> trails});
 }
 
 /// @nodoc
-class __$$_DataLoadedCopyWithImpl<$Res>
-    extends _$MyTrailsStateCopyWithImpl<$Res, _$_DataLoaded>
-    implements _$$_DataLoadedCopyWith<$Res> {
-  __$$_DataLoadedCopyWithImpl(
-      _$_DataLoaded _value, $Res Function(_$_DataLoaded) _then)
+class __$$DataLoadedImplCopyWithImpl<$Res>
+    extends _$MyTrailsStateCopyWithImpl<$Res, _$DataLoadedImpl>
+    implements _$$DataLoadedImplCopyWith<$Res> {
+  __$$DataLoadedImplCopyWithImpl(
+      _$DataLoadedImpl _value, $Res Function(_$DataLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -599,7 +600,7 @@ class __$$_DataLoadedCopyWithImpl<$Res>
   $Res call({
     Object? trails = null,
   }) {
-    return _then(_$_DataLoaded(
+    return _then(_$DataLoadedImpl(
       null == trails
           ? _value._trails
           : trails // ignore: cast_nullable_to_non_nullable
@@ -610,8 +611,8 @@ class __$$_DataLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DataLoaded implements _DataLoaded {
-  const _$_DataLoaded(final List<Trail> trails) : _trails = trails;
+class _$DataLoadedImpl implements _DataLoaded {
+  const _$DataLoadedImpl(final List<Trail> trails) : _trails = trails;
 
   final List<Trail> _trails;
   @override
@@ -627,10 +628,10 @@ class _$_DataLoaded implements _DataLoaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataLoaded &&
+            other is _$DataLoadedImpl &&
             const DeepCollectionEquality().equals(other._trails, _trails));
   }
 
@@ -641,8 +642,8 @@ class _$_DataLoaded implements _DataLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataLoadedCopyWith<_$_DataLoaded> get copyWith =>
-      __$$_DataLoadedCopyWithImpl<_$_DataLoaded>(this, _$identity);
+  _$$DataLoadedImplCopyWith<_$DataLoadedImpl> get copyWith =>
+      __$$DataLoadedImplCopyWithImpl<_$DataLoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -720,29 +721,29 @@ class _$_DataLoaded implements _DataLoaded {
 }
 
 abstract class _DataLoaded implements MyTrailsState {
-  const factory _DataLoaded(final List<Trail> trails) = _$_DataLoaded;
+  const factory _DataLoaded(final List<Trail> trails) = _$DataLoadedImpl;
 
   List<Trail> get trails;
   @JsonKey(ignore: true)
-  _$$_DataLoadedCopyWith<_$_DataLoaded> get copyWith =>
+  _$$DataLoadedImplCopyWith<_$DataLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DataLoadErrorCopyWith<$Res> {
-  factory _$$_DataLoadErrorCopyWith(
-          _$_DataLoadError value, $Res Function(_$_DataLoadError) then) =
-      __$$_DataLoadErrorCopyWithImpl<$Res>;
+abstract class _$$DataLoadErrorImplCopyWith<$Res> {
+  factory _$$DataLoadErrorImplCopyWith(
+          _$DataLoadErrorImpl value, $Res Function(_$DataLoadErrorImpl) then) =
+      __$$DataLoadErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String msg});
 }
 
 /// @nodoc
-class __$$_DataLoadErrorCopyWithImpl<$Res>
-    extends _$MyTrailsStateCopyWithImpl<$Res, _$_DataLoadError>
-    implements _$$_DataLoadErrorCopyWith<$Res> {
-  __$$_DataLoadErrorCopyWithImpl(
-      _$_DataLoadError _value, $Res Function(_$_DataLoadError) _then)
+class __$$DataLoadErrorImplCopyWithImpl<$Res>
+    extends _$MyTrailsStateCopyWithImpl<$Res, _$DataLoadErrorImpl>
+    implements _$$DataLoadErrorImplCopyWith<$Res> {
+  __$$DataLoadErrorImplCopyWithImpl(
+      _$DataLoadErrorImpl _value, $Res Function(_$DataLoadErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -750,7 +751,7 @@ class __$$_DataLoadErrorCopyWithImpl<$Res>
   $Res call({
     Object? msg = null,
   }) {
-    return _then(_$_DataLoadError(
+    return _then(_$DataLoadErrorImpl(
       null == msg
           ? _value.msg
           : msg // ignore: cast_nullable_to_non_nullable
@@ -761,8 +762,8 @@ class __$$_DataLoadErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DataLoadError implements _DataLoadError {
-  const _$_DataLoadError(this.msg);
+class _$DataLoadErrorImpl implements _DataLoadError {
+  const _$DataLoadErrorImpl(this.msg);
 
   @override
   final String msg;
@@ -773,10 +774,10 @@ class _$_DataLoadError implements _DataLoadError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataLoadError &&
+            other is _$DataLoadErrorImpl &&
             (identical(other.msg, msg) || other.msg == msg));
   }
 
@@ -786,8 +787,8 @@ class _$_DataLoadError implements _DataLoadError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataLoadErrorCopyWith<_$_DataLoadError> get copyWith =>
-      __$$_DataLoadErrorCopyWithImpl<_$_DataLoadError>(this, _$identity);
+  _$$DataLoadErrorImplCopyWith<_$DataLoadErrorImpl> get copyWith =>
+      __$$DataLoadErrorImplCopyWithImpl<_$DataLoadErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -865,10 +866,10 @@ class _$_DataLoadError implements _DataLoadError {
 }
 
 abstract class _DataLoadError implements MyTrailsState {
-  const factory _DataLoadError(final String msg) = _$_DataLoadError;
+  const factory _DataLoadError(final String msg) = _$DataLoadErrorImpl;
 
   String get msg;
   @JsonKey(ignore: true)
-  _$$_DataLoadErrorCopyWith<_$_DataLoadError> get copyWith =>
+  _$$DataLoadErrorImplCopyWith<_$DataLoadErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

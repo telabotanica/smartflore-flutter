@@ -12,7 +12,7 @@ part of 'create_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CreateEvent {
@@ -129,23 +129,25 @@ class _$CreateEventCopyWithImpl<$Res, $Val extends CreateEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartCopyWith<$Res> {
-  factory _$$_StartCopyWith(_$_Start value, $Res Function(_$_Start) then) =
-      __$$_StartCopyWithImpl<$Res>;
+abstract class _$$StartImplCopyWith<$Res> {
+  factory _$$StartImplCopyWith(
+          _$StartImpl value, $Res Function(_$StartImpl) then) =
+      __$$StartImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_Start>
-    implements _$$_StartCopyWith<$Res> {
-  __$$_StartCopyWithImpl(_$_Start _value, $Res Function(_$_Start) _then)
+class __$$StartImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$StartImpl>
+    implements _$$StartImplCopyWith<$Res> {
+  __$$StartImplCopyWithImpl(
+      _$StartImpl _value, $Res Function(_$StartImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Start implements _Start {
-  const _$_Start();
+class _$StartImpl implements _Start {
+  const _$StartImpl();
 
   @override
   String toString() {
@@ -153,9 +155,9 @@ class _$_Start implements _Start {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Start);
+        (other.runtimeType == runtimeType && other is _$StartImpl);
   }
 
   @override
@@ -279,24 +281,24 @@ class _$_Start implements _Start {
 }
 
 abstract class _Start implements CreateEvent {
-  const factory _Start() = _$_Start;
+  const factory _Start() = _$StartImpl;
 }
 
 /// @nodoc
-abstract class _$$_CreateSaveTitleCopyWith<$Res> {
-  factory _$$_CreateSaveTitleCopyWith(
-          _$_CreateSaveTitle value, $Res Function(_$_CreateSaveTitle) then) =
-      __$$_CreateSaveTitleCopyWithImpl<$Res>;
+abstract class _$$CreateSaveTitleImplCopyWith<$Res> {
+  factory _$$CreateSaveTitleImplCopyWith(_$CreateSaveTitleImpl value,
+          $Res Function(_$CreateSaveTitleImpl) then) =
+      __$$CreateSaveTitleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class __$$_CreateSaveTitleCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_CreateSaveTitle>
-    implements _$$_CreateSaveTitleCopyWith<$Res> {
-  __$$_CreateSaveTitleCopyWithImpl(
-      _$_CreateSaveTitle _value, $Res Function(_$_CreateSaveTitle) _then)
+class __$$CreateSaveTitleImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$CreateSaveTitleImpl>
+    implements _$$CreateSaveTitleImplCopyWith<$Res> {
+  __$$CreateSaveTitleImplCopyWithImpl(
+      _$CreateSaveTitleImpl _value, $Res Function(_$CreateSaveTitleImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -304,7 +306,7 @@ class __$$_CreateSaveTitleCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_CreateSaveTitle(
+    return _then(_$CreateSaveTitleImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -315,8 +317,8 @@ class __$$_CreateSaveTitleCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CreateSaveTitle implements _CreateSaveTitle {
-  const _$_CreateSaveTitle({required this.name});
+class _$CreateSaveTitleImpl implements _CreateSaveTitle {
+  const _$CreateSaveTitleImpl({required this.name});
 
   @override
   final String name;
@@ -327,10 +329,10 @@ class _$_CreateSaveTitle implements _CreateSaveTitle {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateSaveTitle &&
+            other is _$CreateSaveTitleImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -340,8 +342,9 @@ class _$_CreateSaveTitle implements _CreateSaveTitle {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateSaveTitleCopyWith<_$_CreateSaveTitle> get copyWith =>
-      __$$_CreateSaveTitleCopyWithImpl<_$_CreateSaveTitle>(this, _$identity);
+  _$$CreateSaveTitleImplCopyWith<_$CreateSaveTitleImpl> get copyWith =>
+      __$$CreateSaveTitleImplCopyWithImpl<_$CreateSaveTitleImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -462,34 +465,34 @@ class _$_CreateSaveTitle implements _CreateSaveTitle {
 
 abstract class _CreateSaveTitle implements CreateEvent {
   const factory _CreateSaveTitle({required final String name}) =
-      _$_CreateSaveTitle;
+      _$CreateSaveTitleImpl;
 
   String get name;
   @JsonKey(ignore: true)
-  _$$_CreateSaveTitleCopyWith<_$_CreateSaveTitle> get copyWith =>
+  _$$CreateSaveTitleImplCopyWith<_$CreateSaveTitleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RegisterLocationCopyWith<$Res> {
-  factory _$$_RegisterLocationCopyWith(
-          _$_RegisterLocation value, $Res Function(_$_RegisterLocation) then) =
-      __$$_RegisterLocationCopyWithImpl<$Res>;
+abstract class _$$RegisterLocationImplCopyWith<$Res> {
+  factory _$$RegisterLocationImplCopyWith(_$RegisterLocationImpl value,
+          $Res Function(_$RegisterLocationImpl) then) =
+      __$$RegisterLocationImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RegisterLocationCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_RegisterLocation>
-    implements _$$_RegisterLocationCopyWith<$Res> {
-  __$$_RegisterLocationCopyWithImpl(
-      _$_RegisterLocation _value, $Res Function(_$_RegisterLocation) _then)
+class __$$RegisterLocationImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$RegisterLocationImpl>
+    implements _$$RegisterLocationImplCopyWith<$Res> {
+  __$$RegisterLocationImplCopyWithImpl(_$RegisterLocationImpl _value,
+      $Res Function(_$RegisterLocationImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_RegisterLocation implements _RegisterLocation {
-  const _$_RegisterLocation();
+class _$RegisterLocationImpl implements _RegisterLocation {
+  const _$RegisterLocationImpl();
 
   @override
   String toString() {
@@ -497,9 +500,9 @@ class _$_RegisterLocation implements _RegisterLocation {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RegisterLocation);
+        (other.runtimeType == runtimeType && other is _$RegisterLocationImpl);
   }
 
   @override
@@ -623,14 +626,14 @@ class _$_RegisterLocation implements _RegisterLocation {
 }
 
 abstract class _RegisterLocation implements CreateEvent {
-  const factory _RegisterLocation() = _$_RegisterLocation;
+  const factory _RegisterLocation() = _$RegisterLocationImpl;
 }
 
 /// @nodoc
-abstract class _$$_RequestUpdatePathCopyWith<$Res> {
-  factory _$$_RequestUpdatePathCopyWith(_$_RequestUpdatePath value,
-          $Res Function(_$_RequestUpdatePath) then) =
-      __$$_RequestUpdatePathCopyWithImpl<$Res>;
+abstract class _$$RequestUpdatePathImplCopyWith<$Res> {
+  factory _$$RequestUpdatePathImplCopyWith(_$RequestUpdatePathImpl value,
+          $Res Function(_$RequestUpdatePathImpl) then) =
+      __$$RequestUpdatePathImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Path path});
 
@@ -638,11 +641,11 @@ abstract class _$$_RequestUpdatePathCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RequestUpdatePathCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_RequestUpdatePath>
-    implements _$$_RequestUpdatePathCopyWith<$Res> {
-  __$$_RequestUpdatePathCopyWithImpl(
-      _$_RequestUpdatePath _value, $Res Function(_$_RequestUpdatePath) _then)
+class __$$RequestUpdatePathImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$RequestUpdatePathImpl>
+    implements _$$RequestUpdatePathImplCopyWith<$Res> {
+  __$$RequestUpdatePathImplCopyWithImpl(_$RequestUpdatePathImpl _value,
+      $Res Function(_$RequestUpdatePathImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -650,7 +653,7 @@ class __$$_RequestUpdatePathCopyWithImpl<$Res>
   $Res call({
     Object? path = null,
   }) {
-    return _then(_$_RequestUpdatePath(
+    return _then(_$RequestUpdatePathImpl(
       null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -669,8 +672,8 @@ class __$$_RequestUpdatePathCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RequestUpdatePath implements _RequestUpdatePath {
-  const _$_RequestUpdatePath(this.path);
+class _$RequestUpdatePathImpl implements _RequestUpdatePath {
+  const _$RequestUpdatePathImpl(this.path);
 
   @override
   final Path path;
@@ -681,10 +684,10 @@ class _$_RequestUpdatePath implements _RequestUpdatePath {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RequestUpdatePath &&
+            other is _$RequestUpdatePathImpl &&
             (identical(other.path, path) || other.path == path));
   }
 
@@ -694,8 +697,8 @@ class _$_RequestUpdatePath implements _RequestUpdatePath {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RequestUpdatePathCopyWith<_$_RequestUpdatePath> get copyWith =>
-      __$$_RequestUpdatePathCopyWithImpl<_$_RequestUpdatePath>(
+  _$$RequestUpdatePathImplCopyWith<_$RequestUpdatePathImpl> get copyWith =>
+      __$$RequestUpdatePathImplCopyWithImpl<_$RequestUpdatePathImpl>(
           this, _$identity);
 
   @override
@@ -816,32 +819,34 @@ class _$_RequestUpdatePath implements _RequestUpdatePath {
 }
 
 abstract class _RequestUpdatePath implements CreateEvent {
-  const factory _RequestUpdatePath(final Path path) = _$_RequestUpdatePath;
+  const factory _RequestUpdatePath(final Path path) = _$RequestUpdatePathImpl;
 
   Path get path;
   @JsonKey(ignore: true)
-  _$$_RequestUpdatePathCopyWith<_$_RequestUpdatePath> get copyWith =>
+  _$$RequestUpdatePathImplCopyWith<_$RequestUpdatePathImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PauseCopyWith<$Res> {
-  factory _$$_PauseCopyWith(_$_Pause value, $Res Function(_$_Pause) then) =
-      __$$_PauseCopyWithImpl<$Res>;
+abstract class _$$PauseImplCopyWith<$Res> {
+  factory _$$PauseImplCopyWith(
+          _$PauseImpl value, $Res Function(_$PauseImpl) then) =
+      __$$PauseImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PauseCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_Pause>
-    implements _$$_PauseCopyWith<$Res> {
-  __$$_PauseCopyWithImpl(_$_Pause _value, $Res Function(_$_Pause) _then)
+class __$$PauseImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$PauseImpl>
+    implements _$$PauseImplCopyWith<$Res> {
+  __$$PauseImplCopyWithImpl(
+      _$PauseImpl _value, $Res Function(_$PauseImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Pause implements _Pause {
-  const _$_Pause();
+class _$PauseImpl implements _Pause {
+  const _$PauseImpl();
 
   @override
   String toString() {
@@ -849,9 +854,9 @@ class _$_Pause implements _Pause {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Pause);
+        (other.runtimeType == runtimeType && other is _$PauseImpl);
   }
 
   @override
@@ -975,28 +980,29 @@ class _$_Pause implements _Pause {
 }
 
 abstract class _Pause implements CreateEvent {
-  const factory _Pause() = _$_Pause;
+  const factory _Pause() = _$PauseImpl;
 }
 
 /// @nodoc
-abstract class _$$_UnPauseCopyWith<$Res> {
-  factory _$$_UnPauseCopyWith(
-          _$_UnPause value, $Res Function(_$_UnPause) then) =
-      __$$_UnPauseCopyWithImpl<$Res>;
+abstract class _$$UnPauseImplCopyWith<$Res> {
+  factory _$$UnPauseImplCopyWith(
+          _$UnPauseImpl value, $Res Function(_$UnPauseImpl) then) =
+      __$$UnPauseImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnPauseCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_UnPause>
-    implements _$$_UnPauseCopyWith<$Res> {
-  __$$_UnPauseCopyWithImpl(_$_UnPause _value, $Res Function(_$_UnPause) _then)
+class __$$UnPauseImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$UnPauseImpl>
+    implements _$$UnPauseImplCopyWith<$Res> {
+  __$$UnPauseImplCopyWithImpl(
+      _$UnPauseImpl _value, $Res Function(_$UnPauseImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UnPause implements _UnPause {
-  const _$_UnPause();
+class _$UnPauseImpl implements _UnPause {
+  const _$UnPauseImpl();
 
   @override
   String toString() {
@@ -1004,9 +1010,9 @@ class _$_UnPause implements _UnPause {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UnPause);
+        (other.runtimeType == runtimeType && other is _$UnPauseImpl);
   }
 
   @override
@@ -1130,24 +1136,24 @@ class _$_UnPause implements _UnPause {
 }
 
 abstract class _UnPause implements CreateEvent {
-  const factory _UnPause() = _$_UnPause;
+  const factory _UnPause() = _$UnPauseImpl;
 }
 
 /// @nodoc
-abstract class _$$_FindTaxonCopyWith<$Res> {
-  factory _$$_FindTaxonCopyWith(
-          _$_FindTaxon value, $Res Function(_$_FindTaxon) then) =
-      __$$_FindTaxonCopyWithImpl<$Res>;
+abstract class _$$FindTaxonImplCopyWith<$Res> {
+  factory _$$FindTaxonImplCopyWith(
+          _$FindTaxonImpl value, $Res Function(_$FindTaxonImpl) then) =
+      __$$FindTaxonImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String name, bool isScientificName});
 }
 
 /// @nodoc
-class __$$_FindTaxonCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_FindTaxon>
-    implements _$$_FindTaxonCopyWith<$Res> {
-  __$$_FindTaxonCopyWithImpl(
-      _$_FindTaxon _value, $Res Function(_$_FindTaxon) _then)
+class __$$FindTaxonImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$FindTaxonImpl>
+    implements _$$FindTaxonImplCopyWith<$Res> {
+  __$$FindTaxonImplCopyWithImpl(
+      _$FindTaxonImpl _value, $Res Function(_$FindTaxonImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1156,7 +1162,7 @@ class __$$_FindTaxonCopyWithImpl<$Res>
     Object? name = null,
     Object? isScientificName = null,
   }) {
-    return _then(_$_FindTaxon(
+    return _then(_$FindTaxonImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1171,8 +1177,8 @@ class __$$_FindTaxonCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FindTaxon implements _FindTaxon {
-  const _$_FindTaxon({required this.name, required this.isScientificName});
+class _$FindTaxonImpl implements _FindTaxon {
+  const _$FindTaxonImpl({required this.name, required this.isScientificName});
 
   @override
   final String name;
@@ -1185,10 +1191,10 @@ class _$_FindTaxon implements _FindTaxon {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FindTaxon &&
+            other is _$FindTaxonImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isScientificName, isScientificName) ||
                 other.isScientificName == isScientificName));
@@ -1200,8 +1206,8 @@ class _$_FindTaxon implements _FindTaxon {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FindTaxonCopyWith<_$_FindTaxon> get copyWith =>
-      __$$_FindTaxonCopyWithImpl<_$_FindTaxon>(this, _$identity);
+  _$$FindTaxonImplCopyWith<_$FindTaxonImpl> get copyWith =>
+      __$$FindTaxonImplCopyWithImpl<_$FindTaxonImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1323,33 +1329,35 @@ class _$_FindTaxon implements _FindTaxon {
 abstract class _FindTaxon implements CreateEvent {
   const factory _FindTaxon(
       {required final String name,
-      required final bool isScientificName}) = _$_FindTaxon;
+      required final bool isScientificName}) = _$FindTaxonImpl;
 
   String get name;
   bool get isScientificName;
   @JsonKey(ignore: true)
-  _$$_FindTaxonCopyWith<_$_FindTaxon> get copyWith =>
+  _$$FindTaxonImplCopyWith<_$FindTaxonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddPicCopyWith<$Res> {
-  factory _$$_AddPicCopyWith(_$_AddPic value, $Res Function(_$_AddPic) then) =
-      __$$_AddPicCopyWithImpl<$Res>;
+abstract class _$$AddPicImplCopyWith<$Res> {
+  factory _$$AddPicImplCopyWith(
+          _$AddPicImpl value, $Res Function(_$AddPicImpl) then) =
+      __$$AddPicImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AddPicCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_AddPic>
-    implements _$$_AddPicCopyWith<$Res> {
-  __$$_AddPicCopyWithImpl(_$_AddPic _value, $Res Function(_$_AddPic) _then)
+class __$$AddPicImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$AddPicImpl>
+    implements _$$AddPicImplCopyWith<$Res> {
+  __$$AddPicImplCopyWithImpl(
+      _$AddPicImpl _value, $Res Function(_$AddPicImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AddPic implements _AddPic {
-  const _$_AddPic();
+class _$AddPicImpl implements _AddPic {
+  const _$AddPicImpl();
 
   @override
   String toString() {
@@ -1357,9 +1365,9 @@ class _$_AddPic implements _AddPic {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AddPic);
+        (other.runtimeType == runtimeType && other is _$AddPicImpl);
   }
 
   @override
@@ -1483,14 +1491,14 @@ class _$_AddPic implements _AddPic {
 }
 
 abstract class _AddPic implements CreateEvent {
-  const factory _AddPic() = _$_AddPic;
+  const factory _AddPic() = _$AddPicImpl;
 }
 
 /// @nodoc
-abstract class _$$_RegisterTaxonCopyWith<$Res> {
-  factory _$$_RegisterTaxonCopyWith(
-          _$_RegisterTaxon value, $Res Function(_$_RegisterTaxon) then) =
-      __$$_RegisterTaxonCopyWithImpl<$Res>;
+abstract class _$$RegisterTaxonImplCopyWith<$Res> {
+  factory _$$RegisterTaxonImplCopyWith(
+          _$RegisterTaxonImpl value, $Res Function(_$RegisterTaxonImpl) then) =
+      __$$RegisterTaxonImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Taxon taxon});
 
@@ -1498,11 +1506,11 @@ abstract class _$$_RegisterTaxonCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RegisterTaxonCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_RegisterTaxon>
-    implements _$$_RegisterTaxonCopyWith<$Res> {
-  __$$_RegisterTaxonCopyWithImpl(
-      _$_RegisterTaxon _value, $Res Function(_$_RegisterTaxon) _then)
+class __$$RegisterTaxonImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$RegisterTaxonImpl>
+    implements _$$RegisterTaxonImplCopyWith<$Res> {
+  __$$RegisterTaxonImplCopyWithImpl(
+      _$RegisterTaxonImpl _value, $Res Function(_$RegisterTaxonImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1510,7 +1518,7 @@ class __$$_RegisterTaxonCopyWithImpl<$Res>
   $Res call({
     Object? taxon = null,
   }) {
-    return _then(_$_RegisterTaxon(
+    return _then(_$RegisterTaxonImpl(
       null == taxon
           ? _value.taxon
           : taxon // ignore: cast_nullable_to_non_nullable
@@ -1529,8 +1537,8 @@ class __$$_RegisterTaxonCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RegisterTaxon implements _RegisterTaxon {
-  const _$_RegisterTaxon(this.taxon);
+class _$RegisterTaxonImpl implements _RegisterTaxon {
+  const _$RegisterTaxonImpl(this.taxon);
 
   @override
   final Taxon taxon;
@@ -1541,10 +1549,10 @@ class _$_RegisterTaxon implements _RegisterTaxon {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RegisterTaxon &&
+            other is _$RegisterTaxonImpl &&
             (identical(other.taxon, taxon) || other.taxon == taxon));
   }
 
@@ -1554,8 +1562,8 @@ class _$_RegisterTaxon implements _RegisterTaxon {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RegisterTaxonCopyWith<_$_RegisterTaxon> get copyWith =>
-      __$$_RegisterTaxonCopyWithImpl<_$_RegisterTaxon>(this, _$identity);
+  _$$RegisterTaxonImplCopyWith<_$RegisterTaxonImpl> get copyWith =>
+      __$$RegisterTaxonImplCopyWithImpl<_$RegisterTaxonImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1675,29 +1683,29 @@ class _$_RegisterTaxon implements _RegisterTaxon {
 }
 
 abstract class _RegisterTaxon implements CreateEvent {
-  const factory _RegisterTaxon(final Taxon taxon) = _$_RegisterTaxon;
+  const factory _RegisterTaxon(final Taxon taxon) = _$RegisterTaxonImpl;
 
   Taxon get taxon;
   @JsonKey(ignore: true)
-  _$$_RegisterTaxonCopyWith<_$_RegisterTaxon> get copyWith =>
+  _$$RegisterTaxonImplCopyWith<_$RegisterTaxonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TaxonRegisteredCopyWith<$Res> {
-  factory _$$_TaxonRegisteredCopyWith(
-          _$_TaxonRegistered value, $Res Function(_$_TaxonRegistered) then) =
-      __$$_TaxonRegisteredCopyWithImpl<$Res>;
+abstract class _$$TaxonRegisteredImplCopyWith<$Res> {
+  factory _$$TaxonRegisteredImplCopyWith(_$TaxonRegisteredImpl value,
+          $Res Function(_$TaxonRegisteredImpl) then) =
+      __$$TaxonRegisteredImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Occurrence> occurrences});
 }
 
 /// @nodoc
-class __$$_TaxonRegisteredCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_TaxonRegistered>
-    implements _$$_TaxonRegisteredCopyWith<$Res> {
-  __$$_TaxonRegisteredCopyWithImpl(
-      _$_TaxonRegistered _value, $Res Function(_$_TaxonRegistered) _then)
+class __$$TaxonRegisteredImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$TaxonRegisteredImpl>
+    implements _$$TaxonRegisteredImplCopyWith<$Res> {
+  __$$TaxonRegisteredImplCopyWithImpl(
+      _$TaxonRegisteredImpl _value, $Res Function(_$TaxonRegisteredImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1705,7 +1713,7 @@ class __$$_TaxonRegisteredCopyWithImpl<$Res>
   $Res call({
     Object? occurrences = null,
   }) {
-    return _then(_$_TaxonRegistered(
+    return _then(_$TaxonRegisteredImpl(
       null == occurrences
           ? _value._occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
@@ -1716,8 +1724,8 @@ class __$$_TaxonRegisteredCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TaxonRegistered implements _TaxonRegistered {
-  const _$_TaxonRegistered(final List<Occurrence> occurrences)
+class _$TaxonRegisteredImpl implements _TaxonRegistered {
+  const _$TaxonRegisteredImpl(final List<Occurrence> occurrences)
       : _occurrences = occurrences;
 
   final List<Occurrence> _occurrences;
@@ -1734,10 +1742,10 @@ class _$_TaxonRegistered implements _TaxonRegistered {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TaxonRegistered &&
+            other is _$TaxonRegisteredImpl &&
             const DeepCollectionEquality()
                 .equals(other._occurrences, _occurrences));
   }
@@ -1749,8 +1757,9 @@ class _$_TaxonRegistered implements _TaxonRegistered {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaxonRegisteredCopyWith<_$_TaxonRegistered> get copyWith =>
-      __$$_TaxonRegisteredCopyWithImpl<_$_TaxonRegistered>(this, _$identity);
+  _$$TaxonRegisteredImplCopyWith<_$TaxonRegisteredImpl> get copyWith =>
+      __$$TaxonRegisteredImplCopyWithImpl<_$TaxonRegisteredImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1871,19 +1880,19 @@ class _$_TaxonRegistered implements _TaxonRegistered {
 
 abstract class _TaxonRegistered implements CreateEvent {
   const factory _TaxonRegistered(final List<Occurrence> occurrences) =
-      _$_TaxonRegistered;
+      _$TaxonRegisteredImpl;
 
   List<Occurrence> get occurrences;
   @JsonKey(ignore: true)
-  _$$_TaxonRegisteredCopyWith<_$_TaxonRegistered> get copyWith =>
+  _$$TaxonRegisteredImplCopyWith<_$TaxonRegisteredImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SaveTrailCopyWith<$Res> {
-  factory _$$_SaveTrailCopyWith(
-          _$_SaveTrail value, $Res Function(_$_SaveTrail) then) =
-      __$$_SaveTrailCopyWithImpl<$Res>;
+abstract class _$$SaveTrailImplCopyWith<$Res> {
+  factory _$$SaveTrailImplCopyWith(
+          _$SaveTrailImpl value, $Res Function(_$SaveTrailImpl) then) =
+      __$$SaveTrailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CreateTrail trail});
 
@@ -1891,11 +1900,11 @@ abstract class _$$_SaveTrailCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SaveTrailCopyWithImpl<$Res>
-    extends _$CreateEventCopyWithImpl<$Res, _$_SaveTrail>
-    implements _$$_SaveTrailCopyWith<$Res> {
-  __$$_SaveTrailCopyWithImpl(
-      _$_SaveTrail _value, $Res Function(_$_SaveTrail) _then)
+class __$$SaveTrailImplCopyWithImpl<$Res>
+    extends _$CreateEventCopyWithImpl<$Res, _$SaveTrailImpl>
+    implements _$$SaveTrailImplCopyWith<$Res> {
+  __$$SaveTrailImplCopyWithImpl(
+      _$SaveTrailImpl _value, $Res Function(_$SaveTrailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1903,7 +1912,7 @@ class __$$_SaveTrailCopyWithImpl<$Res>
   $Res call({
     Object? trail = null,
   }) {
-    return _then(_$_SaveTrail(
+    return _then(_$SaveTrailImpl(
       null == trail
           ? _value.trail
           : trail // ignore: cast_nullable_to_non_nullable
@@ -1922,8 +1931,8 @@ class __$$_SaveTrailCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SaveTrail implements _SaveTrail {
-  const _$_SaveTrail(this.trail);
+class _$SaveTrailImpl implements _SaveTrail {
+  const _$SaveTrailImpl(this.trail);
 
   @override
   final CreateTrail trail;
@@ -1934,10 +1943,10 @@ class _$_SaveTrail implements _SaveTrail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SaveTrail &&
+            other is _$SaveTrailImpl &&
             (identical(other.trail, trail) || other.trail == trail));
   }
 
@@ -1947,8 +1956,8 @@ class _$_SaveTrail implements _SaveTrail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SaveTrailCopyWith<_$_SaveTrail> get copyWith =>
-      __$$_SaveTrailCopyWithImpl<_$_SaveTrail>(this, _$identity);
+  _$$SaveTrailImplCopyWith<_$SaveTrailImpl> get copyWith =>
+      __$$SaveTrailImplCopyWithImpl<_$SaveTrailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2068,11 +2077,11 @@ class _$_SaveTrail implements _SaveTrail {
 }
 
 abstract class _SaveTrail implements CreateEvent {
-  const factory _SaveTrail(final CreateTrail trail) = _$_SaveTrail;
+  const factory _SaveTrail(final CreateTrail trail) = _$SaveTrailImpl;
 
   CreateTrail get trail;
   @JsonKey(ignore: true)
-  _$$_SaveTrailCopyWith<_$_SaveTrail> get copyWith =>
+  _$$SaveTrailImplCopyWith<_$SaveTrailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2203,24 +2212,25 @@ class _$CreateStateCopyWithImpl<$Res, $Val extends CreateState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -2228,9 +2238,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -2366,29 +2376,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements CreateState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_StartTrailCopyWith<$Res> {
-  factory _$$_StartTrailCopyWith(
-          _$_StartTrail value, $Res Function(_$_StartTrail) then) =
-      __$$_StartTrailCopyWithImpl<$Res>;
+abstract class _$$StartTrailImplCopyWith<$Res> {
+  factory _$$StartTrailImplCopyWith(
+          _$StartTrailImpl value, $Res Function(_$StartTrailImpl) then) =
+      __$$StartTrailImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartTrailCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_StartTrail>
-    implements _$$_StartTrailCopyWith<$Res> {
-  __$$_StartTrailCopyWithImpl(
-      _$_StartTrail _value, $Res Function(_$_StartTrail) _then)
+class __$$StartTrailImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$StartTrailImpl>
+    implements _$$StartTrailImplCopyWith<$Res> {
+  __$$StartTrailImplCopyWithImpl(
+      _$StartTrailImpl _value, $Res Function(_$StartTrailImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_StartTrail implements _StartTrail {
-  const _$_StartTrail();
+class _$StartTrailImpl implements _StartTrail {
+  const _$StartTrailImpl();
 
   @override
   String toString() {
@@ -2396,9 +2406,9 @@ class _$_StartTrail implements _StartTrail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StartTrail);
+        (other.runtimeType == runtimeType && other is _$StartTrailImpl);
   }
 
   @override
@@ -2534,29 +2544,29 @@ class _$_StartTrail implements _StartTrail {
 }
 
 abstract class _StartTrail implements CreateState {
-  const factory _StartTrail() = _$_StartTrail;
+  const factory _StartTrail() = _$StartTrailImpl;
 }
 
 /// @nodoc
-abstract class _$$_RegisteringNameCopyWith<$Res> {
-  factory _$$_RegisteringNameCopyWith(
-          _$_RegisteringName value, $Res Function(_$_RegisteringName) then) =
-      __$$_RegisteringNameCopyWithImpl<$Res>;
+abstract class _$$RegisteringNameImplCopyWith<$Res> {
+  factory _$$RegisteringNameImplCopyWith(_$RegisteringNameImpl value,
+          $Res Function(_$RegisteringNameImpl) then) =
+      __$$RegisteringNameImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RegisteringNameCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_RegisteringName>
-    implements _$$_RegisteringNameCopyWith<$Res> {
-  __$$_RegisteringNameCopyWithImpl(
-      _$_RegisteringName _value, $Res Function(_$_RegisteringName) _then)
+class __$$RegisteringNameImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$RegisteringNameImpl>
+    implements _$$RegisteringNameImplCopyWith<$Res> {
+  __$$RegisteringNameImplCopyWithImpl(
+      _$RegisteringNameImpl _value, $Res Function(_$RegisteringNameImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_RegisteringName implements _RegisteringName {
-  const _$_RegisteringName();
+class _$RegisteringNameImpl implements _RegisteringName {
+  const _$RegisteringNameImpl();
 
   @override
   String toString() {
@@ -2564,9 +2574,9 @@ class _$_RegisteringName implements _RegisteringName {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RegisteringName);
+        (other.runtimeType == runtimeType && other is _$RegisteringNameImpl);
   }
 
   @override
@@ -2702,24 +2712,24 @@ class _$_RegisteringName implements _RegisteringName {
 }
 
 abstract class _RegisteringName implements CreateState {
-  const factory _RegisteringName() = _$_RegisteringName;
+  const factory _RegisteringName() = _$RegisteringNameImpl;
 }
 
 /// @nodoc
-abstract class _$$_NameRegisteredCopyWith<$Res> {
-  factory _$$_NameRegisteredCopyWith(
-          _$_NameRegistered value, $Res Function(_$_NameRegistered) then) =
-      __$$_NameRegisteredCopyWithImpl<$Res>;
+abstract class _$$NameRegisteredImplCopyWith<$Res> {
+  factory _$$NameRegisteredImplCopyWith(_$NameRegisteredImpl value,
+          $Res Function(_$NameRegisteredImpl) then) =
+      __$$NameRegisteredImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class __$$_NameRegisteredCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_NameRegistered>
-    implements _$$_NameRegisteredCopyWith<$Res> {
-  __$$_NameRegisteredCopyWithImpl(
-      _$_NameRegistered _value, $Res Function(_$_NameRegistered) _then)
+class __$$NameRegisteredImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$NameRegisteredImpl>
+    implements _$$NameRegisteredImplCopyWith<$Res> {
+  __$$NameRegisteredImplCopyWithImpl(
+      _$NameRegisteredImpl _value, $Res Function(_$NameRegisteredImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2727,7 +2737,7 @@ class __$$_NameRegisteredCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_NameRegistered(
+    return _then(_$NameRegisteredImpl(
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -2738,8 +2748,8 @@ class __$$_NameRegisteredCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NameRegistered implements _NameRegistered {
-  const _$_NameRegistered(this.name);
+class _$NameRegisteredImpl implements _NameRegistered {
+  const _$NameRegisteredImpl(this.name);
 
   @override
   final String name;
@@ -2750,10 +2760,10 @@ class _$_NameRegistered implements _NameRegistered {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NameRegistered &&
+            other is _$NameRegisteredImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -2763,8 +2773,9 @@ class _$_NameRegistered implements _NameRegistered {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NameRegisteredCopyWith<_$_NameRegistered> get copyWith =>
-      __$$_NameRegisteredCopyWithImpl<_$_NameRegistered>(this, _$identity);
+  _$$NameRegisteredImplCopyWith<_$NameRegisteredImpl> get copyWith =>
+      __$$NameRegisteredImplCopyWithImpl<_$NameRegisteredImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2896,34 +2907,34 @@ class _$_NameRegistered implements _NameRegistered {
 }
 
 abstract class _NameRegistered implements CreateState {
-  const factory _NameRegistered(final String name) = _$_NameRegistered;
+  const factory _NameRegistered(final String name) = _$NameRegisteredImpl;
 
   String get name;
   @JsonKey(ignore: true)
-  _$$_NameRegisteredCopyWith<_$_NameRegistered> get copyWith =>
+  _$$NameRegisteredImplCopyWith<_$NameRegisteredImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_StartPathCopyWith<$Res> {
-  factory _$$_StartPathCopyWith(
-          _$_StartPath value, $Res Function(_$_StartPath) then) =
-      __$$_StartPathCopyWithImpl<$Res>;
+abstract class _$$StartPathImplCopyWith<$Res> {
+  factory _$$StartPathImplCopyWith(
+          _$StartPathImpl value, $Res Function(_$StartPathImpl) then) =
+      __$$StartPathImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartPathCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_StartPath>
-    implements _$$_StartPathCopyWith<$Res> {
-  __$$_StartPathCopyWithImpl(
-      _$_StartPath _value, $Res Function(_$_StartPath) _then)
+class __$$StartPathImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$StartPathImpl>
+    implements _$$StartPathImplCopyWith<$Res> {
+  __$$StartPathImplCopyWithImpl(
+      _$StartPathImpl _value, $Res Function(_$StartPathImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_StartPath implements _StartPath {
-  const _$_StartPath();
+class _$StartPathImpl implements _StartPath {
+  const _$StartPathImpl();
 
   @override
   String toString() {
@@ -2931,9 +2942,9 @@ class _$_StartPath implements _StartPath {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StartPath);
+        (other.runtimeType == runtimeType && other is _$StartPathImpl);
   }
 
   @override
@@ -3069,14 +3080,14 @@ class _$_StartPath implements _StartPath {
 }
 
 abstract class _StartPath implements CreateState {
-  const factory _StartPath() = _$_StartPath;
+  const factory _StartPath() = _$StartPathImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdatePathCopyWith<$Res> {
-  factory _$$_UpdatePathCopyWith(
-          _$_UpdatePath value, $Res Function(_$_UpdatePath) then) =
-      __$$_UpdatePathCopyWithImpl<$Res>;
+abstract class _$$UpdatePathImplCopyWith<$Res> {
+  factory _$$UpdatePathImplCopyWith(
+          _$UpdatePathImpl value, $Res Function(_$UpdatePathImpl) then) =
+      __$$UpdatePathImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Path path});
 
@@ -3084,11 +3095,11 @@ abstract class _$$_UpdatePathCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdatePathCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_UpdatePath>
-    implements _$$_UpdatePathCopyWith<$Res> {
-  __$$_UpdatePathCopyWithImpl(
-      _$_UpdatePath _value, $Res Function(_$_UpdatePath) _then)
+class __$$UpdatePathImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$UpdatePathImpl>
+    implements _$$UpdatePathImplCopyWith<$Res> {
+  __$$UpdatePathImplCopyWithImpl(
+      _$UpdatePathImpl _value, $Res Function(_$UpdatePathImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3096,7 +3107,7 @@ class __$$_UpdatePathCopyWithImpl<$Res>
   $Res call({
     Object? path = null,
   }) {
-    return _then(_$_UpdatePath(
+    return _then(_$UpdatePathImpl(
       null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -3115,8 +3126,8 @@ class __$$_UpdatePathCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdatePath implements _UpdatePath {
-  const _$_UpdatePath(this.path);
+class _$UpdatePathImpl implements _UpdatePath {
+  const _$UpdatePathImpl(this.path);
 
   @override
   final Path path;
@@ -3127,10 +3138,10 @@ class _$_UpdatePath implements _UpdatePath {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdatePath &&
+            other is _$UpdatePathImpl &&
             (identical(other.path, path) || other.path == path));
   }
 
@@ -3140,8 +3151,8 @@ class _$_UpdatePath implements _UpdatePath {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdatePathCopyWith<_$_UpdatePath> get copyWith =>
-      __$$_UpdatePathCopyWithImpl<_$_UpdatePath>(this, _$identity);
+  _$$UpdatePathImplCopyWith<_$UpdatePathImpl> get copyWith =>
+      __$$UpdatePathImplCopyWithImpl<_$UpdatePathImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3273,29 +3284,29 @@ class _$_UpdatePath implements _UpdatePath {
 }
 
 abstract class _UpdatePath implements CreateState {
-  const factory _UpdatePath(final Path path) = _$_UpdatePath;
+  const factory _UpdatePath(final Path path) = _$UpdatePathImpl;
 
   Path get path;
   @JsonKey(ignore: true)
-  _$$_UpdatePathCopyWith<_$_UpdatePath> get copyWith =>
+  _$$UpdatePathImplCopyWith<_$UpdatePathImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TaxonAddedCopyWith<$Res> {
-  factory _$$_TaxonAddedCopyWith(
-          _$_TaxonAdded value, $Res Function(_$_TaxonAdded) then) =
-      __$$_TaxonAddedCopyWithImpl<$Res>;
+abstract class _$$TaxonAddedImplCopyWith<$Res> {
+  factory _$$TaxonAddedImplCopyWith(
+          _$TaxonAddedImpl value, $Res Function(_$TaxonAddedImpl) then) =
+      __$$TaxonAddedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Occurrence> occurrences});
 }
 
 /// @nodoc
-class __$$_TaxonAddedCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_TaxonAdded>
-    implements _$$_TaxonAddedCopyWith<$Res> {
-  __$$_TaxonAddedCopyWithImpl(
-      _$_TaxonAdded _value, $Res Function(_$_TaxonAdded) _then)
+class __$$TaxonAddedImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$TaxonAddedImpl>
+    implements _$$TaxonAddedImplCopyWith<$Res> {
+  __$$TaxonAddedImplCopyWithImpl(
+      _$TaxonAddedImpl _value, $Res Function(_$TaxonAddedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3303,7 +3314,7 @@ class __$$_TaxonAddedCopyWithImpl<$Res>
   $Res call({
     Object? occurrences = null,
   }) {
-    return _then(_$_TaxonAdded(
+    return _then(_$TaxonAddedImpl(
       null == occurrences
           ? _value._occurrences
           : occurrences // ignore: cast_nullable_to_non_nullable
@@ -3314,8 +3325,8 @@ class __$$_TaxonAddedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TaxonAdded implements _TaxonAdded {
-  const _$_TaxonAdded(final List<Occurrence> occurrences)
+class _$TaxonAddedImpl implements _TaxonAdded {
+  const _$TaxonAddedImpl(final List<Occurrence> occurrences)
       : _occurrences = occurrences;
 
   final List<Occurrence> _occurrences;
@@ -3332,10 +3343,10 @@ class _$_TaxonAdded implements _TaxonAdded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TaxonAdded &&
+            other is _$TaxonAddedImpl &&
             const DeepCollectionEquality()
                 .equals(other._occurrences, _occurrences));
   }
@@ -3347,8 +3358,8 @@ class _$_TaxonAdded implements _TaxonAdded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaxonAddedCopyWith<_$_TaxonAdded> get copyWith =>
-      __$$_TaxonAddedCopyWithImpl<_$_TaxonAdded>(this, _$identity);
+  _$$TaxonAddedImplCopyWith<_$TaxonAddedImpl> get copyWith =>
+      __$$TaxonAddedImplCopyWithImpl<_$TaxonAddedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3480,34 +3491,35 @@ class _$_TaxonAdded implements _TaxonAdded {
 }
 
 abstract class _TaxonAdded implements CreateState {
-  const factory _TaxonAdded(final List<Occurrence> occurrences) = _$_TaxonAdded;
+  const factory _TaxonAdded(final List<Occurrence> occurrences) =
+      _$TaxonAddedImpl;
 
   List<Occurrence> get occurrences;
   @JsonKey(ignore: true)
-  _$$_TaxonAddedCopyWith<_$_TaxonAdded> get copyWith =>
+  _$$TaxonAddedImplCopyWith<_$TaxonAddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddPicStartCopyWith<$Res> {
-  factory _$$_AddPicStartCopyWith(
-          _$_AddPicStart value, $Res Function(_$_AddPicStart) then) =
-      __$$_AddPicStartCopyWithImpl<$Res>;
+abstract class _$$AddPicStartImplCopyWith<$Res> {
+  factory _$$AddPicStartImplCopyWith(
+          _$AddPicStartImpl value, $Res Function(_$AddPicStartImpl) then) =
+      __$$AddPicStartImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AddPicStartCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_AddPicStart>
-    implements _$$_AddPicStartCopyWith<$Res> {
-  __$$_AddPicStartCopyWithImpl(
-      _$_AddPicStart _value, $Res Function(_$_AddPicStart) _then)
+class __$$AddPicStartImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$AddPicStartImpl>
+    implements _$$AddPicStartImplCopyWith<$Res> {
+  __$$AddPicStartImplCopyWithImpl(
+      _$AddPicStartImpl _value, $Res Function(_$AddPicStartImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AddPicStart implements _AddPicStart {
-  const _$_AddPicStart();
+class _$AddPicStartImpl implements _AddPicStart {
+  const _$AddPicStartImpl();
 
   @override
   String toString() {
@@ -3515,9 +3527,9 @@ class _$_AddPicStart implements _AddPicStart {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AddPicStart);
+        (other.runtimeType == runtimeType && other is _$AddPicStartImpl);
   }
 
   @override
@@ -3653,29 +3665,29 @@ class _$_AddPicStart implements _AddPicStart {
 }
 
 abstract class _AddPicStart implements CreateState {
-  const factory _AddPicStart() = _$_AddPicStart;
+  const factory _AddPicStart() = _$AddPicStartImpl;
 }
 
 /// @nodoc
-abstract class _$$_AddPicLoadingCopyWith<$Res> {
-  factory _$$_AddPicLoadingCopyWith(
-          _$_AddPicLoading value, $Res Function(_$_AddPicLoading) then) =
-      __$$_AddPicLoadingCopyWithImpl<$Res>;
+abstract class _$$AddPicLoadingImplCopyWith<$Res> {
+  factory _$$AddPicLoadingImplCopyWith(
+          _$AddPicLoadingImpl value, $Res Function(_$AddPicLoadingImpl) then) =
+      __$$AddPicLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AddPicLoadingCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_AddPicLoading>
-    implements _$$_AddPicLoadingCopyWith<$Res> {
-  __$$_AddPicLoadingCopyWithImpl(
-      _$_AddPicLoading _value, $Res Function(_$_AddPicLoading) _then)
+class __$$AddPicLoadingImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$AddPicLoadingImpl>
+    implements _$$AddPicLoadingImplCopyWith<$Res> {
+  __$$AddPicLoadingImplCopyWithImpl(
+      _$AddPicLoadingImpl _value, $Res Function(_$AddPicLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AddPicLoading implements _AddPicLoading {
-  const _$_AddPicLoading();
+class _$AddPicLoadingImpl implements _AddPicLoading {
+  const _$AddPicLoadingImpl();
 
   @override
   String toString() {
@@ -3683,9 +3695,9 @@ class _$_AddPicLoading implements _AddPicLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AddPicLoading);
+        (other.runtimeType == runtimeType && other is _$AddPicLoadingImpl);
   }
 
   @override
@@ -3821,29 +3833,29 @@ class _$_AddPicLoading implements _AddPicLoading {
 }
 
 abstract class _AddPicLoading implements CreateState {
-  const factory _AddPicLoading() = _$_AddPicLoading;
+  const factory _AddPicLoading() = _$AddPicLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_AddPicErrorCopyWith<$Res> {
-  factory _$$_AddPicErrorCopyWith(
-          _$_AddPicError value, $Res Function(_$_AddPicError) then) =
-      __$$_AddPicErrorCopyWithImpl<$Res>;
+abstract class _$$AddPicErrorImplCopyWith<$Res> {
+  factory _$$AddPicErrorImplCopyWith(
+          _$AddPicErrorImpl value, $Res Function(_$AddPicErrorImpl) then) =
+      __$$AddPicErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AddPicErrorCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_AddPicError>
-    implements _$$_AddPicErrorCopyWith<$Res> {
-  __$$_AddPicErrorCopyWithImpl(
-      _$_AddPicError _value, $Res Function(_$_AddPicError) _then)
+class __$$AddPicErrorImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$AddPicErrorImpl>
+    implements _$$AddPicErrorImplCopyWith<$Res> {
+  __$$AddPicErrorImplCopyWithImpl(
+      _$AddPicErrorImpl _value, $Res Function(_$AddPicErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AddPicError implements _AddPicError {
-  const _$_AddPicError();
+class _$AddPicErrorImpl implements _AddPicError {
+  const _$AddPicErrorImpl();
 
   @override
   String toString() {
@@ -3851,9 +3863,9 @@ class _$_AddPicError implements _AddPicError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AddPicError);
+        (other.runtimeType == runtimeType && other is _$AddPicErrorImpl);
   }
 
   @override
@@ -3989,29 +4001,29 @@ class _$_AddPicError implements _AddPicError {
 }
 
 abstract class _AddPicError implements CreateState {
-  const factory _AddPicError() = _$_AddPicError;
+  const factory _AddPicError() = _$AddPicErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_SavingTrailCopyWith<$Res> {
-  factory _$$_SavingTrailCopyWith(
-          _$_SavingTrail value, $Res Function(_$_SavingTrail) then) =
-      __$$_SavingTrailCopyWithImpl<$Res>;
+abstract class _$$SavingTrailImplCopyWith<$Res> {
+  factory _$$SavingTrailImplCopyWith(
+          _$SavingTrailImpl value, $Res Function(_$SavingTrailImpl) then) =
+      __$$SavingTrailImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SavingTrailCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_SavingTrail>
-    implements _$$_SavingTrailCopyWith<$Res> {
-  __$$_SavingTrailCopyWithImpl(
-      _$_SavingTrail _value, $Res Function(_$_SavingTrail) _then)
+class __$$SavingTrailImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$SavingTrailImpl>
+    implements _$$SavingTrailImplCopyWith<$Res> {
+  __$$SavingTrailImplCopyWithImpl(
+      _$SavingTrailImpl _value, $Res Function(_$SavingTrailImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SavingTrail implements _SavingTrail {
-  const _$_SavingTrail();
+class _$SavingTrailImpl implements _SavingTrail {
+  const _$SavingTrailImpl();
 
   @override
   String toString() {
@@ -4019,9 +4031,9 @@ class _$_SavingTrail implements _SavingTrail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SavingTrail);
+        (other.runtimeType == runtimeType && other is _$SavingTrailImpl);
   }
 
   @override
@@ -4157,29 +4169,29 @@ class _$_SavingTrail implements _SavingTrail {
 }
 
 abstract class _SavingTrail implements CreateState {
-  const factory _SavingTrail() = _$_SavingTrail;
+  const factory _SavingTrail() = _$SavingTrailImpl;
 }
 
 /// @nodoc
-abstract class _$$_TrailSavedCopyWith<$Res> {
-  factory _$$_TrailSavedCopyWith(
-          _$_TrailSaved value, $Res Function(_$_TrailSaved) then) =
-      __$$_TrailSavedCopyWithImpl<$Res>;
+abstract class _$$TrailSavedImplCopyWith<$Res> {
+  factory _$$TrailSavedImplCopyWith(
+          _$TrailSavedImpl value, $Res Function(_$TrailSavedImpl) then) =
+      __$$TrailSavedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TrailSavedCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_TrailSaved>
-    implements _$$_TrailSavedCopyWith<$Res> {
-  __$$_TrailSavedCopyWithImpl(
-      _$_TrailSaved _value, $Res Function(_$_TrailSaved) _then)
+class __$$TrailSavedImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$TrailSavedImpl>
+    implements _$$TrailSavedImplCopyWith<$Res> {
+  __$$TrailSavedImplCopyWithImpl(
+      _$TrailSavedImpl _value, $Res Function(_$TrailSavedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TrailSaved implements _TrailSaved {
-  const _$_TrailSaved();
+class _$TrailSavedImpl implements _TrailSaved {
+  const _$TrailSavedImpl();
 
   @override
   String toString() {
@@ -4187,9 +4199,9 @@ class _$_TrailSaved implements _TrailSaved {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TrailSaved);
+        (other.runtimeType == runtimeType && other is _$TrailSavedImpl);
   }
 
   @override
@@ -4325,24 +4337,24 @@ class _$_TrailSaved implements _TrailSaved {
 }
 
 abstract class _TrailSaved implements CreateState {
-  const factory _TrailSaved() = _$_TrailSaved;
+  const factory _TrailSaved() = _$TrailSavedImpl;
 }
 
 /// @nodoc
-abstract class _$$_TrailSaveErrorCopyWith<$Res> {
-  factory _$$_TrailSaveErrorCopyWith(
-          _$_TrailSaveError value, $Res Function(_$_TrailSaveError) then) =
-      __$$_TrailSaveErrorCopyWithImpl<$Res>;
+abstract class _$$TrailSaveErrorImplCopyWith<$Res> {
+  factory _$$TrailSaveErrorImplCopyWith(_$TrailSaveErrorImpl value,
+          $Res Function(_$TrailSaveErrorImpl) then) =
+      __$$TrailSaveErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
-class __$$_TrailSaveErrorCopyWithImpl<$Res>
-    extends _$CreateStateCopyWithImpl<$Res, _$_TrailSaveError>
-    implements _$$_TrailSaveErrorCopyWith<$Res> {
-  __$$_TrailSaveErrorCopyWithImpl(
-      _$_TrailSaveError _value, $Res Function(_$_TrailSaveError) _then)
+class __$$TrailSaveErrorImplCopyWithImpl<$Res>
+    extends _$CreateStateCopyWithImpl<$Res, _$TrailSaveErrorImpl>
+    implements _$$TrailSaveErrorImplCopyWith<$Res> {
+  __$$TrailSaveErrorImplCopyWithImpl(
+      _$TrailSaveErrorImpl _value, $Res Function(_$TrailSaveErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4350,7 +4362,7 @@ class __$$_TrailSaveErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_$_TrailSaveError(
+    return _then(_$TrailSaveErrorImpl(
       freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -4361,8 +4373,8 @@ class __$$_TrailSaveErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TrailSaveError implements _TrailSaveError {
-  const _$_TrailSaveError(this.message);
+class _$TrailSaveErrorImpl implements _TrailSaveError {
+  const _$TrailSaveErrorImpl(this.message);
 
   @override
   final String? message;
@@ -4373,10 +4385,10 @@ class _$_TrailSaveError implements _TrailSaveError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrailSaveError &&
+            other is _$TrailSaveErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -4386,8 +4398,9 @@ class _$_TrailSaveError implements _TrailSaveError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrailSaveErrorCopyWith<_$_TrailSaveError> get copyWith =>
-      __$$_TrailSaveErrorCopyWithImpl<_$_TrailSaveError>(this, _$identity);
+  _$$TrailSaveErrorImplCopyWith<_$TrailSaveErrorImpl> get copyWith =>
+      __$$TrailSaveErrorImplCopyWithImpl<_$TrailSaveErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4519,10 +4532,10 @@ class _$_TrailSaveError implements _TrailSaveError {
 }
 
 abstract class _TrailSaveError implements CreateState {
-  const factory _TrailSaveError(final String? message) = _$_TrailSaveError;
+  const factory _TrailSaveError(final String? message) = _$TrailSaveErrorImpl;
 
   String? get message;
   @JsonKey(ignore: true)
-  _$$_TrailSaveErrorCopyWith<_$_TrailSaveError> get copyWith =>
+  _$$TrailSaveErrorImplCopyWith<_$TrailSaveErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -52,17 +52,17 @@ class OccurenceCreateAdapter extends TypeAdapter<OccurrenceCreate> {
           typeId == other.typeId;
 }
 
-class CreateTrailAdapter extends TypeAdapter<_$_CreateTrail> {
+class CreateTrailAdapter extends TypeAdapter<_$CreateTrailImpl> {
   @override
   final int typeId = 50;
 
   @override
-  _$_CreateTrail read(BinaryReader reader) {
+  _$CreateTrailImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_CreateTrail(
+    return _$CreateTrailImpl(
       name: fields[0] as String,
       position: fields[1] as SavePosition,
       occurrences: (fields[2] as List).cast<Occurrence>(),
@@ -73,7 +73,7 @@ class CreateTrailAdapter extends TypeAdapter<_$_CreateTrail> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_CreateTrail obj) {
+  void write(BinaryWriter writer, _$CreateTrailImpl obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
@@ -101,24 +101,24 @@ class CreateTrailAdapter extends TypeAdapter<_$_CreateTrail> {
           typeId == other.typeId;
 }
 
-class SavePositionAdapter extends TypeAdapter<_$_SavePosition> {
+class SavePositionAdapter extends TypeAdapter<_$SavePositionImpl> {
   @override
   final int typeId = 55;
 
   @override
-  _$_SavePosition read(BinaryReader reader) {
+  _$SavePositionImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_SavePosition(
+    return _$SavePositionImpl(
       start: fields[0] as LatLng,
       end: fields[1] as LatLng,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_SavePosition obj) {
+  void write(BinaryWriter writer, _$SavePositionImpl obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -142,8 +142,8 @@ class SavePositionAdapter extends TypeAdapter<_$_SavePosition> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CreateTrail _$$_CreateTrailFromJson(Map<String, dynamic> json) =>
-    _$_CreateTrail(
+_$CreateTrailImpl _$$CreateTrailImplFromJson(Map<String, dynamic> json) =>
+    _$CreateTrailImpl(
       name: json['name'] as String,
       position: SavePosition.fromJson(json['position'] as Map<String, dynamic>),
       occurrences: (json['occurrences'] as List<dynamic>?)
@@ -153,14 +153,14 @@ _$_CreateTrail _$$_CreateTrailFromJson(Map<String, dynamic> json) =>
       path: json['path'] == null
           ? const Path()
           : Path.fromJson(json['path'] as Map<String, dynamic>),
-      prm: json['prm'] as int? ?? -1,
+      prm: (json['prm'] as num?)?.toInt() ?? -1,
       bestSeason: (json['best_season'] as List<dynamic>?)
               ?.map((e) => e as bool)
               .toList() ??
           const [false, false, false, false],
     );
 
-Map<String, dynamic> _$$_CreateTrailToJson(_$_CreateTrail instance) =>
+Map<String, dynamic> _$$CreateTrailImplToJson(_$CreateTrailImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'position': instance.position,
@@ -170,16 +170,18 @@ Map<String, dynamic> _$$_CreateTrailToJson(_$_CreateTrail instance) =>
       'best_season': instance.bestSeason,
     };
 
-_$_OccurrenceCreate _$$_OccurrenceCreateFromJson(Map<String, dynamic> json) =>
-    _$_OccurrenceCreate(
+_$OccurrenceCreateImpl _$$OccurrenceCreateImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OccurrenceCreateImpl(
       position: const LatLngConverter().fromJson(json['position']),
       scientificName: json['scientific_name'] as String?,
-      nameId: json['name_id'] as int,
+      nameId: (json['name_id'] as num).toInt(),
       taxonRepository: json['taxon_repository'] as String,
       imageId: json['image_id'] as String?,
     );
 
-Map<String, dynamic> _$$_OccurrenceCreateToJson(_$_OccurrenceCreate instance) =>
+Map<String, dynamic> _$$OccurrenceCreateImplToJson(
+        _$OccurrenceCreateImpl instance) =>
     <String, dynamic>{
       'position': const LatLngConverter().toJson(instance.position),
       'scientific_name': instance.scientificName,
@@ -188,13 +190,13 @@ Map<String, dynamic> _$$_OccurrenceCreateToJson(_$_OccurrenceCreate instance) =>
       'image_id': instance.imageId,
     };
 
-_$_SavePosition _$$_SavePositionFromJson(Map<String, dynamic> json) =>
-    _$_SavePosition(
+_$SavePositionImpl _$$SavePositionImplFromJson(Map<String, dynamic> json) =>
+    _$SavePositionImpl(
       start: const LatLngConverter().fromJson(json['start']),
       end: const LatLngConverter().fromJson(json['end']),
     );
 
-Map<String, dynamic> _$$_SavePositionToJson(_$_SavePosition instance) =>
+Map<String, dynamic> _$$SavePositionImplToJson(_$SavePositionImpl instance) =>
     <String, dynamic>{
       'start': const LatLngConverter().toJson(instance.start),
       'end': const LatLngConverter().toJson(instance.end),

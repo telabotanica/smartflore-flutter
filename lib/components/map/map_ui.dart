@@ -107,7 +107,7 @@ class _MapUIState extends State<MapUI> {
                 ),
               )),
           AnimatedPositioned(
-              top: (widget.mapMode == MapMode.trail) ? 20 : -100,
+              top: (widget.mapMode == MapMode.trail) ? 20 : -200,
               curve: Curves.easeInOutCubic,
               duration: const Duration(milliseconds: 300),
               child: SafeArea(
@@ -145,7 +145,7 @@ class _MapUIState extends State<MapUI> {
           AnimatedPositioned(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOutCubic,
-              bottom: (widget.mapMode == MapMode.create) ? 20 : -100,
+              bottom: (widget.mapMode == MapMode.create) ? 20 : -200,
               left: 20,
               child: SafeArea(
                 child: SizedBox(

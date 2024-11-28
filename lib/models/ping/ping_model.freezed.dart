@@ -12,7 +12,7 @@ part of 'ping_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Ping _$PingFromJson(Map<String, dynamic> json) {
   return _Ping.fromJson(json);
@@ -100,9 +100,10 @@ class _$PingCopyWithImpl<$Res, $Val extends Ping>
 }
 
 /// @nodoc
-abstract class _$$_PingCopyWith<$Res> implements $PingCopyWith<$Res> {
-  factory _$$_PingCopyWith(_$_Ping value, $Res Function(_$_Ping) then) =
-      __$$_PingCopyWithImpl<$Res>;
+abstract class _$$PingImplCopyWith<$Res> implements $PingCopyWith<$Res> {
+  factory _$$PingImplCopyWith(
+          _$PingImpl value, $Res Function(_$PingImpl) then) =
+      __$$PingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,9 +116,10 @@ abstract class _$$_PingCopyWith<$Res> implements $PingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PingCopyWithImpl<$Res> extends _$PingCopyWithImpl<$Res, _$_Ping>
-    implements _$$_PingCopyWith<$Res> {
-  __$$_PingCopyWithImpl(_$_Ping _value, $Res Function(_$_Ping) _then)
+class __$$PingImplCopyWithImpl<$Res>
+    extends _$PingCopyWithImpl<$Res, _$PingImpl>
+    implements _$$PingImplCopyWith<$Res> {
+  __$$PingImplCopyWithImpl(_$PingImpl _value, $Res Function(_$PingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +132,7 @@ class __$$_PingCopyWithImpl<$Res> extends _$PingCopyWithImpl<$Res, _$_Ping>
     Object? date = null,
     Object? trail = null,
   }) {
-    return _then(_$_Ping(
+    return _then(_$PingImpl(
       isLogged: null == isLogged
           ? _value.isLogged
           : isLogged // ignore: cast_nullable_to_non_nullable
@@ -161,8 +163,8 @@ class __$$_PingCopyWithImpl<$Res> extends _$PingCopyWithImpl<$Res, _$_Ping>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Ping implements _Ping {
-  const _$_Ping(
+class _$PingImpl implements _Ping {
+  const _$PingImpl(
       {@JsonKey(name: 'is_logged') required this.isLogged,
       @JsonKey(name: 'is_located') required this.isLocated,
       @JsonKey(name: 'distance_from_trail') this.distanceFromTrail,
@@ -170,7 +172,8 @@ class _$_Ping implements _Ping {
       required this.date,
       required this.trail});
 
-  factory _$_Ping.fromJson(Map<String, dynamic> json) => _$$_PingFromJson(json);
+  factory _$PingImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PingImplFromJson(json);
 
   @override
   @JsonKey(name: 'is_logged')
@@ -195,10 +198,10 @@ class _$_Ping implements _Ping {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Ping &&
+            other is _$PingImpl &&
             (identical(other.isLogged, isLogged) ||
                 other.isLogged == isLogged) &&
             (identical(other.isLocated, isLocated) ||
@@ -219,12 +222,12 @@ class _$_Ping implements _Ping {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PingCopyWith<_$_Ping> get copyWith =>
-      __$$_PingCopyWithImpl<_$_Ping>(this, _$identity);
+  _$$PingImplCopyWith<_$PingImpl> get copyWith =>
+      __$$PingImplCopyWithImpl<_$PingImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PingToJson(
+    return _$$PingImplToJson(
       this,
     );
   }
@@ -237,9 +240,9 @@ abstract class _Ping implements Ping {
       @JsonKey(name: 'distance_from_trail') final int? distanceFromTrail,
       @JsonKey(name: 'is_online') required final bool isOnline,
       required final String date,
-      required final int trail}) = _$_Ping;
+      required final int trail}) = _$PingImpl;
 
-  factory _Ping.fromJson(Map<String, dynamic> json) = _$_Ping.fromJson;
+  factory _Ping.fromJson(Map<String, dynamic> json) = _$PingImpl.fromJson;
 
   @override
   @JsonKey(name: 'is_logged')
@@ -259,5 +262,6 @@ abstract class _Ping implements Ping {
   int get trail;
   @override
   @JsonKey(ignore: true)
-  _$$_PingCopyWith<_$_Ping> get copyWith => throw _privateConstructorUsedError;
+  _$$PingImplCopyWith<_$PingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

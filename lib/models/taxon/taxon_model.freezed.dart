@@ -12,7 +12,7 @@ part of 'taxon_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Taxon _$TaxonFromJson(Map<String, dynamic> json) {
   return _Taxon.fromJson(json);
@@ -147,9 +147,10 @@ class _$TaxonCopyWithImpl<$Res, $Val extends Taxon>
 }
 
 /// @nodoc
-abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
-  factory _$$_TaxonCopyWith(_$_Taxon value, $Res Function(_$_Taxon) then) =
-      __$$_TaxonCopyWithImpl<$Res>;
+abstract class _$$TaxonImplCopyWith<$Res> implements $TaxonCopyWith<$Res> {
+  factory _$$TaxonImplCopyWith(
+          _$TaxonImpl value, $Res Function(_$TaxonImpl) then) =
+      __$$TaxonImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -172,9 +173,11 @@ abstract class _$$_TaxonCopyWith<$Res> implements $TaxonCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res, _$_Taxon>
-    implements _$$_TaxonCopyWith<$Res> {
-  __$$_TaxonCopyWithImpl(_$_Taxon _value, $Res Function(_$_Taxon) _then)
+class __$$TaxonImplCopyWithImpl<$Res>
+    extends _$TaxonCopyWithImpl<$Res, _$TaxonImpl>
+    implements _$$TaxonImplCopyWith<$Res> {
+  __$$TaxonImplCopyWithImpl(
+      _$TaxonImpl _value, $Res Function(_$TaxonImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -191,7 +194,7 @@ class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res, _$_Taxon>
     Object? vernacularNames = null,
     Object? tabs = null,
   }) {
-    return _then(_$_Taxon(
+    return _then(_$TaxonImpl(
       scientificName: null == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
@@ -239,8 +242,8 @@ class __$$_TaxonCopyWithImpl<$Res> extends _$TaxonCopyWithImpl<$Res, _$_Taxon>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 30, adapterName: 'TaxonAdapter')
-class _$_Taxon implements _Taxon {
-  const _$_Taxon(
+class _$TaxonImpl implements _Taxon {
+  const _$TaxonImpl(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
       required this.scientificName,
@@ -264,8 +267,8 @@ class _$_Taxon implements _Taxon {
       : _vernacularNames = vernacularNames,
         _tabs = tabs;
 
-  factory _$_Taxon.fromJson(Map<String, dynamic> json) =>
-      _$$_TaxonFromJson(json);
+  factory _$TaxonImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaxonImplFromJson(json);
 
   @override
   @JsonKey(name: 'scientific_name')
@@ -322,10 +325,10 @@ class _$_Taxon implements _Taxon {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Taxon &&
+            other is _$TaxonImpl &&
             (identical(other.scientificName, scientificName) ||
                 other.scientificName == scientificName) &&
             (identical(other.fullScientificName, fullScientificName) ||
@@ -362,12 +365,12 @@ class _$_Taxon implements _Taxon {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
-      __$$_TaxonCopyWithImpl<_$_Taxon>(this, _$identity);
+  _$$TaxonImplCopyWith<_$TaxonImpl> get copyWith =>
+      __$$TaxonImplCopyWithImpl<_$TaxonImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TaxonToJson(
+    return _$$TaxonImplToJson(
       this,
     );
   }
@@ -396,9 +399,9 @@ abstract class _Taxon implements Taxon {
       @JsonKey(name: 'vernacular_names')
       @HiveField(8)
       required final List<String> vernacularNames,
-      @HiveField(9) required final List<TabAPI> tabs}) = _$_Taxon;
+      @HiveField(9) required final List<TabAPI> tabs}) = _$TaxonImpl;
 
-  factory _Taxon.fromJson(Map<String, dynamic> json) = _$_Taxon.fromJson;
+  factory _Taxon.fromJson(Map<String, dynamic> json) = _$TaxonImpl.fromJson;
 
   @override
   @JsonKey(name: 'scientific_name')
@@ -439,7 +442,7 @@ abstract class _Taxon implements Taxon {
   List<TabAPI> get tabs;
   @override
   @JsonKey(ignore: true)
-  _$$_TaxonCopyWith<_$_Taxon> get copyWith =>
+  _$$TaxonImplCopyWith<_$TaxonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -531,9 +534,10 @@ class _$TabAPICopyWithImpl<$Res, $Val extends TabAPI>
 }
 
 /// @nodoc
-abstract class _$$_TabAPICopyWith<$Res> implements $TabAPICopyWith<$Res> {
-  factory _$$_TabAPICopyWith(_$_TabAPI value, $Res Function(_$_TabAPI) then) =
-      __$$_TabAPICopyWithImpl<$Res>;
+abstract class _$$TabAPIImplCopyWith<$Res> implements $TabAPICopyWith<$Res> {
+  factory _$$TabAPIImplCopyWith(
+          _$TabAPIImpl value, $Res Function(_$TabAPIImpl) then) =
+      __$$TabAPIImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -546,10 +550,11 @@ abstract class _$$_TabAPICopyWith<$Res> implements $TabAPICopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TabAPICopyWithImpl<$Res>
-    extends _$TabAPICopyWithImpl<$Res, _$_TabAPI>
-    implements _$$_TabAPICopyWith<$Res> {
-  __$$_TabAPICopyWithImpl(_$_TabAPI _value, $Res Function(_$_TabAPI) _then)
+class __$$TabAPIImplCopyWithImpl<$Res>
+    extends _$TabAPICopyWithImpl<$Res, _$TabAPIImpl>
+    implements _$$TabAPIImplCopyWith<$Res> {
+  __$$TabAPIImplCopyWithImpl(
+      _$TabAPIImpl _value, $Res Function(_$TabAPIImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -562,7 +567,7 @@ class __$$_TabAPICopyWithImpl<$Res>
     Object? images = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_TabAPI(
+    return _then(_$TabAPIImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -594,8 +599,8 @@ class __$$_TabAPICopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 31, adapterName: 'TabAPIAdapter')
-class _$_TabAPI implements _TabAPI {
-  const _$_TabAPI(
+class _$TabAPIImpl implements _TabAPI {
+  const _$TabAPIImpl(
       {@HiveField(0) required this.title,
       @HiveField(1) required this.type,
       @HiveField(2) required this.icon,
@@ -605,8 +610,8 @@ class _$_TabAPI implements _TabAPI {
       : _sections = sections,
         _images = images;
 
-  factory _$_TabAPI.fromJson(Map<String, dynamic> json) =>
-      _$$_TabAPIFromJson(json);
+  factory _$TabAPIImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TabAPIImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -649,10 +654,10 @@ class _$_TabAPI implements _TabAPI {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TabAPI &&
+            other is _$TabAPIImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.icon, icon) || other.icon == icon) &&
@@ -675,12 +680,12 @@ class _$_TabAPI implements _TabAPI {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TabAPICopyWith<_$_TabAPI> get copyWith =>
-      __$$_TabAPICopyWithImpl<_$_TabAPI>(this, _$identity);
+  _$$TabAPIImplCopyWith<_$TabAPIImpl> get copyWith =>
+      __$$TabAPIImplCopyWithImpl<_$TabAPIImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TabAPIToJson(
+    return _$$TabAPIImplToJson(
       this,
     );
   }
@@ -693,9 +698,9 @@ abstract class _TabAPI implements TabAPI {
       @HiveField(2) required final String icon,
       @HiveField(3) final List<SectionAPI>? sections,
       @HiveField(4) final List<ImageAPI>? images,
-      @HiveField(5) final String? url}) = _$_TabAPI;
+      @HiveField(5) final String? url}) = _$TabAPIImpl;
 
-  factory _TabAPI.fromJson(Map<String, dynamic> json) = _$_TabAPI.fromJson;
+  factory _TabAPI.fromJson(Map<String, dynamic> json) = _$TabAPIImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -717,7 +722,7 @@ abstract class _TabAPI implements TabAPI {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_TabAPICopyWith<_$_TabAPI> get copyWith =>
+  _$$TabAPIImplCopyWith<_$TabAPIImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -786,10 +791,11 @@ class _$ImageAPICopyWithImpl<$Res, $Val extends ImageAPI>
 }
 
 /// @nodoc
-abstract class _$$_ImageAPICopyWith<$Res> implements $ImageAPICopyWith<$Res> {
-  factory _$$_ImageAPICopyWith(
-          _$_ImageAPI value, $Res Function(_$_ImageAPI) then) =
-      __$$_ImageAPICopyWithImpl<$Res>;
+abstract class _$$ImageAPIImplCopyWith<$Res>
+    implements $ImageAPICopyWith<$Res> {
+  factory _$$ImageAPIImplCopyWith(
+          _$ImageAPIImpl value, $Res Function(_$ImageAPIImpl) then) =
+      __$$ImageAPIImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -799,11 +805,11 @@ abstract class _$$_ImageAPICopyWith<$Res> implements $ImageAPICopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ImageAPICopyWithImpl<$Res>
-    extends _$ImageAPICopyWithImpl<$Res, _$_ImageAPI>
-    implements _$$_ImageAPICopyWith<$Res> {
-  __$$_ImageAPICopyWithImpl(
-      _$_ImageAPI _value, $Res Function(_$_ImageAPI) _then)
+class __$$ImageAPIImplCopyWithImpl<$Res>
+    extends _$ImageAPICopyWithImpl<$Res, _$ImageAPIImpl>
+    implements _$$ImageAPIImplCopyWith<$Res> {
+  __$$ImageAPIImplCopyWithImpl(
+      _$ImageAPIImpl _value, $Res Function(_$ImageAPIImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -813,7 +819,7 @@ class __$$_ImageAPICopyWithImpl<$Res>
     Object? url = null,
     Object? author = null,
   }) {
-    return _then(_$_ImageAPI(
+    return _then(_$ImageAPIImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -833,14 +839,14 @@ class __$$_ImageAPICopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 32, adapterName: 'ImageAPIAdapter')
-class _$_ImageAPI implements _ImageAPI {
-  const _$_ImageAPI(
+class _$ImageAPIImpl implements _ImageAPI {
+  const _$ImageAPIImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) required this.url,
       @HiveField(2) required this.author});
 
-  factory _$_ImageAPI.fromJson(Map<String, dynamic> json) =>
-      _$$_ImageAPIFromJson(json);
+  factory _$ImageAPIImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ImageAPIImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -858,10 +864,10 @@ class _$_ImageAPI implements _ImageAPI {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ImageAPI &&
+            other is _$ImageAPIImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.author, author) || other.author == author));
@@ -874,12 +880,12 @@ class _$_ImageAPI implements _ImageAPI {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImageAPICopyWith<_$_ImageAPI> get copyWith =>
-      __$$_ImageAPICopyWithImpl<_$_ImageAPI>(this, _$identity);
+  _$$ImageAPIImplCopyWith<_$ImageAPIImpl> get copyWith =>
+      __$$ImageAPIImplCopyWithImpl<_$ImageAPIImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImageAPIToJson(
+    return _$$ImageAPIImplToJson(
       this,
     );
   }
@@ -889,9 +895,10 @@ abstract class _ImageAPI implements ImageAPI {
   const factory _ImageAPI(
       {@HiveField(0) required final int id,
       @HiveField(1) required final String url,
-      @HiveField(2) required final String author}) = _$_ImageAPI;
+      @HiveField(2) required final String author}) = _$ImageAPIImpl;
 
-  factory _ImageAPI.fromJson(Map<String, dynamic> json) = _$_ImageAPI.fromJson;
+  factory _ImageAPI.fromJson(Map<String, dynamic> json) =
+      _$ImageAPIImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -904,7 +911,7 @@ abstract class _ImageAPI implements ImageAPI {
   String get author;
   @override
   @JsonKey(ignore: true)
-  _$$_ImageAPICopyWith<_$_ImageAPI> get copyWith =>
+  _$$ImageAPIImplCopyWith<_$ImageAPIImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -964,22 +971,22 @@ class _$SectionAPICopyWithImpl<$Res, $Val extends SectionAPI>
 }
 
 /// @nodoc
-abstract class _$$_SectionAPICopyWith<$Res>
+abstract class _$$SectionAPIImplCopyWith<$Res>
     implements $SectionAPICopyWith<$Res> {
-  factory _$$_SectionAPICopyWith(
-          _$_SectionAPI value, $Res Function(_$_SectionAPI) then) =
-      __$$_SectionAPICopyWithImpl<$Res>;
+  factory _$$SectionAPIImplCopyWith(
+          _$SectionAPIImpl value, $Res Function(_$SectionAPIImpl) then) =
+      __$$SectionAPIImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@HiveField(0) String title, @HiveField(1) String text});
 }
 
 /// @nodoc
-class __$$_SectionAPICopyWithImpl<$Res>
-    extends _$SectionAPICopyWithImpl<$Res, _$_SectionAPI>
-    implements _$$_SectionAPICopyWith<$Res> {
-  __$$_SectionAPICopyWithImpl(
-      _$_SectionAPI _value, $Res Function(_$_SectionAPI) _then)
+class __$$SectionAPIImplCopyWithImpl<$Res>
+    extends _$SectionAPICopyWithImpl<$Res, _$SectionAPIImpl>
+    implements _$$SectionAPIImplCopyWith<$Res> {
+  __$$SectionAPIImplCopyWithImpl(
+      _$SectionAPIImpl _value, $Res Function(_$SectionAPIImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -988,7 +995,7 @@ class __$$_SectionAPICopyWithImpl<$Res>
     Object? title = null,
     Object? text = null,
   }) {
-    return _then(_$_SectionAPI(
+    return _then(_$SectionAPIImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -1004,12 +1011,12 @@ class __$$_SectionAPICopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 33, adapterName: 'SectionAPIAdapter')
-class _$_SectionAPI implements _SectionAPI {
-  const _$_SectionAPI(
+class _$SectionAPIImpl implements _SectionAPI {
+  const _$SectionAPIImpl(
       {@HiveField(0) required this.title, @HiveField(1) required this.text});
 
-  factory _$_SectionAPI.fromJson(Map<String, dynamic> json) =>
-      _$$_SectionAPIFromJson(json);
+  factory _$SectionAPIImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SectionAPIImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -1024,10 +1031,10 @@ class _$_SectionAPI implements _SectionAPI {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SectionAPI &&
+            other is _$SectionAPIImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.text, text) || other.text == text));
   }
@@ -1039,12 +1046,12 @@ class _$_SectionAPI implements _SectionAPI {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SectionAPICopyWith<_$_SectionAPI> get copyWith =>
-      __$$_SectionAPICopyWithImpl<_$_SectionAPI>(this, _$identity);
+  _$$SectionAPIImplCopyWith<_$SectionAPIImpl> get copyWith =>
+      __$$SectionAPIImplCopyWithImpl<_$SectionAPIImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SectionAPIToJson(
+    return _$$SectionAPIImplToJson(
       this,
     );
   }
@@ -1053,10 +1060,10 @@ class _$_SectionAPI implements _SectionAPI {
 abstract class _SectionAPI implements SectionAPI {
   const factory _SectionAPI(
       {@HiveField(0) required final String title,
-      @HiveField(1) required final String text}) = _$_SectionAPI;
+      @HiveField(1) required final String text}) = _$SectionAPIImpl;
 
   factory _SectionAPI.fromJson(Map<String, dynamic> json) =
-      _$_SectionAPI.fromJson;
+      _$SectionAPIImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -1066,6 +1073,6 @@ abstract class _SectionAPI implements SectionAPI {
   String get text;
   @override
   @JsonKey(ignore: true)
-  _$$_SectionAPICopyWith<_$_SectionAPI> get copyWith =>
+  _$$SectionAPIImplCopyWith<_$SectionAPIImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
