@@ -174,9 +174,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           _handleForm();
                         },
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
+                      backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                          (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.disabled)) {
                           return Theme.of(context)
                               .colorScheme
                               .primary
