@@ -12,7 +12,7 @@ part of 'save_trail_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SaveTrailEvent {
@@ -101,22 +101,22 @@ class _$SaveTrailEventCopyWithImpl<$Res, $Val extends SaveTrailEvent>
 }
 
 /// @nodoc
-abstract class _$$_SaveTrailLocallyCopyWith<$Res>
+abstract class _$$SaveTrailLocallyImplCopyWith<$Res>
     implements $SaveTrailEventCopyWith<$Res> {
-  factory _$$_SaveTrailLocallyCopyWith(
-          _$_SaveTrailLocally value, $Res Function(_$_SaveTrailLocally) then) =
-      __$$_SaveTrailLocallyCopyWithImpl<$Res>;
+  factory _$$SaveTrailLocallyImplCopyWith(_$SaveTrailLocallyImpl value,
+          $Res Function(_$SaveTrailLocallyImpl) then) =
+      __$$SaveTrailLocallyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$_SaveTrailLocallyCopyWithImpl<$Res>
-    extends _$SaveTrailEventCopyWithImpl<$Res, _$_SaveTrailLocally>
-    implements _$$_SaveTrailLocallyCopyWith<$Res> {
-  __$$_SaveTrailLocallyCopyWithImpl(
-      _$_SaveTrailLocally _value, $Res Function(_$_SaveTrailLocally) _then)
+class __$$SaveTrailLocallyImplCopyWithImpl<$Res>
+    extends _$SaveTrailEventCopyWithImpl<$Res, _$SaveTrailLocallyImpl>
+    implements _$$SaveTrailLocallyImplCopyWith<$Res> {
+  __$$SaveTrailLocallyImplCopyWithImpl(_$SaveTrailLocallyImpl _value,
+      $Res Function(_$SaveTrailLocallyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,7 +124,7 @@ class __$$_SaveTrailLocallyCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_SaveTrailLocally(
+    return _then(_$SaveTrailLocallyImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -135,8 +135,8 @@ class __$$_SaveTrailLocallyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SaveTrailLocally implements _SaveTrailLocally {
-  const _$_SaveTrailLocally({required this.id});
+class _$SaveTrailLocallyImpl implements _SaveTrailLocally {
+  const _$SaveTrailLocallyImpl({required this.id});
 
   @override
   final int id;
@@ -147,10 +147,10 @@ class _$_SaveTrailLocally implements _SaveTrailLocally {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SaveTrailLocally &&
+            other is _$SaveTrailLocallyImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -160,8 +160,9 @@ class _$_SaveTrailLocally implements _SaveTrailLocally {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SaveTrailLocallyCopyWith<_$_SaveTrailLocally> get copyWith =>
-      __$$_SaveTrailLocallyCopyWithImpl<_$_SaveTrailLocally>(this, _$identity);
+  _$$SaveTrailLocallyImplCopyWith<_$SaveTrailLocallyImpl> get copyWith =>
+      __$$SaveTrailLocallyImplCopyWithImpl<_$SaveTrailLocallyImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -234,33 +235,33 @@ class _$_SaveTrailLocally implements _SaveTrailLocally {
 
 abstract class _SaveTrailLocally implements SaveTrailEvent {
   const factory _SaveTrailLocally({required final int id}) =
-      _$_SaveTrailLocally;
+      _$SaveTrailLocallyImpl;
 
   @override
   int get id;
   @override
   @JsonKey(ignore: true)
-  _$$_SaveTrailLocallyCopyWith<_$_SaveTrailLocally> get copyWith =>
+  _$$SaveTrailLocallyImplCopyWith<_$SaveTrailLocallyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UnSaveTrailLocallyCopyWith<$Res>
+abstract class _$$UnSaveTrailLocallyImplCopyWith<$Res>
     implements $SaveTrailEventCopyWith<$Res> {
-  factory _$$_UnSaveTrailLocallyCopyWith(_$_UnSaveTrailLocally value,
-          $Res Function(_$_UnSaveTrailLocally) then) =
-      __$$_UnSaveTrailLocallyCopyWithImpl<$Res>;
+  factory _$$UnSaveTrailLocallyImplCopyWith(_$UnSaveTrailLocallyImpl value,
+          $Res Function(_$UnSaveTrailLocallyImpl) then) =
+      __$$UnSaveTrailLocallyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$_UnSaveTrailLocallyCopyWithImpl<$Res>
-    extends _$SaveTrailEventCopyWithImpl<$Res, _$_UnSaveTrailLocally>
-    implements _$$_UnSaveTrailLocallyCopyWith<$Res> {
-  __$$_UnSaveTrailLocallyCopyWithImpl(
-      _$_UnSaveTrailLocally _value, $Res Function(_$_UnSaveTrailLocally) _then)
+class __$$UnSaveTrailLocallyImplCopyWithImpl<$Res>
+    extends _$SaveTrailEventCopyWithImpl<$Res, _$UnSaveTrailLocallyImpl>
+    implements _$$UnSaveTrailLocallyImplCopyWith<$Res> {
+  __$$UnSaveTrailLocallyImplCopyWithImpl(_$UnSaveTrailLocallyImpl _value,
+      $Res Function(_$UnSaveTrailLocallyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -268,7 +269,7 @@ class __$$_UnSaveTrailLocallyCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_UnSaveTrailLocally(
+    return _then(_$UnSaveTrailLocallyImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -279,8 +280,8 @@ class __$$_UnSaveTrailLocallyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UnSaveTrailLocally implements _UnSaveTrailLocally {
-  const _$_UnSaveTrailLocally({required this.id});
+class _$UnSaveTrailLocallyImpl implements _UnSaveTrailLocally {
+  const _$UnSaveTrailLocallyImpl({required this.id});
 
   @override
   final int id;
@@ -291,10 +292,10 @@ class _$_UnSaveTrailLocally implements _UnSaveTrailLocally {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnSaveTrailLocally &&
+            other is _$UnSaveTrailLocallyImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -304,8 +305,8 @@ class _$_UnSaveTrailLocally implements _UnSaveTrailLocally {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnSaveTrailLocallyCopyWith<_$_UnSaveTrailLocally> get copyWith =>
-      __$$_UnSaveTrailLocallyCopyWithImpl<_$_UnSaveTrailLocally>(
+  _$$UnSaveTrailLocallyImplCopyWith<_$UnSaveTrailLocallyImpl> get copyWith =>
+      __$$UnSaveTrailLocallyImplCopyWithImpl<_$UnSaveTrailLocallyImpl>(
           this, _$identity);
 
   @override
@@ -379,33 +380,34 @@ class _$_UnSaveTrailLocally implements _UnSaveTrailLocally {
 
 abstract class _UnSaveTrailLocally implements SaveTrailEvent {
   const factory _UnSaveTrailLocally({required final int id}) =
-      _$_UnSaveTrailLocally;
+      _$UnSaveTrailLocallyImpl;
 
   @override
   int get id;
   @override
   @JsonKey(ignore: true)
-  _$$_UnSaveTrailLocallyCopyWith<_$_UnSaveTrailLocally> get copyWith =>
+  _$$UnSaveTrailLocallyImplCopyWith<_$UnSaveTrailLocallyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AbortSaveTrailLocallyCopyWith<$Res>
+abstract class _$$AbortSaveTrailLocallyImplCopyWith<$Res>
     implements $SaveTrailEventCopyWith<$Res> {
-  factory _$$_AbortSaveTrailLocallyCopyWith(_$_AbortSaveTrailLocally value,
-          $Res Function(_$_AbortSaveTrailLocally) then) =
-      __$$_AbortSaveTrailLocallyCopyWithImpl<$Res>;
+  factory _$$AbortSaveTrailLocallyImplCopyWith(
+          _$AbortSaveTrailLocallyImpl value,
+          $Res Function(_$AbortSaveTrailLocallyImpl) then) =
+      __$$AbortSaveTrailLocallyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$_AbortSaveTrailLocallyCopyWithImpl<$Res>
-    extends _$SaveTrailEventCopyWithImpl<$Res, _$_AbortSaveTrailLocally>
-    implements _$$_AbortSaveTrailLocallyCopyWith<$Res> {
-  __$$_AbortSaveTrailLocallyCopyWithImpl(_$_AbortSaveTrailLocally _value,
-      $Res Function(_$_AbortSaveTrailLocally) _then)
+class __$$AbortSaveTrailLocallyImplCopyWithImpl<$Res>
+    extends _$SaveTrailEventCopyWithImpl<$Res, _$AbortSaveTrailLocallyImpl>
+    implements _$$AbortSaveTrailLocallyImplCopyWith<$Res> {
+  __$$AbortSaveTrailLocallyImplCopyWithImpl(_$AbortSaveTrailLocallyImpl _value,
+      $Res Function(_$AbortSaveTrailLocallyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -413,7 +415,7 @@ class __$$_AbortSaveTrailLocallyCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_AbortSaveTrailLocally(
+    return _then(_$AbortSaveTrailLocallyImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -424,8 +426,8 @@ class __$$_AbortSaveTrailLocallyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AbortSaveTrailLocally implements _AbortSaveTrailLocally {
-  const _$_AbortSaveTrailLocally({required this.id});
+class _$AbortSaveTrailLocallyImpl implements _AbortSaveTrailLocally {
+  const _$AbortSaveTrailLocallyImpl({required this.id});
 
   @override
   final int id;
@@ -436,10 +438,10 @@ class _$_AbortSaveTrailLocally implements _AbortSaveTrailLocally {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AbortSaveTrailLocally &&
+            other is _$AbortSaveTrailLocallyImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -449,9 +451,9 @@ class _$_AbortSaveTrailLocally implements _AbortSaveTrailLocally {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AbortSaveTrailLocallyCopyWith<_$_AbortSaveTrailLocally> get copyWith =>
-      __$$_AbortSaveTrailLocallyCopyWithImpl<_$_AbortSaveTrailLocally>(
-          this, _$identity);
+  _$$AbortSaveTrailLocallyImplCopyWith<_$AbortSaveTrailLocallyImpl>
+      get copyWith => __$$AbortSaveTrailLocallyImplCopyWithImpl<
+          _$AbortSaveTrailLocallyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -524,14 +526,14 @@ class _$_AbortSaveTrailLocally implements _AbortSaveTrailLocally {
 
 abstract class _AbortSaveTrailLocally implements SaveTrailEvent {
   const factory _AbortSaveTrailLocally({required final int id}) =
-      _$_AbortSaveTrailLocally;
+      _$AbortSaveTrailLocallyImpl;
 
   @override
   int get id;
   @override
   @JsonKey(ignore: true)
-  _$$_AbortSaveTrailLocallyCopyWith<_$_AbortSaveTrailLocally> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AbortSaveTrailLocallyImplCopyWith<_$AbortSaveTrailLocallyImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -631,24 +633,25 @@ class _$SaveTrailStateCopyWithImpl<$Res, $Val extends SaveTrailState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -656,9 +659,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -764,27 +767,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements SaveTrailState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_StartCopyWith<$Res> {
-  factory _$$_StartCopyWith(_$_Start value, $Res Function(_$_Start) then) =
-      __$$_StartCopyWithImpl<$Res>;
+abstract class _$$StartImplCopyWith<$Res> {
+  factory _$$StartImplCopyWith(
+          _$StartImpl value, $Res Function(_$StartImpl) then) =
+      __$$StartImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res, _$_Start>
-    implements _$$_StartCopyWith<$Res> {
-  __$$_StartCopyWithImpl(_$_Start _value, $Res Function(_$_Start) _then)
+class __$$StartImplCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$StartImpl>
+    implements _$$StartImplCopyWith<$Res> {
+  __$$StartImplCopyWithImpl(
+      _$StartImpl _value, $Res Function(_$StartImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Start implements _Start {
-  const _$_Start();
+class _$StartImpl implements _Start {
+  const _$StartImpl();
 
   @override
   String toString() {
@@ -792,9 +797,9 @@ class _$_Start implements _Start {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Start);
+        (other.runtimeType == runtimeType && other is _$StartImpl);
   }
 
   @override
@@ -900,23 +905,24 @@ class _$_Start implements _Start {
 }
 
 abstract class _Start implements SaveTrailState {
-  const factory _Start() = _$_Start;
+  const factory _Start() = _$StartImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int nbImageSaved, int nbImages});
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -925,7 +931,7 @@ class __$$_LoadingCopyWithImpl<$Res>
     Object? nbImageSaved = null,
     Object? nbImages = null,
   }) {
-    return _then(_$_Loading(
+    return _then(_$LoadingImpl(
       nbImageSaved: null == nbImageSaved
           ? _value.nbImageSaved
           : nbImageSaved // ignore: cast_nullable_to_non_nullable
@@ -940,8 +946,8 @@ class __$$_LoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading({required this.nbImageSaved, required this.nbImages});
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl({required this.nbImageSaved, required this.nbImages});
 
   @override
   final int nbImageSaved;
@@ -954,10 +960,10 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loading &&
+            other is _$LoadingImpl &&
             (identical(other.nbImageSaved, nbImageSaved) ||
                 other.nbImageSaved == nbImageSaved) &&
             (identical(other.nbImages, nbImages) ||
@@ -970,8 +976,8 @@ class _$_Loading implements _Loading {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
-      __$$_LoadingCopyWithImpl<_$_Loading>(this, _$identity);
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1075,33 +1081,35 @@ class _$_Loading implements _Loading {
 abstract class _Loading implements SaveTrailState {
   const factory _Loading(
       {required final int nbImageSaved,
-      required final int nbImages}) = _$_Loading;
+      required final int nbImages}) = _$LoadingImpl;
 
   int get nbImageSaved;
   int get nbImages;
   @JsonKey(ignore: true)
-  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded();
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl();
 
   @override
   String toString() {
@@ -1109,9 +1117,9 @@ class _$_Loaded implements _Loaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loaded);
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
   }
 
   @override
@@ -1217,29 +1225,29 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements SaveTrailState {
-  const factory _Loaded() = _$_Loaded;
+  const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
-abstract class _$$_StartUnSaveCopyWith<$Res> {
-  factory _$$_StartUnSaveCopyWith(
-          _$_StartUnSave value, $Res Function(_$_StartUnSave) then) =
-      __$$_StartUnSaveCopyWithImpl<$Res>;
+abstract class _$$StartUnSaveImplCopyWith<$Res> {
+  factory _$$StartUnSaveImplCopyWith(
+          _$StartUnSaveImpl value, $Res Function(_$StartUnSaveImpl) then) =
+      __$$StartUnSaveImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartUnSaveCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res, _$_StartUnSave>
-    implements _$$_StartUnSaveCopyWith<$Res> {
-  __$$_StartUnSaveCopyWithImpl(
-      _$_StartUnSave _value, $Res Function(_$_StartUnSave) _then)
+class __$$StartUnSaveImplCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$StartUnSaveImpl>
+    implements _$$StartUnSaveImplCopyWith<$Res> {
+  __$$StartUnSaveImplCopyWithImpl(
+      _$StartUnSaveImpl _value, $Res Function(_$StartUnSaveImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_StartUnSave implements _StartUnSave {
-  const _$_StartUnSave();
+class _$StartUnSaveImpl implements _StartUnSave {
+  const _$StartUnSaveImpl();
 
   @override
   String toString() {
@@ -1247,9 +1255,9 @@ class _$_StartUnSave implements _StartUnSave {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StartUnSave);
+        (other.runtimeType == runtimeType && other is _$StartUnSaveImpl);
   }
 
   @override
@@ -1355,29 +1363,29 @@ class _$_StartUnSave implements _StartUnSave {
 }
 
 abstract class _StartUnSave implements SaveTrailState {
-  const factory _StartUnSave() = _$_StartUnSave;
+  const factory _StartUnSave() = _$StartUnSaveImpl;
 }
 
 /// @nodoc
-abstract class _$$_UnSaveCompleteCopyWith<$Res> {
-  factory _$$_UnSaveCompleteCopyWith(
-          _$_UnSaveComplete value, $Res Function(_$_UnSaveComplete) then) =
-      __$$_UnSaveCompleteCopyWithImpl<$Res>;
+abstract class _$$UnSaveCompleteImplCopyWith<$Res> {
+  factory _$$UnSaveCompleteImplCopyWith(_$UnSaveCompleteImpl value,
+          $Res Function(_$UnSaveCompleteImpl) then) =
+      __$$UnSaveCompleteImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnSaveCompleteCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res, _$_UnSaveComplete>
-    implements _$$_UnSaveCompleteCopyWith<$Res> {
-  __$$_UnSaveCompleteCopyWithImpl(
-      _$_UnSaveComplete _value, $Res Function(_$_UnSaveComplete) _then)
+class __$$UnSaveCompleteImplCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$UnSaveCompleteImpl>
+    implements _$$UnSaveCompleteImplCopyWith<$Res> {
+  __$$UnSaveCompleteImplCopyWithImpl(
+      _$UnSaveCompleteImpl _value, $Res Function(_$UnSaveCompleteImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UnSaveComplete implements _UnSaveComplete {
-  const _$_UnSaveComplete();
+class _$UnSaveCompleteImpl implements _UnSaveComplete {
+  const _$UnSaveCompleteImpl();
 
   @override
   String toString() {
@@ -1385,9 +1393,9 @@ class _$_UnSaveComplete implements _UnSaveComplete {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UnSaveComplete);
+        (other.runtimeType == runtimeType && other is _$UnSaveCompleteImpl);
   }
 
   @override
@@ -1493,29 +1501,29 @@ class _$_UnSaveComplete implements _UnSaveComplete {
 }
 
 abstract class _UnSaveComplete implements SaveTrailState {
-  const factory _UnSaveComplete() = _$_UnSaveComplete;
+  const factory _UnSaveComplete() = _$UnSaveCompleteImpl;
 }
 
 /// @nodoc
-abstract class _$$_UnSaveErrorCopyWith<$Res> {
-  factory _$$_UnSaveErrorCopyWith(
-          _$_UnSaveError value, $Res Function(_$_UnSaveError) then) =
-      __$$_UnSaveErrorCopyWithImpl<$Res>;
+abstract class _$$UnSaveErrorImplCopyWith<$Res> {
+  factory _$$UnSaveErrorImplCopyWith(
+          _$UnSaveErrorImpl value, $Res Function(_$UnSaveErrorImpl) then) =
+      __$$UnSaveErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnSaveErrorCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res, _$_UnSaveError>
-    implements _$$_UnSaveErrorCopyWith<$Res> {
-  __$$_UnSaveErrorCopyWithImpl(
-      _$_UnSaveError _value, $Res Function(_$_UnSaveError) _then)
+class __$$UnSaveErrorImplCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$UnSaveErrorImpl>
+    implements _$$UnSaveErrorImplCopyWith<$Res> {
+  __$$UnSaveErrorImplCopyWithImpl(
+      _$UnSaveErrorImpl _value, $Res Function(_$UnSaveErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UnSaveError implements _UnSaveError {
-  const _$_UnSaveError();
+class _$UnSaveErrorImpl implements _UnSaveError {
+  const _$UnSaveErrorImpl();
 
   @override
   String toString() {
@@ -1523,9 +1531,9 @@ class _$_UnSaveError implements _UnSaveError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UnSaveError);
+        (other.runtimeType == runtimeType && other is _$UnSaveErrorImpl);
   }
 
   @override
@@ -1631,29 +1639,29 @@ class _$_UnSaveError implements _UnSaveError {
 }
 
 abstract class _UnSaveError implements SaveTrailState {
-  const factory _UnSaveError() = _$_UnSaveError;
+  const factory _UnSaveError() = _$UnSaveErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_SaveErrorCopyWith<$Res> {
-  factory _$$_SaveErrorCopyWith(
-          _$_SaveError value, $Res Function(_$_SaveError) then) =
-      __$$_SaveErrorCopyWithImpl<$Res>;
+abstract class _$$SaveErrorImplCopyWith<$Res> {
+  factory _$$SaveErrorImplCopyWith(
+          _$SaveErrorImpl value, $Res Function(_$SaveErrorImpl) then) =
+      __$$SaveErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SaveErrorCopyWithImpl<$Res>
-    extends _$SaveTrailStateCopyWithImpl<$Res, _$_SaveError>
-    implements _$$_SaveErrorCopyWith<$Res> {
-  __$$_SaveErrorCopyWithImpl(
-      _$_SaveError _value, $Res Function(_$_SaveError) _then)
+class __$$SaveErrorImplCopyWithImpl<$Res>
+    extends _$SaveTrailStateCopyWithImpl<$Res, _$SaveErrorImpl>
+    implements _$$SaveErrorImplCopyWith<$Res> {
+  __$$SaveErrorImplCopyWithImpl(
+      _$SaveErrorImpl _value, $Res Function(_$SaveErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SaveError implements _SaveError {
-  const _$_SaveError();
+class _$SaveErrorImpl implements _SaveError {
+  const _$SaveErrorImpl();
 
   @override
   String toString() {
@@ -1661,9 +1669,9 @@ class _$_SaveError implements _SaveError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SaveError);
+        (other.runtimeType == runtimeType && other is _$SaveErrorImpl);
   }
 
   @override
@@ -1769,5 +1777,5 @@ class _$_SaveError implements _SaveError {
 }
 
 abstract class _SaveError implements SaveTrailState {
-  const factory _SaveError() = _$_SaveError;
+  const factory _SaveError() = _$SaveErrorImpl;
 }

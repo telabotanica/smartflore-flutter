@@ -174,9 +174,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           _handleForm();
                         },
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
+                      backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                          (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.disabled)) {
                           return Theme.of(context)
                               .colorScheme
                               .primary
@@ -184,20 +184,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                         return Theme.of(context).colorScheme.primary;
                       }),
-                      overlayColor: MaterialStateProperty.all<Color>(
+                      overlayColor: WidgetStateProperty.all<Color>(
                           Colors.white.withOpacity(0.12)),
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                      padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                           EdgeInsets.zero),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6)),
                       ))),
                   child: Center(
                     child: Text(
-                      AppLocalizations.of(context).btn_login,
+                      AppLocalizations.of(context)!.btn_login,
                       style: TextStyle(
                           fontSize: 16,
-                          color: Theme.of(context).colorScheme.background),
+                          color: Theme.of(context).colorScheme.surface),
                     ),
                   )),
             ),

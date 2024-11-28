@@ -67,7 +67,7 @@ class TaxonCover extends StatelessWidget {
                   onPressed: () {
                     handleOnPress(context);
                   },
-                  child: Text(AppLocalizations.of(context).see_taxon,
+                  child: Text(AppLocalizations.of(context)!.see_taxon,
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge!
@@ -140,7 +140,7 @@ class TaxonCover extends StatelessWidget {
                           position.longitude);
 
                       return Text(
-                        '${AppLocalizations.of(context).to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context).distance_m, AppLocalizations.of(context).distance_km)}',
+                        '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!

@@ -6,17 +6,17 @@ part of 'taxon_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TaxonAdapter extends TypeAdapter<_$_Taxon> {
+class TaxonAdapter extends TypeAdapter<_$TaxonImpl> {
   @override
   final int typeId = 30;
 
   @override
-  _$_Taxon read(BinaryReader reader) {
+  _$TaxonImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_Taxon(
+    return _$TaxonImpl(
       scientificName: fields[0] as String,
       fullScientificName: fields[1] as String,
       htmlFullScientificName: fields[2] as String,
@@ -31,7 +31,7 @@ class TaxonAdapter extends TypeAdapter<_$_Taxon> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_Taxon obj) {
+  void write(BinaryWriter writer, _$TaxonImpl obj) {
     writer
       ..writeByte(10)
       ..writeByte(0)
@@ -67,17 +67,17 @@ class TaxonAdapter extends TypeAdapter<_$_Taxon> {
           typeId == other.typeId;
 }
 
-class TabAPIAdapter extends TypeAdapter<_$_TabAPI> {
+class TabAPIAdapter extends TypeAdapter<_$TabAPIImpl> {
   @override
   final int typeId = 31;
 
   @override
-  _$_TabAPI read(BinaryReader reader) {
+  _$TabAPIImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_TabAPI(
+    return _$TabAPIImpl(
       title: fields[0] as String,
       type: fields[1] as String,
       icon: fields[2] as String,
@@ -88,7 +88,7 @@ class TabAPIAdapter extends TypeAdapter<_$_TabAPI> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_TabAPI obj) {
+  void write(BinaryWriter writer, _$TabAPIImpl obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
@@ -116,17 +116,17 @@ class TabAPIAdapter extends TypeAdapter<_$_TabAPI> {
           typeId == other.typeId;
 }
 
-class ImageAPIAdapter extends TypeAdapter<_$_ImageAPI> {
+class ImageAPIAdapter extends TypeAdapter<_$ImageAPIImpl> {
   @override
   final int typeId = 32;
 
   @override
-  _$_ImageAPI read(BinaryReader reader) {
+  _$ImageAPIImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_ImageAPI(
+    return _$ImageAPIImpl(
       id: fields[0] as int,
       url: fields[1] as String,
       author: fields[2] as String,
@@ -134,7 +134,7 @@ class ImageAPIAdapter extends TypeAdapter<_$_ImageAPI> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_ImageAPI obj) {
+  void write(BinaryWriter writer, _$ImageAPIImpl obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)
@@ -156,24 +156,24 @@ class ImageAPIAdapter extends TypeAdapter<_$_ImageAPI> {
           typeId == other.typeId;
 }
 
-class SectionAPIAdapter extends TypeAdapter<_$_SectionAPI> {
+class SectionAPIAdapter extends TypeAdapter<_$SectionAPIImpl> {
   @override
   final int typeId = 33;
 
   @override
-  _$_SectionAPI read(BinaryReader reader) {
+  _$SectionAPIImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_SectionAPI(
+    return _$SectionAPIImpl(
       title: fields[0] as String,
       text: fields[1] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_SectionAPI obj) {
+  void write(BinaryWriter writer, _$SectionAPIImpl obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -197,15 +197,15 @@ class SectionAPIAdapter extends TypeAdapter<_$_SectionAPI> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Taxon _$$_TaxonFromJson(Map<String, dynamic> json) => _$_Taxon(
+_$TaxonImpl _$$TaxonImplFromJson(Map<String, dynamic> json) => _$TaxonImpl(
       scientificName: json['scientific_name'] as String,
       fullScientificName: json['full_scientific_name'] as String,
       htmlFullScientificName: json['html_full_scientific_name'] as String,
       genus: json['genus'] as String,
       family: json['family'] as String,
       taxonRepository: json['taxon_repository'] as String,
-      nameId: json['name_id'] as int,
-      taxonomicId: json['taxonomic_id'] as int,
+      nameId: (json['name_id'] as num).toInt(),
+      taxonomicId: (json['taxonomic_id'] as num).toInt(),
       vernacularNames: (json['vernacular_names'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -214,7 +214,8 @@ _$_Taxon _$$_TaxonFromJson(Map<String, dynamic> json) => _$_Taxon(
           .toList(),
     );
 
-Map<String, dynamic> _$$_TaxonToJson(_$_Taxon instance) => <String, dynamic>{
+Map<String, dynamic> _$$TaxonImplToJson(_$TaxonImpl instance) =>
+    <String, dynamic>{
       'scientific_name': instance.scientificName,
       'full_scientific_name': instance.fullScientificName,
       'html_full_scientific_name': instance.htmlFullScientificName,
@@ -227,7 +228,7 @@ Map<String, dynamic> _$$_TaxonToJson(_$_Taxon instance) => <String, dynamic>{
       'tabs': instance.tabs,
     };
 
-_$_TabAPI _$$_TabAPIFromJson(Map<String, dynamic> json) => _$_TabAPI(
+_$TabAPIImpl _$$TabAPIImplFromJson(Map<String, dynamic> json) => _$TabAPIImpl(
       title: json['title'] as String,
       type: json['type'] as String,
       icon: json['icon'] as String,
@@ -240,7 +241,8 @@ _$_TabAPI _$$_TabAPIFromJson(Map<String, dynamic> json) => _$_TabAPI(
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$_TabAPIToJson(_$_TabAPI instance) => <String, dynamic>{
+Map<String, dynamic> _$$TabAPIImplToJson(_$TabAPIImpl instance) =>
+    <String, dynamic>{
       'title': instance.title,
       'type': instance.type,
       'icon': instance.icon,
@@ -249,26 +251,27 @@ Map<String, dynamic> _$$_TabAPIToJson(_$_TabAPI instance) => <String, dynamic>{
       'url': instance.url,
     };
 
-_$_ImageAPI _$$_ImageAPIFromJson(Map<String, dynamic> json) => _$_ImageAPI(
-      id: json['id'] as int,
+_$ImageAPIImpl _$$ImageAPIImplFromJson(Map<String, dynamic> json) =>
+    _$ImageAPIImpl(
+      id: (json['id'] as num).toInt(),
       url: json['url'] as String,
       author: json['author'] as String,
     );
 
-Map<String, dynamic> _$$_ImageAPIToJson(_$_ImageAPI instance) =>
+Map<String, dynamic> _$$ImageAPIImplToJson(_$ImageAPIImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
       'author': instance.author,
     };
 
-_$_SectionAPI _$$_SectionAPIFromJson(Map<String, dynamic> json) =>
-    _$_SectionAPI(
+_$SectionAPIImpl _$$SectionAPIImplFromJson(Map<String, dynamic> json) =>
+    _$SectionAPIImpl(
       title: json['title'] as String,
       text: json['text'] as String,
     );
 
-Map<String, dynamic> _$$_SectionAPIToJson(_$_SectionAPI instance) =>
+Map<String, dynamic> _$$SectionAPIImplToJson(_$SectionAPIImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'text': instance.text,

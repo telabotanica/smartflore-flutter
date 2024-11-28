@@ -43,10 +43,10 @@ class Section extends StatelessWidget {
         Html(
           data: sectionData.text,
           style: {
-            'body': Style(margin: Margins.zero, padding: EdgeInsets.zero),
+            'body': Style(margin: Margins.zero, padding: HtmlPaddings.zero),
           },
-          onLinkTap: (String? url, RenderContext renderContext,
-              Map<String, String> attributes, dom.Element? element) {
+          onLinkTap: (String? url, Map<String, String> attributes,
+              dom.Element? element) {
             Navigator.push(
               context,
               MaterialPageRoute(

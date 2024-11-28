@@ -12,7 +12,7 @@ part of 'map_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MapEvent {
@@ -86,20 +86,20 @@ class _$MapEventCopyWithImpl<$Res, $Val extends MapEvent>
 }
 
 /// @nodoc
-abstract class _$$_RequestCenterMapCopyWith<$Res> {
-  factory _$$_RequestCenterMapCopyWith(
-          _$_RequestCenterMap value, $Res Function(_$_RequestCenterMap) then) =
-      __$$_RequestCenterMapCopyWithImpl<$Res>;
+abstract class _$$RequestCenterMapImplCopyWith<$Res> {
+  factory _$$RequestCenterMapImplCopyWith(_$RequestCenterMapImpl value,
+          $Res Function(_$RequestCenterMapImpl) then) =
+      __$$RequestCenterMapImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isFollowMode});
 }
 
 /// @nodoc
-class __$$_RequestCenterMapCopyWithImpl<$Res>
-    extends _$MapEventCopyWithImpl<$Res, _$_RequestCenterMap>
-    implements _$$_RequestCenterMapCopyWith<$Res> {
-  __$$_RequestCenterMapCopyWithImpl(
-      _$_RequestCenterMap _value, $Res Function(_$_RequestCenterMap) _then)
+class __$$RequestCenterMapImplCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$RequestCenterMapImpl>
+    implements _$$RequestCenterMapImplCopyWith<$Res> {
+  __$$RequestCenterMapImplCopyWithImpl(_$RequestCenterMapImpl _value,
+      $Res Function(_$RequestCenterMapImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_RequestCenterMapCopyWithImpl<$Res>
   $Res call({
     Object? isFollowMode = null,
   }) {
-    return _then(_$_RequestCenterMap(
+    return _then(_$RequestCenterMapImpl(
       null == isFollowMode
           ? _value.isFollowMode
           : isFollowMode // ignore: cast_nullable_to_non_nullable
@@ -118,8 +118,8 @@ class __$$_RequestCenterMapCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RequestCenterMap implements _RequestCenterMap {
-  const _$_RequestCenterMap(this.isFollowMode);
+class _$RequestCenterMapImpl implements _RequestCenterMap {
+  const _$RequestCenterMapImpl(this.isFollowMode);
 
   @override
   final bool isFollowMode;
@@ -130,10 +130,10 @@ class _$_RequestCenterMap implements _RequestCenterMap {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RequestCenterMap &&
+            other is _$RequestCenterMapImpl &&
             (identical(other.isFollowMode, isFollowMode) ||
                 other.isFollowMode == isFollowMode));
   }
@@ -144,8 +144,9 @@ class _$_RequestCenterMap implements _RequestCenterMap {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RequestCenterMapCopyWith<_$_RequestCenterMap> get copyWith =>
-      __$$_RequestCenterMapCopyWithImpl<_$_RequestCenterMap>(this, _$identity);
+  _$$RequestCenterMapImplCopyWith<_$RequestCenterMapImpl> get copyWith =>
+      __$$RequestCenterMapImplCopyWithImpl<_$RequestCenterMapImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -224,29 +225,29 @@ class _$_RequestCenterMap implements _RequestCenterMap {
 
 abstract class _RequestCenterMap implements MapEvent {
   const factory _RequestCenterMap(final bool isFollowMode) =
-      _$_RequestCenterMap;
+      _$RequestCenterMapImpl;
 
   bool get isFollowMode;
   @JsonKey(ignore: true)
-  _$$_RequestCenterMapCopyWith<_$_RequestCenterMap> get copyWith =>
+  _$$RequestCenterMapImplCopyWith<_$RequestCenterMapImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ChangeMapModeCopyWith<$Res> {
-  factory _$$_ChangeMapModeCopyWith(
-          _$_ChangeMapMode value, $Res Function(_$_ChangeMapMode) then) =
-      __$$_ChangeMapModeCopyWithImpl<$Res>;
+abstract class _$$ChangeMapModeImplCopyWith<$Res> {
+  factory _$$ChangeMapModeImplCopyWith(
+          _$ChangeMapModeImpl value, $Res Function(_$ChangeMapModeImpl) then) =
+      __$$ChangeMapModeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MapMode mapMode});
 }
 
 /// @nodoc
-class __$$_ChangeMapModeCopyWithImpl<$Res>
-    extends _$MapEventCopyWithImpl<$Res, _$_ChangeMapMode>
-    implements _$$_ChangeMapModeCopyWith<$Res> {
-  __$$_ChangeMapModeCopyWithImpl(
-      _$_ChangeMapMode _value, $Res Function(_$_ChangeMapMode) _then)
+class __$$ChangeMapModeImplCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$ChangeMapModeImpl>
+    implements _$$ChangeMapModeImplCopyWith<$Res> {
+  __$$ChangeMapModeImplCopyWithImpl(
+      _$ChangeMapModeImpl _value, $Res Function(_$ChangeMapModeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -254,7 +255,7 @@ class __$$_ChangeMapModeCopyWithImpl<$Res>
   $Res call({
     Object? mapMode = null,
   }) {
-    return _then(_$_ChangeMapMode(
+    return _then(_$ChangeMapModeImpl(
       null == mapMode
           ? _value.mapMode
           : mapMode // ignore: cast_nullable_to_non_nullable
@@ -265,8 +266,8 @@ class __$$_ChangeMapModeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangeMapMode implements _ChangeMapMode {
-  const _$_ChangeMapMode(this.mapMode);
+class _$ChangeMapModeImpl implements _ChangeMapMode {
+  const _$ChangeMapModeImpl(this.mapMode);
 
   @override
   final MapMode mapMode;
@@ -277,10 +278,10 @@ class _$_ChangeMapMode implements _ChangeMapMode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangeMapMode &&
+            other is _$ChangeMapModeImpl &&
             (identical(other.mapMode, mapMode) || other.mapMode == mapMode));
   }
 
@@ -290,8 +291,8 @@ class _$_ChangeMapMode implements _ChangeMapMode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangeMapModeCopyWith<_$_ChangeMapMode> get copyWith =>
-      __$$_ChangeMapModeCopyWithImpl<_$_ChangeMapMode>(this, _$identity);
+  _$$ChangeMapModeImplCopyWith<_$ChangeMapModeImpl> get copyWith =>
+      __$$ChangeMapModeImplCopyWithImpl<_$ChangeMapModeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -369,29 +370,29 @@ class _$_ChangeMapMode implements _ChangeMapMode {
 }
 
 abstract class _ChangeMapMode implements MapEvent {
-  const factory _ChangeMapMode(final MapMode mapMode) = _$_ChangeMapMode;
+  const factory _ChangeMapMode(final MapMode mapMode) = _$ChangeMapModeImpl;
 
   MapMode get mapMode;
   @JsonKey(ignore: true)
-  _$$_ChangeMapModeCopyWith<_$_ChangeMapMode> get copyWith =>
+  _$$ChangeMapModeImplCopyWith<_$ChangeMapModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RequestTrailPreviewCopyWith<$Res> {
-  factory _$$_RequestTrailPreviewCopyWith(_$_RequestTrailPreview value,
-          $Res Function(_$_RequestTrailPreview) then) =
-      __$$_RequestTrailPreviewCopyWithImpl<$Res>;
+abstract class _$$RequestTrailPreviewImplCopyWith<$Res> {
+  factory _$$RequestTrailPreviewImplCopyWith(_$RequestTrailPreviewImpl value,
+          $Res Function(_$RequestTrailPreviewImpl) then) =
+      __$$RequestTrailPreviewImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int trailID});
 }
 
 /// @nodoc
-class __$$_RequestTrailPreviewCopyWithImpl<$Res>
-    extends _$MapEventCopyWithImpl<$Res, _$_RequestTrailPreview>
-    implements _$$_RequestTrailPreviewCopyWith<$Res> {
-  __$$_RequestTrailPreviewCopyWithImpl(_$_RequestTrailPreview _value,
-      $Res Function(_$_RequestTrailPreview) _then)
+class __$$RequestTrailPreviewImplCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$RequestTrailPreviewImpl>
+    implements _$$RequestTrailPreviewImplCopyWith<$Res> {
+  __$$RequestTrailPreviewImplCopyWithImpl(_$RequestTrailPreviewImpl _value,
+      $Res Function(_$RequestTrailPreviewImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -399,7 +400,7 @@ class __$$_RequestTrailPreviewCopyWithImpl<$Res>
   $Res call({
     Object? trailID = null,
   }) {
-    return _then(_$_RequestTrailPreview(
+    return _then(_$RequestTrailPreviewImpl(
       null == trailID
           ? _value.trailID
           : trailID // ignore: cast_nullable_to_non_nullable
@@ -410,8 +411,8 @@ class __$$_RequestTrailPreviewCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RequestTrailPreview implements _RequestTrailPreview {
-  const _$_RequestTrailPreview(this.trailID);
+class _$RequestTrailPreviewImpl implements _RequestTrailPreview {
+  const _$RequestTrailPreviewImpl(this.trailID);
 
   @override
   final int trailID;
@@ -422,10 +423,10 @@ class _$_RequestTrailPreview implements _RequestTrailPreview {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RequestTrailPreview &&
+            other is _$RequestTrailPreviewImpl &&
             (identical(other.trailID, trailID) || other.trailID == trailID));
   }
 
@@ -435,8 +436,8 @@ class _$_RequestTrailPreview implements _RequestTrailPreview {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RequestTrailPreviewCopyWith<_$_RequestTrailPreview> get copyWith =>
-      __$$_RequestTrailPreviewCopyWithImpl<_$_RequestTrailPreview>(
+  _$$RequestTrailPreviewImplCopyWith<_$RequestTrailPreviewImpl> get copyWith =>
+      __$$RequestTrailPreviewImplCopyWithImpl<_$RequestTrailPreviewImpl>(
           this, _$identity);
 
   @override
@@ -516,29 +517,29 @@ class _$_RequestTrailPreview implements _RequestTrailPreview {
 
 abstract class _RequestTrailPreview implements MapEvent {
   const factory _RequestTrailPreview(final int trailID) =
-      _$_RequestTrailPreview;
+      _$RequestTrailPreviewImpl;
 
   int get trailID;
   @JsonKey(ignore: true)
-  _$$_RequestTrailPreviewCopyWith<_$_RequestTrailPreview> get copyWith =>
+  _$$RequestTrailPreviewImplCopyWith<_$RequestTrailPreviewImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ChangeFollowModeCopyWith<$Res> {
-  factory _$$_ChangeFollowModeCopyWith(
-          _$_ChangeFollowMode value, $Res Function(_$_ChangeFollowMode) then) =
-      __$$_ChangeFollowModeCopyWithImpl<$Res>;
+abstract class _$$ChangeFollowModeImplCopyWith<$Res> {
+  factory _$$ChangeFollowModeImplCopyWith(_$ChangeFollowModeImpl value,
+          $Res Function(_$ChangeFollowModeImpl) then) =
+      __$$ChangeFollowModeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FollowMode followMode});
 }
 
 /// @nodoc
-class __$$_ChangeFollowModeCopyWithImpl<$Res>
-    extends _$MapEventCopyWithImpl<$Res, _$_ChangeFollowMode>
-    implements _$$_ChangeFollowModeCopyWith<$Res> {
-  __$$_ChangeFollowModeCopyWithImpl(
-      _$_ChangeFollowMode _value, $Res Function(_$_ChangeFollowMode) _then)
+class __$$ChangeFollowModeImplCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$ChangeFollowModeImpl>
+    implements _$$ChangeFollowModeImplCopyWith<$Res> {
+  __$$ChangeFollowModeImplCopyWithImpl(_$ChangeFollowModeImpl _value,
+      $Res Function(_$ChangeFollowModeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -546,7 +547,7 @@ class __$$_ChangeFollowModeCopyWithImpl<$Res>
   $Res call({
     Object? followMode = null,
   }) {
-    return _then(_$_ChangeFollowMode(
+    return _then(_$ChangeFollowModeImpl(
       null == followMode
           ? _value.followMode
           : followMode // ignore: cast_nullable_to_non_nullable
@@ -557,8 +558,8 @@ class __$$_ChangeFollowModeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangeFollowMode implements _ChangeFollowMode {
-  const _$_ChangeFollowMode(this.followMode);
+class _$ChangeFollowModeImpl implements _ChangeFollowMode {
+  const _$ChangeFollowModeImpl(this.followMode);
 
   @override
   final FollowMode followMode;
@@ -569,10 +570,10 @@ class _$_ChangeFollowMode implements _ChangeFollowMode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangeFollowMode &&
+            other is _$ChangeFollowModeImpl &&
             (identical(other.followMode, followMode) ||
                 other.followMode == followMode));
   }
@@ -583,8 +584,9 @@ class _$_ChangeFollowMode implements _ChangeFollowMode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangeFollowModeCopyWith<_$_ChangeFollowMode> get copyWith =>
-      __$$_ChangeFollowModeCopyWithImpl<_$_ChangeFollowMode>(this, _$identity);
+  _$$ChangeFollowModeImplCopyWith<_$ChangeFollowModeImpl> get copyWith =>
+      __$$ChangeFollowModeImplCopyWithImpl<_$ChangeFollowModeImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -663,11 +665,11 @@ class _$_ChangeFollowMode implements _ChangeFollowMode {
 
 abstract class _ChangeFollowMode implements MapEvent {
   const factory _ChangeFollowMode(final FollowMode followMode) =
-      _$_ChangeFollowMode;
+      _$ChangeFollowModeImpl;
 
   FollowMode get followMode;
   @JsonKey(ignore: true)
-  _$$_ChangeFollowModeCopyWith<_$_ChangeFollowMode> get copyWith =>
+  _$$ChangeFollowModeImplCopyWith<_$ChangeFollowModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -750,24 +752,25 @@ class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -775,9 +778,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -866,29 +869,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements MapState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnRecenterMapCopyWith<$Res> {
-  factory _$$_OnRecenterMapCopyWith(
-          _$_OnRecenterMap value, $Res Function(_$_OnRecenterMap) then) =
-      __$$_OnRecenterMapCopyWithImpl<$Res>;
+abstract class _$$OnRecenterMapImplCopyWith<$Res> {
+  factory _$$OnRecenterMapImplCopyWith(
+          _$OnRecenterMapImpl value, $Res Function(_$OnRecenterMapImpl) then) =
+      __$$OnRecenterMapImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnRecenterMapCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res, _$_OnRecenterMap>
-    implements _$$_OnRecenterMapCopyWith<$Res> {
-  __$$_OnRecenterMapCopyWithImpl(
-      _$_OnRecenterMap _value, $Res Function(_$_OnRecenterMap) _then)
+class __$$OnRecenterMapImplCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$OnRecenterMapImpl>
+    implements _$$OnRecenterMapImplCopyWith<$Res> {
+  __$$OnRecenterMapImplCopyWithImpl(
+      _$OnRecenterMapImpl _value, $Res Function(_$OnRecenterMapImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OnRecenterMap implements _OnRecenterMap {
-  const _$_OnRecenterMap();
+class _$OnRecenterMapImpl implements _OnRecenterMap {
+  const _$OnRecenterMapImpl();
 
   @override
   String toString() {
@@ -896,9 +899,9 @@ class _$_OnRecenterMap implements _OnRecenterMap {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnRecenterMap);
+        (other.runtimeType == runtimeType && other is _$OnRecenterMapImpl);
   }
 
   @override
@@ -987,24 +990,24 @@ class _$_OnRecenterMap implements _OnRecenterMap {
 }
 
 abstract class _OnRecenterMap implements MapState {
-  const factory _OnRecenterMap() = _$_OnRecenterMap;
+  const factory _OnRecenterMap() = _$OnRecenterMapImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnMapModeChangedCopyWith<$Res> {
-  factory _$$_OnMapModeChangedCopyWith(
-          _$_OnMapModeChanged value, $Res Function(_$_OnMapModeChanged) then) =
-      __$$_OnMapModeChangedCopyWithImpl<$Res>;
+abstract class _$$OnMapModeChangedImplCopyWith<$Res> {
+  factory _$$OnMapModeChangedImplCopyWith(_$OnMapModeChangedImpl value,
+          $Res Function(_$OnMapModeChangedImpl) then) =
+      __$$OnMapModeChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MapMode mapMode});
 }
 
 /// @nodoc
-class __$$_OnMapModeChangedCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res, _$_OnMapModeChanged>
-    implements _$$_OnMapModeChangedCopyWith<$Res> {
-  __$$_OnMapModeChangedCopyWithImpl(
-      _$_OnMapModeChanged _value, $Res Function(_$_OnMapModeChanged) _then)
+class __$$OnMapModeChangedImplCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$OnMapModeChangedImpl>
+    implements _$$OnMapModeChangedImplCopyWith<$Res> {
+  __$$OnMapModeChangedImplCopyWithImpl(_$OnMapModeChangedImpl _value,
+      $Res Function(_$OnMapModeChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1012,7 +1015,7 @@ class __$$_OnMapModeChangedCopyWithImpl<$Res>
   $Res call({
     Object? mapMode = null,
   }) {
-    return _then(_$_OnMapModeChanged(
+    return _then(_$OnMapModeChangedImpl(
       null == mapMode
           ? _value.mapMode
           : mapMode // ignore: cast_nullable_to_non_nullable
@@ -1023,8 +1026,8 @@ class __$$_OnMapModeChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnMapModeChanged implements _OnMapModeChanged {
-  const _$_OnMapModeChanged(this.mapMode);
+class _$OnMapModeChangedImpl implements _OnMapModeChanged {
+  const _$OnMapModeChangedImpl(this.mapMode);
 
   @override
   final MapMode mapMode;
@@ -1035,10 +1038,10 @@ class _$_OnMapModeChanged implements _OnMapModeChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnMapModeChanged &&
+            other is _$OnMapModeChangedImpl &&
             (identical(other.mapMode, mapMode) || other.mapMode == mapMode));
   }
 
@@ -1048,8 +1051,9 @@ class _$_OnMapModeChanged implements _OnMapModeChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnMapModeChangedCopyWith<_$_OnMapModeChanged> get copyWith =>
-      __$$_OnMapModeChangedCopyWithImpl<_$_OnMapModeChanged>(this, _$identity);
+  _$$OnMapModeChangedImplCopyWith<_$OnMapModeChangedImpl> get copyWith =>
+      __$$OnMapModeChangedImplCopyWithImpl<_$OnMapModeChangedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1134,29 +1138,31 @@ class _$_OnMapModeChanged implements _OnMapModeChanged {
 }
 
 abstract class _OnMapModeChanged implements MapState {
-  const factory _OnMapModeChanged(final MapMode mapMode) = _$_OnMapModeChanged;
+  const factory _OnMapModeChanged(final MapMode mapMode) =
+      _$OnMapModeChangedImpl;
 
   MapMode get mapMode;
   @JsonKey(ignore: true)
-  _$$_OnMapModeChangedCopyWith<_$_OnMapModeChanged> get copyWith =>
+  _$$OnMapModeChangedImplCopyWith<_$OnMapModeChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnRequestTrailPreviewCopyWith<$Res> {
-  factory _$$_OnRequestTrailPreviewCopyWith(_$_OnRequestTrailPreview value,
-          $Res Function(_$_OnRequestTrailPreview) then) =
-      __$$_OnRequestTrailPreviewCopyWithImpl<$Res>;
+abstract class _$$OnRequestTrailPreviewImplCopyWith<$Res> {
+  factory _$$OnRequestTrailPreviewImplCopyWith(
+          _$OnRequestTrailPreviewImpl value,
+          $Res Function(_$OnRequestTrailPreviewImpl) then) =
+      __$$OnRequestTrailPreviewImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int trailID});
 }
 
 /// @nodoc
-class __$$_OnRequestTrailPreviewCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res, _$_OnRequestTrailPreview>
-    implements _$$_OnRequestTrailPreviewCopyWith<$Res> {
-  __$$_OnRequestTrailPreviewCopyWithImpl(_$_OnRequestTrailPreview _value,
-      $Res Function(_$_OnRequestTrailPreview) _then)
+class __$$OnRequestTrailPreviewImplCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$OnRequestTrailPreviewImpl>
+    implements _$$OnRequestTrailPreviewImplCopyWith<$Res> {
+  __$$OnRequestTrailPreviewImplCopyWithImpl(_$OnRequestTrailPreviewImpl _value,
+      $Res Function(_$OnRequestTrailPreviewImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1164,7 +1170,7 @@ class __$$_OnRequestTrailPreviewCopyWithImpl<$Res>
   $Res call({
     Object? trailID = null,
   }) {
-    return _then(_$_OnRequestTrailPreview(
+    return _then(_$OnRequestTrailPreviewImpl(
       null == trailID
           ? _value.trailID
           : trailID // ignore: cast_nullable_to_non_nullable
@@ -1175,8 +1181,8 @@ class __$$_OnRequestTrailPreviewCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnRequestTrailPreview implements _OnRequestTrailPreview {
-  const _$_OnRequestTrailPreview(this.trailID);
+class _$OnRequestTrailPreviewImpl implements _OnRequestTrailPreview {
+  const _$OnRequestTrailPreviewImpl(this.trailID);
 
   @override
   final int trailID;
@@ -1187,10 +1193,10 @@ class _$_OnRequestTrailPreview implements _OnRequestTrailPreview {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnRequestTrailPreview &&
+            other is _$OnRequestTrailPreviewImpl &&
             (identical(other.trailID, trailID) || other.trailID == trailID));
   }
 
@@ -1200,9 +1206,9 @@ class _$_OnRequestTrailPreview implements _OnRequestTrailPreview {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnRequestTrailPreviewCopyWith<_$_OnRequestTrailPreview> get copyWith =>
-      __$$_OnRequestTrailPreviewCopyWithImpl<_$_OnRequestTrailPreview>(
-          this, _$identity);
+  _$$OnRequestTrailPreviewImplCopyWith<_$OnRequestTrailPreviewImpl>
+      get copyWith => __$$OnRequestTrailPreviewImplCopyWithImpl<
+          _$OnRequestTrailPreviewImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1288,29 +1294,29 @@ class _$_OnRequestTrailPreview implements _OnRequestTrailPreview {
 
 abstract class _OnRequestTrailPreview implements MapState {
   const factory _OnRequestTrailPreview(final int trailID) =
-      _$_OnRequestTrailPreview;
+      _$OnRequestTrailPreviewImpl;
 
   int get trailID;
   @JsonKey(ignore: true)
-  _$$_OnRequestTrailPreviewCopyWith<_$_OnRequestTrailPreview> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OnRequestTrailPreviewImplCopyWith<_$OnRequestTrailPreviewImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnFollowModeChangedCopyWith<$Res> {
-  factory _$$_OnFollowModeChangedCopyWith(_$_OnFollowModeChanged value,
-          $Res Function(_$_OnFollowModeChanged) then) =
-      __$$_OnFollowModeChangedCopyWithImpl<$Res>;
+abstract class _$$OnFollowModeChangedImplCopyWith<$Res> {
+  factory _$$OnFollowModeChangedImplCopyWith(_$OnFollowModeChangedImpl value,
+          $Res Function(_$OnFollowModeChangedImpl) then) =
+      __$$OnFollowModeChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({FollowMode followMode});
 }
 
 /// @nodoc
-class __$$_OnFollowModeChangedCopyWithImpl<$Res>
-    extends _$MapStateCopyWithImpl<$Res, _$_OnFollowModeChanged>
-    implements _$$_OnFollowModeChangedCopyWith<$Res> {
-  __$$_OnFollowModeChangedCopyWithImpl(_$_OnFollowModeChanged _value,
-      $Res Function(_$_OnFollowModeChanged) _then)
+class __$$OnFollowModeChangedImplCopyWithImpl<$Res>
+    extends _$MapStateCopyWithImpl<$Res, _$OnFollowModeChangedImpl>
+    implements _$$OnFollowModeChangedImplCopyWith<$Res> {
+  __$$OnFollowModeChangedImplCopyWithImpl(_$OnFollowModeChangedImpl _value,
+      $Res Function(_$OnFollowModeChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1318,7 +1324,7 @@ class __$$_OnFollowModeChangedCopyWithImpl<$Res>
   $Res call({
     Object? followMode = null,
   }) {
-    return _then(_$_OnFollowModeChanged(
+    return _then(_$OnFollowModeChangedImpl(
       null == followMode
           ? _value.followMode
           : followMode // ignore: cast_nullable_to_non_nullable
@@ -1329,8 +1335,8 @@ class __$$_OnFollowModeChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnFollowModeChanged implements _OnFollowModeChanged {
-  const _$_OnFollowModeChanged(this.followMode);
+class _$OnFollowModeChangedImpl implements _OnFollowModeChanged {
+  const _$OnFollowModeChangedImpl(this.followMode);
 
   @override
   final FollowMode followMode;
@@ -1341,10 +1347,10 @@ class _$_OnFollowModeChanged implements _OnFollowModeChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnFollowModeChanged &&
+            other is _$OnFollowModeChangedImpl &&
             (identical(other.followMode, followMode) ||
                 other.followMode == followMode));
   }
@@ -1355,8 +1361,8 @@ class _$_OnFollowModeChanged implements _OnFollowModeChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnFollowModeChangedCopyWith<_$_OnFollowModeChanged> get copyWith =>
-      __$$_OnFollowModeChangedCopyWithImpl<_$_OnFollowModeChanged>(
+  _$$OnFollowModeChangedImplCopyWith<_$OnFollowModeChangedImpl> get copyWith =>
+      __$$OnFollowModeChangedImplCopyWithImpl<_$OnFollowModeChangedImpl>(
           this, _$identity);
 
   @override
@@ -1443,10 +1449,10 @@ class _$_OnFollowModeChanged implements _OnFollowModeChanged {
 
 abstract class _OnFollowModeChanged implements MapState {
   const factory _OnFollowModeChanged(final FollowMode followMode) =
-      _$_OnFollowModeChanged;
+      _$OnFollowModeChangedImpl;
 
   FollowMode get followMode;
   @JsonKey(ignore: true)
-  _$$_OnFollowModeChangedCopyWith<_$_OnFollowModeChanged> get copyWith =>
+  _$$OnFollowModeChangedImplCopyWith<_$OnFollowModeChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

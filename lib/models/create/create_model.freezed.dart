@@ -12,7 +12,7 @@ part of 'create_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CreateTrail _$CreateTrailFromJson(Map<String, dynamic> json) {
   return _CreateTrail.fromJson(json);
@@ -124,11 +124,11 @@ class _$CreateTrailCopyWithImpl<$Res, $Val extends CreateTrail>
 }
 
 /// @nodoc
-abstract class _$$_CreateTrailCopyWith<$Res>
+abstract class _$$CreateTrailImplCopyWith<$Res>
     implements $CreateTrailCopyWith<$Res> {
-  factory _$$_CreateTrailCopyWith(
-          _$_CreateTrail value, $Res Function(_$_CreateTrail) then) =
-      __$$_CreateTrailCopyWithImpl<$Res>;
+  factory _$$CreateTrailImplCopyWith(
+          _$CreateTrailImpl value, $Res Function(_$CreateTrailImpl) then) =
+      __$$CreateTrailImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -146,11 +146,11 @@ abstract class _$$_CreateTrailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CreateTrailCopyWithImpl<$Res>
-    extends _$CreateTrailCopyWithImpl<$Res, _$_CreateTrail>
-    implements _$$_CreateTrailCopyWith<$Res> {
-  __$$_CreateTrailCopyWithImpl(
-      _$_CreateTrail _value, $Res Function(_$_CreateTrail) _then)
+class __$$CreateTrailImplCopyWithImpl<$Res>
+    extends _$CreateTrailCopyWithImpl<$Res, _$CreateTrailImpl>
+    implements _$$CreateTrailImplCopyWith<$Res> {
+  __$$CreateTrailImplCopyWithImpl(
+      _$CreateTrailImpl _value, $Res Function(_$CreateTrailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -163,7 +163,7 @@ class __$$_CreateTrailCopyWithImpl<$Res>
     Object? prm = null,
     Object? bestSeason = null,
   }) {
-    return _then(_$_CreateTrail(
+    return _then(_$CreateTrailImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -195,26 +195,21 @@ class __$$_CreateTrailCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 50, adapterName: 'CreateTrailAdapter')
-class _$_CreateTrail implements _CreateTrail {
-  const _$_CreateTrail(
-      {@HiveField(0)
-          required this.name,
-      @HiveField(1)
-          required this.position,
-      @HiveField(2)
-          final List<Occurrence> occurrences = const [],
-      @HiveField(3)
-          this.path = const Path(),
-      @HiveField(5)
-          this.prm = -1,
+class _$CreateTrailImpl implements _CreateTrail {
+  const _$CreateTrailImpl(
+      {@HiveField(0) required this.name,
+      @HiveField(1) required this.position,
+      @HiveField(2) final List<Occurrence> occurrences = const [],
+      @HiveField(3) this.path = const Path(),
+      @HiveField(5) this.prm = -1,
       @JsonKey(name: 'best_season')
       @HiveField(6)
-          final List<bool> bestSeason = const [false, false, false, false]})
+      final List<bool> bestSeason = const [false, false, false, false]})
       : _occurrences = occurrences,
         _bestSeason = bestSeason;
 
-  factory _$_CreateTrail.fromJson(Map<String, dynamic> json) =>
-      _$$_CreateTrailFromJson(json);
+  factory _$CreateTrailImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CreateTrailImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -256,10 +251,10 @@ class _$_CreateTrail implements _CreateTrail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateTrail &&
+            other is _$CreateTrailImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.position, position) ||
                 other.position == position) &&
@@ -285,12 +280,12 @@ class _$_CreateTrail implements _CreateTrail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateTrailCopyWith<_$_CreateTrail> get copyWith =>
-      __$$_CreateTrailCopyWithImpl<_$_CreateTrail>(this, _$identity);
+  _$$CreateTrailImplCopyWith<_$CreateTrailImpl> get copyWith =>
+      __$$CreateTrailImplCopyWithImpl<_$CreateTrailImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateTrailToJson(
+    return _$$CreateTrailImplToJson(
       this,
     );
   }
@@ -298,22 +293,17 @@ class _$_CreateTrail implements _CreateTrail {
 
 abstract class _CreateTrail implements CreateTrail {
   const factory _CreateTrail(
-      {@HiveField(0)
-          required final String name,
-      @HiveField(1)
-          required final SavePosition position,
-      @HiveField(2)
-          final List<Occurrence> occurrences,
-      @HiveField(3)
-          final Path path,
-      @HiveField(5)
-          final int prm,
+      {@HiveField(0) required final String name,
+      @HiveField(1) required final SavePosition position,
+      @HiveField(2) final List<Occurrence> occurrences,
+      @HiveField(3) final Path path,
+      @HiveField(5) final int prm,
       @JsonKey(name: 'best_season')
       @HiveField(6)
-          final List<bool> bestSeason}) = _$_CreateTrail;
+      final List<bool> bestSeason}) = _$CreateTrailImpl;
 
   factory _CreateTrail.fromJson(Map<String, dynamic> json) =
-      _$_CreateTrail.fromJson;
+      _$CreateTrailImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -336,7 +326,7 @@ abstract class _CreateTrail implements CreateTrail {
   List<bool> get bestSeason;
   @override
   @JsonKey(ignore: true)
-  _$$_CreateTrailCopyWith<_$_CreateTrail> get copyWith =>
+  _$$CreateTrailImplCopyWith<_$CreateTrailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -427,11 +417,11 @@ class _$OccurrenceCreateCopyWithImpl<$Res, $Val extends OccurrenceCreate>
 }
 
 /// @nodoc
-abstract class _$$_OccurrenceCreateCopyWith<$Res>
+abstract class _$$OccurrenceCreateImplCopyWith<$Res>
     implements $OccurrenceCreateCopyWith<$Res> {
-  factory _$$_OccurrenceCreateCopyWith(
-          _$_OccurrenceCreate value, $Res Function(_$_OccurrenceCreate) then) =
-      __$$_OccurrenceCreateCopyWithImpl<$Res>;
+  factory _$$OccurrenceCreateImplCopyWith(_$OccurrenceCreateImpl value,
+          $Res Function(_$OccurrenceCreateImpl) then) =
+      __$$OccurrenceCreateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -443,11 +433,11 @@ abstract class _$$_OccurrenceCreateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OccurrenceCreateCopyWithImpl<$Res>
-    extends _$OccurrenceCreateCopyWithImpl<$Res, _$_OccurrenceCreate>
-    implements _$$_OccurrenceCreateCopyWith<$Res> {
-  __$$_OccurrenceCreateCopyWithImpl(
-      _$_OccurrenceCreate _value, $Res Function(_$_OccurrenceCreate) _then)
+class __$$OccurrenceCreateImplCopyWithImpl<$Res>
+    extends _$OccurrenceCreateCopyWithImpl<$Res, _$OccurrenceCreateImpl>
+    implements _$$OccurrenceCreateImplCopyWith<$Res> {
+  __$$OccurrenceCreateImplCopyWithImpl(_$OccurrenceCreateImpl _value,
+      $Res Function(_$OccurrenceCreateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -459,7 +449,7 @@ class __$$_OccurrenceCreateCopyWithImpl<$Res>
     Object? taxonRepository = null,
     Object? imageId = freezed,
   }) {
-    return _then(_$_OccurrenceCreate(
+    return _then(_$OccurrenceCreateImpl(
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -486,26 +476,18 @@ class __$$_OccurrenceCreateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OccurrenceCreate implements _OccurrenceCreate {
-  const _$_OccurrenceCreate(
-      {@LatLngConverter()
-      @HiveField(0)
-          required this.position,
-      @JsonKey(name: 'scientific_name')
-      @HiveField(1)
-          this.scientificName,
-      @JsonKey(name: 'name_id')
-      @HiveField(2)
-          required this.nameId,
+class _$OccurrenceCreateImpl implements _OccurrenceCreate {
+  const _$OccurrenceCreateImpl(
+      {@LatLngConverter() @HiveField(0) required this.position,
+      @JsonKey(name: 'scientific_name') @HiveField(1) this.scientificName,
+      @JsonKey(name: 'name_id') @HiveField(2) required this.nameId,
       @JsonKey(name: 'taxon_repository')
       @HiveField(3)
-          required this.taxonRepository,
-      @JsonKey(name: 'image_id')
-      @HiveField(4)
-          this.imageId});
+      required this.taxonRepository,
+      @JsonKey(name: 'image_id') @HiveField(4) this.imageId});
 
-  factory _$_OccurrenceCreate.fromJson(Map<String, dynamic> json) =>
-      _$$_OccurrenceCreateFromJson(json);
+  factory _$OccurrenceCreateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OccurrenceCreateImplFromJson(json);
 
   @override
   @LatLngConverter()
@@ -534,10 +516,10 @@ class _$_OccurrenceCreate implements _OccurrenceCreate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OccurrenceCreate &&
+            other is _$OccurrenceCreateImpl &&
             (identical(other.position, position) ||
                 other.position == position) &&
             (identical(other.scientificName, scientificName) ||
@@ -556,12 +538,13 @@ class _$_OccurrenceCreate implements _OccurrenceCreate {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OccurrenceCreateCopyWith<_$_OccurrenceCreate> get copyWith =>
-      __$$_OccurrenceCreateCopyWithImpl<_$_OccurrenceCreate>(this, _$identity);
+  _$$OccurrenceCreateImplCopyWith<_$OccurrenceCreateImpl> get copyWith =>
+      __$$OccurrenceCreateImplCopyWithImpl<_$OccurrenceCreateImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OccurrenceCreateToJson(
+    return _$$OccurrenceCreateImplToJson(
       this,
     );
   }
@@ -569,24 +552,19 @@ class _$_OccurrenceCreate implements _OccurrenceCreate {
 
 abstract class _OccurrenceCreate implements OccurrenceCreate {
   const factory _OccurrenceCreate(
-      {@LatLngConverter()
-      @HiveField(0)
-          required final LatLng position,
-      @JsonKey(name: 'scientific_name')
-      @HiveField(1)
+          {@LatLngConverter() @HiveField(0) required final LatLng position,
+          @JsonKey(name: 'scientific_name')
+          @HiveField(1)
           final String? scientificName,
-      @JsonKey(name: 'name_id')
-      @HiveField(2)
-          required final int nameId,
-      @JsonKey(name: 'taxon_repository')
-      @HiveField(3)
+          @JsonKey(name: 'name_id') @HiveField(2) required final int nameId,
+          @JsonKey(name: 'taxon_repository')
+          @HiveField(3)
           required final String taxonRepository,
-      @JsonKey(name: 'image_id')
-      @HiveField(4)
-          final String? imageId}) = _$_OccurrenceCreate;
+          @JsonKey(name: 'image_id') @HiveField(4) final String? imageId}) =
+      _$OccurrenceCreateImpl;
 
   factory _OccurrenceCreate.fromJson(Map<String, dynamic> json) =
-      _$_OccurrenceCreate.fromJson;
+      _$OccurrenceCreateImpl.fromJson;
 
   @override
   @LatLngConverter()
@@ -610,7 +588,7 @@ abstract class _OccurrenceCreate implements OccurrenceCreate {
   String? get imageId;
   @override
   @JsonKey(ignore: true)
-  _$$_OccurrenceCreateCopyWith<_$_OccurrenceCreate> get copyWith =>
+  _$$OccurrenceCreateImplCopyWith<_$OccurrenceCreateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -674,11 +652,11 @@ class _$SavePositionCopyWithImpl<$Res, $Val extends SavePosition>
 }
 
 /// @nodoc
-abstract class _$$_SavePositionCopyWith<$Res>
+abstract class _$$SavePositionImplCopyWith<$Res>
     implements $SavePositionCopyWith<$Res> {
-  factory _$$_SavePositionCopyWith(
-          _$_SavePosition value, $Res Function(_$_SavePosition) then) =
-      __$$_SavePositionCopyWithImpl<$Res>;
+  factory _$$SavePositionImplCopyWith(
+          _$SavePositionImpl value, $Res Function(_$SavePositionImpl) then) =
+      __$$SavePositionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -687,11 +665,11 @@ abstract class _$$_SavePositionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SavePositionCopyWithImpl<$Res>
-    extends _$SavePositionCopyWithImpl<$Res, _$_SavePosition>
-    implements _$$_SavePositionCopyWith<$Res> {
-  __$$_SavePositionCopyWithImpl(
-      _$_SavePosition _value, $Res Function(_$_SavePosition) _then)
+class __$$SavePositionImplCopyWithImpl<$Res>
+    extends _$SavePositionCopyWithImpl<$Res, _$SavePositionImpl>
+    implements _$$SavePositionImplCopyWith<$Res> {
+  __$$SavePositionImplCopyWithImpl(
+      _$SavePositionImpl _value, $Res Function(_$SavePositionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -700,7 +678,7 @@ class __$$_SavePositionCopyWithImpl<$Res>
     Object? start = null,
     Object? end = null,
   }) {
-    return _then(_$_SavePosition(
+    return _then(_$SavePositionImpl(
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -716,13 +694,13 @@ class __$$_SavePositionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 55, adapterName: 'SavePositionAdapter')
-class _$_SavePosition implements _SavePosition {
-  const _$_SavePosition(
+class _$SavePositionImpl implements _SavePosition {
+  const _$SavePositionImpl(
       {@LatLngConverter() @HiveField(0) required this.start,
       @LatLngConverter() @HiveField(1) required this.end});
 
-  factory _$_SavePosition.fromJson(Map<String, dynamic> json) =>
-      _$$_SavePositionFromJson(json);
+  factory _$SavePositionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SavePositionImplFromJson(json);
 
   @override
   @LatLngConverter()
@@ -739,10 +717,10 @@ class _$_SavePosition implements _SavePosition {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SavePosition &&
+            other is _$SavePositionImpl &&
             (identical(other.start, start) || other.start == start) &&
             (identical(other.end, end) || other.end == end));
   }
@@ -754,12 +732,12 @@ class _$_SavePosition implements _SavePosition {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SavePositionCopyWith<_$_SavePosition> get copyWith =>
-      __$$_SavePositionCopyWithImpl<_$_SavePosition>(this, _$identity);
+  _$$SavePositionImplCopyWith<_$SavePositionImpl> get copyWith =>
+      __$$SavePositionImplCopyWithImpl<_$SavePositionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SavePositionToJson(
+    return _$$SavePositionImplToJson(
       this,
     );
   }
@@ -769,10 +747,10 @@ abstract class _SavePosition implements SavePosition {
   const factory _SavePosition(
           {@LatLngConverter() @HiveField(0) required final LatLng start,
           @LatLngConverter() @HiveField(1) required final LatLng end}) =
-      _$_SavePosition;
+      _$SavePositionImpl;
 
   factory _SavePosition.fromJson(Map<String, dynamic> json) =
-      _$_SavePosition.fromJson;
+      _$SavePositionImpl.fromJson;
 
   @override
   @LatLngConverter()
@@ -784,6 +762,6 @@ abstract class _SavePosition implements SavePosition {
   LatLng get end;
   @override
   @JsonKey(ignore: true)
-  _$$_SavePositionCopyWith<_$_SavePosition> get copyWith =>
+  _$$SavePositionImplCopyWith<_$SavePositionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

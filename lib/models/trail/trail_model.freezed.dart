@@ -12,7 +12,7 @@ part of 'trail_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TrailDetails _$TrailDetailsFromJson(Map<String, dynamic> json) {
   return _TrailDetails.fromJson(json);
@@ -167,11 +167,11 @@ class _$TrailDetailsCopyWithImpl<$Res, $Val extends TrailDetails>
 }
 
 /// @nodoc
-abstract class _$$_TrailDetailsCopyWith<$Res>
+abstract class _$$TrailDetailsImplCopyWith<$Res>
     implements $TrailDetailsCopyWith<$Res> {
-  factory _$$_TrailDetailsCopyWith(
-          _$_TrailDetails value, $Res Function(_$_TrailDetails) then) =
-      __$$_TrailDetailsCopyWithImpl<$Res>;
+  factory _$$TrailDetailsImplCopyWith(
+          _$TrailDetailsImpl value, $Res Function(_$TrailDetailsImpl) then) =
+      __$$TrailDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -195,11 +195,11 @@ abstract class _$$_TrailDetailsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TrailDetailsCopyWithImpl<$Res>
-    extends _$TrailDetailsCopyWithImpl<$Res, _$_TrailDetails>
-    implements _$$_TrailDetailsCopyWith<$Res> {
-  __$$_TrailDetailsCopyWithImpl(
-      _$_TrailDetails _value, $Res Function(_$_TrailDetails) _then)
+class __$$TrailDetailsImplCopyWithImpl<$Res>
+    extends _$TrailDetailsCopyWithImpl<$Res, _$TrailDetailsImpl>
+    implements _$$TrailDetailsImplCopyWith<$Res> {
+  __$$TrailDetailsImplCopyWithImpl(
+      _$TrailDetailsImpl _value, $Res Function(_$TrailDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -216,7 +216,7 @@ class __$$_TrailDetailsCopyWithImpl<$Res>
     Object? path = null,
     Object? pathLength = null,
   }) {
-    return _then(_$_TrailDetails(
+    return _then(_$TrailDetailsImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -264,35 +264,24 @@ class __$$_TrailDetailsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 10, adapterName: 'TrailDetailAdapter')
-class _$_TrailDetails implements _TrailDetails {
-  const _$_TrailDetails(
-      {@HiveField(0)
-          required this.id,
-      @HiveField(1)
-          required this.name,
-      @JsonKey(name: 'display_name')
-      @HiveField(2)
-          required this.displayName,
-      @HiveField(3)
-          required this.author,
-      @HiveField(4)
-          required this.position,
-      @HiveField(5)
-          required final List<Occurrence> occurrences,
+class _$TrailDetailsImpl implements _TrailDetails {
+  const _$TrailDetailsImpl(
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.name,
+      @JsonKey(name: 'display_name') @HiveField(2) required this.displayName,
+      @HiveField(3) required this.author,
+      @HiveField(4) required this.position,
+      @HiveField(5) required final List<Occurrence> occurrences,
       @JsonKey(name: 'occurrences_count')
       @HiveField(6)
-          required this.occurrencesCount,
-      @HiveField(7)
-          required this.image,
-      @HiveField(8)
-          required this.path,
-      @JsonKey(name: 'path_length')
-      @HiveField(9)
-          required this.pathLength})
+      required this.occurrencesCount,
+      @HiveField(7) required this.image,
+      @HiveField(8) required this.path,
+      @JsonKey(name: 'path_length') @HiveField(9) required this.pathLength})
       : _occurrences = occurrences;
 
-  factory _$_TrailDetails.fromJson(Map<String, dynamic> json) =>
-      _$$_TrailDetailsFromJson(json);
+  factory _$TrailDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TrailDetailsImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -340,10 +329,10 @@ class _$_TrailDetails implements _TrailDetails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrailDetails &&
+            other is _$TrailDetailsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.displayName, displayName) ||
@@ -379,12 +368,12 @@ class _$_TrailDetails implements _TrailDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrailDetailsCopyWith<_$_TrailDetails> get copyWith =>
-      __$$_TrailDetailsCopyWithImpl<_$_TrailDetails>(this, _$identity);
+  _$$TrailDetailsImplCopyWith<_$TrailDetailsImpl> get copyWith =>
+      __$$TrailDetailsImplCopyWithImpl<_$TrailDetailsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrailDetailsToJson(
+    return _$$TrailDetailsImplToJson(
       this,
     );
   }
@@ -392,32 +381,25 @@ class _$_TrailDetails implements _TrailDetails {
 
 abstract class _TrailDetails implements TrailDetails {
   const factory _TrailDetails(
-      {@HiveField(0)
-          required final int id,
-      @HiveField(1)
-          required final String name,
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String name,
       @JsonKey(name: 'display_name')
       @HiveField(2)
-          required final String displayName,
-      @HiveField(3)
-          required final String author,
-      @HiveField(4)
-          required final StartEndPosition position,
-      @HiveField(5)
-          required final List<Occurrence> occurrences,
+      required final String displayName,
+      @HiveField(3) required final String author,
+      @HiveField(4) required final StartEndPosition position,
+      @HiveField(5) required final List<Occurrence> occurrences,
       @JsonKey(name: 'occurrences_count')
       @HiveField(6)
-          required final int occurrencesCount,
-      @HiveField(7)
-          required final Image image,
-      @HiveField(8)
-          required final Path path,
+      required final int occurrencesCount,
+      @HiveField(7) required final Image image,
+      @HiveField(8) required final Path path,
       @JsonKey(name: 'path_length')
       @HiveField(9)
-          required final int pathLength}) = _$_TrailDetails;
+      required final int pathLength}) = _$TrailDetailsImpl;
 
   factory _TrailDetails.fromJson(Map<String, dynamic> json) =
-      _$_TrailDetails.fromJson;
+      _$TrailDetailsImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -454,7 +436,7 @@ abstract class _TrailDetails implements TrailDetails {
   int get pathLength;
   @override
   @JsonKey(ignore: true)
-  _$$_TrailDetailsCopyWith<_$_TrailDetails> get copyWith =>
+  _$$TrailDetailsImplCopyWith<_$TrailDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -512,18 +494,21 @@ class _$ImageCopyWithImpl<$Res, $Val extends Image>
 }
 
 /// @nodoc
-abstract class _$$_ImageCopyWith<$Res> implements $ImageCopyWith<$Res> {
-  factory _$$_ImageCopyWith(_$_Image value, $Res Function(_$_Image) then) =
-      __$$_ImageCopyWithImpl<$Res>;
+abstract class _$$ImageImplCopyWith<$Res> implements $ImageCopyWith<$Res> {
+  factory _$$ImageImplCopyWith(
+          _$ImageImpl value, $Res Function(_$ImageImpl) then) =
+      __$$ImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@HiveField(0) int id, @HiveField(1) String url});
 }
 
 /// @nodoc
-class __$$_ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res, _$_Image>
-    implements _$$_ImageCopyWith<$Res> {
-  __$$_ImageCopyWithImpl(_$_Image _value, $Res Function(_$_Image) _then)
+class __$$ImageImplCopyWithImpl<$Res>
+    extends _$ImageCopyWithImpl<$Res, _$ImageImpl>
+    implements _$$ImageImplCopyWith<$Res> {
+  __$$ImageImplCopyWithImpl(
+      _$ImageImpl _value, $Res Function(_$ImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -532,7 +517,7 @@ class __$$_ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res, _$_Image>
     Object? id = null,
     Object? url = null,
   }) {
-    return _then(_$_Image(
+    return _then(_$ImageImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -548,12 +533,12 @@ class __$$_ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res, _$_Image>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 11, adapterName: 'ImageAdapter')
-class _$_Image implements _Image {
-  const _$_Image(
+class _$ImageImpl implements _Image {
+  const _$ImageImpl(
       {@HiveField(0) required this.id, @HiveField(1) required this.url});
 
-  factory _$_Image.fromJson(Map<String, dynamic> json) =>
-      _$$_ImageFromJson(json);
+  factory _$ImageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ImageImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -568,10 +553,10 @@ class _$_Image implements _Image {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Image &&
+            other is _$ImageImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.url, url) || other.url == url));
   }
@@ -583,12 +568,12 @@ class _$_Image implements _Image {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImageCopyWith<_$_Image> get copyWith =>
-      __$$_ImageCopyWithImpl<_$_Image>(this, _$identity);
+  _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
+      __$$ImageImplCopyWithImpl<_$ImageImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImageToJson(
+    return _$$ImageImplToJson(
       this,
     );
   }
@@ -597,9 +582,9 @@ class _$_Image implements _Image {
 abstract class _Image implements Image {
   const factory _Image(
       {@HiveField(0) required final int id,
-      @HiveField(1) required final String url}) = _$_Image;
+      @HiveField(1) required final String url}) = _$ImageImpl;
 
-  factory _Image.fromJson(Map<String, dynamic> json) = _$_Image.fromJson;
+  factory _Image.fromJson(Map<String, dynamic> json) = _$ImageImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -609,7 +594,7 @@ abstract class _Image implements Image {
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$$_ImageCopyWith<_$_Image> get copyWith =>
+  _$$ImageImplCopyWith<_$ImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -690,11 +675,11 @@ class _$OccurrenceCopyWithImpl<$Res, $Val extends Occurrence>
 }
 
 /// @nodoc
-abstract class _$$_OccurrenceCopyWith<$Res>
+abstract class _$$OccurrenceImplCopyWith<$Res>
     implements $OccurrenceCopyWith<$Res> {
-  factory _$$_OccurrenceCopyWith(
-          _$_Occurrence value, $Res Function(_$_Occurrence) then) =
-      __$$_OccurrenceCopyWithImpl<$Res>;
+  factory _$$OccurrenceImplCopyWith(
+          _$OccurrenceImpl value, $Res Function(_$OccurrenceImpl) then) =
+      __$$OccurrenceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -707,11 +692,11 @@ abstract class _$$_OccurrenceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OccurrenceCopyWithImpl<$Res>
-    extends _$OccurrenceCopyWithImpl<$Res, _$_Occurrence>
-    implements _$$_OccurrenceCopyWith<$Res> {
-  __$$_OccurrenceCopyWithImpl(
-      _$_Occurrence _value, $Res Function(_$_Occurrence) _then)
+class __$$OccurrenceImplCopyWithImpl<$Res>
+    extends _$OccurrenceCopyWithImpl<$Res, _$OccurrenceImpl>
+    implements _$$OccurrenceImplCopyWith<$Res> {
+  __$$OccurrenceImplCopyWithImpl(
+      _$OccurrenceImpl _value, $Res Function(_$OccurrenceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -721,7 +706,7 @@ class __$$_OccurrenceCopyWithImpl<$Res>
     Object? taxon = null,
     Object? images = null,
   }) {
-    return _then(_$_Occurrence(
+    return _then(_$OccurrenceImpl(
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -741,15 +726,15 @@ class __$$_OccurrenceCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 12, adapterName: 'OccurenceAdapter')
-class _$_Occurrence implements _Occurrence {
-  const _$_Occurrence(
+class _$OccurrenceImpl implements _Occurrence {
+  const _$OccurrenceImpl(
       {@LatLngConverter() @HiveField(0) required this.position,
       @HiveField(1) required this.taxon,
       @HiveField(2) required final List<Image> images})
       : _images = images;
 
-  factory _$_Occurrence.fromJson(Map<String, dynamic> json) =>
-      _$$_OccurrenceFromJson(json);
+  factory _$OccurrenceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OccurrenceImplFromJson(json);
 
   @override
   @LatLngConverter()
@@ -773,10 +758,10 @@ class _$_Occurrence implements _Occurrence {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Occurrence &&
+            other is _$OccurrenceImpl &&
             (identical(other.position, position) ||
                 other.position == position) &&
             (identical(other.taxon, taxon) || other.taxon == taxon) &&
@@ -791,12 +776,12 @@ class _$_Occurrence implements _Occurrence {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OccurrenceCopyWith<_$_Occurrence> get copyWith =>
-      __$$_OccurrenceCopyWithImpl<_$_Occurrence>(this, _$identity);
+  _$$OccurrenceImplCopyWith<_$OccurrenceImpl> get copyWith =>
+      __$$OccurrenceImplCopyWithImpl<_$OccurrenceImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OccurrenceToJson(
+    return _$$OccurrenceImplToJson(
       this,
     );
   }
@@ -806,10 +791,10 @@ abstract class _Occurrence implements Occurrence {
   const factory _Occurrence(
       {@LatLngConverter() @HiveField(0) required final LatLng position,
       @HiveField(1) required final TaxonLight taxon,
-      @HiveField(2) required final List<Image> images}) = _$_Occurrence;
+      @HiveField(2) required final List<Image> images}) = _$OccurrenceImpl;
 
   factory _Occurrence.fromJson(Map<String, dynamic> json) =
-      _$_Occurrence.fromJson;
+      _$OccurrenceImpl.fromJson;
 
   @override
   @LatLngConverter()
@@ -823,7 +808,7 @@ abstract class _Occurrence implements Occurrence {
   List<Image> get images;
   @override
   @JsonKey(ignore: true)
-  _$$_OccurrenceCopyWith<_$_Occurrence> get copyWith =>
+  _$$OccurrenceImplCopyWith<_$OccurrenceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -862,21 +847,15 @@ abstract class $TaxonLightCopyWith<$Res> {
       _$TaxonLightCopyWithImpl<$Res, TaxonLight>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'scientific_name')
-      @HiveField(0)
-          String? scientificName,
+      {@JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          String fullScientificName,
-      @JsonKey(name: 'taxon_repository')
-      @HiveField(2)
-          String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(3)
-          int nameId,
+      String fullScientificName,
+      @JsonKey(name: 'taxon_repository') @HiveField(2) String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(3) int nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          List<String> vernacularNames});
+      List<String> vernacularNames});
 }
 
 /// @nodoc
@@ -924,37 +903,31 @@ class _$TaxonLightCopyWithImpl<$Res, $Val extends TaxonLight>
 }
 
 /// @nodoc
-abstract class _$$_TaxonLightCopyWith<$Res>
+abstract class _$$TaxonLightImplCopyWith<$Res>
     implements $TaxonLightCopyWith<$Res> {
-  factory _$$_TaxonLightCopyWith(
-          _$_TaxonLight value, $Res Function(_$_TaxonLight) then) =
-      __$$_TaxonLightCopyWithImpl<$Res>;
+  factory _$$TaxonLightImplCopyWith(
+          _$TaxonLightImpl value, $Res Function(_$TaxonLightImpl) then) =
+      __$$TaxonLightImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'scientific_name')
-      @HiveField(0)
-          String? scientificName,
+      {@JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          String fullScientificName,
-      @JsonKey(name: 'taxon_repository')
-      @HiveField(2)
-          String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(3)
-          int nameId,
+      String fullScientificName,
+      @JsonKey(name: 'taxon_repository') @HiveField(2) String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(3) int nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          List<String> vernacularNames});
+      List<String> vernacularNames});
 }
 
 /// @nodoc
-class __$$_TaxonLightCopyWithImpl<$Res>
-    extends _$TaxonLightCopyWithImpl<$Res, _$_TaxonLight>
-    implements _$$_TaxonLightCopyWith<$Res> {
-  __$$_TaxonLightCopyWithImpl(
-      _$_TaxonLight _value, $Res Function(_$_TaxonLight) _then)
+class __$$TaxonLightImplCopyWithImpl<$Res>
+    extends _$TaxonLightCopyWithImpl<$Res, _$TaxonLightImpl>
+    implements _$$TaxonLightImplCopyWith<$Res> {
+  __$$TaxonLightImplCopyWithImpl(
+      _$TaxonLightImpl _value, $Res Function(_$TaxonLightImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -966,7 +939,7 @@ class __$$_TaxonLightCopyWithImpl<$Res>
     Object? nameId = null,
     Object? vernacularNames = null,
   }) {
-    return _then(_$_TaxonLight(
+    return _then(_$TaxonLightImpl(
       scientificName: freezed == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
@@ -994,27 +967,23 @@ class __$$_TaxonLightCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 13, adapterName: 'TrailTaxonAdapter')
-class _$_TaxonLight implements _TaxonLight {
-  const _$_TaxonLight(
-      {@JsonKey(name: 'scientific_name')
-      @HiveField(0)
-          this.scientificName,
+class _$TaxonLightImpl implements _TaxonLight {
+  const _$TaxonLightImpl(
+      {@JsonKey(name: 'scientific_name') @HiveField(0) this.scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          required this.fullScientificName,
+      required this.fullScientificName,
       @JsonKey(name: 'taxon_repository')
       @HiveField(2)
-          required this.taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(3)
-          required this.nameId,
+      required this.taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(3) required this.nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          required final List<String> vernacularNames})
+      required final List<String> vernacularNames})
       : _vernacularNames = vernacularNames;
 
-  factory _$_TaxonLight.fromJson(Map<String, dynamic> json) =>
-      _$$_TaxonLightFromJson(json);
+  factory _$TaxonLightImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaxonLightImplFromJson(json);
 
   @override
   @JsonKey(name: 'scientific_name')
@@ -1048,10 +1017,10 @@ class _$_TaxonLight implements _TaxonLight {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TaxonLight &&
+            other is _$TaxonLightImpl &&
             (identical(other.scientificName, scientificName) ||
                 other.scientificName == scientificName) &&
             (identical(other.fullScientificName, fullScientificName) ||
@@ -1076,12 +1045,12 @@ class _$_TaxonLight implements _TaxonLight {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaxonLightCopyWith<_$_TaxonLight> get copyWith =>
-      __$$_TaxonLightCopyWithImpl<_$_TaxonLight>(this, _$identity);
+  _$$TaxonLightImplCopyWith<_$TaxonLightImpl> get copyWith =>
+      __$$TaxonLightImplCopyWithImpl<_$TaxonLightImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TaxonLightToJson(
+    return _$$TaxonLightImplToJson(
       this,
     );
   }
@@ -1091,22 +1060,20 @@ abstract class _TaxonLight implements TaxonLight {
   const factory _TaxonLight(
       {@JsonKey(name: 'scientific_name')
       @HiveField(0)
-          final String? scientificName,
+      final String? scientificName,
       @JsonKey(name: 'full_scientific_name')
       @HiveField(1)
-          required final String fullScientificName,
+      required final String fullScientificName,
       @JsonKey(name: 'taxon_repository')
       @HiveField(2)
-          required final String taxonRepository,
-      @JsonKey(name: 'name_id')
-      @HiveField(3)
-          required final int nameId,
+      required final String taxonRepository,
+      @JsonKey(name: 'name_id') @HiveField(3) required final int nameId,
       @JsonKey(name: 'vernacular_names')
       @HiveField(4)
-          required final List<String> vernacularNames}) = _$_TaxonLight;
+      required final List<String> vernacularNames}) = _$TaxonLightImpl;
 
   factory _TaxonLight.fromJson(Map<String, dynamic> json) =
-      _$_TaxonLight.fromJson;
+      _$TaxonLightImpl.fromJson;
 
   @override
   @JsonKey(name: 'scientific_name')
@@ -1130,7 +1097,7 @@ abstract class _TaxonLight implements TaxonLight {
   List<String> get vernacularNames;
   @override
   @JsonKey(ignore: true)
-  _$$_TaxonLightCopyWith<_$_TaxonLight> get copyWith =>
+  _$$TaxonLightImplCopyWith<_$TaxonLightImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1191,9 +1158,10 @@ class _$PathCopyWithImpl<$Res, $Val extends Path>
 }
 
 /// @nodoc
-abstract class _$$_PathCopyWith<$Res> implements $PathCopyWith<$Res> {
-  factory _$$_PathCopyWith(_$_Path value, $Res Function(_$_Path) then) =
-      __$$_PathCopyWithImpl<$Res>;
+abstract class _$$PathImplCopyWith<$Res> implements $PathCopyWith<$Res> {
+  factory _$$PathImplCopyWith(
+          _$PathImpl value, $Res Function(_$PathImpl) then) =
+      __$$PathImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1202,9 +1170,10 @@ abstract class _$$_PathCopyWith<$Res> implements $PathCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res, _$_Path>
-    implements _$$_PathCopyWith<$Res> {
-  __$$_PathCopyWithImpl(_$_Path _value, $Res Function(_$_Path) _then)
+class __$$PathImplCopyWithImpl<$Res>
+    extends _$PathCopyWithImpl<$Res, _$PathImpl>
+    implements _$$PathImplCopyWith<$Res> {
+  __$$PathImplCopyWithImpl(_$PathImpl _value, $Res Function(_$PathImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1213,7 +1182,7 @@ class __$$_PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res, _$_Path>
     Object? type = null,
     Object? coordinates = null,
   }) {
-    return _then(_$_Path(
+    return _then(_$PathImpl(
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1229,16 +1198,16 @@ class __$$_PathCopyWithImpl<$Res> extends _$PathCopyWithImpl<$Res, _$_Path>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 14, adapterName: 'PathAdapter')
-class _$_Path implements _Path {
-  const _$_Path(
-      {@HiveField(0)
-          this.type = '',
+class _$PathImpl implements _Path {
+  const _$PathImpl(
+      {@HiveField(0) this.type = '',
       @LatLngListConverter()
       @HiveField(1)
-          final List<LatLng> coordinates = const []})
+      final List<LatLng> coordinates = const []})
       : _coordinates = coordinates;
 
-  factory _$_Path.fromJson(Map<String, dynamic> json) => _$$_PathFromJson(json);
+  factory _$PathImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PathImplFromJson(json);
 
   @override
   @JsonKey()
@@ -1261,10 +1230,10 @@ class _$_Path implements _Path {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Path &&
+            other is _$PathImpl &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality()
                 .equals(other._coordinates, _coordinates));
@@ -1278,12 +1247,12 @@ class _$_Path implements _Path {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PathCopyWith<_$_Path> get copyWith =>
-      __$$_PathCopyWithImpl<_$_Path>(this, _$identity);
+  _$$PathImplCopyWith<_$PathImpl> get copyWith =>
+      __$$PathImplCopyWithImpl<_$PathImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PathToJson(
+    return _$$PathImplToJson(
       this,
     );
   }
@@ -1291,13 +1260,12 @@ class _$_Path implements _Path {
 
 abstract class _Path implements Path {
   const factory _Path(
-      {@HiveField(0)
-          final String type,
+      {@HiveField(0) final String type,
       @LatLngListConverter()
       @HiveField(1)
-          final List<LatLng> coordinates}) = _$_Path;
+      final List<LatLng> coordinates}) = _$PathImpl;
 
-  factory _Path.fromJson(Map<String, dynamic> json) = _$_Path.fromJson;
+  factory _Path.fromJson(Map<String, dynamic> json) = _$PathImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -1308,7 +1276,8 @@ abstract class _Path implements Path {
   List<LatLng> get coordinates;
   @override
   @JsonKey(ignore: true)
-  _$$_PathCopyWith<_$_Path> get copyWith => throw _privateConstructorUsedError;
+  _$$PathImplCopyWith<_$PathImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 StartEndPosition _$StartEndPositionFromJson(Map<String, dynamic> json) {
@@ -1371,11 +1340,11 @@ class _$StartEndPositionCopyWithImpl<$Res, $Val extends StartEndPosition>
 }
 
 /// @nodoc
-abstract class _$$_StartEndPositionCopyWith<$Res>
+abstract class _$$StartEndPositionImplCopyWith<$Res>
     implements $StartEndPositionCopyWith<$Res> {
-  factory _$$_StartEndPositionCopyWith(
-          _$_StartEndPosition value, $Res Function(_$_StartEndPosition) then) =
-      __$$_StartEndPositionCopyWithImpl<$Res>;
+  factory _$$StartEndPositionImplCopyWith(_$StartEndPositionImpl value,
+          $Res Function(_$StartEndPositionImpl) then) =
+      __$$StartEndPositionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1384,11 +1353,11 @@ abstract class _$$_StartEndPositionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StartEndPositionCopyWithImpl<$Res>
-    extends _$StartEndPositionCopyWithImpl<$Res, _$_StartEndPosition>
-    implements _$$_StartEndPositionCopyWith<$Res> {
-  __$$_StartEndPositionCopyWithImpl(
-      _$_StartEndPosition _value, $Res Function(_$_StartEndPosition) _then)
+class __$$StartEndPositionImplCopyWithImpl<$Res>
+    extends _$StartEndPositionCopyWithImpl<$Res, _$StartEndPositionImpl>
+    implements _$$StartEndPositionImplCopyWith<$Res> {
+  __$$StartEndPositionImplCopyWithImpl(_$StartEndPositionImpl _value,
+      $Res Function(_$StartEndPositionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1397,7 +1366,7 @@ class __$$_StartEndPositionCopyWithImpl<$Res>
     Object? start = null,
     Object? end = null,
   }) {
-    return _then(_$_StartEndPosition(
+    return _then(_$StartEndPositionImpl(
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -1413,13 +1382,13 @@ class __$$_StartEndPositionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 15, adapterName: 'StartEndPositionAdapter')
-class _$_StartEndPosition implements _StartEndPosition {
-  const _$_StartEndPosition(
+class _$StartEndPositionImpl implements _StartEndPosition {
+  const _$StartEndPositionImpl(
       {@LatLngConverter() @HiveField(0) required this.start,
       @LatLngConverter() @HiveField(1) required this.end});
 
-  factory _$_StartEndPosition.fromJson(Map<String, dynamic> json) =>
-      _$$_StartEndPositionFromJson(json);
+  factory _$StartEndPositionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StartEndPositionImplFromJson(json);
 
   @override
   @LatLngConverter()
@@ -1436,10 +1405,10 @@ class _$_StartEndPosition implements _StartEndPosition {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StartEndPosition &&
+            other is _$StartEndPositionImpl &&
             (identical(other.start, start) || other.start == start) &&
             (identical(other.end, end) || other.end == end));
   }
@@ -1451,12 +1420,13 @@ class _$_StartEndPosition implements _StartEndPosition {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartEndPositionCopyWith<_$_StartEndPosition> get copyWith =>
-      __$$_StartEndPositionCopyWithImpl<_$_StartEndPosition>(this, _$identity);
+  _$$StartEndPositionImplCopyWith<_$StartEndPositionImpl> get copyWith =>
+      __$$StartEndPositionImplCopyWithImpl<_$StartEndPositionImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StartEndPositionToJson(
+    return _$$StartEndPositionImplToJson(
       this,
     );
   }
@@ -1466,10 +1436,10 @@ abstract class _StartEndPosition implements StartEndPosition {
   const factory _StartEndPosition(
           {@LatLngConverter() @HiveField(0) required final LatLng start,
           @LatLngConverter() @HiveField(1) required final LatLng end}) =
-      _$_StartEndPosition;
+      _$StartEndPositionImpl;
 
   factory _StartEndPosition.fromJson(Map<String, dynamic> json) =
-      _$_StartEndPosition.fromJson;
+      _$StartEndPositionImpl.fromJson;
 
   @override
   @LatLngConverter()
@@ -1481,6 +1451,6 @@ abstract class _StartEndPosition implements StartEndPosition {
   LatLng get end;
   @override
   @JsonKey(ignore: true)
-  _$$_StartEndPositionCopyWith<_$_StartEndPosition> get copyWith =>
+  _$$StartEndPositionImplCopyWith<_$StartEndPositionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

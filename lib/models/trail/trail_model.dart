@@ -22,7 +22,7 @@ class TrailDetails with _$TrailDetails {
     @HiveField(5) required List<Occurrence> occurrences,
     @JsonKey(name: 'occurrences_count')
     @HiveField(6)
-        required int occurrencesCount,
+    required int occurrencesCount,
     @HiveField(7) required Image image,
     @HiveField(8) required Path path,
     @JsonKey(name: 'path_length') @HiveField(9) required int pathLength,
@@ -63,14 +63,14 @@ class TaxonLight with _$TaxonLight {
     @JsonKey(name: 'scientific_name') @HiveField(0) String? scientificName,
     @JsonKey(name: 'full_scientific_name')
     @HiveField(1)
-        required String fullScientificName,
+    required String fullScientificName,
     @JsonKey(name: 'taxon_repository')
     @HiveField(2)
-        required String taxonRepository,
+    required String taxonRepository,
     @JsonKey(name: 'name_id') @HiveField(3) required int nameId,
     @JsonKey(name: 'vernacular_names')
     @HiveField(4)
-        required List<String> vernacularNames,
+    required List<String> vernacularNames,
   }) = _TaxonLight;
 
   factory TaxonLight.fromJson(Map<String, dynamic> json) =>

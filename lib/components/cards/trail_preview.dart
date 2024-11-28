@@ -72,9 +72,9 @@ class TrailPreview extends StatelessWidget {
             child: TextButton(
                 onPressed: isLoading ? null : () => onPressCB!(),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                        (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.disabled)) {
+                    backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                        (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.disabled)) {
                         return Theme.of(context)
                             .colorScheme
                             .primary
@@ -82,11 +82,11 @@ class TrailPreview extends StatelessWidget {
                       }
                       return Theme.of(context).colorScheme.primary;
                     }),
-                    overlayColor: MaterialStateProperty.all<Color>(
+                    overlayColor: WidgetStateProperty.all<Color>(
                         Colors.white.withOpacity(0.12)),
-                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                         EdgeInsets.zero),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                         const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(6),
@@ -94,10 +94,10 @@ class TrailPreview extends StatelessWidget {
                     ))),
                 child: Center(
                   child: Text(
-                    AppLocalizations.of(context).btn_start,
+                    AppLocalizations.of(context)!.btn_start,
                     style: TextStyle(
                         fontSize: 16,
-                        color: Theme.of(context).colorScheme.background),
+                        color: Theme.of(context).colorScheme.surface),
                   ),
                 )),
           )

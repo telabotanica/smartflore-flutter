@@ -136,6 +136,8 @@ class _TaxonScreenState extends State<TaxonScreen>
                       child: TabBar(
                           isScrollable: false,
                           controller: _tabController,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          dividerColor: Colors.transparent,
                           indicator: BoxDecoration(
                             color: Theme.of(context).colorScheme.primary,
                           ),
@@ -166,7 +168,7 @@ class _TaxonScreenState extends State<TaxonScreen>
                   )
                 : null,
             iconTheme: const IconThemeData(color: Color(0xFF13161C), size: 14),
-            backgroundColor: Theme.of(context).colorScheme.background,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             shadowColor: const Color(0x00000000),
             centerTitle: false,
             titleSpacing: 0.0,

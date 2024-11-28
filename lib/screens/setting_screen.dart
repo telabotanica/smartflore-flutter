@@ -65,12 +65,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   : null,
               iconTheme:
                   const IconThemeData(color: Color(0xFF13161C), size: 14),
-              backgroundColor: Theme.of(context).colorScheme.background,
+              backgroundColor: Theme.of(context).colorScheme.surface,
               shadowColor: const Color(0x40000000),
               elevation: 10,
               centerTitle: false,
               titleSpacing: 0.0,
-              title: Text(AppLocalizations.of(context).params,
+              title: Text(
+                  AppLocalizations.of(context) != null
+                      ? AppLocalizations.of(context)!.params
+                      : '',
                   style: Theme.of(context).textTheme.bodyLarge)),
           body: Stack(
             children: [
@@ -80,8 +83,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 itemBuilder: (context, index) {
                   return TextButton(
                       style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.all(0))),
+                          padding:
+                              WidgetStateProperty.all(const EdgeInsets.all(0))),
                       onPressed: () => {
                             Navigator.push(
                               context,
@@ -126,8 +129,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   );
                           },
                           label: isAuth
-                              ? AppLocalizations.of(context).logout
-                              : AppLocalizations.of(context).btn_login,
+                              ? AppLocalizations.of(context)!.logout
+                              : AppLocalizations.of(context)!.btn_login,
                         ),
                       )),
                 ),

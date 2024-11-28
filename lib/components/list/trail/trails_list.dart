@@ -26,7 +26,6 @@ class TrailsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('>>>>>>> buiiild');
     if (trailsListType == TrailsListType.myTrails) {
       return MyTrails(
           isAuth: isAuth, controller: controller, onPanUpdate: onPanUpdate);
@@ -50,7 +49,7 @@ class TrailsList extends StatelessWidget {
                   size: 18,
                   color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
-                label: Text(AppLocalizations.of(context).btn_scan_trail, style: Theme.of(context).textTheme.bodyLarge),
+                label: Text(AppLocalizations.of(context)!.btn_scan_trail, style: Theme.of(context).textTheme.bodyLarge),
               ),
             ),*/
               ),
@@ -76,7 +75,7 @@ class TrailsList extends StatelessWidget {
                       LatLng startPos = (trail.position != null &&
                               trail.position?.start != null)
                           ? trail.position!.start
-                          : LatLng(0, 0);
+                          : const LatLng(0, 0);
                       return TrailInteractiveItemWidget(
                         index: index,
                         id: trail.id,
@@ -93,7 +92,7 @@ class TrailsList extends StatelessWidget {
                 );
               },
               dataLoadError: () {
-                return Text(AppLocalizations.of(context).error_API,
+                return Text(AppLocalizations.of(context)!.error_API,
                     style: const TextStyle(color: Colors.red));
               },
             );

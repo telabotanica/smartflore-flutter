@@ -12,7 +12,7 @@ part of 'ping_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PingEvent {
@@ -94,18 +94,20 @@ class _$PingEventCopyWithImpl<$Res, $Val extends PingEvent>
 }
 
 /// @nodoc
-abstract class _$$_PingCopyWith<$Res> implements $PingEventCopyWith<$Res> {
-  factory _$$_PingCopyWith(_$_Ping value, $Res Function(_$_Ping) then) =
-      __$$_PingCopyWithImpl<$Res>;
+abstract class _$$PingImplCopyWith<$Res> implements $PingEventCopyWith<$Res> {
+  factory _$$PingImplCopyWith(
+          _$PingImpl value, $Res Function(_$PingImpl) then) =
+      __$$PingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int trailId, LatLng trailStartLocation});
 }
 
 /// @nodoc
-class __$$_PingCopyWithImpl<$Res> extends _$PingEventCopyWithImpl<$Res, _$_Ping>
-    implements _$$_PingCopyWith<$Res> {
-  __$$_PingCopyWithImpl(_$_Ping _value, $Res Function(_$_Ping) _then)
+class __$$PingImplCopyWithImpl<$Res>
+    extends _$PingEventCopyWithImpl<$Res, _$PingImpl>
+    implements _$$PingImplCopyWith<$Res> {
+  __$$PingImplCopyWithImpl(_$PingImpl _value, $Res Function(_$PingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +116,7 @@ class __$$_PingCopyWithImpl<$Res> extends _$PingEventCopyWithImpl<$Res, _$_Ping>
     Object? trailId = null,
     Object? trailStartLocation = null,
   }) {
-    return _then(_$_Ping(
+    return _then(_$PingImpl(
       null == trailId
           ? _value.trailId
           : trailId // ignore: cast_nullable_to_non_nullable
@@ -129,8 +131,8 @@ class __$$_PingCopyWithImpl<$Res> extends _$PingEventCopyWithImpl<$Res, _$_Ping>
 
 /// @nodoc
 
-class _$_Ping implements _Ping {
-  const _$_Ping(this.trailId, this.trailStartLocation);
+class _$PingImpl implements _Ping {
+  const _$PingImpl(this.trailId, this.trailStartLocation);
 
   @override
   final int trailId;
@@ -143,10 +145,10 @@ class _$_Ping implements _Ping {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Ping &&
+            other is _$PingImpl &&
             (identical(other.trailId, trailId) || other.trailId == trailId) &&
             (identical(other.trailStartLocation, trailStartLocation) ||
                 other.trailStartLocation == trailStartLocation));
@@ -158,8 +160,8 @@ class _$_Ping implements _Ping {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PingCopyWith<_$_Ping> get copyWith =>
-      __$$_PingCopyWithImpl<_$_Ping>(this, _$identity);
+  _$$PingImplCopyWith<_$PingImpl> get copyWith =>
+      __$$PingImplCopyWithImpl<_$PingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -220,7 +222,7 @@ class _$_Ping implements _Ping {
 
 abstract class _Ping implements PingEvent {
   const factory _Ping(final int trailId, final LatLng trailStartLocation) =
-      _$_Ping;
+      _$PingImpl;
 
   @override
   int get trailId;
@@ -228,7 +230,8 @@ abstract class _Ping implements PingEvent {
   LatLng get trailStartLocation;
   @override
   @JsonKey(ignore: true)
-  _$$_PingCopyWith<_$_Ping> get copyWith => throw _privateConstructorUsedError;
+  _$$PingImplCopyWith<_$PingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -303,24 +306,25 @@ class _$PingStateCopyWithImpl<$Res, $Val extends PingState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$PingStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$PingStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -328,9 +332,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -412,28 +416,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements PingState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$PingStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$PingStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -441,9 +446,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -525,27 +530,29 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements PingState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$PingStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$PingStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded();
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl();
 
   @override
   String toString() {
@@ -553,9 +560,9 @@ class _$_Loaded implements _Loaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loaded);
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
   }
 
   @override
@@ -637,27 +644,29 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements PingState {
-  const factory _Loaded() = _$_Loaded;
+  const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$PingStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$PingStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -665,9 +674,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -749,5 +758,5 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements PingState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }

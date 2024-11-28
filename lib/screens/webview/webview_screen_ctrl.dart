@@ -30,7 +30,7 @@ class WebViewPage extends StatelessWidget {
           actionsIconTheme: const IconThemeData(
             color: Colors.black, //change your color here
           ),
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           shadowColor: const Color(0x40000000),
           elevation: 10,
           title:

@@ -118,7 +118,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
                       color: Colors.transparent,
                       child: TextButton(
                         style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
+                          overlayColor: WidgetStateProperty.all(Colors.white),
                         ),
                         onPressed: () =>
                             // Needed because the builtin panelController.isPanelOpen is not working
@@ -148,6 +148,9 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
                           controller: tabController,
                           isScrollable: false,
                           unselectedLabelColor: primary,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          dividerColor: Colors.transparent,
+                          labelColor: Colors.white,
                           indicator: BoxDecoration(
                               color: primary,
                               borderRadius:
@@ -155,12 +158,12 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
                           tabs: [
                             Tab(
                                 child: Text(
-                              AppLocalizations.of(context).btn_all_trail,
+                              AppLocalizations.of(context)!.btn_all_trail,
                               style: const TextStyle(fontSize: 16),
                             )),
                             Tab(
                                 child: Text(
-                                    AppLocalizations.of(context).btn_my_trail,
+                                    AppLocalizations.of(context)!.btn_my_trail,
                                     style: const TextStyle(fontSize: 16)))
                           ]),
                     ),

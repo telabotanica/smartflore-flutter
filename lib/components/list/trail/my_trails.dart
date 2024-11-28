@@ -88,7 +88,7 @@ class MyTrails extends StatelessWidget {
                                             if (leaveCreateMode) {
                                               BlocProvider.of<MapBloc>(context)
                                                   .add(const MapEvent
-                                                          .changeMapMode(
+                                                      .changeMapMode(
                                                       MapMode.overview));
                                             }
                                             Navigator.of(context).pop();
@@ -105,7 +105,7 @@ class MyTrails extends StatelessWidget {
                                       ?.color,
                                 ),
                                 label: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .btn_create_trail,
                                     style:
                                         Theme.of(context).textTheme.bodyLarge),
@@ -156,7 +156,7 @@ class MyTrails extends StatelessWidget {
               size: 22,
             ),
             const SizedBox(width: 8),
-            Text(AppLocalizations.of(context).review,
+            Text(AppLocalizations.of(context)!.review,
                 style: Theme.of(context).textTheme.bodyLarge)
           ],
         ),
@@ -178,7 +178,7 @@ class MyTrails extends StatelessWidget {
                 LatLng startPos =
                     (trail.position != null && trail.position?.start != null)
                         ? trail.position!.start
-                        : LatLng(0, 0);
+                        : const LatLng(0, 0);
                 bool isLast = (index == trailsList.length - 1 ||
                     (index < trailsList.length - 1 &&
                         trailsList[index + 1] == null));
@@ -190,7 +190,7 @@ class MyTrails extends StatelessWidget {
                       id: trail.id,
                       title: trail.name,
                       length: trail.pathLength,
-                      image: trail.image != null ? trail.image!.url : null,
+                      image: trail.image?.url,
                       position: startPos,
                       nbOccurence: trail.occurrencesCount,
                       isDownloaded: false,

@@ -17,10 +17,10 @@ class InteractiveItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all((isSelected
+            backgroundColor: WidgetStateProperty.all((isSelected
                 ? Colors.red.withOpacity(0.09)
                 : Colors.transparent)),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0),
             ))),

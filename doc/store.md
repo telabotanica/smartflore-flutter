@@ -41,7 +41,7 @@ It's better to releasee first on this track, to let trusted people test new feat
 
 
 ## iOS 🍎
-The complete proceess can be found [here](https://flutter.dev/docs/deployment/ios)
+The complete process can be found [here](https://flutter.dev/docs/deployment/ios)
 
 Build the xcode project running:
 `flutter build ios`

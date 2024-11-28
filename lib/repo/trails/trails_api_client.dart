@@ -13,13 +13,17 @@ class TrailsApiClient extends APIClient {
   final String baseUrl;
   final UserInfoApp Function() getUserInfo;
 
-  TrailsApiClient({required this.httpClient, required this.baseUrl, required this.getUserInfo});
+  TrailsApiClient(
+      {required this.httpClient,
+      required this.baseUrl,
+      required this.getUserInfo});
 
   Future<List<Trail>?> getTrailList() async {
     try {
       final response = await httpClient
           .get(Uri.parse('$baseUrl/trails'))
-          .onError((error, stackTrace) => Future.error('No Internet connection 😑'));
+          .onError(
+              (error, stackTrace) => Future.error('No Internet connection 😑'));
 
       dynamic data = _returnResponse(response);
       return Trails.fromJson({'trailList': data}).trailList;
@@ -48,8 +52,10 @@ class TrailsApiClient extends APIClient {
   Future<List<Trail>?> getMyTrailList() async {
     try {
       final response = await httpClient
-          .get(Uri.parse('$baseUrl/me'), headers: await getHeaders(getUserInfo().token ?? ''))
-          .onError((error, stackTrace) => Future.error('No Internet connection 😑'));
+          .get(Uri.parse('$baseUrl/me'),
+              headers: await getHeaders(getUserInfo().token ?? ''))
+          .onError(
+              (error, stackTrace) => Future.error('No Internet connection 😑'));
 
       dynamic data = _returnResponse(response);
 

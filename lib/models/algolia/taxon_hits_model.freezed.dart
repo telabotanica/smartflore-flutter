@@ -12,7 +12,7 @@ part of 'taxon_hits_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TaxonHits _$TaxonHitsFromJson(Map<String, dynamic> json) {
   return _TaxonHits.fromJson(json);
@@ -97,10 +97,11 @@ class _$TaxonHitsCopyWithImpl<$Res, $Val extends TaxonHits>
 }
 
 /// @nodoc
-abstract class _$$_TaxonHitsCopyWith<$Res> implements $TaxonHitsCopyWith<$Res> {
-  factory _$$_TaxonHitsCopyWith(
-          _$_TaxonHits value, $Res Function(_$_TaxonHits) then) =
-      __$$_TaxonHitsCopyWithImpl<$Res>;
+abstract class _$$TaxonHitsImplCopyWith<$Res>
+    implements $TaxonHitsCopyWith<$Res> {
+  factory _$$TaxonHitsImplCopyWith(
+          _$TaxonHitsImpl value, $Res Function(_$TaxonHitsImpl) then) =
+      __$$TaxonHitsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -113,11 +114,11 @@ abstract class _$$_TaxonHitsCopyWith<$Res> implements $TaxonHitsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TaxonHitsCopyWithImpl<$Res>
-    extends _$TaxonHitsCopyWithImpl<$Res, _$_TaxonHits>
-    implements _$$_TaxonHitsCopyWith<$Res> {
-  __$$_TaxonHitsCopyWithImpl(
-      _$_TaxonHits _value, $Res Function(_$_TaxonHits) _then)
+class __$$TaxonHitsImplCopyWithImpl<$Res>
+    extends _$TaxonHitsCopyWithImpl<$Res, _$TaxonHitsImpl>
+    implements _$$TaxonHitsImplCopyWith<$Res> {
+  __$$TaxonHitsImplCopyWithImpl(
+      _$TaxonHitsImpl _value, $Res Function(_$TaxonHitsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +131,7 @@ class __$$_TaxonHitsCopyWithImpl<$Res>
     Object? hitsPerPage = null,
     Object? nextPageKey = freezed,
   }) {
-    return _then(_$_TaxonHits(
+    return _then(_$TaxonHitsImpl(
       hits: null == hits
           ? _value._hits
           : hits // ignore: cast_nullable_to_non_nullable
@@ -161,8 +162,8 @@ class __$$_TaxonHitsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TaxonHits implements _TaxonHits {
-  const _$_TaxonHits(
+class _$TaxonHitsImpl implements _TaxonHits {
+  const _$TaxonHitsImpl(
       {required final List<TaxonHit> hits,
       required this.nbHits,
       required this.page,
@@ -171,8 +172,8 @@ class _$_TaxonHits implements _TaxonHits {
       this.nextPageKey})
       : _hits = hits;
 
-  factory _$_TaxonHits.fromJson(Map<String, dynamic> json) =>
-      _$$_TaxonHitsFromJson(json);
+  factory _$TaxonHitsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaxonHitsImplFromJson(json);
 
   final List<TaxonHit> _hits;
   @override
@@ -199,10 +200,10 @@ class _$_TaxonHits implements _TaxonHits {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TaxonHits &&
+            other is _$TaxonHitsImpl &&
             const DeepCollectionEquality().equals(other._hits, _hits) &&
             (identical(other.nbHits, nbHits) || other.nbHits == nbHits) &&
             (identical(other.page, page) || other.page == page) &&
@@ -227,12 +228,12 @@ class _$_TaxonHits implements _TaxonHits {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaxonHitsCopyWith<_$_TaxonHits> get copyWith =>
-      __$$_TaxonHitsCopyWithImpl<_$_TaxonHits>(this, _$identity);
+  _$$TaxonHitsImplCopyWith<_$TaxonHitsImpl> get copyWith =>
+      __$$TaxonHitsImplCopyWithImpl<_$TaxonHitsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TaxonHitsToJson(
+    return _$$TaxonHitsImplToJson(
       this,
     );
   }
@@ -245,10 +246,10 @@ abstract class _TaxonHits implements TaxonHits {
       required final int page,
       required final int nbPages,
       required final int hitsPerPage,
-      final int? nextPageKey}) = _$_TaxonHits;
+      final int? nextPageKey}) = _$TaxonHitsImpl;
 
   factory _TaxonHits.fromJson(Map<String, dynamic> json) =
-      _$_TaxonHits.fromJson;
+      _$TaxonHitsImpl.fromJson;
 
   @override
   List<TaxonHit> get hits;
@@ -264,7 +265,7 @@ abstract class _TaxonHits implements TaxonHits {
   int? get nextPageKey;
   @override
   @JsonKey(ignore: true)
-  _$$_TaxonHitsCopyWith<_$_TaxonHits> get copyWith =>
+  _$$TaxonHitsImplCopyWith<_$TaxonHitsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -365,10 +366,11 @@ class _$TaxonHitCopyWithImpl<$Res, $Val extends TaxonHit>
 }
 
 /// @nodoc
-abstract class _$$_TaxonHitCopyWith<$Res> implements $TaxonHitCopyWith<$Res> {
-  factory _$$_TaxonHitCopyWith(
-          _$_TaxonHit value, $Res Function(_$_TaxonHit) then) =
-      __$$_TaxonHitCopyWithImpl<$Res>;
+abstract class _$$TaxonHitImplCopyWith<$Res>
+    implements $TaxonHitCopyWith<$Res> {
+  factory _$$TaxonHitImplCopyWith(
+          _$TaxonHitImpl value, $Res Function(_$TaxonHitImpl) then) =
+      __$$TaxonHitImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -384,11 +386,11 @@ abstract class _$$_TaxonHitCopyWith<$Res> implements $TaxonHitCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TaxonHitCopyWithImpl<$Res>
-    extends _$TaxonHitCopyWithImpl<$Res, _$_TaxonHit>
-    implements _$$_TaxonHitCopyWith<$Res> {
-  __$$_TaxonHitCopyWithImpl(
-      _$_TaxonHit _value, $Res Function(_$_TaxonHit) _then)
+class __$$TaxonHitImplCopyWithImpl<$Res>
+    extends _$TaxonHitCopyWithImpl<$Res, _$TaxonHitImpl>
+    implements _$$TaxonHitImplCopyWith<$Res> {
+  __$$TaxonHitImplCopyWithImpl(
+      _$TaxonHitImpl _value, $Res Function(_$TaxonHitImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -399,7 +401,7 @@ class __$$_TaxonHitCopyWithImpl<$Res>
     Object? objectId = freezed,
     Object? highlightResult = freezed,
   }) {
-    return _then(_$_TaxonHit(
+    return _then(_$TaxonHitImpl(
       referentiels: freezed == referentiels
           ? _value._referentiels
           : referentiels // ignore: cast_nullable_to_non_nullable
@@ -422,16 +424,16 @@ class __$$_TaxonHitCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TaxonHit implements _TaxonHit {
-  const _$_TaxonHit(
+class _$TaxonHitImpl implements _TaxonHit {
+  const _$TaxonHitImpl(
       {final List<String>? referentiels,
       this.bdtfx,
       this.objectId,
       @JsonKey(name: '_highlightResult') this.highlightResult})
       : _referentiels = referentiels;
 
-  factory _$_TaxonHit.fromJson(Map<String, dynamic> json) =>
-      _$$_TaxonHitFromJson(json);
+  factory _$TaxonHitImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaxonHitImplFromJson(json);
 
   final List<String>? _referentiels;
   @override
@@ -457,10 +459,10 @@ class _$_TaxonHit implements _TaxonHit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TaxonHit &&
+            other is _$TaxonHitImpl &&
             const DeepCollectionEquality()
                 .equals(other._referentiels, _referentiels) &&
             (identical(other.bdtfx, bdtfx) || other.bdtfx == bdtfx) &&
@@ -482,12 +484,12 @@ class _$_TaxonHit implements _TaxonHit {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TaxonHitCopyWith<_$_TaxonHit> get copyWith =>
-      __$$_TaxonHitCopyWithImpl<_$_TaxonHit>(this, _$identity);
+  _$$TaxonHitImplCopyWith<_$TaxonHitImpl> get copyWith =>
+      __$$TaxonHitImplCopyWithImpl<_$TaxonHitImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TaxonHitToJson(
+    return _$$TaxonHitImplToJson(
       this,
     );
   }
@@ -499,9 +501,10 @@ abstract class _TaxonHit implements TaxonHit {
       final HitBdtfx? bdtfx,
       final String? objectId,
       @JsonKey(name: '_highlightResult')
-          final HighlightResult? highlightResult}) = _$_TaxonHit;
+      final HighlightResult? highlightResult}) = _$TaxonHitImpl;
 
-  factory _TaxonHit.fromJson(Map<String, dynamic> json) = _$_TaxonHit.fromJson;
+  factory _TaxonHit.fromJson(Map<String, dynamic> json) =
+      _$TaxonHitImpl.fromJson;
 
   @override
   List<String>? get referentiels;
@@ -514,7 +517,7 @@ abstract class _TaxonHit implements TaxonHit {
   HighlightResult? get highlightResult;
   @override
   @JsonKey(ignore: true)
-  _$$_TaxonHitCopyWith<_$_TaxonHit> get copyWith =>
+  _$$TaxonHitImplCopyWith<_$TaxonHitImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -528,8 +531,8 @@ mixin _$HitBdtfx {
   int? get nomenclaturalNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'scientific_name')
   String? get scientificName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'common_name')
-  String? get commonName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'line_names')
+  List<String>? get commonName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -545,7 +548,7 @@ abstract class $HitBdtfxCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'nomenclatural_number') int? nomenclaturalNumber,
       @JsonKey(name: 'scientific_name') String? scientificName,
-      @JsonKey(name: 'common_name') String? commonName});
+      @JsonKey(name: 'line_names') List<String>? commonName});
 }
 
 /// @nodoc
@@ -577,30 +580,31 @@ class _$HitBdtfxCopyWithImpl<$Res, $Val extends HitBdtfx>
       commonName: freezed == commonName
           ? _value.commonName
           : commonName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_HitBdtfxCopyWith<$Res> implements $HitBdtfxCopyWith<$Res> {
-  factory _$$_HitBdtfxCopyWith(
-          _$_HitBdtfx value, $Res Function(_$_HitBdtfx) then) =
-      __$$_HitBdtfxCopyWithImpl<$Res>;
+abstract class _$$HitBdtfxImplCopyWith<$Res>
+    implements $HitBdtfxCopyWith<$Res> {
+  factory _$$HitBdtfxImplCopyWith(
+          _$HitBdtfxImpl value, $Res Function(_$HitBdtfxImpl) then) =
+      __$$HitBdtfxImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'nomenclatural_number') int? nomenclaturalNumber,
       @JsonKey(name: 'scientific_name') String? scientificName,
-      @JsonKey(name: 'common_name') String? commonName});
+      @JsonKey(name: 'line_names') List<String>? commonName});
 }
 
 /// @nodoc
-class __$$_HitBdtfxCopyWithImpl<$Res>
-    extends _$HitBdtfxCopyWithImpl<$Res, _$_HitBdtfx>
-    implements _$$_HitBdtfxCopyWith<$Res> {
-  __$$_HitBdtfxCopyWithImpl(
-      _$_HitBdtfx _value, $Res Function(_$_HitBdtfx) _then)
+class __$$HitBdtfxImplCopyWithImpl<$Res>
+    extends _$HitBdtfxCopyWithImpl<$Res, _$HitBdtfxImpl>
+    implements _$$HitBdtfxImplCopyWith<$Res> {
+  __$$HitBdtfxImplCopyWithImpl(
+      _$HitBdtfxImpl _value, $Res Function(_$HitBdtfxImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -610,7 +614,7 @@ class __$$_HitBdtfxCopyWithImpl<$Res>
     Object? scientificName = freezed,
     Object? commonName = freezed,
   }) {
-    return _then(_$_HitBdtfx(
+    return _then(_$HitBdtfxImpl(
       nomenclaturalNumber: freezed == nomenclaturalNumber
           ? _value.nomenclaturalNumber
           : nomenclaturalNumber // ignore: cast_nullable_to_non_nullable
@@ -620,23 +624,24 @@ class __$$_HitBdtfxCopyWithImpl<$Res>
           : scientificName // ignore: cast_nullable_to_non_nullable
               as String?,
       commonName: freezed == commonName
-          ? _value.commonName
+          ? _value._commonName
           : commonName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_HitBdtfx implements _HitBdtfx {
-  const _$_HitBdtfx(
+class _$HitBdtfxImpl implements _HitBdtfx {
+  const _$HitBdtfxImpl(
       {@JsonKey(name: 'nomenclatural_number') this.nomenclaturalNumber,
       @JsonKey(name: 'scientific_name') this.scientificName,
-      @JsonKey(name: 'common_name') this.commonName});
+      @JsonKey(name: 'line_names') final List<String>? commonName})
+      : _commonName = commonName;
 
-  factory _$_HitBdtfx.fromJson(Map<String, dynamic> json) =>
-      _$$_HitBdtfxFromJson(json);
+  factory _$HitBdtfxImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HitBdtfxImplFromJson(json);
 
   @override
   @JsonKey(name: 'nomenclatural_number')
@@ -644,9 +649,16 @@ class _$_HitBdtfx implements _HitBdtfx {
   @override
   @JsonKey(name: 'scientific_name')
   final String? scientificName;
+  final List<String>? _commonName;
   @override
-  @JsonKey(name: 'common_name')
-  final String? commonName;
+  @JsonKey(name: 'line_names')
+  List<String>? get commonName {
+    final value = _commonName;
+    if (value == null) return null;
+    if (_commonName is EqualUnmodifiableListView) return _commonName;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -654,32 +666,32 @@ class _$_HitBdtfx implements _HitBdtfx {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HitBdtfx &&
+            other is _$HitBdtfxImpl &&
             (identical(other.nomenclaturalNumber, nomenclaturalNumber) ||
                 other.nomenclaturalNumber == nomenclaturalNumber) &&
             (identical(other.scientificName, scientificName) ||
                 other.scientificName == scientificName) &&
-            (identical(other.commonName, commonName) ||
-                other.commonName == commonName));
+            const DeepCollectionEquality()
+                .equals(other._commonName, _commonName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, nomenclaturalNumber, scientificName, commonName);
+  int get hashCode => Object.hash(runtimeType, nomenclaturalNumber,
+      scientificName, const DeepCollectionEquality().hash(_commonName));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HitBdtfxCopyWith<_$_HitBdtfx> get copyWith =>
-      __$$_HitBdtfxCopyWithImpl<_$_HitBdtfx>(this, _$identity);
+  _$$HitBdtfxImplCopyWith<_$HitBdtfxImpl> get copyWith =>
+      __$$HitBdtfxImplCopyWithImpl<_$HitBdtfxImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HitBdtfxToJson(
+    return _$$HitBdtfxImplToJson(
       this,
     );
   }
@@ -689,9 +701,11 @@ abstract class _HitBdtfx implements HitBdtfx {
   const factory _HitBdtfx(
       {@JsonKey(name: 'nomenclatural_number') final int? nomenclaturalNumber,
       @JsonKey(name: 'scientific_name') final String? scientificName,
-      @JsonKey(name: 'common_name') final String? commonName}) = _$_HitBdtfx;
+      @JsonKey(name: 'line_names')
+      final List<String>? commonName}) = _$HitBdtfxImpl;
 
-  factory _HitBdtfx.fromJson(Map<String, dynamic> json) = _$_HitBdtfx.fromJson;
+  factory _HitBdtfx.fromJson(Map<String, dynamic> json) =
+      _$HitBdtfxImpl.fromJson;
 
   @override
   @JsonKey(name: 'nomenclatural_number')
@@ -700,11 +714,11 @@ abstract class _HitBdtfx implements HitBdtfx {
   @JsonKey(name: 'scientific_name')
   String? get scientificName;
   @override
-  @JsonKey(name: 'common_name')
-  String? get commonName;
+  @JsonKey(name: 'line_names')
+  List<String>? get commonName;
   @override
   @JsonKey(ignore: true)
-  _$$_HitBdtfxCopyWith<_$_HitBdtfx> get copyWith =>
+  _$$HitBdtfxImplCopyWith<_$HitBdtfxImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -770,11 +784,11 @@ class _$HighlightResultCopyWithImpl<$Res, $Val extends HighlightResult>
 }
 
 /// @nodoc
-abstract class _$$_HighlightResultCopyWith<$Res>
+abstract class _$$HighlightResultImplCopyWith<$Res>
     implements $HighlightResultCopyWith<$Res> {
-  factory _$$_HighlightResultCopyWith(
-          _$_HighlightResult value, $Res Function(_$_HighlightResult) then) =
-      __$$_HighlightResultCopyWithImpl<$Res>;
+  factory _$$HighlightResultImplCopyWith(_$HighlightResultImpl value,
+          $Res Function(_$HighlightResultImpl) then) =
+      __$$HighlightResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({HighlightResultBdtfx? bdtfx});
@@ -784,11 +798,11 @@ abstract class _$$_HighlightResultCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HighlightResultCopyWithImpl<$Res>
-    extends _$HighlightResultCopyWithImpl<$Res, _$_HighlightResult>
-    implements _$$_HighlightResultCopyWith<$Res> {
-  __$$_HighlightResultCopyWithImpl(
-      _$_HighlightResult _value, $Res Function(_$_HighlightResult) _then)
+class __$$HighlightResultImplCopyWithImpl<$Res>
+    extends _$HighlightResultCopyWithImpl<$Res, _$HighlightResultImpl>
+    implements _$$HighlightResultImplCopyWith<$Res> {
+  __$$HighlightResultImplCopyWithImpl(
+      _$HighlightResultImpl _value, $Res Function(_$HighlightResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -796,7 +810,7 @@ class __$$_HighlightResultCopyWithImpl<$Res>
   $Res call({
     Object? bdtfx = freezed,
   }) {
-    return _then(_$_HighlightResult(
+    return _then(_$HighlightResultImpl(
       bdtfx: freezed == bdtfx
           ? _value.bdtfx
           : bdtfx // ignore: cast_nullable_to_non_nullable
@@ -807,11 +821,11 @@ class __$$_HighlightResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_HighlightResult implements _HighlightResult {
-  const _$_HighlightResult({this.bdtfx});
+class _$HighlightResultImpl implements _HighlightResult {
+  const _$HighlightResultImpl({this.bdtfx});
 
-  factory _$_HighlightResult.fromJson(Map<String, dynamic> json) =>
-      _$$_HighlightResultFromJson(json);
+  factory _$HighlightResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HighlightResultImplFromJson(json);
 
   @override
   final HighlightResultBdtfx? bdtfx;
@@ -822,10 +836,10 @@ class _$_HighlightResult implements _HighlightResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HighlightResult &&
+            other is _$HighlightResultImpl &&
             (identical(other.bdtfx, bdtfx) || other.bdtfx == bdtfx));
   }
 
@@ -836,12 +850,13 @@ class _$_HighlightResult implements _HighlightResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HighlightResultCopyWith<_$_HighlightResult> get copyWith =>
-      __$$_HighlightResultCopyWithImpl<_$_HighlightResult>(this, _$identity);
+  _$$HighlightResultImplCopyWith<_$HighlightResultImpl> get copyWith =>
+      __$$HighlightResultImplCopyWithImpl<_$HighlightResultImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HighlightResultToJson(
+    return _$$HighlightResultImplToJson(
       this,
     );
   }
@@ -849,16 +864,16 @@ class _$_HighlightResult implements _HighlightResult {
 
 abstract class _HighlightResult implements HighlightResult {
   const factory _HighlightResult({final HighlightResultBdtfx? bdtfx}) =
-      _$_HighlightResult;
+      _$HighlightResultImpl;
 
   factory _HighlightResult.fromJson(Map<String, dynamic> json) =
-      _$_HighlightResult.fromJson;
+      _$HighlightResultImpl.fromJson;
 
   @override
   HighlightResultBdtfx? get bdtfx;
   @override
   @JsonKey(ignore: true)
-  _$$_HighlightResultCopyWith<_$_HighlightResult> get copyWith =>
+  _$$HighlightResultImplCopyWith<_$HighlightResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -871,7 +886,7 @@ mixin _$HighlightResultBdtfx {
   @JsonKey(name: 'scientific_name')
   Name? get scientificName => throw _privateConstructorUsedError;
   @JsonKey(name: 'common_name')
-  Name? get commonName => throw _privateConstructorUsedError;
+  List<Name> get commonName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -887,10 +902,9 @@ abstract class $HighlightResultBdtfxCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'scientific_name') Name? scientificName,
-      @JsonKey(name: 'common_name') Name? commonName});
+      @JsonKey(name: 'common_name') List<Name> commonName});
 
   $NameCopyWith<$Res>? get scientificName;
-  $NameCopyWith<$Res>? get commonName;
 }
 
 /// @nodoc
@@ -908,17 +922,17 @@ class _$HighlightResultBdtfxCopyWithImpl<$Res,
   @override
   $Res call({
     Object? scientificName = freezed,
-    Object? commonName = freezed,
+    Object? commonName = null,
   }) {
     return _then(_value.copyWith(
       scientificName: freezed == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
               as Name?,
-      commonName: freezed == commonName
+      commonName: null == commonName
           ? _value.commonName
           : commonName // ignore: cast_nullable_to_non_nullable
-              as Name?,
+              as List<Name>,
     ) as $Val);
   }
 
@@ -933,81 +947,73 @@ class _$HighlightResultBdtfxCopyWithImpl<$Res,
       return _then(_value.copyWith(scientificName: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NameCopyWith<$Res>? get commonName {
-    if (_value.commonName == null) {
-      return null;
-    }
-
-    return $NameCopyWith<$Res>(_value.commonName!, (value) {
-      return _then(_value.copyWith(commonName: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_HighlightResultBdtfxCopyWith<$Res>
+abstract class _$$HighlightResultBdtfxImplCopyWith<$Res>
     implements $HighlightResultBdtfxCopyWith<$Res> {
-  factory _$$_HighlightResultBdtfxCopyWith(_$_HighlightResultBdtfx value,
-          $Res Function(_$_HighlightResultBdtfx) then) =
-      __$$_HighlightResultBdtfxCopyWithImpl<$Res>;
+  factory _$$HighlightResultBdtfxImplCopyWith(_$HighlightResultBdtfxImpl value,
+          $Res Function(_$HighlightResultBdtfxImpl) then) =
+      __$$HighlightResultBdtfxImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'scientific_name') Name? scientificName,
-      @JsonKey(name: 'common_name') Name? commonName});
+      @JsonKey(name: 'common_name') List<Name> commonName});
 
   @override
   $NameCopyWith<$Res>? get scientificName;
-  @override
-  $NameCopyWith<$Res>? get commonName;
 }
 
 /// @nodoc
-class __$$_HighlightResultBdtfxCopyWithImpl<$Res>
-    extends _$HighlightResultBdtfxCopyWithImpl<$Res, _$_HighlightResultBdtfx>
-    implements _$$_HighlightResultBdtfxCopyWith<$Res> {
-  __$$_HighlightResultBdtfxCopyWithImpl(_$_HighlightResultBdtfx _value,
-      $Res Function(_$_HighlightResultBdtfx) _then)
+class __$$HighlightResultBdtfxImplCopyWithImpl<$Res>
+    extends _$HighlightResultBdtfxCopyWithImpl<$Res, _$HighlightResultBdtfxImpl>
+    implements _$$HighlightResultBdtfxImplCopyWith<$Res> {
+  __$$HighlightResultBdtfxImplCopyWithImpl(_$HighlightResultBdtfxImpl _value,
+      $Res Function(_$HighlightResultBdtfxImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? scientificName = freezed,
-    Object? commonName = freezed,
+    Object? commonName = null,
   }) {
-    return _then(_$_HighlightResultBdtfx(
+    return _then(_$HighlightResultBdtfxImpl(
       scientificName: freezed == scientificName
           ? _value.scientificName
           : scientificName // ignore: cast_nullable_to_non_nullable
               as Name?,
-      commonName: freezed == commonName
-          ? _value.commonName
+      commonName: null == commonName
+          ? _value._commonName
           : commonName // ignore: cast_nullable_to_non_nullable
-              as Name?,
+              as List<Name>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_HighlightResultBdtfx implements _HighlightResultBdtfx {
-  const _$_HighlightResultBdtfx(
-      {@JsonKey(name: 'scientific_name') this.scientificName,
-      @JsonKey(name: 'common_name') this.commonName});
+class _$HighlightResultBdtfxImpl implements _HighlightResultBdtfx {
+  const _$HighlightResultBdtfxImpl(
+      {@JsonKey(name: 'scientific_name') required this.scientificName,
+      @JsonKey(name: 'common_name') required final List<Name> commonName})
+      : _commonName = commonName;
 
-  factory _$_HighlightResultBdtfx.fromJson(Map<String, dynamic> json) =>
-      _$$_HighlightResultBdtfxFromJson(json);
+  factory _$HighlightResultBdtfxImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HighlightResultBdtfxImplFromJson(json);
 
   @override
   @JsonKey(name: 'scientific_name')
   final Name? scientificName;
+  final List<Name> _commonName;
   @override
   @JsonKey(name: 'common_name')
-  final Name? commonName;
+  List<Name> get commonName {
+    if (_commonName is EqualUnmodifiableListView) return _commonName;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_commonName);
+  }
 
   @override
   String toString() {
@@ -1015,30 +1021,32 @@ class _$_HighlightResultBdtfx implements _HighlightResultBdtfx {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HighlightResultBdtfx &&
+            other is _$HighlightResultBdtfxImpl &&
             (identical(other.scientificName, scientificName) ||
                 other.scientificName == scientificName) &&
-            (identical(other.commonName, commonName) ||
-                other.commonName == commonName));
+            const DeepCollectionEquality()
+                .equals(other._commonName, _commonName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, scientificName, commonName);
+  int get hashCode => Object.hash(runtimeType, scientificName,
+      const DeepCollectionEquality().hash(_commonName));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HighlightResultBdtfxCopyWith<_$_HighlightResultBdtfx> get copyWith =>
-      __$$_HighlightResultBdtfxCopyWithImpl<_$_HighlightResultBdtfx>(
-          this, _$identity);
+  _$$HighlightResultBdtfxImplCopyWith<_$HighlightResultBdtfxImpl>
+      get copyWith =>
+          __$$HighlightResultBdtfxImplCopyWithImpl<_$HighlightResultBdtfxImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HighlightResultBdtfxToJson(
+    return _$$HighlightResultBdtfxImplToJson(
       this,
     );
   }
@@ -1046,23 +1054,23 @@ class _$_HighlightResultBdtfx implements _HighlightResultBdtfx {
 
 abstract class _HighlightResultBdtfx implements HighlightResultBdtfx {
   const factory _HighlightResultBdtfx(
-          {@JsonKey(name: 'scientific_name') final Name? scientificName,
-          @JsonKey(name: 'common_name') final Name? commonName}) =
-      _$_HighlightResultBdtfx;
+      {@JsonKey(name: 'scientific_name') required final Name? scientificName,
+      @JsonKey(name: 'common_name')
+      required final List<Name> commonName}) = _$HighlightResultBdtfxImpl;
 
   factory _HighlightResultBdtfx.fromJson(Map<String, dynamic> json) =
-      _$_HighlightResultBdtfx.fromJson;
+      _$HighlightResultBdtfxImpl.fromJson;
 
   @override
   @JsonKey(name: 'scientific_name')
   Name? get scientificName;
   @override
   @JsonKey(name: 'common_name')
-  Name? get commonName;
+  List<Name> get commonName;
   @override
   @JsonKey(ignore: true)
-  _$$_HighlightResultBdtfxCopyWith<_$_HighlightResultBdtfx> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HighlightResultBdtfxImplCopyWith<_$HighlightResultBdtfxImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 Name _$NameFromJson(Map<String, dynamic> json) {
@@ -1071,8 +1079,11 @@ Name _$NameFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Name {
-  String? get value => throw _privateConstructorUsedError;
-  List<String>? get matchedWords => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
+  @JsonKey(name: 'match_level')
+  String? get matchLevel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'matched_words')
+  List<dynamic>? get matchedWords => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1084,7 +1095,10 @@ abstract class $NameCopyWith<$Res> {
   factory $NameCopyWith(Name value, $Res Function(Name) then) =
       _$NameCopyWithImpl<$Res, Name>;
   @useResult
-  $Res call({String? value, List<String>? matchedWords});
+  $Res call(
+      {String value,
+      @JsonKey(name: 'match_level') String? matchLevel,
+      @JsonKey(name: 'matched_words') List<dynamic>? matchedWords});
 }
 
 /// @nodoc
@@ -1100,69 +1114,92 @@ class _$NameCopyWithImpl<$Res, $Val extends Name>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
+    Object? value = null,
+    Object? matchLevel = freezed,
     Object? matchedWords = freezed,
   }) {
     return _then(_value.copyWith(
-      value: freezed == value
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      matchLevel: freezed == matchLevel
+          ? _value.matchLevel
+          : matchLevel // ignore: cast_nullable_to_non_nullable
               as String?,
       matchedWords: freezed == matchedWords
           ? _value.matchedWords
           : matchedWords // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<dynamic>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_NameCopyWith<$Res> implements $NameCopyWith<$Res> {
-  factory _$$_NameCopyWith(_$_Name value, $Res Function(_$_Name) then) =
-      __$$_NameCopyWithImpl<$Res>;
+abstract class _$$NameImplCopyWith<$Res> implements $NameCopyWith<$Res> {
+  factory _$$NameImplCopyWith(
+          _$NameImpl value, $Res Function(_$NameImpl) then) =
+      __$$NameImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? value, List<String>? matchedWords});
+  $Res call(
+      {String value,
+      @JsonKey(name: 'match_level') String? matchLevel,
+      @JsonKey(name: 'matched_words') List<dynamic>? matchedWords});
 }
 
 /// @nodoc
-class __$$_NameCopyWithImpl<$Res> extends _$NameCopyWithImpl<$Res, _$_Name>
-    implements _$$_NameCopyWith<$Res> {
-  __$$_NameCopyWithImpl(_$_Name _value, $Res Function(_$_Name) _then)
+class __$$NameImplCopyWithImpl<$Res>
+    extends _$NameCopyWithImpl<$Res, _$NameImpl>
+    implements _$$NameImplCopyWith<$Res> {
+  __$$NameImplCopyWithImpl(_$NameImpl _value, $Res Function(_$NameImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = freezed,
+    Object? value = null,
+    Object? matchLevel = freezed,
     Object? matchedWords = freezed,
   }) {
-    return _then(_$_Name(
-      value: freezed == value
+    return _then(_$NameImpl(
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      matchLevel: freezed == matchLevel
+          ? _value.matchLevel
+          : matchLevel // ignore: cast_nullable_to_non_nullable
               as String?,
       matchedWords: freezed == matchedWords
           ? _value._matchedWords
           : matchedWords // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<dynamic>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Name implements _Name {
-  const _$_Name({this.value, final List<String>? matchedWords})
+class _$NameImpl implements _Name {
+  const _$NameImpl(
+      {required this.value,
+      @JsonKey(name: 'match_level') this.matchLevel,
+      @JsonKey(name: 'matched_words') final List<dynamic>? matchedWords})
       : _matchedWords = matchedWords;
 
-  factory _$_Name.fromJson(Map<String, dynamic> json) => _$$_NameFromJson(json);
+  factory _$NameImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NameImplFromJson(json);
 
   @override
-  final String? value;
-  final List<String>? _matchedWords;
+  final String value;
   @override
-  List<String>? get matchedWords {
+  @JsonKey(name: 'match_level')
+  final String? matchLevel;
+  final List<dynamic>? _matchedWords;
+  @override
+  @JsonKey(name: 'matched_words')
+  List<dynamic>? get matchedWords {
     final value = _matchedWords;
     if (value == null) return null;
     if (_matchedWords is EqualUnmodifiableListView) return _matchedWords;
@@ -1172,49 +1209,59 @@ class _$_Name implements _Name {
 
   @override
   String toString() {
-    return 'Name(value: $value, matchedWords: $matchedWords)';
+    return 'Name(value: $value, matchLevel: $matchLevel, matchedWords: $matchedWords)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Name &&
+            other is _$NameImpl &&
             (identical(other.value, value) || other.value == value) &&
+            (identical(other.matchLevel, matchLevel) ||
+                other.matchLevel == matchLevel) &&
             const DeepCollectionEquality()
                 .equals(other._matchedWords, _matchedWords));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, value, const DeepCollectionEquality().hash(_matchedWords));
+  int get hashCode => Object.hash(runtimeType, value, matchLevel,
+      const DeepCollectionEquality().hash(_matchedWords));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NameCopyWith<_$_Name> get copyWith =>
-      __$$_NameCopyWithImpl<_$_Name>(this, _$identity);
+  _$$NameImplCopyWith<_$NameImpl> get copyWith =>
+      __$$NameImplCopyWithImpl<_$NameImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NameToJson(
+    return _$$NameImplToJson(
       this,
     );
   }
 }
 
 abstract class _Name implements Name {
-  const factory _Name({final String? value, final List<String>? matchedWords}) =
-      _$_Name;
+  const factory _Name(
+          {required final String value,
+          @JsonKey(name: 'match_level') final String? matchLevel,
+          @JsonKey(name: 'matched_words') final List<dynamic>? matchedWords}) =
+      _$NameImpl;
 
-  factory _Name.fromJson(Map<String, dynamic> json) = _$_Name.fromJson;
+  factory _Name.fromJson(Map<String, dynamic> json) = _$NameImpl.fromJson;
 
   @override
-  String? get value;
+  String get value;
   @override
-  List<String>? get matchedWords;
+  @JsonKey(name: 'match_level')
+  String? get matchLevel;
+  @override
+  @JsonKey(name: 'matched_words')
+  List<dynamic>? get matchedWords;
   @override
   @JsonKey(ignore: true)
-  _$$_NameCopyWith<_$_Name> get copyWith => throw _privateConstructorUsedError;
+  _$$NameImplCopyWith<_$NameImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

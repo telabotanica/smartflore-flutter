@@ -44,7 +44,8 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
             emit(const CreateState.registeringName());
             CreateTrail currentTrail = CreateTrail(
                 name: name,
-                position: SavePosition(start: LatLng(0, 0), end: LatLng(0, 0)));
+                position:
+                    const SavePosition(start: LatLng(0, 0), end: LatLng(0, 0)));
             createTrailBox.put('current', currentTrail);
             emit(CreateState.nameRegistered(name));
             add(const CreateEvent.registerLocation());

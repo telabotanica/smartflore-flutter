@@ -11,7 +11,7 @@ class MarkerCondensed extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(width: 2.5, color: Colors.white),
           borderRadius: const BorderRadius.all(Radius.circular(100)),
-          color: Theme.of(context).colorScheme.surface),
+          color: Theme.of(context).colorScheme.tertiary),
     );
   }
 }

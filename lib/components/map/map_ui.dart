@@ -107,7 +107,7 @@ class _MapUIState extends State<MapUI> {
                 ),
               )),
           AnimatedPositioned(
-              top: (widget.mapMode == MapMode.trail) ? 20 : -100,
+              top: (widget.mapMode == MapMode.trail) ? 20 : -200,
               curve: Curves.easeInOutCubic,
               duration: const Duration(milliseconds: 300),
               child: SafeArea(
@@ -145,7 +145,7 @@ class _MapUIState extends State<MapUI> {
           AnimatedPositioned(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOutCubic,
-              bottom: (widget.mapMode == MapMode.create) ? 20 : -100,
+              bottom: (widget.mapMode == MapMode.create) ? 20 : -200,
               left: 20,
               child: SafeArea(
                 child: SizedBox(
@@ -175,6 +175,7 @@ class _MapUIState extends State<MapUI> {
                         ),
                         child: FloatingActionButton(
                             backgroundColor: Colors.white,
+                            shape: const CircleBorder(),
                             child: Container(
                                 width: 14,
                                 height: 14,
@@ -254,7 +255,7 @@ class _MapUIState extends State<MapUI> {
                         id: 1,
                         title: '',
                         length: 150,
-                        position: LatLng(0, 0),
+                        position: const LatLng(0, 0),
                         nbOccurence: 0,
                       );
                     },

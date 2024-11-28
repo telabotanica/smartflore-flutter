@@ -6,23 +6,23 @@ part of 'trails_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TrailsAdapter extends TypeAdapter<_$_Trails> {
+class TrailsAdapter extends TypeAdapter<_$TrailsImpl> {
   @override
   final int typeId = 1;
 
   @override
-  _$_Trails read(BinaryReader reader) {
+  _$TrailsImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_Trails(
+    return _$TrailsImpl(
       trailList: (fields[0] as List?)?.cast<Trail>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_Trails obj) {
+  void write(BinaryWriter writer, _$TrailsImpl obj) {
     writer
       ..writeByte(1)
       ..writeByte(0)
@@ -40,17 +40,17 @@ class TrailsAdapter extends TypeAdapter<_$_Trails> {
           typeId == other.typeId;
 }
 
-class TrailAdapter extends TypeAdapter<_$_Trail> {
+class TrailAdapter extends TypeAdapter<_$TrailImpl> {
   @override
   final int typeId = 2;
 
   @override
-  _$_Trail read(BinaryReader reader) {
+  _$TrailImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_Trail(
+    return _$TrailImpl(
       id: fields[0] as int,
       name: fields[1] as String,
       displayName: fields[2] as String,
@@ -65,7 +65,7 @@ class TrailAdapter extends TypeAdapter<_$_Trail> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_Trail obj) {
+  void write(BinaryWriter writer, _$TrailImpl obj) {
     writer
       ..writeByte(10)
       ..writeByte(0)
@@ -105,34 +105,36 @@ class TrailAdapter extends TypeAdapter<_$_Trail> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Trails _$$_TrailsFromJson(Map<String, dynamic> json) => _$_Trails(
+_$TrailsImpl _$$TrailsImplFromJson(Map<String, dynamic> json) => _$TrailsImpl(
       trailList: (json['trailList'] as List<dynamic>?)
           ?.map((e) => Trail.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_TrailsToJson(_$_Trails instance) => <String, dynamic>{
+Map<String, dynamic> _$$TrailsImplToJson(_$TrailsImpl instance) =>
+    <String, dynamic>{
       'trailList': instance.trailList,
     };
 
-_$_Trail _$$_TrailFromJson(Map<String, dynamic> json) => _$_Trail(
-      id: json['id'] as int,
+_$TrailImpl _$$TrailImplFromJson(Map<String, dynamic> json) => _$TrailImpl(
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       displayName: json['display_name'] as String,
       author: json['author'] as String,
       position: json['position'] == null
           ? null
           : StartEndPosition.fromJson(json['position'] as Map<String, dynamic>),
-      occurrencesCount: json['occurrences_count'] as int,
+      occurrencesCount: (json['occurrences_count'] as num).toInt(),
       details: json['details'] as String,
       image: json['image'] == null
           ? null
           : Image.fromJson(json['image'] as Map<String, dynamic>),
-      pathLength: json['path_length'] as int,
+      pathLength: (json['path_length'] as num).toInt(),
       status: json['status'] as String?,
     );
 
-Map<String, dynamic> _$$_TrailToJson(_$_Trail instance) => <String, dynamic>{
+Map<String, dynamic> _$$TrailImplToJson(_$TrailImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'display_name': instance.displayName,

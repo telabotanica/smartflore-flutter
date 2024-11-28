@@ -26,7 +26,7 @@ class CreateTrail with _$CreateTrail {
     @JsonKey(name: 'best_season')
     @HiveField(6)
     @Default([false, false, false, false])
-        List<bool> bestSeason,
+    List<bool> bestSeason,
   }) = _CreateTrail;
 
   factory CreateTrail.fromJson(Map<String, dynamic> json) =>
@@ -43,7 +43,7 @@ class OccurrenceCreate with _$OccurrenceCreate {
     @JsonKey(name: 'name_id') @HiveField(2) required int nameId,
     @JsonKey(name: 'taxon_repository')
     @HiveField(3)
-        required String taxonRepository,
+    required String taxonRepository,
     @JsonKey(name: 'image_id') @HiveField(4) String? imageId,
   }) = _OccurrenceCreate;
 

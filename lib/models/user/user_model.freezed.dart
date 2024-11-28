@@ -12,7 +12,7 @@ part of 'user_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AuthLogin _$AuthLoginFromJson(Map<String, dynamic> json) {
   return _AuthLogin.fromJson(json);
@@ -67,21 +67,22 @@ class _$AuthLoginCopyWithImpl<$Res, $Val extends AuthLogin>
 }
 
 /// @nodoc
-abstract class _$$_AuthLoginCopyWith<$Res> implements $AuthLoginCopyWith<$Res> {
-  factory _$$_AuthLoginCopyWith(
-          _$_AuthLogin value, $Res Function(_$_AuthLogin) then) =
-      __$$_AuthLoginCopyWithImpl<$Res>;
+abstract class _$$AuthLoginImplCopyWith<$Res>
+    implements $AuthLoginCopyWith<$Res> {
+  factory _$$AuthLoginImplCopyWith(
+          _$AuthLoginImpl value, $Res Function(_$AuthLoginImpl) then) =
+      __$$AuthLoginImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String login, String password});
 }
 
 /// @nodoc
-class __$$_AuthLoginCopyWithImpl<$Res>
-    extends _$AuthLoginCopyWithImpl<$Res, _$_AuthLogin>
-    implements _$$_AuthLoginCopyWith<$Res> {
-  __$$_AuthLoginCopyWithImpl(
-      _$_AuthLogin _value, $Res Function(_$_AuthLogin) _then)
+class __$$AuthLoginImplCopyWithImpl<$Res>
+    extends _$AuthLoginCopyWithImpl<$Res, _$AuthLoginImpl>
+    implements _$$AuthLoginImplCopyWith<$Res> {
+  __$$AuthLoginImplCopyWithImpl(
+      _$AuthLoginImpl _value, $Res Function(_$AuthLoginImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +91,7 @@ class __$$_AuthLoginCopyWithImpl<$Res>
     Object? login = null,
     Object? password = null,
   }) {
-    return _then(_$_AuthLogin(
+    return _then(_$AuthLoginImpl(
       login: null == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
@@ -105,11 +106,11 @@ class __$$_AuthLoginCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthLogin implements _AuthLogin {
-  const _$_AuthLogin({required this.login, required this.password});
+class _$AuthLoginImpl implements _AuthLogin {
+  const _$AuthLoginImpl({required this.login, required this.password});
 
-  factory _$_AuthLogin.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthLoginFromJson(json);
+  factory _$AuthLoginImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthLoginImplFromJson(json);
 
   @override
   final String login;
@@ -122,10 +123,10 @@ class _$_AuthLogin implements _AuthLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthLogin &&
+            other is _$AuthLoginImpl &&
             (identical(other.login, login) || other.login == login) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -138,12 +139,12 @@ class _$_AuthLogin implements _AuthLogin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthLoginCopyWith<_$_AuthLogin> get copyWith =>
-      __$$_AuthLoginCopyWithImpl<_$_AuthLogin>(this, _$identity);
+  _$$AuthLoginImplCopyWith<_$AuthLoginImpl> get copyWith =>
+      __$$AuthLoginImplCopyWithImpl<_$AuthLoginImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthLoginToJson(
+    return _$$AuthLoginImplToJson(
       this,
     );
   }
@@ -152,10 +153,10 @@ class _$_AuthLogin implements _AuthLogin {
 abstract class _AuthLogin implements AuthLogin {
   const factory _AuthLogin(
       {required final String login,
-      required final String password}) = _$_AuthLogin;
+      required final String password}) = _$AuthLoginImpl;
 
   factory _AuthLogin.fromJson(Map<String, dynamic> json) =
-      _$_AuthLogin.fromJson;
+      _$AuthLoginImpl.fromJson;
 
   @override
   String get login;
@@ -163,7 +164,7 @@ abstract class _AuthLogin implements AuthLogin {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthLoginCopyWith<_$_AuthLogin> get copyWith =>
+  _$$AuthLoginImplCopyWith<_$AuthLoginImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -249,11 +250,12 @@ class _$AuthenticationResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AuthenticationResponseCopyWith<$Res>
+abstract class _$$AuthenticationResponseImplCopyWith<$Res>
     implements $AuthenticationResponseCopyWith<$Res> {
-  factory _$$_AuthenticationResponseCopyWith(_$_AuthenticationResponse value,
-          $Res Function(_$_AuthenticationResponse) then) =
-      __$$_AuthenticationResponseCopyWithImpl<$Res>;
+  factory _$$AuthenticationResponseImplCopyWith(
+          _$AuthenticationResponseImpl value,
+          $Res Function(_$AuthenticationResponseImpl) then) =
+      __$$AuthenticationResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? message, UserInfoApp? user, bool? isOk, int? statusCode});
@@ -263,12 +265,13 @@ abstract class _$$_AuthenticationResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AuthenticationResponseCopyWithImpl<$Res>
+class __$$AuthenticationResponseImplCopyWithImpl<$Res>
     extends _$AuthenticationResponseCopyWithImpl<$Res,
-        _$_AuthenticationResponse>
-    implements _$$_AuthenticationResponseCopyWith<$Res> {
-  __$$_AuthenticationResponseCopyWithImpl(_$_AuthenticationResponse _value,
-      $Res Function(_$_AuthenticationResponse) _then)
+        _$AuthenticationResponseImpl>
+    implements _$$AuthenticationResponseImplCopyWith<$Res> {
+  __$$AuthenticationResponseImplCopyWithImpl(
+      _$AuthenticationResponseImpl _value,
+      $Res Function(_$AuthenticationResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -279,7 +282,7 @@ class __$$_AuthenticationResponseCopyWithImpl<$Res>
     Object? isOk = freezed,
     Object? statusCode = freezed,
   }) {
-    return _then(_$_AuthenticationResponse(
+    return _then(_$AuthenticationResponseImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -302,12 +305,12 @@ class __$$_AuthenticationResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthenticationResponse implements _AuthenticationResponse {
-  const _$_AuthenticationResponse(
+class _$AuthenticationResponseImpl implements _AuthenticationResponse {
+  const _$AuthenticationResponseImpl(
       {this.message, this.user, this.isOk, this.statusCode});
 
-  factory _$_AuthenticationResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthenticationResponseFromJson(json);
+  factory _$AuthenticationResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthenticationResponseImplFromJson(json);
 
   @override
   final String? message;
@@ -324,10 +327,10 @@ class _$_AuthenticationResponse implements _AuthenticationResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthenticationResponse &&
+            other is _$AuthenticationResponseImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isOk, isOk) || other.isOk == isOk) &&
@@ -342,13 +345,13 @@ class _$_AuthenticationResponse implements _AuthenticationResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthenticationResponseCopyWith<_$_AuthenticationResponse> get copyWith =>
-      __$$_AuthenticationResponseCopyWithImpl<_$_AuthenticationResponse>(
-          this, _$identity);
+  _$$AuthenticationResponseImplCopyWith<_$AuthenticationResponseImpl>
+      get copyWith => __$$AuthenticationResponseImplCopyWithImpl<
+          _$AuthenticationResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthenticationResponseToJson(
+    return _$$AuthenticationResponseImplToJson(
       this,
     );
   }
@@ -359,10 +362,10 @@ abstract class _AuthenticationResponse implements AuthenticationResponse {
       {final String? message,
       final UserInfoApp? user,
       final bool? isOk,
-      final int? statusCode}) = _$_AuthenticationResponse;
+      final int? statusCode}) = _$AuthenticationResponseImpl;
 
   factory _AuthenticationResponse.fromJson(Map<String, dynamic> json) =
-      _$_AuthenticationResponse.fromJson;
+      _$AuthenticationResponseImpl.fromJson;
 
   @override
   String? get message;
@@ -374,8 +377,8 @@ abstract class _AuthenticationResponse implements AuthenticationResponse {
   int? get statusCode;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthenticationResponseCopyWith<_$_AuthenticationResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AuthenticationResponseImplCopyWith<_$AuthenticationResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 UserInfoApp _$UserInfoAppFromJson(Map<String, dynamic> json) {
@@ -434,22 +437,22 @@ class _$UserInfoAppCopyWithImpl<$Res, $Val extends UserInfoApp>
 }
 
 /// @nodoc
-abstract class _$$_UserInfoAppCopyWith<$Res>
+abstract class _$$UserInfoAppImplCopyWith<$Res>
     implements $UserInfoAppCopyWith<$Res> {
-  factory _$$_UserInfoAppCopyWith(
-          _$_UserInfoApp value, $Res Function(_$_UserInfoApp) then) =
-      __$$_UserInfoAppCopyWithImpl<$Res>;
+  factory _$$UserInfoAppImplCopyWith(
+          _$UserInfoAppImpl value, $Res Function(_$UserInfoAppImpl) then) =
+      __$$UserInfoAppImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@HiveField(0) String? email, @HiveField(1) String? token});
 }
 
 /// @nodoc
-class __$$_UserInfoAppCopyWithImpl<$Res>
-    extends _$UserInfoAppCopyWithImpl<$Res, _$_UserInfoApp>
-    implements _$$_UserInfoAppCopyWith<$Res> {
-  __$$_UserInfoAppCopyWithImpl(
-      _$_UserInfoApp _value, $Res Function(_$_UserInfoApp) _then)
+class __$$UserInfoAppImplCopyWithImpl<$Res>
+    extends _$UserInfoAppCopyWithImpl<$Res, _$UserInfoAppImpl>
+    implements _$$UserInfoAppImplCopyWith<$Res> {
+  __$$UserInfoAppImplCopyWithImpl(
+      _$UserInfoAppImpl _value, $Res Function(_$UserInfoAppImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -458,7 +461,7 @@ class __$$_UserInfoAppCopyWithImpl<$Res>
     Object? email = freezed,
     Object? token = freezed,
   }) {
-    return _then(_$_UserInfoApp(
+    return _then(_$UserInfoAppImpl(
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -474,11 +477,11 @@ class __$$_UserInfoAppCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 20, adapterName: 'UserAdapter')
-class _$_UserInfoApp implements _UserInfoApp {
-  const _$_UserInfoApp({@HiveField(0) this.email, @HiveField(1) this.token});
+class _$UserInfoAppImpl implements _UserInfoApp {
+  const _$UserInfoAppImpl({@HiveField(0) this.email, @HiveField(1) this.token});
 
-  factory _$_UserInfoApp.fromJson(Map<String, dynamic> json) =>
-      _$$_UserInfoAppFromJson(json);
+  factory _$UserInfoAppImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserInfoAppImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -493,10 +496,10 @@ class _$_UserInfoApp implements _UserInfoApp {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserInfoApp &&
+            other is _$UserInfoAppImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.token, token) || other.token == token));
   }
@@ -508,12 +511,12 @@ class _$_UserInfoApp implements _UserInfoApp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserInfoAppCopyWith<_$_UserInfoApp> get copyWith =>
-      __$$_UserInfoAppCopyWithImpl<_$_UserInfoApp>(this, _$identity);
+  _$$UserInfoAppImplCopyWith<_$UserInfoAppImpl> get copyWith =>
+      __$$UserInfoAppImplCopyWithImpl<_$UserInfoAppImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserInfoAppToJson(
+    return _$$UserInfoAppImplToJson(
       this,
     );
   }
@@ -522,10 +525,10 @@ class _$_UserInfoApp implements _UserInfoApp {
 abstract class _UserInfoApp implements UserInfoApp {
   const factory _UserInfoApp(
       {@HiveField(0) final String? email,
-      @HiveField(1) final String? token}) = _$_UserInfoApp;
+      @HiveField(1) final String? token}) = _$UserInfoAppImpl;
 
   factory _UserInfoApp.fromJson(Map<String, dynamic> json) =
-      _$_UserInfoApp.fromJson;
+      _$UserInfoAppImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -535,7 +538,7 @@ abstract class _UserInfoApp implements UserInfoApp {
   String? get token;
   @override
   @JsonKey(ignore: true)
-  _$$_UserInfoAppCopyWith<_$_UserInfoApp> get copyWith =>
+  _$$UserInfoAppImplCopyWith<_$UserInfoAppImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -599,22 +602,22 @@ class _$RemoteUserCopyWithImpl<$Res, $Val extends RemoteUser>
 }
 
 /// @nodoc
-abstract class _$$_RemoteUserCopyWith<$Res>
+abstract class _$$RemoteUserImplCopyWith<$Res>
     implements $RemoteUserCopyWith<$Res> {
-  factory _$$_RemoteUserCopyWith(
-          _$_RemoteUser value, $Res Function(_$_RemoteUser) then) =
-      __$$_RemoteUserCopyWithImpl<$Res>;
+  factory _$$RemoteUserImplCopyWith(
+          _$RemoteUserImpl value, $Res Function(_$RemoteUserImpl) then) =
+      __$$RemoteUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, String? avatar, List<Trail>? trails});
 }
 
 /// @nodoc
-class __$$_RemoteUserCopyWithImpl<$Res>
-    extends _$RemoteUserCopyWithImpl<$Res, _$_RemoteUser>
-    implements _$$_RemoteUserCopyWith<$Res> {
-  __$$_RemoteUserCopyWithImpl(
-      _$_RemoteUser _value, $Res Function(_$_RemoteUser) _then)
+class __$$RemoteUserImplCopyWithImpl<$Res>
+    extends _$RemoteUserCopyWithImpl<$Res, _$RemoteUserImpl>
+    implements _$$RemoteUserImplCopyWith<$Res> {
+  __$$RemoteUserImplCopyWithImpl(
+      _$RemoteUserImpl _value, $Res Function(_$RemoteUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -624,7 +627,7 @@ class __$$_RemoteUserCopyWithImpl<$Res>
     Object? avatar = freezed,
     Object? trails = freezed,
   }) {
-    return _then(_$_RemoteUser(
+    return _then(_$RemoteUserImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -643,12 +646,12 @@ class __$$_RemoteUserCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RemoteUser implements _RemoteUser {
-  const _$_RemoteUser({this.name, this.avatar, final List<Trail>? trails})
+class _$RemoteUserImpl implements _RemoteUser {
+  const _$RemoteUserImpl({this.name, this.avatar, final List<Trail>? trails})
       : _trails = trails;
 
-  factory _$_RemoteUser.fromJson(Map<String, dynamic> json) =>
-      _$$_RemoteUserFromJson(json);
+  factory _$RemoteUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RemoteUserImplFromJson(json);
 
   @override
   final String? name;
@@ -670,10 +673,10 @@ class _$_RemoteUser implements _RemoteUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RemoteUser &&
+            other is _$RemoteUserImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
             const DeepCollectionEquality().equals(other._trails, _trails));
@@ -687,12 +690,12 @@ class _$_RemoteUser implements _RemoteUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RemoteUserCopyWith<_$_RemoteUser> get copyWith =>
-      __$$_RemoteUserCopyWithImpl<_$_RemoteUser>(this, _$identity);
+  _$$RemoteUserImplCopyWith<_$RemoteUserImpl> get copyWith =>
+      __$$RemoteUserImplCopyWithImpl<_$RemoteUserImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RemoteUserToJson(
+    return _$$RemoteUserImplToJson(
       this,
     );
   }
@@ -702,10 +705,10 @@ abstract class _RemoteUser implements RemoteUser {
   const factory _RemoteUser(
       {final String? name,
       final String? avatar,
-      final List<Trail>? trails}) = _$_RemoteUser;
+      final List<Trail>? trails}) = _$RemoteUserImpl;
 
   factory _RemoteUser.fromJson(Map<String, dynamic> json) =
-      _$_RemoteUser.fromJson;
+      _$RemoteUserImpl.fromJson;
 
   @override
   String? get name;
@@ -715,6 +718,6 @@ abstract class _RemoteUser implements RemoteUser {
   List<Trail>? get trails;
   @override
   @JsonKey(ignore: true)
-  _$$_RemoteUserCopyWith<_$_RemoteUser> get copyWith =>
+  _$$RemoteUserImplCopyWith<_$RemoteUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

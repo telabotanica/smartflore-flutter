@@ -30,7 +30,7 @@ class MapWidget extends StatefulWidget {
 }
 
 class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
-  LatLng currentLocation = LatLng(43.610769, 3.876716);
+  LatLng currentLocation = const LatLng(43.610769, 3.876716);
   TrailDetails? trailData;
   List<Trail>? trailsData;
   Path? createPath;
@@ -60,11 +60,12 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     if (selectedOccurence != occurrenceID) {
       if (trailData != null) {
         Occurrence occurrence = trailData!.occurrences[occurrenceID];
-        double lat = (_mapController.zoom > 16)
-            ? occurrence.position.latitude - 0.0008 / (_mapController.zoom - 16)
+        double lat = (_mapController.camera.zoom > 16)
+            ? occurrence.position.latitude -
+                0.0008 / (_mapController.camera.zoom - 16)
             : occurrence.position.latitude - 0.0008;
-        _animatedMapMove(
-            LatLng(lat, occurrence.position.longitude), _mapController.zoom);
+        _animatedMapMove(LatLng(lat, occurrence.position.longitude),
+            _mapController.camera.zoom);
       }
       setState(() {
         selectedOccurence = occurrenceID;
@@ -74,17 +75,20 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   }
 
   void recenter() {
-    _animatedMapMove(currentLocation, _mapController.zoom);
+    _animatedMapMove(currentLocation, _mapController.camera.zoom);
   }
 
   void _animatedMapMove(LatLng destLocation, double destZoom) {
     // Create some tweens. These serve to split up the transition from one location to another.
     // In our case, we want to split the transition be<tween> our current map center and the destination.
     final latTween = Tween<double>(
-        begin: _mapController.center.latitude, end: destLocation.latitude);
+        begin: _mapController.camera.center.latitude,
+        end: destLocation.latitude);
     final lngTween = Tween<double>(
-        begin: _mapController.center.longitude, end: destLocation.longitude);
-    final zoomTween = Tween<double>(begin: _mapController.zoom, end: destZoom);
+        begin: _mapController.camera.center.longitude,
+        end: destLocation.longitude);
+    final zoomTween =
+        Tween<double>(begin: _mapController.camera.zoom, end: destZoom);
 
     // Create a animation controller that has a duration and a TickerProvider.
     var controller = AnimationController(
@@ -134,11 +138,14 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
               setState(() {
                 trailData = state.trail;
 
-                CenterZoom centerZoom = _mapController.centerZoomFitBounds(
-                    LatLngBounds.fromPoints(trailData!.path.coordinates));
+                _mapController.fitCamera(CameraFit.coordinates(
+                    coordinates: trailData!.path.coordinates));
+
                 //workaround to make sure the center of the map is slightly higher.
-                centerZoom.center.latitude -= 0.0008;
-                _animatedMapMove(centerZoom.center, centerZoom.zoom);
+                MapCamera camera = _mapController.camera;
+                LatLng latLng = LatLng(
+                    camera.center.latitude - 0.0007, camera.center.longitude);
+                _animatedMapMove(latLng, camera.zoom - 1);
               });
             }
           },
@@ -199,25 +206,27 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           },
         ),
       ],
-      child: WillPopScope(
-        onWillPop: () async {
+      child: PopScope(
+        onPopInvokedWithResult: (didPop, result) async {
           if (mapMode != MapMode.overview) {
             BlocProvider.of<MapBloc>(context).add(MapEvent.changeMapMode(
                 (mapMode == MapMode.trail)
                     ? MapMode.preview
                     : MapMode.overview));
-            return false;
+            return;
           } else {
-            return true;
+            return;
           }
         },
         child: FlutterMap(
           mapController: _mapController,
           options: MapOptions(
-            rotationWinGestures: MultiFingerGesture.none,
-            center: currentLocation,
-            interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-            zoom: 16.0,
+            interactionOptions: const InteractionOptions(
+              rotationWinGestures: MultiFingerGesture.none,
+              flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+            ),
+            initialCenter: currentLocation,
+            initialZoom: 16.0,
             maxZoom: 19,
             onTap: (tapPos, LatLng latLng) {
               if (mapMode != MapMode.trail && mapMode != MapMode.create) {
@@ -237,11 +246,11 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
             MarkerLayer(
               markers: [
                 Marker(
-                    anchorPos: AnchorPos.align(AnchorAlign.center),
+                    alignment: Alignment.center,
                     width: 38.0,
                     height: 38.0,
                     point: currentLocation,
-                    builder: (ctx) => const MarkerMe()),
+                    child: const MarkerMe()),
               ],
             ),
             if (mapMode == MapMode.overview) ...setupOverviewMode(),
@@ -262,13 +271,13 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                   LatLng startPos =
                       (trail.position != null && trail.position?.start != null)
                           ? trail.position!.start
-                          : LatLng(0, 0);
+                          : const LatLng(0, 0);
                   return Marker(
-                    anchorPos: AnchorPos.align(AnchorAlign.center),
-                    width: 38.0,
-                    height: 38.0,
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: startPos,
-                    builder: (ctx) => IconButton(
+                    child: IconButton(
                         onPressed: () {
                           BlocProvider.of<MapBloc>(context)
                               .add(MapEvent.requestTrailPreview(trail.id));
@@ -287,7 +296,8 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                                     : 500),
                             child: Icon(SmartFloreIcons.marker,
                                 size: 38,
-                                color: Theme.of(context).colorScheme.surface))),
+                                color:
+                                    Theme.of(context).colorScheme.tertiary))),
                   );
                 }).toList()
               : []),
@@ -297,13 +307,12 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   List<Widget> setupPreviewMode() {
     return [
       //PATH
-      PolylineLayer(
-          polylineCulling: true,
+      PolylineLayer<Object>(
           polylines: (trailData != null)
               ? [
                   Polyline(
                       strokeWidth: 4,
-                      isDotted: true,
+                      pattern: const StrokePattern.dotted(),
                       color: Theme.of(context).colorScheme.primary,
                       points: trailData!.path.coordinates)
                 ]
@@ -313,22 +322,22 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           markers: trailData != null
               ? [
                   Marker(
-                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
-                    width: 18.0,
-                    height: 18.0,
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: trailData!.position.start,
-                    builder: (ctx) => const MarkerWithBG(
+                    child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerEnd,
                       size: 39,
                       color: Color(0xFFF47070),
                     ),
                   ),
                   Marker(
-                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
-                    width: 18.0,
-                    height: 18.0,
+                    alignment: Alignment.topCenter,
+                    width: 39,
+                    height: 39,
                     point: trailData!.position.end,
-                    builder: (ctx) => const MarkerWithBG(
+                    child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerStart,
                       size: 39,
                       color: Color(0xFF3EB17B),
@@ -343,13 +352,12 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
   List<Widget> setupFocusMode() {
     return [
       //PATH
-      PolylineLayer(
-          polylineCulling: true,
+      PolylineLayer<Object>(
           polylines: (trailData != null)
               ? [
                   Polyline(
                       strokeWidth: 4,
-                      isDotted: true,
+                      pattern: const StrokePattern.dotted(),
                       color: Theme.of(context).colorScheme.primary,
                       points: trailData!.path.coordinates)
                 ]
@@ -359,23 +367,24 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           markers: trailData != null
               ? [
                   Marker(
-                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
-                    width: 18.0,
-                    height: 18.0,
+                    //alignment: const Alignment(0, -20),
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: trailData!.path
                         .coordinates[trailData!.path.coordinates.length - 1],
-                    builder: (ctx) => const MarkerWithBG(
+                    child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerEnd,
                       size: 39,
                       color: Color(0xFFF47070),
                     ),
                   ),
                   Marker(
-                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
-                    width: 18.0,
-                    height: 18.0,
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: trailData!.path.coordinates[0],
-                    builder: (ctx) => const MarkerWithBG(
+                    child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerStart,
                       size: 39,
                       color: Color(0xFF3EB17B),
@@ -393,13 +402,12 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 
   List<Widget> setupCreateMode() {
     return [
-      PolylineLayer(
-          polylineCulling: true,
+      PolylineLayer<Object>(
           polylines: (createPath != null)
               ? [
                   Polyline(
                       strokeWidth: 4,
-                      isDotted: false,
+                      pattern: const StrokePattern.dotted(),
                       color: Theme.of(context).colorScheme.primary,
                       points: createPath!.coordinates)
                 ]
@@ -408,11 +416,11 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           markers: createPath != null && createPath!.coordinates.isNotEmpty
               ? [
                   Marker(
-                    anchorPos: AnchorPos.exactly(Anchor(0, -20)),
-                    width: 18.0,
-                    height: 18.0,
+                    alignment: Alignment.topCenter,
+                    width: 39.0,
+                    height: 39.0,
                     point: createPath!.coordinates[0],
-                    builder: (ctx) => const MarkerWithBG(
+                    child: const MarkerWithBG(
                       icon: SmartFloreIcons.markerStart,
                       size: 39,
                       color: Color(0xFF3EB17B),
@@ -437,9 +445,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
         key: Key(index.toString()),
         width: index == selectedOccurence && forceOccurenceUpdate ? 60 : 35,
         height: index == selectedOccurence && forceOccurenceUpdate ? 60 : 35,
-        anchorPos: AnchorPos.align(AnchorAlign.center),
+        alignment: Alignment.center,
         point: occurrence.position,
-        builder: (ctx) => SizedBox.expand(
+        child: SizedBox.expand(
           child: IconButton(
               onPressed: () {
                 BlocProvider.of<WalkBloc>(context)
@@ -470,9 +478,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
 class CachedTileProvider extends TileProvider {
   CachedTileProvider();
   @override
-  ImageProvider getImage(Coords<num> coords, TileLayer options) {
+  ImageProvider getImage(TileCoordinates coordinates, TileLayer options) {
     return CachedNetworkImageProvider(
-      getTileUrl(coords, options),
+      getTileUrl(coordinates, options),
     );
   }
 }

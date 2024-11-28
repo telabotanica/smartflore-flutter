@@ -133,7 +133,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                       color: Colors.transparent,
                       child: TextButton(
                         style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.white),
+                          overlayColor: WidgetStateProperty.all(Colors.white),
                         ),
                         onPressed: () =>
                             // Needed because the builtin panelController.isPanelOpen is not working

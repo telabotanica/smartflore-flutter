@@ -47,8 +47,8 @@ class _TrailItemState extends State<TrailItem> {
   Widget build(BuildContext context) {
     String distance = Numbers.convertToKilo(
         widget.length.toDouble(),
-        AppLocalizations.of(context).distance_m,
-        AppLocalizations.of(context).distance_km);
+        AppLocalizations.of(context)!.distance_m,
+        AppLocalizations.of(context)!.distance_km);
     return Padding(
       padding: EdgeInsets.fromLTRB(0, (widget.index == 0) ? 0 : 20, 0, 20),
       child: Row(
@@ -181,7 +181,7 @@ class _TrailItemState extends State<TrailItem> {
           const SizedBox(width: 5),
           Flexible(
             child: Text(
-              AppLocalizations.of(context)
+              AppLocalizations.of(context)!
                   .count_observation(widget.nbOccurence),
               style: Theme.of(context).textTheme.bodySmall,
               maxLines: 1,
@@ -216,7 +216,7 @@ class _TrailItemState extends State<TrailItem> {
                       position.longitude);
 
                   return AutoSizeText(
-                    '${AppLocalizations.of(context).to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context).distance_m, AppLocalizations.of(context).distance_km)}',
+                    '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!

@@ -31,7 +31,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
 
   int _current = 0;
   List<ImageAPI> galleryItems = [];
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
   @override
   void initState() {
     galleryItems = getCarouselImages(widget.tabData.images);
@@ -121,7 +121,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
                               shape: BoxShape.circle,
                               color: (_current == entry.key)
                                   ? Theme.of(context).colorScheme.primary
-                                  : Theme.of(context).colorScheme.background),
+                                  : Theme.of(context).colorScheme.tertiary),
                         ),
                       );
                     }).toList(),
