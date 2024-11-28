@@ -4,7 +4,7 @@ import 'package:smartflore/_env/env_prod.dart';
 
 abstract class AppEnv implements AppEnvFields {
   factory AppEnv() => _instance;
-  static final AppEnv _instance = kDebugMode ? ProdEnv() : ProdEnv();
+  static final AppEnv _instance = kDebugMode ? DevEnv() : ProdEnv();
 }
 
 abstract class AppEnvFields {
