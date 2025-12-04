@@ -20,8 +20,7 @@ import 'package:smartflore/utils/app.dart';
 
 class SearchTaxonScreen extends StatefulWidget {
   final bool simpleSearch;
-  const SearchTaxonScreen({Key? key, this.simpleSearch = false})
-      : super(key: key);
+  const SearchTaxonScreen({super.key, this.simpleSearch = false});
 
   @override
   State<SearchTaxonScreen> createState() => _SearchTaxonScreenState();
@@ -142,7 +141,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                               boxShadow: [
                                 BoxShadow(
                                     blurRadius: 10,
-                                    color: Colors.black.withOpacity(0.15))
+                                    color: Colors.black.withValues(alpha: 0.15))
                               ],
                               color: Theme.of(context).colorScheme.surface,
                               borderRadius:
@@ -253,7 +252,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
             hintStyle: Theme.of(context)
                 .textTheme
                 .titleLarge
-                ?.copyWith(color: Colors.black.withOpacity(0.4)),
+                ?.copyWith(color: Colors.black.withValues(alpha: 0.4)),
             textController: textController,
             onSaved: (value) {},
           ),

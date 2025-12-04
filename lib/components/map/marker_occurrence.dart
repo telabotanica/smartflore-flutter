@@ -12,7 +12,7 @@ class MarkerOccurrence extends StatefulWidget {
     required this.imageUrl,
     required this.id,
     this.isSelected,
-  }) : super(key: key);
+  });
 
   @override
   State<MarkerOccurrence> createState() => _MarkerOccurrenceState();

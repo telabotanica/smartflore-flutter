@@ -15,7 +15,7 @@ class SpeciesItem extends StatelessWidget {
     this.titleLatin,
     this.title,
     required this.tags,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

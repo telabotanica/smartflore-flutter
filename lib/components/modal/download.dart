@@ -8,7 +8,7 @@ import 'package:smartflore/components/list/trail/trail_item.dart';
 import 'package:smartflore/components/modal/modal_title.dart';
 import 'package:smartflore/components/progress_bar.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class DownloadCard extends StatefulWidget {
   final int trailId;
@@ -25,8 +25,7 @@ class DownloadCard extends StatefulWidget {
       required this.length,
       required this.image,
       required this.nbOccurence,
-      this.isDownloaded = false})
-      : super(key: key);
+      this.isDownloaded = false});
 
   @override
   State<DownloadCard> createState() => _DownloadCardState();
@@ -59,7 +58,7 @@ class _DownloadCardState extends State<DownloadCard> {
       },
       child: Column(children: [
         ModalTitle(
-            title: AppLocalizations.of(context)!.trail_options,
+            title: AppLocalizations.of(context).trail_options,
             onClose: () {
               Navigator.of(context).pop();
             }),
@@ -82,12 +81,12 @@ class _DownloadCardState extends State<DownloadCard> {
                     children: [
                       const DownloadIcon(),
                       const SizedBox(width: 6),
-                      Text(AppLocalizations.of(context)!.offline,
+                      Text(AppLocalizations.of(context).offline,
                           style: Theme.of(context).textTheme.titleLarge),
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text(AppLocalizations.of(context)!.offline_desc,
+                  Text(AppLocalizations.of(context).offline_desc,
                       style: Theme.of(context).textTheme.bodySmall)
                 ],
               ),
@@ -108,8 +107,8 @@ class _DownloadCardState extends State<DownloadCard> {
                         SaveTrailEvent.unSaveTrailLocally(id: widget.trailId));
                   }
                 },
-                trackColor: const Color(0xFFD8DCD8),
-                activeColor: Theme.of(context).colorScheme.primary,
+                inactiveTrackColor: const Color(0xFFD8DCD8),
+                activeTrackColor: Theme.of(context).colorScheme.primary,
               ),
             ),
           ],

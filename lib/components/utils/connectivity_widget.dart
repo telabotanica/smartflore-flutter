@@ -6,11 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class ConnectivityWidget extends StatefulWidget {
   final Widget child;
-  const ConnectivityWidget({Key? key, required this.child}) : super(key: key);
+  const ConnectivityWidget({super.key, required this.child});
 
   @override
   State<ConnectivityWidget> createState() => _ConnectivityWidgetState();
@@ -18,7 +18,7 @@ class ConnectivityWidget extends StatefulWidget {
 
 class _ConnectivityWidgetState extends State<ConnectivityWidget> {
   final Connectivity _connectivity = Connectivity();
-  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
   late Box appConfigBox;
   bool isSnackbarActive = false;
   bool isDelayFinished = true;
@@ -39,7 +39,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
   }
 
   Future<void> initConnectivity() async {
-    late ConnectivityResult result;
+    late List<ConnectivityResult> result;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       result = await _connectivity.checkConnectivity();
@@ -58,16 +58,20 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
     return _updateConnectionStatus(result);
   }
 
-  Future<void> _updateConnectionStatus(ConnectivityResult result) async {
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> results) async {
+    // connectivity_plus now returns a list of results
+    // Check if all results are none (no connectivity)
+    final result = results.isEmpty ? ConnectivityResult.none : results.first;
     appConfigBox.put('connectivityStatus', result);
-    if (result == ConnectivityResult.none && !isSnackbarActive) {
+    if (results.contains(ConnectivityResult.none) && !isSnackbarActive) {
       if (isDelayFinished) {
         Future.delayed(const Duration(seconds: 2)).then((value) async {
-          ConnectivityResult doubleCheck =
+          List<ConnectivityResult> doubleCheck =
               await _connectivity.checkConnectivity();
           isDelayFinished = true;
 
-          if (doubleCheck == ConnectivityResult.none && !isSnackbarActive) {
+          if (doubleCheck.contains(ConnectivityResult.none) &&
+              !isSnackbarActive) {
             showSnackBar();
           }
         });
@@ -92,7 +96,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
         borderRadius: BorderRadius.circular(6),
         boxShadows: [
           BoxShadow(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.black.withValues(alpha: 0.4),
               offset: const Offset(0.0, 4.0),
               blurRadius: 10.0)
         ],
@@ -109,7 +113,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
         titleText: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            AppLocalizations.of(context)!.toaster_offline_title,
+            AppLocalizations.of(context).toaster_offline_title,
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
@@ -120,7 +124,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
         messageText: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            AppLocalizations.of(context)!.toaster_offline_desc,
+            AppLocalizations.of(context).toaster_offline_desc,
             style: const TextStyle(
                 fontSize: 14.0,
                 color: Colors.white,

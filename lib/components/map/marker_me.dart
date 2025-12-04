@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MarkerMe extends StatelessWidget {
-  const MarkerMe({Key? key}) : super(key: key);
+  const MarkerMe({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class MarkerMe extends StatelessWidget {
           height: 38,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(100)),
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
           ),
         ),
         Center(

@@ -6,7 +6,7 @@ class MarkerImage extends StatelessWidget {
   const MarkerImage({
     Key? key,
     required this.url,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

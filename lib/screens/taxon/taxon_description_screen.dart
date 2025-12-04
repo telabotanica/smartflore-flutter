@@ -7,7 +7,7 @@ import 'package:smartflore/navigation/gallery_screen_args.dart';
 
 class SpeciesDescription extends StatefulWidget {
   final TabAPI tabData;
-  const SpeciesDescription({Key? key, required this.tabData}) : super(key: key);
+  const SpeciesDescription({super.key, required this.tabData});
 
   @override
   State<SpeciesDescription> createState() => _SpeciesDescriptionState();

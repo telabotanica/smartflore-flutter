@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
 
 import 'package:smartflore/bloc/create/create_bloc.dart';
@@ -24,7 +24,7 @@ class MyTrails extends StatelessWidget {
     required this.isAuth,
     required this.controller,
     required this.onPanUpdate,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class MyTrails extends StatelessWidget {
                                             Navigator.of(context).pop();
                                           })),
                                       barrierColor:
-                                          Colors.black.withOpacity(0.1));
+                                          Colors.black.withValues(alpha: 0.1));
                                 },
                                 icon: Icon(
                                   SmartFloreIcons.add_circle_outline,
@@ -105,7 +105,7 @@ class MyTrails extends StatelessWidget {
                                       ?.color,
                                 ),
                                 label: Text(
-                                    AppLocalizations.of(context)!
+                                    AppLocalizations.of(context)
                                         .btn_create_trail,
                                     style:
                                         Theme.of(context).textTheme.bodyLarge),
@@ -156,7 +156,7 @@ class MyTrails extends StatelessWidget {
               size: 22,
             ),
             const SizedBox(width: 8),
-            Text(AppLocalizations.of(context)!.review,
+            Text(AppLocalizations.of(context).review,
                 style: Theme.of(context).textTheme.bodyLarge)
           ],
         ),

@@ -38,8 +38,7 @@ class TextFieldWithTitle extends StatelessWidget {
       this.focusNode,
       this.isMandatory = false,
       this.titleStyle,
-      this.hintStyle})
-      : super(key: key);
+      this.hintStyle});
 
   void handleTextfieldChange(String text, int maxChar, int index, String id) {
     if (onChanged != null) onChanged!(text, maxChar, index, id);

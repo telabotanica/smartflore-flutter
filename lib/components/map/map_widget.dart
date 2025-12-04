@@ -23,7 +23,7 @@ enum MapMode { overview, preview, trail, create }
 enum FollowMode { free, locked }
 
 class MapWidget extends StatefulWidget {
-  const MapWidget({Key? key}) : super(key: key);
+  const MapWidget({Key? key});
 
   @override
   State<MapWidget> createState() => _MapWidgetState();

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class ItemSeparator extends StatelessWidget {
   final Widget child;
   final bool isLast;
-  const ItemSeparator({Key? key, required this.child, this.isLast = false})
-      : super(key: key);
+  const ItemSeparator({super.key, required this.child, this.isLast = false});
 
   @override
   Widget build(BuildContext context) {

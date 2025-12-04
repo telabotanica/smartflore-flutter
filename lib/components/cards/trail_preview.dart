@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:smartflore/components/cards/card_bg.dart';
 import 'package:smartflore/components/list/trail/trail_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class TrailPreview extends StatelessWidget {
   final bool isLoading;
@@ -28,7 +28,7 @@ class TrailPreview extends StatelessWidget {
     this.onPressCB,
     this.isLoading = false,
     this.isDownloaded = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -78,12 +78,12 @@ class TrailPreview extends StatelessWidget {
                         return Theme.of(context)
                             .colorScheme
                             .primary
-                            .withOpacity(0.5);
+                            .withValues(alpha: 0.5);
                       }
                       return Theme.of(context).colorScheme.primary;
                     }),
                     overlayColor: WidgetStateProperty.all<Color>(
-                        Colors.white.withOpacity(0.12)),
+                        Colors.white.withValues(alpha: 0.12)),
                     padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                         EdgeInsets.zero),
                     shape: WidgetStateProperty.all<RoundedRectangleBorder>(
@@ -94,7 +94,7 @@ class TrailPreview extends StatelessWidget {
                     ))),
                 child: Center(
                   child: Text(
-                    AppLocalizations.of(context)!.btn_start,
+                    AppLocalizations.of(context).btn_start,
                     style: TextStyle(
                         fontSize: 16,
                         color: Theme.of(context).colorScheme.surface),

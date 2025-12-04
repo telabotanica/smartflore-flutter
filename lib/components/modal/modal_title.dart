@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class ModalTitle extends StatelessWidget {
   final String title;
   final void Function()? onClose;
-  const ModalTitle({Key? key, required this.title, this.onClose})
-      : super(key: key);
+  const ModalTitle({super.key, required this.title, this.onClose});
 
   @override
   Widget build(BuildContext context) {

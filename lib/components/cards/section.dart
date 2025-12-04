@@ -8,8 +8,8 @@ import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 class Section extends StatelessWidget {
   final SectionAPI sectionData;
   final bool hasSeparator;
-  const Section({Key? key, required this.sectionData, this.hasSeparator = true})
-      : super(key: key);
+  const Section(
+      {super.key, required this.sectionData, this.hasSeparator = true});
 
   IconData getIcon(String type) {
     switch (type) {

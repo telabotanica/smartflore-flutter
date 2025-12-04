@@ -4,7 +4,7 @@ import 'package:smartflore/_env/app_env.dart';
 import 'package:smartflore/bloc/auth/auth_bloc.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 import 'package:smartflore/screens/webview/webview_screen_ctrl.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class SettingsItemVO {
   final String label;
@@ -14,7 +14,7 @@ class SettingsItemVO {
 
 class SettingsScreen extends StatefulWidget {
   final bool isAuth;
-  const SettingsScreen({Key? key, required this.isAuth}) : super(key: key);
+  const SettingsScreen({super.key, required this.isAuth});
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -72,7 +72,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               titleSpacing: 0.0,
               title: Text(
                   AppLocalizations.of(context) != null
-                      ? AppLocalizations.of(context)!.params
+                      ? AppLocalizations.of(context).params
                       : '',
                   style: Theme.of(context).textTheme.bodyLarge)),
           body: Stack(
@@ -129,8 +129,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   );
                           },
                           label: isAuth
-                              ? AppLocalizations.of(context)!.logout
-                              : AppLocalizations.of(context)!.btn_login,
+                              ? AppLocalizations.of(context).logout
+                              : AppLocalizations.of(context).btn_login,
                         ),
                       )),
                 ),

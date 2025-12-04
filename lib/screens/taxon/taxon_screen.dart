@@ -19,8 +19,7 @@ class TaxonScreen extends StatefulWidget {
       required this.taxonID,
       required this.taxonRepo,
       this.vernacularName,
-      this.scientificName})
-      : super(key: key);
+      this.scientificName});
 
   @override
   State<TaxonScreen> createState() => _TaxonScreenState();

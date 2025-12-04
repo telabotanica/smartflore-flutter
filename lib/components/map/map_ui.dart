@@ -26,7 +26,7 @@ class MapUI extends StatefulWidget {
     Key? key,
     required this.bottomPadding,
     this.mapMode = MapMode.overview,
-  }) : super(key: key);
+  });
 
   @override
   State<MapUI> createState() => _MapUIState();
@@ -196,7 +196,8 @@ class _MapUIState extends State<MapUI> {
                                             .add(const CreateEvent.unPause());
                                         Navigator.of(context).pop();
                                       })),
-                                  barrierColor: Colors.black.withOpacity(0.1));
+                                  barrierColor:
+                                      Colors.black.withValues(alpha: 0.1));
                             }),
                       ),
                     ],

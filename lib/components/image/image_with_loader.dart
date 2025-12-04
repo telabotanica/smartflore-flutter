@@ -20,8 +20,7 @@ class ImageWithLoader extends StatelessWidget {
       this.id,
       this.onTap,
       this.progressIndicatorPadding = const EdgeInsets.all(0),
-      this.syncDuration = 0})
-      : super(key: key);
+      this.syncDuration = 0});
 
   Widget buildImage(BuildContext context) {
     Box appConfigBox = Hive.box('appConfig');
@@ -44,13 +43,13 @@ class ImageWithLoader extends StatelessWidget {
       placeholder: Container(
         color: Theme.of(context).colorScheme.secondary,
         alignment: Alignment.center,
-        child:
-            Icon(Icons.photo, color: Colors.white.withOpacity(0.8), size: 17.0),
+        child: Icon(Icons.photo,
+            color: Colors.white.withValues(alpha: 0.8), size: 17.0),
       ),
 
       loadingBuilder: (context, progress, chunkEvent) => Center(
           child: Container(
-        color: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
+        color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.8),
         alignment: Alignment.center,
         child: Padding(
           padding: progressIndicatorPadding,
@@ -58,7 +57,7 @@ class ImageWithLoader extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(Icons.photo,
-                  color: Colors.white.withOpacity(0.8), size: 17.0),
+                  color: Colors.white.withValues(alpha: 0.8), size: 17.0),
               const SizedBox(height: 5),
               SizedBox(
                   width: 60,

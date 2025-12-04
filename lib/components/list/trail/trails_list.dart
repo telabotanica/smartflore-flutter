@@ -5,7 +5,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/my_trails.dart';
 import 'package:smartflore/components/list/trail/trail_interactive_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 enum TrailsListType { allTrails, myTrails }
 
@@ -21,8 +21,7 @@ class TrailsList extends StatelessWidget {
       required this.onPanUpdate,
       this.trailsListType = TrailsListType.allTrails,
       required this.savedTrailsBox,
-      required this.isAuth})
-      : super(key: key);
+      required this.isAuth});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class TrailsList extends StatelessWidget {
                   size: 18,
                   color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
-                label: Text(AppLocalizations.of(context)!.btn_scan_trail, style: Theme.of(context).textTheme.bodyLarge),
+                label: Text(AppLocalizations.of(context).btn_scan_trail, style: Theme.of(context).textTheme.bodyLarge),
               ),
             ),*/
               ),
@@ -92,7 +91,7 @@ class TrailsList extends StatelessWidget {
                 );
               },
               dataLoadError: () {
-                return Text(AppLocalizations.of(context)!.error_API,
+                return Text(AppLocalizations.of(context).error_API,
                     style: const TextStyle(color: Colors.red));
               },
             );

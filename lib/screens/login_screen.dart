@@ -6,10 +6,10 @@ import 'package:smartflore/bloc/trails/mytrails_bloc.dart';
 import 'package:smartflore/components/form/textinput_with_title.dart';
 import 'package:smartflore/components/icons/logo_icon.dart';
 import 'package:smartflore/models/user/user_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -62,7 +62,8 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Stack(children: [
             SvgPicture.asset('assets/graphics/dots_bg.svg',
                 width: MediaQuery.of(context).size.width,
-                color: Theme.of(context).colorScheme.secondary),
+                colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.secondary, BlendMode.srcIn)),
             SingleChildScrollView(
               child: Center(
                 child: Column(
@@ -139,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
               hintStyle: Theme.of(context)
                   .textTheme
                   .titleLarge
-                  ?.copyWith(color: Colors.black.withOpacity(0.4)),
+                  ?.copyWith(color: Colors.black.withValues(alpha: 0.4)),
               onSaved: (value) {
                 textFieldsValue.add(value);
               },
@@ -156,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
               hintStyle: Theme.of(context)
                   .textTheme
                   .titleLarge
-                  ?.copyWith(color: Colors.black.withOpacity(0.4)),
+                  ?.copyWith(color: Colors.black.withValues(alpha: 0.4)),
               onSaved: (value) {
                 textFieldsValue.add(value);
               },
@@ -180,12 +181,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           return Theme.of(context)
                               .colorScheme
                               .primary
-                              .withOpacity(0.5);
+                              .withValues(alpha: 0.5);
                         }
                         return Theme.of(context).colorScheme.primary;
                       }),
                       overlayColor: WidgetStateProperty.all<Color>(
-                          Colors.white.withOpacity(0.12)),
+                          Colors.white.withValues(alpha: 0.12)),
                       padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                           EdgeInsets.zero),
                       shape: WidgetStateProperty.all<RoundedRectangleBorder>(
@@ -194,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ))),
                   child: Center(
                     child: Text(
-                      AppLocalizations.of(context)!.btn_login,
+                      AppLocalizations.of(context).btn_login,
                       style: TextStyle(
                           fontSize: 16,
                           color: Theme.of(context).colorScheme.surface),

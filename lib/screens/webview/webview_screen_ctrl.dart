@@ -4,7 +4,7 @@ import 'package:smartflore/screens/webview/webview_screen.dart';
 class WebViewPage extends StatelessWidget {
   final String? title;
   final String? url;
-  const WebViewPage({Key? key, this.url, this.title}) : super(key: key);
+  const WebViewPage({super.key, this.url, this.title});
 
   @override
   Widget build(BuildContext context) {

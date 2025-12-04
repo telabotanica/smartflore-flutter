@@ -21,7 +21,7 @@ import 'package:url_launcher/url_launcher.dart';
 class CreateEndModal extends StatefulWidget {
   final void Function()? onClose;
 
-  const CreateEndModal({Key? key, this.onClose}) : super(key: key);
+  const CreateEndModal({super.key, this.onClose});
 
   @override
   State<CreateEndModal> createState() => _CreateEndModalState();
@@ -291,17 +291,17 @@ class _CreateEndModalState extends State<CreateEndModal> {
                           : Theme.of(context)
                               .colorScheme
                               .surface
-                              .withOpacity(0),
+                              .withValues(alpha: 0),
                       border: (index == 1)
                           ? Border(
                               top: BorderSide(
-                                  color: Colors.white.withOpacity(0)),
+                                  color: Colors.white.withValues(alpha: 0)),
                               left: BorderSide(
                                   color: Theme.of(context).colorScheme.primary),
                               right: BorderSide(
                                   color: Theme.of(context).colorScheme.primary),
                               bottom: BorderSide(
-                                  color: Colors.white.withOpacity(0)),
+                                  color: Colors.white.withValues(alpha: 0)),
                             )
                           : Border.all(color: const Color(0x00FFFFFF)),
                     ),

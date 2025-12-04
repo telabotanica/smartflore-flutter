@@ -13,8 +13,7 @@ class ProgressBar extends StatelessWidget {
       required this.current,
       this.color = Colors.red,
       this.backgroundColor = Colors.grey,
-      this.height = 4})
-      : super(key: key);
+      this.height = 4});
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

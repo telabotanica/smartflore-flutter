@@ -25,8 +25,7 @@ class CheckBoxWithTitle extends StatelessWidget {
       this.autofocus = false,
       this.tristate = false,
       this.checkboxShape,
-      this.checkboxSide})
-      : super(key: key);
+      this.checkboxSide});
 
   @override
   Widget build(BuildContext context) {

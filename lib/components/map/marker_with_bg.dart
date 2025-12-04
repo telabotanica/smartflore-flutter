@@ -12,8 +12,7 @@ class MarkerWithBG extends StatelessWidget {
       required this.icon,
       required this.size,
       required this.color,
-      this.bgColor = Colors.white})
-      : super(key: key);
+      this.bgColor = Colors.white});
 
   @override
   Widget build(BuildContext context) {

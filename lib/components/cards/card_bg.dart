@@ -4,7 +4,7 @@ class CardBackground extends StatelessWidget {
   final double? height;
   final Widget? child;
 
-  const CardBackground({Key? key, this.height, this.child}) : super(key: key);
+  const CardBackground({super.key, this.height, this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,8 @@ class CardBackground extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
             boxShadow: [
-              BoxShadow(blurRadius: 10, color: Colors.black.withOpacity(0.15))
+              BoxShadow(
+                  blurRadius: 10, color: Colors.black.withValues(alpha: 0.15))
             ],
             color: Theme.of(context).colorScheme.surface,
             borderRadius: const BorderRadius.all(Radius.circular(6))),

@@ -4,7 +4,7 @@ import 'package:smartflore/components/image/image_with_loader.dart';
 class GridImage extends StatelessWidget {
   final String image;
 
-  const GridImage({Key? key, required this.image}) : super(key: key);
+  const GridImage({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {

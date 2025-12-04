@@ -10,7 +10,7 @@ import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/components/modal.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/convert.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class TrailItem extends StatefulWidget {
   final bool isInteractive;
@@ -35,8 +35,7 @@ class TrailItem extends StatefulWidget {
       this.position,
       required this.nbOccurence,
       this.showIconMore = false,
-      this.isDownloaded = false})
-      : super(key: key);
+      this.isDownloaded = false});
 
   @override
   State<TrailItem> createState() => _TrailItemState();
@@ -47,8 +46,8 @@ class _TrailItemState extends State<TrailItem> {
   Widget build(BuildContext context) {
     String distance = Numbers.convertToKilo(
         widget.length.toDouble(),
-        AppLocalizations.of(context)!.distance_m,
-        AppLocalizations.of(context)!.distance_km);
+        AppLocalizations.of(context).distance_m,
+        AppLocalizations.of(context).distance_km);
     return Padding(
       padding: EdgeInsets.fromLTRB(0, (widget.index == 0) ? 0 : 20, 0, 20),
       child: Row(
@@ -105,7 +104,7 @@ class _TrailItemState extends State<TrailItem> {
                                           image: widget.image,
                                           nbOccurence: widget.nbOccurence)),
                                       barrierColor:
-                                          Colors.black.withOpacity(0.1));
+                                          Colors.black.withValues(alpha: 0.1));
                                 },
                                 child: Container(
                                   color: Colors.transparent,
@@ -181,7 +180,7 @@ class _TrailItemState extends State<TrailItem> {
           const SizedBox(width: 5),
           Flexible(
             child: Text(
-              AppLocalizations.of(context)!
+              AppLocalizations.of(context)
                   .count_observation(widget.nbOccurence),
               style: Theme.of(context).textTheme.bodySmall,
               maxLines: 1,
@@ -216,7 +215,7 @@ class _TrailItemState extends State<TrailItem> {
                       position.longitude);
 
                   return AutoSizeText(
-                    '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
+                    '${AppLocalizations.of(context).to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context).distance_m, AppLocalizations.of(context).distance_km)}',
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!

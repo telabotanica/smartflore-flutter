@@ -13,8 +13,7 @@ class TopBarCreate extends StatelessWidget {
       {Key? key,
       required this.title,
       required this.isRecording,
-      required this.distance})
-      : super(key: key);
+      required this.distance});
 
   @override
   Widget build(BuildContext context) {

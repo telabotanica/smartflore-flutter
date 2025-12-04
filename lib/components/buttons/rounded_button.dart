@@ -12,8 +12,7 @@ class RoundedButton extends StatelessWidget {
       this.icon,
       this.iconColor,
       this.outline = false,
-      this.onPress})
-      : super(key: key);
+      this.onPress});
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +28,12 @@ class RoundedButton extends StatelessWidget {
         style: ButtonStyle(
             backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
               if (states.contains(WidgetState.disabled)) {
-                return primary.withOpacity(0.5);
+                return primary.withValues(alpha: 0.5);
               }
               return primary;
             }),
-            overlayColor:
-                WidgetStateProperty.all<Color>(secondary.withOpacity(0.12)),
+            overlayColor: WidgetStateProperty.all<Color>(
+                secondary.withValues(alpha: 0.12)),
             padding:
                 WidgetStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero),
             shape: WidgetStateProperty.all<RoundedRectangleBorder>(

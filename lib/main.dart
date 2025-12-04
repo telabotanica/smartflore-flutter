@@ -17,6 +17,7 @@ import 'package:smartflore/bloc/walk/walk_bloc.dart';
 import 'package:smartflore/components/gallery/gallery_wrapper.dart';
 import 'package:smartflore/hive/connectivity_result_adapter.dart';
 import 'package:smartflore/hive/latlng_adaptater.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 import 'package:smartflore/models/create/create_model.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart' as t;
 import 'package:smartflore/models/trail/trail_model.dart';
@@ -51,7 +52,6 @@ import 'package:smartflore/utils/transitions.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 getImageIdIfPossible(taxon) {}
 
@@ -172,7 +172,7 @@ void main() async {
 
 class App extends StatefulWidget {
   final bool isAuth;
-  const App({Key? key, required this.isAuth}) : super(key: key);
+  const App({super.key, required this.isAuth});
 
   @override
   State<App> createState() => _AppState();

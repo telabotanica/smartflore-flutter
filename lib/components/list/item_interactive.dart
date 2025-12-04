@@ -10,15 +10,14 @@ class InteractiveItem extends StatelessWidget {
       required this.id,
       required this.child,
       required this.onPressed,
-      required this.isSelected})
-      : super(key: key);
+      required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
         style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all((isSelected
-                ? Colors.red.withOpacity(0.09)
+                ? Colors.red.withValues(alpha: 0.09)
                 : Colors.transparent)),
             shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(

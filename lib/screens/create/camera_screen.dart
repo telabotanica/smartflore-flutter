@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 enum CameraError { notMounted, unavailable, accessDenied, other }
 
 class CameraScreen extends StatefulWidget {
-  const CameraScreen({Key? key}) : super(key: key);
+  const CameraScreen({Key? key});
 
   @override
   State<CameraScreen> createState() => _CameraScreenState();
@@ -82,7 +82,7 @@ class _CameraScreenState extends State<CameraScreen> {
                   width: 86,
                   height: 86,
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Colors.black.withValues(alpha: 0.2),
                     borderRadius: const BorderRadius.all(Radius.circular(100)),
                     border: Border.all(width: 3, color: Colors.white),
                   ),

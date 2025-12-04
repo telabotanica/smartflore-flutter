@@ -15,8 +15,7 @@ class ListItemUI extends StatelessWidget {
       this.defaultScientificStyle,
       this.defaultCommonStyle,
       this.matchScientificStyle,
-      this.matchCommonStyle})
-      : super(key: key);
+      this.matchCommonStyle});
 
   @override
   Widget build(BuildContext context) {

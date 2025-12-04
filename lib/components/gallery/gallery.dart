@@ -5,7 +5,7 @@ import 'package:smartflore/navigation/gallery_screen_args.dart';
 
 class Gallery extends StatefulWidget {
   final List<ImageAPI> images;
-  const Gallery({Key? key, required this.images}) : super(key: key);
+  const Gallery({super.key, required this.images});
 
   @override
   State<Gallery> createState() => _GalleryState();

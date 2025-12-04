@@ -10,8 +10,7 @@ class LogoIcon extends StatelessWidget {
       {Key? key,
       this.iconSize = 25,
       this.backgroundSize = 40,
-      this.boarderRadius = 6})
-      : super(key: key);
+      this.boarderRadius = 6});
 
   @override
   Widget build(BuildContext context) {

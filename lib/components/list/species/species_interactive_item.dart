@@ -24,8 +24,7 @@ class SpeciesInteractiveItem extends StatelessWidget {
       this.title,
       required this.image,
       required this.tags,
-      required this.isSelected})
-      : super(key: key);
+      required this.isSelected});
 
   onPressed(BuildContext context, int id) {
     BlocProvider.of<WalkBloc>(context)
