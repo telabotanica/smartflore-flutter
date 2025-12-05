@@ -7,7 +7,7 @@ class RoundedButton extends StatelessWidget {
   final Color? iconColor;
   final bool outline;
   const RoundedButton(
-      {Key? key,
+      {super.key,
       required this.label,
       this.icon,
       this.iconColor,

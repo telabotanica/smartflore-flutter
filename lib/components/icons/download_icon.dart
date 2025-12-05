@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class DownloadIcon extends StatelessWidget {
-  const DownloadIcon({Key? key});
+  const DownloadIcon({super.key});
 
   @override
   Widget build(BuildContext context) {

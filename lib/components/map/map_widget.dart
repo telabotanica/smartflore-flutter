@@ -17,13 +17,14 @@ import 'package:smartflore/components/map/marker_with_bg.dart';
 import 'package:smartflore/models/trail/trail_model.dart';
 import 'package:smartflore/models/trails/trails_model.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum MapMode { overview, preview, trail, create }
 
 enum FollowMode { free, locked }
 
 class MapWidget extends StatefulWidget {
-  const MapWidget({Key? key});
+  const MapWidget({super.key});
 
   @override
   State<MapWidget> createState() => _MapWidgetState();
@@ -238,11 +239,22 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           children: [
             TileLayer(
                 maxZoom: 20,
-                maxNativeZoom: 20,
+                maxNativeZoom: 19,
                 urlTemplate: '${AppEnv().osmUrl}{z}/{x}/{y}.png',
-                subdomains: const ['a', 'b', 'c'],
-                retinaMode: true,
+                userAgentPackageName: 'org.flore.smart.smartflore',
+                retinaMode: RetinaMode.isHighDensity(context),
                 tileProvider: CachedTileProvider()),
+            RichAttributionWidget(
+              alignment: AttributionAlignment.bottomRight,
+              showFlutterMapAttribution: false,
+              attributions: [
+                TextSourceAttribution(
+                  'OpenStreetMap contributors',
+                  onTap: () => launchUrl(
+                      Uri.parse('https://openstreetmap.org/copyright')),
+                ),
+              ],
+            ),
             MarkerLayer(
               markers: [
                 Marker(

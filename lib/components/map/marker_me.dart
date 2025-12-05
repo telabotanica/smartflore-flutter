@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MarkerMe extends StatelessWidget {
-  const MarkerMe({Key? key});
+  const MarkerMe({super.key});
 
   @override
   Widget build(BuildContext context) {

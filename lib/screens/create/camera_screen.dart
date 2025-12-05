@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 enum CameraError { notMounted, unavailable, accessDenied, other }
 
 class CameraScreen extends StatefulWidget {
-  const CameraScreen({Key? key});
+  const CameraScreen({super.key});
 
   @override
   State<CameraScreen> createState() => _CameraScreenState();

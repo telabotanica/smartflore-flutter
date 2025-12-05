@@ -17,7 +17,7 @@ class TrailPreview extends StatelessWidget {
   final bool isDownloaded;
 
   const TrailPreview({
-    Key? key,
+    super.key,
     required this.index,
     required this.id,
     required this.title,

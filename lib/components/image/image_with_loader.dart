@@ -14,7 +14,7 @@ class ImageWithLoader extends StatelessWidget {
   final int syncDuration;
 
   const ImageWithLoader(
-      {Key? key,
+      {super.key,
       required this.url,
       this.imageFormat = 'M',
       this.id,

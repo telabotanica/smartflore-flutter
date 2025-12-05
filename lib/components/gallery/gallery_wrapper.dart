@@ -17,7 +17,7 @@ class GalleryWrapper extends StatefulWidget {
   final void Function(int)? onCurrentIndexChanged;
 
   GalleryWrapper({
-    Key? key,
+    super.key,
     required this.images,
     required this.backgroundDecoration,
     required this.initialIndex,
@@ -26,8 +26,7 @@ class GalleryWrapper extends StatefulWidget {
     this.maxScale,
     this.loadingBuilder,
     this.onCurrentIndexChanged,
-  })  : pageController = PageController(initialPage: initialIndex),
-        super(key: key);
+  }) : pageController = PageController(initialPage: initialIndex);
 
   @override
   State<GalleryWrapper> createState() => _GalleryWrapperState();

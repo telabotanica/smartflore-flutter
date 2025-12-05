@@ -6,7 +6,7 @@ class InteractiveItem extends StatelessWidget {
   final Function onPressed;
   final bool isSelected;
   const InteractiveItem(
-      {Key? key,
+      {super.key,
       required this.id,
       required this.child,
       required this.onPressed,

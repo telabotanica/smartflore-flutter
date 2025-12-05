@@ -16,7 +16,7 @@ class SpeciesInteractiveItem extends StatelessWidget {
   final bool isSelected;
 
   const SpeciesInteractiveItem(
-      {Key? key,
+      {super.key,
       this.isInteractive = true,
       required this.index,
       required this.id,

@@ -18,7 +18,7 @@ class TaxonCover extends StatelessWidget {
   final LatLng position;
 
   const TaxonCover(
-      {Key? key,
+      {super.key,
       required this.taxonId,
       required this.taxonRepo,
       required this.image,

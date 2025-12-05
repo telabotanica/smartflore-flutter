@@ -16,7 +16,7 @@ class TrailsList extends StatelessWidget {
   final Box<dynamic> savedTrailsBox;
   final bool isAuth;
   const TrailsList(
-      {Key? key,
+      {super.key,
       required this.controller,
       required this.onPanUpdate,
       this.trailsListType = TrailsListType.allTrails,

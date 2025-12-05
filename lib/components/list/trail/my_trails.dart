@@ -20,7 +20,7 @@ class MyTrails extends StatelessWidget {
   final Function onPanUpdate;
 
   const MyTrails({
-    Key? key,
+    super.key,
     required this.isAuth,
     required this.controller,
     required this.onPanUpdate,

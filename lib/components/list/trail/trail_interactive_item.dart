@@ -19,7 +19,7 @@ class TrailInteractiveItemWidget extends StatelessWidget {
   final bool isLast;
 
   const TrailInteractiveItemWidget(
-      {Key? key,
+      {super.key,
       this.isInteractive = true,
       required this.index,
       required this.id,

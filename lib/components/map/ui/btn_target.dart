@@ -5,7 +5,7 @@ import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 
 class BtnTarget extends StatefulWidget {
-  const BtnTarget({Key? key});
+  const BtnTarget({super.key});
 
   @override
   State<BtnTarget> createState() => _BtnTargetState();

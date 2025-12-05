@@ -70,10 +70,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               elevation: 10,
               centerTitle: false,
               titleSpacing: 0.0,
-              title: Text(
-                  AppLocalizations.of(context) != null
-                      ? AppLocalizations.of(context).params
-                      : '',
+              title: Text(AppLocalizations.of(context).params,
                   style: Theme.of(context).textTheme.bodyLarge)),
           body: Stack(
             children: [

@@ -15,7 +15,7 @@ class TaxonScreen extends StatefulWidget {
   final String? scientificName;
 
   const TaxonScreen(
-      {Key? key,
+      {super.key,
       required this.taxonID,
       required this.taxonRepo,
       this.vernacularName,

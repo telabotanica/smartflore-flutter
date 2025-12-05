@@ -21,7 +21,7 @@ class TextFieldWithTitle extends StatelessWidget {
   final TextEditingController? textController;
 
   const TextFieldWithTitle(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.index,
       this.initValue = '',

@@ -7,7 +7,7 @@ class LogoIcon extends StatelessWidget {
   final double boarderRadius;
 
   const LogoIcon(
-      {Key? key,
+      {super.key,
       this.iconSize = 25,
       this.backgroundSize = 40,
       this.boarderRadius = 6});

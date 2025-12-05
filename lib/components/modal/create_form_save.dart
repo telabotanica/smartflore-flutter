@@ -323,7 +323,7 @@ class _CreateEndModalState extends State<CreateEndModal> {
       Text('Quelle est la saison idéale pour observer ce parcours',
           style: Theme.of(context).textTheme.titleLarge),
       const SizedBox(height: 8),
-      ...bestPeriod.map(buildCheckBox).toList(),
+      ...bestPeriod.map(buildCheckBox),
       const SizedBox(height: 20),
       Row(
         mainAxisSize: MainAxisSize.max,

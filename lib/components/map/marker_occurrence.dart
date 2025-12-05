@@ -8,7 +8,7 @@ class MarkerOccurrence extends StatefulWidget {
   final bool? isSelected;
 
   const MarkerOccurrence({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.id,
     this.isSelected,

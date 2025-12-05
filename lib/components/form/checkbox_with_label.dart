@@ -14,7 +14,7 @@ class CheckBoxWithTitle extends StatelessWidget {
   final double height;
 
   const CheckBoxWithTitle(
-      {Key? key,
+      {super.key,
       required this.value,
       required this.onChanged,
       this.height = 40,

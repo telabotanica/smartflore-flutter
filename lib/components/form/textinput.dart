@@ -20,7 +20,7 @@ class TextInput extends StatefulWidget {
   final TextStyle? hintStyle;
 
   const TextInput(
-      {Key? key,
+      {super.key,
       this.initialValue = '',
       this.textController,
       this.obscureText = false,

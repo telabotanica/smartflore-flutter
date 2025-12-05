@@ -17,13 +17,14 @@ import 'package:smartflore/components/modal/create_form_save.dart';
 import 'package:smartflore/components/topbar/top_bar_trail.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
 import 'package:smartflore/utils/layout.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MapUI extends StatefulWidget {
   final MapMode mapMode;
   final double bottomPadding;
 
   const MapUI({
-    Key? key,
+    super.key,
     required this.bottomPadding,
     this.mapMode = MapMode.overview,
   });
@@ -128,6 +129,30 @@ class _MapUIState extends State<MapUI> {
                     ))),
               ))),
           TopBarCreateUI(mapMode: widget.mapMode),
+          AnimatedPositioned(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOutCubic,
+              bottom: (widget.mapMode == MapMode.overview)
+                  ? 120 + widget.bottomPadding
+                  : (widget.mapMode == MapMode.preview)
+                      ? 145 + LayoutUtils.getSizes(trailPreviewUIKey).height
+                      : 120,
+              right: 20,
+              child: SizedBox(
+                child: GestureDetector(
+                    onTap: () {
+                      launchUrl(
+                          Uri.parse('https://www.openstreetmap.org/copyright'));
+                    },
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white.withValues(alpha: 0.6)),
+                        padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                        child: const Text('© OpenStreetMap contributors',
+                            style: TextStyle(fontWeight: FontWeight.bold)))),
+              )),
           AnimatedPositioned(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOutCubic,

@@ -18,6 +18,8 @@ class AuthApiClient extends APIClient {
           message: 'Vous devez renseigner les champs login et mot de passe');
     }
     try {
+      print('---- AuthApiClient - login - baseUrl: $baseUrl');
+      print('---- AuthApiClient - login - baseUrl: ${user.toJson()}');
       final response = await httpClient
           .post(Uri.parse(baseUrl), body: jsonEncode(user.toJson()))
           .onError(

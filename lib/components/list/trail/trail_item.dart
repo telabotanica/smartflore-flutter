@@ -25,7 +25,7 @@ class TrailItem extends StatefulWidget {
   final bool isDownloaded;
 
   const TrailItem(
-      {Key? key,
+      {super.key,
       this.isInteractive = true,
       required this.trailId,
       this.index = 1,

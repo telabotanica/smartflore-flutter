@@ -9,7 +9,7 @@ class ListItemUI extends StatelessWidget {
   final String commonName;
 
   const ListItemUI(
-      {Key? key,
+      {super.key,
       required this.scientificName,
       required this.commonName,
       this.defaultScientificStyle,

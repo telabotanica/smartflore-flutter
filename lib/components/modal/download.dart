@@ -19,7 +19,7 @@ class DownloadCard extends StatefulWidget {
   final bool isDownloaded;
 
   const DownloadCard(
-      {Key? key,
+      {super.key,
       required this.trailId,
       required this.title,
       required this.length,

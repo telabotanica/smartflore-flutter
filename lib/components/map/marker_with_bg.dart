@@ -8,7 +8,7 @@ class MarkerWithBG extends StatelessWidget {
   final Color bgColor;
 
   const MarkerWithBG(
-      {Key? key,
+      {super.key,
       required this.icon,
       required this.size,
       required this.color,

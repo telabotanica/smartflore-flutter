@@ -3,7 +3,7 @@ import 'package:smartflore/l10n/app_localizations.dart';
 import 'package:smartflore/components/buttons/rounded_button.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({Key? key});
+  const LoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
