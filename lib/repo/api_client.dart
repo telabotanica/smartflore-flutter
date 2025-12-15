@@ -5,13 +5,13 @@ import 'package:smartflore/utils/app.dart';
 class APIClient {
   String version = '';
 
-  getVersion() async {
+  Future<void> getVersion() async {
     if (version != '') {
       version = await AppUtils.getVersionNumber();
     }
   }
 
-  getHeaders(String? token) async {
+  Future<Map<String, String>> getHeaders(String? token) async {
     await getVersion();
     if (token == null) {
       return {

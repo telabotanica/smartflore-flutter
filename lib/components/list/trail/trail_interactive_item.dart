@@ -19,7 +19,7 @@ class TrailInteractiveItemWidget extends StatelessWidget {
   final bool isLast;
 
   const TrailInteractiveItemWidget(
-      {Key? key,
+      {super.key,
       this.isInteractive = true,
       required this.index,
       required this.id,
@@ -29,10 +29,9 @@ class TrailInteractiveItemWidget extends StatelessWidget {
       required this.position,
       required this.nbOccurence,
       this.isDownloaded = false,
-      this.isLast = false})
-      : super(key: key);
+      this.isLast = false});
 
-  onPressed(BuildContext context, int id) {
+  void onPressed(BuildContext context, int id) {
     BlocProvider.of<MapBloc>(context).add(MapEvent.requestTrailPreview(id));
   }
 

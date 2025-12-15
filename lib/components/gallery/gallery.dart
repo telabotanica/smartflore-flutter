@@ -5,7 +5,7 @@ import 'package:smartflore/navigation/gallery_screen_args.dart';
 
 class Gallery extends StatefulWidget {
   final List<ImageAPI> images;
-  const Gallery({Key? key, required this.images}) : super(key: key);
+  const Gallery({super.key, required this.images});
 
   @override
   State<Gallery> createState() => _GalleryState();
@@ -33,7 +33,7 @@ class _GalleryState extends State<Gallery> {
         });
   }
 
-  _openGallery(BuildContext context, final int index) {
+  void _openGallery(BuildContext context, final int index) {
     Navigator.of(context).pushNamed('/gallery-fullScreen',
         arguments: GalleryScreenArguments(widget.images,
             const BoxDecoration(color: Colors.black), index, Axis.horizontal));

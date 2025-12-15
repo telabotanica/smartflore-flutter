@@ -1,7 +1,8 @@
 import 'package:latlong2/latlong.dart';
 
 class Numbers {
-  static convertToKilo(double value, String inputUnit, String outputUnit) {
+  static String convertToKilo(
+      double value, String inputUnit, String outputUnit) {
     if (value > 999) {
       if (value > 9999) {
         return '${(value / 1000).toStringAsFixed(0)} $outputUnit';

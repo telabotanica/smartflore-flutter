@@ -9,13 +9,13 @@ class SpeciesItem extends StatelessWidget {
   final List<String> tags;
 
   const SpeciesItem({
-    Key? key,
+    super.key,
     required this.index,
     required this.image,
     this.titleLatin,
     this.title,
     required this.tags,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

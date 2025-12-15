@@ -11,6 +11,10 @@
 .svn/
 .VSCodeCounter/
 
+# Claude Code
+CLAUDE.md
+.claude/
+
 #ENV
 .env.dev
 .env.prod

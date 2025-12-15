@@ -4,12 +4,12 @@ import 'package:smartflore/bloc/create/create_bloc.dart';
 import 'package:smartflore/components/map/map_widget.dart';
 import 'package:smartflore/components/topbar/top_bar_create.dart';
 import 'package:smartflore/utils/convert.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class TopBarCreateUI extends StatefulWidget {
   final MapMode mapMode;
 
-  const TopBarCreateUI({Key? key, required this.mapMode}) : super(key: key);
+  const TopBarCreateUI({super.key, required this.mapMode});
 
   @override
   State<TopBarCreateUI> createState() => _TopBarCreateUIState();
@@ -49,8 +49,8 @@ class _TopBarCreateUIState extends State<TopBarCreateUI> {
                       isRecording: true,
                       distance: Numbers.convertToKilo(
                           distance,
-                          AppLocalizations.of(context)!.distance_m,
-                          AppLocalizations.of(context)!.distance_km)))),
+                          AppLocalizations.of(context).distance_m,
+                          AppLocalizations.of(context).distance_km)))),
         )),
       ),
     );

@@ -9,8 +9,7 @@ class TopBarTrail extends StatelessWidget {
   final String title;
   final String author;
 
-  const TopBarTrail({Key? key, required this.title, required this.author})
-      : super(key: key);
+  const TopBarTrail({super.key, required this.title, required this.author});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:smartflore/components/utils/connectivity_widget.dart';
 
 class MapScreen extends StatefulWidget {
   final bool isAuth;
-  const MapScreen({Key? key, required this.isAuth}) : super(key: key);
+  const MapScreen({super.key, required this.isAuth});
 
   @override
   State<MapScreen> createState() => _MapScreenState();

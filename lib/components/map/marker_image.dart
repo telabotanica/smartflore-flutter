@@ -4,9 +4,9 @@ import 'package:smartflore/components/image/image_with_loader.dart';
 class MarkerImage extends StatelessWidget {
   final String url;
   const MarkerImage({
-    Key? key,
+    super.key,
     required this.url,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

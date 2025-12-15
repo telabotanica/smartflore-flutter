@@ -10,11 +10,10 @@ class TopBarCreate extends StatelessWidget {
   final String distance;
 
   const TopBarCreate(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.isRecording,
-      required this.distance})
-      : super(key: key);
+      required this.distance});
 
   @override
   Widget build(BuildContext context) {

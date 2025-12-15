@@ -16,7 +16,7 @@ class SpeciesInteractiveItem extends StatelessWidget {
   final bool isSelected;
 
   const SpeciesInteractiveItem(
-      {Key? key,
+      {super.key,
       this.isInteractive = true,
       required this.index,
       required this.id,
@@ -24,10 +24,9 @@ class SpeciesInteractiveItem extends StatelessWidget {
       this.title,
       required this.image,
       required this.tags,
-      required this.isSelected})
-      : super(key: key);
+      required this.isSelected});
 
-  onPressed(BuildContext context, int id) {
+  void onPressed(BuildContext context, int id) {
     BlocProvider.of<WalkBloc>(context)
         .add(SelectOccurrence(occurrenceID: index));
   }

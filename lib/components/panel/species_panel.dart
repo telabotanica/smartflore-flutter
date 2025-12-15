@@ -14,8 +14,7 @@ class SpeciesPanelWidget extends StatefulWidget {
   final Widget body;
 
   const SpeciesPanelWidget(
-      {Key? key, this.isDraggable = true, required this.body})
-      : super(key: key);
+      {super.key, this.isDraggable = true, required this.body});
 
   @override
   State<SpeciesPanelWidget> createState() => _SpeciesPanelWidgetState();
@@ -43,7 +42,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
       });
   }
 
-  void onPanUpdate(details) {
+  void onPanUpdate(dynamic details) {
     // Swiping down
     if (details.delta.dy > 4 && isPanelOpened && !isPanelMoving) {
       setState(() {
@@ -194,8 +193,8 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                  Colors.white.withOpacity(1),
-                  Colors.white.withOpacity(0)
+                  Colors.white.withValues(alpha: 1),
+                  Colors.white.withValues(alpha: 0)
                 ])))
       ],
     );

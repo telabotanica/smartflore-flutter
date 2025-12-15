@@ -6,7 +6,7 @@ import 'package:smartflore/bloc/geolocation/geolocation_bloc.dart';
 import 'package:smartflore/components/image/image_with_loader.dart';
 import 'package:smartflore/navigation/taxon_screen_args.dart';
 import 'package:smartflore/themes/smart_flore_icons_icons.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 import 'package:smartflore/utils/convert.dart';
 
 class TaxonCover extends StatelessWidget {
@@ -18,14 +18,13 @@ class TaxonCover extends StatelessWidget {
   final LatLng position;
 
   const TaxonCover(
-      {Key? key,
+      {super.key,
       required this.taxonId,
       required this.taxonRepo,
       required this.image,
       this.scientificName,
       this.vernacularName,
-      required this.position})
-      : super(key: key);
+      required this.position});
 
   void handleOnPress(BuildContext context) {
     Navigator.of(context).pushNamed(
@@ -61,13 +60,13 @@ class TaxonCover extends StatelessWidget {
                 height: 25,
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.black.withOpacity(0.3),
+                    backgroundColor: Colors.black.withValues(alpha: 0.3),
                     side: const BorderSide(color: Colors.white, width: 1),
                   ),
                   onPressed: () {
                     handleOnPress(context);
                   },
-                  child: Text(AppLocalizations.of(context)!.see_taxon,
+                  child: Text(AppLocalizations.of(context).see_taxon,
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge!
@@ -87,7 +86,7 @@ class TaxonCover extends StatelessWidget {
                     end: Alignment.topCenter,
                     colors: [
                       Colors.black,
-                      Colors.black.withOpacity(0),
+                      Colors.black.withValues(alpha: 0),
                     ],
                   ))),
         ),
@@ -140,7 +139,7 @@ class TaxonCover extends StatelessWidget {
                           position.longitude);
 
                       return Text(
-                        '${AppLocalizations.of(context)!.to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context)!.distance_m, AppLocalizations.of(context)!.distance_km)}',
+                        '${AppLocalizations.of(context).to} ${Numbers.convertToKilo(distance, AppLocalizations.of(context).distance_m, AppLocalizations.of(context).distance_km)}',
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium!

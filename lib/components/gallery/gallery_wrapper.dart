@@ -3,7 +3,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:smartflore/models/taxon/taxon_model.dart';
 import 'package:smartflore/utils/convert.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class GalleryWrapper extends StatefulWidget {
   final List<ImageAPI> images;
@@ -17,7 +17,7 @@ class GalleryWrapper extends StatefulWidget {
   final void Function(int)? onCurrentIndexChanged;
 
   GalleryWrapper({
-    Key? key,
+    super.key,
     required this.images,
     required this.backgroundDecoration,
     required this.initialIndex,
@@ -26,8 +26,7 @@ class GalleryWrapper extends StatefulWidget {
     this.maxScale,
     this.loadingBuilder,
     this.onCurrentIndexChanged,
-  })  : pageController = PageController(initialPage: initialIndex),
-        super(key: key);
+  }) : pageController = PageController(initialPage: initialIndex);
 
   @override
   State<GalleryWrapper> createState() => _GalleryWrapperState();
@@ -76,10 +75,10 @@ class _GalleryWrapperState extends State<GalleryWrapper> {
                     child: Align(
                       alignment: Alignment.bottomRight,
                       child: Container(
-                        color: Colors.black.withOpacity(0.4),
+                        color: Colors.black.withValues(alpha: 0.4),
                         padding: const EdgeInsets.fromLTRB(5, 0, 5, 2),
                         child: Text(
-                            '${AppLocalizations.of(context)!.credits} : ${widget.images[currentIndex].author.toString()}',
+                            '${AppLocalizations.of(context).credits} : ${widget.images[currentIndex].author.toString()}',
                             style: TextStyle(
                                 color: Theme.of(context).colorScheme.surface)),
                       ),

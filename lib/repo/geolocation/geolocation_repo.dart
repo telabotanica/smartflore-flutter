@@ -14,7 +14,9 @@ class GeolocationRepo {
     await getPermissions();
 
     Position currentPosition = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
+        locationSettings: const LocationSettings(
+      accuracy: LocationAccuracy.high,
+    ));
     return currentPosition;
   }
 
@@ -65,7 +67,7 @@ class GeolocationRepo {
   Future<void> openPreferences() async {
     if (!appSettingsOpened) {
       appSettingsOpened = true;
-      await AppSettings.openLocationSettings();
+      await AppSettings.openAppSettings(type: AppSettingsType.location);
     }
   }
 }

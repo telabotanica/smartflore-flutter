@@ -7,7 +7,7 @@ import 'package:smartflore/navigation/gallery_screen_args.dart';
 
 class SpeciesDescription extends StatefulWidget {
   final TabAPI tabData;
-  const SpeciesDescription({Key? key, required this.tabData}) : super(key: key);
+  const SpeciesDescription({super.key, required this.tabData});
 
   @override
   State<SpeciesDescription> createState() => _SpeciesDescriptionState();
@@ -50,7 +50,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
     return sectionList;
   }
 
-  _openGallery(BuildContext context, final int index) {
+  void _openGallery(BuildContext context, final int index) {
     Navigator.of(context).pushNamed('/gallery-fullScreen',
         arguments: GalleryScreenArguments(
             getCarouselImages(widget.tabData.images),
@@ -60,7 +60,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
             onCurrentIndexChanged: onCurrentGalleryIndexChanged));
   }
 
-  onCurrentGalleryIndexChanged(int index) {
+  void onCurrentGalleryIndexChanged(int index) {
     _controller.jumpToPage(index);
   }
 

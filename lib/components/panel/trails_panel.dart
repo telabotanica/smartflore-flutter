@@ -8,14 +8,13 @@ import 'package:smartflore/bloc/trails/trails_bloc.dart';
 import 'package:smartflore/components/list/trail/trails_list.dart';
 import 'package:smartflore/components/map/map_ui.dart';
 import 'package:smartflore/components/map/map_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:smartflore/l10n/app_localizations.dart';
 
 class TrailsPanelWidget extends StatefulWidget {
   final bool isDraggable;
   final bool isAuth;
   const TrailsPanelWidget(
-      {Key? key, required this.isAuth, this.isDraggable = true})
-      : super(key: key);
+      {super.key, required this.isAuth, this.isDraggable = true});
 
   @override
   State<TrailsPanelWidget> createState() => _TrailsPanelWidgetState();
@@ -49,7 +48,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
     });
   }
 
-  void onPanUpdate(details) {
+  void onPanUpdate(dynamic details) {
     // Swiping down
     if (details.delta.dy > 4 && isPanelOpened && !isPanelMoving) {
       setState(() {
@@ -158,12 +157,12 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
                           tabs: [
                             Tab(
                                 child: Text(
-                              AppLocalizations.of(context)!.btn_all_trail,
+                              AppLocalizations.of(context).btn_all_trail,
                               style: const TextStyle(fontSize: 16),
                             )),
                             Tab(
                                 child: Text(
-                                    AppLocalizations.of(context)!.btn_my_trail,
+                                    AppLocalizations.of(context).btn_my_trail,
                                     style: const TextStyle(fontSize: 16)))
                           ]),
                     ),

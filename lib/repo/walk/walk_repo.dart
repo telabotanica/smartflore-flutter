@@ -6,12 +6,12 @@ class WalkRepo {
   int currentOccurenceID = 0;
   Trail? trail;
 
-  startWalk(Trail trail) {
+  void startWalk(Trail trail) {
     currentOccurenceID = 0;
     trail = trail;
   }
 
-  setCurrentOccurence(int occurenceID) {
+  void setCurrentOccurence(int occurenceID) {
     currentOccurenceID = occurenceID;
   }
 

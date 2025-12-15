@@ -10,7 +10,7 @@ import 'package:smartflore/components/modal/modal_title.dart';
 class CreateFormNameModal extends StatefulWidget {
   final void Function({bool leaveCreateMode})? onClose;
 
-  const CreateFormNameModal({Key? key, this.onClose}) : super(key: key);
+  const CreateFormNameModal({super.key, this.onClose});
 
   @override
   State<CreateFormNameModal> createState() => _CreateFormNameModalState();
@@ -87,7 +87,7 @@ class _CreateFormNameModalState extends State<CreateFormNameModal> {
     }
   }
 
-  leaveCreateMode() {
+  void leaveCreateMode() {
     if (widget.onClose != null) widget.onClose!(leaveCreateMode: true);
   }
 }

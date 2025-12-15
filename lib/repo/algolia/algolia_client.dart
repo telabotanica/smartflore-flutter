@@ -7,7 +7,7 @@ class AlgoliaClient extends APIClient {
 
   AlgoliaClient({required this.httpClient, required this.baseUrl});
 
-  init() async {
+  Future<void> init() async {
     /*final searcher = HitsSearcher(
       applicationID: AppEnv().algoliaAppId,
       apiKey: AppEnv().algoliaApiKey,
@@ -15,5 +15,5 @@ class AlgoliaClient extends APIClient {
     );*/
   }
 
-  getTaxons(String query) {}
+  void getTaxons(String query) {}
 }

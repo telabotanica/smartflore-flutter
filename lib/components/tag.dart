@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TagUI extends StatelessWidget {
   final String label;
-  const TagUI({Key? key, required this.label}) : super(key: key);
+  const TagUI({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {

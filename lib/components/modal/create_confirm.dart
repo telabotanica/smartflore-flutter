@@ -8,7 +8,7 @@ import 'package:smartflore/components/modal/modal_title.dart';
 class CreateConfirmModal extends StatefulWidget {
   final void Function()? onClose;
 
-  const CreateConfirmModal({Key? key, this.onClose}) : super(key: key);
+  const CreateConfirmModal({super.key, this.onClose});
 
   @override
   State<CreateConfirmModal> createState() => _CreateConfirmModalState();
