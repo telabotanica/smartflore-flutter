@@ -26,7 +26,7 @@ class SpeciesInteractiveItem extends StatelessWidget {
       required this.tags,
       required this.isSelected});
 
-  onPressed(BuildContext context, int id) {
+  void onPressed(BuildContext context, int id) {
     BlocProvider.of<WalkBloc>(context)
         .add(SelectOccurrence(occurrenceID: index));
   }

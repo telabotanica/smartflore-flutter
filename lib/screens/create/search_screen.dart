@@ -55,7 +55,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
     });
   }
 
-  onSearch({int page = 0}) async {
+  Future<void> onSearch({int page = 0}) async {
     if (currentSearch != '') {
       var query = algolia.instance
           .index(
@@ -438,7 +438,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
     );
   }
 
-  _openGallery(
+  void _openGallery(
       BuildContext context, final List<ImageAPI> imageList, final int index) {
     Navigator.of(context).pushNamed('/gallery-fullScreen',
         arguments: GalleryScreenArguments(imageList,

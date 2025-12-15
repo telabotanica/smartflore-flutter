@@ -48,7 +48,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
     });
   }
 
-  void onPanUpdate(details) {
+  void onPanUpdate(dynamic details) {
     // Swiping down
     if (details.delta.dy > 4 && isPanelOpened && !isPanelMoving) {
       setState(() {

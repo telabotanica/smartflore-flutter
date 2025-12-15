@@ -82,7 +82,7 @@ class _ConnectivityWidgetState extends State<ConnectivityWidget> {
     }
   }
 
-  showSnackBar() async {
+  Future<void> showSnackBar() async {
     isSnackbarActive = true;
     flush = Flushbar(
         titleColor: Colors.white,

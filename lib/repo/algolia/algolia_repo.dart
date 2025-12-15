@@ -3,7 +3,7 @@ class AlgoliaRepo {
 
   AlgoliaRepo({required this.algoliaClient});
 
-  init() async {
+  Future<void> init() async {
     algoliaClient.init();
   }
 }

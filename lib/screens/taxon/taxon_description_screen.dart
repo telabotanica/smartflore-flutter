@@ -50,7 +50,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
     return sectionList;
   }
 
-  _openGallery(BuildContext context, final int index) {
+  void _openGallery(BuildContext context, final int index) {
     Navigator.of(context).pushNamed('/gallery-fullScreen',
         arguments: GalleryScreenArguments(
             getCarouselImages(widget.tabData.images),
@@ -60,7 +60,7 @@ class _SpeciesDescriptionState extends State<SpeciesDescription> {
             onCurrentIndexChanged: onCurrentGalleryIndexChanged));
   }
 
-  onCurrentGalleryIndexChanged(int index) {
+  void onCurrentGalleryIndexChanged(int index) {
     _controller.jumpToPage(index);
   }
 

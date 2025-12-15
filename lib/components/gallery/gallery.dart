@@ -33,7 +33,7 @@ class _GalleryState extends State<Gallery> {
         });
   }
 
-  _openGallery(BuildContext context, final int index) {
+  void _openGallery(BuildContext context, final int index) {
     Navigator.of(context).pushNamed('/gallery-fullScreen',
         arguments: GalleryScreenArguments(widget.images,
             const BoxDecoration(color: Colors.black), index, Axis.horizontal));

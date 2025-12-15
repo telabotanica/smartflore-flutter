@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  _handleForm() {
+  void _handleForm() {
     if (!isFormProcessing) {
       textFieldsValue = [];
       _formKey.currentState?.validate();

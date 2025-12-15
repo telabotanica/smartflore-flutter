@@ -42,7 +42,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
       });
   }
 
-  void onPanUpdate(details) {
+  void onPanUpdate(dynamic details) {
     // Swiping down
     if (details.delta.dy > 4 && isPanelOpened && !isPanelMoving) {
       setState(() {

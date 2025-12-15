@@ -20,7 +20,7 @@ class _CameraScreenState extends State<CameraScreen> {
     initCam();
   }
 
-  initCam() async {
+  Future<void> initCam() async {
     _cameras = await availableCameras();
     if (_cameras.isEmpty) {
       setState(() {

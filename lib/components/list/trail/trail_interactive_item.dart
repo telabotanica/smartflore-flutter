@@ -31,7 +31,7 @@ class TrailInteractiveItemWidget extends StatelessWidget {
       this.isDownloaded = false,
       this.isLast = false});
 
-  onPressed(BuildContext context, int id) {
+  void onPressed(BuildContext context, int id) {
     BlocProvider.of<MapBloc>(context).add(MapEvent.requestTrailPreview(id));
   }
 

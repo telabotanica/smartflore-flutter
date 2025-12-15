@@ -53,7 +53,7 @@ import 'l10n/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
-getImageIdIfPossible(taxon) {}
+void getImageIdIfPossible(dynamic taxon) {}
 
 void main() async {
   await Hive.initFlutter();
@@ -197,7 +197,7 @@ class _AppState extends State<App> {
     super.initState();
   }
 
-  themeListener() {
+  void themeListener() {
     if (mounted) {
       setState(() {});
     }

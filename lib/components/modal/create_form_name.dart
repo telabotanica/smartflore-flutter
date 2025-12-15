@@ -87,7 +87,7 @@ class _CreateFormNameModalState extends State<CreateFormNameModal> {
     }
   }
 
-  leaveCreateMode() {
+  void leaveCreateMode() {
     if (widget.onClose != null) widget.onClose!(leaveCreateMode: true);
   }
 }
