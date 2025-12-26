@@ -60,7 +60,7 @@ class _SpeciesPanelWidgetState extends State<SpeciesPanelWidget>
   Widget build(BuildContext context) {
     double screenH = MediaQuery.of(context).size.height;
     double screenW = MediaQuery.of(context).size.width;
-    double bottomPadding = MediaQuery.of(context).padding.bottom / 4;
+    double bottomPadding = MediaQuery.of(context).padding.bottom;
 
     return MultiBlocListener(
       listeners: [

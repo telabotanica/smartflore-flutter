@@ -70,7 +70,7 @@ class _TrailsPanelWidgetState extends State<TrailsPanelWidget>
     Color primary = Theme.of(context).colorScheme.primary;
     double screenH = MediaQuery.of(context).size.height;
     double screenW = MediaQuery.of(context).size.width;
-    double bottomPadding = MediaQuery.of(context).padding.bottom / 4;
+    double bottomPadding = MediaQuery.of(context).padding.bottom;
 
     return BlocListener<MapBloc, MapState>(
       listener: (context, state) {

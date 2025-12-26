@@ -91,6 +91,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     double screenW = MediaQuery.of(context).size.width;
+    double bottomPadding = MediaQuery.of(context).padding.bottom;
     return BlocListener<CreateBloc, CreateState>(
       listener: (context, state) {
         state.whenOrNull(
@@ -130,8 +131,8 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
             fit: StackFit.expand,
             children: [
               selectedTaxon == null
-                  ? buildSearchUI(theme)
-                  : buildTaxonUI(theme, screenW),
+                  ? buildSearchUI(theme, bottomPadding)
+                  : buildTaxonUI(theme, screenW, bottomPadding),
               widget.simpleSearch
                   ? Container()
                   : Align(
@@ -147,7 +148,8 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(6))),
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(36, 24, 36, 24),
+                            padding: EdgeInsets.fromLTRB(
+                                36, 24, 36, 24 + bottomPadding),
                             child: SizedBox(
                               height: 46,
                               child: RoundedButton(
@@ -235,7 +237,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
             }));
   }
 
-  Widget buildSearchUI(ThemeData theme) {
+  Widget buildSearchUI(ThemeData theme, double bottomPadding) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(36.0, 16, 36, 16),
       child: Column(
@@ -259,8 +261,8 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
           (currentSearch != '')
               ? Expanded(
                   child: Padding(
-                    padding:
-                        EdgeInsets.only(bottom: widget.simpleSearch ? 0 : 90.0),
+                    padding: EdgeInsets.only(
+                        bottom: widget.simpleSearch ? 0 : 90.0 + bottomPadding),
                     child: Container(child: buildHits(context, theme)),
                   ),
                 )
@@ -270,7 +272,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
     );
   }
 
-  Widget buildTaxonUI(ThemeData theme, double screenW) {
+  Widget buildTaxonUI(ThemeData theme, double screenW, double bottomPadding) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36.0),
       child: SingleChildScrollView(
@@ -343,7 +345,9 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                   return state.maybeWhen(
                       loaded: (taxon) {
                         selectedTaxonSF = taxon;
-                        return Flexible(child: buildGridGallery(theme, taxon));
+                        return Flexible(
+                            child:
+                                buildGridGallery(theme, taxon, bottomPadding));
                       },
                       orElse: () => const Center(
                               child: Padding(
@@ -359,7 +363,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
     );
   }
 
-  Widget buildGridGallery(ThemeData theme, Taxon taxon) {
+  Widget buildGridGallery(ThemeData theme, Taxon taxon, double bottomPadding) {
     List<ImageAPI> imageList = [];
     for (var tab in taxon.tabs) {
       if (tab.type == TabTypeEnum.gallery.name) {
@@ -432,7 +436,7 @@ class _SearchTaxonScreenState extends State<SearchTaxonScreen> {
                       })),
             ),
           ),
-          SizedBox(height: widget.simpleSearch ? 0 : 118)
+          SizedBox(height: widget.simpleSearch ? 0 : 118 + bottomPadding)
         ],
       ),
     );
