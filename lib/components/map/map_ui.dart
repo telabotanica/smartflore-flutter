@@ -135,7 +135,9 @@ class _MapUIState extends State<MapUI> {
               bottom: (widget.mapMode == MapMode.overview)
                   ? 120 + widget.bottomPadding
                   : (widget.mapMode == MapMode.preview)
-                      ? 145 + LayoutUtils.getSizes(trailPreviewUIKey).height
+                      ? 145 +
+                          widget.bottomPadding +
+                          LayoutUtils.getSizes(trailPreviewUIKey).height
                       : 120,
               right: 20,
               child: SizedBox(
@@ -159,7 +161,9 @@ class _MapUIState extends State<MapUI> {
               bottom: (widget.mapMode == MapMode.overview)
                   ? 120 + widget.bottomPadding
                   : (widget.mapMode == MapMode.preview)
-                      ? 145 + LayoutUtils.getSizes(trailPreviewUIKey).height
+                      ? 145 +
+                          widget.bottomPadding +
+                          LayoutUtils.getSizes(trailPreviewUIKey).height
                       : 120,
               left: 20,
               child: const SizedBox(
@@ -170,63 +174,63 @@ class _MapUIState extends State<MapUI> {
           AnimatedPositioned(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOutCubic,
-              bottom: (widget.mapMode == MapMode.create) ? 20 : -200,
+              bottom: (widget.mapMode == MapMode.create)
+                  ? 20 + widget.bottomPadding
+                  : -200,
               left: 20,
-              child: SafeArea(
-                child: SizedBox(
-                  height: 46,
-                  width: MediaQuery.of(context).size.width - 40,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: RoundedButton(
-                          onPress: () {
-                            Navigator.of(context).pushNamed('/create');
-                          },
-                          label: 'Ajouter',
-                          icon: SmartFloreIcons.addMarker,
-                        ),
+              child: SizedBox(
+                height: 46,
+                width: MediaQuery.of(context).size.width - 40,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: RoundedButton(
+                        onPress: () {
+                          Navigator.of(context).pushNamed('/create');
+                        },
+                        label: 'Ajouter',
+                        icon: SmartFloreIcons.addMarker,
                       ),
-                      const SizedBox(width: 14),
-                      Container(
-                        width: 46,
-                        height: 46,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 1),
-                          shape: BoxShape.circle,
-                        ),
-                        child: FloatingActionButton(
-                            backgroundColor: Colors.white,
-                            shape: const CircleBorder(),
-                            child: Container(
-                                width: 14,
-                                height: 14,
-                                decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(2)),
-                                    color:
-                                        Theme.of(context).colorScheme.primary)),
-                            onPressed: () {
-                              BlocProvider.of<CreateBloc>(context)
-                                  .add(const CreateEvent.pause());
-                              showDialog(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (context) =>
-                                      Modal(CreateEndModal(onClose: () {
-                                        BlocProvider.of<CreateBloc>(context)
-                                            .add(const CreateEvent.unPause());
-                                        Navigator.of(context).pop();
-                                      })),
-                                  barrierColor:
-                                      Colors.black.withValues(alpha: 0.1));
-                            }),
+                    ),
+                    const SizedBox(width: 14),
+                    Container(
+                      width: 46,
+                      height: 46,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 1),
+                        shape: BoxShape.circle,
                       ),
-                    ],
-                  ),
+                      child: FloatingActionButton(
+                          backgroundColor: Colors.white,
+                          shape: const CircleBorder(),
+                          child: Container(
+                              width: 14,
+                              height: 14,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(2)),
+                                  color:
+                                      Theme.of(context).colorScheme.primary)),
+                          onPressed: () {
+                            BlocProvider.of<CreateBloc>(context)
+                                .add(const CreateEvent.pause());
+                            showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (context) =>
+                                    Modal(CreateEndModal(onClose: () {
+                                      BlocProvider.of<CreateBloc>(context)
+                                          .add(const CreateEvent.unPause());
+                                      Navigator.of(context).pop();
+                                    })),
+                                barrierColor:
+                                    Colors.black.withValues(alpha: 0.1));
+                          }),
+                    ),
+                  ],
                 ),
               )),
           AnimatedPositioned(
@@ -235,7 +239,9 @@ class _MapUIState extends State<MapUI> {
               onEnd: () {
                 setState(() {});
               },
-              bottom: (widget.mapMode == MapMode.preview) ? 156 - 30 : -200,
+              bottom: (widget.mapMode == MapMode.preview)
+                  ? 156 - 30 + widget.bottomPadding
+                  : -200,
               left: 20,
               child: Center(
                 child: SizedBox(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smartflore/_env/app_env.dart';
@@ -130,6 +131,8 @@ void main() async {
       getUserInfo: getUserInfo);
 
   Bloc.observer = SimpleBlocObserver();
+
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   runApp(RootRestorationScope(
     restorationId: 'root',
