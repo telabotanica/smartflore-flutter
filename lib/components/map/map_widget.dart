@@ -493,6 +493,10 @@ class CachedTileProvider extends TileProvider {
   ImageProvider getImage(TileCoordinates coordinates, TileLayer options) {
     return CachedNetworkImageProvider(
       getTileUrl(coordinates, options),
+      headers: const {
+        'User-Agent':
+            'SmartFlore/1.0 (+https://www.tela-botanica.org; contact: julien@tela-botanica.org)',
+      },
     );
   }
 }
